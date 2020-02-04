@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    Decentralized Identifier Core Registry v1.0
+  </title>
+  <meta content='text/html; charset=utf-8' http-equiv='Content-Type'><!--
+    === NOTA BENE ===
+    For the three scripts below, if your spec resides on dev.w3 you can check them
+    out in the same tree and use relative links so that they'll work offline.
+   -->
+
+  <script class='remove'
+    src='https://www.w3.org/Tools/respec/respec-w3c-common'>
+  </script><!--script src='./respec-w3c-common.js' class='remove'></script-->
+  <script class="remove" type="text/javascript">
+  var respecConfig = {
+        wgPublicList: "public-did-wg",
+        wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/117488/status",
+        wg: "Decentralized Identifier Working Group",
+        wgURI: "https://www.w3.org/2019/did-wg/",
+
+    // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
+    specStatus: "WD",
+
+    // the specification's short name, as in http://www.w3.org/TR/short-name/
+    shortName: "did-core-registry",
+
+    edDraftURI: "https://w3c.github.io/did-core-registry/",
+
+    // subtitle
+    subtitle: "The interoperability registry for Decentralized Identifiers",
+
+    // if you wish the publication date to be other than today, set this
+    //publishDate:  "2019-11-07",
+
+    // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+    // and its maturity status
+    // previousPublishDate:  "1977-03-15",
+    // previousMaturity:  "WD",
+
+    // extend the bibliography entries
+    localBiblio: ccg.localBiblio,
+    github: {
+            repoURL: "https://github.com/w3c/did-core-registry/",
+            branch: "master"
+    },
+    includePermalinks: false,
+
+    // editors, add as many as you like
+    // only "name" is required
+    editors: [      {
+        name: "Manu Sporny",
+        url: "http://manu.sporny.org/",
+        company: "Digital Bazaar",
+        companyURL: "https://digitalbazaar.com/",
+        w3cid: 41758
+      },
+      {
+        name: "Markus Sabadello",
+        url: "https://www.linkedin.com/in/markus-sabadello-353a0821",
+        company: "Danube Tech",
+        companyURL: "https://danubetech.com/",
+        w3cid: 46729
+      }, {
+        name: "Drummond Reed",
+        url: "https://www.linkedin.com/in/drummondreed/",
+        company: "Evernym",
+        companyURL: "https://www.evernym.com/",
+        w3cid: 3096
+      }
+    ],
+
+    // authors, add as many as you like.
+    // This is optional, uncomment if you have authors as well as editors.
+    // only "name" is required. Same format as editors.
+    authors: [{
+        name: "Drummond Reed",
+        url: "https://www.linkedin.com/in/drummondreed/",
+        company: "Evernym",
+        companyURL: "https://www.evernym.com/",
+        w3cid: 3096
+      },
+      {
+        name: "Manu Sporny",
+        url: "http://manu.sporny.org/",
+        company: "Digital Bazaar",
+        companyURL: "https://digitalbazaar.com/",
+        w3cid: 41758
+      }
+    }];
+  </script>
+  <style>
+  pre .highlight {
+    font-weight: bold;
+    color: green;
+  }
+  pre .comment {
+    color: SteelBlue;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  </style>
+</head>
+<body>
+  <section id='abstract'>
+    <p>
+    </p>
+    <p>
+This document serves as an official registry for all known global parameters,
+properties, and classes used by the Decentralized Identifier ecosystem.
+    </p>
+  </section>
+
+  <section id='sotd'>
+
+    <p>
+This registry is under active development and implementers are advised
+against implementing the registry unless they are directly involved
+with the W3C DID Working Group.
+    </p>
+
+    <p>
+Comments regarding this document are welcome. Please file issues
+directly on <a href="https://github.com/w3c/did-core-registry/issues/">GitHub</a>,
+or send them
+to <a href="mailto:public-did-wg@w3.org">public-did-wg@w3.org</a> (
+<a href="mailto:public-did-wg-request@w3.org?subject=subscribe">subscribe</a>,
+<a href="https://lists.w3.org/Archives/Public/public-did-wg/">archives</a>).
+    </p>
+
+    <p>
+Portions of the work on this specification have been funded by the
+United States Department of Homeland Security's Science and Technology
+Directorate under contracts HSHQDC-16-R00012-H-SB2016-1-002, 70RSAT20T00000010,
+and HSHQDC-17-C-00019. The content of this specification does not
+necessarily reflect the position or the policy of the U.S. Government
+and no official endorsement should be inferred.
+    </p>
+
+    <p>
+Work on this registry has also been supported by the Rebooting the
+Web of Trust community facilitated by Christopher Allen, Shannon
+Appelcline, Kiara Robles, Brian Weller, Betty Dhamers, Kaliya Young,
+Kim Hamilton Duffy, Manu Sporny, Drummond Reed, Joe Andrieu, and
+Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
+    </p>
+  </section>
+
+  <section class="informative">
+    <h1>Introduction</h1>
+
+    <p>
+This document serves as an official registry for all known global parameters,
+properties, and classes used by the Decentralized Identifier ecosystem.
+    </p>
+  </section>
+
+</body>
+</html>
