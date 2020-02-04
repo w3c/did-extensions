@@ -1,5 +1,6 @@
- {
-    "group":      [117488]
-,   "contacts":   ["iherman"]
-,   "repo-type":  "note
+{
+  "group":      [117488],
+  "contacts":   ["iherman"],
+  "repo-type":  "note",
+  "shortName":  "did-core-registry"
 }
