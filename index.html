@@ -14,81 +14,73 @@
     src='https://www.w3.org/Tools/respec/respec-w3c-common'>
   </script><!--script src='./respec-w3c-common.js' class='remove'></script-->
   <script class="remove" type="text/javascript">
-  var respecConfig = {
-        wgPublicList: "public-did-wg",
-        wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/117488/status",
-        wg: "Decentralized Identifier Working Group",
-        wgURI: "https://www.w3.org/2019/did-wg/",
+var respecConfig = {
+      wgPublicList: "public-did-wg",
+      wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/117488/status",
+      wg: "Decentralized Identifier Working Group",
+      wgURI: "https://www.w3.org/2019/did-wg/",
 
-    // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
-    specStatus: "WD",
+  // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
+  specStatus: "ED",
 
-    // the specification's short name, as in http://www.w3.org/TR/short-name/
-    shortName: "did-core-registry",
+  // the specification's short name, as in http://www.w3.org/TR/short-name/
+  shortName: "did-core-registry",
 
-    edDraftURI: "https://w3c.github.io/did-core-registry/",
+  edDraftURI: "https://w3c.github.io/did-core-registry/",
 
-    // subtitle
-    subtitle: "The interoperability registry for Decentralized Identifiers",
+  // subtitle
+  subtitle: "The interoperability registry for Decentralized Identifiers",
 
-    // if you wish the publication date to be other than today, set this
-    //publishDate:  "2019-11-07",
+  // if you wish the publication date to be other than today, set this
+  //publishDate:  "2019-11-07",
 
-    // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
-    // and its maturity status
-    // previousPublishDate:  "1977-03-15",
-    // previousMaturity:  "WD",
+  // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+  // and its maturity status
+  // previousPublishDate:  "1977-03-15",
+  // previousMaturity:  "WD",
 
-    // extend the bibliography entries
-    localBiblio: ccg.localBiblio,
-    github: {
-            repoURL: "https://github.com/w3c/did-core-registry/",
-            branch: "master"
+  // extend the bibliography entries
+  github: {
+          repoURL: "https://github.com/w3c/did-core-registry/",
+          branch: "master"
+  },
+  includePermalinks: false,
+
+  // editors, add as many as you like
+  // only "name" is required
+  editors: [      {
+      name: "Manu Sporny",
+      url: "http://manu.sporny.org/",
+      company: "Digital Bazaar",
+      companyURL: "https://digitalbazaar.com/",
+      w3cid: 41758
     },
-    includePermalinks: false,
+    {
+      name: "Markus Sabadello",
+      url: "https://www.linkedin.com/in/markus-sabadello-353a0821",
+      company: "Danube Tech",
+      companyURL: "https://danubetech.com/",
+      w3cid: 46729
+    }, {
+      name: "Drummond Reed",
+      url: "https://www.linkedin.com/in/drummondreed/",
+      company: "Evernym",
+      companyURL: "https://www.evernym.com/",
+      w3cid: 3096
+    }
+  ],
 
-    // editors, add as many as you like
-    // only "name" is required
-    editors: [      {
-        name: "Manu Sporny",
-        url: "http://manu.sporny.org/",
-        company: "Digital Bazaar",
-        companyURL: "https://digitalbazaar.com/",
-        w3cid: 41758
-      },
-      {
-        name: "Markus Sabadello",
-        url: "https://www.linkedin.com/in/markus-sabadello-353a0821",
-        company: "Danube Tech",
-        companyURL: "https://danubetech.com/",
-        w3cid: 46729
-      }, {
-        name: "Drummond Reed",
-        url: "https://www.linkedin.com/in/drummondreed/",
-        company: "Evernym",
-        companyURL: "https://www.evernym.com/",
-        w3cid: 3096
-      }
-    ],
-
-    // authors, add as many as you like.
-    // This is optional, uncomment if you have authors as well as editors.
-    // only "name" is required. Same format as editors.
-    authors: [{
-        name: "Drummond Reed",
-        url: "https://www.linkedin.com/in/drummondreed/",
-        company: "Evernym",
-        companyURL: "https://www.evernym.com/",
-        w3cid: 3096
-      },
-      {
-        name: "Manu Sporny",
-        url: "http://manu.sporny.org/",
-        company: "Digital Bazaar",
-        companyURL: "https://digitalbazaar.com/",
-        w3cid: 41758
-      }
-    }];
+  // authors, add as many as you like.
+  // This is optional, uncomment if you have authors as well as editors.
+  // only "name" is required. Same format as editors.
+  authors: [{
+      name: "Manu Sporny",
+      url: "http://manu.sporny.org/",
+      company: "Digital Bazaar",
+      companyURL: "https://digitalbazaar.com/",
+      w3cid: 41758
+  }]
+};
   </script>
   <style>
   pre .highlight {
@@ -149,6 +141,8 @@ Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
     </p>
   </section>
 
+  <section id="conformance"></section>
+
   <section class="informative">
     <h1>Introduction</h1>
 
@@ -192,6 +186,44 @@ are identified to cause interoperability problems MAY be marked as such
 at the discretion of the maintainers of this registry, and if possible, after
 consultation with the entry maintainer.
     </p>
+  </section>
+
+  <section>
+    <h1>The Parameter Registry</h1>
+
+    <p>
+This table summarizes the globally registered parameters that can be provided
+as parameters in a DID URL.
+    </p>
+
+    <table class="simple">
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>
+TBD
+          </td>
+          <td>
+            <div>DESCRIPTION_GOES_HERE</div>
+            <div><a href="">SPECIFICATION_GOES_HERE</a></div>
+            <pre>
+"@context": [
+  "https://www.w3.org/ns/did/v1",
+  "https://CONTEXT_GOES_HERE/v1"
+]
+            </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
   </section>
 
 </body>
