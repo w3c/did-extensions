@@ -1,5 +1,4 @@
 
-# Specification 'did-core-registry'
+![W3C Logo](https://www.w3.org/Icons/w3c_home)
 
-This is the repository for did-core-registry. You're welcome to contribute! Let's make the Web rock our socks
-off!
+# Decentralized Identifier Registry
