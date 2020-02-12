@@ -226,76 +226,39 @@ TBD
 
   <section>
     <h1>The Property Registry</h1>
-
     <p>
-This table summarizes the globally registered properties that can be provided
-as properties in a DID Document.
+      The following section defines the properties in a DID document.
     </p>
-
-    <table class="simple">
-      <thead>
-        <tr>
-          <th>Property</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>
-TBD
-          </td>
-          <td>
-            <div>DESCRIPTION_GOES_HERE</div>
-            <div><a href="">SPECIFICATION_GOES_HERE</a></div>
-            <pre>
-"@context": [
-  "https://www.w3.org/ns/did/v1",
-  "https://CONTEXT_GOES_HERE/v1"
-]
-            </pre>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <section>
+      <h2><dfn data-lt="publicKey" data-dfn-type="dfn" id="publicKey">publicKey</dfn></h2>
+      <p>An array of public keys. A public key is a verification method. Public keys are used for digital signatures, encryption and other cryptographic operations, which in turn are the basis for purposes such as authentication.</p>
+      <pre class="example">
+        {
+          "id": "did:example:123",
+          "publicKey": [
+            {
+              "id": "did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec",
+              "type": "Ed25519VerificationKey2018",
+              "controller": "did:example:123",
+              "publicKeyJwk": {
+                "crv": "Ed25519",
+                "x": "o3v3B4wU7LPewgr3iQDSc9LGzJKdS0R_698dUXtBXX8",
+                "kty": "OKP",
+                "kid": "ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec"
+              }
+            }
+          ]
+        }
+      </pre>
+      <h4>Machine Readable Definitions</h4>
+      <ul>
+        <li><a href="https://w3c.github.io/did-core-registry/schemas/publicKey.json">JSON Schema</a></li>
+        <li><a href="https://w3c.github.io/did-core-registry/#publicKey">JSON-LD</a></li>
+        <li>CBOR</li>
+      </ul>
+    </section>
   </section>
 
-
-    <section>
-      <h1>The Value Registry</h1>
-
-      <p>
-  This table summarizes the globally registered values that can be used as
-  property values in a DID Document.
-      </p>
-
-      <table class="simple">
-        <thead>
-          <tr>
-            <th>Value</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>
-  TBD
-            </td>
-            <td>
-              <div>DESCRIPTION_GOES_HERE</div>
-              <div><a href="">SPECIFICATION_GOES_HERE</a></div>
-              <pre>
-  "@context": [
-    "https://www.w3.org/ns/did/v1",
-    "https://CONTEXT_GOES_HERE/v1"
-  ]
-              </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
 
 </body>
 </html>

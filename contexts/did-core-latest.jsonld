@@ -1,0 +1,16 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "id": "@id",
+    "type": "@type",
+    "dc": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "http://schema.org/",
+    "did": "https://w3c.github.io/did-core-registry/#",
+    "publicKey": {
+      "@id": "did:publicKey",
+      "@type": "@id",
+      "@container": "@set"
+    }
+  }
+}
