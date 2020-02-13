@@ -8,7 +8,7 @@
     "schema": "http://schema.org/",
     "didr": "https://w3c.github.io/did-core-registry/#",
     "publicKey": {
-      "@id": "did:publicKey",
+      "@id": "didr:publicKey",
       "@type": "@id",
       "@container": "@set"
     }
