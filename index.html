@@ -226,76 +226,150 @@ TBD
 
   <section>
     <h1>The Property Registry</h1>
-
     <p>
-This table summarizes the globally registered properties that can be provided
-as properties in a DID Document.
+      The following section defines the properties in a DID document.
     </p>
-
-    <table class="simple">
-      <thead>
-        <tr>
-          <th>Property</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>
-TBD
-          </td>
-          <td>
-            <div>DESCRIPTION_GOES_HERE</div>
-            <div><a href="">SPECIFICATION_GOES_HERE</a></div>
-            <pre>
-"@context": [
-  "https://www.w3.org/ns/did/v1",
-  "https://CONTEXT_GOES_HERE/v1"
-]
-            </pre>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-
     <section>
-      <h1>The Value Registry</h1>
+      <h2><dfn data-lt="publicKey" data-dfn-type="dfn" id="publicKey">publicKey</dfn></h2>
+      <p>An array of public keys. A public key is a verification method. Public keys are used for digital signatures, encryption and other cryptographic operations, which in turn are the basis for purposes such as authentication.</p>
+      
+      <pre class="example">
+        {
+          "id": "did:example:123",
+          "publicKey": [
+            {
+              "id": "did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec",
+              "type": "Ed25519VerificationKey2018",
+              "controller": "did:example:123",
+              "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+            },
+            {
+              "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+              "type": "EcdsaSecp256k1VerificationKey2019",
+              "controller": "did:example:123",
+              "publicKeyJwk": {
+                "crv": "secp256k1",
+                "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+                "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+                "kty": "EC",
+                "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+              }
+            }
+          ]
+        }
+      </pre>
 
-      <p>
-  This table summarizes the globally registered values that can be used as
-  property values in a DID Document.
-      </p>
-
-      <table class="simple">
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
         <thead>
           <tr>
-            <th>Value</th>
-            <th>Description</th>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
           </tr>
         </thead>
-
         <tbody>
           <tr>
             <td>
-  TBD
+              <a href="https://w3c.github.io/did-core-registry/schemas/publicKey.json">JSON Schema</a>
             </td>
             <td>
-              <div>DESCRIPTION_GOES_HERE</div>
-              <div><a href="">SPECIFICATION_GOES_HERE</a></div>
-              <pre>
-  "@context": [
-    "https://www.w3.org/ns/did/v1",
-    "https://CONTEXT_GOES_HERE/v1"
-  ]
-              </pre>
+              JSON-LD
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <section>
+      <h3><dfn data-lt="Ed25519VerificationKey2018" data-dfn-type="dfn" id="Ed25519VerificationKey2018">Ed25519VerificationKey2018</dfn></h3>
+
+      <p>A Ed25519 publicKey.</p>
+      
+      
+      <pre class="example">
+        {
+          "id": "did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec",
+          "type": "Ed25519VerificationKey2018",
+          "controller": "did:example:123",
+          "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+        }
+      </pre>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core-registry/schemas/publicKey/Ed25519VerificationKey2018.json">JSON Schema</a>
+            </td>
+            <td>
+              JSON-LD
+            </td>
+            <td>
+              CBOR
             </td>
           </tr>
         </tbody>
       </table>
     </section>
+
+    <section>
+      <h3><dfn data-lt="EcdsaSecp256k1VerificationKey2019" data-dfn-type="dfn" id="EcdsaSecp256k1VerificationKey2019">EcdsaSecp256k1VerificationKey2019</dfn></h3>
+
+      <p>A secp256k1 publicKey.</p>
+      
+      
+      <pre class="example">
+        {
+          "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+          "type": "EcdsaSecp256k1VerificationKey2019",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "crv": "secp256k1",
+            "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+            "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+            "kty": "EC",
+            "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+          }
+        }
+      </pre>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core-registry/schemas/publicKey/EcdsaSecp256k1VerificationKey2019.json">JSON Schema</a>
+            </td>
+            <td>
+              JSON-LD
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    </section>
+  </section>
+
 
 </body>
 </html>
