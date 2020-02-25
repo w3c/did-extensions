@@ -23,7 +23,7 @@
         "title": "Public Key",
         "description": "https://w3c.github.io/did-core-registry/#publicKey",
         "type": "array",
-        "required": true,
+        "required": false,
         "items": {
           "$ref": "did-core.publicKey"
         }
