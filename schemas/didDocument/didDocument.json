@@ -7,7 +7,14 @@
         "description": "https://w3c.github.io/did-core-registry/#context",
         "anyOf": [
           { "type": "string" },
-          { "type": "array" },
+          { "type": "array",
+            "items": [
+              {
+                "type": "string",
+                "const": "https://www.w3.org/ns/did/v1"
+              }
+            ] 
+          },
           { "type": "object" }
         ],
         "required": false
