@@ -13,7 +13,8 @@
                 "type": "string",
                 "const": "https://www.w3.org/ns/did/v1"
               }
-            ] 
+            ], 
+          "additionalItems": { "type": "string" }
           },
           { "type": "object" }
         ],
@@ -23,6 +24,7 @@
         "title": "DID",
         "description": "https://w3c.github.io/did-core-registry/#id",
         "type": "string",
+        "pattern": "^did:[a-z0-9]+:[A-Za-z0-9.-_:?=&;]+$",
         "required": true,
         "example": ["did:key:z6MksQ35B5bwZDQq4QKuhQW2Sv6dcqwg4PqcSFf67pdgrtjB"]
       },
