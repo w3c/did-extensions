@@ -1,0 +1,33 @@
+{
+    "$id": "/did-core.didDocument",
+    "type": "object",
+    "properties": {
+      "@context": {
+        "title": "@context",
+        "description": "https://w3c.github.io/did-core-registry/#context",
+        "anyOf": [
+          { "type": "string" },
+          { "type": "array" },
+          { "type": "object" }
+        ],
+        "required": false
+      },
+      "id": {
+        "title": "DID",
+        "description": "https://w3c.github.io/did-core-registry/#id",
+        "type": "string",
+        "required": true,
+        "example": ["did:key:z6MksQ35B5bwZDQq4QKuhQW2Sv6dcqwg4PqcSFf67pdgrtjB"]
+      },
+      "publicKey": {
+        "title": "Public Key",
+        "description": "https://w3c.github.io/did-core-registry/#publicKey",
+        "type": "array",
+        "required": true,
+        "items": {
+          "$ref": "did-core.publicKey"
+        }
+      }
+    },
+    "additionalProperties": false
+  }
