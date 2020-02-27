@@ -6,7 +6,7 @@
         "title": "@context",
         "description": "https://w3c.github.io/did-core-registry/#context",
         "anyOf": [
-          { "type": "string" },
+          { "type": "string", "const": "https://www.w3.org/ns/did/v1" },
           { "type": "array",
             "items": [
               {
