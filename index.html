@@ -48,37 +48,33 @@ var respecConfig = {
 
   // editors, add as many as you like
   // only "name" is required
-  editors: [      {
-      name: "Manu Sporny",
-      url: "http://manu.sporny.org/",
-      company: "Digital Bazaar",
-      companyURL: "https://digitalbazaar.com/",
-      w3cid: 41758
-    },
-    {
-      name: "Markus Sabadello",
-      url: "https://www.linkedin.com/in/markus-sabadello-353a0821",
-      company: "Danube Tech",
-      companyURL: "https://danubetech.com/",
-      w3cid: 46729
-    }, {
-      name: "Drummond Reed",
-      url: "https://www.linkedin.com/in/drummondreed/",
-      company: "Evernym",
-      companyURL: "https://www.evernym.com/",
-      w3cid: 3096
-    }
-  ],
+  editors: [{
+    name: "Orie Steele",
+    url: "https://www.linkedin.com/in/or13b/",
+    company: "Transmute",
+    companyURL: "https://www.transmute.industries/"
+  }, {
+    name: "Manu Sporny",
+    url: "http://manu.sporny.org/",
+    company: "Digital Bazaar",
+    companyURL: "https://digitalbazaar.com/",
+    w3cid: 41758
+  }],
 
   // authors, add as many as you like.
   // This is optional, uncomment if you have authors as well as editors.
   // only "name" is required. Same format as editors.
   authors: [{
-      name: "Manu Sporny",
-      url: "http://manu.sporny.org/",
-      company: "Digital Bazaar",
-      companyURL: "https://digitalbazaar.com/",
-      w3cid: 41758
+    name: "Orie Steele",
+    url: "https://www.linkedin.com/in/or13b/",
+    company: "Transmute",
+    companyURL: "https://www.transmute.industries/"
+  }, {
+    name: "Manu Sporny",
+    url: "http://manu.sporny.org/",
+    company: "Digital Bazaar",
+    companyURL: "https://digitalbazaar.com/",
+    w3cid: 41758
   }]
 };
   </script>
@@ -229,7 +225,7 @@ TBD
     <p>
       The following section defines the properties in a DID document.
     </p>
-    
+
     <section>
       <h2><dfn data-lt="@context" data-dfn-type="dfn" id="@context">@context</dfn></h2>
       <p>Required for JSON-LD. Optional for representations other than JSON-LD.</p>
@@ -270,7 +266,7 @@ TBD
     <section>
       <h2><dfn data-lt="id" data-dfn-type="dfn" id="id">id</dfn></h2>
       <p>The id of the DID Document, identifies the DID Subject.</p>
-      
+
       <pre class="example">
         {
           "id": "did:example:123",
@@ -305,7 +301,7 @@ TBD
     <section>
       <h2><dfn data-lt="publicKey" data-dfn-type="dfn" id="publicKey">publicKey</dfn></h2>
       <p>An array of public keys. A public key is a verification method. Public keys are used for digital signatures, encryption and other cryptographic operations, which in turn are the basis for purposes such as authentication.</p>
-      
+
       <pre class="example">
         {
           "id": "did:example:123",
@@ -360,8 +356,8 @@ TBD
       <h3><dfn data-lt="Ed25519VerificationKey2018" data-dfn-type="dfn" id="Ed25519VerificationKey2018">Ed25519VerificationKey2018</dfn></h3>
 
       <p>A Ed25519 publicKey.</p>
-      
-      
+
+
       <pre class="example">
         {
           "id": "did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec",
@@ -399,8 +395,8 @@ TBD
       <h3><dfn data-lt="EcdsaSecp256k1VerificationKey2019" data-dfn-type="dfn" id="EcdsaSecp256k1VerificationKey2019">EcdsaSecp256k1VerificationKey2019</dfn></h3>
 
       <p>A secp256k1 publicKey.</p>
-      
-      
+
+
       <pre class="example">
         {
           "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
