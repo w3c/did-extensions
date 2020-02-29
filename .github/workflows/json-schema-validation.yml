@@ -1,9 +1,6 @@
 name: JSON Schema Validation
 
-on:
-  push:
-    branches:
-      - master
+on: push
 
 jobs:
   build:
