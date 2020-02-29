@@ -1,0 +1,25 @@
+{
+  "@context": "https://www.w3.org/2019/did/v1",
+  "id": "did:btcr:xz35-jznz-q6mr-7q6",
+  "service": [],
+  "authentication": [
+    {
+      "type": "EcdsaSecp256k1SignatureAuthentication2019",
+      "publicKey": [
+        "#satoshi"
+      ]
+    }
+  ],
+  "publicKey": [
+    {
+      "id": "did:btcr:xz35-jznz-q6mr-7q6#key-0",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "publicKeyHex": "020a5a5c8c3575489cd2c17d43f642fc2b34792d47c9b026fafe33b3469e31b841"
+    },
+    {
+      "id": "did:btcr:xz35-jznz-q6mr-7q6#satoshi",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "publicKeyHex": "020a5a5c8c3575489cd2c17d43f642fc2b34792d47c9b026fafe33b3469e31b841"
+    }
+  ]
+}

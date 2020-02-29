@@ -1,0 +1,18 @@
+{
+  "@context": "https://www.w3.org/2019/did/v1",
+  "id": "did:work:2UUHQCd4psvkPLZGnWY33L",
+  "service": [
+    {
+      "type": "schema",
+      "serviceEndpoint": "did:work:8RcWPSBtB4QwfC68yneDxC;id=860285e2-183d-4fe3-9767-babc744396b8;version=1.0"
+    }
+  ],
+  "publicKey": [
+    {
+      "id": "did:work:2UUHQCd4psvkPLZGnWY33L#key-1",
+      "type": "Ed25519VerificationKey2018",
+      "controller": "did:work:4PUfQhXdyRY4LLNkKUs16S",
+      "publicKeyBase58": "oatUtA5A97kQ7mWYK8qHkVFvJKtnhRdBZPSwuC3dADw"
+    }
+  ]
+}

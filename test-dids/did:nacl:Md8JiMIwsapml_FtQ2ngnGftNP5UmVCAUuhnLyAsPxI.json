@@ -1,0 +1,26 @@
+{
+  "@context": "https://w3id.org/did/v1",
+  "id": "did:nacl:Md8JiMIwsapml_FtQ2ngnGftNP5UmVCAUuhnLyAsPxI",
+  "authentication": [
+    {
+      "type": "ED25519SigningAuthentication",
+      "publicKey": [
+        "did:nacl:Md8JiMIwsapml_FtQ2ngnGftNP5UmVCAUuhnLyAsPxI#key1"
+      ]
+    }
+  ],
+  "publicKey": [
+    {
+      "id": "did:nacl:Md8JiMIwsapml_FtQ2ngnGftNP5UmVCAUuhnLyAsPxI#key1",
+      "type": "ED25519SignatureVerification",
+      "owner": "did:nacl:Md8JiMIwsapml_FtQ2ngnGftNP5UmVCAUuhnLyAsPxI",
+      "publicKeyBase64": "Md8JiMIwsapml/FtQ2ngnGftNP5UmVCAUuhnLyAsPxI="
+    },
+    {
+      "id": "did:nacl:Md8JiMIwsapml_FtQ2ngnGftNP5UmVCAUuhnLyAsPxI#key2",
+      "type": "Curve25519EncryptionPublicKey",
+      "owner": "did:nacl:Md8JiMIwsapml_FtQ2ngnGftNP5UmVCAUuhnLyAsPxI",
+      "publicKeyBase64": "OAsnUyuUBISGsOherdxO6rgzUeGe9SnffDXQk6KpkAY="
+    }
+  ]
+}

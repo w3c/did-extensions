@@ -1,0 +1,29 @@
+{
+  "@context": "https://www.w3.org/2019/did/v1",
+  "id": "did:sov:WRfXPg8dantKVubE3HX8pw",
+  "service": [
+    {
+      "type": "agent",
+      "serviceEndpoint": "https://agents.danubeclouds.com/agent/WRfXPg8dantKVubE3HX8pw"
+    },
+    {
+      "type": "xdi",
+      "serviceEndpoint": "https://xdi03-at.danubeclouds.com/cl/+!:did:sov:WRfXPg8dantKVubE3HX8pw"
+    }
+  ],
+  "authentication": [
+    {
+      "type": "Ed25519SignatureAuthentication2018",
+      "publicKey": [
+        "did:sov:WRfXPg8dantKVubE3HX8pw#key-1"
+      ]
+    }
+  ],
+  "publicKey": [
+    {
+      "id": "did:sov:WRfXPg8dantKVubE3HX8pw#key-1",
+      "type": "Ed25519VerificationKey2018",
+      "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+    }
+  ]
+}

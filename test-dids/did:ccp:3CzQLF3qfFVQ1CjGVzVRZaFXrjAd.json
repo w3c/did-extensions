@@ -1,0 +1,30 @@
+{
+  "@context": "https://www.w3.org/2019/did/v1",
+  "id": "did:ccp:3CzQLF3qfFVQ1CjGVzVRZaFXrjAd",
+  "service": [
+    {
+      "type": "DIDResolve",
+      "serviceEndpoint": "https://did.baidu.com"
+    }
+  ],
+  "authentication": [
+    {
+      "type": "Secp256k1",
+      "publicKey": [
+        "did:ccp:3CzQLF3qfFVQ1CjGVzVRZaFXrjAd#key-1"
+      ]
+    }
+  ],
+  "publicKey": [
+    {
+      "id": "did:ccp:3CzQLF3qfFVQ1CjGVzVRZaFXrjAd#key-1",
+      "type": "Secp256k1",
+      "publicKeyHex": "0440b3fa8e848297ff26b04088263101fa87d3541ac48bbc32fe7b77b73246578241236ab6097d4012ac17a514272a54a7b728790e914bbbff431e49d421aa1eef"
+    },
+    {
+      "id": "did:ccp:3CzQLF3qfFVQ1CjGVzVRZaFXrjAd#key-2",
+      "type": "Secp256k1",
+      "publicKeyHex": "04df4cf82984c9ecd4cf113e24762fb4404c1653df84ac424e4e2985ba7eb4de9249c2609414a24feea7845649299049b4babd6380ee69ef9e91c843931c877e7f"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://docs.element-did.com/contexts/sidetree/sidetree-v0.1.jsonld"
+  ],
+  "id": "did:elem:EiCcfb9tKepw7aCRlAp7mTHebJ4VNbTkMnVx78tyLNPY-A",
+  "assertionMethod": [
+    "#OMDq1OTlEl0VzqVyaIEFNpqUYngo_tYJvr3WPm1_NOk",
+    "#primary",
+    "#recovery",
+    "#PGv5JGYM0LZKkURwVzBx81aHoT2UFFekPbrkU2a_Xj0"
+  ],
+  "authentication": [
+    "#OMDq1OTlEl0VzqVyaIEFNpqUYngo_tYJvr3WPm1_NOk",
+    "#primary",
+    "#recovery",
+    "#PGv5JGYM0LZKkURwVzBx81aHoT2UFFekPbrkU2a_Xj0"
+  ],
+  "capabilityDelegation": [
+    "#OMDq1OTlEl0VzqVyaIEFNpqUYngo_tYJvr3WPm1_NOk",
+    "#primary",
+    "#recovery",
+    "#PGv5JGYM0LZKkURwVzBx81aHoT2UFFekPbrkU2a_Xj0"
+  ],
+  "capabilityInvocation": [
+    "#OMDq1OTlEl0VzqVyaIEFNpqUYngo_tYJvr3WPm1_NOk",
+    "#primary",
+    "#recovery",
+    "#PGv5JGYM0LZKkURwVzBx81aHoT2UFFekPbrkU2a_Xj0"
+  ],
+  "keyAgreement": [
+    {
+      "id": "#keyAgreement",
+      "type": "X25519KeyAgreementKey2019",
+      "usage": "signing",
+      "controller": "did:elem:EiCcfb9tKepw7aCRlAp7mTHebJ4VNbTkMnVx78tyLNPY-A",
+      "publicKeyBase58": "CLzmRpEvYuvo636ypqJRD7vAWWFW5wekPgE3uaeoWAQk"
+    }
+  ],
+  "publicKey": [
+    {
+      "id": "#OMDq1OTlEl0VzqVyaIEFNpqUYngo_tYJvr3WPm1_NOk",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "usage": "signing",
+      "controller": "did:elem:EiCcfb9tKepw7aCRlAp7mTHebJ4VNbTkMnVx78tyLNPY-A",
+      "publicKeyJwk": {
+        "crv": "secp256k1",
+        "kid": "OMDq1OTlEl0VzqVyaIEFNpqUYngo_tYJvr3WPm1_NOk",
+        "kty": "EC",
+        "x": "PEjkPQtwlE78C246GGgKr_rOdV9J3A03-Dh93ivNCuc",
+        "y": "06YbI7cnX5zqPlwsLLdD8Ztq7U80AiaM-VK0rx3yhR8"
+      }
+    },
+    {
+      "id": "#primary",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "usage": "signing",
+      "controller": "did:elem:EiCcfb9tKepw7aCRlAp7mTHebJ4VNbTkMnVx78tyLNPY-A",
+      "publicKeyHex": "033c48e43d0b70944efc0b6e3a18680aafface755f49dc0d37f8387dde2bcd0ae7"
+    },
+    {
+      "id": "#recovery",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "usage": "recovery",
+      "controller": "did:elem:EiCcfb9tKepw7aCRlAp7mTHebJ4VNbTkMnVx78tyLNPY-A",
+      "publicKeyHex": "037d88392c7355dace4f06b471aee3de3695ec93bba2b358abc8207ddd5d7773ac"
+    },
+    {
+      "id": "#PGv5JGYM0LZKkURwVzBx81aHoT2UFFekPbrkU2a_Xj0",
+      "type": "Ed25519VerificationKey2018",
+      "usage": "signing",
+      "controller": "did:elem:EiCcfb9tKepw7aCRlAp7mTHebJ4VNbTkMnVx78tyLNPY-A",
+      "publicKeyBase58": "CmPkgqyW6563Nu1hr3Ub3PkMmxJeG7ykZ1PkHneq1V5E"
+    }
+  ]
+}

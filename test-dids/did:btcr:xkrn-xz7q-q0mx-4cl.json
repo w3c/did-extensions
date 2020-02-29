@@ -1,0 +1,70 @@
+{
+  "@context": [
+    "https://schema.org/",
+    "https://w3id.org/did/v1"
+  ],
+  "id": "did:btcr:xkrn-xz7q-q0mx-4cl",
+  "service": [
+    {
+      "type": "agent",
+      "serviceEndpoint": "https://azure.microsoft.com/dif/hub/did:btcr:xkrn-xz7q-q0mx-4cl"
+    },
+    {
+      "type": "xdi",
+      "serviceEndpoint": "https://xdi03-at.danubeclouds.com/cl/+!:did:btcr:xkrn-xz7q-q0mx-4cl"
+    },
+    {
+      "name": "homepage",
+      "serviceEndpoint": "https://danubetech.com/"
+    },
+    {
+      "name": "projects",
+      "serviceEndpoint": "https://github.com/peacekeeper/blockchain-identity"
+    }
+  ],
+  "authentication": [
+    {
+      "type": "EcdsaSecp256k1SignatureAuthentication2019",
+      "publicKey": [
+        "#satoshi"
+      ]
+    }
+  ],
+  "publicKey": [
+    {
+      "id": "did:btcr:xkrn-xz7q-q0mx-4cl#key-0",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "publicKeyHex": "024a63c4362772b0fafc51ac02470dae3f8da8a05d90bae9e1ef3f5243180120dd"
+    },
+    {
+      "id": "did:btcr:xkrn-xz7q-q0mx-4cl#key-1",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "publicKeyHex": "02b5470c5c0557ef7548dec23220d4d75f8c4aa1b459c190f100f4f78a1adb215b"
+    },
+    {
+      "id": "did:btcr:xkrn-xz7q-q0mx-4cl#key-2",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "publicKeyHex": "02e2078417a258acc2c9f9eb856b35b508d1e5a23fc1dcf94fd6f7337b1cb7fb90"
+    },
+    {
+      "id": "did:btcr:xkrn-xz7q-q0mx-4cl#key-3",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "publicKeyHex": "02074f9b37f26ae410742ec754b02b3f7d078ff73d7e06b6f7a670d5701805ef82"
+    },
+    {
+      "id": "did:btcr:xkrn-xz7q-q0mx-4cl#key-4",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "publicKeyHex": "02b4021b6907fbc12b2c0d9278d21bc0f371a56b553fc75eaf75b79d925301f7a4"
+    },
+    {
+      "id": "did:btcr:xkrn-xz7q-q0mx-4cl#key-5",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "publicKeyHex": "03479e1bde881c15edc82b7c4d0d04441c5e7f6dce4b703f43c5d5c12948df32d2"
+    },
+    {
+      "id": "did:btcr:xkrn-xz7q-q0mx-4cl#satoshi",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "publicKeyHex": "03479e1bde881c15edc82b7c4d0d04441c5e7f6dce4b703f43c5d5c12948df32d2"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "@context": "https://w3id.org/did/v1",
+  "id": "did:github:gjgd",
+  "service": [],
+  "authentication": [],
+  "proof": {
+    "type": "OpenPgpSignature2019",
+    "created": "2019-06-03T13:00:42.154Z",
+    "creator": "did:github:gjgd#kid=DhOUSAAfRRmKGrQ_8oYydDguk5AbEluHbqL8CXc1-CI",
+    "domain": "GitHubDID",
+    "nonce": "434d6bb936d5fed1404a0d8fdf1964b0"
+  },
+  "publicKey": [
+    {
+      "id": "did:github:gjgd#kid=DhOUSAAfRRmKGrQ_8oYydDguk5AbEluHbqL8CXc1-CI",
+      "type": "OpenPgpVerificationKey2019",
+      "controller": "did:github:gjgd",
+      "publicKeyPem": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.5.2\r\nComment: https://openpgpjs.org\r\n\r\nxk8EXPUZ+RMFK4EEAAoCAwTbMo5A7ntRQeqIGOat2RvphcqzQx/aPgiwIN3c\r\ny56k219xHS6JApxax+O2N0KP6E8hDi9WvkCvR9tXqMjY4cE0zRdhbm9uIDxh\r\nbm9uQGV4YW1wbGUuY29tPsJ3BBATCAAfBQJc9Rn5BgsJBwgDAgQVCAoCAxYC\r\nAQIZAQIbAwIeAQAKCRAXejQyEfPWaQeUAQDG4GHgl2QrmaG3Dq/aGJRKvk+E\r\nGRRorj8VGL6nnMbgwAEAiiHlFvbLJrWoGutDE/I0TTGVfy9guO+WYQy9vuxo\r\nsLHOUwRc9Rn5EgUrgQQACgIDBHGj/rtaWb9ZFT5eT8GbVANRj8d+e2FqLdBI\r\nDt9hncLc78f6zaoeRbaBwirJaQUlVecxvfBhFv6u8ciSpRN5l3kDAQgHwmEE\r\nGBMIAAkFAlz1GfkCGwwACgkQF3o0MhHz1mlo0wEAoDoXGxr4FuoxnPOVbR/K\r\np/nXXkEDflbtR6KaFwKTuPQBAMiYVYVlkPH34s6mRiVnRKlkmTMNLMjtQRje\r\nDBFeKtYh\r\n=ybCI\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+    },
+    {
+      "id": "did:github:gjgd#kid=PSo9stw_FMCD4Zu1jBXV1Da7jkU2qY2c8Eo8548dEhc",
+      "type": "OpenPgpVerificationKey2019",
+      "controller": "did:github:gjgd",
+      "publicKeyPem": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.5.2\r\nComment: https://openpgpjs.org\r\n\r\nxk8EXPUZ+hMFK4EEAAoCAwQqyZn+iWOP9T4Wi5qZVHpxD3BKs+uLwNk4zVO8\r\nA1T1vQbmPVPQ2UDwH0Ih/q6hNyXFfn9bGbxSsmzMatBqJFRtzRdhbm9uIDxh\r\nbm9uQGV4YW1wbGUuY29tPsJ3BBATCAAfBQJc9Rn6BgsJBwgDAgQVCAoCAxYC\r\nAQIZAQIbAwIeAQAKCRDorOw+PzEhHoeDAQCj6zG4oyr4Oz9qjhKf0nr1esXH\r\nkD1v8iu1WmMpyyXRmwEA9dSvwE7h7Rrgji4gyRbd82gVxHJ+PMtz3ZlepF28\r\nF3POUwRc9Rn6EgUrgQQACgIDBD2BkrlXEXgnDRq1G9VwoaDtKI9XWkWVAuqm\r\n/rdBYf55nd4E1wiIOL3ocw043mQoC6+MfxGtbTPYFnb8s6UwQz4DAQgHwmEE\r\nGBMIAAkFAlz1GfoCGwwACgkQ6KzsPj8xIR4mRQD8Dp34H75m0YDCk6A2aOR1\r\nBFz8RQ/4W5QOlCbYvGhkVsUBAPD/OXyvcp6DfNtVUEN6Qg412kGbgqFmUyLD\r\nlfbFGepT\r\n=M5et\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+    }
+  ]
+}

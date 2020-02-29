@@ -1,0 +1,25 @@
+{
+  "@context": "https://www.w3.org/2019/did/v1",
+  "id": "did:erc725:ropsten:2F2B37C890824242Cb9B0FE5614fA2221B79901E",
+  "service": [],
+  "authentication": [
+    {
+      "type": "EcdsaSecp256k1SignatureAuthentication2019",
+      "publicKey": [
+        "did:erc725:ropsten:2F2B37C890824242Cb9B0FE5614fA2221B79901E#key-2"
+      ]
+    }
+  ],
+  "publicKey": [
+    {
+      "id": "did:erc725:ropsten:2F2B37C890824242Cb9B0FE5614fA2221B79901E#key-1",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "publicKeyHex": "1a0cb8f32c94921649383b14523cb6df04858cfbd4f77711371321cd8ebd87d72efe02b69ca4b02b35a848404101ad17efbf962441733135cb7d833313c3d37b"
+    },
+    {
+      "id": "did:erc725:ropsten:2F2B37C890824242Cb9B0FE5614fA2221B79901E#key-2",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "publicKeyHex": "00e17b0f13af42bd7c992ef991ebd75f8345b5edb8e937eb0c9c3dea80af23448419faa1d7562054e31bf56ab1af485944b3a327085c4502e38d723129fd5cf666"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "@context": [
+    {
+      "id": "@id",
+      "type": "@type",
+      "dc": "http://purl.org/dc/terms/",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "schema": "http://schema.org/",
+      "sec": "https://w3id.org/security#",
+      "didv": "https://w3id.org/did#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "AuthenticationSuite": "sec:AuthenticationSuite",
+      "CryptographicKey": "sec:Key",
+      "LinkedDataSignature2016": "sec:LinkedDataSignature2016",
+      "authentication": "sec:authenticationMethod",
+      "created": {
+        "@id": "dc:created",
+        "@type": "xsd:dateTime"
+      },
+      "creator": {
+        "@id": "dc:creator",
+        "@type": "@id"
+      },
+      "digestAlgorithm": "sec:digestAlgorithm",
+      "digestValue": "sec:digestValue",
+      "domain": "sec:domain",
+      "entity": "sec:entity",
+      "expires": {
+        "@id": "sec:expiration",
+        "@type": "xsd:dateTime"
+      },
+      "name": "schema:name",
+      "nonce": "sec:nonce",
+      "normalizationAlgorithm": "sec:normalizationAlgorithm",
+      "owner": {
+        "@id": "sec:owner",
+        "@type": "@id"
+      },
+      "privateKey": {
+        "@id": "sec:privateKey",
+        "@type": "@id"
+      },
+      "proof": "sec:proof",
+      "proofAlgorithm": "sec:proofAlgorithm",
+      "proofType": "sec:proofType",
+      "proofValue": "sec:proofValue",
+      "publicKey": {
+        "@id": "sec:publicKey",
+        "@type": "@id",
+        "@container": "@set"
+      },
+      "requiredProof": "sec:requiredProof",
+      "revoked": {
+        "@id": "sec:revoked",
+        "@type": "xsd:dateTime"
+      },
+      "signature": "sec:signature",
+      "signatureAlgorithm": "sec:signatureAlgorithm",
+      "signatureValue": "sec:signatureValue"
+    }
+  ],
+  "id": "did:jolo:e76fb4b4900e43891f613066b9afca366c6d22f7d87fc9f78a91515be24dfb21",
+  "created": "2019-01-17T16:49:32.018Z",
+  "authentication": {
+    "type": "Secp256k1SignatureAuthentication2018",
+    "publicKey": [
+      "did:jolo:e76fb4b4900e43891f613066b9afca366c6d22f7d87fc9f78a91515be24dfb21#keys-1"
+    ]
+  },
+  "proof": {
+    "type": "EcdsaKoblitzSignature2016",
+    "created": "2019-01-17T16:49:32.018Z",
+    "creator": "did:jolo:e76fb4b4900e43891f613066b9afca366c6d22f7d87fc9f78a91515be24dfb21#keys-1",
+    "nonce": "cbc71953e0db2f26",
+    "signatureValue": "68b5f47631ba121b840b169dde54242d3b1845d16742d62189c6700b6ab46e24743e9738c04bf5c6c0f2ba208c4ecda65166d3e4563da01fd7f811715cd5fbc3"
+  },
+  "publicKey": [
+    {
+      "id": "did:jolo:e76fb4b4900e43891f613066b9afca366c6d22f7d87fc9f78a91515be24dfb21#keys-1",
+      "type": "Secp256k1VerificationKey2018",
+      "owner": "did:jolo:e76fb4b4900e43891f613066b9afca366c6d22f7d87fc9f78a91515be24dfb21"
+    }
+  ]
+}

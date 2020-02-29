@@ -1,0 +1,18 @@
+{
+  "@context": "https://w3id.org/did/v1",
+  "id": "did:hcr:0f674e7e-4b49-4898-85f6-96176c1e30de",
+  "created": "2019-03-03T05:55:26.903077Z",
+  "service": [
+    {
+      "id": "did:hcr:0f674e7e-4b49-4898-85f6-96176c1e30de;social-linkedin",
+      "type": "SocialLinkService",
+      "serviceEndpoint": "https://linkedin.com/in/levitate"
+    },
+    {
+      "id": "did:hcr:0f674e7e-4b49-4898-85f6-96176c1e30de;social-unbounded",
+      "type": "SocialLinkService",
+      "serviceEndpoint": "https://unbounded.network/people/jonathan.levi"
+    }
+  ],
+  "authentication": []
+}
