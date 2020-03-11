@@ -153,28 +153,48 @@ properties, and values used by the Decentralized Identifier ecosystem.
   <section>
     <h1>The Registration Process</h1>
     <p>
-Software implementers may find that the existing Decentralized Identifier
-Core specification [[DID-CORE]] is not suitable for their use case and
-might need to add a new parameters, properties, or values to this registry
-in order to achieve their use case in a globally interoperable fashion.
-In order to add a new parameter, property, or value to this registry, an
-implementer MUST:
-    </p>
-
-    <p class="issue">
-The DID WG is currently determining the process for managing entries for this
-registry.
+Software implementers might find that the existing Decentralized Identifier Core
+specification [[DID-CORE]] is not entirely capable of addressing their use case
+and might need to add a new parameters, properties, or values to this registry
+in order to achieve their use case in a globally interoperable fashion. In order
+to add a new parameter, property, or value to this registry, an implementer MUST
+submit a modification request for this registry, as a Github Pull Request, where
+the modification request adheres to the following rules:
     </p>
 
     <ol>
       <li>
-TBD
+Any addition to the DID Core Registries MUST specify a human readable
+description of the addition.
       </li>
       <li>
-TBD
+Any addition to the DID Core Registries MUST link, via a URL, to the normative
+specification so that implementers can implement the addition.
       </li>
       <li>
-TBD
+Any addition to the DID Core Registries that is a property or value, MUST
+specify a machine readable JSON-LD Context for the addition.
+      </li>
+      <li>
+Any addition to the DID Core Registries that is a JSON-LD Context MUST link
+all terms to the associated human readable description.
+      </li>
+      <li>
+Any addition to the DID Core Registries that is a property or value MUST refer
+a non-normative JSON Schema for the addition. The normative language related to
+the addition is expressed in the associated specification.
+      </li>
+      <li>
+Additions to the DID Core Registries MUST NOT be removed. Outdated additions,
+where the use is no longer advised, SHOULD be deprecated.
+      </li>
+      <li>
+JSON-LD Context URLs MUST be versioned and MUST NOT include a date in the
+version.
+      </li>
+      <li>
+JSON-LD Contexts SHOULD use scoped terms and MUST use the @protected feature to
+eliminate the possibility of term conflicts.
       </li>
     </ol>
 
