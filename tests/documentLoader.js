@@ -12,9 +12,9 @@ const loadContext = relativePath => {
 };
 
 const contexts = {
-  "https://schema.org/": loadContext(
-    "../contexts/schema.org/jsonldcontext.jsonld"
-  ),
+  // "https://schema.org/": loadContext(
+  //   "../contexts/schema.org/jsonldcontext.jsonld"
+  // ),
 
   "https://www.w3.org/ns/did/v1": loadContext(
     "../contexts/w3.org/did-v1.jsonld"
@@ -29,7 +29,7 @@ const contexts = {
 };
 
 const documentLoader = async (url, options) => {
-  // console.log(url);
+  console.log(url);
   if (url.indexOf("did:") === 0) {
     const didDoc = await resolver.resolve(url, options);
     // console.log(didDoc);
