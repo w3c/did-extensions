@@ -10,6 +10,18 @@ This repository contains a registry created by the
 An Editor's Draft of this repository is available at
 https://w3c.github.io/did-core-registry/.
 
+## CI Tests
+
+This repo uses Github Actions to protect registry definitions and highlight interoperability and compliance issues regarding specific DID Methods.
+
+The test did documents are downloaded from the universal resolver, using the following command:
+
+```
+npm run build-resolver-cache
+```
+
+These test documents must be updated from time to time to accurately reflect their current represenations provided by the universal resolver. In the future, we may decide to add this download step to CI.
+
 ## Contributing to the Repository
 
 Use the standard fork, branch, and pull request workflow to propose changes to
