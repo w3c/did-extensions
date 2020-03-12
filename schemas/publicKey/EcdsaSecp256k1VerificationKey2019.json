@@ -36,6 +36,6 @@
         ]
       }
     },
-    "required": ["id", "type", "controller"],
+    "required": ["id", "type", "controller", "publicKeyJwk"],
     "additionalProperties": false
   }

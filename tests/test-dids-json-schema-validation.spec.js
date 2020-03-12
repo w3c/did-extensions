@@ -13,9 +13,12 @@ const makeTestDIDsJsonSchema = methodsForTest => {
         methodsForTest[method].forEach(did => {
           it(did, async () => {
             const { document } = await documentLoader(did);
+            // console.log(document)
             let valid = ajv
             .validate(schemas['/did-core.didDocument'], document);
-            if (!valid) console.error(ajv.errorsText());
+            if (!valid) {
+              console.error(ajv.errors);
+            }
             expect(valid).toBe(true);
           });
         });

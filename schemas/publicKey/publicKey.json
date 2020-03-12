@@ -3,9 +3,8 @@
     "type": "object",
     "title": "Public Key",
     "description": "A public key is a verification method. Public keys are used for digital signatures, encryption and other cryptographic operations, which in turn are the basis for purposes such as authentication.",
-    "anyOf": [
+    "oneOf": [
       { "$ref": "did-core.publicKey.Ed25519VerificationKey2018" },
       { "$ref": "did-core.publicKey.EcdsaSecp256k1VerificationKey2019" }
-    ],
-    "additionalProperties": false
+    ]
   }
