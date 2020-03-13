@@ -23,7 +23,15 @@ In order to get your DID Method added to this repo you must.
 
 4. Commit the changes to a branch and open a PR against master.
 
-These test documents must be updated from time to time to accurately reflect their current represenations provided by the universal resolver. In the future, we may decide to add this download step to CI.
+These test documents must be updated from time to time to accurately reflect their current represenations provided by the universal resolver.
+
+In order to get the latest representation from the Universal Resolver, you will need to delete the existing did document from [test-dids](./test-dids), and re-run:
+
+`npm run build-resolver-cache`
+
+Then commit the changes to a branch and open a PR against master.
+
+In the future, we may decide to add this download step to CI.
 
 ## Contributing to the Repository
 
