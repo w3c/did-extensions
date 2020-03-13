@@ -1,7 +1,6 @@
-
 const documentLoader = require("./documentLoader");
 
-const canSignAndVerify = async (document) => {
+const canSignAndVerify = async document => {
   const jsigs = require("jsonld-signatures");
   const { Ed25519KeyPair } = require("crypto-ld");
   const { Ed25519Signature2018 } = jsigs.suites;

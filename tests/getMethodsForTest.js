@@ -1,6 +1,5 @@
 const urConfig = require("./universal-resolver-config.json");
 
-// const focusedMethods = ["key", "ethr"];
 module.exports = (focusedMethods = []) => {
   const methodsForTest = {};
   urConfig.drivers.forEach(driver => {

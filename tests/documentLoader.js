@@ -1,8 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 
-// const jsonld = require("jsonld");
-
 const resolver = require("./resolver");
 
 const loadContext = relativePath => {
@@ -12,23 +10,16 @@ const loadContext = relativePath => {
 };
 
 const contexts = {
-
-  "https://www.w3.org/ns/did/v1": loadContext(
-    "../contexts/did-v1.jsonld"
-  ),
-
-
+  "https://www.w3.org/ns/did/v1": loadContext("../contexts/did-v1.jsonld")
 };
 
 const documentLoader = async (url, options) => {
-  // console.log(url);
   if (url.indexOf("did:") === 0) {
     const didDoc = await resolver.resolve(url, options);
-    // console.log(didDoc);
     return {
-      contextUrl: null, // this is for a context via a link header
-      document: didDoc, // this is the actual document that was loaded
-      documentUrl: url // this is the actual context URL after redirects
+      contextUrl: null,
+      document: didDoc,
+      documentUrl: url
     };
   }
 
@@ -36,24 +27,13 @@ const documentLoader = async (url, options) => {
 
   if (context) {
     return {
-      contextUrl: null, // this is for a context via a link header
-      document: context, // this is the actual document that was loaded
-      documentUrl: url // this is the actual context URL after redirects
+      contextUrl: null,
+      document: context,
+      documentUrl: url
     };
   }
 
-
-  console.warn("Remote context detected!" + url);
-  
-  // Comment out to disable remote loading of contexts.
-  try {
-    return jsonld.documentLoader(url);
-  } catch (e) {
-    console.error("No remote context support for " + url);
-  }
-
-  console.error("No custom context support for " + url);
-  throw new Error("No custom context support for " + url);
+  throw new Error("Remote context detected! " + url);
 };
 
 module.exports = documentLoader;

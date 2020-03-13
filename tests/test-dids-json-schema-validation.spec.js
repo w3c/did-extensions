@@ -1,10 +1,9 @@
-
 const documentLoader = require("./documentLoader");
 const getMethodsForTest = require("./getMethodsForTest");
 const focusedMethods = require("./focusedMethods");
 const methodsForTest = getMethodsForTest(focusedMethods);
 
-const {ajv, schemas} = require('../schemas')
+const { ajv, schemas } = require("../schemas");
 
 const makeTestDIDsJsonSchema = methodsForTest => {
   describe("Test DIDs JSON Schema Validation", () => {
@@ -13,9 +12,10 @@ const makeTestDIDsJsonSchema = methodsForTest => {
         methodsForTest[method].forEach(did => {
           it(did, async () => {
             const { document } = await documentLoader(did);
-            // console.log(document)
-            let valid = ajv
-            .validate(schemas['/did-core.didDocument'], document);
+            let valid = ajv.validate(
+              schemas["/did-core.didDocument"],
+              document
+            );
             if (!valid) {
               console.error(ajv.errors);
             }
