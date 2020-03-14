@@ -1,4 +1,4 @@
-name: JSON Schema Validation
+name: Tests
 
 on: push
 
@@ -14,7 +14,7 @@ jobs:
           'dids-json-schema-validation'
         ]
 
-    name: Run tests ${{ matrix.test-suite }}
+    name: Run ${{ matrix.test-suite }}
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
