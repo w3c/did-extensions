@@ -9,7 +9,7 @@ jobs:
       matrix:
         node-version: [10.x]
         test-suite: [
-          'schemas,
+          'schemas',
           'dids-json-ld-validation',
           'dids-json-schema-validation'
         ]
