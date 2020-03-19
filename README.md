@@ -1,7 +1,7 @@
 
 ![W3C Logo](https://www.w3.org/Icons/w3c_home)
 
-# Decentralized Identifier Core Registry v1.0
+# Decentralized Identifier Core Registries v1.0
 
 This repository contains a registry created by the
 [W3C Decentralized Identifier Working Group](https://www.w3.org/2019/did-wg/)
