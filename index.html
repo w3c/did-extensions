@@ -168,8 +168,9 @@ Any addition to the DID Core Registries MUST specify a human readable
 description of the addition.
       </li>
       <li>
-Any addition to the DID Core Registries MUST link, via a URL, to the normative
-specification so that implementers can implement the addition.
+Any addition to the DID Core Registries MUST link, via at least a URL,
+preferably a content-integrity protected one, to the defining specification so
+that implementers can implement the property.
       </li>
       <li>
 Any addition to the DID Core Registries that is a property or value, MUST
@@ -180,17 +181,14 @@ Any addition to the DID Core Registries that is a JSON-LD Context MUST link
 all terms to the associated human readable description.
       </li>
       <li>
-Any addition to the DID Core Registries that is a property or value MUST refer
-a non-normative JSON Schema for the addition. The normative language related to
-the addition is expressed in the associated specification.
+Any addition to the DID Core Registries MUST specify a non-normative JSON Schema
+(the specification is normative) for the addition.
       </li>
       <li>
-Additions to the DID Core Registries MUST NOT be removed. Outdated additions,
-where the use is no longer advised, SHOULD be deprecated.
+Properties in the DID Core Registries MUST NOT be removed, only deprecated.
       </li>
       <li>
-JSON-LD Context URLs MUST be versioned and MUST NOT include a date in the
-version.
+JSON-LD Contexts MUST be versioned and MUST NOT be date stamped.
       </li>
       <li>
 JSON-LD Contexts SHOULD use scoped terms and MUST use the @protected feature to
@@ -199,7 +197,7 @@ eliminate the possibility of term conflicts.
     </ol>
 
     <p>
-Additions that do not meet these criteria will not be accepted. Entries that
+Additions that do not meet these criteria MUST NOT be accepted. Entries that
 are identified to cause interoperability problems MAY be marked as such
 at the discretion of the maintainers of this registry, and if possible, after
 consultation with the entry maintainer.
