@@ -7,20 +7,17 @@
       "id": {
         "title": "Public Key ID",
         "type": "string",
-        "required": false,
         "example": ["did:example:123#primary"]
       },
       "type": {
         "title": "Public Key Type",
         "type": "string",
         "enum":["Ed25519VerificationKey2018"],
-        "required": true,
         "example": ["Ed25519VerificationKey2018"]
       },
       "controller": {
         "title": "Controller",
         "description": "https://w3c.github.io/did-core-registry/#controller",
-        "required": true,
         "type": "string",
         "example": ["did:example:123"]
       },
@@ -28,7 +25,6 @@
         "title": "Public Key JWK",
         "description": "https://w3c.github.io/did-core-registry/#publicKeyJwk",
         "type": "object",
-        "required": false,
         "example": [
           {
             "crv": "secp256k1",
@@ -43,11 +39,11 @@
         "title": "Public Key Base58",
         "description": "https://w3c.github.io/did-core-registry/#publicKeyBase58",
         "type": "string",
-        "required": false,
         "example": [
           "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
         ]
       }
     },
+    "required": ["id", "type", "controller"],
     "additionalProperties": false
   }

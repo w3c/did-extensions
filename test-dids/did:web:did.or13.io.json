@@ -1,0 +1,12 @@
+{
+  "@context": "https://www.w3.org/ns/did/v1",
+  "id": "did:web:did.or13.io",
+  "publicKey": [
+    {
+      "id": "did:web:did.or13.io#z6MksHh7qHWvybLg5QTPPdG2DgEjjduBDArV9EF9mRiRzMBN",
+      "type": "Ed25519VerificationKey2018",
+      "controller": "did:web:did.or13.io",
+      "publicKeyBase58": "DqS5F3GVe3rCxucgi4JBNagjv4dKoHc8TDLDw9kR58Pz"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+name: Tests
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+        test-suite: [
+          'schemas',
+          'dids-json-ld-validation',
+          'dids-json-schema-validation'
+        ]
+
+    name: Run ${{ matrix.test-suite }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run test ${{ matrix.test-suite }}
+        env:
+          CI: true
