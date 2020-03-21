@@ -1,5 +1,5 @@
 {
-  "@context": "https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld",
+  "@context": "https://www.w3.org/ns/did/v1",
   "id": "did:web:vc.transmute.world",
   "publicKey": [
     {
