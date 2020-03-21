@@ -2,7 +2,7 @@
     "$id": "/did-core.publicKey.Ed25519VerificationKey2018",
     "type": "object",
     "title": "Ed25519VerificationKey2018",
-    "description": "https://w3c.github.io/did-core-registry/#Ed25519VerificationKey2018",
+    "description": "https://w3c.github.io/did-core-registries/#Ed25519VerificationKey2018",
     "properties": {
       "id": {
         "title": "Public Key ID",
@@ -17,13 +17,13 @@
       },
       "controller": {
         "title": "Controller",
-        "description": "https://w3c.github.io/did-core-registry/#controller",
+        "description": "https://w3c.github.io/did-core-registries/#controller",
         "type": "string",
         "example": ["did:example:123"]
       },
       "publicKeyJwk": {
         "title": "Public Key JWK",
-        "description": "https://w3c.github.io/did-core-registry/#publicKeyJwk",
+        "description": "https://w3c.github.io/did-core-registries/#publicKeyJwk",
         "type": "object",
         "example": [
           {
@@ -37,7 +37,7 @@
       },
       "publicKeyBase58": {
         "title": "Public Key Base58",
-        "description": "https://w3c.github.io/did-core-registry/#publicKeyBase58",
+        "description": "https://w3c.github.io/did-core-registries/#publicKeyBase58",
         "type": "string",
         "example": [
           "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
