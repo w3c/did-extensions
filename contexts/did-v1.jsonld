@@ -116,6 +116,10 @@
     },
     "publicKeyBase58": "sec:publicKeyBase58",
     "publicKeyPem": "sec:publicKeyPem",
+    "publicKeyJwk": {
+      "@id": "sec:publicKeyJwk",
+      "@type": "@json"
+    },
     "revoked": {
       "@id": "sec:revoked",
       "@type": "xsd:dateTime"
