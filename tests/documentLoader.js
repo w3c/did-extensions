@@ -10,8 +10,7 @@ const loadContext = relativePath => {
 };
 
 const contexts = {
-  "https://www.w3.org/ns/did/v1": loadContext("../contexts/did-v1.jsonld"),
-  "https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld": loadContext("../contexts/did-v1.jsonld")
+  "https://www.w3.org/ns/did/v1": loadContext("../contexts/did-v1.jsonld")
 };
 
 const documentLoader = async (url, options) => {
