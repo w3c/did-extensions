@@ -52,7 +52,7 @@
       "image": "uport/uni-resolver-driver-did-uport",
       "imagePort": "8081",
       "tag": "latest",
-      "testIdentifiers": ["did:web:did.or13.io"]
+      "testIdentifiers": ["did:web:did.or13.io", "did:web:did.actor:bob"]
     },
     {
       "pattern": "^(did:ethr:.+)$",

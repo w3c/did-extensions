@@ -1,0 +1,17 @@
+{
+  "@context": [
+    "https://w3id.org/did/v0.11",
+    {
+      "@base": "did:web:did.actor:bob"
+    }
+  ],
+  "id": "did:web:did.actor:bob",
+  "publicKey": [
+    {
+      "id": "#z6MksHh7qHWvybLg5QTPPdG2DgEjjduBDArV9EF9mRiRzMBN",
+      "type": "Ed25519VerificationKey2018",
+      "controller": "",
+      "publicKeyBase58": "DqS5F3GVe3rCxucgi4JBNagjv4dKoHc8TDLDw9kR58Pz"
+    }
+  ]
+}
