@@ -2,7 +2,7 @@
     "$id": "/did-core.publicKey.EcdsaSecp256k1VerificationKey2019",
     "type": "object",
     "title": "EcdsaSecp256k1VerificationKey2019",
-    "description": "https://w3c.github.io/did-core-registry/#EcdsaSecp256k1VerificationKey2019",
+    "description": "https://w3c.github.io/did-core-registries/#EcdsaSecp256k1VerificationKey2019",
     "properties": {
       "id": {
         "title": "Public Key ID",
@@ -17,13 +17,13 @@
       },
       "controller": {
         "title": "Controller",
-        "description": "https://w3c.github.io/did-core-registry/#controller",
+        "description": "https://w3c.github.io/did-core-registries/#controller",
         "type": "string",
         "example": ["did:example:123"]
       },
       "publicKeyJwk": {
         "title": "Public Key JWK",
-        "description": "https://w3c.github.io/did-core-registry/#publicKeyJwk",
+        "description": "https://w3c.github.io/did-core-registries/#publicKeyJwk",
         "type": "object",
         "example": [
           {

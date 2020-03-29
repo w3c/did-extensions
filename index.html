@@ -26,7 +26,7 @@ var respecConfig = {
   // the specification's short name, as in http://www.w3.org/TR/short-name/
   shortName: "did-core-registry",
 
-  edDraftURI: "https://w3c.github.io/did-core-registry/",
+  edDraftURI: "https://w3c.github.io/did-core-registries/",
 
   // subtitle
   subtitle: "The interoperability registry for Decentralized Identifiers",
@@ -271,10 +271,10 @@ TBD
         <tbody>
           <tr>
             <td>
-              <a href="https://w3c.github.io/did-core-registry/schemas/didDocument/didDocument.json">JSON Schema</a>
+              <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
             </td>
             <td>
-              JSON-LD
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
             </td>
             <td>
               CBOR
@@ -306,10 +306,10 @@ TBD
         <tbody>
           <tr>
             <td>
-              <a href="https://w3c.github.io/did-core-registry/schemas/didDocument/didDocument.json">JSON Schema</a>
+              <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
             </td>
             <td>
-              JSON-LD
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
             </td>
             <td>
               CBOR
@@ -323,29 +323,29 @@ TBD
       <p>An array of public keys. A public key is a verification method. Public keys are used for digital signatures, encryption and other cryptographic operations, which in turn are the basis for purposes such as authentication.</p>
 
       <pre class="example">
-        {
-          "id": "did:example:123",
-          "publicKey": [
-            {
-              "id": "did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec",
-              "type": "Ed25519VerificationKey2018",
-              "controller": "did:example:123",
-              "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
-            },
-            {
-              "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
-              "type": "EcdsaSecp256k1VerificationKey2019",
-              "controller": "did:example:123",
-              "publicKeyJwk": {
-                "crv": "secp256k1",
-                "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
-                "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
-                "kty": "EC",
-                "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
-              }
-            }
-          ]
-        }
+{
+  "id": "did:example:123",
+  "publicKey": [
+    {
+      "id": "did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec",
+      "type": "Ed25519VerificationKey2018",
+      "controller": "did:example:123",
+      "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+    },
+    {
+      "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "controller": "did:example:123",
+      "publicKeyJwk": {
+        "crv": "secp256k1",
+        "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+        "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+        "kty": "EC",
+        "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+      }
+    }
+  ]
+}
       </pre>
 
       <h4>Definitions</h4>
@@ -360,10 +360,10 @@ TBD
         <tbody>
           <tr>
             <td>
-              <a href="https://w3c.github.io/did-core-registry/schemas/publicKey/publicKey.json">JSON Schema</a>
+              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
             </td>
             <td>
-              JSON-LD
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
             </td>
             <td>
               CBOR
@@ -398,10 +398,10 @@ TBD
         <tbody>
           <tr>
             <td>
-              <a href="https://w3c.github.io/did-core-registry/schemas/publicKey/Ed25519VerificationKey2018.json">JSON Schema</a>
+              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/Ed25519VerificationKey2018.json">JSON Schema</a>
             </td>
             <td>
-              JSON-LD
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
             </td>
             <td>
               CBOR
@@ -418,18 +418,18 @@ TBD
 
 
       <pre class="example">
-        {
-          "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
-          "type": "EcdsaSecp256k1VerificationKey2019",
-          "controller": "did:example:123",
-          "publicKeyJwk": {
-            "crv": "secp256k1",
-            "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
-            "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
-            "kty": "EC",
-            "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
-          }
-        }
+{
+  "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+  "type": "EcdsaSecp256k1VerificationKey2019",
+  "controller": "did:example:123",
+  "publicKeyJwk": {
+    "crv": "secp256k1",
+    "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+    "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+    "kty": "EC",
+    "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+  }
+}
       </pre>
 
       <h4>Definitions</h4>
@@ -444,10 +444,60 @@ TBD
         <tbody>
           <tr>
             <td>
-              <a href="https://w3c.github.io/did-core-registry/schemas/publicKey/EcdsaSecp256k1VerificationKey2019.json">JSON Schema</a>
+              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/EcdsaSecp256k1VerificationKey2019.json">JSON Schema</a>
             </td>
             <td>
-              JSON-LD
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h3><dfn data-lt="JwsVerificationKey2020" data-dfn-type="dfn" id="JwsVerificationKey2020">JwsVerificationKey2020</dfn></h3>
+
+      <p>A JWK publicKey.</p>
+
+      <p class="issue" data-number="240">
+The duplication and/or possible interaction of properties held in a JWK and a verification method are an active topic of discussion in the Working Group. Implementers are cautioned that the behavior of values associated with this property are not stable and might change in the future.
+</p>
+
+
+      <pre class="example">
+{
+  "id": "did:example:123#_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw",
+  "type": "JwsVerificationKey2020",
+  "controller": "did:example:123",
+  "publicKeyJwk": {
+    "crv": "P-256",
+    "x": "38M1FDts7Oea7urmseiugGW7tWc3mLpJh6rKe7xINZ8",
+    "y": "nDQW6XZ7b_u2Sy9slofYLlG03sOEoug3I0aAPQ0exs4",
+    "kty": "EC",
+    "kid": "_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw"
+  }
+}
+      </pre>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/JwsVerificationKey2020.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
             </td>
             <td>
               CBOR
