@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://w3id.org/did/v0.11",
+    "https://www.w3.org/ns/did/v1",
     {
       "@base": "did:web:did.actor:bob"
     }
