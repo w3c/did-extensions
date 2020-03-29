@@ -4,7 +4,7 @@
     "properties": {
       "@context": {
         "title": "@context",
-        "description": "https://w3c.github.io/did-core-registry/#context",
+        "description": "https://w3c.github.io/did-core-registries/#context",
         "anyOf": [
           { "type": "string", "const": "https://www.w3.org/ns/did/v1" },
           { "type": "array",
@@ -21,14 +21,14 @@
       },
       "id": {
         "title": "DID",
-        "description": "https://w3c.github.io/did-core-registry/#id",
+        "description": "https://w3c.github.io/did-core-registries/#id",
         "type": "string",
         "pattern": "^did:[a-z0-9]+:[A-Za-z0-9.-_:?=&;]+$",
         "example": ["did:key:z6MksQ35B5bwZDQq4QKuhQW2Sv6dcqwg4PqcSFf67pdgrtjB"]
       },
       "publicKey": {
         "title": "Public Key",
-        "description": "https://w3c.github.io/did-core-registry/#publicKey",
+        "description": "https://w3c.github.io/did-core-registries/#publicKey",
         "type": "array",
         "items": {
           "$ref": "did-core.publicKey"
