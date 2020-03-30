@@ -44,6 +44,38 @@
       "items": {
         "anyOf": [{ "type": "string" }, { "$ref": "did-core.publicKey" }]
       }
+    },
+    "authentication": {
+      "title": "Authentication",
+      "description": "https://w3c.github.io/did-core-registry/#authentication",
+      "type": "array",
+      "items": {
+        "anyOf": [{ "type": "string" }, { "$ref": "did-core.publicKey" }]
+      }
+    },
+    "capabilityInvocation": {
+      "title": "Capability Invocation",
+      "description": "https://w3c.github.io/did-core-registry/#capabilityInvocation",
+      "type": "array",
+      "items": {
+        "anyOf": [{ "type": "string" }, { "$ref": "did-core.publicKey" }]
+      }
+    },
+    "capabilityDelegation": {
+      "title": "Capability Delegation",
+      "description": "https://w3c.github.io/did-core-registry/#capabilityDelegation",
+      "type": "array",
+      "items": {
+        "anyOf": [{ "type": "string" }, { "$ref": "did-core.publicKey" }]
+      }
+    },
+    "keyAgreement": {
+      "title": "Key Agreement",
+      "description": "https://w3c.github.io/did-core-registry/#keyAgreement",
+      "type": "array",
+      "items": {
+        "anyOf": [{ "type": "string" }, { "$ref": "did-core.publicKey" }]
+      }
     }
   },
   "required": ["id"],
