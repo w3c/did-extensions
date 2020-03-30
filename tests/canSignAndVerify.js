@@ -7,14 +7,10 @@ const canSignAndVerify = async document => {
   const { AssertionProofPurpose } = jsigs.purposes;
 
   const key = new Ed25519KeyPair({
-    passphrase: null,
-    id:
-      "did:key:z6MkfBth5EfE8HgwtA9YfGgBCqqerTaeSKPPjy5aFHumngqj#z6MkfBth5EfE8HgwtA9YfGgBCqqerTaeSKPPjy5aFHumngqj",
-    controller: "did:key:z6MkfBth5EfE8HgwtA9YfGgBCqqerTaeSKPPjy5aFHumngqj",
-    type: "Ed25519VerificationKey2018",
-    privateKeyBase58:
-      "2H6yx9zBBc1v7m9AQdEtPzjDPCKnExcch6xqTS441oCQB4pceS8EAR1X29yTtbhjzdR1cpQFgC9eQSeRxmZ3bQah",
-    publicKeyBase58: "jdeUzQnnkCUmfJqyhiLMkHf2tJo2S933xAeR1wksU4M"
+    "id": "did:web:did.actor:carol#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
+    "type": "Ed25519VerificationKey2018",
+    "privateKeyBase58": "2m6scGwwRf4n79LmhhNKHhqcdTM2SMzosYhFXH7NStnKrwTVmNYztwNbfK3adDPNgmoZE8tt2FC9WqkBD77rRtXC",
+    "publicKeyBase58": "BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"
   });
 
   const signed = await jsigs.sign(
@@ -35,12 +31,8 @@ const canSignAndVerify = async document => {
 
   const result = await jsigs.verify(signed, {
     documentLoader,
-    suite: new Ed25519Signature2018({
-      key
-    }),
-    purpose: new AssertionProofPurpose({
-      controller: (await documentLoader(key.controller)).document
-    })
+    suite: new Ed25519Signature2018({}),
+    purpose: new AssertionProofPurpose({})
   });
   if (!result.verified) {
     console.error(result);

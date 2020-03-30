@@ -15,7 +15,7 @@ const contexts = {
 
 const documentLoader = async (url, options) => {
   if (url.indexOf("did:") === 0) {
-    const didDoc = await resolver.resolve(url, options);
+    const didDoc = await resolver.resolve(url.split('#')[0], options);
     return {
       contextUrl: null,
       document: didDoc,

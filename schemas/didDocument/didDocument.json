@@ -36,6 +36,14 @@
       "items": {
         "$ref": "did-core.publicKey"
       }
+    },
+    "assertionMethod": {
+      "title": "Assertion Method",
+      "description": "https://w3c.github.io/did-core-registry/#assertionMethod",
+      "type": "array",
+      "items": {
+        "anyOf": [{ "type": "string" }, { "$ref": "did-core.publicKey" }]
+      }
     }
   },
   "required": ["id"],

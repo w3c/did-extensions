@@ -318,6 +318,51 @@ TBD
         </tbody>
       </table>
     </section>
+
+    <section>
+      <h2><dfn data-lt="assertionMethod" data-dfn-type="dfn" id="assertionMethod">assertionMethod</dfn></h2>
+      <p>An array of verification methods used for making assertions. Similar to <a href='#publicKey'><code>publicKey</code></a></p>
+
+      <pre class="example">
+{
+  ...
+  "publicKey": [
+    {
+      "id": "#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
+      "type": "Ed25519VerificationKey2018",
+      "controller": "",
+      "publicKeyBase58": "BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"
+    }
+  ],
+  "assertionMethod": ["#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"]
+}
+      </pre>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
     <section>
       <h2><dfn data-lt="publicKey" data-dfn-type="dfn" id="publicKey">publicKey</dfn></h2>
       <p>An array of public keys. A public key is a verification method. Public keys are used for digital signatures, encryption and other cryptographic operations, which in turn are the basis for purposes such as authentication.</p>
