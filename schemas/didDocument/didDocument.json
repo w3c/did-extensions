@@ -29,6 +29,23 @@
       "pattern": "^did:[a-z0-9]+:[A-Za-z0-9.-_:?=&;]+$",
       "example": ["did:key:z6MksQ35B5bwZDQq4QKuhQW2Sv6dcqwg4PqcSFf67pdgrtjB"]
     },
+    "controller": {
+      "title": "DID Controller",
+      "description": "https://w3c.github.io/did-core-registry/#controller",
+      "anyOf": [
+        { "type": "string", "pattern": "^did:[a-z0-9]+:[A-Za-z0-9.-_:?=&;]+$"},
+        {
+          "type": "array",
+          "items": [
+            {
+              "type": "string",
+              "pattern": "^did:[a-z0-9]+:[A-Za-z0-9.-_:?=&;]+$"
+            }
+          ]
+        }
+      ],
+      "example": ["did:key:z6MksQ35B5bwZDQq4QKuhQW2Sv6dcqwg4PqcSFf67pdgrtjB"]
+    },
     "publicKey": {
       "title": "Public Key",
       "description": "https://w3c.github.io/did-core-registry/#publicKey",
@@ -75,6 +92,21 @@
       "type": "array",
       "items": {
         "anyOf": [{ "type": "string" }, { "$ref": "did-core.publicKey" }]
+      }
+    },
+    "service": {
+      "title": "Service",
+      "description": "https://w3c.github.io/did-core-registry/#service",
+      "type": "array",
+      "items": {
+        "anyOf": [{ 
+          "type": "object", 
+          "properties": {
+          "serviceEndpoint": {
+            "type": "string"
+          }
+        } 
+      }]
       }
     }
   },

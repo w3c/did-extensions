@@ -320,6 +320,147 @@ TBD
     </section>
 
     <section>
+      <h2><dfn data-lt="controller" data-dfn-type="dfn" id="controller">controller</dfn></h2>
+      <a href="https://w3c.github.io/did-core/#dfn-did-controllers">DID Controller.</a>
+
+      <pre class="example">
+        {
+          "controller": "did:example:123",
+          ...
+        }
+      </pre>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="verificationMethod" data-dfn-type="dfn" id="verificationMethod">verificationMethod</dfn></h2>
+      <a href="https://w3c.github.io/did-core/#dfn-verification-method">DID Verification Method</a>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="service" data-dfn-type="dfn" id="service">service</dfn></h2>
+      <a href="https://w3c.github.io/did-core/#dfn-service">DID Service</a>
+
+      <pre class="example">
+{
+  ...
+  "service": [{
+    "id": "did:example:123#edv",
+    "type": "EncryptedDataVault",
+    "serviceEndpoint": "https://edv.example.com/"
+  }]
+}
+      </pre>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <section>
+        <h3><dfn data-lt="serviceEndpoint" data-dfn-type="dfn" id="serviceEndpoint">serviceEndpoint</dfn></h3>
+        <a href="https://w3c.github.io/did-core/#dfn-service-endpoints">DID Service Endpoint</a>
+  
+        <pre class="example">
+{
+  ...
+  "serviceEndpoint": "https://edv.example.com/"
+}
+        </pre>
+  
+        <h4>Definitions</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    <section>
       <h2><dfn data-lt="keyAgreement" data-dfn-type="dfn" id="keyAgreement">keyAgreement</dfn></h2>
       <p class="issue">
         Should be defined in did core, but is not. Best current link: <a href="https://w3c.github.io/did-core/#public-keys">public-keys</a>
@@ -547,11 +688,7 @@ TBD
 
     <section>
       <h2><dfn data-lt="publicKey" data-dfn-type="dfn" id="publicKey">publicKey</dfn></h2>
-      <p class="issue">
-        Should be defined in did core, but is not. Best current link: <a href="https://w3c.github.io/did-core/#public-keys">public-keys</a>
-      </p>
-      <p>An array of public keys. A public key is a verification method. Public keys are used for digital signatures, encryption and other cryptographic operations, which in turn are the basis for purposes such as authentication.</p>
-
+      <a href="https://w3c.github.io/did-core/#dfn-public-key-description">Public key description</a>
       <pre class="example">
 {
   "id": "did:example:123",

@@ -1,6 +1,7 @@
 {
   "@context": "https://www.w3.org/ns/did/v1",
   "id": "did:web:did.actor:alice",
+  "controller": ["did:web:did.actor:alice"],
   "publicKey": [
     {
       "id": "did:web:did.actor:alice#z6MkrmNwty5ajKtFqc1U48oL2MMLjWjartwc5sf2AihZwXDN",
@@ -28,5 +29,11 @@
       "controller": "did:web:did.actor:alice",
       "publicKeyBase58": "CaSHXEvLKS6SfN9aBfkVGBpp15jSnaHazqHgLHp8KZ3Y"
     }
-  ]
+  ],
+  "service": [{
+    "id": "did:example:123#edv",
+    "type": "EncryptedDataVault",
+    "serviceEndpoint": "https://edv.example.com/"
+  }]
+
 }
