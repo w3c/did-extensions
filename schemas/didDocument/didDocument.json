@@ -4,7 +4,7 @@
   "properties": {
     "@context": {
       "title": "@context",
-      "description": "https://w3c.github.io/did-core-registry/#context",
+      "description": "https://w3c.github.io/did-core-registries/#context",
       "anyOf": [
         { "type": "string", "const": "https://www.w3.org/ns/did/v1" },
         {
@@ -24,14 +24,31 @@
     },
     "id": {
       "title": "DID",
-      "description": "https://w3c.github.io/did-core-registry/#id",
+      "description": "https://w3c.github.io/did-core-registries/#id",
       "type": "string",
       "pattern": "^did:[a-z0-9]+:[A-Za-z0-9.-_:?=&;]+$",
       "example": ["did:key:z6MksQ35B5bwZDQq4QKuhQW2Sv6dcqwg4PqcSFf67pdgrtjB"]
     },
+    "controller": {
+      "title": "DID Controller",
+      "description": "https://w3c.github.io/did-core-registries/#controller",
+      "anyOf": [
+        { "type": "string", "pattern": "^did:[a-z0-9]+:[A-Za-z0-9.-_:?=&;]+$"},
+        {
+          "type": "array",
+          "items": [
+            {
+              "type": "string",
+              "pattern": "^did:[a-z0-9]+:[A-Za-z0-9.-_:?=&;]+$"
+            }
+          ]
+        }
+      ],
+      "example": ["did:key:z6MksQ35B5bwZDQq4QKuhQW2Sv6dcqwg4PqcSFf67pdgrtjB"]
+    },
     "publicKey": {
       "title": "Public Key",
-      "description": "https://w3c.github.io/did-core-registry/#publicKey",
+      "description": "https://w3c.github.io/did-core-registries/#publicKey",
       "type": "array",
       "items": {
         "$ref": "did-core.publicKey"
@@ -39,10 +56,57 @@
     },
     "assertionMethod": {
       "title": "Assertion Method",
-      "description": "https://w3c.github.io/did-core-registry/#assertionMethod",
+      "description": "https://w3c.github.io/did-core-registries/#assertionMethod",
       "type": "array",
       "items": {
         "anyOf": [{ "type": "string" }, { "$ref": "did-core.publicKey" }]
+      }
+    },
+    "authentication": {
+      "title": "Authentication",
+      "description": "https://w3c.github.io/did-core-registries/#authentication",
+      "type": "array",
+      "items": {
+        "anyOf": [{ "type": "string" }, { "$ref": "did-core.publicKey" }]
+      }
+    },
+    "capabilityInvocation": {
+      "title": "Capability Invocation",
+      "description": "https://w3c.github.io/did-core-registries/#capabilityInvocation",
+      "type": "array",
+      "items": {
+        "anyOf": [{ "type": "string" }, { "$ref": "did-core.publicKey" }]
+      }
+    },
+    "capabilityDelegation": {
+      "title": "Capability Delegation",
+      "description": "https://w3c.github.io/did-core-registries/#capabilityDelegation",
+      "type": "array",
+      "items": {
+        "anyOf": [{ "type": "string" }, { "$ref": "did-core.publicKey" }]
+      }
+    },
+    "keyAgreement": {
+      "title": "Key Agreement",
+      "description": "https://w3c.github.io/did-core-registries/#keyAgreement",
+      "type": "array",
+      "items": {
+        "anyOf": [{ "type": "string" }, { "$ref": "did-core.publicKey" }]
+      }
+    },
+    "service": {
+      "title": "Service",
+      "description": "https://w3c.github.io/did-core-registries/#service",
+      "type": "array",
+      "items": {
+        "anyOf": [{ 
+          "type": "object", 
+          "properties": {
+          "serviceEndpoint": {
+            "type": "string"
+          }
+        } 
+      }]
       }
     }
   },

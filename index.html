@@ -274,7 +274,7 @@ TBD
               <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
             </td>
             <td>
-              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
             </td>
             <td>
               CBOR
@@ -309,7 +309,7 @@ TBD
               <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
             </td>
             <td>
-              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
             </td>
             <td>
               CBOR
@@ -320,21 +320,162 @@ TBD
     </section>
 
     <section>
-      <h2><dfn data-lt="assertionMethod" data-dfn-type="dfn" id="assertionMethod">assertionMethod</dfn></h2>
-      <p>An array of verification methods used for making assertions. Similar to <a href='#publicKey'><code>publicKey</code></a></p>
+      <h2><dfn data-lt="controller" data-dfn-type="dfn" id="controller">controller</dfn></h2>
+      <a href="https://www.w3.org/TR/did-core/#dfn-did-controllers">DID Controller.</a>
+
+      <pre class="example">
+        {
+          "controller": "did:example:123",
+          ...
+        }
+      </pre>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="verificationMethod" data-dfn-type="dfn" id="verificationMethod">verificationMethod</dfn></h2>
+      <a href="https://www.w3.org/TR/did-core/#dfn-verification-method">DID Verification Method</a>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="service" data-dfn-type="dfn" id="service">service</dfn></h2>
+      <a href="https://www.w3.org/TR/did-core/#dfn-service">DID Service</a>
 
       <pre class="example">
 {
   ...
-  "publicKey": [
+  "service": [{
+    "id": "did:example:123#edv",
+    "type": "EncryptedDataVault",
+    "serviceEndpoint": "https://edv.example.com/"
+  }]
+}
+      </pre>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <section>
+        <h3><dfn data-lt="serviceEndpoint" data-dfn-type="dfn" id="serviceEndpoint">serviceEndpoint</dfn></h3>
+        <a href="https://www.w3.org/TR/did-core/#dfn-service-endpoints">DID Service Endpoint</a>
+  
+        <pre class="example">
+{
+  ...
+  "serviceEndpoint": "https://edv.example.com/"
+}
+        </pre>
+  
+        <h4>Definitions</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="keyAgreement" data-dfn-type="dfn" id="keyAgreement">keyAgreement</dfn></h2>
+      <p class="issue">
+        Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">public-keys</a>
+      </p>
+      <pre class="example">
+{
+  ...
+  "keyAgreement": [
     {
-      "id": "#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
-      "type": "Ed25519VerificationKey2018",
-      "controller": "",
-      "publicKeyBase58": "BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"
+      "id": "did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
+      "type": "X25519KeyAgreementKey2019",
+      "controller": "did:example:123",
+      "publicKeyBase58": "9hFgmPVfmBZwRvFEyniQDBkz9LmV7gDEqytWyGZLmDXE"
     }
-  ],
-  "assertionMethod": ["#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"]
+  ]
 }
       </pre>
 
@@ -353,7 +494,233 @@ TBD
               <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
             </td>
             <td>
-              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="capabilityDelegation" data-dfn-type="dfn" id="capabilityDelegation">capabilityDelegation</dfn></h2>
+      <p class="issue">
+        Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">public-keys</a>
+      </p>
+      <pre class="example">
+{
+  ...
+  "publicKey": [{
+    "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+    "type": "EcdsaSecp256k1VerificationKey2019",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "crv": "secp256k1",
+      "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+      "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+      "kty": "EC",
+      "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+    }
+  }],
+  "capabilityDelegation": [{
+    "id": "did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
+    "type": "Ed25519VerificationKey2018",
+    "controller": "did:example:123",
+    "publicKeyBase58": "BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"
+  },
+  "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+  ]
+}
+      </pre>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="capabilityInvocation" data-dfn-type="dfn" id="capabilityInvocation">capabilityInvocation</dfn></h2>
+      <p class="issue">
+        Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">public-keys</a>
+      </p>
+      <pre class="example">
+{
+  ...
+  "publicKey": [{
+    "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+    "type": "EcdsaSecp256k1VerificationKey2019",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "crv": "secp256k1",
+      "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+      "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+      "kty": "EC",
+      "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+    }
+  }],
+  "capabilityInvocation": [{
+    "id": "did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
+    "type": "Ed25519VerificationKey2018",
+    "controller": "did:example:123",
+    "publicKeyBase58": "BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"
+  },
+  "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+  ]
+}
+      </pre>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="authentication" data-dfn-type="dfn" id="authentication">authentication</dfn></h2>
+      <p class="issue">
+        Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">public-keys</a>
+      </p>
+      <pre class="example">
+{
+  ...
+  "publicKey": [{
+    "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+    "type": "EcdsaSecp256k1VerificationKey2019",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "crv": "secp256k1",
+      "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+      "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+      "kty": "EC",
+      "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+    }
+  }],
+  "authentication": [{
+    "id": "did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
+    "type": "Ed25519VerificationKey2018",
+    "controller": "did:example:123",
+    "publicKeyBase58": "BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"
+  },
+  "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+  ]
+}
+      </pre>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="assertionMethod" data-dfn-type="dfn" id="assertionMethod">assertionMethod</dfn></h2>
+      <p class="issue">
+        Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">public-keys</a>
+      </p>
+      <p>An array of verification methods used for making assertions. Similar to <a href='#publicKey'><code>publicKey</code></a></p>
+
+      <pre class="example">
+{
+  ...
+  "publicKey": [{
+    "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+    "type": "EcdsaSecp256k1VerificationKey2019",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "crv": "secp256k1",
+      "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+      "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+      "kty": "EC",
+      "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+    }
+  }],
+  "assertionMethod": [{
+    "id": "did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
+    "type": "Ed25519VerificationKey2018",
+    "controller": "did:example:123",
+    "publicKeyBase58": "BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"
+  },
+  "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+  ]
+}
+      </pre>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
             </td>
             <td>
               CBOR
@@ -365,8 +732,7 @@ TBD
 
     <section>
       <h2><dfn data-lt="publicKey" data-dfn-type="dfn" id="publicKey">publicKey</dfn></h2>
-      <p>An array of public keys. A public key is a verification method. Public keys are used for digital signatures, encryption and other cryptographic operations, which in turn are the basis for purposes such as authentication.</p>
-
+      <a href="https://www.w3.org/TR/did-core/#dfn-public-key-description">Public key description</a>
       <pre class="example">
 {
   "id": "did:example:123",
@@ -408,7 +774,7 @@ TBD
               <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
             </td>
             <td>
-              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
             </td>
             <td>
               CBOR
@@ -446,7 +812,7 @@ TBD
               <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/Ed25519VerificationKey2018.json">JSON Schema</a>
             </td>
             <td>
-              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
             </td>
             <td>
               CBOR
@@ -492,7 +858,7 @@ TBD
               <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/EcdsaSecp256k1VerificationKey2019.json">JSON Schema</a>
             </td>
             <td>
-              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
             </td>
             <td>
               CBOR
@@ -542,7 +908,60 @@ The duplication and/or possible interaction of properties held in a JWK and a ve
               <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/JwsVerificationKey2020.json">JSON Schema</a>
             </td>
             <td>
-              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON LD</a>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h3><dfn data-lt="X25519KeyAgreementKey2019" data-dfn-type="dfn" id="X25519KeyAgreementKey2019">X25519KeyAgreementKey2019</dfn></h3>
+
+      <p>A X25519 key.</p>
+
+      <pre class="example">
+{
+  "id": "did:example:123#zC8GybikEfyNaausDA4mkT4egP7SNLx2T1d1kujLQbcP6h",
+  "type": "X25519KeyAgreementKey2019",
+  "controller": "did:example:123",
+  "publicKeyBase58": "CaSHXEvLKS6SfN9aBfkVGBpp15jSnaHazqHgLHp8KZ3Y"
+}
+      </pre>
+
+      <pre class="example">
+{
+  "id": "did:example:123#Bob",
+  "type": "X25519KeyAgreementKey2019",
+  "controller": "did:example:123",
+  "publicKeyJwk": {
+    "kty":"OKP",
+    "crv":"X25519",
+    "kid":"Bob",
+    "x":"3p7bfXt9wbTTW2HC7OQ1Nz-DQ8hbeGdNrfx-FG-IK08"
+  }  
+}
+      </pre>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/X25519KeyAgreementKey2019.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
             </td>
             <td>
               CBOR

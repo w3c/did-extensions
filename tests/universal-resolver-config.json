@@ -52,7 +52,7 @@
       "image": "uport/uni-resolver-driver-did-uport",
       "imagePort": "8081",
       "tag": "latest",
-      "testIdentifiers": ["did:web:did.actor:bob", "did:web:did.actor:carol", "did:web:vc.transmute.world"]
+      "testIdentifiers": ["did:web:did.actor:alice", "did:web:did.actor:bob", "did:web:did.actor:carol", "did:web:vc.transmute.world"]
     },
     {
       "pattern": "^(did:ethr:.+)$",

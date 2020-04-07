@@ -7,6 +7,6 @@ describe('JSON Schema Validation', ()=>{
     it('ajv is initialized and schemas are defined ', ()=>{
         expect(ajv).toBeDefined();
         expect(schemas).toBeDefined();
-        expect(Object.keys(schemas).length).toBe(5);
+        expect(Object.keys(schemas).length).toBe(6);
     })
 })
