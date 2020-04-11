@@ -241,7 +241,7 @@ TBD
   </section>
 
   <section>
-    <h1>The Property Registry</h1>
+    <h1>The Core Properties</h1>
     <p>
       The following section defines the properties in a DID document.
     </p>
@@ -971,6 +971,62 @@ The duplication and/or possible interaction of properties held in a JWK and a ve
       </table>
     </section>
     </section>
+  </section>
+
+  <section>
+    <h1>The Core Parameters</h1>
+    <p class="issue" data-number="32">
+      Example needed.
+    </p>
+  </section>
+
+  <section>
+    <h1>The Properties Extension Registry</h1>
+    <p class="issue" data-number="31">
+      Example needed.
+    </p>
+
+    <section>
+      <h2>publicKey</h2>
+
+    <section>
+      <h3><dfn data-lt="GpgVerificationKey2020" data-dfn-type="dfn" id="GpgVerificationKey2020">GpgVerificationKey2020</dfn></h3>
+      <p class="warning">
+        No support for "Pure JSON" or "CBOR" is currently provided.
+      </p>
+      <p>A GPG publicKey. See the <a href="https://w3c-ccg.github.io/ld-cryptosuite-registry/#gpg">ld-cryptosuite-registry</a>.</p>
+      
+      <pre class="example">
+{
+  "@context":[
+    "https://www.w3.org/ns/did/v1",
+    "https://gpg.jsld.org/contexts/lds-gpg2020-v0.0.jsonld"
+  ],
+  "id":"did:example:123",
+  "publicKey":[{
+    "id": "did:example:123#989ed1057a294c8a3665add842e784c4d08de1e2",
+    "type": "GpgVerificationKey2020",
+    "controller": "did:example:123",
+    "publicKeyGpg": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.9.0\r\nComment: https://openpgpjs.org\r\n\r\nxjMEXkm5LRYJKwYBBAHaRw8BAQdASmfrjYr7vrjwHNiBsdcImK397Vc3t4BL\r\nE8rnN......v6\r\nDw==\r\n=wSoi\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+  }]
+}
+      </pre>
+    </section>
+  </section>
+</section>
+
+  <section>
+    <h1>The Parameters Extension Registry</h1>
+    <p class="issue" data-number="30">
+      Example needed.
+    </p>
+  </section>
+
+  <section>
+    <h1>The DID Methods Registry</h1>
+    <p class="issue" data-number="26">
+      Pending move from the <a href="https://github.com/w3c-ccg/did-method-registry">W3C CCG</a>.
+    </p>
   </section>
 
 
