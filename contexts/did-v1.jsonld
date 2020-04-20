@@ -133,6 +133,10 @@
       "@id": "didv:serviceEndpoint",
       "@type": "@id"
     },
+    "updated": {
+      "@id": "dc:modified",
+      "@type": "xsd:dateTime"
+    },
     "verificationMethod": {
       "@id": "sec:verificationMethod",
       "@type": "@id"
