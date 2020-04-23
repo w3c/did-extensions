@@ -175,24 +175,36 @@ that implementers can implement the property.
       <li>
 Any addition to the DID Core Registries that is a property or value, MUST
 specify a machine readable JSON-LD Context for the addition.
-      </li>
-      <li>
-Any addition to the DID Core Registries that is a JSON-LD Context MUST link
-all terms to the associated human readable description.
+        <ul>
+          <li>
+The JSON-LD Context MUST be included in full as part of the submission.
+          </li>
+          <li>
+A namespace URI MUST be provided for the JSON-LD Context so that consumer
+implementations can consistently map a URI to the full context.
+          </li>
+          <li>
+The URI provided MUST be persistent, and link all terms to their associated
+human readable descriptions.
+          </li>
+          <li>
+The URI provided SHOULD resolve or link to the full context contents.
+          </li>
+          <li>
+JSON-LD Contexts MUST be versioned and MUST NOT be date stamped.
+          </li>
+          <li>
+JSON-LD Contexts SHOULD use scoped terms and MUST use the <code>@protected</code>
+feature to eliminate the possibility of term conflicts.
+          </li>
+        </ul>
       </li>
       <li>
 Any addition to the DID Core Registries MUST specify a non-normative JSON Schema
-(the specification is normative) for the addition.
+(the defining specification is normative) for the addition.
       </li>
       <li>
 Properties in the DID Core Registries MUST NOT be removed, only deprecated.
-      </li>
-      <li>
-JSON-LD Contexts MUST be versioned and MUST NOT be date stamped.
-      </li>
-      <li>
-JSON-LD Contexts SHOULD use scoped terms and MUST use the @protected feature to
-eliminate the possibility of term conflicts.
       </li>
     </ol>
 
