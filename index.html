@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>
-DID Core Registry v1.0
+DID Specification Registries v1.0
   </title>
   <meta content='text/html; charset=utf-8' http-equiv='Content-Type'><!--
     === NOTA BENE ===
@@ -216,44 +216,9 @@ consultation with the entry maintainer.
     </p>
   </section>
 
-  <section>
-    <h1>The Parameter Registry</h1>
-
-    <p>
-This table summarizes the globally registered parameters that can be provided
-as parameters in a DID URL.
-    </p>
-
-    <table class="simple">
-      <thead>
-        <tr>
-          <th>Parameter</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>
-TBD
-          </td>
-          <td>
-            <div>DESCRIPTION_GOES_HERE</div>
-            <div><a href="">SPECIFICATION_GOES_HERE</a></div>
-            <pre>
-"@context": [
-  "https://www.w3.org/ns/did/v1",
-  "https://CONTEXT_GOES_HERE/v1"
-]
-            </pre>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
 
   <section>
-    <h1>The Core Properties</h1>
+    <h1>Core Properties</h1>
     <p>
       The following section defines the properties in a DID document.
     </p>
@@ -986,20 +951,111 @@ The duplication and/or possible interaction of properties held in a JWK and a ve
   </section>
 
   <section>
-    <h1>The Core Parameters</h1>
+    <h1>Core Parameters</h1>
     <p class="issue" data-number="32">
       Example needed.
     </p>
   </section>
 
   <section>
-    <h1>The Properties Extension Registry</h1>
+    <h1>Core Properties Extensions</h1>
+    <p>
+      All properties in core extensions are maintained here:
+    </p>
+    
+    <ul>
+      <li><a href="https://github.com/w3c/did-core-registries/tree/master/schemas/did-core-extensions">JSON</a></li>
+      <li><a href="https://github.com/w3c/did-core-registries/tree/master/contexts/did-core-extensions">JSON-LD</a></li>
+    </ul>
+
+    <section>
+      <h3><dfn data-lt="publicKeyHex" data-dfn-type="dfn" id="publicKeyHex">publicKeyHex</dfn></h3>
+<pre class="example">
+{
+  "@context":[
+    "https://www.w3.org/ns/did/v1",
+    "https://w3c.github.io/did-core-registries/contexts/did-core-extensions/did-core-extensions-v0.0.1.jsond"
+  ],
+  "id":"did:example:123",
+  "publicKey":[{
+    "id": "did:example:123#vm-2",
+    "controller": "did:example:123",
+    "type": "EcdsaSecp256k1RecoveryMethod2020",
+    "publicKeyHex": "027560af3387d375e3342a6968179ef3c6d04f5d33b2b611cf326d4708badd7770"
+  }]
+}
+</pre>
+    </section>
+
+    <section>
+      <h3><dfn data-lt="ethereumAddress" data-dfn-type="dfn" id="ethereumAddress">ethereumAddress</dfn></h3>
+<pre class="example">
+{
+  "@context":[
+    "https://www.w3.org/ns/did/v1",
+    "https://w3c.github.io/did-core-registries/contexts/did-core-extensions/did-core-extensions-v0.0.1.jsond"
+  ],
+  "id":"did:example:123",
+  "publicKey":[{
+    "id": "did:example:123#vm-3",
+    "controller": "did:example:123",
+    "type": "EcdsaSecp256k1RecoveryMethod2020",
+    "ethereumAddress": "0xF3beAC30C498D9E26865F34fCAa57dBB935b0D74"
+  }]
+}
+</pre>
+    </section>
+
+    <section>
+      <h3><dfn data-lt="EcdsaSecp256k1RecoveryMethod2020" data-dfn-type="dfn" id="EcdsaSecp256k1RecoveryMethod2020">EcdsaSecp256k1RecoveryMethod2020</dfn></h3>
+<pre class="example">
+{
+"@context":[
+  "https://www.w3.org/ns/did/v1",
+  "https://w3c.github.io/did-core-registries/contexts/did-core-extensions/did-core-extensions-v0.0.1.jsond"
+],
+"id":"did:example:123",
+"publicKey":[{
+  "id": "did:example:123#vm-1",
+  "controller": "did:example:123",
+  "type": "EcdsaSecp256k1RecoveryMethod2020",
+  "publicKeyJwk": {
+    "crv": "secp256k1",
+    "kid": "JUvpllMEYUZ2joO59UNui_XYDqxVqiFLLAJ8klWuPBw",
+    "kty": "EC",
+    "x": "dWCvM4fTdeM0KmloF57zxtBPXTOythHPMm1HCLrdd3A",
+    "y": "36uMVGM7hnw-N6GnjFcihWE3SkrhMLzzLCdPMXPEXlA"
+  }
+},
+{
+  "id": "did:example:123#vm-2",
+  "controller": "did:example:123",
+  "type": "EcdsaSecp256k1RecoveryMethod2020",
+  "publicKeyHex": "027560af3387d375e3342a6968179ef3c6d04f5d33b2b611cf326d4708badd7770"
+},
+{
+  "id": "did:example:123#vm-3",
+    "controller": "did:example:123",
+    "type": "EcdsaSecp256k1RecoveryMethod2020",
+    "ethereumAddress": "0xF3beAC30C498D9E26865F34fCAa57dBB935b0D74"
+  }]
+}
+</pre>
+    </section>
+  </section>
+
+  <section>
+    <h1>Core Parameters Extensions</h1>
+    <p class="issue" data-number="30">
+      Example needed.
+    </p>
+  </section>
+
+  <section>
+    <h1>Third Party Properties Extensions</h1>
     <p class="issue" data-number="31">
       Example needed.
     </p>
-
-    <section>
-      <h2>publicKey</h2>
 
     <section>
       <h3><dfn data-lt="GpgVerificationKey2020" data-dfn-type="dfn" id="GpgVerificationKey2020">GpgVerificationKey2020</dfn></h3>
@@ -1024,18 +1080,17 @@ The duplication and/or possible interaction of properties held in a JWK and a ve
 }
       </pre>
     </section>
-  </section>
 </section>
 
   <section>
-    <h1>The Parameters Extension Registry</h1>
+    <h1>Third Party Parameters Extensions</h1>
     <p class="issue" data-number="30">
       Example needed.
     </p>
   </section>
 
   <section>
-    <h1>The DID Methods Registry</h1>
+    <h1>DID Methods</h1>
     <p class="issue" data-number="26">
       Pending move from the <a href="https://github.com/w3c-ccg/did-method-registry">W3C CCG</a>.
     </p>
