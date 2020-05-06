@@ -850,9 +850,9 @@ consultation with the entry maintainer.
       <h3><dfn data-lt="JwsVerificationKey2020" data-dfn-type="dfn" id="JwsVerificationKey2020">JwsVerificationKey2020</dfn></h3>
 
       <p>A JWK publicKey.</p>
-
-      <p class="issue" data-number="240">
-The duplication and/or possible interaction of properties held in a JWK and a verification method are an active topic of discussion in the Working Group. Implementers are cautioned that the behavior of values associated with this property are not stable and might change in the future.
+      
+      <p class="warning">
+This key type has been deprecated in favor of JsonWebKey2020.
 </p>
 
 
@@ -884,6 +884,55 @@ The duplication and/or possible interaction of properties held in a JWK and a ve
           <tr>
             <td>
               <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/JwsVerificationKey2020.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h3><dfn data-lt="JsonWebKey2020" data-dfn-type="dfn" id="JsonWebKey2020">JsonWebKey2020</dfn></h3>
+
+      <p>A JWK publicKey.</p>
+
+      <p class="issue" data-number="240">
+The duplication and/or possible interaction of properties held in a JWK and a verification method are an active topic of discussion in the Working Group. Implementers are cautioned that the behavior of values associated with this property are not stable and might change in the future.
+      </p>
+
+      <pre class="example">
+{
+  "id": "did:example:123#_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw",
+  "type": "JsonWebKey2020",
+  "controller": "did:example:123",
+  "publicKeyJwk": {
+    "crv": "P-256",
+    "x": "38M1FDts7Oea7urmseiugGW7tWc3mLpJh6rKe7xINZ8",
+    "y": "nDQW6XZ7b_u2Sy9slofYLlG03sOEoug3I0aAPQ0exs4",
+    "kty": "EC",
+    "kid": "_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw"
+  }
+}
+      </pre>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/JsonWebKey2020.json">JSON Schema</a>
             </td>
             <td>
               <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
