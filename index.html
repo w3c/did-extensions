@@ -333,8 +333,51 @@ consultation with the entry maintainer.
       </table>
     </section>
 
-    
+    <section>
+      <h2><dfn data-lt="publicKeyJwk" data-dfn-type="dfn" id="publicKeyJwk">publicKeyJwk</dfn></h2>
+     
+      <a href="https://w3c-ccg.github.io/security-vocab/#publicKeyJwk">See security-vocab.</a>
+      
+      <pre class="example">
+        {
+          "id": "did:example:123#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
+          "type": "JsonWebKey2020",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "crv": "Ed25519",
+            "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ",
+            "kty": "OKP",
+            "kid": "_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"
+          }
+        },
+      </pre>
 
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    
     <section>
       <h2><dfn data-lt="allowedAction" data-dfn-type="dfn" id="allowedAction">allowedAction</dfn></h2>
       <div class="issue">Consider removing.</div>
