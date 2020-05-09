@@ -225,9 +225,37 @@ consultation with the entry maintainer.
     </p>
 
     <section>
-      <h2><dfn data-lt="@context" data-dfn-type="dfn" id="@context">@context</dfn></h2>
-      <p>Required for JSON-LD. Optional for representations other than JSON-LD.</p>
-      <pre class="example">
+      <h3><dfn data-lt="@context" data-dfn-type="dfn" id="@context">@context</dfn></h3>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#production-0">DID Core</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of @context property">
         {
           "@context": [
             "https://www.w3.org/ns/did/v1",
@@ -237,10 +265,15 @@ consultation with the entry maintainer.
         }
       </pre>
 
+    </section>
+    <section>
+      <h3><dfn data-lt="id" data-dfn-type="dfn" id="id">id</dfn></h3>
+
       <h4>Definitions</h4>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
+            <th>Normative Definition</th>
             <th>JSON Schema</th>
             <th>JSON-LD</th>
             <th>CBOR</th>
@@ -248,6 +281,9 @@ consultation with the entry maintainer.
         </thead>
         <tbody>
           <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-subject">DID Core</a>
+            </td>
             <td>
               <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
             </td>
@@ -260,22 +296,24 @@ consultation with the entry maintainer.
           </tr>
         </tbody>
       </table>
-    </section>
-    <section>
-      <h2><dfn data-lt="id" data-dfn-type="dfn" id="id">id</dfn></h2>
-      <p>The id of the DID Document, identifies the DID Subject.</p>
 
-      <pre class="example">
+      <pre class="example" title="Example of id property">
         {
           "id": "did:example:123",
           ...
         }
       </pre>
 
+    </section>
+
+    <section>
+      <h2><dfn data-lt="controller" data-dfn-type="dfn" id="controller">controller</dfn></h2>
+
       <h4>Definitions</h4>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
+            <th>Normative Definition</th>
             <th>JSON Schema</th>
             <th>JSON-LD</th>
             <th>CBOR</th>
@@ -283,6 +321,9 @@ consultation with the entry maintainer.
         </thead>
         <tbody>
           <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#authorization-and-delegation">DID Core</a>
+            </td>
             <td>
               <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
             </td>
@@ -295,23 +336,23 @@ consultation with the entry maintainer.
           </tr>
         </tbody>
       </table>
-    </section>
 
-    <section>
-      <h2><dfn data-lt="controller" data-dfn-type="dfn" id="controller">controller</dfn></h2>
-      <a href="https://www.w3.org/TR/did-core/#dfn-did-controllers">DID Controller.</a>
-
-      <pre class="example">
+      <pre class="example" title="Example of controller property">
         {
           "controller": "did:example:123",
           ...
         }
       </pre>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="verificationMethod" data-dfn-type="dfn" id="verificationMethod">verificationMethod</dfn></h2>
 
       <h4>Definitions</h4>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
+            <th>Normative Definition</th>
             <th>JSON Schema</th>
             <th>JSON-LD</th>
             <th>CBOR</th>
@@ -320,7 +361,10 @@ consultation with the entry maintainer.
         <tbody>
           <tr>
             <td>
-              <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+              <a href="https://www.w3.org/TR/did-core/#dfn-verification-method">DID Core Terminology</a> (property definition pending)
+            </td>
+            <td>
+              JSON Schema
             </td>
             <td>
               <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
@@ -463,9 +507,7 @@ consultation with the entry maintainer.
           </tr>
         </tbody>
       </table>
-    </section>
-
-    
+    </section> 
   
     <section>
       <h2><dfn data-lt="capability" data-dfn-type="dfn" id="capability">capability</dfn></h2>
@@ -670,12 +712,6 @@ consultation with the entry maintainer.
       </table>
     </section>
 
-
-    
-    
-
-    
-
     <section>
       <h2><dfn data-lt="revoked" data-dfn-type="dfn" id="revoked">revoked</dfn></h2>
       <div class="issue">Consider removing.</div>
@@ -760,8 +796,6 @@ consultation with the entry maintainer.
         </tbody>
       </table>
     </section>
-
-   
 
     <section>
       <h2><dfn data-lt="proof" data-dfn-type="dfn" id="proof">proof</dfn></h2>
@@ -1001,10 +1035,16 @@ consultation with the entry maintainer.
     <section>
       <h2><dfn data-lt="owner" data-dfn-type="dfn" id="owner">owner</dfn></h2>
       <p>Deprecated in favor of <code>controller</code>. do not use.</p>
+
+    </section>
+
+    <section>
+      <h2><dfn data-lt="service" data-dfn-type="dfn" id="service">service</dfn> and <dfn data-lt="serviceEndpoint" data-dfn-type="dfn" id="serviceEndpoint">serviceEndpoint</dfn></h2>
       <h4>Definitions</h4>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
+            <th>Normative Definition</th>
             <th>JSON Schema</th>
             <th>JSON-LD</th>
             <th>CBOR</th>
@@ -1013,7 +1053,10 @@ consultation with the entry maintainer.
         <tbody>
           <tr>
             <td>
-              JSON Schema
+              <a href="https://www.w3.org/TR/did-core/#service-endpoints">DID Core</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
             </td>
             <td>
               <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
@@ -1024,13 +1067,8 @@ consultation with the entry maintainer.
           </tr>
         </tbody>
       </table>
-    </section>
 
-    <section>
-      <h2><dfn data-lt="service" data-dfn-type="dfn" id="service">service</dfn></h2>
-      <a href="https://www.w3.org/TR/did-core/#dfn-service">DID Service</a>
-
-      <pre class="example">
+      <pre class="example" title="Example of service and serviceEndpoint properties">
 {
   ...
   "service": [{
@@ -1041,81 +1079,16 @@ consultation with the entry maintainer.
 }
       </pre>
 
-      <h4>Definitions</h4>
-      <table class="simple" style="width: 100%;">
-        <thead>
-          <tr>
-            <th>JSON Schema</th>
-            <th>JSON-LD</th>
-            <th>CBOR</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
-            </td>
-            <td>
-              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
-            </td>
-            <td>
-              CBOR
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <section>
-        <h3><dfn data-lt="serviceEndpoint" data-dfn-type="dfn" id="serviceEndpoint">serviceEndpoint</dfn></h3>
-        <a href="https://www.w3.org/TR/did-core/#dfn-service-endpoints">DID Service Endpoint</a>
-  
-        <pre class="example">
-{
-  ...
-  "serviceEndpoint": "https://edv.example.com/"
-}
-        </pre>
-  
-        <h4>Definitions</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>JSON Schema</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
-              </td>
-              <td>
-                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
-              </td>
-              <td>
-                CBOR
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
     </section>
 
     <section>
       <h2><dfn data-lt="created" data-dfn-type="dfn" id="created">created</dfn></h2>
-      <a href="https://www.w3.org/TR/did-core/#created">The term `created` is defined in the DID Core Specification</a>.
-
-      <pre class="example">
-{
-  "created": "2002-10-10T17:00:00Z"
-}
-      </pre>
 
       <h4>Definitions</h4>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
+            <th>Normative Definition</th>
             <th>JSON Schema</th>
             <th>JSON-LD</th>
             <th>CBOR</th>
@@ -1123,6 +1096,9 @@ consultation with the entry maintainer.
         </thead>
         <tbody>
           <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#created">DID Core</a>
+            </td>
             <td>
               <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
             </td>
@@ -1135,66 +1111,61 @@ consultation with the entry maintainer.
           </tr>
         </tbody>
       </table>
+
+      <pre class="example" title="Example of created property">
+{
+  "created": "2002-10-10T17:00:00Z"
+}
+      </pre>
     </section>
 
     <section>
       <h2><dfn data-lt="updated" data-dfn-type="dfn" id="updated">updated</dfn></h2>
-      <a href="https://www.w3.org/TR/did-core/#updated">The term `updated` is defined in the DID Core Specification</a>.
 
-      <pre class="example">
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#updated">DID Core</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of updated property">
 {
   "updated": "2016-10-17T02:41:00Z"
 }
       </pre>
 
-      <h4>Definitions</h4>
-      <table class="simple" style="width: 100%;">
-        <thead>
-          <tr>
-            <th>JSON Schema</th>
-            <th>JSON-LD</th>
-            <th>CBOR</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <a href="https://w3c.github.io/did-core-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
-            </td>
-            <td>
-              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
-            </td>
-            <td>
-              CBOR
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </section>
 
     <section>
       <h2><dfn data-lt="keyAgreement" data-dfn-type="dfn" id="keyAgreement">keyAgreement</dfn></h2>
-      <p class="issue">
-        Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">public-keys</a>
-      </p>
-      <pre class="example">
-{
-  ...
-  "keyAgreement": [
-    {
-      "id": "did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
-      "type": "X25519KeyAgreementKey2019",
-      "controller": "did:example:123",
-      "publicKeyBase58": "9hFgmPVfmBZwRvFEyniQDBkz9LmV7gDEqytWyGZLmDXE"
-    }
-  ]
-}
-      </pre>
 
       <h4>Definitions</h4>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
+            <th>Normative Definition</th>
             <th>JSON Schema</th>
             <th>JSON-LD</th>
             <th>CBOR</th>
@@ -1202,6 +1173,9 @@ consultation with the entry maintainer.
         </thead>
         <tbody>
           <tr>
+            <td>
+              Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">DID Core: public-keys</a>
+            </td>
             <td>
               <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
             </td>
@@ -1214,6 +1188,53 @@ consultation with the entry maintainer.
           </tr>
         </tbody>
       </table>
+
+      <pre class="example" title="Example of keyAgreement property">
+{
+  ...
+  "keyAgreement": [
+    {
+      "id": "did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
+      "type": "X25519KeyAgreementKey2019",
+      "controller": "did:example:123",
+      "publicKeyBase58": "9hFgmPVfmBZwRvFEyniQDBkz9LmV7gDEqytWyGZLmDXE"
+    }
+  ]
+}
+      </pre>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="capabilityDelegation" data-dfn-type="dfn" id="capabilityDelegation">capabilityDelegation</dfn></h2>
+
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">DID Core: public-keys</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+<<<<<<< HEAD
 
       <section>
         <h2><dfn data-lt="X25519KeyAgreementKey2019" data-dfn-type="dfn" id="X25519KeyAgreementKey2019">X25519KeyAgreementKey2019</dfn></h2>
@@ -1263,13 +1284,10 @@ consultation with the entry maintainer.
       </section>
 
     </section>
+=======
+>>>>>>> a2d1735... Restructure so spec link is in tables, and table comes before example
 
-    <section>
-      <h2><dfn data-lt="capabilityDelegation" data-dfn-type="dfn" id="capabilityDelegation">capabilityDelegation</dfn></h2>
-      <p class="issue">
-        Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">public-keys</a>
-      </p>
-      <pre class="example">
+      <pre class="example" title="Example of capabilityDelegation property">
 {
   ...
   "publicKey": [{
@@ -1294,11 +1312,16 @@ consultation with the entry maintainer.
   ]
 }
       </pre>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="capabilityInvocation" data-dfn-type="dfn" id="capabilityInvocation">capabilityInvocation</dfn></h2>
 
       <h4>Definitions</h4>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
+            <th>Normative Definition</th>
             <th>JSON Schema</th>
             <th>JSON-LD</th>
             <th>CBOR</th>
@@ -1306,6 +1329,9 @@ consultation with the entry maintainer.
         </thead>
         <tbody>
           <tr>
+            <td>
+              Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">DID Core: public-keys</a>
+            </td>
             <td>
               <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
             </td>
@@ -1318,14 +1344,8 @@ consultation with the entry maintainer.
           </tr>
         </tbody>
       </table>
-    </section>
 
-    <section>
-      <h2><dfn data-lt="capabilityInvocation" data-dfn-type="dfn" id="capabilityInvocation">capabilityInvocation</dfn></h2>
-      <p class="issue">
-        Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">public-keys</a>
-      </p>
-      <pre class="example">
+      <pre class="example" title="Example of capabilityInvocation property">
 {
   ...
   "publicKey": [{
@@ -1350,11 +1370,16 @@ consultation with the entry maintainer.
   ]
 }
       </pre>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="authentication" data-dfn-type="dfn" id="authentication">authentication</dfn></h2>
 
       <h4>Definitions</h4>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
+            <th>Normative Definition</th>
             <th>JSON Schema</th>
             <th>JSON-LD</th>
             <th>CBOR</th>
@@ -1362,6 +1387,9 @@ consultation with the entry maintainer.
         </thead>
         <tbody>
           <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#authentication">DID Core</a>
+            </td>
             <td>
               <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
             </td>
@@ -1374,14 +1402,8 @@ consultation with the entry maintainer.
           </tr>
         </tbody>
       </table>
-    </section>
 
-    <section>
-      <h2><dfn data-lt="authentication" data-dfn-type="dfn" id="authentication">authentication</dfn></h2>
-      <p class="issue">
-        Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">public-keys</a>
-      </p>
-      <pre class="example">
+      <pre class="example" title="Example of authentication property">
 {
   ...
   "publicKey": [{
@@ -1406,11 +1428,18 @@ consultation with the entry maintainer.
   ]
 }
       </pre>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="assertionMethod" data-dfn-type="dfn" id="assertionMethod">assertionMethod</dfn></h2>
+      
+      <p>An array of verification methods used for making assertions. Similar to <a href="#publicKey"><code>publicKey</code></a></p>
 
       <h4>Definitions</h4>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
+            <th>Normative Definition</th>
             <th>JSON Schema</th>
             <th>JSON-LD</th>
             <th>CBOR</th>
@@ -1418,6 +1447,9 @@ consultation with the entry maintainer.
         </thead>
         <tbody>
           <tr>
+            <td>
+              Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">DID Core: public-keys</a>
+            </td>
             <td>
               <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
             </td>
@@ -1430,16 +1462,8 @@ consultation with the entry maintainer.
           </tr>
         </tbody>
       </table>
-    </section>
 
-    <section>
-      <h2><dfn data-lt="assertionMethod" data-dfn-type="dfn" id="assertionMethod">assertionMethod</dfn></h2>
-      <p class="issue">
-        Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">public-keys</a>
-      </p>
-      <p>An array of verification methods used for making assertions. Similar to <a href='#publicKey'><code>publicKey</code></a></p>
-
-      <pre class="example">
+      <pre class="example" title="Example of assertionMethod property">
 {
   ...
   "publicKey": [{
@@ -1464,11 +1488,16 @@ consultation with the entry maintainer.
   ]
 }
       </pre>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="publicKey" data-dfn-type="dfn" id="publicKey">publicKey</dfn></h2>
 
       <h4>Definitions</h4>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
+            <th>Normative Definition</th>
             <th>JSON Schema</th>
             <th>JSON-LD</th>
             <th>CBOR</th>
@@ -1476,6 +1505,9 @@ consultation with the entry maintainer.
         </thead>
         <tbody>
           <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#dfn-publickey">DID Core</a>
+            </td>
             <td>
               <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
             </td>
@@ -1488,12 +1520,8 @@ consultation with the entry maintainer.
           </tr>
         </tbody>
       </table>
-    </section>
 
-    <section>
-      <h2><dfn data-lt="publicKey" data-dfn-type="dfn" id="publicKey">publicKey</dfn></h2>
-      <a href="https://www.w3.org/TR/did-core/#dfn-public-key-description">Public key description</a>
-      <pre class="example">
+      <pre class="example" title="Example of publicKey property">
 {
   "id": "did:example:123",
   "publicKey": [
@@ -1519,165 +1547,153 @@ consultation with the entry maintainer.
 }
       </pre>
 
-      <h4>Definitions</h4>
-      <table class="simple" style="width: 100%;">
-        <thead>
-          <tr>
-            <th>JSON Schema</th>
-            <th>JSON-LD</th>
-            <th>CBOR</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
-            </td>
-            <td>
-              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
-            </td>
-            <td>
-              CBOR
-            </td>
-          </tr>
-        </tbody>
-      </table>
 
       <section>
-      <h3><dfn data-lt="Ed25519VerificationKey2018" data-dfn-type="dfn" id="Ed25519VerificationKey2018">Ed25519VerificationKey2018</dfn></h3>
+        <h3><dfn data-lt="Ed25519VerificationKey2018" data-dfn-type="dfn" id="Ed25519VerificationKey2018">Ed25519VerificationKey2018</dfn></h3>
 
-      <p>A Ed25519 publicKey.</p>
+        <p>A Ed25519 publicKey. This is a <em>class</em> not a <em>property</em> - in other words, use it for the value of <code>type</code> in a <a href="#publickey">publicKey</a> object.</p>
 
+        <h4>Definitions</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Normative definition pending.
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/Ed25519VerificationKey2018.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-      <pre class="example">
-        {
-          "id": "did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec",
-          "type": "Ed25519VerificationKey2018",
-          "controller": "did:example:123",
-          "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
-        }
-      </pre>
-      <h4>Definitions</h4>
-      <table class="simple" style="width: 100%;">
-        <thead>
-          <tr>
-            <th>JSON Schema</th>
-            <th>JSON-LD</th>
-            <th>CBOR</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/Ed25519VerificationKey2018.json">JSON Schema</a>
-            </td>
-            <td>
-              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
-            </td>
-            <td>
-              CBOR
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+        <pre class="example" title="Example of Ed25519VerificationKey2018 class">
+          {
+            "id": "did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec",
+            "type": "Ed25519VerificationKey2018",
+            "controller": "did:example:123",
+            "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+          }
+        </pre>
+      </section>
 
-    <section>
-      <h3><dfn data-lt="EcdsaSecp256k1VerificationKey2019" data-dfn-type="dfn" id="EcdsaSecp256k1VerificationKey2019">EcdsaSecp256k1VerificationKey2019</dfn></h3>
+      <section>
+        <h3><dfn data-lt="EcdsaSecp256k1VerificationKey2019" data-dfn-type="dfn" id="EcdsaSecp256k1VerificationKey2019">EcdsaSecp256k1VerificationKey2019</dfn></h3>
 
-      <p>A secp256k1 publicKey.</p>
+        <p>A secp256k1 publicKey. This is a <em>class</em> not a <em>property</em> - in other words, use it for the value of <code>type</code> in a <a href="#publickey">publicKey</a> object.</p>
 
+        <h4>Definitions</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Normative definition pending.
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/EcdsaSecp256k1VerificationKey2019.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-      <pre class="example">
-{
-  "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
-  "type": "EcdsaSecp256k1VerificationKey2019",
-  "controller": "did:example:123",
-  "publicKeyJwk": {
-    "crv": "secp256k1",
-    "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
-    "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
-    "kty": "EC",
-    "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+        <pre class="example" title="Example of EcdsaSecp256k1VerificationKey2019 class">
+  {
+    "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+    "type": "EcdsaSecp256k1VerificationKey2019",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "crv": "secp256k1",
+      "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+      "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+      "kty": "EC",
+      "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+    }
   }
-}
-      </pre>
+        </pre>
+      </section>
 
-      <h4>Definitions</h4>
-      <table class="simple" style="width: 100%;">
-        <thead>
-          <tr>
-            <th>JSON Schema</th>
-            <th>JSON-LD</th>
-            <th>CBOR</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/EcdsaSecp256k1VerificationKey2019.json">JSON Schema</a>
-            </td>
-            <td>
-              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
-            </td>
-            <td>
-              CBOR
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+      <section>
+        <h3><dfn data-lt="JwsVerificationKey2020" data-dfn-type="dfn" id="JwsVerificationKey2020">JwsVerificationKey2020</dfn></h3>
 
-    <section>
-      <h3><dfn data-lt="JwsVerificationKey2020" data-dfn-type="dfn" id="JwsVerificationKey2020">JwsVerificationKey2020</dfn></h3>
+        <p>A JWK publicKey. This is a <em>class</em> not a <em>property</em> - in other words, use it for the value of <code>type</code> in a <a href="#publickey">publicKey</a> object.</p>
 
-      <p>A JWK publicKey.</p>
-
-      <p class="issue" data-number="240">
+        <p class="issue" data-number="240">
 The duplication and/or possible interaction of properties held in a JWK and a verification method are an active topic of discussion in the Working Group. Implementers are cautioned that the behavior of values associated with this property are not stable and might change in the future.
-</p>
+        </p>
 
+        <h4>Definitions</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Normative definition pending.
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/JwsVerificationKey2020.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-      <pre class="example">
-{
-  "id": "did:example:123#_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw",
-  "type": "JwsVerificationKey2020",
-  "controller": "did:example:123",
-  "publicKeyJwk": {
-    "crv": "P-256",
-    "x": "38M1FDts7Oea7urmseiugGW7tWc3mLpJh6rKe7xINZ8",
-    "y": "nDQW6XZ7b_u2Sy9slofYLlG03sOEoug3I0aAPQ0exs4",
-    "kty": "EC",
-    "kid": "_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw"
+        <pre class="example" title="Example of JwsVerificationKey2020 class">
+  {
+    "id": "did:example:123#_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw",
+    "type": "JwsVerificationKey2020",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "crv": "P-256",
+      "x": "38M1FDts7Oea7urmseiugGW7tWc3mLpJh6rKe7xINZ8",
+      "y": "nDQW6XZ7b_u2Sy9slofYLlG03sOEoug3I0aAPQ0exs4",
+      "kty": "EC",
+      "kid": "_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw"
+    }
   }
-}
-      </pre>
+        </pre>
+      </section>
 
-      <h4>Definitions</h4>
-      <table class="simple" style="width: 100%;">
-        <thead>
-          <tr>
-            <th>JSON Schema</th>
-            <th>JSON-LD</th>
-            <th>CBOR</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/JwsVerificationKey2020.json">JSON Schema</a>
-            </td>
-            <td>
-              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
-            </td>
-            <td>
-              CBOR
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
+<<<<<<< HEAD
     <section>
       <h3><dfn data-lt="RsaVerificationKey2018" data-dfn-type="dfn" id="RsaVerificationKey2018">RsaVerificationKey2018</dfn></h3>
 
@@ -1747,6 +1763,64 @@ The duplication and/or possible interaction of properties held in a JWK and a ve
 
     
 
+=======
+      <section>
+        <h3><dfn data-lt="X25519KeyAgreementKey2019" data-dfn-type="dfn" id="X25519KeyAgreementKey2019">X25519KeyAgreementKey2019</dfn></h3>
+
+        <p>A X25519 key. This is a <em>class</em> not a <em>property</em> - in other words, use it for the value of <code>type</code> in a <a href="#publickey">publicKey</a> object.</p>
+
+        <h4>Definitions</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Normative definition pending.
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/X25519KeyAgreementKey2019.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of X25519KeyAgreementKey2019 class using publicKeyBase58">
+  {
+    "id": "did:example:123#zC8GybikEfyNaausDA4mkT4egP7SNLx2T1d1kujLQbcP6h",
+    "type": "X25519KeyAgreementKey2019",
+    "controller": "did:example:123",
+    "publicKeyBase58": "CaSHXEvLKS6SfN9aBfkVGBpp15jSnaHazqHgLHp8KZ3Y"
+  }
+        </pre>
+
+        <pre class="example" title="Example of X25519KeyAgreementKey2019 class using publicKeyJwk">
+  {
+    "id": "did:example:123#Bob",
+    "type": "X25519KeyAgreementKey2019",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "kty":"OKP",
+      "crv":"X25519",
+      "kid":"Bob",
+      "x":"3p7bfXt9wbTTW2HC7OQ1Nz-DQ8hbeGdNrfx-FG-IK08"
+    }  
+  }
+        </pre>
+      </section>
+>>>>>>> a2d1735... Restructure so spec link is in tables, and table comes before example
     </section>
   </section>
 
