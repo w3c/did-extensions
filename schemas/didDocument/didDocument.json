@@ -108,6 +108,18 @@
         } 
       }]
       }
+    },
+    "created": {
+      "title": "Created",
+      "description": "https://w3c.github.io/did-core-registries/#created",
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated": {
+      "title": "Updated",
+      "description": "https://w3c.github.io/did-core-registries/#updated",
+      "type": "string",
+      "format": "date-time"
     }
   },
   "required": ["id"],
