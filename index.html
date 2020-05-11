@@ -334,9 +334,673 @@ consultation with the entry maintainer.
     </section>
 
     <section>
-      <h2><dfn data-lt="verificationMethod" data-dfn-type="dfn" id="verificationMethod">verificationMethod</dfn></h2>
-      <a href="https://www.w3.org/TR/did-core/#dfn-verification-method">DID Verification Method</a>
+      <h2><dfn data-lt="publicKeyJwk" data-dfn-type="dfn" id="publicKeyJwk">publicKeyJwk</dfn></h2>
+     
+      <a href="https://w3c-ccg.github.io/security-vocab/#publicKeyJwk">See security-vocab.</a>
+      
+      <pre class="example">
+        {
+          "id": "did:example:123#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
+          "type": "JsonWebKey2020",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "crv": "Ed25519",
+            "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ",
+            "kty": "OKP",
+            "kid": "_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"
+          }
+        },
+      </pre>
 
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    
+    <section>
+      <h2><dfn data-lt="allowedAction" data-dfn-type="dfn" id="allowedAction">allowedAction</dfn></h2>
+      <div class="issue">Consider removing.</div>
+      <a href="https://w3c-ccg.github.io/security-vocab/#allowedAction">See security-vocab.</a>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="expirationDate" data-dfn-type="dfn" id="expirationDate">expirationDate</dfn></h2>
+      <div class="issue">Consider removing.</div>
+      <a href="https://w3c-ccg.github.io/security-vocab/#expirationDate">See security-vocab.</a>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="delegator" data-dfn-type="dfn" id="delegator">delegator</dfn></h2>
+      <div class="issue">Consider removing.</div>
+      <a href="https://w3c-ccg.github.io/security-vocab/#delegator">See security-vocab.</a>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    
+  
+    <section>
+      <h2><dfn data-lt="capability" data-dfn-type="dfn" id="capability">capability</dfn></h2>
+      <div class="issue">Consider removing.</div>
+      <a href="https://w3c-ccg.github.io/security-vocab/#capability">See security-vocab.</a>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="capabilityAction" data-dfn-type="dfn" id="capabilityAction">capabilityAction</dfn></h2>
+      <div class="issue">Consider removing.</div>
+      <a href="https://w3c-ccg.github.io/security-vocab/#capabilityAction">See security-vocab.</a>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="capabilityChain" data-dfn-type="dfn" id="capabilityChain">capabilityChain</dfn></h2>
+      <div class="issue">Consider removing.</div>
+      <a href="https://w3c-ccg.github.io/security-vocab/#capabilityChain">See security-vocab.</a>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="capabilityStatusList" data-dfn-type="dfn" id="capabilityStatusList">capabilityStatusList</dfn></h2>
+      <div class="issue">Consider removing.</div>
+      <a href="https://w3c-ccg.github.io/security-vocab/#capabilityStatusList">See security-vocab.</a>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="canonicalizationAlgorithm" data-dfn-type="dfn" id="canonicalizationAlgorithm">canonicalizationAlgorithm</dfn></h2>
+      <div class="issue">Consider removing.</div>
+      <a href="https://w3c-ccg.github.io/security-vocab/#canonicalizationAlgorithm">See security-vocab.</a>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="creator" data-dfn-type="dfn" id="creator">creator</dfn></h2>
+      <div class="issue">Consider removing.</div>
+      <a href="https://w3c-ccg.github.io/security-vocab/#creator">See security-vocab.</a>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="created" data-dfn-type="dfn" id="created">created</dfn></h2>
+      <div class="issue">Consider removing.</div>
+      <a href="https://w3c-ccg.github.io/security-vocab/#created">See security-vocab.</a>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+
+    
+    
+
+    
+
+    <section>
+      <h2><dfn data-lt="revoked" data-dfn-type="dfn" id="revoked">revoked</dfn></h2>
+      <div class="issue">Consider removing.</div>
+      <a href="https://w3c-ccg.github.io/security-vocab/#revoked">See security-vocab.</a>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="invoker" data-dfn-type="dfn" id="invoker">invoker</dfn></h2>
+      <div class="issue">No definition available. Consider removing.</div>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="invocationTarget" data-dfn-type="dfn" id="invocationTarget">invocationTarget</dfn></h2>
+      <div class="issue">No definition available. Consider removing.</div>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+   
+
+    <section>
+      <h2><dfn data-lt="proof" data-dfn-type="dfn" id="proof">proof</dfn></h2>
+      <div class="issue">Consider removing.</div>
+      <a href="https://w3c-ccg.github.io/security-vocab/#proof">See security-vocab.</a>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              JSON Schema
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <section>
+        <h3><dfn data-lt="nonce" data-dfn-type="dfn" id="nonce">nonce</dfn></h3>
+        <div class="issue">Consider removing.</div>
+        <a href="https://w3c-ccg.github.io/security-vocab/#nonce">See security-vocab.</a>
+        <h4>Definitions</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                JSON Schema
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3><dfn data-lt="proofPurpose" data-dfn-type="dfn" id="proofPurpose">proofPurpose</dfn></h3>
+        <div class="issue">Consider removing.</div>
+        <a href="https://w3c-ccg.github.io/security-vocab/#proofPurpose">See security-vocab.</a>
+        <h4>Definitions</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                JSON Schema
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3><dfn data-lt="verificationMethod" data-dfn-type="dfn" id="verificationMethod">verificationMethod</dfn></h3>
+        <a href="https://www.w3.org/TR/did-core/#dfn-verification-method">DID Verification Method</a>
+  
+        <h4>Definitions</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                JSON Schema
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3><dfn data-lt="jws" data-dfn-type="dfn" id="jws">jws</dfn></h3>
+        <div class="issue">Consider removing.</div>
+        <a href="https://w3c-ccg.github.io/security-vocab/#jws">See security-vocab.</a>
+        <h4>Definitions</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                JSON Schema
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      
+
+      <section>
+        <h3><dfn data-lt="proofValue" data-dfn-type="dfn" id="proofValue">proofValue</dfn></h3>
+        <div class="issue">Consider removing.</div>
+        <a href="https://w3c-ccg.github.io/security-vocab/#proofValue">See security-vocab.</a>
+        <h4>Definitions</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                JSON Schema
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+ 
+
+      <section>
+        <h3><dfn data-lt="domain" data-dfn-type="dfn" id="domain">domain</dfn></h3>
+        <div class="issue">Consider removing.</div>
+        <a href="https://w3c-ccg.github.io/security-vocab/#domain">See security-vocab.</a>
+        <h4>Definitions</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                JSON Schema
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3><dfn data-lt="challenge" data-dfn-type="dfn" id="challenge">challenge</dfn></h3>
+        <div class="issue">Consider removing.</div>
+        <a href="https://w3c-ccg.github.io/security-vocab/#challenge">See security-vocab.</a>
+        <h4>Definitions</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                JSON Schema
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    <section>
+      <h2><dfn data-lt="owner" data-dfn-type="dfn" id="owner">owner</dfn></h2>
+      <p>Deprecated in favor of <code>controller</code>. do not use.</p>
       <h4>Definitions</h4>
       <table class="simple" style="width: 100%;">
         <thead>
@@ -480,6 +1144,54 @@ consultation with the entry maintainer.
           </tr>
         </tbody>
       </table>
+
+      <section>
+        <h2><dfn data-lt="X25519KeyAgreementKey2019" data-dfn-type="dfn" id="X25519KeyAgreementKey2019">X25519KeyAgreementKey2019</dfn></h2>
+        <p class="issue">
+          Normative definition pending. Best current link: <a href="https://www.w3.org/TR/did-core/#public-keys">public-keys</a>
+        </p>
+        <pre class="example">
+  {
+    ...
+    "keyAgreement": [
+      {
+        "id": "did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
+        "type": "X25519KeyAgreementKey2019",
+        "controller": "did:example:123",
+        "publicKeyBase58": "9hFgmPVfmBZwRvFEyniQDBkz9LmV7gDEqytWyGZLmDXE"
+      }
+    ]
+  }
+        </pre>
+  
+        <h4>Definitions</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                TBD
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  
+        
+        
+      </section>
+
     </section>
 
     <section>
@@ -897,30 +1609,15 @@ The duplication and/or possible interaction of properties held in a JWK and a ve
     </section>
 
     <section>
-      <h3><dfn data-lt="X25519KeyAgreementKey2019" data-dfn-type="dfn" id="X25519KeyAgreementKey2019">X25519KeyAgreementKey2019</dfn></h3>
+      <h3><dfn data-lt="RsaVerificationKey2018" data-dfn-type="dfn" id="RsaVerificationKey2018">RsaVerificationKey2018</dfn></h3>
 
-      <p>A X25519 key.</p>
-
+      <p>An RSA Key. See <a href="https://w3c-ccg.github.io/ld-cryptosuite-registry/#rsa">ld-cryptosuite-registry</a></p>
       <pre class="example">
 {
-  "id": "did:example:123#zC8GybikEfyNaausDA4mkT4egP7SNLx2T1d1kujLQbcP6h",
-  "type": "X25519KeyAgreementKey2019",
+  "id": "did:example:123#key-0",
+  "type": "RsaVerificationKey2018",
   "controller": "did:example:123",
-  "publicKeyBase58": "CaSHXEvLKS6SfN9aBfkVGBpp15jSnaHazqHgLHp8KZ3Y"
-}
-      </pre>
-
-      <pre class="example">
-{
-  "id": "did:example:123#Bob",
-  "type": "X25519KeyAgreementKey2019",
-  "controller": "did:example:123",
-  "publicKeyJwk": {
-    "kty":"OKP",
-    "crv":"X25519",
-    "kid":"Bob",
-    "x":"3p7bfXt9wbTTW2HC7OQ1Nz-DQ8hbeGdNrfx-FG-IK08"
-  }  
+  "publicKeyPem": "-----BEGIN PUBLIC KEY...END PUBLIC KEY-----\r\n"
 }
       </pre>
 
@@ -936,7 +1633,7 @@ The duplication and/or possible interaction of properties held in a JWK and a ve
         <tbody>
           <tr>
             <td>
-              <a href="https://w3c.github.io/did-core-registries/schemas/publicKey/X25519KeyAgreementKey2019.json">JSON Schema</a>
+              TBD
             </td>
             <td>
               <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
@@ -948,6 +1645,38 @@ The duplication and/or possible interaction of properties held in a JWK and a ve
         </tbody>
       </table>
     </section>
+
+    <section>
+      <h3><dfn data-lt="SchnorrSecp256k1VerificationKey2019" data-dfn-type="dfn" id="SchnorrSecp256k1VerificationKey2019">SchnorrSecp256k1VerificationKey2019</dfn></h3>
+      <div class="issue">No defintion available.</div>
+      <h4>Definitions</h4>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>JSON Schema</th>
+            <th>JSON-LD</th>
+            <th>CBOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              TBD
+            </td>
+            <td>
+              <a href="https://w3c.github.io/did-core-registries/contexts/did-v1.jsonld">JSON-LD</a>
+            </td>
+            <td>
+              CBOR
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+
+    
+
     </section>
   </section>
 
