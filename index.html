@@ -1629,7 +1629,80 @@ rather than the DID subject.
   </section>
 
   <section>
+
     <h1>Parameters</h1>
+
+
+        <table class="simple">
+          <thead>
+            <tr>
+              <th>
+Name
+              </th>
+              <th>
+Description
+              </th>
+              <th>
+Specification
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+<code>hl</code>
+              </td>
+              <td>
+A resource hash of the DID document to add integrity protection, as
+specified in <a href="https://tools.ietf.org/id/draft-sporny-hashlink">
+Hashlink</a> specification.
+              </td>
+              <td>
+[[DID-CORE]]
+              </td>
+            </tr>
+            <tr>
+              <td>
+<code>service</code>
+              </td>
+              <td>
+Identifies a service from the DID document by service ID.
+              </td>
+              <td>
+[[DID-CORE]]
+              </td>
+            </tr>
+            <tr>
+              <td>
+<code style="white-space: nowrap;">version-id</code>
+              </td>
+              <td>
+Identifies a specific version of a DID document to be resolved (the
+version ID could be sequential, or a UUID, or method-specific). Note that
+this parameter might not be supported by all DID methods.
+              </td>
+              <td>
+[[DID-CORE]]
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+<code style="white-space: nowrap;">version-time</code>
+              </td>
+              <td>
+Identifies a certain version timestamp of a DID document to be resolved.
+That is, the DID document that was valid for a DID at a certain
+time. Note that this parameter might not be supported by all DID methods.
+              </td>
+              <td>
+[[DID-CORE]]
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
     <p class="issue" data-number="32">
       Example needed.
     </p>
