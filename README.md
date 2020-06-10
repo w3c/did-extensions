@@ -1,5 +1,7 @@
 ## DID Method Registry
 
+Has moved here [https://w3c.github.io/did-spec-registries/#did-methods](https://w3c.github.io/did-spec-registries/#did-methods).
+
 This repository contains the DID Method Registry, which is a list of all known
 DID Methods and their current level of maturity.
 
