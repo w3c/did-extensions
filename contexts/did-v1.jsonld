@@ -42,6 +42,7 @@
       "@id": "dc:created",
       "@type": "xsd:dateTime"
     },
+    "ethereumAddress": "sec:ethereumAddress",
     "keyAgreement": {
       "@id": "sec:keyAgreementMethod",
       "@type": "@id",
