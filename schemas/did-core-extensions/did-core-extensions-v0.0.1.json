@@ -1,6 +1,0 @@
-{
-    "$id": "/did-core-extensions.didDocument",
-    "type": "object",
-    "additionalProperties": true
-  }
-  
