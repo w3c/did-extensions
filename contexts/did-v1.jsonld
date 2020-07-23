@@ -42,6 +42,7 @@
       "@id": "dc:created",
       "@type": "xsd:dateTime"
     },
+    "blockchainAccountId": "sec:blockchainAccountId",
     "keyAgreement": {
       "@id": "sec:keyAgreementMethod",
       "@type": "@id",
