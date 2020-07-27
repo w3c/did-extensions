@@ -7,7 +7,7 @@ This repository contains a registry created by the
 (DID WG) for the purpose of enhancing DID ecosystem interoperability.
 
 An Editor's Draft of this repository is available at
-https://w3c.github.io/did-core-registries/.
+https://w3c.github.io/did-spec-registries/.
 
 ## Contributing to the Repository
 
