@@ -1,5 +1,6 @@
 node_modules
 coverage
 
+.vscode
 .DS_Store
 unresolveable-test-dids.json
