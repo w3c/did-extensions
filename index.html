@@ -1,272 +1,300 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>
-DID Specification Registries
-  </title>
-  <meta content='text/html; charset=utf-8' http-equiv='Content-Type'><!--
+  <head>
+    <title>
+      DID Specification Registries
+    </title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <!--
     === NOTA BENE ===
     For the three scripts below, if your spec resides on dev.w3 you can check them
     out in the same tree and use relative links so that they'll work offline.
    -->
 
-  <script class='remove'
-    src='https://www.w3.org/Tools/respec/respec-w3c-common'>
-  </script><!--script src='./respec-w3c-common.js' class='remove'></script-->
-  <script class="remove" type="text/javascript">
-var respecConfig = {
-      wgPublicList: "public-did-wg",
-      wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/117488/status",
-      wg: "Decentralized Identifier Working Group",
-      wgURI: "https://www.w3.org/2019/did-wg/",
-      wgId: 117488,
+    <script
+      class="remove"
+      src="https://www.w3.org/Tools/respec/respec-w3c-common"
+    ></script>
+    <!--script src='./respec-w3c-common.js' class='remove'></script-->
+    <script class="remove" type="text/javascript">
+      var respecConfig = {
+        wgPublicList: "public-did-wg",
+        wgPatentURI: "https://www.w3.org/2004/01/pp-impl/117488/status",
+        wg: "Decentralized Identifier Working Group",
+        wgURI: "https://www.w3.org/2019/did-wg/",
+        wgId: 117488,
 
-  // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
-  specStatus: "ED",
+        // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
+        specStatus: "ED",
 
-  // the specification's short name, as in http://www.w3.org/TR/short-name/
-  shortName: "did-spec-registries",
+        // the specification's short name, as in http://www.w3.org/TR/short-name/
+        shortName: "did-spec-registries",
 
-  edDraftURI: "https://w3c.github.io/did-spec-registries/",
+        edDraftURI: "https://w3c.github.io/did-spec-registries/",
 
-  // subtitle
-  subtitle: "The interoperability registry for Decentralized Identifiers",
+        // subtitle
+        subtitle: "The interoperability registry for Decentralized Identifiers",
 
-  // if you wish the publication date to be other than today, set this
-  //publishDate:  "2019-11-07",
+        // if you wish the publication date to be other than today, set this
+        //publishDate:  "2019-11-07",
 
-  // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
-  // and its maturity status
-  // previousPublishDate:  "1977-03-15",
-  // previousMaturity:  "WD",
+        // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+        // and its maturity status
+        // previousPublishDate:  "1977-03-15",
+        // previousMaturity:  "WD",
 
-  // extend the bibliography entries
-  github: {
+        // extend the bibliography entries
+        github: {
           repoURL: "https://github.com/w3c/did-spec-registries/",
-          branch: "master"
-  },
-  includePermalinks: false,
+          branch: "master",
+        },
+        includePermalinks: false,
 
-  // editors, add as many as you like
-  // only "name" is required
-  editors: [{
-    name: "Orie Steele",
-    url: "https://www.linkedin.com/in/or13b/",
-    company: "Transmute",
-    companyURL: "https://www.transmute.industries/",
-    w3cid: 109171
-  }, {
-    name: "Manu Sporny",
-    url: "http://manu.sporny.org/",
-    company: "Digital Bazaar",
-    companyURL: "https://digitalbazaar.com/",
-    w3cid: 41758
-  }],
+        // editors, add as many as you like
+        // only "name" is required
+        editors: [
+          {
+            name: "Orie Steele",
+            url: "https://www.linkedin.com/in/or13b/",
+            company: "Transmute",
+            companyURL: "https://www.transmute.industries/",
+            w3cid: 109171,
+          },
+          {
+            name: "Manu Sporny",
+            url: "http://manu.sporny.org/",
+            company: "Digital Bazaar",
+            companyURL: "https://digitalbazaar.com/",
+            w3cid: 41758,
+          },
+        ],
 
-  // authors, add as many as you like.
-  // This is optional, uncomment if you have authors as well as editors.
-  // only "name" is required. Same format as editors.
-  authors: [{
-    name: "Orie Steele",
-    url: "https://www.linkedin.com/in/or13b/",
-    company: "Transmute",
-    companyURL: "https://www.transmute.industries/",
-    w3cid: 109171
-  }, {
-    name: "Manu Sporny",
-    url: "http://manu.sporny.org/",
-    company: "Digital Bazaar",
-    companyURL: "https://digitalbazaar.com/",
-    w3cid: 41758
-  }]
-};
-  </script>
-  <style>
-  pre .highlight {
-    font-weight: bold;
-    color: green;
-  }
-  pre .comment {
-    color: SteelBlue;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  </style>
-</head>
-<body>
-  <section id='abstract'>
-    <p>
-This document serves as an official registry for all known global parameters,
-properties, and values used by the Decentralized Identifier ecosystem.
-    </p>
-  </section>
+        // authors, add as many as you like.
+        // This is optional, uncomment if you have authors as well as editors.
+        // only "name" is required. Same format as editors.
+        authors: [
+          {
+            name: "Orie Steele",
+            url: "https://www.linkedin.com/in/or13b/",
+            company: "Transmute",
+            companyURL: "https://www.transmute.industries/",
+            w3cid: 109171,
+          },
+          {
+            name: "Manu Sporny",
+            url: "http://manu.sporny.org/",
+            company: "Digital Bazaar",
+            companyURL: "https://digitalbazaar.com/",
+            w3cid: 41758,
+          },
+        ],
+      };
+    </script>
+    <style>
+      pre .highlight {
+        font-weight: bold;
+        color: green;
+      }
+      pre .comment {
+        color: SteelBlue;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>
+        This document serves as an official registry for all known global
+        parameters, properties, and values used by the Decentralized Identifier
+        ecosystem.
+      </p>
+    </section>
 
-  <section id='sotd'>
+    <section id="sotd">
+      <p>
+        This registry is under active development and implementers are advised
+        against using the registry unless they are directly involved with the
+        W3C DID Working Group.
+      </p>
 
-    <p>
-This registry is under active development and implementers are advised
-against using the registry unless they are directly involved with the
-W3C DID Working Group.
-    </p>
+      <p>
+        Comments regarding this document are welcome. Please file issues
+        directly on
+        <a href="https://github.com/w3c/did-spec-registries/issues/">GitHub</a>,
+        or send them to
+        <a href="mailto:public-did-wg@w3.org">public-did-wg@w3.org</a> (
+        <a href="mailto:public-did-wg-request@w3.org?subject=subscribe"
+          >subscribe</a
+        >,
+        <a href="https://lists.w3.org/Archives/Public/public-did-wg/"
+          >archives</a
+        >).
+      </p>
 
-    <p>
-Comments regarding this document are welcome. Please file issues
-directly on <a href="https://github.com/w3c/did-spec-registries/issues/">GitHub</a>,
-or send them
-to <a href="mailto:public-did-wg@w3.org">public-did-wg@w3.org</a> (
-<a href="mailto:public-did-wg-request@w3.org?subject=subscribe">subscribe</a>,
-<a href="https://lists.w3.org/Archives/Public/public-did-wg/">archives</a>).
-    </p>
+      <p>
+        Portions of the work on this specification have been funded by the
+        United States Department of Homeland Security's Science and Technology
+        Directorate under contracts HSHQDC-16-R00012-H-SB2016-1-002,
+        70RSAT20T00000010, and HSHQDC-17-C-00019. The content of this
+        specification does not necessarily reflect the position or the policy of
+        the U.S. Government and no official endorsement should be inferred.
+      </p>
 
-    <p>
-Portions of the work on this specification have been funded by the
-United States Department of Homeland Security's Science and Technology
-Directorate under contracts HSHQDC-16-R00012-H-SB2016-1-002, 70RSAT20T00000010,
-and HSHQDC-17-C-00019. The content of this specification does not
-necessarily reflect the position or the policy of the U.S. Government
-and no official endorsement should be inferred.
-    </p>
+      <p>
+        Work on this registry has also been supported by the Rebooting the Web
+        of Trust community facilitated by Christopher Allen, Shannon Appelcline,
+        Kiara Robles, Brian Weller, Betty Dhamers, Kaliya Young, Kim Hamilton
+        Duffy, Manu Sporny, Drummond Reed, Joe Andrieu, and Heather Vescent,
+        Dmitri Zagidulin, and Dan Burnett.
+      </p>
+    </section>
 
-    <p>
-Work on this registry has also been supported by the Rebooting the
-Web of Trust community facilitated by Christopher Allen, Shannon
-Appelcline, Kiara Robles, Brian Weller, Betty Dhamers, Kaliya Young,
-Kim Hamilton Duffy, Manu Sporny, Drummond Reed, Joe Andrieu, and
-Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
-    </p>
-  </section>
+    <section id="conformance"></section>
 
-  <section id="conformance"></section>
+    <section class="informative">
+      <h1>Introduction</h1>
 
-  <section class="informative">
-    <h1>Introduction</h1>
-
-    <p>
-This document serves as an official registry for all known global parameters,
-properties, and values used by the Decentralized Identifier ecosystem.
-    </p>
-  </section>
-
-  <section>
-    <h1>The Registration Process</h1>
-    <p>
-Software implementers might find that the existing Decentralized Identifier Core
-specification [[DID-CORE]] is not entirely capable of addressing their use case
-and might need to add a new parameters, properties, or values to this registry
-in order to achieve their use case in a globally interoperable fashion. In order
-to add a new parameter, property, or value to this registry, an implementer MUST
-submit a modification request for this registry, as a GitHub Pull Request, where
-the modification request adheres to the following rules:
-    </p>
-
-    <ol>
-      <li>
-Any addition to the DID Core Registries MUST specify a human readable
-description of the addition.
-      </li>
-      <li>
-Any addition to the DID Core Registries MUST link, via at least a URL,
-preferably a content-integrity protected one, to the defining specification so
-that implementers can implement the property.
-      </li>
-      <li>
-Any addition to the DID Core Registries that is a property or value, MUST
-specify a machine readable JSON-LD Context for the addition.
-        <ul>
-          <li>
-The JSON-LD Context MUST be included in full as part of the submission.
-          </li>
-          <li>
-A namespace URI MUST be provided for the JSON-LD Context so that consumer
-implementations can consistently map a URI to the full context.
-          </li>
-          <li>
-The URI provided MUST be persistent, and link all terms to their associated
-human readable descriptions.
-          </li>
-          <li>
-The URI provided SHOULD resolve or link to the full context contents.
-          </li>
-          <li>
-JSON-LD Contexts MUST be versioned and MUST NOT be date stamped.
-          </li>
-          <li>
-JSON-LD Contexts SHOULD use scoped terms and MUST use the <code>@protected</code>
-feature to eliminate the possibility of term conflicts.
-          </li>
-        </ul>
-      </li>
-      <li>
-Properties in the DID Core Registries MUST NOT be removed, only deprecated.
-      </li>
-    </ol>
-
-    <p>
-Additions that do not meet these criteria MUST NOT be accepted. Entries that
-are identified to cause interoperability problems MAY be marked as such
-at the discretion of the maintainers of this registry, and if possible, after
-consultation with the entry maintainer.
-    </p>
-
-    <p>
-Any submission to the registries that meet all the criteria listed above will be
-accepted for inclusion. These registries enumerate all known mechanisms that
-meet a minimum bar, without choosing between them.
-    </p>
-  </section>
-
-
-  <section>
-    <h1>Properties</h1>
-    <p>
-The following section defines the properties available for use in a DID
-document. Note that some of these properties are defined in the
-<a href="https://www.w3.org/TR/did-core">DID Core Specification</a>, and
-others are defined elsewhere and may be method- or domain-specific. Please read
-the associated specifications to ensure that the properties you use are
-appropriate for your implementation. The properties are arranged here according
-to the purpose they serve.
-    </p>
-
-    <p class="issue">
-This registry is a work in progress and some properties are missing normative
-definitions. We are working on this! This does NOT mean that in future it will
-be possible to submit items to the registry without normative definitions (see <a href="#the-registration-process"></a>).
-    </p>
+      <p>
+        This document serves as an official registry for all known global
+        parameters, properties, and values used by the Decentralized Identifier
+        ecosystem.
+      </p>
+    </section>
 
     <section>
-      <h3>Base properties</h3>
+      <h1>The Registration Process</h1>
       <p>
-These properties are foundational to DID documents, and are expected to be
-useful to all DID methods.
+        Software implementers might find that the existing Decentralized
+        Identifier Core specification [[DID-CORE]] is not entirely capable of
+        addressing their use case and might need to add a new parameters,
+        properties, or values to this registry in order to achieve their use
+        case in a globally interoperable fashion. In order to add a new
+        parameter, property, or value to this registry, an implementer MUST
+        submit a modification request for this registry, as a GitHub Pull
+        Request, where the modification request adheres to the following rules:
+      </p>
+
+      <ol>
+        <li>
+          Any addition to the DID Core Registries MUST specify a human readable
+          description of the addition.
+        </li>
+        <li>
+          Any addition to the DID Core Registries MUST link, via at least a URL,
+          preferably a content-integrity protected one, to the defining
+          specification so that implementers can implement the property.
+        </li>
+        <li>
+          Any addition to the DID Core Registries that is a property or value,
+          MUST specify a machine readable JSON-LD Context for the addition.
+          <ul>
+            <li>
+              The JSON-LD Context MUST be included in full as part of the
+              submission.
+            </li>
+            <li>
+              A namespace URI MUST be provided for the JSON-LD Context so that
+              consumer implementations can consistently map a URI to the full
+              context.
+            </li>
+            <li>
+              The URI provided MUST be persistent, and link all terms to their
+              associated human readable descriptions.
+            </li>
+            <li>
+              The URI provided SHOULD resolve or link to the full context
+              contents.
+            </li>
+            <li>
+              JSON-LD Contexts MUST be versioned and MUST NOT be date stamped.
+            </li>
+            <li>
+              JSON-LD Contexts SHOULD use scoped terms and MUST use the
+              <code>@protected</code>
+              feature to eliminate the possibility of term conflicts.
+            </li>
+          </ul>
+        </li>
+        <li>
+          Properties in the DID Core Registries MUST NOT be removed, only
+          deprecated.
+        </li>
+      </ol>
+
+      <p>
+        Additions that do not meet these criteria MUST NOT be accepted. Entries
+        that are identified to cause interoperability problems MAY be marked as
+        such at the discretion of the maintainers of this registry, and if
+        possible, after consultation with the entry maintainer.
+      </p>
+
+      <p>
+        Any submission to the registries that meet all the criteria listed above
+        will be accepted for inclusion. These registries enumerate all known
+        mechanisms that meet a minimum bar, without choosing between them.
+      </p>
+    </section>
+
+    <section>
+      <h1>Properties</h1>
+      <p>
+        The following section defines the properties available for use in a DID
+        document. Note that some of these properties are defined in the
+        <a href="https://www.w3.org/TR/did-core">DID Core Specification</a>, and
+        others are defined elsewhere and may be method- or domain-specific.
+        Please read the associated specifications to ensure that the properties
+        you use are appropriate for your implementation. The properties are
+        arranged here according to the purpose they serve.
+      </p>
+
+      <p class="issue">
+        This registry is a work in progress and some properties are missing
+        normative definitions. We are working on this! This does NOT mean that
+        in future it will be possible to submit items to the registry without
+        normative definitions (see <a href="#the-registration-process"></a>).
+      </p>
+
       <section>
-        <h4><dfn data-lt="@context" data-dfn-type="dfn" id="@context">@context</dfn></h4>
+        <h3>Base properties</h3>
+        <p>
+          These properties are foundational to DID documents, and are expected
+          to be useful to all DID methods.
+        </p>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#production-0">DID Core</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <section>
+          <h4>
+            <dfn data-lt="@context" data-dfn-type="dfn" id="@context"
+              >@context</dfn
+            >
+          </h4>
 
-        <pre class="example" title="Example of @context property">
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://www.w3.org/TR/did-core/#production-0"
+                    >DID Core</a
+                  >
+                </td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pre class="example" title="Example of @context property">
 {
   "@context": [
     "https://www.w3.org/ns/did/v1",
@@ -274,137 +302,159 @@ useful to all DID methods.
   ],
   ...
 }
-        </pre>
+        </pre
+          >
+        </section>
 
-      </section>
+        <section>
+          <h4><dfn data-lt="id" data-dfn-type="dfn" id="id">id</dfn></h4>
 
-      <section>
-        <h4><dfn data-lt="id" data-dfn-type="dfn" id="id">id</dfn></h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://www.w3.org/TR/did-core/#did-subject"
+                    >DID Core</a
+                  >
+                </td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#did-subject">DID Core</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example" title="Example of id property">
+          <pre class="example" title="Example of id property">
 {
   "id": "did:example:123",
   ...
 }
-        </pre>
-      </section>
+        </pre
+          >
+        </section>
 
-      <section>
-        <h4><dfn data-lt="controller" data-dfn-type="dfn" id="controller">controller</dfn></h4>
+        <section>
+          <h4>
+            <dfn data-lt="controller" data-dfn-type="dfn" id="controller"
+              >controller</dfn
+            >
+          </h4>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#authorization-and-delegation">DID Core</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.w3.org/TR/did-core/#authorization-and-delegation"
+                    >DID Core</a
+                  >
+                </td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
 
-        <pre class="example" title="Example of controller property">
+          <pre class="example" title="Example of controller property">
 {
   "controller": "did:example:123",
   ...
 }
-        </pre>
-      </section>
+        </pre
+          >
+        </section>
 
+        <section>
+          <h4>
+            <dfn
+              data-lt="verificationMethod"
+              data-dfn-type="dfn"
+              id="verificationMethod"
+              >verificationMethod</dfn
+            >
+          </h4>
 
-      <section>
-        <h4><dfn data-lt="verificationMethod" data-dfn-type="dfn" id="verificationMethod">verificationMethod</dfn></h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.w3.org/TR/did-core/#dfn-verification-method"
+                    >DID Core Terminology</a
+                  >
+                  <span class="issue">(property definition pending)</span>
+                </td>
+                <td></td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#dfn-verification-method">DID Core Terminology</a> <span class="issue">(property definition pending)</span>
-              </td>
-              <td>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+        <section>
+          <h4>
+            <dfn data-lt="publicKey" data-dfn-type="dfn" id="publicKey"
+              >publicKey</dfn
+            >
+          </h4>
 
-      <section>
-        <h4><dfn data-lt="publicKey" data-dfn-type="dfn" id="publicKey">publicKey</dfn></h4>
+          <p class="issue">
+            This property may be replaced entirely by
+            <code>verificationMethod</code> in DID Core. See
+            <a href="https://github.com/w3c/did-core/issues/283">issue #283</a>.
+          </p>
 
-        <p class="issue">
-This property may be replaced entirely by <code>verificationMethod</code> in
-DID Core. See <a href="https://github.com/w3c/did-core/issues/283">issue
-#283</a>.
-        </p>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://www.w3.org/TR/did-core/#dfn-publickey"
+                    >DID Core</a
+                  >
+                </td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#dfn-publickey">DID Core</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example" title="Example of publicKey property">
+          <pre class="example" title="Example of publicKey property">
 {
   "id": "did:example:123",
   "publicKey": [
@@ -428,35 +478,44 @@ DID Core. See <a href="https://github.com/w3c/did-core/issues/283">issue
     }
   ]
 }
-        </pre>
-      </section>
+        </pre
+          >
+        </section>
 
-      <section>
-        <h4><dfn data-lt="service" data-dfn-type="dfn" id="service">service</dfn></h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#service-endpoints">DID Core</a>
-              </td>
+        <section>
+          <h4>
+            <dfn data-lt="service" data-dfn-type="dfn" id="service"
+              >service</dfn
+            >
+          </h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://www.w3.org/TR/did-core/#service-endpoints"
+                    >DID Core</a
+                  >
+                </td>
 
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
 
-        <pre class="example" title="Example of service and serviceEndpoint properties">
+          <pre
+            class="example"
+            title="Example of service and serviceEndpoint properties"
+          >
 {
   ...
   "service": [{
@@ -465,77 +524,87 @@ DID Core. See <a href="https://github.com/w3c/did-core/issues/283">issue
     "serviceEndpoint": "https://edv.example.com/"
   }]
 }
-        </pre>
+        </pre
+          >
+        </section>
 
+        <section>
+          <h4>
+            <dfn data-lt="proof" data-dfn-type="dfn" id="proof">proof</dfn>
+          </h4>
+          <p class="issue">
+            Subject to removal from DID Core - see
+            <a href="https://github.com/w3c/did-core/issues/293">issue #293</a>.
+          </p>
+
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3c.github.io/did-core/#proof">DID Core</a>
+                </td>
+                <td></td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
       </section>
 
       <section>
-        <h4><dfn data-lt="proof" data-dfn-type="dfn" id="proof">proof</dfn></h4>
-        <p class="issue">
-Subject to removal from DID Core - see
-<a href="https://github.com/w3c/did-core/issues/293">issue #293</a>.
+        <h3>Services</h3>
+        <p>
+          These terms are properties or types belonging to objects in the value
+          of
+          <a>service</a>.
         </p>
+        <section>
+          <h4>
+            <dfn
+              data-lt="serviceEndpoint"
+              data-dfn-type="dfn"
+              id="serviceEndpoint"
+              >serviceEndpoint</dfn
+            >
+          </h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://www.w3.org/TR/did-core/#service-endpoints"
+                    >DID Core</a
+                  >
+                </td>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3c.github.io/did-core/#proof">DID Core</a>
-              </td>
-              <td>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
 
-      </section>
-
-    </section>
-
-    <section>
-      <h3>Services</h3>
-      <p>
-These terms are properties or types belonging to objects in the value of
-<a>service</a>.
-      </p>
-      <section>
-        <h4><dfn data-lt="serviceEndpoint" data-dfn-type="dfn" id="serviceEndpoint">serviceEndpoint</dfn></h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#service-endpoints">DID Core</a>
-              </td>
-
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example" title="Example of service and serviceEndpoint properties">
+          <pre
+            class="example"
+            title="Example of service and serviceEndpoint properties"
+          >
 {
   ...
   "service": [{
@@ -544,45 +613,56 @@ These terms are properties or types belonging to objects in the value of
     "serviceEndpoint": "https://edv.example.com/"
   }]
 }
-        </pre>
-
+        </pre
+          >
+        </section>
       </section>
-    </section>
 
-    <section>
-      <h3>Verification relationships</h3>
-      <p>
-A DID document expresses the relationship between the DID subject and a
-verification method using a
-<a href="https://w3c.github.io/did-core/#dfn-verification-relationship">
-verification relationship</a>.
-      </p>
       <section>
-        <h4><dfn data-lt="assertionMethod" data-dfn-type="dfn" id="assertionMethod">assertionMethod</dfn></h4>
+        <h3>Verification relationships</h3>
+        <p>
+          A DID document expresses the relationship between the DID subject and
+          a verification method using a
+          <a
+            href="https://w3c.github.io/did-core/#dfn-verification-relationship"
+          >
+            verification relationship</a
+          >.
+        </p>
+        <section>
+          <h4>
+            <dfn
+              data-lt="assertionMethod"
+              data-dfn-type="dfn"
+              id="assertionMethod"
+              >assertionMethod</dfn
+            >
+          </h4>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3id.org/security/#assertionMethod">security-vocab</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3id.org/security/#assertionMethod"
+                    >security-vocab</a
+                  >
+                </td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
 
-        <pre class="example" title="Example of assertionMethod property">
+          <pre class="example" title="Example of assertionMethod property">
 {
   ...
   "publicKey": [{
@@ -606,35 +686,44 @@ verification relationship</a>.
   "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
   ]
 }
-        </pre>
-      </section>
+        </pre
+          >
+        </section>
 
-      <section>
-        <h4><dfn data-lt="authentication" data-dfn-type="dfn" id="authentication">authentication</dfn></h4>
+        <section>
+          <h4>
+            <dfn
+              data-lt="authentication"
+              data-dfn-type="dfn"
+              id="authentication"
+              >authentication</dfn
+            >
+          </h4>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#authentication">DID Core</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://www.w3.org/TR/did-core/#authentication"
+                    >DID Core</a
+                  >
+                </td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
 
-        <pre class="example" title="Example of authentication property">
+          <pre class="example" title="Example of authentication property">
 {
   ...
   "publicKey": [{
@@ -658,34 +747,43 @@ verification relationship</a>.
   "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
   ]
 }
-        </pre>
-      </section>
+        </pre
+          >
+        </section>
 
-      <section>
-        <h4><dfn data-lt="capabilityDelegation" data-dfn-type="dfn" id="capabilityDelegation">capabilityDelegation</dfn></h4>
+        <section>
+          <h4>
+            <dfn
+              data-lt="capabilityDelegation"
+              data-dfn-type="dfn"
+              id="capabilityDelegation"
+              >capabilityDelegation</dfn
+            >
+          </h4>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3id.org/security/#capabilityDelegation">security-vocab</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <pre class="example" title="Example of capabilityDelegation property">
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3id.org/security/#capabilityDelegation"
+                    >security-vocab</a
+                  >
+                </td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <pre class="example" title="Example of capabilityDelegation property">
 {
   ...
   "publicKey": [{
@@ -709,34 +807,43 @@ verification relationship</a>.
   "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
   ]
 }
-        </pre>
-      </section>
+        </pre
+          >
+        </section>
 
-      <section>
-        <h4><dfn data-lt="capabilityInvocation" data-dfn-type="dfn" id="capabilityInvocation">capabilityInvocation</dfn></h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3id.org/security/#capabilityInvocation">security-vocab</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <section>
+          <h4>
+            <dfn
+              data-lt="capabilityInvocation"
+              data-dfn-type="dfn"
+              id="capabilityInvocation"
+              >capabilityInvocation</dfn
+            >
+          </h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3id.org/security/#capabilityInvocation"
+                    >security-vocab</a
+                  >
+                </td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
 
-        <pre class="example" title="Example of capabilityInvocation property">
+          <pre class="example" title="Example of capabilityInvocation property">
 {
   ...
   "publicKey": [{
@@ -760,35 +867,41 @@ verification relationship</a>.
   "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
   ]
 }
-        </pre>
-      </section>
+        </pre
+          >
+        </section>
 
-      <section>
-        <h4><dfn data-lt="keyAgreement" data-dfn-type="dfn" id="keyAgreement">keyAgreement</dfn></h4>
+        <section>
+          <h4>
+            <dfn data-lt="keyAgreement" data-dfn-type="dfn" id="keyAgreement"
+              >keyAgreement</dfn
+            >
+          </h4>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3id.org/security/#keyAgreement">security-vocab</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3id.org/security/#keyAgreement"
+                    >security-vocab</a
+                  >
+                </td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
 
-        <pre class="example" title="Example of keyAgreement property">
+          <pre class="example" title="Example of keyAgreement property">
 {
   ...
   "keyAgreement": [
@@ -800,41 +913,54 @@ verification relationship</a>.
     }
   ]
 }
-        </pre>
+        </pre
+          >
+        </section>
       </section>
-    </section>
 
-    <section>
-      <h3>Verification method properties</h3>
-      <p>
-These properties are for use on a verification method object, not on the DID document itself.
-      </p>
       <section>
-        <h4><dfn data-lt="ethereumAddress" data-dfn-type="dfn" id="ethereumAddress">ethereumAddress</dfn></h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#ethereumAddress">ESRS2020</a>
-              </td>
-              <td>
-              </td>
-              <td>
-                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld">esrs2020</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <pre class="example" title="Example of ethereumAddress property">
+        <h3>Verification method properties</h3>
+        <p>
+          These properties are for use on a verification method object, not on
+          the DID document itself.
+        </p>
+        <section>
+          <h4>
+            <dfn
+              data-lt="ethereumAddress"
+              data-dfn-type="dfn"
+              id="ethereumAddress"
+              >ethereumAddress</dfn
+            >
+          </h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#ethereumAddress"
+                    >ESRS2020</a
+                  >
+                </td>
+                <td></td>
+                <td>
+                  <a
+                    href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld"
+                    >esrs2020</a
+                  >
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <pre class="example" title="Example of ethereumAddress property">
 {
   "@context":[
     "https://www.w3.org/ns/did/v1",
@@ -848,35 +974,44 @@ These properties are for use on a verification method object, not on the DID doc
     "ethereumAddress": "0xF3beAC30C498D9E26865F34fCAa57dBB935b0D74"
   }]
 }
-        </pre>
-      </section>
+        </pre
+          >
+        </section>
 
-      <section>
-        <h4><dfn data-lt="publicKeyHex" data-dfn-type="dfn" id="publicKeyHex">publicKeyHex</dfn></h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#publicKeyHex">ESRS2020</a>
-              </td>
-              <td>
-              </td>
-              <td>
-                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld">esrs2020</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <pre class="example" title="Example of publicKeyHex property">
+        <section>
+          <h4>
+            <dfn data-lt="publicKeyHex" data-dfn-type="dfn" id="publicKeyHex"
+              >publicKeyHex</dfn
+            >
+          </h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#publicKeyHex"
+                    >ESRS2020</a
+                  >
+                </td>
+                <td></td>
+                <td>
+                  <a
+                    href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld"
+                    >esrs2020</a
+                  >
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <pre class="example" title="Example of publicKeyHex property">
 {
   "@context":[
     "https://www.w3.org/ns/did/v1",
@@ -890,37 +1025,40 @@ These properties are for use on a verification method object, not on the DID doc
     "publicKeyHex": "027560af3387d375e3342a6968179ef3c6d04f5d33b2b611cf326d4708badd7770"
   }]
 }
-        </pre>
-      </section>
+        </pre
+          >
+        </section>
 
-      <section>
-        <h4><dfn data-lt="publicKeyJwk" data-dfn-type="dfn" id="publicKeyJwk">publicKeyJwk</dfn></h4>
+        <section>
+          <h4>
+            <dfn data-lt="publicKeyJwk" data-dfn-type="dfn" id="publicKeyJwk"
+              >publicKeyJwk</dfn
+            >
+          </h4>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <span class="issue">Normative definition pending</span>
-              </td>
-              <td>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="issue">Normative definition pending</span>
+                </td>
+                <td></td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
 
-        <pre class="example" title="Example of publicKeyJwk property">
+          <pre class="example" title="Example of publicKeyJwk property">
 {
   "id": "did:example:123#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
   "type": "JsonWebKey2020",
@@ -932,106 +1070,128 @@ These properties are for use on a verification method object, not on the DID doc
     "kid": "_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"
   }
 },
-        </pre>
+        </pre
+          >
+        </section>
+
+        <section>
+          <h4>
+            <dfn
+              data-lt="publicKeyBase58"
+              data-dfn-type="dfn"
+              id="publicKeyBase58"
+              >publicKeyBase58</dfn
+            >
+          </h4>
+
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3id.org/security/#publicKeyBase58"
+                    >security-vocab</a
+                  >
+                </td>
+                <td></td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h4>
+            <dfn data-lt="publicKeyPem" data-dfn-type="dfn" id="publicKeyPem"
+              >publicKeyPem</dfn
+            >
+          </h4>
+
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3id.org/security/#publicKeyPem"
+                    >security-vocab</a
+                  >
+                </td>
+                <td></td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
       </section>
 
       <section>
-        <h4><dfn data-lt="publicKeyBase58" data-dfn-type="dfn" id="publicKeyBase58">publicKeyBase58</dfn></h4>
-
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3id.org/security/#publicKeyBase58">security-vocab</a>
-              </td>
-              <td>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-      </section>
-
-      <section>
-        <h4><dfn data-lt="publicKeyPem" data-dfn-type="dfn" id="publicKeyPem">publicKeyPem</dfn></h4>
-
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3id.org/security/#publicKeyPem">security-vocab</a>
-              </td>
-              <td>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-      </section>
-    </section>
-
-    <section>
-      <h3>Verification method types</h3>
-      <p>
-These are <em>classes</em> not a <em>properties</em> - in other words, use them
-for the value of <code>type</code> in a verification method object.
-      </p>
-      <section>
-        <h4><dfn data-lt="JwsVerificationKey2020" data-dfn-type="dfn" id="JwsVerificationKey2020">JwsVerificationKey2020</dfn></h4>
-
-        <p class="issue">
-<a href="https://github.com/w3c/did-core/issues/240">ISSUE 240 on DID Core</a>: The duplication and/or possible interaction of properties held in a JWK and a verification method are an active topic of discussion in the Working Group. Implementers are cautioned that the behavior of values associated with this property are not stable and might change in the future.
+        <h3>Verification method types</h3>
+        <p>
+          These are <em>classes</em> not a <em>properties</em> - in other words,
+          use them for the value of <code>type</code> in a verification method
+          object.
         </p>
+        <section>
+          <h4>
+            <dfn
+              data-lt="JsonWebKey2020"
+              data-dfn-type="dfn"
+              id="JsonWebKey2020"
+              >JsonWebKey2020</dfn
+            >
+          </h4>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <span class="issue">Normative definition pending</span>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          <p class="issue">
+            <a href="https://github.com/w3c/did-core/issues/240"
+              >ISSUE 240 on DID Core</a
+            >: The duplication and/or possible interaction of properties held in
+            a JWK and a verification method are an active topic of discussion in
+            the Working Group. Implementers are cautioned that the behavior of
+            values associated with this property are not stable and might change
+            in the future.
+          </p>
 
-        <pre class="example" title="Example of JwsVerificationKey2020 class">
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="issue">Normative definition pending</span>
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pre class="example" title="Example of JsonWebKey2020 class">
   {
     "id": "did:example:123#_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw",
-    "type": "JwsVerificationKey2020",
+    "type": "JsonWebKey2020",
     "controller": "did:example:123",
     "publicKeyJwk": {
       "crv": "P-256",
@@ -1041,34 +1201,46 @@ for the value of <code>type</code> in a verification method object.
       "kid": "_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw"
     }
   }
-        </pre>
-      </section>
-      <section>
-        <h4><dfn data-lt="EcdsaSecp256k1VerificationKey2019" data-dfn-type="dfn" id="EcdsaSecp256k1VerificationKey2019">EcdsaSecp256k1VerificationKey2019</dfn></h4>
+        </pre
+          >
+        </section>
+        <section>
+          <h4>
+            <dfn
+              data-lt="EcdsaSecp256k1VerificationKey2019"
+              data-dfn-type="dfn"
+              id="EcdsaSecp256k1VerificationKey2019"
+              >EcdsaSecp256k1VerificationKey2019</dfn
+            >
+          </h4>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/">Ecdsa Secp256k1 Signature 2019</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/"
+                    >Ecdsa Secp256k1 Signature 2019</a
+                  >
+                </td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
 
-        <pre class="example" title="Example of EcdsaSecp256k1VerificationKey2019 class">
+          <pre
+            class="example"
+            title="Example of EcdsaSecp256k1VerificationKey2019 class"
+          >
 {
   "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
   "type": "EcdsaSecp256k1VerificationKey2019",
@@ -1081,76 +1253,102 @@ for the value of <code>type</code> in a verification method object.
     "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
   }
 }
-        </pre>
-      </section>
+        </pre
+          >
+        </section>
 
-      <section>
-        <h4><dfn data-lt="Ed25519VerificationKey2018" data-dfn-type="dfn" id="Ed25519VerificationKey2018">Ed25519VerificationKey2018</dfn></h4>
+        <section>
+          <h4>
+            <dfn
+              data-lt="Ed25519VerificationKey2018"
+              data-dfn-type="dfn"
+              id="Ed25519VerificationKey2018"
+              >Ed25519VerificationKey2018</dfn
+            >
+          </h4>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3c-ccg.github.io/lds-ed25519-2018/">Ed25519 Signature 2018</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3c-ccg.github.io/lds-ed25519-2018/"
+                    >Ed25519 Signature 2018</a
+                  >
+                </td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
 
-        <pre class="example" title="Example of Ed25519VerificationKey2018 class">
+          <pre
+            class="example"
+            title="Example of Ed25519VerificationKey2018 class"
+          >
           {
             "id": "did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec",
             "type": "Ed25519VerificationKey2018",
             "controller": "did:example:123",
             "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
           }
-        </pre>
-      </section>
+        </pre
+          >
+        </section>
 
-      <section>
-        <h4><dfn data-lt="GpgVerificationKey2020" data-dfn-type="dfn" id="GpgVerificationKey2020">GpgVerificationKey2020</dfn></h4>
-        <p class="warning">
-          No support for "Pure JSON" or "CBOR" is currently provided.
-        </p>
+        <section>
+          <h4>
+            <dfn
+              data-lt="GpgVerificationKey2020"
+              data-dfn-type="dfn"
+              id="GpgVerificationKey2020"
+              >GpgVerificationKey2020</dfn
+            >
+          </h4>
+          <p class="warning">
+            No support for "Pure JSON" or "CBOR" is currently provided.
+          </p>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://gpg.jsld.org/contexts/#GpgVerificationKey2020">Linked Data Signatures for GPG</a>
-              </td>
-              <td>
-                Not supported
-              </td>
-              <td>
-                <a href="https://gpg.jsld.org/contexts/lds-gpg2020-v0.0.jsonld">gpg.jsld.org</a>
-              </td>
-              <td>
-                Not supported
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <pre class="example">
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://gpg.jsld.org/contexts/#GpgVerificationKey2020"
+                    >Linked Data Signatures for GPG</a
+                  >
+                </td>
+                <td>
+                  Not supported
+                </td>
+                <td>
+                  <a
+                    href="https://gpg.jsld.org/contexts/lds-gpg2020-v0.0.jsonld"
+                    >gpg.jsld.org</a
+                  >
+                </td>
+                <td>
+                  Not supported
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pre class="example">
 {
   "@context":[
     "https://www.w3.org/ns/did/v1",
@@ -1164,71 +1362,84 @@ for the value of <code>type</code> in a verification method object.
     "publicKeyGpg": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.9.0\r\nComment: https://openpgpjs.org\r\n\r\nxjMEXkm5LRYJKwYBBAHaRw8BAQdASmfrjYr7vrjwHNiBsdcImK397Vc3t4BL\r\nE8rnN......v6\r\nDw==\r\n=wSoi\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
   }]
 }
-        </pre>
-      </section>
+        </pre
+          >
+        </section>
 
-      <section>
-        <h4><dfn data-lt="RsaVerificationKey2018" data-dfn-type="dfn" id="RsaVerificationKey2018">RsaVerificationKey2018</dfn></h4>
+        <section>
+          <h4>
+            <dfn
+              data-lt="RsaVerificationKey2018"
+              data-dfn-type="dfn"
+              id="RsaVerificationKey2018"
+              >RsaVerificationKey2018</dfn
+            >
+          </h4>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3c-ccg.github.io/lds-rsa2018/">RSA Signature Suite 2018</a>
-              </td>
-              <td>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <pre class="example">
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3c-ccg.github.io/lds-rsa2018/"
+                    >RSA Signature Suite 2018</a
+                  >
+                </td>
+                <td></td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <pre class="example">
   {
     "id": "did:example:123#key-0",
     "type": "RsaVerificationKey2018",
     "controller": "did:example:123",
     "publicKeyPem": "-----BEGIN PUBLIC KEY...END PUBLIC KEY-----\r\n"
   }
-        </pre>
-      </section>
+        </pre
+          >
+        </section>
 
-      <section>
-        <h4><dfn data-lt="X25519KeyAgreementKey2019" data-dfn-type="dfn" id="X25519KeyAgreementKey2019">X25519KeyAgreementKey2019</dfn></h4>
+        <section>
+          <h4>
+            <dfn
+              data-lt="X25519KeyAgreementKey2019"
+              data-dfn-type="dfn"
+              id="X25519KeyAgreementKey2019"
+              >X25519KeyAgreementKey2019</dfn
+            >
+          </h4>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <span class="issue">Normative definition pending</span>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <pre class="example" title="Example of X25519KeyAgreementKey2019">
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="issue">Normative definition pending</span>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <pre class="example" title="Example of X25519KeyAgreementKey2019">
   {
     ...
     "keyAgreement": [
@@ -1240,65 +1451,87 @@ for the value of <code>type</code> in a verification method object.
       }
     ]
   }
-        </pre>
+        </pre
+          >
+        </section>
 
-      </section>
+        <section>
+          <h4>
+            <dfn
+              data-lt="SchnorrSecp256k1VerificationKey2019"
+              data-dfn-type="dfn"
+              id="SchnorrSecp256k1VerificationKey2019"
+              >SchnorrSecp256k1VerificationKey2019</dfn
+            >
+          </h4>
 
-      <section>
-        <h4><dfn data-lt="SchnorrSecp256k1VerificationKey2019" data-dfn-type="dfn" id="SchnorrSecp256k1VerificationKey2019">SchnorrSecp256k1VerificationKey2019</dfn></h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://w3id.org/security/#SchnorrSecp256k1VerificationKey2019"
+                    >security-vocab</a
+                  >
+                  <span class="issue"
+                    >Link is to a placeholder! Definition pending</span
+                  >
+                </td>
+                <td></td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
 
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3id.org/security/#SchnorrSecp256k1VerificationKey2019">security-vocab</a> <span class="issue">Link is to a placeholder! Definition pending</span>
-              </td>
-              <td>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+        <section>
+          <h4>
+            <dfn
+              data-lt="EcdsaSecp256k1RecoveryMethod2020"
+              data-dfn-type="dfn"
+              id="EcdsaSecp256k1RecoveryMethod2020"
+              >EcdsaSecp256k1RecoveryMethod2020</dfn
+            >
+          </h4>
 
-      <section>
-        <h4><dfn data-lt="EcdsaSecp256k1RecoveryMethod2020" data-dfn-type="dfn" id="EcdsaSecp256k1RecoveryMethod2020">EcdsaSecp256k1RecoveryMethod2020</dfn></h4>
-
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#ES256K-R">ESRS2020</a>
-              </td>
-              <td>
-              </td>
-              <td>
-                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld">esrs2020</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <pre class="example">
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#ES256K-R"
+                    >ESRS2020</a
+                  >
+                </td>
+                <td></td>
+                <td>
+                  <a
+                    href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld"
+                    >esrs2020</a
+                  >
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <pre class="example">
 {
 "@context":[
   "https://www.w3.org/ns/did/v1",
@@ -1330,996 +1563,1128 @@ for the value of <code>type</code> in a verification method object.
     "ethereumAddress": "0xF3beAC30C498D9E26865F34fCAa57dBB935b0D74"
   }]
 }
-        </pre>
-      </section>
-
-    </section>
-
-    <section>
-      <h3>DID resolution input metadata</h3>
-      <p>
-These properties contain information pertaining to the DID resolution request.
-      </p>
-
-      <section>
-        <h4><dfn data-lt="accept" data-dfn-type="dfn" id="accept">accept</dfn></h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </section>
-
-    <section>
-      <h3>DID resolution metadata</h3>
-      <p>
-These properties contain information pertaining to the DID resolution response.
-      </p>
-      <section>
-        <h4><dfn data-lt="content-type" data-dfn-type="dfn" id="content-type">content-type</dfn></h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        </pre
+          >
+        </section>
       </section>
 
       <section>
-        <h4><dfn data-lt="error" data-dfn-type="dfn" id="error">error</dfn></h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <h3>DID resolution input metadata</h3>
+        <p>
+          These properties contain information pertaining to the DID resolution
+          request.
+        </p>
+
+        <section>
+          <h4>
+            <dfn data-lt="accept" data-dfn-type="dfn" id="accept">accept</dfn>
+          </h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
       </section>
 
       <section>
-        <h4><dfn data-lt="invalid-did" data-dfn-type="dfn" id="invalid-did">invalid-did</dfn></h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <h3>DID resolution metadata</h3>
+        <p>
+          These properties contain information pertaining to the DID resolution
+          response.
+        </p>
+        <section>
+          <h4>
+            <dfn data-lt="content-type" data-dfn-type="dfn" id="content-type"
+              >content-type</dfn
+            >
+          </h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h4>
+            <dfn data-lt="error" data-dfn-type="dfn" id="error">error</dfn>
+          </h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h4>
+            <dfn data-lt="invalid-did" data-dfn-type="dfn" id="invalid-did"
+              >invalid-did</dfn
+            >
+          </h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h4>
+            <dfn data-lt="unauthorized" data-dfn-type="dfn" id="unauthorized"
+              >unauthorized</dfn
+            >
+          </h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
       </section>
 
       <section>
-        <h4><dfn data-lt="unauthorized" data-dfn-type="dfn" id="unauthorized">unauthorized</dfn></h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </section>
+        <h3>DID document metadata</h3>
+        <p>
+          These properties contain information pertaining to the DID document
+          itself, rather than the DID subject.
+        </p>
+        <section>
+          <h4>
+            <dfn data-lt="created" data-dfn-type="dfn" id="created"
+              >created</dfn
+            >
+          </h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
 
-    <section>
-      <h3>DID document metadata</h3>
-      <p>
-These properties contain information pertaining to the DID document itself,
-rather than the DID subject.
-      </p>
-      <section>
-        <h4><dfn data-lt="created" data-dfn-type="dfn" id="created">created</dfn></h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://www.w3.org/TR/did-core/#created">DID Core</a>
+                </td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td>
+                  CBOR
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#created">DID Core</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-                CBOR
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example">
+          <pre class="example">
 {
   "created": "2002-10-10T17:00:00Z"
 }
-        </pre>
+        </pre
+          >
+        </section>
+
+        <section>
+          <h4>
+            <dfn data-lt="updated" data-dfn-type="dfn" id="updated"
+              >updated</dfn
+            >
+          </h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CBOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://www.w3.org/TR/did-core/#updated">DID Core</a>
+                </td>
+
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                </td>
+                <td>
+                  CBOR
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pre class="example" title="Example of updated property">
+{
+  "updated": "2016-10-17T02:41:00Z"
+}
+        </pre
+          >
+        </section>
       </section>
+    </section>
+
+    <section>
+      <h1>Parameters</h1>
 
       <section>
-        <h4><dfn data-lt="updated" data-dfn-type="dfn" id="updated">updated</dfn></h4>
+        <h4><dfn data-lt="hl" data-dfn-type="dfn" id="hl">hl</dfn></h4>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
               <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
-                <a href="https://www.w3.org/TR/did-core/#updated">DID Core</a>
-              </td>
-
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-                CBOR
+                <a
+                  href="http://w3c.github.io/did-core/#generic-did-url-parameters"
+                  >DID Core</a
+                >
               </td>
             </tr>
           </tbody>
         </table>
 
-        <pre class="example" title="Example of updated property">
-{
-  "updated": "2016-10-17T02:41:00Z"
-}
-        </pre>
+        <pre class="example" title="Example of hl parameter">
+did:example:123?hl=zQmWvQxTqbG2Z9HPJgG57jjwR154cKhbtJenbyYTWkjgF3e
+      </pre
+        >
+      </section>
 
+      <section>
+        <h4>
+          <dfn data-lt="service" data-dfn-type="dfn" id="service">service</dfn>
+        </h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a
+                  href="http://w3c.github.io/did-core/#generic-did-url-parameters"
+                  >DID Core</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service parameter">
+did:example:123?service=agent
+      </pre
+        >
+      </section>
+
+      <section>
+        <h4>
+          <dfn data-lt="version-id" data-dfn-type="dfn" id="version-id"
+            >version-id</dfn
+          >
+        </h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a
+                  href="http://w3c.github.io/did-core/#generic-did-url-parameters"
+                  >DID Core</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of version-id parameter">
+did:example:123?version-id=4
+      </pre
+        >
+      </section>
+
+      <section>
+        <h4>
+          <dfn data-lt="version-time" data-dfn-type="dfn" id="version-time"
+            >version-time</dfn
+          >
+        </h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a
+                  href="http://w3c.github.io/did-core/#generic-did-url-parameters"
+                  >DID Core</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of version-time parameter">
+did:example:123?version-time=2016-10-17T02:41:00Z
+      </pre
+        >
+      </section>
+
+      <section>
+        <h4>
+          <dfn data-lt="initial-state" data-dfn-type="dfn" id="initial-state"
+            >initial-state</dfn
+          >
+        </h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a
+                  href="https://github.com/decentralized-identity/did-spec-extensions/blob/master/parameters/initial-state.md"
+                  >DID Spec Extensions by DIF</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of initial-state parameter">
+did:example:123?initial-state=eyJkZWx0YV9oYXNoIjoiRWlDUlRKZ2Q0U0V2YUZDLW9fNUZjQnZJUkRtWF94Z3RLX3g...
+      </pre
+        >
+      </section>
+
+      <section>
+        <h4>
+          <dfn data-lt="transform-keys" data-dfn-type="dfn" id="transform-keys"
+            >transform-keys</dfn
+          >
+        </h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a
+                  href="https://github.com/decentralized-identity/did-spec-extensions/blob/master/parameters/transform-keys.md"
+                  >DID Spec Extensions by DIF</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of transform-keys parameter">
+did:example:123?transform-keys=jwk
+      </pre
+        >
       </section>
     </section>
 
-  </section>
-
-  <section>
-
-    <h1>Parameters</h1>
-
     <section>
-      <h4><dfn data-lt="hl" data-dfn-type="dfn" id="hl">hl</dfn></h4>
-      <table class="simple" style="width: 100%;">
+      <h1>DID Methods</h1>
+
+      <p>
+        This table summarizes the DID method specifications currently in
+        development. The links will be updated as subsequent Implementer’s
+        Drafts are produced.
+      </p>
+
+      <table class="simple">
         <thead>
           <tr>
-            <th>Normative Definition</th>
+            <th>Method Name</th>
+            <th>Status</th>
+            <th>DLT or Network</th>
+            <th>Authors</th>
+            <th>Link</th>
           </tr>
         </thead>
+
         <tbody>
           <tr>
             <td>
-              <a href="http://w3c.github.io/did-core/#generic-did-url-parameters">DID Core</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <pre class="example" title="Example of hl parameter">
-did:example:123?hl=zQmWvQxTqbG2Z9HPJgG57jjwR154cKhbtJenbyYTWkjgF3e
-      </pre>
-    </section>
-
-    <section>
-      <h4><dfn data-lt="service" data-dfn-type="dfn" id="service">service</dfn></h4>
-      <table class="simple" style="width: 100%;">
-        <thead>
-          <tr>
-            <th>Normative Definition</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <a href="http://w3c.github.io/did-core/#generic-did-url-parameters">DID Core</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <pre class="example" title="Example of service parameter">
-did:example:123?service=agent
-      </pre>
-    </section>
-
-    <section>
-      <h4><dfn data-lt="version-id" data-dfn-type="dfn" id="version-id">version-id</dfn></h4>
-      <table class="simple" style="width: 100%;">
-        <thead>
-          <tr>
-            <th>Normative Definition</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <a href="http://w3c.github.io/did-core/#generic-did-url-parameters">DID Core</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <pre class="example" title="Example of version-id parameter">
-did:example:123?version-id=4
-      </pre>
-    </section>
-
-    <section>
-      <h4><dfn data-lt="version-time" data-dfn-type="dfn" id="version-time">version-time</dfn></h4>
-      <table class="simple" style="width: 100%;">
-        <thead>
-          <tr>
-            <th>Normative Definition</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <a href="http://w3c.github.io/did-core/#generic-did-url-parameters">DID Core</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <pre class="example" title="Example of version-time parameter">
-did:example:123?version-time=2016-10-17T02:41:00Z
-      </pre>
-    </section>
-
-    <section>
-      <h4><dfn data-lt="initial-state" data-dfn-type="dfn" id="initial-state">initial-state</dfn></h4>
-      <table class="simple" style="width: 100%;">
-        <thead>
-          <tr>
-            <th>Normative Definition</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/master/parameters/initial-state.md">DID Spec Extensions by DIF</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <pre class="example" title="Example of initial-state parameter">
-did:example:123?initial-state=eyJkZWx0YV9oYXNoIjoiRWlDUlRKZ2Q0U0V2YUZDLW9fNUZjQnZJUkRtWF94Z3RLX3g...
-      </pre>
-    </section>
-
-    <section>
-      <h4><dfn data-lt="transform-keys" data-dfn-type="dfn" id="transform-keys">transform-keys</dfn></h4>
-      <table class="simple" style="width: 100%;">
-        <thead>
-          <tr>
-            <th>Normative Definition</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/master/parameters/transform-keys.md">DID Spec Extensions by DIF</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <pre class="example" title="Example of transform-keys parameter">
-did:example:123?transform-keys=jwk
-      </pre>
-    </section>
-
-  </section>
-
-  <section>
-    <h1>DID Methods</h1>
-
-
-    <p>
-This table summarizes the DID method specifications currently in development.
-The links will be updated as subsequent Implementer’s Drafts are produced.
-    </p>
-
-    <table class="simple">
-      <thead>
-        <tr>
-          <th>Method Name</th>
-          <th>Status</th>
-          <th>DLT or Network</th>
-          <th>Authors</th>
-          <th>Link</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>
               did:abt:
-          </td>
-          <td>
+            </td>
+            <td>
               PROVISIONAL
-          </td>
-          <td>
+            </td>
+            <td>
               ABT Network
-          </td>
-          <td>
+            </td>
+            <td>
               ArcBlock
-          </td>
-          <td>
-              <a href="https://arcblock.github.io/abt-did-spec/">ABT DID Method</a>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-              did:btcr:
-          </td>
-          <td>
-              PROVISIONAL
-          </td>
-          <td>
-              Bitcoin
-          </td>
-          <td>
-              Christopher Allen, Ryan Grant, Kim Hamilton Duffy
-          </td>
-          <td>
-            <a href="https://w3c-ccg.github.io/didm-btcr">BTCR DID Method</a>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-              did:stack:
-          </td>
-          <td>
-              PROVISIONAL
-          </td>
-          <td>
-              Bitcoin
-          </td>
-          <td>
-              Jude Nelson
-          </td>
-          <td>
-             <a href="https://github.com/blockstack/blockstack-core/blob/stacks-1.0/docs/blockstack-did-spec.md">Blockstack DID Method</a>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-              did:erc725:
-          </td>
-          <td>
-              PROVISIONAL
-          </td>
-          <td>
-              Ethereum
-          </td>
-          <td>
-              Markus Sabadello, Fabian Vogelsteller, Peter Kolarov
-          </td>
-          <td>
-            <a href="https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-spring2018/blob/master/topics-and-advance-readings/DID-Method-erc725.md">erc725 DID Method</a>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-              did:example:
-          </td>
-          <td>
-              PROVISIONAL
-          </td>
-          <td>
-              DID Specification
-          </td>
-          <td>
-              W3C Credentials Community Group
-          </td>
-          <td>
-            <a href="https://w3c-ccg.github.io/did-spec/">DID Specification</a>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-              did:ipid:
-          </td>
-          <td>
-              PROVISIONAL
-          </td>
-          <td>
-              IPFS
-          </td>
-          <td>
-              TranSendX
-          </td>
-          <td>
-            <a href="https://did-ipid.github.io/ipid-did-method/">IPID DID method</a>
-          </td>
-        </tr>
-
-        <tr>
-            <td>
-                did:life:
             </td>
             <td>
-                PROVISIONAL
-            </td>
-            <td>
-                RChain
-            </td>
-            <td>
-                lifeID Foundation
-            </td>
-            <td>
-              <a href="https://lifeid.github.io/did-method-spec/">lifeID DID Method</a>
+              <a href="https://arcblock.github.io/abt-did-spec/"
+                >ABT DID Method</a
+              >
             </td>
           </tr>
 
-        <tr>
-          <td>
-              did:sov:
-          </td>
-          <td>
+          <tr>
+            <td>
+              did:btcr:
+            </td>
+            <td>
               PROVISIONAL
-          </td>
-          <td>
-              Sovrin
-          </td>
-          <td>
-              Mike Lodder
-          </td>
-          <td>
-            <a href="https://sovrin-foundation.github.io/sovrin/spec/did-method-spec-template.html">Sovrin DID Method</a>
-          </td>
-        </tr>
+            </td>
+            <td>
+              Bitcoin
+            </td>
+            <td>
+              Christopher Allen, Ryan Grant, Kim Hamilton Duffy
+            </td>
+            <td>
+              <a href="https://w3c-ccg.github.io/didm-btcr">BTCR DID Method</a>
+            </td>
+          </tr>
 
-        <tr>
-          <td>
-              did:uport:
-          </td>
-          <td>
-              DEPRECATED
-          </td>
-          <td>
+          <tr>
+            <td>
+              did:stack:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Bitcoin
+            </td>
+            <td>
+              Jude Nelson
+            </td>
+            <td>
+              <a
+                href="https://github.com/blockstack/blockstack-core/blob/stacks-1.0/docs/blockstack-did-spec.md"
+                >Blockstack DID Method</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              did:erc725:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
               Ethereum
-          </td>
-          <td>
-              uPort
-          </td>
-          <td>
-          </td>
-        </tr>
+            </td>
+            <td>
+              Markus Sabadello, Fabian Vogelsteller, Peter Kolarov
+            </td>
+            <td>
+              <a
+                href="https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-spring2018/blob/master/topics-and-advance-readings/DID-Method-erc725.md"
+                >erc725 DID Method</a
+              >
+            </td>
+          </tr>
 
-        <tr>
+          <tr>
             <td>
-                did:ethr:
+              did:example:
             </td>
             <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Ethereum
-            </td>
-            <td>
-                uPort
-            </td>
-            <td>
-                <a href="https://github.com/uport-project/ethr-did-resolver/blob/develop/doc/did-method-spec.md">ETHR DID Method</a>
-            </td>
-        </tr>
-
-        <tr>
-          <td>
-              did:v1:
-          </td>
-          <td>
               PROVISIONAL
-          </td>
-          <td>
-              Veres One
-          </td>
-          <td>
-              Digital Bazaar
-          </td>
-          <td>
-            <a href="https://w3c-ccg.github.io/did-method-v1/">Veres One DID Method</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-              did:com:
-          </td>
-          <td>
-              PROVISIONAL
-          </td>
-          <td>
-              commercio.network
-          </td>
-          <td>
-              Commercio Consortium
-          </td>
-          <td>
-              <a href="https://github.com/commercionetwork/Commercio.network-DID-Method-Specification/">Commercio.network DID Method</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-              did:dom:
-          </td>
-          <td>
-              PROVISIONAL
-          </td>
-          <td>
-              Ethereum
-          </td>
-          <td>
-              Dominode
-          </td>
-          <td>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-              did:ont:
-          </td>
-          <td>
-              PROVISIONAL
-          </td>
-          <td>
-              Ontology
-          </td>
-          <td>
-              Ontology Foundation
-          </td>
-          <td>
-            <a href="https://github.com/ontio/ontology-DID/blob/master/docs/en/DID-ONT-method.md">Ontology DID Method</a>
-          </td>
-        </tr>
-
-            <tr>
-          <td>
-              did:vvo:
-          </td>
-          <td>
-              PROVISIONAL
-          </td>
-          <td>
-              Vivvo
-          </td>
-          <td>
-              Vivvo Application Studios
-          </td>
-          <td>
-            <a href="https://vivvo.github.io/vivvo-did-scheme/spec/did-method-spec-template.html">Vivvo DID Method</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-              did:aergo:
-          </td>
-          <td>
-              PROVISIONAL
-          </td>
-          <td>
-              <a href="https://www.aergo.io/">Aergo</a>
-          </td>
-          <td>
-              <a href="https://www.blocko.io/">Blocko</a>
-          </td>
-          <td>
-              <a href="https://github.com/aergoio/aergo-identity/blob/master/doc/did-method-spec.md">Aergo DID Method</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-              did:icon:
-          </td>
-          <td>
-              PROVISIONAL
-          </td>
-          <td>
-              ICON
-          </td>
-          <td>
-              ICONLOOP
-          </td>
-          <td>
-            <a href="https://github.com/icon-project/icon-DID/blob/master/docs/ICON-DID-method.md">ICON DID Method</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-              did:iwt:
-          </td>
-          <td>
-              PROVISIONAL
-          </td>
-          <td>
-              InfoWallet
-          </td>
-          <td>
-              Raonsecure
-          </td>
-          <td>
-            <a href="https://github.com/infowallet/did_method/blob/master/did_method.md">InfoWallet DID Method</a>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-              did:ockam:
-          </td>
-          <td>
-              PROVISIONAL
-          </td>
-          <td>
-              Ockam
-          </td>
-          <td>
-              Ockam
-          </td>
-          <td>
-            <a href="https://github.com/ockam-network/did-method-spec/blob/master/README.md">Ockam DID Method</a>
-          </td>
-        </tr>
-
-        <tr>
-            <td>
-                did:ala:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Alastria
-            </td>
-            <td>
-                Alastria National Blockchain Ecosystem
-            </td>
-            <td>
-              <a href="https://github.com/alastria/alastria-identity/wiki/Alastria-DID-Method-Specification-(Quorum-version)">Alastria DID Method</a>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                did:op:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Ocean Protocol
-            </td>
-            <td>
-                Ocean Protocol
-            </td>
-            <td>
-              <a href="https://github.com/oceanprotocol/OEPs/blob/master/7/v0.2/README.md">Ocean Protocol DID Method</a>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                did:jlinc:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                JLINC Protocol
-            </td>
-            <td>
-                Victor Grey
-            </td>
-            <td>
-              <a href="https://did-spec.jlinc.org/">JLINC Protocol DID Method</a>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                did:ion:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Bitcoin
-            </td>
-            <td>
-                Various DIF contributors
-            </td>
-            <td>
-              <a href="https://github.com/decentralized-identity/ion-did-method">ION DID Method</a>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                did:jolo:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Ethereum
-            </td>
-            <td>
-                Jolocom
-            </td>
-            <td>
-              <a href="https://github.com/jolocom/jolocom-did-driver/blob/master/jolocom-did-method-specification.md">Jolocom DID Method</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                did:bryk:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                bryk
-            </td>
-            <td>
-                Marcos Allende, Sandra Murcia, Flavia Munhoso, Ruben Cessa
-            </td>
-            <td>
-                <a href="https://github.com/bryk-io/did-method/blob/master/README.md">bryk DID Method</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                did:peer:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                peer
-            </td>
-            <td>
-                Daniel Hardman
-            </td>
-            <td>
-                <a href="https://openssi.github.io/peer-did-method-spec/index.html">peer DID Method</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                did:selfkey:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Ethereum
-            </td>
-            <td>
-                SelfKey
-            </td>
-            <td>
-                <a href="https://github.com/SelfKeyFoundation/selfkey-identity/blob/develop/DIDMethodSpecs.md">SelfKey DID Method</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                did:meta:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Metadium
-            </td>
-            <td>
-                Metadium Foundation
-            </td>
-            <td>
-                <a href="https://github.com/METADIUM/meta-DID/blob/master/doc/DID-method-metadium.md">Metadium DID Method</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                did:tys:
-            </td>
-            <td>
-                PROVISIONAL
             </td>
             <td>
               DID Specification
             </td>
             <td>
-                Chainyard
+              W3C Credentials Community Group
             </td>
             <td>
-                <a href="https://github.com/chainyard-tys/tys/blob/master/README.md">TYS DID Method</a>
+              <a href="https://w3c-ccg.github.io/did-spec/"
+                >DID Specification</a
+              >
             </td>
-        </tr>
-        <tr>
+          </tr>
+
+          <tr>
             <td>
-                did:git:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                DID Specification
+              did:ipid:
             </td>
             <td>
-                Internet Identity Workshop
+              PROVISIONAL
             </td>
             <td>
-                <a href="https://github.com/dhuseby/did-git-spec/blob/master/did-git-spec.md">Git DID Method</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                did:tangle:
+              IPFS
             </td>
             <td>
-                PROVISIONAL
+              TranSendX
             </td>
             <td>
-                IOTA Tangle
+              <a href="https://did-ipid.github.io/ipid-did-method/"
+                >IPID DID method</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              did:life:
             </td>
             <td>
-                BiiLabs Co., Ltd.
+              PROVISIONAL
             </td>
             <td>
-                <a href="https://github.com/TangleID/TangleID/blob/develop/did-method-spec.md">TangleID DID Method</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                did:emtrust:
+              RChain
             </td>
             <td>
-                PROVISIONAL
+              lifeID Foundation
             </td>
             <td>
-                Hyperledger Fabric
+              <a href="https://lifeid.github.io/did-method-spec/"
+                >lifeID DID Method</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              did:sov:
             </td>
             <td>
-                Halialabs Pte Ltd.
+              PROVISIONAL
             </td>
             <td>
-                <a href="https://github.com/Halialabs/did-spec/blob/gh-pages/readme.md">Emtrust DID Method</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                did:ttm:
+              Sovrin
             </td>
             <td>
-                PROVISIONAL
+              Mike Lodder
             </td>
             <td>
-                TMChain
+              <a
+                href="https://sovrin-foundation.github.io/sovrin/spec/did-method-spec-template.html"
+                >Sovrin DID Method</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              did:uport:
             </td>
             <td>
-                Token.TM
+              DEPRECATED
             </td>
             <td>
-                <a href="https://github.com/TokenTM/TM-DID/blob/master/docs/en/DID_spec.md">TM DID Method</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                did:wlk:
+              Ethereum
             </td>
             <td>
-                PROVISIONAL
+              uPort
+            </td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td>
+              did:ethr:
             </td>
             <td>
-                Weelink Network
+              PROVISIONAL
             </td>
             <td>
-                Weelink
+              Ethereum
             </td>
             <td>
-                <a href="https://weelink-team.github.io/weelink/DIDDesignEn">Weelink DID Method</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                did:pistis:
+              uPort
             </td>
             <td>
-                PROVISIONAL
+              <a
+                href="https://github.com/uport-project/ethr-did-resolver/blob/develop/doc/did-method-spec.md"
+                >ETHR DID Method</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              did:v1:
             </td>
             <td>
-                Ethereum
+              PROVISIONAL
             </td>
             <td>
-                Andrea Taglia, Matteo Sinico
+              Veres One
             </td>
             <td>
-                <a href="https://github.com/uino95/ssi/blob/consensys/dashboard/server/pistis/pistis-did-resolver/README.md">Pistis DID Method</a>
+              Digital Bazaar
             </td>
-        </tr>
-        <tr>
+            <td>
+              <a href="https://w3c-ccg.github.io/did-method-v1/"
+                >Veres One DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:com:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              commercio.network
+            </td>
+            <td>
+              Commercio Consortium
+            </td>
+            <td>
+              <a
+                href="https://github.com/commercionetwork/Commercio.network-DID-Method-Specification/"
+                >Commercio.network DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:dom:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Ethereum
+            </td>
+            <td>
+              Dominode
+            </td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td>
+              did:ont:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Ontology
+            </td>
+            <td>
+              Ontology Foundation
+            </td>
+            <td>
+              <a
+                href="https://github.com/ontio/ontology-DID/blob/master/docs/en/DID-ONT-method.md"
+                >Ontology DID Method</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              did:vvo:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Vivvo
+            </td>
+            <td>
+              Vivvo Application Studios
+            </td>
+            <td>
+              <a
+                href="https://vivvo.github.io/vivvo-did-scheme/spec/did-method-spec-template.html"
+                >Vivvo DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:aergo:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              <a href="https://www.aergo.io/">Aergo</a>
+            </td>
+            <td>
+              <a href="https://www.blocko.io/">Blocko</a>
+            </td>
+            <td>
+              <a
+                href="https://github.com/aergoio/aergo-identity/blob/master/doc/did-method-spec.md"
+                >Aergo DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:icon:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              ICON
+            </td>
+            <td>
+              ICONLOOP
+            </td>
+            <td>
+              <a
+                href="https://github.com/icon-project/icon-DID/blob/master/docs/ICON-DID-method.md"
+                >ICON DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:iwt:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              InfoWallet
+            </td>
+            <td>
+              Raonsecure
+            </td>
+            <td>
+              <a
+                href="https://github.com/infowallet/did_method/blob/master/did_method.md"
+                >InfoWallet DID Method</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              did:ockam:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Ockam
+            </td>
+            <td>
+              Ockam
+            </td>
+            <td>
+              <a
+                href="https://github.com/ockam-network/did-method-spec/blob/master/README.md"
+                >Ockam DID Method</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              did:ala:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Alastria
+            </td>
+            <td>
+              Alastria National Blockchain Ecosystem
+            </td>
+            <td>
+              <a
+                href="https://github.com/alastria/alastria-identity/wiki/Alastria-DID-Method-Specification-(Quorum-version)"
+                >Alastria DID Method</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              did:op:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Ocean Protocol
+            </td>
+            <td>
+              Ocean Protocol
+            </td>
+            <td>
+              <a
+                href="https://github.com/oceanprotocol/OEPs/blob/master/7/v0.2/README.md"
+                >Ocean Protocol DID Method</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              did:jlinc:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              JLINC Protocol
+            </td>
+            <td>
+              Victor Grey
+            </td>
+            <td>
+              <a href="https://did-spec.jlinc.org/"
+                >JLINC Protocol DID Method</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              did:ion:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Bitcoin
+            </td>
+            <td>
+              Various DIF contributors
+            </td>
+            <td>
+              <a href="https://github.com/decentralized-identity/ion-did-method"
+                >ION DID Method</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              did:jolo:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Ethereum
+            </td>
+            <td>
+              Jolocom
+            </td>
+            <td>
+              <a
+                href="https://github.com/jolocom/jolocom-did-driver/blob/master/jolocom-did-method-specification.md"
+                >Jolocom DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:bryk:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              bryk
+            </td>
+            <td>
+              Marcos Allende, Sandra Murcia, Flavia Munhoso, Ruben Cessa
+            </td>
+            <td>
+              <a
+                href="https://github.com/bryk-io/did-method/blob/master/README.md"
+                >bryk DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:peer:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              peer
+            </td>
+            <td>
+              Daniel Hardman
+            </td>
+            <td>
+              <a
+                href="https://openssi.github.io/peer-did-method-spec/index.html"
+                >peer DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:selfkey:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Ethereum
+            </td>
+            <td>
+              SelfKey
+            </td>
+            <td>
+              <a
+                href="https://github.com/SelfKeyFoundation/selfkey-identity/blob/develop/DIDMethodSpecs.md"
+                >SelfKey DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:meta:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Metadium
+            </td>
+            <td>
+              Metadium Foundation
+            </td>
+            <td>
+              <a
+                href="https://github.com/METADIUM/meta-DID/blob/master/doc/DID-method-metadium.md"
+                >Metadium DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:tys:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              DID Specification
+            </td>
+            <td>
+              Chainyard
+            </td>
+            <td>
+              <a
+                href="https://github.com/chainyard-tys/tys/blob/master/README.md"
+                >TYS DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:git:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              DID Specification
+            </td>
+            <td>
+              Internet Identity Workshop
+            </td>
+            <td>
+              <a
+                href="https://github.com/dhuseby/did-git-spec/blob/master/did-git-spec.md"
+                >Git DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:tangle:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              IOTA Tangle
+            </td>
+            <td>
+              BiiLabs Co., Ltd.
+            </td>
+            <td>
+              <a
+                href="https://github.com/TangleID/TangleID/blob/develop/did-method-spec.md"
+                >TangleID DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:emtrust:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Hyperledger Fabric
+            </td>
+            <td>
+              Halialabs Pte Ltd.
+            </td>
+            <td>
+              <a
+                href="https://github.com/Halialabs/did-spec/blob/gh-pages/readme.md"
+                >Emtrust DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:ttm:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              TMChain
+            </td>
+            <td>
+              Token.TM
+            </td>
+            <td>
+              <a
+                href="https://github.com/TokenTM/TM-DID/blob/master/docs/en/DID_spec.md"
+                >TM DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:wlk:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Weelink Network
+            </td>
+            <td>
+              Weelink
+            </td>
+            <td>
+              <a href="https://weelink-team.github.io/weelink/DIDDesignEn"
+                >Weelink DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:pistis:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Ethereum
+            </td>
+            <td>
+              Andrea Taglia, Matteo Sinico
+            </td>
+            <td>
+              <a
+                href="https://github.com/uino95/ssi/blob/consensys/dashboard/server/pistis/pistis-did-resolver/README.md"
+                >Pistis DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
             <td>
               did:holo:
             </td>
@@ -2333,132 +2698,153 @@ The links will be updated as subsequent Implementer’s Drafts are produced.
               Holo.Host
             </td>
             <td>
-              <a href="https://github.com/WebOfTrustInfo/rwot9-prague/blob/master/draft-documents/did:hc-method.md">Holochain DID Method</a>
-           </td>
-        </tr>
-        <tr>
-          <td>
-            did:web:
-          </td>
-          <td>
-            PROVISIONAL
-          </td>
-          <td>
-            Web
-          </td>
-          <td>
-            Oliver Terbu, Mike Xu, Dmitri Zagidulin, Amy Guy
-          </td>
-          <td>
-            <a href="https://github.com/w3c-ccg/did-method-web">Web DID Method</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            did:io:
-          </td>
-          <td>
-            PROVISIONAL
-          </td>
-          <td>
-            IoTeX
-          </td>
-          <td>
-            IoTeX Foundation
-          </td>
-          <td>
-            <a href="https://github.com/iotexproject/iotex-did/blob/master/README.md">IoTeX DID Method</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            did:vaultie:
-          </td>
-          <td>
-            PROVISIONAL
-          </td>
-          <td>
-            Ethereum
-          </td>
-          <td>
-            Vaultie Inc.
-          </td>
-          <td>
-            <a href="https://github.com/vaultie/vaultie-did-method/blob/master/vaultie-did-method-specification.md">Vaultie DID Method</a>
-          </td>
-        </tr>
-        <tr>
+              <a
+                href="https://github.com/WebOfTrustInfo/rwot9-prague/blob/master/draft-documents/did:hc-method.md"
+                >Holochain DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
             <td>
-                did:moac:
+              did:web:
             </td>
             <td>
-                PROVISIONAL
+              PROVISIONAL
             </td>
             <td>
-                MOAC
+              Web
             </td>
             <td>
-                MOAC Blockchain Tech, Inc.
+              Oliver Terbu, Mike Xu, Dmitri Zagidulin, Amy Guy
             </td>
             <td>
-                <a href="https://github.com/DavidRicardoWilde/moac-did/blob/master/did-moac-method.md">MOAC DID Method</a>
+              <a href="https://github.com/w3c-ccg/did-method-web"
+                >Web DID Method</a
+              >
             </td>
-        </tr>
+          </tr>
+          <tr>
+            <td>
+              did:io:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              IoTeX
+            </td>
+            <td>
+              IoTeX Foundation
+            </td>
+            <td>
+              <a
+                href="https://github.com/iotexproject/iotex-did/blob/master/README.md"
+                >IoTeX DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:vaultie:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Ethereum
+            </td>
+            <td>
+              Vaultie Inc.
+            </td>
+            <td>
+              <a
+                href="https://github.com/vaultie/vaultie-did-method/blob/master/vaultie-did-method-specification.md"
+                >Vaultie DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:moac:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              MOAC
+            </td>
+            <td>
+              MOAC Blockchain Tech, Inc.
+            </td>
+            <td>
+              <a
+                href="https://github.com/DavidRicardoWilde/moac-did/blob/master/did-moac-method.md"
+                >MOAC DID Method</a
+              >
+            </td>
+          </tr>
 
-        <tr>
+          <tr>
             <td>
-                did:omn:
+              did:omn:
             </td>
             <td>
-                PROVISIONAL
+              PROVISIONAL
             </td>
             <td>
-                OmniOne
+              OmniOne
             </td>
             <td>
-                OmniOne
+              OmniOne
             </td>
             <td>
-                <a href="https://github.com/OmniOneID/did_method/blob/master/did_method.md">OmniOne DID Method</a>
+              <a
+                href="https://github.com/OmniOneID/did_method/blob/master/did_method.md"
+                >OmniOne DID Method</a
+              >
             </td>
-        </tr>
-        <tr>
-        <td>
-          did:work:
-        </td>
-        <td>
-          PROVISIONAL
-        </td>
-        <td>
-          Hyperledger Fabric
-        </td>
-        <td>
-          Workday, Inc.
-        </td>
-        <td>
-          <a href="https://workday.github.io/work-did-method-spec/">Workday DID Method</a>
-        </td>
-        </tr>
+          </tr>
+          <tr>
+            <td>
+              did:work:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Hyperledger Fabric
+            </td>
+            <td>
+              Workday, Inc.
+            </td>
+            <td>
+              <a href="https://workday.github.io/work-did-method-spec/"
+                >Workday DID Method</a
+              >
+            </td>
+          </tr>
 
-
-        <tr>
-          <td>
-            did:vid:
-          </td>
-          <td>
-            PROVISIONAL
-          </td>
-          <td>
-            VP
-          </td>
-          <td>
-            VP Inc.
-          </td>
-          <td>
-            <a href="https://github.com/vpayment/did-method-spec/blob/master/vid.md">VP DID Method</a>
-          </td>
-        </tr>
-        <tr>
+          <tr>
+            <td>
+              did:vid:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              VP
+            </td>
+            <td>
+              VP Inc.
+            </td>
+            <td>
+              <a
+                href="https://github.com/vpayment/did-method-spec/blob/master/vid.md"
+                >VP DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
             <td>
               did:ccp:
             </td>
@@ -2474,8 +2860,8 @@ The links will be updated as subsequent Implementer’s Drafts are produced.
             <td>
               <a href="https://did.baidu.com/did-spec/">Cloud DID Method</a>
             </td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <td>
               did:jnctn:
             </td>
@@ -2489,27 +2875,32 @@ The links will be updated as subsequent Implementer’s Drafts are produced.
               Jnctn Limited
             </td>
             <td>
-              <a href="https://github.com/jnctn/did-method-spec/">JNCTN DID Method</a>
+              <a href="https://github.com/jnctn/did-method-spec/"
+                >JNCTN DID Method</a
+              >
             </td>
           </tr>
           <tr>
             <td>
-                did:evan:
+              did:evan:
             </td>
             <td>
-                PROVISIONAL
+              PROVISIONAL
             </td>
             <td>
-                evan.network
+              evan.network
             </td>
             <td>
-                evan GmbH
+              evan GmbH
             </td>
             <td>
-              <a href="https://github.com/evannetwork/evan.network-DID-method-specification/blob/master/evan_did_method_spec.md">evan.network DID Method</a>
+              <a
+                href="https://github.com/evannetwork/evan.network-DID-method-specification/blob/master/evan_did_method_spec.md"
+                >evan.network DID Method</a
+              >
             </td>
           </tr>
-        <tr>
+          <tr>
             <td>
               did:elastos:
             </td>
@@ -2523,10 +2914,13 @@ The links will be updated as subsequent Implementer’s Drafts are produced.
               Elastos Foundation
             </td>
             <td>
-              <a href="https://github.com/elastos/Elastos.DID.Method/blob/master/DID/Elastos-DID-Method-Specification_en.md">Elastos DID Method</a>
+              <a
+                href="https://github.com/elastos/Elastos.DID.Method/blob/master/DID/Elastos-DID-Method-Specification_en.md"
+                >Elastos DID Method</a
+              >
             </td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <td>
               did:kilt:
             </td>
@@ -2540,27 +2934,33 @@ The links will be updated as subsequent Implementer’s Drafts are produced.
               BOTLabs GmbH
             </td>
             <td>
-              <a href="https://github.com/KILTprotocol/kilt-did-driver/blob/master/DID%20Method%20Specification.md">KILT DID Method</a>
+              <a
+                href="https://github.com/KILTprotocol/kilt-did-driver/blob/master/DID%20Method%20Specification.md"
+                >KILT DID Method</a
+              >
             </td>
-        </tr>
-        <tr>
-          <td>
-            did:elem:
-          </td>
-          <td>
-            PROVISIONAL
-          </td>
-          <td>
-            Element DID
-          </td>
-          <td>
-            Transmute
-          </td>
-          <td>
-            <a href="https://github.com/decentralized-identity/element/blob/master/docs/did-method-spec/spec.md">ELEM DID Method</a>
-          </td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
+            <td>
+              did:elem:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Element DID
+            </td>
+            <td>
+              Transmute
+            </td>
+            <td>
+              <a
+                href="https://github.com/decentralized-identity/element/blob/master/docs/did-method-spec/spec.md"
+                >ELEM DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
             <td>
               did:github:
             </td>
@@ -2574,10 +2974,12 @@ The links will be updated as subsequent Implementer’s Drafts are produced.
               Transmute
             </td>
             <td>
-              <a href="https://docs.github-did.com/did-method-spec/">GitHub DID Method</a>
+              <a href="https://docs.github-did.com/did-method-spec/"
+                >GitHub DID Method</a
+              >
             </td>
-        </tr>
-    <tr>
+          </tr>
+          <tr>
             <td>
               did:bid:
             </td>
@@ -2591,61 +2993,72 @@ The links will be updated as subsequent Implementer’s Drafts are produced.
               teleinfo caict
             </td>
             <td>
-              <a href="https://github.com/teleinfo-bif/bid/tree/master/doc/en">BIF DID Method</a>
+              <a href="https://github.com/teleinfo-bif/bid/tree/master/doc/en"
+                >BIF DID Method</a
+              >
             </td>
-        </tr>
-        <tr>
-          <td>
-            did:ptn:
-          </td>
-          <td>
-            PROVISIONAL
-          </td>
-          <td>
-            PalletOne
-          </td>
-          <td>
-            PalletOne
-          </td>
-          <td>
-            <a href="https://github.com/palletone/palletone-DID/blob/master/docs/did-method/README.md">PalletOne DID Method</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-              did:echo:
-          </td>
-          <td>
+          </tr>
+          <tr>
+            <td>
+              did:ptn:
+            </td>
+            <td>
               PROVISIONAL
-          </td>
-          <td>
+            </td>
+            <td>
+              PalletOne
+            </td>
+            <td>
+              PalletOne
+            </td>
+            <td>
+              <a
+                href="https://github.com/palletone/palletone-DID/blob/master/docs/did-method/README.md"
+                >PalletOne DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:echo:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
               Echo
-          </td>
-          <td>
+            </td>
+            <td>
               Echo Technological Solutions LLC
-          </td>
-          <td>
-             <a href="https://github.com/echoprotocol/uni-resolver-driver-did-echo/blob/master/echo_did_specifications.md">Echo DID Method</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            did:trustbloc:
-          </td>
-          <td>
-            PROVISIONAL
-          </td>
-          <td>
-            Hyperledger Fabric
-          </td>
-          <td>
-            SecureKey
-          </td>
-          <td>
-            <a href="https://github.com/trustbloc/trustbloc-did-method/blob/master/docs/spec/trustbloc-did-method.md">TrustBloc DID Method</a>
-          </td>
-        </tr>
-        <tr>
+            </td>
+            <td>
+              <a
+                href="https://github.com/echoprotocol/uni-resolver-driver-did-echo/blob/master/echo_did_specifications.md"
+                >Echo DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:trustbloc:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Hyperledger Fabric
+            </td>
+            <td>
+              SecureKey
+            </td>
+            <td>
+              <a
+                href="https://github.com/trustbloc/trustbloc-did-method/blob/master/docs/spec/trustbloc-did-method.md"
+                >TrustBloc DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
             <td>
               did:san:
             </td>
@@ -2659,133 +3072,152 @@ The links will be updated as subsequent Implementer’s Drafts are produced.
               YLZ Inc.
             </td>
             <td>
-              <a href="https://github.com/Baasze/DID-method-specification">SAN DID Method</a>
+              <a href="https://github.com/Baasze/DID-method-specification"
+                >SAN DID Method</a
+              >
             </td>
-        </tr>
-        <tr>
-          <td>
+          </tr>
+          <tr>
+            <td>
               did:gatc:
-          </td>
-          <td>
+            </td>
+            <td>
               PROVISIONAL
-          </td>
-          <td>
+            </td>
+            <td>
               Ethereum, Hyperledger Fabric, Hyperledger Besu, Alastria
-          </td>
-          <td>
+            </td>
+            <td>
               <a href="https://gataca.io/">Gataca</a>
-          </td>
-          <td>
-              <a href="https://github.com/gatacaid/gataca-did-method">Gataca DID Method</a>
-          </td>
-        </tr>
-        <tr>
-            <td>
-                did:factom:
             </td>
             <td>
-                PROVISIONAL
+              <a href="https://github.com/gatacaid/gataca-did-method"
+                >Gataca DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:factom:
             </td>
             <td>
-                Factom
+              PROVISIONAL
             </td>
             <td>
-                Sphereon, Factomatic, Factom Inc
+              Factom
             </td>
             <td>
-                <a href="https://github.com/factom-protocol/FIS/blob/master/FIS/DID.md">Factom DID Method</a>
+              Sphereon, Factomatic, Factom Inc
             </td>
-        </tr>
-        <tr>
-          <td>
+            <td>
+              <a
+                href="https://github.com/factom-protocol/FIS/blob/master/FIS/DID.md"
+                >Factom DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
               did:signor:
-          </td>
-          <td>
+            </td>
+            <td>
               PROVISIONAL
-          </td>
-          <td>
+            </td>
+            <td>
               Ethereum, Hedera Hashgraph, Quorum, Hyperledger Besu
-          </td>
-          <td>
+            </td>
+            <td>
               <a href="https://cryptonics.consulting/">Cryptonics</a>
-          </td>
-          <td>
-              <a href="https://github.com/cryptonicsconsulting/signor-did-contracts/blob/master/did-method-spec.md">Signor DID Method</a>
-          </td>
-      </tr>
-      <tr>
-          <td>
+            </td>
+            <td>
+              <a
+                href="https://github.com/cryptonicsconsulting/signor-did-contracts/blob/master/did-method-spec.md"
+                >Signor DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
               did:hedera:
-          </td>
-          <td>
+            </td>
+            <td>
               PROVISIONAL
-          </td>
-          <td>
+            </td>
+            <td>
               Hedera Hashgraph
-          </td>
-          <td>
+            </td>
+            <td>
               Hedera Hashgraph, Swisscom Blockchain AG
-          </td>
-          <td>
-              <a href="https://github.com/hashgraph/did-method/blob/master/did-method-specification.md">Hedera Hashgraph DID Method</a>
-          </td>
-      </tr>
-        <tr>
-          <td>
+            </td>
+            <td>
+              <a
+                href="https://github.com/hashgraph/did-method/blob/master/did-method-specification.md"
+                >Hedera Hashgraph DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
               did:sirius:
-          </td>
-          <td>
+            </td>
+            <td>
               PROVISIONAL
-          </td>
-          <td>
+            </td>
+            <td>
               ProximaX Sirius Chain
-          </td>
-          <td>
+            </td>
+            <td>
               ProximaX Enterprise, Proximax Inc.
-          </td>
-          <td>
-              <a href="https://gitlab.com/proximax-enterprise/siriusid/sirius-id-specs/-/blob/master/docs/did-method-spec.md">ProximaX SiriusID DID Method</a>
-          </td>
-        </tr>
-      <tr>
-        <td>
-          did:dock:
-        </td>
-        <td>
-          PROVISIONAL
-        </td>
-        <td>
-            Dock
-        </td>
-        <td>
-          <a href="https://www.dock.io">Dock.io</a>
-        </td>
-        <td>
-            <a href="https://github.com/docknetwork/dock-did-driver/blob/master/Dock%20DID%20method%20specification.md">Dock DID Method</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          did:twit:
-        </td>
-        <td>
-          PROVISIONAL
-        </td>
-        <td>
-            Twit
-        </td>
-        <td>
-          <a href="https://github.com/did-twit/did-twit/blob/master/spec/index.md">DID Twit GitHub</a>
-        </td>
-        <td>
-            <a href="https://did-twit.github.io/did-twit/">Twit DID Method</a>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-
-  </section>
-
-
-</body>
+            </td>
+            <td>
+              <a
+                href="https://gitlab.com/proximax-enterprise/siriusid/sirius-id-specs/-/blob/master/docs/did-method-spec.md"
+                >ProximaX SiriusID DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:dock:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Dock
+            </td>
+            <td>
+              <a href="https://www.dock.io">Dock.io</a>
+            </td>
+            <td>
+              <a
+                href="https://github.com/docknetwork/dock-did-driver/blob/master/Dock%20DID%20method%20specification.md"
+                >Dock DID Method</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              did:twit:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Twit
+            </td>
+            <td>
+              <a
+                href="https://github.com/did-twit/did-twit/blob/master/spec/index.md"
+                >DID Twit GitHub</a
+              >
+            </td>
+            <td>
+              <a href="https://did-twit.github.io/did-twit/">Twit DID Method</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </body>
 </html>
