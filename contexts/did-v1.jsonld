@@ -11,6 +11,8 @@
     "EcdsaSecp256k1VerificationKey2019": "sec:EcdsaSecp256k1VerificationKey2019",
     "Ed25519Signature2018": "sec:Ed25519Signature2018",
     "Ed25519VerificationKey2018": "sec:Ed25519VerificationKey2018",
+    "JsonWebKey2020": "sec:JsonWebKey2020",
+    "JsonWebSignature2020": "sec:JsonWebSignature2020",
     "RsaVerificationKey2018": "sec:RsaVerificationKey2018",
     "SchnorrSecp256k1VerificationKey2019": "sec:SchnorrSecp256k1VerificationKey2019",
     "ServiceEndpointProxyService": "didv:ServiceEndpointProxyService",
