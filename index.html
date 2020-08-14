@@ -161,6 +161,27 @@ submit a modification request for this registry, as a GitHub Pull Request, where
 the modification request adheres to the following rules:
     </p>
 
+    <p>
+      The JSON representation of a DID Document is the same document (byte for byte equivalent) 
+      as the JSON-LD representation of a DID Document. 
+      JSON representations rely on the JSON-LD vocabulary (contained in this registry) for interoperability. 
+    </p>
+
+    <p>
+      Due to the nature of decentralization, JSON documents that contain terms 
+      not defined in a JSON-LD impossible to prevent.
+      Managing the validity / security considerations associated with unknown / undefined 
+      properties in the DID Document is the responsibility of the DID Method.
+    </p>
+
+    <p class="advisement">
+      Allowing unknown / undefined properties to be present in data structures that may be derived 
+      from untrusted user input has serious security implications.  
+      Please review <a href="https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html">
+        OWASP Input Validation Cheat Sheet
+      </a> and the security and privacy section of registered DID Methods for additional details.
+    </p>
+
     <ol>
       <li>
 Any addition to the DID Core Registries MUST specify a human readable
@@ -169,11 +190,16 @@ description of the addition.
       <li>
 Any addition to the DID Core Registries MUST link, via at least a URL,
 preferably a content-integrity protected one, to the defining specification so
-that implementers can implement the property.
+that implementers can implement the paramater, property or value.
+      </li>
+      <li>
+        Parameters need only be registered and defined via specification, 
+        the following requirements only apply to properties and values. 
       </li>
       <li>
 Any addition to the DID Core Registries that is a property or value, MUST
-specify a machine readable JSON-LD Context for the addition.
+specify a machine readable JSON-LD Context for the addition via a URL, 
+preferably a content-integrity protected one.
         <ul>
           <li>
 The JSON-LD Context MUST be included in full as part of the submission.
