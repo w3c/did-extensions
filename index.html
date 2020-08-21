@@ -175,8 +175,9 @@ the modification request adheres to the following rules:
     </p>
 
     <p class="advisement">
-      Allowing unknown / undefined properties to be present in data structures that may be derived 
-      from untrusted user input has serious security implications.  
+      Allowing unknown / undefined properties to be present in data structures 
+      allows for extension over time. However, allowing undefined properties in data that may be derived 
+      from untrusted user input has security and privacy implications.  
       Please review <a href="https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html">
         OWASP Input Validation Cheat Sheet
       </a> and the security and privacy section of registered DID Methods for additional details.
