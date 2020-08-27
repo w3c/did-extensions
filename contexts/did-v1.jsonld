@@ -51,11 +51,6 @@
       "@type": "@id",
       "@container": "@set"
     },
-    "proof": {
-      "@id": "sec:proof",
-      "@type": "@id",
-      "@container": "@graph"
-    },
     "publicKey": {
       "@id": "sec:publicKey",
       "@type": "@id",
