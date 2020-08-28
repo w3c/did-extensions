@@ -144,9 +144,78 @@ Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
     <h1>Introduction</h1>
 
     <p>
-This document serves as an official registry for all known global parameters,
+This document serves as an official registry for all known methods, parameters,
 properties, and values used by the Decentralized Identifier ecosystem.
     </p>
+
+  </section>
+
+  <section>
+    <h1>Representations</h1>
+
+    <p>
+<a href="https://www.w3.org/TR/did-core/#dfn-did-methods">DID Methods</a> 
+MAY rely on this registry to define vocabulary for interoperability across DID Document representations.
+    </p>
+
+    <p>
+In order to register new properties, values or parameters, contributors
+might need to review the requirements associated with existing representations.
+See <a href="https://www.w3.org/TR/did-core/#core-representations">core-representations</a>.
+    </p>
+
+    <p>
+The JSON representation of a DID Document MAY contain an <code>@context</code> property, however, 
+its value MUST be ignored per the DID Core 
+<a href="https://www.w3.org/TR/did-core/#consumption">JSON Consumption</a> rules.
+    </p>
+
+    <p>
+The JSON-LD representation of a DID Document MUST contain an <code>@context</code> property.
+    </p>
+
+    <p>
+<code>content-type</code> and <code>accept</code> 
+SHOULD be used to resolve DID Documents in a specific representation.
+    </p>
+
+    <p>
+DID Documents of content-type <code>application/did+json</code> 
+MAY contain terms not defined in an <code>@context</code> property even if one is present.
+    </p>
+
+    <p>
+DID Documents of content-type <code>application/did+ld+json</code> 
+MAY contain terms not defined in a JSON-LD <code>@context</code> property, however, 
+their values MUST be ignored per the DID Core 
+<a href="https://www.w3.org/TR/did-core/#consumption-0">JSON-LD Consumption</a> rules.
+    </p>
+
+    <p>
+Managing security considerations associated with DID Document representations
+is the responsibility of the DID Method.
+    </p>
+
+    <p>
+Managing security considerations associated with unknown
+properties in a DID Document is the responsibility of the 
+DID Method.
+    </p>
+
+    <p class="advisement">
+Allowing unknown properties to be present in data structures 
+enables extension over time without breaking existing implementations; 
+however, allowing unknown properties in data that might be derived from 
+untrusted user input has privacy and security implications.  
+Please review <a href="https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html">
+  OWASP Input Validation Cheat Sheet
+</a> and the security and privacy section of registered DID Methods for additional details.
+    </p>
+
+<p>
+Additions to this registry are only required for interoperability across representations.
+</p>
+
   </section>
 
   <section>
@@ -162,40 +231,19 @@ the modification request adheres to the following rules:
     </p>
 
     <p>
-      The JSON representation of a DID Document is the same document (byte for byte equivalent) 
-      as the JSON-LD representation of a DID Document. 
-      JSON representations rely on the JSON-LD vocabulary (contained in this registry) for interoperability. 
-    </p>
-
-    <p>
-      Due to the nature of decentralization, JSON documents that contain terms 
-      not defined in a JSON-LD are impossible to prevent.
-      Managing the validity / security considerations associated with unknown / undefined 
-      properties in the DID Document is the responsibility of the DID Method.
-    </p>
-
-    <p class="advisement">
-      Allowing unknown / undefined properties to be present in data structures 
-      enables extension over time without breaking existing implementations; 
-      however, allowing unknown properties in data that might be derived from 
-      untrusted user input has privacy and security implications.  
-      Please review <a href="https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html">
-        OWASP Input Validation Cheat Sheet
-      </a> and the security and privacy section of registered DID Methods for additional details.
-    </p>
-
-    <p>
-      DID Methods and DID Parameters need only be registered via specification URLs.
+DID Methods and DID Parameters need only be registered via specification URLs.
     </p>
     <p>
-      See <a href="https://w3c.github.io/did-core/#methods">Method Specification Requirements</a> for normative information regarding DID Method Specifications.
+See <a href="https://w3c.github.io/did-core/#methods">Method Specification Requirements</a> 
+for normative information regarding DID Method Specifications.
     </p>
      <p>
-      See <a href="https://w3c.github.io/did-core/#did-url-syntax">DID URL Syntax</a> for normative information regarding DID Parameters.
+See <a href="https://w3c.github.io/did-core/#did-url-syntax">DID URL Syntax</a> 
+for normative information regarding DID Parameters.
     </p>
 
     <p>
-      The following requirements only apply to DID Document properties and DID Document values. 
+The following requirements apply to DID Document properties and values. 
     </p>
 
     <ol>
@@ -397,9 +445,8 @@ useful to all DID methods.
           <tbody>
             <tr>
               <td>
-                <a href="https://www.w3.org/TR/did-core/#dfn-verification-method">DID Core Terminology</a> <span class="issue">(property definition pending)</span>
-              </td>
-              <td>
+                <a href="https://www.w3.org/TR/did-core/#dfn-verification-method">DID Core Terminology</a> 
+                <span class="issue">(property definition pending)</span>
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
