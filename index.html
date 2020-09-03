@@ -1294,41 +1294,98 @@ for the value of <code>type</code> in a verification method object.
   </section>
 
     <section>
-      <h3>DID Resolution Request Metadata</h3>
+      <h3>DID Resolution Input Metadata</h3>
       <p>
         These properties contain information pertaining to the DID resolution request.
       </p>
 
       <section>
         <h4><dfn data-lt="accept" data-dfn-type="dfn" id="accept">accept</dfn></h4>
-        <p class="issue" data-number="108"></p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c.github.io/did-core/#did-resolution-input-metadata-properties">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of accept metadata property">
+{
+  "accept": "application/did+ld+json"
+}
+        </pre>
       </section>
     </section>
   </section>
 
     <section>
-      <h3>DID Resolution Response Metadata</h3>
+      <h3>DID Resolution Metadata</h3>
       <p>
 These properties contain information pertaining to the DID resolution response.
       </p>
       <section>
         <h4><dfn data-lt="content-type" data-dfn-type="dfn" id="content-type">content-type</dfn></h4>
-        <p class="issue" data-number="109"></p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of content-type metadata property">
+{
+  "content-type": "application/did+ld+json"
+}
+        </pre>
       </section>
 
       <section>
         <h4><dfn data-lt="error" data-dfn-type="dfn" id="error">error</dfn></h4>
-        <p class="issue" data-number="110"></p>
-      </section>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-      <section>
-        <h4><dfn data-lt="invalid-did" data-dfn-type="dfn" id="invalid-did">invalid-did</dfn></h4>
-        <p class="issue" data-number="111"></p>
-      </section>
+        <pre class="example" title="Example of error metadata property">
+{
+  "error": "not-found"
+}
+        </pre>
 
-      <section>
-        <h4><dfn data-lt="unauthorized" data-dfn-type="dfn" id="unauthorized">unauthorized</dfn></h4>
-        <p class="issue" data-number="112"></p>
+        <section>
+          <h4><dfn data-lt="invalid-did" data-dfn-type="dfn" id="invalid-did">invalid-did</dfn></h4>
+          <p class="issue" data-number="111"></p>
+        </section>
+
+        <section>
+          <h4><dfn data-lt="unauthorized" data-dfn-type="dfn" id="unauthorized">unauthorized</dfn></h4>
+          <p class="issue" data-number="112"></p>
+        </section>
       </section>
     </section>
 
