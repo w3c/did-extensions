@@ -3,4 +3,5 @@ coverage
 
 .vscode
 .DS_Store
+.idea
 unresolveable-test-dids.json
