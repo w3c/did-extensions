@@ -174,6 +174,19 @@ that implementers can implement the property.
       <li>
 Any addition to the DID Core Registries that is a property or value, MUST
 specify a machine readable JSON-LD Context for the addition.
+
+<br/>
+
+<pre class="example" title="Example DID Document including an @context">
+  {
+    "@context": [
+      "https://www.w3.org/ns/did/v1",
+      "https://example.com/blockchain-identity/v1"
+    ],
+    "id":"did:example:123",
+    ...
+  }
+</pre>
         <ul>
           <li>
 The JSON-LD Context MUST be included in full as part of the submission.
@@ -237,47 +250,13 @@ be possible to submit items to the registry without normative definitions (see <
     </p>
 
     <section>
-      <h3>Base properties</h3>
+      <h3>Core Properties</h3>
       <p>
 These properties are foundational to DID documents, and are expected to be
-useful to all DID methods.
-      <section>
-        <h4><dfn data-lt="@context" data-dfn-type="dfn" id="@context">@context</dfn></h4>
-
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#production-0">DID Core</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example" title="Example of @context property">
-{
-  "@context": [
-    "https://www.w3.org/ns/did/v1",
-    "https://example.com/blockchain-identity/v1"
-  ],
-  ...
-}
-        </pre>
-
-      </section>
-
+useful to all DID methods. See also the <a href="https://www.w3.org/TR/did-core/#core-properties">
+  DID Spec Core Properties
+</a>.
+     
       <section>
         <h4><dfn data-lt="id" data-dfn-type="dfn" id="id">id</dfn></h4>
 
@@ -306,6 +285,40 @@ useful to all DID methods.
         <pre class="example" title="Example of id property">
 {
   "id": "did:example:123",
+  ...
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4><dfn data-lt="alsoKnownAs" data-dfn-type="dfn" id="alsoKnownAs">alsoKnownAs</dfn></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-subject">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of alsoKnownAs property">
+{
+  "id": "did:example:123",
+  "alsoKnownAs": ["did:example:456", "https://social.example.com/account/789"],
   ...
 }
         </pre>
@@ -359,9 +372,7 @@ useful to all DID methods.
           <tbody>
             <tr>
               <td>
-                <a href="https://www.w3.org/TR/did-core/#dfn-verification-method">DID Core Terminology</a> <span class="issue">(property definition pending)</span>
-              </td>
-              <td>
+                <a href="https://www.w3.org/TR/did-core/#dfn-verification-method">DID Core Terminology</a> 
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
@@ -373,206 +384,6 @@ useful to all DID methods.
         </table>
       </section>
 
-      <section>
-        <h4><dfn data-lt="publicKey" data-dfn-type="dfn" id="publicKey">publicKey</dfn></h4>
-
-        <p class="issue">
-This property may be replaced entirely by <code>verificationMethod</code> in
-DID Core. See <a href="https://github.com/w3c/did-core/issues/283">issue
-#283</a>.
-        </p>
-
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#dfn-publickey">DID Core</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example" title="Example of publicKey property">
-{
-  "id": "did:example:123",
-  "publicKey": [
-    {
-      "id": "did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec",
-      "type": "Ed25519VerificationKey2018",
-      "controller": "did:example:123",
-      "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
-    },
-    {
-      "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
-      "type": "EcdsaSecp256k1VerificationKey2019",
-      "controller": "did:example:123",
-      "publicKeyJwk": {
-        "crv": "secp256k1",
-        "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
-        "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
-        "kty": "EC",
-        "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
-      }
-    }
-  ]
-}
-        </pre>
-      </section>
-
-      <section>
-        <h4><dfn data-lt="service" data-dfn-type="dfn" id="service">service</dfn></h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#service-endpoints">DID Core</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example" title="Example of service and serviceEndpoint properties">
-{
-  ...
-  "service": [{
-    "id": "did:example:123#edv",
-    "type": "EncryptedDataVault",
-    "serviceEndpoint": "https://edv.example.com/"
-  }]
-}
-        </pre>
-
-      </section>
-
-    </section>
-
-    <section>
-      <h3>Services</h3>
-      <p>
-These terms are properties or types belonging to objects in the value of
-<a>service</a>.
-      </p>
-      <section>
-        <h4><dfn data-lt="serviceEndpoint" data-dfn-type="dfn" id="serviceEndpoint">serviceEndpoint</dfn></h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#service-endpoints">DID Core</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example" title="Example of service and serviceEndpoint properties">
-{
-  ...
-  "service": [{
-    "id": "did:example:123#edv",
-    "type": "EncryptedDataVault",
-    "serviceEndpoint": "https://edv.example.com/"
-  }]
-}
-        </pre>
-
-      </section>
-    </section>
-
-    <section>
-      <h3>Verification relationships</h3>
-      <p>
-A DID document expresses the relationship between the DID subject and a
-verification method using a
-<a href="https://w3c.github.io/did-core/#dfn-verification-relationship">
-verification relationship</a>.
-      </p>
-      <section>
-        <h4><dfn data-lt="assertionMethod" data-dfn-type="dfn" id="assertionMethod">assertionMethod</dfn></h4>
-
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3id.org/security/#assertionMethod">security-vocab</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example" title="Example of assertionMethod property">
-{
-  ...
-  "publicKey": [{
-    "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
-    "type": "EcdsaSecp256k1VerificationKey2019",
-    "controller": "did:example:123",
-    "publicKeyJwk": {
-      "crv": "secp256k1",
-      "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
-      "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
-      "kty": "EC",
-      "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
-    }
-  }],
-  "assertionMethod": [{
-    "id": "did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
-    "type": "Ed25519VerificationKey2018",
-    "controller": "did:example:123",
-    "publicKeyBase58": "BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"
-  },
-  "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
-  ]
-}
-        </pre>
-      </section>
 
       <section>
         <h4><dfn data-lt="authentication" data-dfn-type="dfn" id="authentication">authentication</dfn></h4>
@@ -625,6 +436,101 @@ verification relationship</a>.
 }
         </pre>
       </section>
+
+
+      <section>
+        <h4><dfn data-lt="assertionMethod" data-dfn-type="dfn" id="assertionMethod">assertionMethod</dfn></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/#assertionMethod">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of assertionMethod property">
+{
+  ...
+  "publicKey": [{
+    "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+    "type": "EcdsaSecp256k1VerificationKey2019",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "crv": "secp256k1",
+      "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+      "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+      "kty": "EC",
+      "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+    }
+  }],
+  "assertionMethod": [{
+    "id": "did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
+    "type": "Ed25519VerificationKey2018",
+    "controller": "did:example:123",
+    "publicKeyBase58": "BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"
+  },
+  "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+  ]
+}
+        </pre>
+      </section>
+
+
+      <section>
+        <h4><dfn data-lt="keyAgreement" data-dfn-type="dfn" id="keyAgreement">keyAgreement</dfn></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/#keyAgreement">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of keyAgreement property">
+{
+  ...
+  "keyAgreement": [
+    {
+      "id": "did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
+      "type": "X25519KeyAgreementKey2019",
+      "controller": "did:example:123",
+      "publicKeyBase58": "9hFgmPVfmBZwRvFEyniQDBkz9LmV7gDEqytWyGZLmDXE"
+    }
+  ]
+}
+        </pre>
+      </section>
+
 
       <section>
         <h4><dfn data-lt="capabilityDelegation" data-dfn-type="dfn" id="capabilityDelegation">capabilityDelegation</dfn></h4>
@@ -728,9 +634,10 @@ verification relationship</a>.
         </pre>
       </section>
 
-      <section>
-        <h4><dfn data-lt="keyAgreement" data-dfn-type="dfn" id="keyAgreement">keyAgreement</dfn></h4>
 
+    
+      <section>
+        <h4><dfn data-lt="service" data-dfn-type="dfn" id="service">service</dfn></h4>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
@@ -742,7 +649,7 @@ verification relationship</a>.
           <tbody>
             <tr>
               <td>
-                <a href="https://w3id.org/security/#keyAgreement">security-vocab</a>
+                <a href="https://www.w3.org/TR/did-core/#service-endpoints">DID Core</a>
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
@@ -753,22 +660,65 @@ verification relationship</a>.
           </tbody>
         </table>
 
-        <pre class="example" title="Example of keyAgreement property">
+        <pre class="example" title="Example of service and serviceEndpoint properties">
 {
   ...
-  "keyAgreement": [
-    {
-      "id": "did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
-      "type": "X25519KeyAgreementKey2019",
-      "controller": "did:example:123",
-      "publicKeyBase58": "9hFgmPVfmBZwRvFEyniQDBkz9LmV7gDEqytWyGZLmDXE"
-    }
-  ]
+  "service": [{
+    "id": "did:example:123#edv",
+    "type": "EncryptedDataVault",
+    "serviceEndpoint": "https://edv.example.com/"
+  }]
 }
         </pre>
+
       </section>
+
     </section>
 
+    <section>
+      <h3>Services</h3>
+      <p>
+These terms are properties or types belonging to objects in the value of
+<a>service</a>.
+      </p>
+      <section>
+        <h4><dfn data-lt="serviceEndpoint" data-dfn-type="dfn" id="serviceEndpoint">serviceEndpoint</dfn></h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#service-endpoints">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  ...
+  "service": [{
+    "id": "did:example:123#edv",
+    "type": "EncryptedDataVault",
+    "serviceEndpoint": "https://edv.example.com/"
+  }]
+}
+        </pre>
+
+      </section>
+    </section>
+    
     <section>
       <h3>Verification method properties</h3>
       <p>
