@@ -45,11 +45,6 @@
       "@type": "@id",
       "@container": "@set"
     },
-    "publicKey": {
-      "@id": "sec:publicKey",
-      "@type": "@id",
-      "@container": "@set"
-    },
     "publicKeyBase58": "sec:publicKeyBase58",
     "publicKeyJwk": {
       "@id": "sec:publicKeyJwk",
