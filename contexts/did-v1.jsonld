@@ -62,10 +62,6 @@
     "verificationMethod": {
       "@id": "sec:verificationMethod",
       "@type": "@id"
-    },
-    "alsoKnownAs": {
-      "@id": "sec:alsoKnownAs",
-      "@type": "@id"
     }
   }
 }
