@@ -75,7 +75,14 @@ var respecConfig = {
     company: "Digital Bazaar",
     companyURL: "https://digitalbazaar.com/",
     w3cid: 41758
-  }]
+  }, {
+    name: "Jonathan Holt, DO, MS", 
+    url: "https://www.linkedin.com/in/jonathan-holt-do-ms/", 
+    company: "TranSendX", 
+    companyURL: "https://transendx.com", 
+    w3cid: 115670 
+  }
+  ]
 };
   </script>
   <style>
@@ -198,6 +205,10 @@ feature to eliminate the possibility of term conflicts.
       <li>
 Properties in the DID Core Registries MUST NOT be removed, only deprecated.
       </li>
+      <li>
+Properties definitions in the DID Core Registries MUST include a Concise Data Definition Language (CDDL) [[RFC8610]] of the 
+Property and it's Abstract Data model structure. 
+      </li>
     </ol>
 
     <p>
@@ -233,6 +244,13 @@ definitions. We are working on this! This does NOT mean that in future it will
 be possible to submit items to the registry without normative definitions (see <a href="#the-registration-process"></a>).
     </p>
 
+<p>
+  Concise Data Defition Lanuage (CDDL) provides a succint data defition for representing the Abstract Data Model of 
+  the <a href="https://www.w3.org/TR/did-core/#core-representations" taret="_blank">DID Core Specification</a> and associated <a href="https://w3c.github.io/did-spec-registries/" target="_blank">DID Spec Registeries</a>.  The CDDL definition for the DID Document Specication and associated 
+  registeries can be found <a href="https://ipfs.io/ipfs/QmNZvYAYqSgUuRwv6AhE3rMDE1nzvTfsq7xrVzXqM2x4Jw" target="_blank">here</a>.  
+  Additionally, each Property, Class and Type are described separately below and can be found below the `CDDL` column.     
+</p>
+
     <section>
       <h3>Base properties</h3>
       <p>
@@ -246,7 +264,7 @@ useful to all DID methods.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -258,6 +276,7 @@ useful to all DID methods.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmbtfHgY1frCS15E1YLYp3yzF9GccRRDUUhjnVnQ5JFHVV" target="_blank">@context.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -283,7 +302,7 @@ useful to all DID methods.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -295,6 +314,7 @@ useful to all DID methods.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmfAmH6tnyEFtxmFCZ5GQMu8HEDCpfKgw5NacBTnvmWCwM" target="_blank">id.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -316,7 +336,7 @@ useful to all DID methods.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -328,6 +348,7 @@ useful to all DID methods.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmRiiFuYhckkAp6Ej3rBWYSvvMMk9hvDnsjKtdDsVUxgG9" target="_blank">controller.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -350,7 +371,7 @@ useful to all DID methods.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -359,11 +380,10 @@ useful to all DID methods.
                 <a href="https://www.w3.org/TR/did-core/#dfn-verification-method">DID Core Terminology</a> <span class="issue">(property definition pending)</span>
               </td>
               <td>
-              </td>
-              <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmQJtiHRki3xiEzvKyUiXzEBqBTMugGXQjUPGVsNUNuJay" target="_blank">verificationMethod.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -384,7 +404,7 @@ DID Core. See <a href="https://github.com/w3c/did-core/issues/283">issue
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -396,6 +416,7 @@ DID Core. See <a href="https://github.com/w3c/did-core/issues/283">issue
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmUcVr4MJGVn5BnfyvB6iyMufbTxQJH52eUSoHsQq1ENvN" target="_blank">publicKey.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -435,7 +456,7 @@ DID Core. See <a href="https://github.com/w3c/did-core/issues/283">issue
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -447,6 +468,7 @@ DID Core. See <a href="https://github.com/w3c/did-core/issues/283">issue
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmbWEXKUTmShGWKGynD44p7bQPtCTjgvvxDfRisSYcqJ5g" target="_blank">service.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -480,7 +502,7 @@ These terms are properties or types belonging to objects in the value of
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -492,6 +514,7 @@ These terms are properties or types belonging to objects in the value of
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmeYc5fGA4c4GoFA4SgtTMBoppjkSKp2q1zLvPB5xxoS2B" target="_blank">serviceEndpoint.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -527,7 +550,7 @@ verification relationship</a>.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -539,6 +562,7 @@ verification relationship</a>.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmdJiqPbKrmtCB45pduj55VVeu7PjSeHbFkcawagqaz2M5" target="_blank">assertionMethod.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -579,7 +603,7 @@ verification relationship</a>.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -591,6 +615,7 @@ verification relationship</a>.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmfWyJ7hW8q3ACskL1a4wMapsyfBqVaYTt3XVdE8n7dLQ1" target="_blank">authentication.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -631,7 +656,7 @@ verification relationship</a>.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -643,6 +668,7 @@ verification relationship</a>.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmbR3t6726Nmdt4kbQMPoLMq78attS7eSrz2wwQpbui9z7" target="_blank">capabilityDelegation.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -681,7 +707,7 @@ verification relationship</a>.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -693,6 +719,7 @@ verification relationship</a>.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmNQ6WEeK5ivJjS1TutgZdxidzd5KuXE2J62cx3qP2XumV" target="_blank">capabilityInvocation.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -733,7 +760,7 @@ verification relationship</a>.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -745,6 +772,7 @@ verification relationship</a>.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmVXb5RhGLWZCKhEfQrRweyD41jpTHy5TQ6FrsMPkaRZMj" target="_blank">keyAgreement.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -778,7 +806,7 @@ These properties are for use on a verification method object, not on the DID doc
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -787,11 +815,10 @@ These properties are for use on a verification method object, not on the DID doc
                 <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#ethereumAddress">ESRS2020</a>
               </td>
               <td>
-              </td>
-              <td>
                 <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld">esrs2020</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmQMYhzs3k5pbjXsvsFP9M2U9JMP3RjZTdPVdrG65vCuxw" target="_blank">ethereumAddress.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -820,7 +847,7 @@ These properties are for use on a verification method object, not on the DID doc
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -828,12 +855,12 @@ These properties are for use on a verification method object, not on the DID doc
               <td>
                 <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#publicKeyHex">ESRS2020</a>
               </td>
-              <td>
-              </td>
+
               <td>
                 <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld">esrs2020</a>
               </td>
               <td>
+                <a href="http://ipfs.io/ipfs/QmX76dUUVh2ZubaDAF4nSH7HzLxLniSgjtmcYUbFWtrTRG" target="_blank">publicKeyHex.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -863,7 +890,7 @@ These properties are for use on a verification method object, not on the DID doc
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -872,11 +899,10 @@ These properties are for use on a verification method object, not on the DID doc
                 <span class="issue">Normative definition pending</span>
               </td>
               <td>
-              </td>
-              <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmQhsCVon7Y4yXxoAJB86G2vajDFfXYxcNuukZzQjfsy7y" target="_blank">publicKeyJwk.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -905,7 +931,7 @@ These properties are for use on a verification method object, not on the DID doc
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -914,11 +940,10 @@ These properties are for use on a verification method object, not on the DID doc
                 <a href="https://w3id.org/security/#publicKeyBase58">security-vocab</a>
               </td>
               <td>
-              </td>
-              <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmXJZdHd41ck64LeNKSGx53K7iMxDkvmpeHugdawRxxU5s" target="_blank">publicKeyBase58.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -934,7 +959,7 @@ These properties are for use on a verification method object, not on the DID doc
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -943,17 +968,46 @@ These properties are for use on a verification method object, not on the DID doc
                 <a href="https://w3id.org/security/#publicKeyPem">security-vocab</a>
               </td>
               <td>
-              </td>
-              <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmfEqrhGiidnTM2bFdkUTY9ooE4wzGVu4HpmTue2wRMbnP" target="_blank">publicKeyPem.cddl</a>
               </td>
             </tr>
           </tbody>
         </table>
 
       </section>
+      <section>
+        <h4>publicKeyGpg</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+              <th>CDDL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/#publicKeyGpg">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+              </td>
+              <td>
+                <a href="https://ipfs.io/ipfs/QmYLvVGh6i1eshUxHNw338Y3QLX1CwtQ8FW57D9thvqdcN" target="_blank">publicKeyPem.cddl</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="issue">
+          <a href="https://github.com/w3c/did-spec-registries/issues/137">ISSUE 137 on DID Spec Registeries</a>:  publicKeyGpg is used in <a href="#example-18">example 18</a> but not defined. 
+                  </p>
+      </section>
+
     </section>
 
     <section>
@@ -974,7 +1028,7 @@ for the value of <code>type</code> in a verification method object.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -986,6 +1040,7 @@ for the value of <code>type</code> in a verification method object.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificcationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1014,7 +1069,7 @@ for the value of <code>type</code> in a verification method object.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1025,7 +1080,8 @@ for the value of <code>type</code> in a verification method object.
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
-              <td>
+              <td>                
+                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificcationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1055,7 +1111,7 @@ for the value of <code>type</code> in a verification method object.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1067,6 +1123,7 @@ for the value of <code>type</code> in a verification method object.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificcationMethodTypes.cddl</a> 
               </td>
             </tr>
           </tbody>
@@ -1084,16 +1141,13 @@ for the value of <code>type</code> in a verification method object.
 
       <section>
         <h4>GpgVerificationKey2020</h4>
-        <p class="warning">
-          No support for "Pure JSON" or "CBOR" is currently provided.
-        </p>
-
+      
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1105,7 +1159,7 @@ for the value of <code>type</code> in a verification method object.
                 <a href="https://gpg.jsld.org/contexts/lds-gpg2020-v0.0.jsonld">gpg.jsld.org</a>
               </td>
               <td>
-                Not supported
+                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificcationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1135,7 +1189,7 @@ for the value of <code>type</code> in a verification method object.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1144,11 +1198,10 @@ for the value of <code>type</code> in a verification method object.
                 <a href="https://w3c-ccg.github.io/lds-rsa2018/">RSA Signature Suite 2018</a>
               </td>
               <td>
-              </td>
-              <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificcationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1171,7 +1224,7 @@ for the value of <code>type</code> in a verification method object.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1179,9 +1232,9 @@ for the value of <code>type</code> in a verification method object.
               <td>
                 <span class="issue">Normative definition pending</span>
               </td>
+              <td></td>
               <td>
-              </td>
-              <td>
+                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificcationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1210,7 +1263,7 @@ for the value of <code>type</code> in a verification method object.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1222,6 +1275,7 @@ for the value of <code>type</code> in a verification method object.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificcationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1236,7 +1290,7 @@ for the value of <code>type</code> in a verification method object.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1248,6 +1302,7 @@ for the value of <code>type</code> in a verification method object.
                 <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld">esrs2020</a>
               </td>
               <td>
+                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificcationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1302,12 +1357,18 @@ for the value of <code>type</code> in a verification method object.
           <thead>
             <tr>
               <th>Normative Definition</th>
+              <th></th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
                 <a href="https://w3c.github.io/did-core/#did-resolution-input-metadata-properties">DID Core</a>
+              </td>
+              <td></td>
+              <td>
+                <a href="https://ipfs.io/ipfs/Qma9GvWS2vUvNeiYKjVumziHn4FaHgFFsBPS5nFQMXt5Yy" target="_blank">accept.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1333,12 +1394,18 @@ These properties contain information pertaining to the DID resolution response.
           <thead>
             <tr>
               <th>Normative Definition</th>
+              <th></th>
+              <th>cddl</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
                 <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+              </td>
+              <td></td>
+              <td>
+                <a href="https://ipfs.io/ipfs/QmSgAXAcyH8cSZTdyYbjycz9fzAvCF3hDNBSXhwVAUCoYQ" target="_blank">content-type.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1357,12 +1424,19 @@ These properties contain information pertaining to the DID resolution response.
           <thead>
             <tr>
               <th>Normative Definition</th>
+              <th></th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
                 <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+              </td>
+              <td>
+              </td>
+              <td>
+                <a href="https://ipfs.io/ipfs/QmSCBDDdw8Q3ybDphWecLBuVTh1rtLMJ8mMZDpeb2mgcem" target="_blank">error.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1403,7 +1477,7 @@ rather than the DID subject.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1415,7 +1489,7 @@ rather than the DID subject.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                CBOR
+                <a href="https://ipfs.io/ipfs/QmREA5UMcx8dPg9Tn343LhjqC7mWP2G7VqQKP8YVspmxU4" target="_blank">created.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1438,7 +1512,7 @@ rather than the DID subject.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CBOR</th>
+              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1451,7 +1525,7 @@ rather than the DID subject.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                CBOR
+                <a href="https://ipfs.io/ipfs/QmPHcQz6u3VaLLuf1TYq7iXAxJwti84AEGuwrkFsQvbXwv" target="_blank">updated.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1634,7 +1708,7 @@ did:example:123?transform-keys=jwk
 
     <p>
 This table summarizes the DID method specifications currently in development.
-The links will be updated as subsequent Implementer’s Drafts are produced.
+The links will be updated as subsequent Implementer’s Drafts are produced. <a href="https://ipfs.io/ipfs/QmZ5eDK3k12hYWd2EPKJNkPMLokZ8gXuPASUA7D4B3YVy2" target="_blank">CDDL definitiion of DID method names</a>
     </p>
 
     <table class="simple">
