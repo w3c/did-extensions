@@ -1376,12 +1376,98 @@ These properties contain information pertaining to the DID resolution response.
 
         <section>
           <h4>invalid-did</h4>
-          <p class="issue" data-number="111"></p>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pre class="example" title="Example of invalid-did error value">
+{
+  "error": "invalid-did"
+}
+          </pre>
         </section>
 
         <section>
-          <h4>unauthorized</h4>
-          <p class="issue" data-number="112"></p>
+          <h4>invalid-did-url</h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3c.github.io/did-core/#did-url-dereferencing-metadata-properties">DID Core</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pre class="example" title="Example of invalid-did-url error value">
+{
+  "error": "invalid-did-url"
+}
+          </pre>
+        </section>
+
+        <section>
+          <h4>not-found</h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pre class="example" title="Example of not-found error value">
+{
+  "error": "not-found"
+}
+          </pre>
+        </section>
+
+        <section>
+          <h4>deactivated</h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pre class="example" title="Example of deactivated error value">
+{
+  "error": "deactivated"
+}
+          </pre>
         </section>
 
       </section>
