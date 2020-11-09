@@ -18,7 +18,7 @@
     "X25519KeyAgreementKey2019": "sec:X25519KeyAgreementKey2019",
     "ServiceEndpointProxyService": "didv:ServiceEndpointProxyService",
     "alsoKnownAs": {
-      "@id": "sec:alsoKnownAs",
+      "@id": "https://www.w3.org/ns/activitystreams#alsoKnownAs",
       "@type": "@id",
       "@container": "@set"
     },
