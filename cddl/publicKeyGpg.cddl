@@ -1,0 +1,26 @@
+verificationMethod = {
+    id : did-url
+    type : VerificationMethodTypes
+    controller : did  / [ 1* did ] 
+    publicKeyGpg : text .regexp "-----BEGIN PGP PUBLIC KEY BLOCK-----.*-----END PGP PUBLIC KEY BLOCK-----"  ;  This could probbaly be better to capture -----BEGIN PGP PUBLIC KEY BLOCK  
+}
+
+
+did = text .regexp "did\\:(?<method_name>[A-Za-z0-9]+)\\:(?<method_specific_id>[A-Za-z0-9\\.\\-\\:\\_]+)"
+
+did-url = text .regexp "did\\:(?<did_method>[a-z0-9]+)\\:(?<did_method_identifier>[A-Za-z0-9\\.\\-\\:\\_]+)\\/?(?<path>[A-Za-z0-9\\/]+)\\??(?<query>[A-Za-z0-9\\=\\&\\%\\-\\:]+)?\\#?(?<fragment>[A-Za-z0-9\\-]+)"
+
+
+
+; current list of all registered Verification Method types
+VerificationMethodTypes = 
+    "JsonWebKey2020" / 
+    "Ed25519VerificationKey2018" / 
+    "EcdsaSecp256k1VerificationKey2019" / 
+    "SchnorrSecp256k1VerificationKey2019" /
+    "Ed25519VerificationKey2018" / 
+    "GpgVerificationKey2020" / 
+    "RsaVerificationKey2018" / 
+    "X25519KeyAgreementKey2019" /
+    "EcdsaSecp256k1RecoveryMethod2020"
+

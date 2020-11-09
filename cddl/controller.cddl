@@ -1,0 +1,7 @@
+DID-document = {
+    controller :  did / [1*did]
+}
+
+
+
+did = text .regexp "did\\:(?<method_name>[A-Za-z0-9]+)\\:(?<method_specific_id>[A-Za-z0-9\\.\\-\\:\\_]+)"

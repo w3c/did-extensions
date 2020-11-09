@@ -75,12 +75,6 @@ var respecConfig = {
     company: "Digital Bazaar",
     companyURL: "https://digitalbazaar.com/",
     w3cid: 41758
-  }, {
-    name: "Jonathan Holt, DO, MS", 
-    url: "https://www.linkedin.com/in/jonathan-holt-do-ms/", 
-    company: "TranSendX", 
-    companyURL: "https://transendx.com", 
-    w3cid: 115670 
   }
   ]
 };
@@ -211,6 +205,10 @@ Property and it's Abstract Data model structure.
       </li>
     </ol>
 
+    <p class="issue">
+      Should CDDL be used as the Data Definition Language to formalize the constraints of the Abstract Data Model? (see <a href="https://github.com/w3c/did-spec-registries/issues/153"></a>).
+          </p>
+
     <p>
 Additions that do not meet these criteria MUST NOT be accepted. Entries that
 are identified to cause interoperability problems MAY be marked as such
@@ -246,8 +244,8 @@ be possible to submit items to the registry without normative definitions (see <
 
 <p>
   Concise Data Defition Lanuage (CDDL) provides a succint data defition for representing the Abstract Data Model of 
-  the <a href="https://www.w3.org/TR/did-core/#core-representations" taret="_blank">DID Core Specification</a> and associated <a href="https://w3c.github.io/did-spec-registries/" target="_blank">DID Spec Registeries</a>.  The CDDL definition for the DID Document Specication and associated 
-  registeries can be found <a href="https://ipfs.io/ipfs/QmNZvYAYqSgUuRwv6AhE3rMDE1nzvTfsq7xrVzXqM2x4Jw" target="_blank">here</a>.  
+  the <a href="https://www.w3.org/TR/did-core/#core-representations" taret="_blank">DID Core Specification</a> and associated <a href="https://w3c.github.io/did-spec-registries/" target="_blank">DID Spec Registeries</a>.  The draft composite CDDL definition for the entire DID Document Specifation and associated 
+  registeries can be found <a href="cddl/did-document.cddl" target="_blank">here</a>.  
   Additionally, each Property, Class and Type are described separately below and can be found below the `CDDL` column.     
 </p>
 
@@ -320,7 +318,7 @@ useful to all DID methods.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmQmxi1SxWkRs8sXUNMgNhg2UzQ8eNjhpPvEPXkifWXJdD" target="_blank">id.cddl</a>
+                <a href="cddl/id.cddl" target="_blank">id.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -354,7 +352,7 @@ useful to all DID methods.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmTeyVtnDwdS5nwzBq8uRzus2RMmg13v57jt6A7hRnAtJT" target="_blank">controller.cddl</a>
+                <a href="cddl/controller.cddl" target="_blank">controller.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -389,7 +387,7 @@ useful to all DID methods.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmXsyGniHhux8arqvE7GLfBkc7LoSWja8FWgmSyT7KHB5u" target="_blank">verificationMethod.cddl</a>
+                <a href="cddl/verificationMethod.cddl" target="_blank">verificationMethod.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -422,7 +420,7 @@ DID Core. See <a href="https://github.com/w3c/did-core/issues/283">issue
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmXKuJpcTYYGSTiCCcfpbSmNwdsH3ugnDmryhWDLabhYzN" target="_blank">publicKey.cddl</a>
+                <a href="cddl/publicKey.cddl" target="_blank">publicKey.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -474,7 +472,7 @@ DID Core. See <a href="https://github.com/w3c/did-core/issues/283">issue
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmaUuf95hzDEAjutYvf96d5EnqJGtSkef2GpmWs3PHXvN1" target="_blank">service.cddl</a>
+                <a href="cddl/service.cddl" target="_blank">service.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -520,7 +518,7 @@ These terms are properties or types belonging to objects in the value of
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmeXuACCgdFHvvyDEPmjnsL3Du4GV7tCDFTBmgMs6k8fsR" target="_blank">serviceEndpoint.cddl</a>
+                <a href="cddl/serviceEndpoint.cddl" target="_blank">serviceEndpoint.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -568,7 +566,7 @@ verification relationship</a>.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmbprTm14r5Fst83MJmJyqk8zu5Y2np6QLyFC6ziot6iAz" target="_blank">assertionMethod.cddl</a>
+                <a href="cddl/assertionMethod.cddl" target="_blank">assertionMethod.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -621,7 +619,7 @@ verification relationship</a>.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmYyJT9P7ceihM888aoGuZhvhSATVA4RRgaghwrt42bSi7" target="_blank">authentication.cddl</a>
+                <a href="cddl/authentication.cddl" target="_blank">authentication.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -674,7 +672,7 @@ verification relationship</a>.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmRCiiF2XKwiuwfBQiLRUu5GQLrJwBw3uY5bQcKxEm2yBy" target="_blank">capabilityDelegation.cddl</a>
+                <a href="cddl/capabilityDelegation.cddl" target="_blank">capabilityDelegation.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -725,7 +723,7 @@ verification relationship</a>.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmUF8Lo35Fu4cix73ci2qmM37xgHveJA8DZR8eu5R9G9mS" target="_blank">capabilityInvocation.cddl</a>
+                <a href="cddl/capabilityInvocation.cddl" target="_blank">capabilityInvocation.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -778,7 +776,7 @@ verification relationship</a>.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmNYqhk376SxHEw4cpF3riy9b8Uhs1Pkpp7Rku6yMizyUh" target="_blank">keyAgreement.cddl</a>
+                <a href="cddl/keyAgreement.cddl" target="_blank">keyAgreement.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -824,7 +822,7 @@ These properties are for use on a verification method object, not on the DID doc
                 <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld">esrs2020</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmPiJ9VU6yjVqH17CMBE2yZUhuFvSuqji29F7X9dZTiXq8" target="_blank">ethereumAddress.cddl</a>
+                <a href="cddl/ethereumAddress.cddl" target="_blank">ethereumAddress.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -866,7 +864,7 @@ These properties are for use on a verification method object, not on the DID doc
                 <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld">esrs2020</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmV4seQWgfNhKGje5eyfk87YRWFqGMEzqmJUAeSDwcr1Kn" target="_blank">publicKeyHex.cddl</a>
+                <a href="cddl/publicKeyHex.cddl" target="_blank">publicKeyHex.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -908,7 +906,7 @@ These properties are for use on a verification method object, not on the DID doc
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmQ3xxqJd9LMaXpmcoBjAhrAghHDt9fC4iEX9fWN3joBY1" target="_blank">publicKeyJwk.cddl</a>
+                <a href="cddl/publicKeyJwk.cddl" target="_blank">publicKeyJwk.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -949,7 +947,7 @@ These properties are for use on a verification method object, not on the DID doc
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmXV2TscVbadFR2DrwqbC9vGw9ZoCPhhzwR7XEyzNqihj7" target="_blank">publicKeyBase58.cddl</a>
+                <a href="cddl/publicKeyBase58.cddl" target="_blank">publicKeyBase58.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -977,7 +975,7 @@ These properties are for use on a verification method object, not on the DID doc
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmQHYAq7VxrKKU8o6qW7iJPZygLefPa1qMyozVRGBU8yfZ" target="_blank">publicKeyPem.cddl</a>
+                <a href="cddl/publicKeyPem.cddl" target="_blank">publicKeyPem.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -998,13 +996,13 @@ These properties are for use on a verification method object, not on the DID doc
           <tbody>
             <tr>
               <td>
-                <a href="https://w3id.org/security/#publicKeyGpg">security-vocab</a>
+                <span class="issue">Normative definition pending</span>
               </td>
               <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
+                <span class="issue">JSON-LD pending</span>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmeoDCScskKNdfGXBWL8U7ZktPd8DK5KtfWFc6AAznAQu9" target="_blank">publicKeyGpg.cddl</a>
+                publicKeyGpg.cddl
               </td>
             </tr>
           </tbody>
@@ -1046,7 +1044,7 @@ for the value of <code>type</code> in a verification method object.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificationMethodTypes.cddl</a>
+                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1087,7 +1085,7 @@ for the value of <code>type</code> in a verification method object.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>                
-                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificationMethodTypes.cddl</a>
+                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1129,7 +1127,7 @@ for the value of <code>type</code> in a verification method object.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificationMethodTypes.cddl</a> 
+                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a> 
               </td>
             </tr>
           </tbody>
@@ -1165,7 +1163,7 @@ for the value of <code>type</code> in a verification method object.
                 <a href="https://gpg.jsld.org/contexts/lds-gpg2020-v0.0.jsonld">gpg.jsld.org</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificationMethodTypes.cddl</a>
+                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1207,7 +1205,7 @@ for the value of <code>type</code> in a verification method object.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificationMethodTypes.cddl</a>
+                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1240,7 +1238,7 @@ for the value of <code>type</code> in a verification method object.
               </td>
               <td></td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificationMethodTypes.cddl</a>
+                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1281,7 +1279,7 @@ for the value of <code>type</code> in a verification method object.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificationMethodTypes.cddl</a>
+                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1308,7 +1306,7 @@ for the value of <code>type</code> in a verification method object.
                 <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld">esrs2020</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmWu8sT2hqhVH8hca6cwPNU5pCDbmndBGqtnMDK5Vu7fJm" target="_blank">verificationMethodTypes.cddl</a>
+                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1374,7 +1372,7 @@ for the value of <code>type</code> in a verification method object.
               </td>
               <td></td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmTSh4GVtuiaHPsDrnRkmBAndLVAeMKgnesrXB9gD4SgPA" target="_blank">accept.cddl</a>
+                <a href="cddl/accept.cddl" target="_blank">accept.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1411,7 +1409,7 @@ These properties contain information pertaining to the DID resolution response.
               </td>
               <td></td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmSgAXAcyH8cSZTdyYbjycz9fzAvCF3hDNBSXhwVAUCoYQ" target="_blank">content-type.cddl</a>
+                <a href="cddl/contentType.cddl" target="_blank">content-type.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1442,7 +1440,7 @@ These properties contain information pertaining to the DID resolution response.
               <td>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/Qma1Xqpyr9nKLXyypP1gP5zAJNZuLPMbPG1GWzJeULqy5y" target="_blank">error.cddl</a>
+                <a href="cddl/error.cddl" target="_blank">error.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1495,7 +1493,7 @@ rather than the DID subject.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmfG8oZTFjGdTEfT17jwf7gnAn5J1dhxfJz6Z88NAFstDA" target="_blank">created.cddl</a>
+                <a href="cddl/created.cddl" target="_blank">created.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1531,7 +1529,7 @@ rather than the DID subject.
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
               </td>
               <td>
-                <a href="https://ipfs.io/ipfs/QmSXxNTVjZ3H8LF7mfAj5XAqDrzSYK2ZkRUKVHzbptpW9w" target="_blank">updated.cddl</a>
+                <a href="cddl/updated.cddl" target="_blank">updated.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1714,8 +1712,13 @@ did:example:123?transform-keys=jwk
 
     <p>
 This table summarizes the DID method specifications currently in development.
-The links will be updated as subsequent Implementer’s Drafts are produced. <a href="https://ipfs.io/ipfs/QmZ5eDK3k12hYWd2EPKJNkPMLokZ8gXuPASUA7D4B3YVy2" target="_blank">CDDL definitiion of DID method names</a>
+The links will be updated as subsequent Implementer’s Drafts are produced. 
     </p>
+
+    <p class="issue">
+      How will we automate the update of the namespace reservations and keep them in sync with the reserved namespace in the Abstract Data Model? See <a href="https://github.com/w3c/did-spec-registries/issues/152">issue
+      #152</a>.
+              </p>
 
     <table class="simple">
       <thead>
