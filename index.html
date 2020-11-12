@@ -926,36 +926,6 @@ These properties are for use on a verification method object, not on the DID doc
 
       </section>
 
-      <section>
-        <h4>publicKeyPem</h4>
-
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CBOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3id.org/security/#publicKeyPem">security-vocab</a>
-              </td>
-              <td>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-      </section>
-    </section>
-
     <section>
       <h3>Verification method types</h3>
       <p>
@@ -1158,7 +1128,22 @@ for the value of <code>type</code> in a verification method object.
     "id": "did:example:123#key-0",
     "type": "RsaVerificationKey2018",
     "controller": "did:example:123",
-    "publicKeyPem": "-----BEGIN PUBLIC KEY...END PUBLIC KEY-----\r\n"
+    "publicKeyJwk": {
+      "kty":"RSA",
+      "e":"AQAB",
+      "use":"sig",
+      "kid":"tNksV42EUs3Xct9AkgZyFWglItRGMxVZ1A1XM68SNq0
+      "n":"kO2d_qQTEBjYFGcoY_da7ziFY4L2QX14K7snCee09n-cY2eP-oJXk8T2_lL20YnpYhf4i
+      jhkWHGU8kY8-FWPRrzSeu3JUMVSZoqTgoAiKWdnSLNvPVxvGuD2CiA3T6AkwUC03D2AkOLCcJV
+      8h_hxUEPeDawF7ArpuJW5DXzEJjE7gOjN4r6d7VB6sd5y-3la54H2ADz2amHLdBWs30fL4BRBH
+      lVdx0YmF37V4u5yvnnb5Iyr3kBXJes8t0MUMPkjqEEXRmukpKUzZYNpWDXY0tVcXeK5sRx0DAn
+      lNgNNf14-vsyjGkj2Rz0oGW73jjWa8dw-yVlDEHyIkQU9-UY4dFXbVjdIO8j_5ghh62o1T7Y4w
+      5CWMc-FxPE3LHe-_teW97X__NN-ToYgfi42IvV2mYOdQMCbvnvY2oMdK3b9wmeVi0marToauL5
+      LMg5xHDKopmIR7E3VyRtNYwDFAZ89kadcbSrZ8zTR5APaB7Tmp2L2ZfXKxqKQuxlFTTCcZtg4e
+      5AN8QuYdI18DEDQn2umUU_Twj7k4CXvuIKVL8p4yRHC4CHAGIm9cH_t11dF3wXygaENVOGRXQu
+      0g1iKq0mO2rWpOqkGJ5uXMFb5lx54i8uOjCdZ9y2el28xA55Ve95KCxeTHp997Bn3TIgbeQ-B_
+      -3PBVTuuAAH8y9fFNKtu5E"
+    }
   }
         </pre>
       </section>
