@@ -206,8 +206,8 @@ Property and it's Abstract Data model structure.
     </ol>
 
     <p class="issue">
-      Should CDDL be used as the Data Definition Language to formalize the constraints of the Abstract Data Model? (see <a href="https://github.com/w3c/did-spec-registries/issues/153"></a>).
-          </p>
+      Should CDDL be used as the Data Definition Language to formalize the constraints of the CBOR and JSON representation of a DID document? (see <a href="https://github.com/w3c/did-spec-registries/issues/153"></a>).
+      </p>
 
     <p>
 Additions that do not meet these criteria MUST NOT be accepted. Entries that
@@ -243,10 +243,11 @@ be possible to submit items to the registry without normative definitions (see <
     </p>
 
 <p>
-  Concise Data Defition Lanuage (CDDL) provides a succint data defition for representing the Abstract Data Model of 
-  the <a href="https://www.w3.org/TR/did-core/#core-representations" taret="_blank">DID Core Specification</a> and associated <a href="https://w3c.github.io/did-spec-registries/" target="_blank">DID Spec Registeries</a>.  The draft composite CDDL definition for the entire DID Document Specifation and associated 
+  Concise Data Defition Lanuage (CDDL) provides a succint data defition for representing JSON and CBOR core representations of  
+  a DID document as described in the <a href="https://www.w3.org/TR/did-core/#core-representations" taret="_blank">DID Core Specification</a> and associated properties registered in this <a href="https://w3c.github.io/did-spec-registries/" target="_blank">DID Spec Registeries</a>.  
+  The draft composite CDDL definition for the entire DID Document Specifation and associated 
   registeries can be found <a href="cddl/did-document.cddl" target="_blank">here</a>.  
-  Additionally, each Property, Class and Type are described separately below and can be found below the `CDDL` column.     
+  Additionally, each Property, Class and Type are described separately below and can be found below the `CDDL` column and apply to JSON and CBOR representations only.     
 </p>
 
     <section>
@@ -955,65 +956,6 @@ These properties are for use on a verification method object, not on the DID doc
 
       </section>
 
-      <section>
-        <h4>publicKeyPem</h4>
-
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3id.org/security/#publicKeyPem">security-vocab</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
-              </td>
-              <td>
-                <a href="cddl/publicKeyPem.cddl" target="_blank">publicKeyPem.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-      </section>
-      <section>
-        <h4>publicKeyGpg</h4>
-
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <span class="issue">Normative definition pending</span>
-              </td>
-              <td>
-                <span class="issue">JSON-LD pending</span>
-              </td>
-              <td>
-                publicKeyGpg.cddl
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="issue">
-          <a href="https://github.com/w3c/did-spec-registries/issues/137">ISSUE 137 on DID Spec Registeries</a>:  publicKeyGpg is used in <a href="#example-18">example 18</a> but not defined. 
-                  </p>
-      </section>
-
-    </section>
-
     <section>
       <h3>Verification method types</h3>
       <p>
@@ -1215,7 +1157,22 @@ for the value of <code>type</code> in a verification method object.
     "id": "did:example:123#key-0",
     "type": "RsaVerificationKey2018",
     "controller": "did:example:123",
-    "publicKeyPem": "-----BEGIN PUBLIC KEY...END PUBLIC KEY-----\r\n"
+    "publicKeyJwk": {
+      "kty":"RSA",
+      "e":"AQAB",
+      "use":"sig",
+      "kid":"tNksV42EUs3Xct9AkgZyFWglItRGMxVZ1A1XM68SNq0
+      "n":"kO2d_qQTEBjYFGcoY_da7ziFY4L2QX14K7snCee09n-cY2eP-oJXk8T2_lL20YnpYhf4i
+      jhkWHGU8kY8-FWPRrzSeu3JUMVSZoqTgoAiKWdnSLNvPVxvGuD2CiA3T6AkwUC03D2AkOLCcJV
+      8h_hxUEPeDawF7ArpuJW5DXzEJjE7gOjN4r6d7VB6sd5y-3la54H2ADz2amHLdBWs30fL4BRBH
+      lVdx0YmF37V4u5yvnnb5Iyr3kBXJes8t0MUMPkjqEEXRmukpKUzZYNpWDXY0tVcXeK5sRx0DAn
+      lNgNNf14-vsyjGkj2Rz0oGW73jjWa8dw-yVlDEHyIkQU9-UY4dFXbVjdIO8j_5ghh62o1T7Y4w
+      5CWMc-FxPE3LHe-_teW97X__NN-ToYgfi42IvV2mYOdQMCbvnvY2oMdK3b9wmeVi0marToauL5
+      LMg5xHDKopmIR7E3VyRtNYwDFAZ89kadcbSrZ8zTR5APaB7Tmp2L2ZfXKxqKQuxlFTTCcZtg4e
+      5AN8QuYdI18DEDQn2umUU_Twj7k4CXvuIKVL8p4yRHC4CHAGIm9cH_t11dF3wXygaENVOGRXQu
+      0g1iKq0mO2rWpOqkGJ5uXMFb5lx54i8uOjCdZ9y2el28xA55Ve95KCxeTHp997Bn3TIgbeQ-B_
+      -3PBVTuuAAH8y9fFNKtu5E"
+    }
   }
         </pre>
       </section>
@@ -1454,12 +1411,98 @@ These properties contain information pertaining to the DID resolution response.
 
         <section>
           <h4>invalid-did</h4>
-          <p class="issue" data-number="111"></p>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pre class="example" title="Example of invalid-did error value">
+{
+  "error": "invalid-did"
+}
+          </pre>
         </section>
 
         <section>
-          <h4>unauthorized</h4>
-          <p class="issue" data-number="112"></p>
+          <h4>invalid-did-url</h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3c.github.io/did-core/#did-url-dereferencing-metadata-properties">DID Core</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pre class="example" title="Example of invalid-did-url error value">
+{
+  "error": "invalid-did-url"
+}
+          </pre>
+        </section>
+
+        <section>
+          <h4>not-found</h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pre class="example" title="Example of not-found error value">
+{
+  "error": "not-found"
+}
+          </pre>
+        </section>
+
+        <section>
+          <h4>deactivated</h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pre class="example" title="Example of deactivated error value">
+{
+  "error": "deactivated"
+}
+          </pre>
         </section>
 
       </section>
@@ -1487,7 +1530,7 @@ rather than the DID subject.
           <tbody>
             <tr>
               <td>
-                <a href="https://www.w3.org/TR/did-core/#created">DID Core</a>
+                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core context</a>
@@ -1501,7 +1544,7 @@ rather than the DID subject.
 
         <pre class="example">
 {
-  "created": "2002-10-10T17:00:00Z"
+  "created": "2019-03-23T06:35:22Z"
 }
         </pre>
       </section>
@@ -1522,7 +1565,7 @@ rather than the DID subject.
           <tbody>
             <tr>
               <td>
-                <a href="https://www.w3.org/TR/did-core/#updated">DID Core</a>
+                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
               </td>
 
               <td>
@@ -1537,7 +1580,7 @@ rather than the DID subject.
 
         <pre class="example" title="Example of updated property">
 {
-  "updated": "2016-10-17T02:41:00Z"
+  "updated": "2023-08-10T13:40:06Z"
 }
         </pre>
 
@@ -1709,10 +1752,15 @@ did:example:123?transform-keys=jwk
   <section>
     <h1>DID Methods</h1>
 
-
     <p>
 This table summarizes the DID method specifications currently in development.
 The links will be updated as subsequent Implementer’s Drafts are produced. 
+    </p>
+    <p>
+The normative requirements for DID method specifications can be found in
+<a href="https://www.w3.org/TR/did-core/#methods">Decentralized Identifiers
+v1.0: Methods</a> [[DID-CORE]]. DID methods that do not meet these requirements
+will not be accepted.
     </p>
 
     <p class="issue">
@@ -3008,8 +3056,7 @@ The links will be updated as subsequent Implementer’s Drafts are produced.
               <a href="https://github.com/51nodes/schema-registry-did-method/blob/master/README.md">Schema Registry DID Method</a>
           </td>
       </tr>
-
-        <tr>
+      <tr>
           <td>
             did:key:
           </td>
@@ -3024,6 +3071,75 @@ The links will be updated as subsequent Implementer’s Drafts are produced.
           </td>
           <td>
             <a href="https://w3c-ccg.github.io/did-method-key/">DID key method</a>
+          </td>
+
+        </tr>
+      <tr>
+        <td>
+          did:tyron:
+        </td>
+        <td>
+          PROVISIONAL
+        </td>
+        <td>
+          Zilliqa
+        </td>
+        <td>
+          Julio Cabrapan Duarte
+        </td>
+        <td>
+          <a href="https://www.tyronzil.com">tyronZIL DID-Method</a>
+        </td>
+      </tr>
+<tr>
+          <td>
+            did:corda:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Corda
+          </td>
+          <td>
+            Nitesh Solanki,Moritz Platt,Pranav Kirtani
+          </td>
+          <td>
+            <a href="https://htmlpreview.github.io/?https://github.com/persistentsystems/corda-did-method/blob/master/corda_did_method.html">Corda DID method</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            did:uns:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            <a href="https://docs.uns.network/">uns.network</a>
+          </td>
+          <td>
+            <a href="https://www.spacelephant.org/">Space Elephant SAS</a>
+          </td>
+          <td>
+            <a href="https://github.com/unik-name/did-method-spec/blob/main/did-uns/UNS-DID-Specification.md">UNS DID Method</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            did:panacea:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Panacea
+          </td>
+          <td>
+            MediBloc
+          </td>
+          <td>
+            <a href="https://github.com/medibloc/panacea-core/blob/master/docs/did.md">Panacea DID Method</a>
           </td>
         </tr>
       </tbody>
