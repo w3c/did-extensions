@@ -62,7 +62,6 @@
       "@container": "@set"
     },
     "publicKeyBase58": "sec:publicKeyBase58",
-    "publicKeyPem": "sec:publicKeyPem",
     "publicKeyJwk": {
       "@id": "sec:publicKeyJwk",
       "@type": "@json"
