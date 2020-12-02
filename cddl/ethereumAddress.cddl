@@ -1,0 +1,14 @@
+verificationMethod = {
+    id : did-url
+    controller : did / [1* did]
+    type : "EcdsaSecp256k1RecoveryMethod2020"                 ; this is the only type known for ethereum address 
+    ethereumAddress :  text .regexp "0x[a-zA-F0-9]{40,40}"    ; only allows for hexadecimal representations
+}
+
+
+did = text .regexp "did\\:(?<method_name>[A-Za-z0-9]+)\\:(?<method_specific_id>[A-Za-z0-9\\.\\-\\:\\_]+)"
+
+did-url = text .regexp "did\\:(?<did_method>[a-z0-9]+)\\:(?<did_method_identifier>[A-Za-z0-9\\.\\-\\:\\_]+)\\/?(?<path>[A-Za-z0-9\\/]+)\\??(?<query>[A-Za-z0-9\\=\\&\\%\\-\\:]+)?\\#?(?<fragment>[A-Za-z0-9\\-\\_]+)"
+
+
+

@@ -1,0 +1,1 @@
+{"id": "did:r2:YPRm/k3e3#vwy", "type": "EcdsaSecp256k1VerificationKey2019", "controller": "did:MuGg:4J", "publicKeyJwk": {"crv": "P-256", "kty": "EC", "x": "pleurapophysis", "y": "scalelet"}}

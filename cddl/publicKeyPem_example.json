@@ -1,0 +1,6 @@
+{
+    "id": "did:example:123#vm-2",
+    "controller": "did:example:123",
+    "type": "RsaVerificationKey2018",
+    "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBG0BAOClDQAB\n-----END PUBLIC KEY-----\n"
+}

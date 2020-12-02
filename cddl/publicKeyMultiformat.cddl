@@ -1,0 +1,36 @@
+publicKeyMultiformat = {
+    id: did-url 
+    type: VerificationMethodTypes
+    controller: did  / [1*did ]
+    publicKeyMulticodec : #6.42(bstr) / linkedCID / inlineCID 
+  } 
+
+linkedCID = {
+    "/" : text          ; ideally this should be more constrained and builds on CIDs type 
+}
+
+inlineCID = text        ; ideally this should be more constrained and builds on CIDs type  
+
+
+;; DID syntax according to did-core specification, see: https://www.w3.org/TR/did-core/#did-syntax.  method-name must be registered and match method-name below
+did = text .regexp "did\\:(?<method_name>[A-Za-z0-9]+)\\:(?<method_specific_id>[A-Za-z0-9\\.\\-\\:\\_]+)"
+
+
+;; DID url syntax including path, query and fragment 
+did-url = text .regexp "did\\:(?<did_method>[a-z0-9]+)\\:(?<did_method_identifier>[A-Za-z0-9\\.\\-\\:\\_]+)\\/?(?<path>[A-Za-z0-9\\/]+)\\??(?<query>[A-Za-z0-9\\=\\&\\%\\-\\:]+)?\\#?(?<fragment>[A-Za-z0-9\\-\\_]+)"
+
+
+; current list of all registered Verification Method classes
+; These are classes not a properties - in other words, use them for the value of type in a verification method object.
+VerificationMethodTypes = 
+    "JsonWebKey2020" / 
+    "Ed25519VerificationKey2018" / 
+    "EcdsaSecp256k1VerificationKey2019" / 
+    "SchnorrSecp256k1VerificationKey2019" /
+    "Ed25519VerificationKey2018" / 
+    "GpgVerificationKey2020" / 
+    "RsaVerificationKey2018" / 
+    "X25519KeyAgreementKey2019" /
+    "EcdsaSecp256k1RecoveryMethod2020"
+    
+

@@ -1,0 +1,6 @@
+{
+    "id": "did:example:123#vm-3",
+    "controller": "did:example:123",
+    "type": "EcdsaSecp256k1RecoveryMethod2020",
+    "ethereumAddress": "0xF3beAC30C498D9E26865F34fCAa57dBB935b0D74"
+  }

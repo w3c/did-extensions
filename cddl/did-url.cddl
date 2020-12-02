@@ -1,0 +1,4 @@
+;
+did-url = text .regexp "did\\:(?<did_method>[a-z0-9]+)\\:(?<did_method_identifier>[A-Za-z0-9\\.\\-\\:\\_]+)\\/?(?<path>[A-Za-z0-9\\/]+)\\??(?<query>[A-Za-z0-9\\=\\&\\%\\-\\:]+)?\\#?(?<fragment>[A-Za-z0-9\\-\\_]+)?"
+
+
