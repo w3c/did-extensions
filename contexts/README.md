@@ -1,6 +1,27 @@
 # DID Contexts
 
-## Background
+## Terms
+
+The terms present in the DID Core context (v1) are normatively defined in
+the [DID Core Specification](https://www.w3.org/TR/did-core), except for
+the following terms, which are defined in [the Security Vocabulary](w3id.org/security/)
+and maintained here for developer convenience.
+
+* `publicKey`
+* `blockchainAccountId`
+* `EcdsaSecp256k1VerificationKey2019`
+* `Ed25519Signature2018`
+* `Ed25519VerificationKey2018`
+* `JsonWebKey2020`
+* `JsonWebSignature2020`
+* `RsaVerificationKey2018`
+* `SchnorrSecp256k1VerificationKey2019`
+* `X25519KeyAgreementKey2019`
+* `ServiceEndpointProxyService`
+
+## DID Context Versions
+
+### Background
 
 JSON-LD context versioning (and schema versioning in general) is a complex 
 topic, involving the need to balance security with developer convenience.
@@ -20,7 +41,7 @@ latest in-progress `@context`", without constraining the versions.
 And between the two extremes, some developers may want to use strongly versioned
 contexts (without necessarily cryptographically binding assurance).
 
-## DID Context Versions
+### Versioning
 
 The current system for DID context versioning is:
 
