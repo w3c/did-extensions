@@ -178,7 +178,7 @@ The JSON-LD Context MUST be included in full as part of the submission.
           </li>
           <li>
 A cryptographic hash of the JSON-LD Context SHOULD be included as part of the
-submission.
+submission, and computed according to <a href="#json-ld-context-integrity"></a>.
           </li>
           <li>
 A namespace URI MUST be provided for the JSON-LD Context so that consumer
@@ -225,6 +225,26 @@ Any submission to the registries that meet all the criteria listed above will be
 accepted for inclusion. These registries enumerate all known mechanisms that
 meet a minimum bar, without choosing between them.
     </p>
+
+    <section>
+      <h2>
+JSON-LD context integrity
+      </h2>
+      <p>
+When included, the cryptographic hash of the content of the JSON-LD Context MUST be
+computed in a manner equivalent to the following:
+            </p>
+            <pre class="example">
+curl -s https://www.w3.org/ns/did/v1 | openssl sha256
+            </pre>
+            <p>
+The command above will result in the following hash, expressed in hexadecimal notation:
+            </p>
+            <pre class="example">
+910cd6648f6f7b72a7896a8da83e63460eb8355a0af4b56b699c9281452ac8bb
+            </pre>
+            </p>
+    </section>
   </section>
 
 
