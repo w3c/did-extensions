@@ -46,10 +46,10 @@ did:DIDDocumentShape a sh:NodeShape ;
             sh:path did:keyAgreement ;
             sh:nodeKind sh:IRI ;
         ],[
-            did:capabilityDelegation ;
+            sh:path did:capabilityDelegation ;
             sh:nodeKind sh:IRI ;
         ],[
-            did:capabilityInvocation ;
+            sh:path did:capabilityInvocation ;
             sh:nodeKind sh:IRI ;
         ],[
             sh:path did:service ;
@@ -71,7 +71,7 @@ did:VerificationMethodShape a sh:NodeShape ;
         did:assertionMethod,
         did:keyAgreement,
         did:capabilityDelegation,
-        did:capabilityInvocation,
+        did:capabilityInvocation ;
     sh:property
         [
             sh:path did:publicKeyJwk ;
@@ -115,7 +115,7 @@ did:ServiceShape a sh:NodeShape ;
     sh:targetObjectsOf did:service ;
     sh:property [
         sh:path did:verificationMethod ;
-        sh:class :VerificationMethod ;
+        sh:class did:VerificationMethod ;
         sh:nodeKind sh:IRI ;
     ],[
         sh:path did:serviceEndpoint ;

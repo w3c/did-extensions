@@ -1,5 +1,6 @@
 node_modules
 coverage
+vocabs/shape_test.ttl
 
 .vscode
 .DS_Store
