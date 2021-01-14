@@ -6,7 +6,7 @@
     "dc": "http://purl.org/dc/terms/",
     "schema": "http://schema.org/",
     "sec": "https://w3id.org/security#",
-    "didv": "https://w3id.org/did#",
+    "didns": "https://www.w3.org/ns/did/v1#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "EcdsaSecp256k1VerificationKey2019": "sec:EcdsaSecp256k1VerificationKey2019",
     "Ed25519Signature2018": "sec:Ed25519Signature2018",
@@ -68,12 +68,12 @@
       "@type": "@json"
     },
     "service": {
-      "@id": "didv:service",
+      "@id": "didns:service",
       "@type": "@id",
       "@container": "@set"
     },
     "serviceEndpoint": {
-      "@id": "didv:serviceEndpoint",
+      "@id": "didns:serviceEndpoint",
       "@type": "@id"
     },
     "updated": {
