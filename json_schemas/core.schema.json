@@ -107,7 +107,8 @@
                         "$ref" : "#/definitions/type.schema"
                     },
                     "verificationMethod" : {
-                        "$ref" : "#/definitions/verification_method.schema"
+                        "type": "string",
+                        "format" : "uri-reference"
                     },
                     "serviceEndpoint" : {
                         "oneOf" : [
