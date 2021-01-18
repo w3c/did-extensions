@@ -117,6 +117,7 @@ did:ServiceShape a sh:NodeShape ;
         sh:path did:verificationMethod ;
         sh:class did:VerificationMethod ;
         sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
     ],[
         sh:path did:serviceEndpoint ;
         sh:nodeKind sh:BlankNodeOrIRI ;
