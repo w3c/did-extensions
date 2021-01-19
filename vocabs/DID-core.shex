@@ -17,8 +17,6 @@ PREFIX sh:   <http://www.w3.org/ns/shacl#>
 <ServiceShape> IRI {
     # At least one type is to be set
     rdf:type IRI+ ;
-    # There can be a single verification method
-    did:verificationMethod @<VerificationMethodShape> {0,1} ;
     did:serviceEndpoint IRI ;
 }
 

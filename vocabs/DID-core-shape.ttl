@@ -114,11 +114,6 @@ did:ServiceShape a sh:NodeShape ;
     sh:targetClass did:ServiceEndpoint ;
     sh:targetObjectsOf did:service ;
     sh:property [
-        sh:path did:verificationMethod ;
-        sh:class did:VerificationMethod ;
-        sh:nodeKind sh:IRI ;
-        sh:maxCount 1 ;
-    ],[
         sh:path did:serviceEndpoint ;
         sh:nodeKind sh:BlankNodeOrIRI ;
         sh:minCount 1 ;

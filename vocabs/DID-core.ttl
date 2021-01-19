@@ -49,6 +49,7 @@ did:controller a rdf:Property ;
 
 did:verificationMethod a rdf:Property ;
     rdfs:range did:VerificationMethod ;
+    rdfs:domain did:DIDDocument ;
     rdfs:comment "A generic method to refer to a Verification Method" ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#verification-methods> ;
     owl:sameAs sec:verificationMethod ;
