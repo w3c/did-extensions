@@ -106,10 +106,6 @@
                     "type" : {
                         "$ref" : "#/definitions/type.schema"
                     },
-                    "verificationMethod" : {
-                        "type": "string",
-                        "format" : "uri-reference"
-                    },
                     "serviceEndpoint" : {
                         "oneOf" : [
                             {
