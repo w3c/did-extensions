@@ -1,0 +1,39 @@
+# You can run this, for example, with:
+#  shex -x DID-core-shape.shex -d shape_test.ttl -n did:ex:12345 -s DocumentShape
+#
+PREFIX did:  <https://w3id.org/did#>
+PREFIX as:   <https://www.w3.org/ns/activitystreams>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sh:   <http://www.w3.org/ns/shacl#>
+
+# A controller must have a DID as an identifier
+_:ControllerShape IRI /^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+/
+
+_:VerificationMethodShape IRI {
+    did:controller @_:ControllerShape+ ;
+    rdf:type IRI+ ;
+    (did:publicKeyJwk rdf:JSON {0,1} | did:publicKeyBase58 LITERAL {0,1} );
+}
+
+_:ServiceShape IRI {
+    # At least one type must to be set, as well as a single service endpoint
+    rdf:type IRI+ ;
+    did:serviceEndpoint IRI ;
+}
+
+# A DID document must have a DID as an identifier
+# The id is not a blank node, because that is the node referred to from the outside world
+<DocumentShape> IRI /^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+/ {
+    did:alsoKnownAs IRI* ;
+    did:controller @_:ControllerShape* ;
+    did:verificationMethod @_:VerificationMethodShape* ;
+    did:authentication @_:VerificationMethodShape* ;
+    did:assertionMethod @_:VerificationMethodShape* ;
+    did:keyAgreement @_:VerificationMethodShape* ;
+    did:capabilityDelegation @_:VerificationMethodShape* ;
+    did:capabilityInvocation @_:VerificationMethodShape* ;
+    did:service @_:ServiceShape* ;
+}
+

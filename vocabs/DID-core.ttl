@@ -24,7 +24,7 @@ did:VerificationMethod a rdfs:Class ;
     rdfs:label "Verification Method" ;
 .
 
-did:ServiceEndpoint a rdfs:Class ;
+did:Service a rdfs:Class ;
     rdfs:comment "Service endpoints are used in DID documents to express ways of communicating with the DID subject or associated entities" ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#service-endpoints> ;
     rdfs:label "Service Endpoint" ;
@@ -113,11 +113,11 @@ did:publicKeyBase58 a rdf:Property, owl:DatatypeProperty ;
 
 did:service a rdf:Property ;
     rdfs:domain did:DIDDocument ;
-    rdfs:range did:ServiceEndpoint ;
+    rdfs:range did:Service ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#service-endpoints> ;
 .
 
-did:serviceEndpoint a rdf:Property ;
-    rdfs:domain did:ServiceEndpoint ;
+did:Service a rdf:Property ;
+    rdfs:domain did:Service ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#service-endpoints> ;
 .
