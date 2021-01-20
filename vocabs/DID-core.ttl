@@ -117,7 +117,7 @@ did:service a rdf:Property ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#service-endpoints> ;
 .
 
-did:Service a rdf:Property ;
+did:serviceEndpoint a rdf:Property ;
     rdfs:domain did:Service ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#service-endpoints> ;
 .

@@ -18,9 +18,9 @@ _:VerificationMethodShape IRI {
 }
 
 _:ServiceShape IRI {
-    # At least one type must to be set, as well as a single service endpoint
     rdf:type IRI+ ;
-    did:serviceEndpoint IRI ;
+    # At least one type must to be set, as well at least one service endpoint, whose value can be either a blank node or a URI
+    (did:serviceEndpoint IRI | did:serviceEndpoint BNode)+;
 }
 
 # A DID document must have a DID as an identifier
