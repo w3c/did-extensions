@@ -226,7 +226,8 @@ meet a minimum bar, without choosing between them.
 
 
   <section>
-    <h1>Properties</h1>
+    <h1>Property Names</h1>
+
     <p>
 The following section defines the properties available for use in a DID
 document. Note that some of these properties are defined in the
@@ -252,53 +253,10 @@ be possible to submit items to the registry without normative definitions (see <
 </p>
 
     <section>
-      <h3>Base properties</h3>
+      <h3>DID document properties</h3>
       <p>
 These properties are foundational to DID documents, and are expected to be
 useful to all DID methods.
-      <section>
-        <h4>@context</h4>
-
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#production-0">DID Core</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p class="issue">
-          This is an active area of debate regarding if <code>@context</code> belongs as a base property in the
-          DID Core. See <a href="https://github.com/w3c/did-core/issues/432">issue
-          #283</a>.
-                  </p>
-
-
-        <pre class="example" title="Example of @context property">
-{
-  "@context": [
-    "https://www.w3.org/ns/did/v1",
-    "https://example.com/blockchain-identity/v1"
-  ],
-  ...
-}
-        </pre>
-
-      </section>
 
       <section>
         <h4>id</h4>
@@ -494,120 +452,9 @@ This property has been deprecated in favor or <code>verificationMethod</code>.
     </section>
 
     <section>
-      <h3>Services</h3>
-      <p>
-These terms are properties or types belonging to objects in the value of
-<a href="#service"></a>.
-      </p>
-      <section>
-        <h4>serviceEndpoint</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#service-endpoints">DID Core</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/serviceEndpoint.cddl" target="_blank">serviceEndpoint.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example" title="Example of service and serviceEndpoint properties">
-{
-  ...
-  "service": [{
-    "id": "did:example:123#edv",
-    "type": "EncryptedDataVault",
-    "serviceEndpoint": "https://edv.example.com/"
-  }]
-}
-        </pre>
-
-      </section>
-
-      <section>
-        <h4>Service types</h4>
-
-      <section>
-        <h5>LinkedDomains</h5>
-        <div class="issue" data-number="167"></div>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://identity.foundation/.well-known/resources/did-configuration/">Well Known DID Configuration</a>
-              </td>
-              <td>
-                <a href="https://identity.foundation/.well-known/did-configuration/v1">Well Known DID Configuration</a>
-              </td>
-              <td>
-                <span>CDDL definition pending</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example" title="Example of service and serviceEndpoint properties">
-{
-  "@context": ["https://www.w3.org/ns/did/v1","https://identity.foundation/.well-known/did-configuration/v1"],
-  "id": "did:example:123",
-  "verificationMethod": [{
-    "id": "did:example:123#456",
-    "type": "JsonWebKey2020",
-    "controller": "did:example:123",
-    "publicKeyJwk": {
-      "kty": "OKP",
-      "crv": "Ed25519",
-      "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
-    }
-  }],
-  "service": [
-    {
-      "id":"did:example:123#foo",
-      "type": "LinkedDomains",
-      "serviceEndpoint": {
-        "origins": ["https://foo.example.com", "https://identity.foundation"]
-      }
-    },
-    {
-      "id":"did:example:123#bar",
-      "type": "LinkedDomains",
-      "serviceEndpoint": "https://bar.example.com"
-    }
-  ]
-}
-        </pre>
-
-      </section>
-
-      </section>
-
-
-    </section>
-
-    <section>
       <h3>Verification relationships</h3>
       <p>
-A DID document expresses the relationship between the DID subject and a
+These are properties that express the relationship between the DID subject and a
 verification method using a
 <a href="https://w3c.github.io/did-core/#dfn-verification-relationship">
 verification relationship</a>.
@@ -867,11 +714,9 @@ verification relationship</a>.
     <section>
       <h3>Verification method properties</h3>
       <p>
-These properties are for use on a verification method object, not on the DID document itself.
+These properties are for use on a verification method object, in the value of
+<a href="#verificationmethod"><code>verificationMethod</code></a>.
       </p>
-
-
-
 
       <section>
         <h4>publicKeyJwk</h4>
@@ -1072,11 +917,62 @@ These properties are for use on a verification method object, not on the DID doc
       </section>
 
     <section>
+      <h3>Service properties</h3>
+      <p>
+These properties are for use on a service object, in the value of
+<a href="#service"><code>service</code></a>.
+      </p>
+      <section>
+        <h4>serviceEndpoint</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+              <th>CDDL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#service-endpoints">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+              <td>
+                <a href="cddl/serviceEndpoint.cddl" target="_blank">serviceEndpoint.cddl</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  ...
+  "service": [{
+    "id": "did:example:123#edv",
+    "type": "EncryptedDataVault",
+    "serviceEndpoint": "https://edv.example.com/"
+  }]
+}
+        </pre>
+
+      </section>
+      
+    </section>
+
+  </section>
+
+  <section>
+    <h1>Property Values</h1>
+
+    <section>
       <h3>Verification method types</h3>
       <p>
-These are <em>classes</em> not a <em>properties</em> - in other words, use them
-for the value of <code>type</code> in a verification method object.
+These are values to be used for the <code>type</code> in a verification method object.
       </p>
+
       <section>
         <h4>JsonWebKey2020</h4>
 
@@ -1429,6 +1325,144 @@ The class of private information related to JWKs is defined
         </pre>
       </section>
 
+    </section>
+
+    <section>
+      <h3>Service types</h3>
+      <p>
+These are values to be used for the <code>type</code> property
+in a service object.
+      </p>
+
+      <section>
+        <h4>LinkedDomains</h4>
+        <div class="issue" data-number="167"></div>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+              <th>CDDL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://identity.foundation/.well-known/resources/did-configuration/">Well Known DID Configuration</a>
+              </td>
+              <td>
+                <a href="https://identity.foundation/.well-known/did-configuration/v1">Well Known DID Configuration</a>
+              </td>
+              <td>
+                <span>CDDL definition pending</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  "@context": ["https://www.w3.org/ns/did/v1","https://identity.foundation/.well-known/did-configuration/v1"],
+  "id": "did:example:123",
+  "verificationMethod": [{
+    "id": "did:example:123#456",
+    "type": "JsonWebKey2020",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
+    }
+  }],
+  "service": [
+    {
+      "id":"did:example:123#foo",
+      "type": "LinkedDomains",
+      "serviceEndpoint": {
+        "origins": ["https://foo.example.com", "https://identity.foundation"]
+      }
+    },
+    {
+      "id":"did:example:123#bar",
+      "type": "LinkedDomains",
+      "serviceEndpoint": "https://bar.example.com"
+    }
+  ]
+}
+        </pre>
+
+      </section>
+
+      </section>
+
+  </section>
+
+  <section>
+    <h1>Representation-Specific Entries</h1>
+
+    <section>
+      <h3>JSON</h3>
+
+      <p>
+These are entries in DID documents that are specific to the
+<a href="https://w3c.github.io/did-core/#json">JSON representation</a>.
+      </p>
+      <p>
+(No entries yet)
+      </p>
+    </section>
+
+    <section>
+      <h3>JSON-LD</h3>
+
+      <p>
+These are entries in DID documents that are specific to the
+<a href="https://w3c.github.io/did-core/#json-ld">JSON-LD representation</a>.
+      </p>
+
+      <section>
+        <h4>@context</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#production-0">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+
+        <pre class="example" title="Example of @context in the JSON-LD representation">
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://example.com/blockchain-identity/v1"
+  ],
+  ...
+}
+        </pre>
+
+      </section>
+    </section>
+
+    <section>
+      <h3>CBOR</h3>
+
+      <p>
+These are entries in DID documents that are specific to the
+<a href="https://w3c.github.io/did-core/#cbor">CBOR representation</a>.
+      </p>
+      <p>
+(No entries yet)
+      </p>
     </section>
   </section>
 
