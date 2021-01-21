@@ -9,5 +9,5 @@ The folder contains:
 
 ## Notes
 
-* The URI-s used for the terms and the vocabulary as a whole may still change.
+* The URIs used for the terms and the vocabulary as a whole may still change.
 * SHACL and ShEx are [_alternative_ formats](https://book.validatingrdf.com/bookHtml013.html) to express constraints on an RDF Graph and provide validity checking. 
