@@ -1,0 +1,182 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://w3c.github.io/did-spec-registries/schemas/core.schema.json",
+    "title": "DID Core Vocabulary schema",
+    "$comment": "The JWK.schema part is a copy of the JWK schema (https://preview.npmjs.com/package/jwk-schema), published by Jonathan Wilbur (https://github.com/JonathanWilbur)",
+    "definitions": {
+        "did.schema" : {
+            "type" : "string",
+            "pattern" : "^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+"
+        },
+
+        "type.schema" : {
+            "type" : [
+                "string",
+                "array"
+            ],
+            "uniqueItems": true,
+            "items" : {
+                "type" : "string"
+            }
+        },
+
+        "JWK.schema" : {
+            "type" : "object",
+            "properties": {
+                "kty": {
+                    "type": "string"
+                },
+                "use": {
+                    "type": "string"
+                },
+                "key_ops": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "alg": {
+                    "type": "string"
+                },
+                "kid": {
+                    "type": "string"
+                },
+                "x5u": {
+                    "type": "string"
+                },
+                "x5c": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "x5t": {
+                    "type": "string"
+                },
+                "x5t#S256": {
+                    "type": "string"
+                }
+            },
+            "required": ["kty"],
+            "additionalProperties": true
+        },
+
+        "verification_method.schema" : {
+            "type" : "array",
+            "uniqueItems": true,
+            "items" : {
+                "type" : "object",
+                "properties": {
+                    "publicKeyJwk" : {
+                        "$ref" : "#/definitions/JWK.schema"
+                    },
+                    "publicKeyBase58" : {
+                        "type" : "string"
+                    },
+                    "controller" : {
+                        "$ref" : "#/definitions/did.schema"
+                    },
+                    "id" : {
+                        "type": "string",
+                        "format" : "uri-reference"
+                    },
+                    "type" : {
+                        "$ref" : "#/definitions/type.schema"
+                    }
+                },
+                "required" : ["id", "type", "controller"],
+                "oneOf": [
+                    {"required" : ["publicKeyJwk"]},
+                    {"required" : ["publicKeyBase58"]}
+                ],
+                "additionalProperties" : true
+            }
+        },
+
+        "service.schema" : {
+            "type" : "array",
+            "uniqueItems": true,
+            "items" : {
+                "type" : "object",
+                "properties" : {
+                    "id" : {
+                        "type" : "string",
+                        "format" : "uri-reference"
+                    },
+                    "type" : {
+                        "$ref" : "#/definitions/type.schema"
+                    },
+                    "serviceEndpoint" : {
+                        "oneOf" : [
+                            {
+                                "type": "string",
+                                "format" : "uri-reference"
+                            },
+                            {
+                                "type" : "object"
+                            },
+                            {
+                                "type" : "array",
+                                "uniqueItems": true,
+                                "items": {
+                                    "oneOf" : [
+                                        {
+                                            "type": "string",
+                                            "format" : "uri-reference"
+                                        },
+                                        {
+                                            "type" : "object"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                "required": ["id", "type", "serviceEndpoint"],
+                "additionalProperties" : true
+            }
+        }
+    },
+
+    "type": "object",
+    "properties": {
+        "id" : {
+            "$ref" : "#/definitions/did.schema"
+        },
+        "alsoKnownAs" : {
+            "type" : "array",
+            "uniqueItems": true,
+            "items": {
+                "type" : "string",
+                "format" : "uri-reference"
+            }
+        },
+        "controller" : {
+            "$ref" : "#/definitions/did.schema"
+        },
+        "verificationMethod" : {
+            "$ref" : "#/definitions/verification_method.schema"
+        },
+        "authentication" : {
+            "$ref" : "#/definitions/verification_method.schema"
+        },
+        "assertionMethod" : {
+            "$ref" : "#/definitions/verification_method.schema"
+        },
+        "keyAgreement" : {
+            "$ref" : "#/definitions/verification_method.schema"
+        },
+        "capabilityDelegation" : {
+            "$ref" : "#/definitions/verification_method.schema"
+        },
+        "capabilityInvocation" : {
+            "$ref" : "#/definitions/verification_method.schema"
+        },
+        "service" : {
+            "$ref" : "#/definitions/service.schema"
+        }
+    },
+    "required" : ["id"],
+    "additionalProperties" : true
+}
