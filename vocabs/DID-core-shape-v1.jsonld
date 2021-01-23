@@ -1,0 +1,215 @@
+{
+    "@context": {
+        "path": {
+            "@id": "http://www.w3.org/ns/shacl#path",
+            "@type": "@id"
+        },
+        "pattern": {
+            "@id": "http://www.w3.org/ns/shacl#pattern"
+        },
+        "nodeKind": {
+            "@id": "http://www.w3.org/ns/shacl#nodeKind",
+            "@type": "@id"
+        },
+        "datatype": {
+            "@id": "http://www.w3.org/ns/shacl#datatype",
+            "@type": "@id"
+        },
+        "minCount": {
+            "@id": "http://www.w3.org/ns/shacl#minCount",
+            "@type": "http://www.w3.org/2001/XMLSchema#integer"
+        },
+        "targetClass": {
+            "@id": "http://www.w3.org/ns/shacl#targetClass",
+            "@type": "@id"
+        },
+        "targetObjectsOf": {
+            "@id": "http://www.w3.org/ns/shacl#targetObjectsOf",
+            "@type": "@id"
+        },
+        "xone": {
+            "@id": "http://www.w3.org/ns/shacl#xone",
+            "@type": "@id"
+        },
+        "property": {
+            "@id": "http://www.w3.org/ns/shacl#property",
+            "@type": "@id"
+        },
+        "targetSubjectsOf": {
+            "@id": "http://www.w3.org/ns/shacl#targetSubjectsOf",
+            "@type": "@id"
+        },
+        "maxCount": {
+            "@id": "http://www.w3.org/ns/shacl#maxCount",
+            "@type": "http://www.w3.org/2001/XMLSchema#integer"
+        },
+        "first": {
+            "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
+            "@type": "@id"
+        },
+        "rest": {
+            "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest",
+            "@type": "@id"
+        },
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "sh": "http://www.w3.org/ns/shacl#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "did": "https://www.w3.org/ns/did/vocab/v1#"
+    },
+    "@graph": [
+        {
+            "@id": "_:b0",
+            "path": "did:controller",
+            "pattern": "^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+"
+        },
+        {
+            "@id": "_:b1",
+            "nodeKind": "sh:IRI",
+            "path": "did:capabilityInvocation"
+        },
+        {
+            "@id": "_:b10",
+            "nodeKind": "sh:IRI",
+            "path": "did:capabilityDelegation"
+        },
+        {
+            "@id": "_:b11",
+            "sh:minCount": 1,
+            "nodeKind": "sh:BlankNodeOrIRI",
+            "path": "did:serviceEndpoint"
+        },
+        {
+            "@id": "_:b12",
+            "@type": "sh:NodeShape",
+            "property": [
+                "_:b10",
+                "_:b13",
+                "_:b14",
+                "_:b1",
+                "_:b9",
+                "_:b0",
+                "_:b15",
+                "_:b16",
+                "_:b17"
+            ],
+            "targetClass": "did:DIDObject",
+            "targetSubjectsOf": [
+                "did:service",
+                "did:capabilityDelegation",
+                "did:verificationMethod",
+                "did:alsoKnownAs",
+                "did:assertionMethod",
+                "did:capabilityInvocation",
+                "did:authentication",
+                "did:keyAgreement"
+            ]
+        },
+        {
+            "@id": "_:b13",
+            "nodeKind": "sh:IRI",
+            "path": "did:verificationMethod"
+        },
+        {
+            "@id": "_:b14",
+            "nodeKind": "sh:IRI",
+            "path": "did:authentication"
+        },
+        {
+            "@id": "_:b15",
+            "nodeKind": "sh:IRI",
+            "path": "did:keyAgreement"
+        },
+        {
+            "@id": "_:b16",
+            "nodeKind": "sh:IRI",
+            "path": "did:assertionMethod"
+        },
+        {
+            "@id": "_:b17",
+            "nodeKind": "sh:IRI",
+            "path": "did:service"
+        },
+        {
+            "@id": "_:b18",
+            "@type": "sh:NodeShape",
+            "property": [
+                "_:b11",
+                "_:b3"
+            ],
+            "targetClass": "did:ServiceEndpoint",
+            "targetObjectsOf": "did:service"
+        },
+        {
+            "@id": "_:b19",
+            "sh:maxCount": 1,
+            "sh:minCount": 1,
+            "path": "did:publicKeyJwk"
+        },
+        {
+            "@id": "_:b2",
+            "datatype": "xsd:string",
+            "nodeKind": "sh:Literal",
+            "path": "did:publicKeyBase58"
+        },
+        {
+            "@id": "_:b20",
+            "sh:maxCount": 1,
+            "sh:minCount": 1,
+            "path": "did:publicKeyBase58"
+        },
+        {
+            "@id": "_:b3",
+            "sh:minCount": 1,
+            "nodeKind": "sh:IRI",
+            "path": "rdf:type"
+        },
+        {
+            "@id": "_:b4",
+            "@type": "sh:NodeShape",
+            "property": [
+                "_:b6",
+                "_:b7",
+                "_:b8",
+                "_:b2"
+            ],
+            "targetClass": "did:VerificationMethod",
+            "targetObjectsOf": [
+                "did:assertionMethod",
+                "did:capabilityDelegation",
+                "did:capabilityInvocation",
+                "did:authentication",
+                "did:keyAgreement",
+                "did:verificationMethod"
+            ],
+            "xone": {
+                "@list": [
+                    "_:b20",
+                    "_:b19"
+                ]
+            }
+        },
+        {
+            "@id": "_:b6",
+            "datatype": "rdf:JSON",
+            "nodeKind": "sh:Literal",
+            "path": "did:publicKeyJwk"
+        },
+        {
+            "@id": "_:b7",
+            "sh:minCount": 1,
+            "path": "did:controller",
+            "pattern": "^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+"
+        },
+        {
+            "@id": "_:b8",
+            "sh:minCount": 1,
+            "nodeKind": "sh:IRI",
+            "path": "rdf:type"
+        },
+        {
+            "@id": "_:b9",
+            "nodeKind": "sh:IRI",
+            "path": "did:alsoKnownAs"
+        }
+    ]
+}

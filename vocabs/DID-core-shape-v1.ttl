@@ -1,7 +1,7 @@
 # This shape file is hosted at  https://www.w3.org/ns/did/shacl/v1
 #
 # You can run this (using https://pypi.org/project/pyshacl/), for example, with:
-#  pyshacl -s DID-core-shape.ttl -e DID-core.ttl -f human shape_test.ttl
+#  pyshacl -s DID-core-shape-v1.ttl -e DID-core-v1.ttl -f human shape_test.ttl
 #
 
 @prefix did:  <https://www.w3.org/ns/did/vocab/v1#> .
