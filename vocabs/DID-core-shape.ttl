@@ -1,21 +1,21 @@
-# You can run this, for example, with:
+# This shape file is hosted at  https://www.w3.org/ns/did/shacl/v1
+#
+# You can run this (using https://pypi.org/project/pyshacl/), for example, with:
 #  pyshacl -s DID-core-shape.ttl -e DID-core.ttl -f human shape_test.ttl
 #
 
-@prefix did:  <https://w3id.org/did#> .
-@prefix as:   <https://www.w3.org/ns/activitystreams> .
+@prefix did:  <https://www.w3.org/ns/did/vocab/v1#> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh:   <http://www.w3.org/ns/shacl#> .
 
 
-_:DocumentShape a sh:NodeShape ;
+_:ObjectShape a sh:NodeShape ;
     # Some properties are valid only on DID Documents and they will set the right shape
     # Note that this is not the case for did:verificationMethod (which can also be used
     # on a did:ServiceEndpoint) or did:controller (that can also be used on did:VerificationMethod)
 
-    sh:targetClass did:DIDDocument ;
+    sh:targetClass did:DIDObject ;
     sh:targetSubjectsOf
         did:alsoKnownAs,
         did:verificationMethod,
@@ -27,7 +27,7 @@ _:DocumentShape a sh:NodeShape ;
         did:service ;
     sh:property
         [
-            sh:path as:alsoKnownAs ;
+            sh:path did:alsoKnownAs ;
             sh:nodeKind sh:IRI ;
         ],[
             sh:path did:controller ;
