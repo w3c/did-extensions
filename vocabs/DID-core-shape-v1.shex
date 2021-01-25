@@ -1,7 +1,7 @@
 # This shape expression is hosted at  https://www.w3.org/ns/did/shex/v1
 #
 # You can run this (using https://www.npmjs.com/package/shex/v/0.5.5), for example, with:
-#  shex -x DID-core-shape.shex -d shape_test.ttl -n did:ex:12345 -s ObjectShape
+#  shex -x DID-core-shape-v1.shex -d shape_test.ttl -n did:ex:12345 -s ObjectShape
 # 
 
 #
@@ -14,7 +14,7 @@ _:ControllerShape IRI /^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+/
 _:VerificationMethodShape IRI {
     did:controller @_:ControllerShape+ ;
     rdf:type IRI+ ;
-    (did:publicKeyJwk rdf:JSON {0,1} | did:publicKeyBase58 LITERAL {0,1} );
+    ( did:publicKeyJwk rdf:JSON {0,1} | did:publicKeyBase58 LITERAL {0,1} ) {0,1};
 }
 
 _:ServiceShape IRI {

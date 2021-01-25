@@ -31,6 +31,10 @@
             "@id": "http://www.w3.org/ns/shacl#xone",
             "@type": "@id"
         },
+        "not": {
+            "@id": "http://www.w3.org/ns/shacl#not",
+            "@type": "@id"
+        },
         "property": {
             "@id": "http://www.w3.org/ns/shacl#property",
             "@type": "@id"
@@ -149,7 +153,8 @@
             "@id": "_:b2",
             "datatype": "xsd:string",
             "nodeKind": "sh:Literal",
-            "path": "did:publicKeyBase58"
+            "path": "did:publicKeyBase58",
+            "sh:maxCount": 1
         },
         {
             "@id": "_:b20",
@@ -181,10 +186,17 @@
                 "did:keyAgreement",
                 "did:verificationMethod"
             ],
-            "xone": {
-                "@list": [
-                    "_:b20",
-                    "_:b19"
+            "not": {
+                "@type": "sh:NodeShape",
+                "property": [
+                    {
+                        "path": "did:publicKeyBase58",
+                        "sh:minCount" : 1
+                    },
+                    {
+                        "path": "did:publicKeyJwk",
+                        "sh:minCount" : 1
+                    }
                 ]
             }
         },
@@ -192,7 +204,8 @@
             "@id": "_:b6",
             "datatype": "rdf:JSON",
             "nodeKind": "sh:Literal",
-            "path": "did:publicKeyJwk"
+            "path": "did:publicKeyJwk",
+            "sh:maxCount": 1
         },
         {
             "@id": "_:b7",

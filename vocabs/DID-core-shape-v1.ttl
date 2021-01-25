@@ -76,10 +76,12 @@ _:VerificationMethodShape a sh:NodeShape ;
             sh:path did:publicKeyJwk ;
             sh:nodeKind sh:Literal ;
             sh:datatype rdf:JSON ;
+            sh:maxCount 1;
         ],[
             sh:path did:publicKeyBase58 ;
             sh:nodeKind sh:Literal ;
             sh:datatype xsd:string ;
+            sh:maxCount 1;
         ],[
             sh:path did:controller ;
             # A controller must be identified with a DID...
@@ -90,19 +92,18 @@ _:VerificationMethodShape a sh:NodeShape ;
             sh:path rdf:type ;
             sh:nodeKind sh:IRI ;
             sh:minCount 1 ;
+        ];
+        sh:not [
+            a sh:NodeShape ;
+            sh:property
+                [
+                    sh:path did:publicKeyBase58 ;
+                    sh:minCount 1 ;
+                ],[
+                    sh:path did:publicKeyJwk ;
+                    sh:minCount 1 ;
+                ];
         ] ;
-    sh:xone (
-        [
-            sh:path did:publicKeyBase58 ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
-        ]
-        [
-            sh:path did:publicKeyJwk ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
-        ]
-    ) ;
 .
 
 #######################################################################################
