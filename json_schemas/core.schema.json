@@ -85,10 +85,9 @@
                     }
                 },
                 "required" : ["id", "type", "controller"],
-                "oneOf": [
-                    {"required" : ["publicKeyJwk"]},
-                    {"required" : ["publicKeyBase58"]}
-                ],
+                "not": {
+                    "required" : ["publicKeyJwk","publicKeyBase58"]
+                },
                 "additionalProperties" : true
             }
         },
