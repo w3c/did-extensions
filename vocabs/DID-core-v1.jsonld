@@ -36,7 +36,7 @@
       "@type": "owl:Ontology"
     },
     {
-      "@id": "did:DIDObject",
+      "@id": "did:DIDSubject",
       "@type": "rdfs:Class",
       "comment": "Top level class for resources identified via a DID subject",
       "isDefinedBy": "https://www.w3.org/TR/did-core/#core-properties",
@@ -137,7 +137,7 @@
     {
       "@id": "did:service",
       "@type": "rdf:Property",
-      "domain": "did:DIDObject",
+      "domain": "did:DIDSubject",
       "isDefinedBy": "https://www.w3.org/TR/did-core/#service-endpoints",
       "range": "did:Service"
     },

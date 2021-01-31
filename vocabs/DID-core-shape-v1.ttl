@@ -15,7 +15,7 @@ _:ObjectShape a sh:NodeShape ;
     # Note that this is not the case for did:verificationMethod (which can also be used
     # on a did:ServiceEndpoint) or did:controller (that can also be used on did:VerificationMethod)
 
-    sh:targetClass did:DIDObject ;
+    sh:targetClass did:DIDSubject ;
     sh:targetSubjectsOf
         did:alsoKnownAs,
         did:verificationMethod,

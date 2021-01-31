@@ -12,7 +12,7 @@ did: a owl:Ontology .
 #    Classes
 #################################################################
 
-did:DIDObject a rdfs:Class ;
+did:DIDSubject a rdfs:Class ;
     rdfs:comment "Top level class for resources identified via a DID subject" ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#core-properties> ;
     rdfs:label "DID Document" ;
@@ -106,7 +106,7 @@ did:publicKeyBase58 a rdf:Property, owl:DatatypeProperty ;
 .
 
 did:service a rdf:Property ;
-    rdfs:domain did:DIDObject ;
+    rdfs:domain did:DIDSubject ;
     rdfs:range did:Service ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#service-endpoints> ;
 .

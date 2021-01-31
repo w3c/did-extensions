@@ -17,7 +17,7 @@
     <rdfs:isDefinedBy rdf:resource="https://www.w3.org/TR/did-core/#service-endpoints"/>
     <rdfs:label>Service Endpoint</rdfs:label>
   </rdfs:Class>
-  <rdfs:Class rdf:about="https://www.w3.org/ns/did/vocab/v1#DIDObject">
+  <rdfs:Class rdf:about="https://www.w3.org/ns/did/vocab/v1#DIDOSubject">
     <rdfs:comment>Top level class for resources identified via a DID subject</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="https://www.w3.org/TR/did-core/#core-properties"/>
     <rdfs:label>DID Document</rdfs:label>
@@ -34,7 +34,7 @@
     <owl:sameAs rdf:resource="https://www.w3.org/ns/activitystreamsalsoKnownAs"/>
   </rdf:Property>
   <rdf:Property rdf:about="https://www.w3.org/ns/did/vocab/v1#service">
-    <rdfs:domain rdf:resource="https://www.w3.org/ns/did/vocab/v1#DIDObject"/>
+    <rdfs:domain rdf:resource="https://www.w3.org/ns/did/vocab/v1#DIDSubject"/>
     <rdfs:range rdf:resource="https://www.w3.org/ns/did/vocab/v1#Service"/>
     <rdfs:isDefinedBy rdf:resource="https://www.w3.org/TR/did-core/#service-endpoints"/>
   </rdf:Property>

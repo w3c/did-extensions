@@ -96,7 +96,7 @@
                 "_:b16",
                 "_:b17"
             ],
-            "targetClass": "did:DIDObject",
+            "targetClass": "did:DIDSubject",
             "targetSubjectsOf": [
                 "did:service",
                 "did:capabilityDelegation",

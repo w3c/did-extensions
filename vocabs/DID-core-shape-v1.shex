@@ -1,7 +1,7 @@
 # This shape expression is hosted at  https://www.w3.org/ns/did/shex/v1
 #
 # You can run this (using https://www.npmjs.com/package/shex/v/0.5.5), for example, with:
-#  shex -x DID-core-shape-v1.shex -d shape_test.ttl -n did:ex:12345 -s ObjectShape
+#  shex -x DID-core-shape-v1.shex -d shape_test.ttl -n did:ex:12345 -s SubjectShape
 # 
 
 #
@@ -25,7 +25,7 @@ _:ServiceShape IRI {
 
 # A DID document must have a DID as an identifier
 # The id is not a blank node, because that is the node referred to from the outside world
-<ObjectShape> IRI /^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+/ {
+<SubjectShape> IRI /^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+/ {
     did:alsoKnownAs IRI* ;
     did:controller @_:ControllerShape* ;
     did:verificationMethod @_:VerificationMethodShape* ;
