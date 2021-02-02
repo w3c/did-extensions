@@ -5,50 +5,51 @@
 #
 
 @prefix did:  <https://www.w3.org/ns/did/vocab/v1#> .
+@prefix as:   <https://www.w3.org/ns/activitystreams#> .
+@prefix sec:  <https://w3id.org/security#> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 @prefix sh:   <http://www.w3.org/ns/shacl#> .
 
 
 _:ObjectShape a sh:NodeShape ;
-    # Some properties are valid only on DID Documents and they will set the right shape
-    # Note that this is not the case for did:verificationMethod (which can also be used
-    # on a did:ServiceEndpoint) or did:controller (that can also be used on did:VerificationMethod)
+    # Some properties are valid only on DID Subjects and they will set the right shape
+    # Note that this is not the case sec:controller (that can also be used on did:VerificationMethod)
 
     sh:targetClass did:DIDSubject ;
     sh:targetSubjectsOf
-        did:alsoKnownAs,
-        did:verificationMethod,
-        did:authentication,
-        did:assertionMethod,
-        did:keyAgreement,
-        did:capabilityDelegation,
-        did:capabilityInvocation,
+        as:alsoKnownAs,
+        sec:verificationMethod,
+        sec:authenticationMethod,
+        sec:assertionMethod,
+        sec:keyAgreementMethod,
+        sec:capabilityDelegationMethod,
+        sec:capabilityInvocationMethod,
         did:service ;
     sh:property
         [
-            sh:path did:alsoKnownAs ;
+            sh:path as:alsoKnownAs ;
             sh:nodeKind sh:IRI ;
         ],[
-            sh:path did:controller ;
+            sh:path sec:controller ;
             sh:pattern "^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+" ;
         ],[
-            sh:path did:verificationMethod ;
+            sh:path sec:verificationMethod ;
             sh:nodeKind sh:IRI ;
         ],[
-            sh:path did:authentication ;
+            sh:path sec:authenticationMethod ;
             sh:nodeKind sh:IRI ;
         ],[
-            sh:path did:assertionMethod ;
+            sh:path sec:assertionMethod ;
             sh:nodeKind sh:IRI ;
         ],[
-            sh:path did:keyAgreement ;
+            sh:path sec:keyAgreementMethod ;
             sh:nodeKind sh:IRI ;
         ],[
-            sh:path did:capabilityDelegation ;
+            sh:path sec:capabilityDelegationMethod ;
             sh:nodeKind sh:IRI ;
         ],[
-            sh:path did:capabilityInvocation ;
+            sh:path did:capabilityInvocationMethod ;
             sh:nodeKind sh:IRI ;
         ],[
             sh:path did:service ;
@@ -65,25 +66,25 @@ _:VerificationMethodShape a sh:NodeShape ;
     # Generic shape for verification method, putting constraints on the allowed properties
     sh:targetClass did:VerificationMethod ;
     sh:targetObjectsOf
-        did:verificationMethod,
-        did:authentication,
-        did:assertionMethod,
-        did:keyAgreement,
-        did:capabilityDelegation,
-        did:capabilityInvocation ;
+        sec:verificationMethod,
+        sec:authenticationMethod,
+        sec:assertionMethod,
+        sec:keyAgreementMethod,
+        sec:capabilityDelegationMethod,
+        sec:capabilityInvocationMethod ;
     sh:property
         [
-            sh:path did:publicKeyJwk ;
+            sh:path sec:publicKeyJwk ;
             sh:nodeKind sh:Literal ;
             sh:datatype rdf:JSON ;
             sh:maxCount 1;
         ],[
-            sh:path did:publicKeyBase58 ;
+            sh:path sec:publicKeyBase58 ;
             sh:nodeKind sh:Literal ;
             sh:datatype xsd:string ;
             sh:maxCount 1;
         ],[
-            sh:path did:controller ;
+            sh:path sec:controller ;
             # A controller must be identified with a DID...
             sh:pattern "^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+" ;
             sh:minCount 1
@@ -97,10 +98,10 @@ _:VerificationMethodShape a sh:NodeShape ;
             a sh:NodeShape ;
             sh:property
                 [
-                    sh:path did:publicKeyBase58 ;
+                    sh:path sec:publicKeyBase58 ;
                     sh:minCount 1 ;
                 ],[
-                    sh:path did:publicKeyJwk ;
+                    sh:path sec:publicKeyJwk ;
                     sh:minCount 1 ;
                 ];
         ] ;

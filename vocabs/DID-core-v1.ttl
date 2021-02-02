@@ -1,5 +1,5 @@
 @prefix did:  <https://www.w3.org/ns/did/vocab/v1#> .
-@prefix as:   <https://www.w3.org/ns/activitystreams> .
+@prefix as:   <https://www.w3.org/ns/activitystreams#> .
 @prefix sec:  <https://w3id.org/security#> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
@@ -26,7 +26,7 @@ did:VerificationMethod a rdfs:Class ;
 
 did:Service a rdfs:Class ;
     rdfs:comment "Service endpoints are used in DID documents to express ways of communicating with the DID subject or associated entities" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#service-endpoints> ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#services> ;
     rdfs:label "Service Endpoint" ;
 .
 
@@ -35,83 +35,73 @@ did:Service a rdfs:Class ;
 #    Properties
 #################################################################
 
-did:alsoKnownAs a rdf:Property ;
+as:alsoKnownAs a rdf:Property ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#also-known-as> ;
     rdfs:comment "This relationship is a statement that the subject of this identifier is also identified by one or more other identifiers." ;
-    owl:sameAs as:alsoKnownAs ;
 .
 
-did:controller a rdf:Property ;
+sec:controller a rdf:Property ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#control> ;
     rdfs:comment "An entity that is authorized to make changes to a DID Document" ;
-    owl:sameAs sec:controller ;
 .
 
-did:verificationMethod a rdf:Property ;
+sec:verificationMethod a rdf:Property ;
     rdfs:range did:VerificationMethod ;
     rdfs:comment "A generic method to refer to a Verification Method" ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#verification-methods> ;
-    owl:sameAs sec:verificationMethod ;
 .
 
-did:assertionMethod a rdf:Property ;
-    rdfs:range did:VerificationMethod ;
-    rdfs:comment "The assertionMethod property is used to express a verification relationship which indicates that a verification method can be used to verify a proof that a statement was asserted on behalf of the DID subject." ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#assertionmethod> ;
-    owl:sameAs sec:assertionMethod
-.
-
-did:authentication a rdf:Property ;
+sec:authenticationMethod a rdf:Property ;
     rdfs:range did:VerificationMethod ;
     rdfs:comment "Authentication is a verification relationship which an entity can use to prove it is the DID subject or acting on behalf of the DID Subject as a DID Controller." ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#authentication> ;
-    owl:sameAs sec:authenticationMethod ;
 .
 
-did:keyAgreement a rdf:Property ;
+sec:assertionMethod a rdf:Property ;
+    rdfs:range did:VerificationMethod ;
+    rdfs:comment "The assertionMethod property is used to express a verification relationship which indicates that a verification method can be used to verify a proof that a statement was asserted on behalf of the DID subject." ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#assertion> ;
+.
+
+sec:keyAgreementMethod a rdf:Property ;
     rdfs:range did:VerificationMethod ;
     rdfs:comment "The keyAgreement property is used to express a verification relationship which an entity can use to engage in key agreement protocols on behalf of the DID subject." ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#keyagreement> ;
-    owl:sameAs sec:keyAgreementMethod ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#key-agreement> ;
 .
 
-did:capabilityDelegation a rdf:Property ;
+sec:capabilityDelegationMethod a rdf:Property ;
     rdfs:range did:VerificationMethod ;
     rdfs:comment "The capabilityDelegation property is used to express a verification relationship which an entity can use to grant capabilities as the DID subject or on behalf of the DID subject to other capability invokers. " ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#capabilitydelegation> ;
-    owl:sameAs sec:capabilityDelegationMethod ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#capability-delegation> ;
 .
 
-did:capabilityInvocation a rdf:Property ;
+sec:capabilityInvocationMethod a rdf:Property ;
     rdfs:range did:VerificationMethod ;
     rdfs:comment "The capabilityInvocation property is used to express a verification relationship which an entity can use to invoke capabilities as the DID subject or on behalf of the DID subject." ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#capabilityinvocation> ;
-    owl:sameAs sec:capabilityInvocationMethod ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#capability-invocation> ;
 .
 
-did:publicKeyJwk a rdf:Property, owl:DatatypeProperty ;
+sec:publicKeyJwk a rdf:Property, owl:DatatypeProperty ;
     rdfs:domain did:VerificationMethod ;
     rdfs:range rdf:JSON ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#verification-methods> ;
     rdfs:label "Public Key in JWK" ;
-    owl:sameAs sec:publicKeyJwk ;
 .
 
-did:publicKeyBase58 a rdf:Property, owl:DatatypeProperty ;
+sec:publicKeyBase58 a rdf:Property, owl:DatatypeProperty ;
     rdfs:domain did:VerificationMethod ;
     rdfs:range xsd:string ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#verification-methods> ;
     rdfs:label "A string that conforms to a base58btc encoded public key" ;
-    owl:sameAs sec:publicKeyBase58 ;
 .
 
 did:service a rdf:Property ;
     rdfs:domain did:DIDSubject ;
     rdfs:range did:Service ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#service-endpoints> ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#services> ;
 .
 
 did:serviceEndpoint a rdf:Property ;
     rdfs:domain did:Service ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#service-endpoints> ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#services> ;
 .
