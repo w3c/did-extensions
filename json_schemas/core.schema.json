@@ -61,34 +61,54 @@
             "additionalProperties": true
         },
 
-        "verification_method.schema" : {
+        "one_verification_method.schema" : {
+            "type" : "object",
+            "properties": {
+                "publicKeyJwk" : {
+                    "$ref" : "#/definitions/JWK.schema"
+                },
+                "publicKeyBase58" : {
+                    "type" : "string"
+                },
+                "controller" : {
+                    "$ref" : "#/definitions/did.schema"
+                },
+                "id" : {
+                    "type": "string",
+                    "format" : "uri-reference"
+                },
+                "type" : {
+                    "$ref" : "#/definitions/type.schema"
+                }
+            },
+            "required" : ["id", "type", "controller"],
+            "not": {
+                "required" : ["publicKeyJwk","publicKeyBase58"]
+            },
+            "additionalProperties" : true
+        },
+
+        "verification_method_strict.schema" : {
             "type" : "array",
             "uniqueItems": true,
             "items" : {
-                "type" : "object",
-                "properties": {
-                    "publicKeyJwk" : {
-                        "$ref" : "#/definitions/JWK.schema"
-                    },
-                    "publicKeyBase58" : {
-                        "type" : "string"
-                    },
-                    "controller" : {
-                        "$ref" : "#/definitions/did.schema"
-                    },
-                    "id" : {
+                "$ref" : "#/definitions/one_verification_method.schema"
+            }
+        },
+
+        "verification_method_with_urls.schema" : {
+            "type" : "array",
+            "uniqueItems": true,
+            "items" : {
+                "oneOf" : [
+                    {
                         "type": "string",
                         "format" : "uri-reference"
                     },
-                    "type" : {
-                        "$ref" : "#/definitions/type.schema"
+                    {
+                        "$ref" : "#/definitions/one_verification_method.schema"
                     }
-                },
-                "required" : ["id", "type", "controller"],
-                "not": {
-                    "required" : ["publicKeyJwk","publicKeyBase58"]
-                },
-                "additionalProperties" : true
+                ]
             }
         },
 
@@ -155,22 +175,22 @@
             "$ref" : "#/definitions/did.schema"
         },
         "verificationMethod" : {
-            "$ref" : "#/definitions/verification_method.schema"
+            "$ref" : "#/definitions/verification_method_strict.schema"
         },
         "authentication" : {
-            "$ref" : "#/definitions/verification_method.schema"
+            "$ref" : "#/definitions/verification_method_with_urls.schema"
         },
         "assertionMethod" : {
-            "$ref" : "#/definitions/verification_method.schema"
+            "$ref" : "#/definitions/verification_method_with_urls.schema"
         },
         "keyAgreement" : {
-            "$ref" : "#/definitions/verification_method.schema"
+            "$ref" : "#/definitions/verification_method_with_urls.schema"
         },
         "capabilityDelegation" : {
-            "$ref" : "#/definitions/verification_method.schema"
+            "$ref" : "#/definitions/verification_method_with_urls.schema"
         },
         "capabilityInvocation" : {
-            "$ref" : "#/definitions/verification_method.schema"
+            "$ref" : "#/definitions/verification_method_with_urls.schema"
         },
         "service" : {
             "$ref" : "#/definitions/service.schema"
