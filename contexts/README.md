@@ -45,7 +45,7 @@ contexts (without necessarily cryptographically binding assurance).
 
 The current system for DID context versioning is:
 
-1. Use `https://www.w3.org/2019/did/v1` as an alias to the latest version of the
+1. Use `https://www.w3.org/ns/did/v1` as an alias to the latest version of the
   spec. Once the DID Working Group work concludes, the final v1 version will be
   frozen and made immutable.
 2. Use intermediate pre-v1 versioned URLs such as `https://w3id.org/did/v0.11`
