@@ -24,9 +24,35 @@
     "owl": "http://www.w3.org/2002/07/owl#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "did": "https://www.w3.org/ns/did/vocab/v1#"
+    "did": "https://www.w3.org/ns/did#"
   },
   "@graph": [
+    {
+      "@id": "https://www.w3.org/ns/did#",
+      "@type": "owl:Ontology",
+      "comment": "For historical reasons, most of the terms are in the 'sec:' namespace rather than the 'did:' namespace. These terms do not describe/define any cryptographic primitives and are formally defined in the DID Core specification. Future Working Group may define a formal specification for the complete 'sec:' vocabulary."
+    },
+    {
+      "@id": "did:DIDSubject",
+      "@type": "rdfs:Class",
+      "comment": "Top level class for resources identified via a DID subject",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#core-properties",
+      "label": "DID Document"
+    },
+    {
+      "@id": "did:Service",
+      "@type": "rdfs:Class",
+      "comment": "Service endpoints are used in DID documents to express ways of communicating with the DID subject or associated entities",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#services",
+      "label": "Service Endpoint"
+    },
+    {
+      "@id": "did:VerificationMethod",
+      "@type": "rdfs:Class",
+      "comment": "Superclass for all specific verification Methods. It is an 'abstract' class, never used by itself.",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#verification-methods",
+      "label": "Verification Method"
+    },
     {
       "@id": "sec:assertionMethod",
       "@type": "rdf:Property",
@@ -102,31 +128,6 @@
       "@type": "rdf:Property",
       "comment": "This relationship is a statement that the subject of this identifier is also identified by one or more other identifiers.",
       "isDefinedBy": "https://www.w3.org/TR/did-core/#also-known-as"
-    },
-    {
-      "@id": "https://www.w3.org/ns/did/vocab/v1#",
-      "@type": "owl:Ontology"
-    },
-    {
-      "@id": "did:DIDSubject",
-      "@type": "rdfs:Class",
-      "comment": "Top level class for resources identified via a DID subject",
-      "isDefinedBy": "https://www.w3.org/TR/did-core/#core-properties",
-      "label": "DID Document"
-    },
-    {
-      "@id": "did:Service",
-      "@type": "rdfs:Class",
-      "comment": "Service endpoints are used in DID documents to express ways of communicating with the DID subject or associated entities",
-      "isDefinedBy": "https://www.w3.org/TR/did-core/#services",
-      "label": "Service Endpoint"
-    },
-    {
-      "@id": "did:VerificationMethod",
-      "@type": "rdfs:Class",
-      "comment": "Superclass for all specific verification Methods. It is an 'abstract' class, never used by itself.",
-      "isDefinedBy": "https://www.w3.org/TR/did-core/#verification-methods",
-      "label": "Verification Method"
     },
     {
       "@id": "did:service",

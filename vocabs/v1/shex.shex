@@ -1,11 +1,11 @@
-# This shape expression is hosted at  https://www.w3.org/ns/did/shex/v1
+# This shape expression is hosted at  https://www.w3.org/ns/did/v1/shex
 #
 # You can run this (using https://www.npmjs.com/package/shex/v/0.5.5), for example, with:
-#  shex -x DID-core-shape-v1.shex -d shape_test.ttl -n did:ex:12345 -s SubjectShape
+#  shex -x shex.shex -d test.ttl -n did:ex:12345 -s SubjectShape
 # 
 
 #
-PREFIX did:  <https://www.w3.org/ns/did/vocab/v1#>
+PREFIX did:  <https://www.w3.org/ns/did#>
 PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX as:   <https://www.w3.org/ns/activitystreams#>
 PREFIX sec:  <https://w3id.org/security#> 

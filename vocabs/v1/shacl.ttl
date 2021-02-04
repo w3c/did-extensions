@@ -1,10 +1,10 @@
-# This shape file is hosted at  https://www.w3.org/ns/did/shacl/v1
+# This shape file is hosted at  https://www.w3.org/ns/did/v1/shex
 #
 # You can run this (using https://pypi.org/project/pyshacl/), for example, with:
-#  pyshacl -s DID-core-shape-v1.ttl -e DID-core-v1.ttl -f human shape_test.ttl
+#  pyshacl -s shacl.ttl -e vocab.ttl -f human test.ttl
 #
 
-@prefix did:  <https://www.w3.org/ns/did/vocab/v1#> .
+@prefix did:  <https://www.w3.org/ns/did#> .
 @prefix as:   <https://www.w3.org/ns/activitystreams#> .
 @prefix sec:  <https://w3id.org/security#> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .

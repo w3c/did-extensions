@@ -48,7 +48,7 @@
         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "sh": "http://www.w3.org/ns/shacl#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "did": "https://www.w3.org/ns/did/vocab/v1#"
+        "did": "https://www.w3.org/ns/did#"
     },
     "@graph": [
         {

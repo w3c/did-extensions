@@ -1,0 +1,7 @@
+# Added by Ivan Herman, to ensue frictionless access to these files if no conneg is used - February 2021
+RewriteRule ^did.jsonld$ https://w3c.github.io/did-spec-registries/vocabs/v1/vocab.jsonld [P]
+RewriteRule ^did.json$ https://w3c.github.io/did-spec-registries/vocabs/v1/vocab.jsonld [P]
+RewriteRule ^did.ttl$ https://w3c.github.io/did-spec-registries/vocabs/v1/vocab.ttl [P]
+RewriteRule ^did.rdf$ https://w3c.github.io/did-spec-registries/vocabs/v1/vocab.rdf [P]
+RewriteRule ^did.html$ https://w3c.github.io/did-spec-registries/vocabs/v1/vocab.html [P]
+
