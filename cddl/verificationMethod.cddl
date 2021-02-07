@@ -20,7 +20,7 @@ publicKeyJwk = {
     id : did-url
     type : VerificationMethodTypes
     controller : did
-    publicKeyJwk : publicKeyEC / publicKeyOct / publicKeyed25519 / publicKeyRSA
+    publicKeyJwk : publicKeyEC / publicKeyOct / publicKeyed25519 / publicKeyRSA / publicKeyBls12381G1 / publicKeyBls12381G2
 
 }
 
@@ -96,6 +96,25 @@ publicKeyed25519 = {
     ? kid : text           ; should be sha256 fingerprint 
 }
 
+
+;; Octet key pair key like bls12381 g1
+publicKeyBls12381G1 = {
+    kty : "OKP"
+    crv : "BLS12381_G1"
+    x   : text .size 64
+    use : "sig"
+    ? kid : text           ; should be sha256 fingerprint 
+}
+
+;; Octet key pair key like bls12381 g2
+publicKeyBls12381G2 = {
+    kty : "OKP"
+    crv : "BLS12381_G2"
+    x   : text .size 128
+    use : "sig"
+    ? kid : text           ; should be sha256 fingerprint 
+}
+
 publicKey = {
     id : did-url
     type : VerificationMethodTypes
@@ -127,7 +146,8 @@ VerificationMethodTypes =
     "Ed25519VerificationKey2018" / 
     "EcdsaSecp256k1VerificationKey2019" / 
     "SchnorrSecp256k1VerificationKey2019" /
-    "Ed25519VerificationKey2018" / 
+    "Bls12381G1Key2020" / 
+    "Bls12381G2Key2020" / 
     "GpgVerificationKey2020" / 
     "RsaVerificationKey2018" / 
     "X25519KeyAgreementKey2019" /
