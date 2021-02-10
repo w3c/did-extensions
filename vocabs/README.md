@@ -4,7 +4,7 @@
 
 The terms present in the DID Core context (v1) are normatively defined in
 the [DID Core Specification](https://www.w3.org/TR/did-core), except for
-the following terms, which are defined in [the Security Vocabulary](w3id.org/security/)
+the following terms, which are defined in [the Security Vocabulary](https://w3id.org/security/)
 and maintained here for developer convenience.
 
 * `publicKey`
