@@ -15,4 +15,4 @@ The folder contains:
 ## Notes
 
 * SHACL and ShEx are [_alternative_ formats](https://book.validatingrdf.com/bookHtml013.html) to express constraints on an RDF Graph and provide validity checking.
-* The [html version of the context file](./context.html) is currently not served from `https://www.w3.org/ns` 
+* The [HTML version of the context file](./context.html) is currently not served from `https://www.w3.org/ns` 
