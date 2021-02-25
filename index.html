@@ -1791,30 +1791,6 @@ These properties contain information pertaining to the DID resolution response.
           </pre>
         </section>
 
-        <section>
-          <h4>deactivated</h4>
-          <table class="simple" style="width: 100%;">
-            <thead>
-              <tr>
-                <th>Normative Definition</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <pre class="example" title="Example of deactivated error value">
-{
-  "error": "deactivated"
-}
-          </pre>
-        </section>
-
       </section>
     </section>
 
@@ -1891,6 +1867,40 @@ rather than the DID subject.
         <pre class="example" title="Example of updated property">
 {
   "updated": "2023-08-10T13:40:06Z"
+}
+        </pre>
+
+      </section>
+
+      <section>
+        <h4>deactivated</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+              <th>CDDL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+              </td>
+
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+              <td>
+                <a href="cddl/deactivated.cddl" target="_blank">deactivated.cddl</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of deactivated property">
+{
+  "deactivated": true
 }
         </pre>
 
