@@ -10,6 +10,12 @@ DID Specification Registries
     out in the same tree and use relative links so that they'll work offline.
    -->
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+  
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+  
   <script class='remove'
     src='https://www.w3.org/Tools/respec/respec-w3c'>
   </script><!--script src='./respec-w3c-common.js' class='remove'></script-->
@@ -78,6 +84,12 @@ var respecConfig = {
   }
   ]
 };
+
+$(document).ready( function () {
+  $('#did-document-properties-table').DataTable();
+  $('#did-methods-table').DataTable();  
+} );
+
   </script>
   <style>
   pre .highlight {
@@ -288,6 +300,80 @@ be possible to submit items to the registry without normative definitions (see <
       <p>
 These properties are foundational to DID documents, and are expected to be
 useful to all DID methods.
+
+      <table class="simple" style="width: 100%;" id="did-document-properties-table">
+        <thead>
+          <tr>
+            <th>Property Name</th>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-subject">DID Core</a>
+            </td>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/id.cddl" target="_blank">id.cddl</a>
+            </td>
+          </tr>
+          <tr>
+            <td>controller</td>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#authorization-and-delegation">DID Core</a>
+            </td>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/controller.cddl" target="_blank">controller.cddl</a>
+            </td>
+          </tr>
+          <tr>
+            <td>verificationMethod</td>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#dfn-verification-method">DID Core Terminology</a>
+            </td>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/verificationMethod.cddl" target="_blank">verificationMethod.cddl</a>
+            </td>
+          </tr>
+          <tr>
+            <td>publicKey</td>
+            <td>
+              <a href="https://w3id.org/security/#publicKey">security-vocab</a>
+            </td>
+            <td>
+              <a href="https://w3id.org/security/v1">security-vocab context</a>
+            </td>
+            <td>
+              <a href="cddl/publicKey.cddl" target="_blank">publicKey.cddl</a>
+            </td>
+          </tr>
+          <tr>
+            <td>service</td>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#service-endpoints">DID Core</a>
+            </td>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/service.cddl" target="_blank">service.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
 
       <section>
         <h4>id</h4>
@@ -2259,7 +2345,7 @@ address in the Author Links column, as this helps with maintenance.
       #152</a>.
               </p>
 
-    <table class="simple">
+    <table class="simple" id="did-methods-table">
       <thead>
         <tr>
           <th>Method Name</th>
