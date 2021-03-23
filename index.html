@@ -1640,87 +1640,114 @@ These are entries in DID documents that are specific to the
     </section>
   </section>
 
+  <section>
+    <h1>DID Resolution Input Metadata</h1>
+    <p>
+These properties contain information pertaining to the DID resolution request.
+    </p>
+
     <section>
-      <h3>DID Resolution Input Metadata</h3>
-      <p>
-        These properties contain information pertaining to the DID resolution request.
-      </p>
+      <h3>accept</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core/#did-resolution-input-metadata-properties">DID Core</a>
+            </td>
+            <td></td>
+            <td>
+              <a href="cddl/accept.cddl" target="_blank">accept.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-      <section>
-        <h4>accept</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th></th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3c.github.io/did-core/#did-resolution-input-metadata-properties">DID Core</a>
-              </td>
-              <td></td>
-              <td>
-                <a href="cddl/accept.cddl" target="_blank">accept.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example" title="Example of accept metadata property">
+      <pre class="example" title="Example of accept metadata property">
 {
   "accept": "application/did+ld+json"
 }
-        </pre>
-      </section>
+      </pre>
     </section>
   </section>
 
-    <section>
-      <h3>DID Resolution Metadata</h3>
-      <p>
+  <section>
+    <h3>DID Resolution Metadata</h3>
+    <p>
 These properties contain information pertaining to the DID resolution response.
-      </p>
-      <section>
-        <h4>content-type</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th></th>
-              <th>cddl</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
-              </td>
-              <td></td>
-              <td>
-                <a href="cddl/contentType.cddl" target="_blank">content-type.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    </p>
+    <section>
+      <h3>content-type</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+            <th>cddl</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+            </td>
+            <td></td>
+            <td>
+              <a href="cddl/contentType.cddl" target="_blank">content-type.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <pre class="example" title="Example of content-type metadata property">
+      <pre class="example" title="Example of content-type metadata property">
 {
   "content-type": "application/did+ld+json"
 }
-        </pre>
-      </section>
+      </pre>
+    </section>
+
+    <section>
+      <h3>error</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+            </td>
+            <td>
+            </td>
+            <td>
+              <a href="cddl/error.cddl" target="_blank">error.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of error metadata property">
+{
+  "error": "not-found"
+}
+      </pre>
 
       <section>
-        <h4>error</h4>
+        <h4>invalid-did</h4>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
               <th>Normative Definition</th>
-              <th></th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1728,311 +1755,281 @@ These properties contain information pertaining to the DID resolution response.
               <td>
                 <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
               </td>
-              <td>
-              </td>
-              <td>
-                <a href="cddl/error.cddl" target="_blank">error.cddl</a>
-              </td>
             </tr>
           </tbody>
         </table>
 
-        <pre class="example" title="Example of error metadata property">
-{
-  "error": "not-found"
-}
-        </pre>
-
-        <section>
-          <h4>invalid-did</h4>
-          <table class="simple" style="width: 100%;">
-            <thead>
-              <tr>
-                <th>Normative Definition</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <pre class="example" title="Example of invalid-did error value">
+        <pre class="example" title="Example of invalid-did error value">
 {
   "error": "invalid-did"
 }
-          </pre>
-        </section>
+        </pre>
+      </section>
 
-        <section>
-          <h4>invalid-did-url</h4>
-          <table class="simple" style="width: 100%;">
-            <thead>
-              <tr>
-                <th>Normative Definition</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a href="https://w3c.github.io/did-core/#did-url-dereferencing-metadata-properties">DID Core</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      <section>
+        <h4>invalid-did-url</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c.github.io/did-core/#did-url-dereferencing-metadata-properties">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-          <pre class="example" title="Example of invalid-did-url error value">
+        <pre class="example" title="Example of invalid-did-url error value">
 {
   "error": "invalid-did-url"
 }
-          </pre>
-        </section>
+        </pre>
+      </section>
 
-        <section>
-          <h4>not-found</h4>
-          <table class="simple" style="width: 100%;">
-            <thead>
-              <tr>
-                <th>Normative Definition</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      <section>
+        <h4>not-found</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-          <pre class="example" title="Example of not-found error value">
+        <pre class="example" title="Example of not-found error value">
 {
   "error": "not-found"
 }
-          </pre>
-        </section>
-
+        </pre>
       </section>
-    </section>
 
-    <section>
-      <h3>DID Document Metadata</h3>
-      <p>
+    </section>
+  </section>
+
+  <section>
+    <h1>DID Document Metadata</h1>
+    <p>
 These properties contain information pertaining to the DID document itself,
 rather than the DID subject.
+    </p>
+    <section>
+      <h3>created</h3>
+      <p class="issue" >
+        See <a href="https://github.com/w3c/did-core/issues/203">DID Core #203</a>.
       </p>
-      <section>
-        <h4>created</h4>
-        <p class="issue" >
-          See <a href="https://github.com/w3c/did-core/issues/203">DID Core #203</a>.
-        </p>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/created.cddl" target="_blank">created.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+            </td>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/created.cddl" target="_blank">created.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <pre class="example">
+      <pre class="example">
 {
   "created": "2019-03-23T06:35:22Z"
 }
-        </pre>
-      </section>
+      </pre>
+    </section>
 
-      <section>
-        <h4>updated</h4>
-        <p class="issue" >
-          See <a href="https://github.com/w3c/did-core/issues/203">DID Core #203</a>.
-        </p>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
-              </td>
+    <section>
+      <h3>updated</h3>
+      <p class="issue" >
+        See <a href="https://github.com/w3c/did-core/issues/203">DID Core #203</a>.
+      </p>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+            </td>
 
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/updated.cddl" target="_blank">updated.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/updated.cddl" target="_blank">updated.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <pre class="example" title="Example of updated property">
+      <pre class="example" title="Example of updated property">
 {
   "updated": "2023-08-10T13:40:06Z"
 }
-        </pre>
+      </pre>
 
-      </section>
+    </section>
 
-      <section>
-        <h4>deactivated</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
-              </td>
+    <section>
+      <h3>deactivated</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+            </td>
 
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/deactivated.cddl" target="_blank">deactivated.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/deactivated.cddl" target="_blank">deactivated.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <pre class="example" title="Example of deactivated property">
+      <pre class="example" title="Example of deactivated property">
 {
   "deactivated": true
 }
-        </pre>
+      </pre>
 
-      </section>
+    </section>
 
-      <section>
-        <h4>nextUpdate</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
-              </td>
+    <section>
+      <h3>nextUpdate</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+            </td>
 
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/nextUpdate.cddl" target="_blank">nextUpdate.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/nextUpdate.cddl" target="_blank">nextUpdate.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <pre class="example" title="Example of updated property">
+      <pre class="example" title="Example of updated property">
 {
   "nextUpdate": "2023-08-10T13:40:06Z"
 }
-        </pre>
+      </pre>
 
-      </section>
+    </section>
 
-      <section>
-        <h4>versionId</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
-              </td>
+    <section>
+      <h3>versionId</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+            </td>
 
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/versionId.cddl" target="_blank">versionId.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/versionId.cddl" target="_blank">versionId.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <pre class="example" title="Example of updated property">
+      <pre class="example" title="Example of updated property">
 {
   "versionId": "bafyreifederejlobaec6kwpl2mc3tw7qk3j3ey4uytkbiw2qw7dzylud6i"
 }
-        </pre>
+      </pre>
 
-      </section>
+    </section>
 
-      <section>
-        <h4>nextVersionId</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
-              </td>
+    <section>
+      <h3>nextVersionId</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+            </td>
 
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/nextVersionId.cddl" target="_blank">nextVersionId.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/nextVersionId.cddl" target="_blank">nextVersionId.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <pre class="example" title="Example of updated property">
+      <pre class="example" title="Example of updated property">
 {
   "nextVersionId": "bafyreifederejlobaec6kwpl2mc3tw7qk3j3ey4uytkbiw2qw7dzylud6i"
 }
-        </pre>
+      </pre>
 
-      </section>
     </section>
-
   </section>
 
   <section>
@@ -2040,7 +2037,7 @@ rather than the DID subject.
     <h1>Parameters</h1>
 
     <section>
-      <h4 id="hl-param">hl</h4>
+      <h3 id="hl-param">hl</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2062,7 +2059,7 @@ did:example:123?hl=zQmWvQxTqbG2Z9HPJgG57jjwR154cKhbtJenbyYTWkjgF3e
     </section>
 
     <section>
-      <h4 id="service-param">service</h4>
+      <h3 id="service-param">service</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2084,7 +2081,7 @@ did:example:123?service=agent
     </section>
 
     <section>
-      <h4 id="versionId-param">versionId</h4>
+      <h3 id="versionId-param">versionId</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2106,7 +2103,7 @@ did:example:123?versionId=4
     </section>
 
     <section>
-      <h4 id="versionTime-param">versionTime</h4>
+      <h3 id="versionTime-param">versionTime</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2128,7 +2125,7 @@ did:example:123?versionTime=2016-10-17T02:41:00Z
     </section>
 
     <section>
-      <h4 id="relativeRef-param">relativeRef</h4>
+      <h3 id="relativeRef-param">relativeRef</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2150,7 +2147,7 @@ did:example:123?service=files&amp;relativeRef=%2Fmyresume%2Fdoc%3Fversion%3Dlate
     </section>
 
     <section>
-      <h4 id="initial-state-param">initial-state</h4>
+      <h3 id="initial-state-param">initial-state</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2172,7 +2169,7 @@ did:example:123?initial-state=eyJkZWx0YV9oYXNoIjoiRWlDUlRKZ2Q0U0V2YUZDLW9fNUZjQn
     </section>
 
     <section>
-      <h4 id="transform-keys-param">transform-keys</h4>
+      <h3 id="transform-keys-param">transform-keys</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2194,7 +2191,7 @@ did:example:123?transform-keys=jwk
     </section>
 
     <section>
-      <h4 id="signed-ietf-json-patch-param">signed-ietf-json-patch</h4>
+      <h3 id="signed-ietf-json-patch-param">signed-ietf-json-patch</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2216,7 +2213,7 @@ did:example:123?signed-ietf-json-patch=eyJraWQiOiJkaWQ6ZXhhbXBsZTo0NTYjX1FxMFVMM
     </section>
 
     <section>
-      <h4 id="resource">resource</h4>
+      <h3 id="resource">resource</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2255,9 +2252,8 @@ address in the Author Links column, as this helps with maintenance.
     </p>
 
     <p class="issue">
-      How will we automate the update of the namespace reservations and keep them in sync with the reserved namespace in the Abstract Data Model? See <a href="https://github.com/w3c/did-spec-registries/issues/152">issue
-      #152</a>.
-              </p>
+      How will we automate the update of the namespace reservations and keep them in sync with the reserved namespace in the Abstract Data Model? See <a href="https://github.com/w3c/did-spec-registries/issues/152">issue #152</a>.
+    </p>
 
     <table class="simple">
       <thead>
