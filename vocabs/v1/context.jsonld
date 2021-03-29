@@ -54,7 +54,8 @@
     },
     "verificationMethod": {
       "@id": "https://w3id.org/security#verificationMethod",
-      "@type": "@id"
+      "@type": "@id",
+      "@container": "@set"
     }
   }
 }
