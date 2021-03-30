@@ -237,7 +237,7 @@ registering additions can challenge rejections first with the W3C DID Working
 Group and then, if they are not satisfied with the outcome, with the W3C Staff.
 W3C Staff need not be consulted on changes to the DID Specification Registries,
 but do have the final authority on registry contents. This is to ensure that W3C
-can adeqately respond to time sensitive legal, privacy, security, moral, or
+can adequately respond to time sensitive legal, privacy, security, moral, or
 other pressing concerns without putting an undue operational burden on W3C
 Staff.
     </p>
@@ -276,10 +276,10 @@ be possible to submit items to the registry without normative definitions (see <
     </p>
 
 <p>
-  Concise Data Defition Lanuage (CDDL) provides a succint data defition for representing JSON and CBOR core representations of
-  a DID document as described in the <a href="https://www.w3.org/TR/did-core/#core-representations" target="_blank">DID Core Specification</a> and associated properties registered in this <a href="https://w3c.github.io/did-spec-registries/" target="_blank">DID Spec Registeries</a>.
-  The draft composite CDDL definition for the entire DID Document Specifation and associated
-  registeries can be found <a href="cddl/did-document.cddl" target="_blank">here</a>.
+  Concise Data Definition Language (CDDL) provides a succinct data definition for representing JSON and CBOR core representations of
+  a DID document as described in the <a href="https://www.w3.org/TR/did-core/#core-representations" target="_blank">DID Core Specification</a> and associated properties registered in this <a href="https://w3c.github.io/did-spec-registries/" target="_blank">DID Spec Registries</a>.
+  The draft composite CDDL definition for the entire DID Document Specification and associated
+  registries can be found <a href="cddl/did-document.cddl" target="_blank">here</a>.
   Additionally, each Property, Class and Type are described separately below and can be found below the `CDDL` column and apply to JSON and CBOR representations only.
 </p>
 
@@ -1640,87 +1640,114 @@ These are entries in DID documents that are specific to the
     </section>
   </section>
 
+  <section>
+    <h1>DID Resolution Input Metadata</h1>
+    <p>
+These properties contain information pertaining to the DID resolution request.
+    </p>
+
     <section>
-      <h3>DID Resolution Input Metadata</h3>
-      <p>
-        These properties contain information pertaining to the DID resolution request.
-      </p>
+      <h3>accept</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core/#did-resolution-input-metadata-properties">DID Core</a>
+            </td>
+            <td></td>
+            <td>
+              <a href="cddl/accept.cddl" target="_blank">accept.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-      <section>
-        <h4>accept</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th></th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3c.github.io/did-core/#did-resolution-input-metadata-properties">DID Core</a>
-              </td>
-              <td></td>
-              <td>
-                <a href="cddl/accept.cddl" target="_blank">accept.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example" title="Example of accept metadata property">
+      <pre class="example" title="Example of accept metadata property">
 {
   "accept": "application/did+ld+json"
 }
-        </pre>
-      </section>
+      </pre>
     </section>
   </section>
 
-    <section>
-      <h3>DID Resolution Metadata</h3>
-      <p>
+  <section>
+    <h3>DID Resolution Metadata</h3>
+    <p>
 These properties contain information pertaining to the DID resolution response.
-      </p>
-      <section>
-        <h4>content-type</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th></th>
-              <th>cddl</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
-              </td>
-              <td></td>
-              <td>
-                <a href="cddl/contentType.cddl" target="_blank">content-type.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    </p>
+    <section>
+      <h3>content-type</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+            <th>cddl</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+            </td>
+            <td></td>
+            <td>
+              <a href="cddl/contentType.cddl" target="_blank">content-type.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <pre class="example" title="Example of content-type metadata property">
+      <pre class="example" title="Example of content-type metadata property">
 {
   "content-type": "application/did+ld+json"
 }
-        </pre>
-      </section>
+      </pre>
+    </section>
+
+    <section>
+      <h3>error</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+            </td>
+            <td>
+            </td>
+            <td>
+              <a href="cddl/error.cddl" target="_blank">error.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of error metadata property">
+{
+  "error": "not-found"
+}
+      </pre>
 
       <section>
-        <h4>error</h4>
+        <h4>invalid-did</h4>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
               <th>Normative Definition</th>
-              <th></th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1728,311 +1755,281 @@ These properties contain information pertaining to the DID resolution response.
               <td>
                 <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
               </td>
-              <td>
-              </td>
-              <td>
-                <a href="cddl/error.cddl" target="_blank">error.cddl</a>
-              </td>
             </tr>
           </tbody>
         </table>
 
-        <pre class="example" title="Example of error metadata property">
-{
-  "error": "not-found"
-}
-        </pre>
-
-        <section>
-          <h4>invalid-did</h4>
-          <table class="simple" style="width: 100%;">
-            <thead>
-              <tr>
-                <th>Normative Definition</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <pre class="example" title="Example of invalid-did error value">
+        <pre class="example" title="Example of invalid-did error value">
 {
   "error": "invalid-did"
 }
-          </pre>
-        </section>
+        </pre>
+      </section>
 
-        <section>
-          <h4>invalid-did-url</h4>
-          <table class="simple" style="width: 100%;">
-            <thead>
-              <tr>
-                <th>Normative Definition</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a href="https://w3c.github.io/did-core/#did-url-dereferencing-metadata-properties">DID Core</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      <section>
+        <h4>invalid-did-url</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c.github.io/did-core/#did-url-dereferencing-metadata-properties">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-          <pre class="example" title="Example of invalid-did-url error value">
+        <pre class="example" title="Example of invalid-did-url error value">
 {
   "error": "invalid-did-url"
 }
-          </pre>
-        </section>
+        </pre>
+      </section>
 
-        <section>
-          <h4>not-found</h4>
-          <table class="simple" style="width: 100%;">
-            <thead>
-              <tr>
-                <th>Normative Definition</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      <section>
+        <h4>not-found</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c.github.io/did-core/#did-resolution-metadata-properties">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-          <pre class="example" title="Example of not-found error value">
+        <pre class="example" title="Example of not-found error value">
 {
   "error": "not-found"
 }
-          </pre>
-        </section>
-
+        </pre>
       </section>
-    </section>
 
-    <section>
-      <h3>DID Document Metadata</h3>
-      <p>
+    </section>
+  </section>
+
+  <section>
+    <h1>DID Document Metadata</h1>
+    <p>
 These properties contain information pertaining to the DID document itself,
 rather than the DID subject.
+    </p>
+    <section>
+      <h3>created</h3>
+      <p class="issue" >
+        See <a href="https://github.com/w3c/did-core/issues/203">DID Core #203</a>.
       </p>
-      <section>
-        <h4>created</h4>
-        <p class="issue" >
-          See <a href="https://github.com/w3c/did-core/issues/203">DID Core #203</a>.
-        </p>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/created.cddl" target="_blank">created.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+            </td>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/created.cddl" target="_blank">created.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <pre class="example">
+      <pre class="example">
 {
   "created": "2019-03-23T06:35:22Z"
 }
-        </pre>
-      </section>
+      </pre>
+    </section>
 
-      <section>
-        <h4>updated</h4>
-        <p class="issue" >
-          See <a href="https://github.com/w3c/did-core/issues/203">DID Core #203</a>.
-        </p>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
-              </td>
+    <section>
+      <h3>updated</h3>
+      <p class="issue" >
+        See <a href="https://github.com/w3c/did-core/issues/203">DID Core #203</a>.
+      </p>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+            </td>
 
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/updated.cddl" target="_blank">updated.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/updated.cddl" target="_blank">updated.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <pre class="example" title="Example of updated property">
+      <pre class="example" title="Example of updated property">
 {
   "updated": "2023-08-10T13:40:06Z"
 }
-        </pre>
+      </pre>
 
-      </section>
+    </section>
 
-      <section>
-        <h4>deactivated</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
-              </td>
+    <section>
+      <h3>deactivated</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+            </td>
 
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/deactivated.cddl" target="_blank">deactivated.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/deactivated.cddl" target="_blank">deactivated.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <pre class="example" title="Example of deactivated property">
+      <pre class="example" title="Example of deactivated property">
 {
   "deactivated": true
 }
-        </pre>
+      </pre>
 
-      </section>
+    </section>
 
-      <section>
-        <h4>nextUpdate</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
-              </td>
+    <section>
+      <h3>nextUpdate</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+            </td>
 
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/nextUpdate.cddl" target="_blank">nextUpdate.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/nextUpdate.cddl" target="_blank">nextUpdate.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <pre class="example" title="Example of updated property">
+      <pre class="example" title="Example of updated property">
 {
   "nextUpdate": "2023-08-10T13:40:06Z"
 }
-        </pre>
+      </pre>
 
-      </section>
+    </section>
 
-      <section>
-        <h4>versionId</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
-              </td>
+    <section>
+      <h3>versionId</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+            </td>
 
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/versionId.cddl" target="_blank">versionId.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/versionId.cddl" target="_blank">versionId.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <pre class="example" title="Example of updated property">
+      <pre class="example" title="Example of updated property">
 {
   "versionId": "bafyreifederejlobaec6kwpl2mc3tw7qk3j3ey4uytkbiw2qw7dzylud6i"
 }
-        </pre>
+      </pre>
 
-      </section>
+    </section>
 
-      <section>
-        <h4>nextVersionId</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-              <th>CDDL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
-              </td>
+    <section>
+      <h3>nextVersionId</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+            <th>CDDL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+            </td>
 
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/nextVersionId.cddl" target="_blank">nextVersionId.cddl</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+            <td>
+              <a href="cddl/nextVersionId.cddl" target="_blank">nextVersionId.cddl</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <pre class="example" title="Example of updated property">
+      <pre class="example" title="Example of updated property">
 {
   "nextVersionId": "bafyreifederejlobaec6kwpl2mc3tw7qk3j3ey4uytkbiw2qw7dzylud6i"
 }
-        </pre>
+      </pre>
 
-      </section>
     </section>
-
   </section>
 
   <section>
@@ -2040,7 +2037,7 @@ rather than the DID subject.
     <h1>Parameters</h1>
 
     <section>
-      <h4 id="hl-param">hl</h4>
+      <h3 id="hl-param">hl</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2062,7 +2059,7 @@ did:example:123?hl=zQmWvQxTqbG2Z9HPJgG57jjwR154cKhbtJenbyYTWkjgF3e
     </section>
 
     <section>
-      <h4 id="service-param">service</h4>
+      <h3 id="service-param">service</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2084,7 +2081,7 @@ did:example:123?service=agent
     </section>
 
     <section>
-      <h4 id="versionId-param">versionId</h4>
+      <h3 id="versionId-param">versionId</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2106,7 +2103,7 @@ did:example:123?versionId=4
     </section>
 
     <section>
-      <h4 id="versionTime-param">versionTime</h4>
+      <h3 id="versionTime-param">versionTime</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2128,7 +2125,7 @@ did:example:123?versionTime=2016-10-17T02:41:00Z
     </section>
 
     <section>
-      <h4 id="relativeRef-param">relativeRef</h4>
+      <h3 id="relativeRef-param">relativeRef</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2145,12 +2142,12 @@ did:example:123?versionTime=2016-10-17T02:41:00Z
       </table>
 
       <pre class="example" title="Example of relativeRef parameter">
-did:example:123?service=files&relativeRef=%2Fmyresume%2Fdoc%3Fversion%3Dlatest%23intro
+did:example:123?service=files&amp;relativeRef=%2Fmyresume%2Fdoc%3Fversion%3Dlatest%23intro
       </pre>
     </section>
 
     <section>
-      <h4 id="initial-state-param">initial-state</h4>
+      <h3 id="initial-state-param">initial-state</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2172,7 +2169,7 @@ did:example:123?initial-state=eyJkZWx0YV9oYXNoIjoiRWlDUlRKZ2Q0U0V2YUZDLW9fNUZjQn
     </section>
 
     <section>
-      <h4 id="transform-keys-param">transform-keys</h4>
+      <h3 id="transform-keys-param">transform-keys</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2194,7 +2191,7 @@ did:example:123?transform-keys=jwk
     </section>
 
     <section>
-      <h4 id="signed-ietf-json-patch-param">signed-ietf-json-patch</h4>
+      <h3 id="signed-ietf-json-patch-param">signed-ietf-json-patch</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2216,7 +2213,7 @@ did:example:123?signed-ietf-json-patch=eyJraWQiOiJkaWQ6ZXhhbXBsZTo0NTYjX1FxMFVMM
     </section>
 
     <section>
-      <h4 id="resource">resource</h4>
+      <h3 id="resource">resource</h3>
       <table class="simple" style="width: 100%;">
         <thead>
           <tr>
@@ -2255,9 +2252,8 @@ address in the Author Links column, as this helps with maintenance.
     </p>
 
     <p class="issue">
-      How will we automate the update of the namespace reservations and keep them in sync with the reserved namespace in the Abstract Data Model? See <a href="https://github.com/w3c/did-spec-registries/issues/152">issue
-      #152</a>.
-              </p>
+      How will we automate the update of the namespace reservations and keep them in sync with the reserved namespace in the Abstract Data Model? See <a href="https://github.com/w3c/did-spec-registries/issues/152">issue #152</a>.
+    </p>
 
     <table class="simple">
       <thead>
@@ -2273,13 +2269,13 @@ address in the Author Links column, as this helps with maintenance.
       <tbody>
         <tr>
           <td>
-              did:3:
+            did:3:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Ceramic Network
+            Ceramic Network
           </td>
           <td>
             <a href="mailto:oed@3box.io">Joel Thorstensson</a>
@@ -2290,58 +2286,55 @@ address in the Author Links column, as this helps with maintenance.
         </tr>
         <tr>
           <td>
-              did:abt:
+            did:abt:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              ABT Network
+            ABT Network
           </td>
           <td>
-              ArcBlock
+            ArcBlock
           </td>
           <td>
-              <a href="https://arcblock.github.io/abt-did-spec/">ABT DID Method</a>
+            <a href="https://arcblock.github.io/abt-did-spec/">ABT DID Method</a>
           </td>
         </tr>
-
         <tr>
           <td>
-              did:aergo:
+            did:aergo:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              <a href="https://www.aergo.io/">Aergo</a>
+            <a href="https://www.aergo.io/">Aergo</a>
           </td>
           <td>
-              <a href="https://www.blocko.io/">Blocko</a>
+            <a href="https://www.blocko.io/">Blocko</a>
           </td>
           <td>
-              <a href="https://github.com/aergoio/aergo-identity/blob/master/doc/did-method-spec.md">Aergo DID Method</a>
+            <a href="https://github.com/aergoio/aergo-identity/blob/master/doc/did-method-spec.md">Aergo DID Method</a>
           </td>
         </tr>
-
         <tr>
-            <td>
-                did:ala:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Alastria
-            </td>
-            <td>
-                Alastria National Blockchain Ecosystem
-            </td>
-            <td>
-              <a href="https://github.com/alastria/alastria-identity/wiki/Alastria-DID-Method-Specification-(Quorum-version)">Alastria DID Method</a>
-            </td>
+          <td>
+            did:ala:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Alastria
+          </td>
+          <td>
+            Alastria National Blockchain Ecosystem
+          </td>
+          <td>
+            <a href="https://github.com/alastria/alastria-identity/wiki/Alastria-DID-Method-Specification-(Quorum-version)">Alastria DID Method</a>
+          </td>
         </tr>
-
         <tr>
           <td>
             did:bba:
@@ -2394,57 +2387,55 @@ address in the Author Links column, as this helps with maintenance.
           </td>
         </tr>
         <tr>
-            <td>
-                did:bryk:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                bryk
-            </td>
-            <td>
-                Marcos Allende, Sandra Murcia, Flavia Munhoso, Ruben Cessa
-            </td>
-            <td>
-                <a href="https://github.com/bryk-io/did-method/blob/master/README.md">bryk DID Method</a>
-            </td>
+          <td>
+            did:bryk:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            bryk
+          </td>
+          <td>
+            Marcos Allende, Sandra Murcia, Flavia Munhoso, Ruben Cessa
+          </td>
+          <td>
+            <a href="https://github.com/bryk-io/did-method/blob/master/README.md">bryk DID Method</a>
+          </td>
         </tr>
-
         <tr>
           <td>
-              did:btcr:
+            did:btcr:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Bitcoin
+            Bitcoin
           </td>
           <td>
-              Christopher Allen, Ryan Grant, Kim Hamilton Duffy
+            Christopher Allen, Ryan Grant, Kim Hamilton Duffy
           </td>
           <td>
             <a href="https://w3c-ccg.github.io/didm-btcr">BTCR DID Method</a>
           </td>
         </tr>
-
         <tr>
-            <td>
-              did:ccp:
-            </td>
-            <td>
-              PROVISIONAL
-            </td>
-            <td>
-              Quorum
-            </td>
-            <td>
-              Baidu, Inc.
-            </td>
-            <td>
-              <a href="https://did.baidu.com/did-spec/">Cloud DID Method</a>
-            </td>
+          <td>
+            did:ccp:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Quorum
+          </td>
+          <td>
+            Baidu, Inc.
+          </td>
+          <td>
+            <a href="https://did.baidu.com/did-spec/">Cloud DID Method</a>
+          </td>
         </tr>
         <tr>
           <td>
@@ -2465,19 +2456,19 @@ address in the Author Links column, as this helps with maintenance.
         </tr>
         <tr>
           <td>
-              did:com:
+            did:com:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              commercio.network
+            commercio.network
           </td>
           <td>
-              Commercio Consortium
+            Commercio Consortium
           </td>
           <td>
-              <a href="https://github.com/commercionetwork/Commercio.network-DID-Method-Specification/">Commercio.network DID Method</a>
+            <a href="https://github.com/commercionetwork/Commercio.network-DID-Method-Specification/">Commercio.network DID Method</a>
           </td>
         </tr>
         <tr>
@@ -2497,7 +2488,6 @@ address in the Author Links column, as this helps with maintenance.
             <a href="https://htmlpreview.github.io/?https://github.com/persistentsystems/corda-did-method/blob/master/corda_did_method.html">Corda DID method</a>
           </td>
         </tr>
-
         <tr>
           <td>
             did:dock:
@@ -2517,36 +2507,35 @@ address in the Author Links column, as this helps with maintenance.
         </tr>
         <tr>
           <td>
-              did:dom:
+            did:dom:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Ethereum
+            Ethereum
           </td>
           <td>
-              Dominode
+            Dominode
           </td>
           <td>
           </td>
         </tr>
-
         <tr>
           <td>
-              did:echo:
+            did:echo:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Echo
+            Echo
           </td>
           <td>
-              Echo Technological Solutions LLC
+            Echo Technological Solutions LLC
           </td>
           <td>
-             <a href="https://github.com/echoprotocol/uni-resolver-driver-did-echo/blob/master/echo_did_specifications.md">Echo DID Method</a>
+            <a href="https://github.com/echoprotocol/uni-resolver-driver-did-echo/blob/master/echo_did_specifications.md">Echo DID Method</a>
           </td>
         </tr>
         <tr>
@@ -2584,21 +2573,21 @@ address in the Author Links column, as this helps with maintenance.
           </td>
         </tr>
         <tr>
-            <td>
-                did:emtrust:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Hyperledger Fabric
-            </td>
-            <td>
-                Halialabs Pte Ltd.
-            </td>
-            <td>
-                <a href="https://github.com/Halialabs/did-spec/blob/gh-pages/readme.md">Emtrust DID Method</a>
-            </td>
+          <td>
+            did:emtrust:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Hyperledger Fabric
+          </td>
+          <td>
+            Halialabs Pte Ltd.
+          </td>
+          <td>
+            <a href="https://github.com/Halialabs/did-spec/blob/gh-pages/readme.md">Emtrust DID Method</a>
+          </td>
         </tr>
         <tr>
           <td>
@@ -2619,31 +2608,30 @@ address in the Author Links column, as this helps with maintenance.
         </tr>
         <tr>
           <td>
-              did:example:
+            did:example:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              DID Specification
+            DID Specification
           </td>
           <td>
-              W3C Credentials Community Group
+            W3C Credentials Community Group
           </td>
           <td>
             <a href="https://w3c-ccg.github.io/did-spec/">DID Specification</a>
           </td>
         </tr>
-
         <tr>
           <td>
-              did:erc725:
+            did:erc725:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Ethereum
+            Ethereum
           </td>
           <td>
             <a href="mailto:markus@danubetech.com">Markus Sabadello</a>, <a href="mailto:fabian@lukso.network">Fabian Vogelsteller</a>, Peter Kolarov
@@ -2652,7 +2640,6 @@ address in the Author Links column, as this helps with maintenance.
             <a href="https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-spring2018/blob/master/topics-and-advance-readings/DID-Method-erc725.md">erc725 DID Method</a>
           </td>
         </tr>
-
         <tr>
           <td>
             did:etho:
@@ -2671,39 +2658,38 @@ address in the Author Links column, as this helps with maintenance.
           </td>
         </tr>
         <tr>
-            <td>
-                did:ethr:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Ethereum
-            </td>
-            <td>
-                uPort
-            </td>
-            <td>
-                <a href="https://github.com/decentralized-identity/ethr-did-resolver/blob/master/doc/did-method-spec.md">ETHR DID Method</a>
-            </td>
+          <td>
+            did:ethr:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Ethereum
+          </td>
+          <td>
+            uPort
+          </td>
+          <td>
+            <a href="https://github.com/decentralized-identity/ethr-did-resolver/blob/master/doc/did-method-spec.md">ETHR DID Method</a>
+          </td>
         </tr>
-
         <tr>
-            <td>
-                did:factom:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Factom
-            </td>
-            <td>
-                Sphereon, Factomatic, Factom Inc
-            </td>
-            <td>
-                <a href="https://github.com/factom-protocol/FIS/blob/master/FIS/DID.md">Factom DID Method</a>
-            </td>
+          <td>
+            did:factom:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Factom
+          </td>
+          <td>
+            Sphereon, Factomatic, Factom Inc
+          </td>
+          <td>
+            <a href="https://github.com/factom-protocol/FIS/blob/master/FIS/DID.md">Factom DID Method</a>
+          </td>
         </tr>
         <tr>
           <td>
@@ -2724,54 +2710,54 @@ address in the Author Links column, as this helps with maintenance.
         </tr>
         <tr>
           <td>
-              did:gatc:
+            did:gatc:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Ethereum, Hyperledger Fabric, Hyperledger Besu, Alastria
+            Ethereum, Hyperledger Fabric, Hyperledger Besu, Alastria
           </td>
           <td>
-              <a href="https://gataca.io/">Gataca</a>
+            <a href="https://gataca.io/">Gataca</a>
           </td>
           <td>
-              <a href="https://github.com/gatacaid/gataca-did-method">Gataca DID Method</a>
+            <a href="https://github.com/gatacaid/gataca-did-method">Gataca DID Method</a>
           </td>
         </tr>
         <tr>
-            <td>
-                did:git:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                DID Specification
-            </td>
-            <td>
-                Internet Identity Workshop
-            </td>
-            <td>
-                <a href="https://github.com/dhuseby/did-git-spec/blob/master/did-git-spec.md">Git DID Method</a>
-            </td>
+          <td>
+            did:git:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            DID Specification
+          </td>
+          <td>
+            Internet Identity Workshop
+          </td>
+          <td>
+            <a href="https://github.com/dhuseby/did-git-spec/blob/master/did-git-spec.md">Git DID Method</a>
+          </td>
         </tr>
         <tr>
-            <td>
-              did:github:
-            </td>
-            <td>
-              PROVISIONAL
-            </td>
-            <td>
-              Github
-            </td>
-            <td>
-              Transmute
-            </td>
-            <td>
-              <a href="https://docs.github-did.com/did-method-spec/">GitHub DID Method</a>
-            </td>
+          <td>
+            did:github:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Github
+          </td>
+          <td>
+            Transmute
+          </td>
+          <td>
+            <a href="https://docs.github-did.com/did-method-spec/">GitHub DID Method</a>
+          </td>
         </tr>
         <tr>
           <td>
@@ -2808,40 +2794,56 @@ address in the Author Links column, as this helps with maintenance.
           </td>
         </tr>
         <tr>
-            <td>
-              did:holo:
-            </td>
-            <td>
-              PROVISIONAL
-            </td>
-            <td>
-              Holochain
-            </td>
-            <td>
-              Holo.Host
-            </td>
-            <td>
-              <a href="https://github.com/WebOfTrustInfo/rwot9-prague/blob/master/draft-documents/did:hc-method.md">Holochain DID Method</a>
-           </td>
+          <td>
+            did:holo:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Holochain
+          </td>
+          <td>
+            Holo.Host
+          </td>
+          <td>
+            <a href="https://github.com/WebOfTrustInfo/rwot9-prague/blob/master/draft-documents/did:hc-method.md">Holochain DID Method</a>
+          </td>
         </tr>
         <tr>
           <td>
-              did:icon:
+            did:hpass:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              ICON
+            Hyperledger Fabric
           </td>
           <td>
-              ICONLOOP
+            IBM
+          </td>
+          <td>
+            <a href="https://github.com/IBM/hpass/blob/main/doc/did-spec.md">hpass DID Method</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            did:icon:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            ICON
+          </td>
+          <td>
+            ICONLOOP
           </td>
           <td>
             <a href="https://github.com/icon-project/icon-DID/blob/master/docs/ICON-DID-method.md">ICON DID Method</a>
           </td>
         </tr>
-
         <tr>
           <td>
             did:io:
@@ -2860,93 +2862,89 @@ address in the Author Links column, as this helps with maintenance.
           </td>
         </tr>
         <tr>
-            <td>
-                did:ion:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Bitcoin
-            </td>
-            <td>
-                Various DIF contributors
-            </td>
-            <td>
-              <a href="https://github.com/decentralized-identity/ion-did-method">ION DID Method</a>
-            </td>
+          <td>
+            did:ion:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Bitcoin
+          </td>
+          <td>
+            Various DIF contributors
+          </td>
+          <td>
+            <a href="https://github.com/decentralized-identity/ion-did-method">ION DID Method</a>
+          </td>
         </tr>
-
         <tr>
           <td>
-              did:ipid:
+            did:ipid:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              IPFS
+            IPFS
           </td>
           <td>
-              TranSendX
+            TranSendX
           </td>
           <td>
             <a href="https://did-ipid.github.io/ipid-did-method/">IPID DID method</a>
           </td>
         </tr>
-
         <tr>
           <td>
-              did:is:
+            did:is:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Blockcore
+            Blockcore
           </td>
           <td>
-              Blockcore
+            Blockcore
           </td>
           <td>
             <a href="https://github.com/block-core/blockcore-did-method">Blockcore DID Method</a>
           </td>
         </tr>
-
         <tr>
           <td>
-              did:iwt:
+            did:iwt:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              InfoWallet
+            InfoWallet
           </td>
           <td>
-              Raonsecure
+            Raonsecure
           </td>
           <td>
             <a href="https://github.com/infowallet/did_method/blob/master/did_method.md">InfoWallet DID Method</a>
           </td>
         </tr>
-
         <tr>
-            <td>
-                did:jlinc:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                JLINC Protocol
-            </td>
-            <td>
-                Victor Grey
-            </td>
-            <td>
-              <a href="https://did-spec.jlinc.org/">JLINC Protocol DID Method</a>
-            </td>
+          <td>
+            did:jlinc:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            JLINC Protocol
+          </td>
+          <td>
+            Victor Grey
+          </td>
+          <td>
+            <a href="https://did-spec.jlinc.org/">JLINC Protocol DID Method</a>
+          </td>
         </tr>
         <tr>
           <td>
@@ -2965,25 +2963,23 @@ address in the Author Links column, as this helps with maintenance.
             <a href="https://github.com/jnctn/did-method-spec/">JNCTN DID Method</a>
           </td>
         </tr>
-
         <tr>
-            <td>
-                did:jolo:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Ethereum
-            </td>
-            <td>
-                Jolocom
-            </td>
-            <td>
-              <a href="https://github.com/jolocom/jolo-did-method/blob/master/jolocom-did-method-specification.md">Jolocom DID Method</a>
-            </td>
+          <td>
+            did:jolo:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Ethereum
+          </td>
+          <td>
+            Jolocom
+          </td>
+          <td>
+            <a href="https://github.com/jolocom/jolo-did-method/blob/master/jolocom-did-method-specification.md">Jolocom DID Method</a>
+          </td>
         </tr>
-
         <tr>
           <td>
             did:key:
@@ -3002,21 +2998,21 @@ address in the Author Links column, as this helps with maintenance.
           </td>
         </tr>
         <tr>
-            <td>
-              did:kilt:
-            </td>
-            <td>
-              PROVISIONAL
-            </td>
-            <td>
-              KILT Blockchain
-            </td>
-            <td>
-              BOTLabs GmbH
-            </td>
-            <td>
-              <a href="https://github.com/KILTprotocol/kilt-did-driver/blob/master/DID%20Method%20Specification.md">KILT DID Method</a>
-            </td>
+          <td>
+            did:kilt:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            KILT Blockchain
+          </td>
+          <td>
+            BOTLabs GmbH
+          </td>
+          <td>
+            <a href="https://github.com/KILTprotocol/kilt-did-driver/blob/master/DID%20Method%20Specification.md">KILT DID Method</a>
+          </td>
         </tr>
         <tr>
           <td>
@@ -3069,7 +3065,23 @@ address in the Author Links column, as this helps with maintenance.
             <a href="https://lifeid.github.io/did-method-spec/">lifeID DID Method</a>
           </td>
         </tr>
-
+        <tr>
+          <td>
+            did:lit:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            LEDGIS
+          </td>
+          <td>
+            <a href="http://ibct.kr//">IBCT</a>
+          </td>
+          <td>
+            <a href="https://github.com/ibct-dev/lit-DID/blob/main/docs/did:lit-method-spec_eng_v0.1.0.md">LIT DID Method</a>
+          </td>
+        </tr>
         <tr>
           <td>
             did:meme:
@@ -3088,39 +3100,38 @@ address in the Author Links column, as this helps with maintenance.
           </td>
         </tr>
         <tr>
-            <td>
-                did:meta:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Metadium
-            </td>
-            <td>
-                Metadium Foundation
-            </td>
-            <td>
-                <a href="https://github.com/METADIUM/meta-DID/blob/master/doc/DID-method-metadium.md">Metadium DID Method</a>
-            </td>
+          <td>
+            did:meta:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Metadium
+          </td>
+          <td>
+            Metadium Foundation
+          </td>
+          <td>
+            <a href="https://github.com/METADIUM/meta-DID/blob/master/doc/DID-method-metadium.md">Metadium DID Method</a>
+          </td>
         </tr>
-
         <tr>
-            <td>
-                did:moac:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                MOAC
-            </td>
-            <td>
-                MOAC Blockchain Tech, Inc.
-            </td>
-            <td>
-                <a href="https://github.com/DavidRicardoWilde/moac-did/blob/master/did-moac-method.md">MOAC DID Method</a>
-            </td>
+          <td>
+            did:moac:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            MOAC
+          </td>
+          <td>
+            MOAC Blockchain Tech, Inc.
+          </td>
+          <td>
+            <a href="https://github.com/DavidRicardoWilde/moac-did/blob/master/did-moac-method.md">MOAC DID Method</a>
+          </td>
         </tr>
         <tr>
           <td>
@@ -3164,24 +3175,24 @@ address in the Author Links column, as this helps with maintenance.
             PROVISIONAL
           </td>
           <td>
-              NEAR
+            NEAR
           </td>
           <td>
             Ontology Foundation
           </td>
           <td>
-              <a href="https://github.com/ontology-tech/DID-spec-near/blob/master/NEAR/DID-Method-NEAR.md">NEAR DID Method</a>
+            <a href="https://github.com/ontology-tech/DID-spec-near/blob/master/NEAR/DID-Method-NEAR.md">NEAR DID Method</a>
           </td>
         </tr>
         <tr>
           <td>
-              did:nft:
+            did:nft:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Ceramic Network
+            Ceramic Network
           </td>
           <td>
             <a href="mailto:oed@3box.io">Joel Thorstensson</a>
@@ -3192,22 +3203,21 @@ address in the Author Links column, as this helps with maintenance.
         </tr>
         <tr>
           <td>
-              did:ockam:
+            did:ockam:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Ockam
+            Ockam
           </td>
           <td>
-              Ockam
+            Ockam
           </td>
           <td>
             <a href="https://github.com/ockam-network/did-method-spec/blob/master/README.md">Ockam DID Method</a>
           </td>
         </tr>
-
         <tr>
           <td>
             did:onion:
@@ -3227,57 +3237,55 @@ address in the Author Links column, as this helps with maintenance.
         </tr>
         <tr>
           <td>
-              did:ont:
+            did:ont:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Ontology
+            Ontology
           </td>
           <td>
-              Ontology Foundation
+            Ontology Foundation
           </td>
           <td>
             <a href="https://github.com/ontio/ontology-DID/blob/master/docs/en/DID-ONT-method.md">Ontology DID Method</a>
           </td>
         </tr>
-
         <tr>
-            <td>
-                did:omn:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                OmniOne
-            </td>
-            <td>
-                OmniOne
-            </td>
-            <td>
-                <a href="https://github.com/OmniOneID/did_method/blob/master/did_method.md">OmniOne DID Method</a>
-            </td>
+          <td>
+            did:omn:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            OmniOne
+          </td>
+          <td>
+            OmniOne
+          </td>
+          <td>
+            <a href="https://github.com/OmniOneID/did_method/blob/master/did_method.md">OmniOne DID Method</a>
+          </td>
         </tr>
         <tr>
-            <td>
-                did:op:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Ocean Protocol
-            </td>
-            <td>
-                Ocean Protocol
-            </td>
-            <td>
-              <a href="https://github.com/oceanprotocol/OEPs/blob/master/7/v0.2/README.md">Ocean Protocol DID Method</a>
-            </td>
+          <td>
+            did:op:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Ocean Protocol
+          </td>
+          <td>
+            Ocean Protocol
+          </td>
+          <td>
+            <a href="https://github.com/oceanprotocol/OEPs/blob/master/7/v0.2/README.md">Ocean Protocol DID Method</a>
+          </td>
         </tr>
-
         <tr>
           <td>
             did:orb:
@@ -3295,7 +3303,6 @@ address in the Author Links column, as this helps with maintenance.
             <a href="https://trustbloc.github.io/did-method-orb/">Orb DID Method</a>
           </td>
         </tr>
-
         <tr>
           <td>
             did:panacea:
@@ -3314,39 +3321,38 @@ address in the Author Links column, as this helps with maintenance.
           </td>
         </tr>
         <tr>
-            <td>
-                did:peer:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                peer
-            </td>
-            <td>
-              <a href="mailto:daniel.hardman@gmail.com">Daniel Hardman</a>
-            </td>
-            <td>
-                <a href="https://identity.foundation/peer-did-method-spec/index.html">peer DID Method</a>
-            </td>
+          <td>
+            did:peer:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            peer
+          </td>
+          <td>
+            <a href="mailto:daniel.hardman@gmail.com">Daniel Hardman</a>
+          </td>
+          <td>
+            <a href="https://identity.foundation/peer-did-method-spec/index.html">peer DID Method</a>
+          </td>
         </tr>
-
         <tr>
-            <td>
-                did:pistis:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Ethereum
-            </td>
-            <td>
-                Andrea Taglia, Matteo Sinico
-            </td>
-            <td>
-                <a href="https://github.com/uino95/ssi/blob/consensys/dashboard/server/pistis/pistis-did-resolver/README.md">Pistis DID Method</a>
-            </td>
+          <td>
+            did:pistis:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Ethereum
+          </td>
+          <td>
+            Andrea Taglia, Matteo Sinico
+          </td>
+          <td>
+            <a href="https://github.com/uino95/ssi/blob/consensys/dashboard/server/pistis/pistis-did-resolver/README.md">Pistis DID Method</a>
+          </td>
         </tr>
         <tr>
           <td>
@@ -3366,57 +3372,56 @@ address in the Author Links column, as this helps with maintenance.
           </td>
         </tr>
         <tr>
-            <td>
-              did:san:
-            </td>
-            <td>
-              PROVISIONAL
-            </td>
-            <td>
-              SAN Cloudchain
-            </td>
-            <td>
-              YLZ Inc.
-            </td>
-            <td>
-              <a href="https://github.com/Baasze/DID-method-specification">SAN DID Method</a>
-            </td>
+          <td>
+            did:san:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            SAN Cloudchain
+          </td>
+          <td>
+            YLZ Inc.
+          </td>
+          <td>
+            <a href="https://github.com/Baasze/DID-method-specification">SAN DID Method</a>
+          </td>
         </tr>
         <tr>
           <td>
-              did:schema:
+            did:schema:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Multiple storage networks, currently public IPFS and evan.network IPFS
+            Multiple storage networks, currently public IPFS and evan.network IPFS
           </td>
           <td>
-              51nodes GmbH
+            51nodes GmbH
           </td>
           <td>
-              <a href="https://github.com/51nodes/schema-registry-did-method/blob/master/README.md">Schema Registry DID Method</a>
+            <a href="https://github.com/51nodes/schema-registry-did-method/blob/master/README.md">Schema Registry DID Method</a>
           </td>
-      </tr>
-        <tr>
-            <td>
-                did:selfkey:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Ethereum
-            </td>
-            <td>
-                SelfKey
-            </td>
-            <td>
-                <a href="https://github.com/SelfKeyFoundation/selfkey-identity/blob/develop/DIDMethodSpecs.md">SelfKey DID Method</a>
-            </td>
         </tr>
-
+        <tr>
+          <td>
+            did:selfkey:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Ethereum
+          </td>
+          <td>
+            SelfKey
+          </td>
+          <td>
+            <a href="https://github.com/SelfKeyFoundation/selfkey-identity/blob/develop/DIDMethodSpecs.md">SelfKey DID Method</a>
+          </td>
+        </tr>
         <tr>
           <td>
             did:signor:
@@ -3436,73 +3441,71 @@ address in the Author Links column, as this helps with maintenance.
         </tr>
         <tr>
           <td>
-              did:sirius:
+            did:sirius:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              ProximaX Sirius Chain
+            ProximaX Sirius Chain
           </td>
           <td>
-              ProximaX Enterprise, Proximax Inc.
+            ProximaX Enterprise, Proximax Inc.
           </td>
           <td>
-              <a href="https://gitlab.com/proximax-enterprise/siriusid/sirius-id-specs/-/blob/master/docs/did-method-spec.md">ProximaX SiriusID DID Method</a>
+            <a href="https://gitlab.com/proximax-enterprise/siriusid/sirius-id-specs/-/blob/master/docs/did-method-spec.md">ProximaX SiriusID DID Method</a>
           </td>
         </tr>
         <tr>
           <td>
-              did:sov:
+            did:sov:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Sovrin
+            Sovrin
           </td>
           <td>
-              Mike Lodder
+            Mike Lodder
           </td>
           <td>
             <a href="https://sovrin-foundation.github.io/sovrin/spec/did-method-spec-template.html">Sovrin DID Method</a>
           </td>
         </tr>
-
         <tr>
           <td>
-              did:stack:
+            did:stack:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Bitcoin
+            Bitcoin
           </td>
           <td>
-              Jude Nelson
+            Jude Nelson
           </td>
           <td>
-             <a href="https://github.com/blockstack/blockstack-core/blob/stacks-1.0/docs/blockstack-did-spec.md">Blockstack DID Method</a>
+            <a href="https://github.com/blockstack/blockstack-core/blob/stacks-1.0/docs/blockstack-did-spec.md">Blockstack DID Method</a>
           </td>
         </tr>
-
         <tr>
-            <td>
-                did:tangle:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                IOTA Tangle
-            </td>
-            <td>
-                BiiLabs Co., Ltd.
-            </td>
-            <td>
-                <a href="https://github.com/TangleID/TangleID/blob/develop/did-method-spec.md">TangleID DID Method</a>
-            </td>
+          <td>
+            did:tangle:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            IOTA Tangle
+          </td>
+          <td>
+            BiiLabs Co., Ltd.
+          </td>
+          <td>
+            <a href="https://github.com/TangleID/TangleID/blob/develop/did-method-spec.md">TangleID DID Method</a>
+          </td>
         </tr>
         <tr>
           <td>
@@ -3539,21 +3542,21 @@ address in the Author Links column, as this helps with maintenance.
           </td>
         </tr>
         <tr>
-            <td>
-                did:ttm:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                TMChain
-            </td>
-            <td>
-                Token.TM
-            </td>
-            <td>
-                <a href="https://github.com/TokenTM/TM-DID/blob/master/docs/en/DID_spec.md">TM DID Method</a>
-            </td>
+          <td>
+            did:ttm:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            TMChain
+          </td>
+          <td>
+            Token.TM
+          </td>
+          <td>
+            <a href="https://github.com/TokenTM/TM-DID/blob/master/docs/en/DID_spec.md">TM DID Method</a>
+          </td>
         </tr>
         <tr>
           <td>
@@ -3580,48 +3583,48 @@ address in the Author Links column, as this helps with maintenance.
             PROVISIONAL
           </td>
           <td>
-              Twit
+            Twit
           </td>
           <td>
             <a href="https://github.com/did-twit/did-twit/blob/master/spec/index.md">DID Twit GitHub</a>
           </td>
           <td>
-              <a href="https://did-twit.github.io/did-twit/">Twit DID Method</a>
+            <a href="https://did-twit.github.io/did-twit/">Twit DID Method</a>
           </td>
         </tr>
         <tr>
-            <td>
-                did:tys:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-              DID Specification
-            </td>
-            <td>
-                Chainyard
-            </td>
-            <td>
-                <a href="https://github.com/chainyard-tys/tys/blob/master/README.md">TYS DID Method</a>
-            </td>
+          <td>
+            did:tys:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            DID Specification
+          </td>
+          <td>
+            Chainyard
+          </td>
+          <td>
+            <a href="https://github.com/chainyard-tys/tys/blob/master/README.md">TYS DID Method</a>
+          </td>
         </tr>
         <tr>
           <td>
-						did:tz:
-					</td>
-					<td>
-						PROVISIONAL
-					</td>
-					<td>
-						Tezos
-					</td>
-					<td>
-						<a href="https://spruceid.com">Spruce Systems, Inc.</a>
-					</td>
-					<td>
-						<a href="https://did-tezos.spruceid.com">Tezos DID Method</a>
-					</td>
+            did:tz:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Tezos
+          </td>
+          <td>
+            <a href="https://spruceid.com">Spruce Systems, Inc.</a>
+          </td>
+          <td>
+            <a href="https://did-tezos.spruceid.com">Tezos DID Method</a>
+          </td>
         </tr>
         <tr>
           <td>
@@ -3676,39 +3679,37 @@ address in the Author Links column, as this helps with maintenance.
         </tr>
         <tr>
           <td>
-              did:uport:
+            did:uport:
           </td>
           <td>
-              DEPRECATED
+            DEPRECATED
           </td>
           <td>
-              Ethereum
+            Ethereum
           </td>
           <td>
-              uPort
+            uPort
           </td>
           <td>
           </td>
         </tr>
-
         <tr>
           <td>
-              did:v1:
+            did:v1:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Veres One
+            Veres One
           </td>
           <td>
-              Digital Bazaar
+            <a href="https://digitalbazaar.com/">Digital Bazaar</a>
           </td>
           <td>
             <a href="https://w3c-ccg.github.io/did-method-v1/">Veres One DID Method</a>
           </td>
         </tr>
-
         <tr>
           <td>
             did:vaa:
@@ -3743,7 +3744,6 @@ address in the Author Links column, as this helps with maintenance.
             <a href="https://github.com/vaultie/vaultie-did-method/blob/master/vaultie-did-method-specification.md">Vaultie DID Method</a>
           </td>
         </tr>
-
         <tr>
           <td>
             did:vid:
@@ -3780,22 +3780,21 @@ address in the Author Links column, as this helps with maintenance.
         </tr>
         <tr>
           <td>
-              did:vvo:
+            did:vvo:
           </td>
           <td>
-              PROVISIONAL
+            PROVISIONAL
           </td>
           <td>
-              Vivvo
+            Vivvo
           </td>
           <td>
-              Vivvo Application Studios
+            Vivvo Application Studios
           </td>
           <td>
             <a href="https://vivvo.github.io/vivvo-did-scheme/spec/did-method-spec-template.html">Vivvo DID Method</a>
           </td>
         </tr>
-
         <tr>
           <td>
             did:web:
@@ -3814,23 +3813,22 @@ address in the Author Links column, as this helps with maintenance.
           </td>
         </tr>
         <tr>
-            <td>
-                did:wlk:
-            </td>
-            <td>
-                PROVISIONAL
-            </td>
-            <td>
-                Weelink Network
-            </td>
-            <td>
-                Weelink
-            </td>
-            <td>
-                <a href="https://weelink-team.github.io/weelink/DIDDesignEn">Weelink DID Method</a>
-            </td>
+          <td>
+            did:wlk:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Weelink Network
+          </td>
+          <td>
+            Weelink
+          </td>
+          <td>
+            <a href="https://weelink-team.github.io/weelink/DIDDesignEn">Weelink DID Method</a>
+          </td>
         </tr>
-
         <tr>
           <td>
             did:work:
@@ -3848,45 +3846,10 @@ address in the Author Links column, as this helps with maintenance.
             <a href="https://workday.github.io/work-did-method-spec/">Workday DID Method</a>
           </td>
         </tr>
-        <tr>
-          <td>
-            did:lit:
-          </td>
-          <td>
-            PROVISIONAL
-          </td>
-          <td>
-            LEDGIS
-          </td>
-          <td>
-            <a href="http://ibct.kr//">IBCT</a>
-          </td>
-          <td>
-            <a href="https://github.com/ibct-dev/lit-DID/blob/main/docs/did:lit-method-spec_eng_v0.1.0.md">LIT DID Method</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            did:hpass:
-          </td>
-          <td>
-            PROVISIONAL
-          </td>
-          <td>
-            Hyperledger Fabric
-          </td>
-          <td>
-            IBM
-          </td>
-          <td>
-            <a href="https://github.com/IBM/hpass/blob/main/doc/did-spec.md">hpass DID Method</a>
-          </td>
-        </tr>
       </tbody>
     </table>
 
   </section>
-
 
 </body>
 </html>
