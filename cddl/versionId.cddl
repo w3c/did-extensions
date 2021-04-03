@@ -1,3 +1,0 @@
-did-document-metadata = {
-    versionId : text .regexp "[a-zA-F0-9]+"
-}

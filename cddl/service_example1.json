@@ -1,9 +1,0 @@
-{
-  "service" : [ {
-    "id":"did:example:123456789abcdefghi#vcs",
-    "type": "VerifiableCredentialService",
-    "description" : "This is an example service endpoint!", 
-    "serviceEndpoint": "https://example.com/vc/"
-  }]  
-
-  }
