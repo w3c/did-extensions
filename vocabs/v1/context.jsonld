@@ -6,8 +6,7 @@
 
     "alsoKnownAs": {
       "@id": "https://www.w3.org/ns/activitystreams#alsoKnownAs",
-      "@type": "@id",
-      "@container": "@set"
+      "@type": "@id"
     },
     "assertionMethod": {
       "@id": "https://w3id.org/security#assertionMethod",
@@ -41,7 +40,6 @@
     "service": {
       "@id": "https://www.w3.org/ns/did#service",
       "@type": "@id",
-      "@container": "@set",
       "@context": {
         "@protected": true,
         "id": "@id",
