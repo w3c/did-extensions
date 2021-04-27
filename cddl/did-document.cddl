@@ -45,8 +45,8 @@ verificationMethod = publicKeyHex / ethereumAddress / publicKeyPem / publicKeyJw
 ;     "elastos" / "kilt" / "elem" / "github" / "bid" / "ptn" / "echo" / 
 ;     "trustbloc" / "san" / "gatc" / "factom" / "signor" / "hedera" / 
 ;     "sirius" / "dock" / "twit" / "near" / "vaa" / "bba" / "morpheus" / 
-;     "etho" / "bnb" / "celo" / "klay" / "trx" / "grg" / "schema" / "key"
-
+;     "etho" / "bnb" / "celo" / "klay" / "trx" / "grg" / "schema" / "key" /
+;     "sol"
 
 
 ;;; 
