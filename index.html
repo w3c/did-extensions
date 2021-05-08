@@ -627,9 +627,9 @@ verification relationship</a>.
   }],
   "capabilityDelegation": [{
     "id": "did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
-    "type": "Ed25519VerificationKey2018",
+    "type": "Ed25519VerificationKey2020",
     "controller": "did:example:123",
-    "publicKeyBase58": "BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"
+    "publicKeyMultibase": "z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"
   },
   "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
   ]
@@ -679,9 +679,9 @@ verification relationship</a>.
   }],
   "capabilityInvocation": [{
     "id": "did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
-    "type": "Ed25519VerificationKey2018",
+    "type": "Ed25519VerificationKey2020",
     "controller": "did:example:123",
-    "publicKeyBase58": "BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"
+    "publicKeyMultibase": "z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"
   },
   "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
   ]
@@ -723,7 +723,7 @@ verification relationship</a>.
       "id": "did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
       "type": "X25519KeyAgreementKey2019",
       "controller": "did:example:123",
-      "publicKeyBase58": "9hFgmPVfmBZwRvFEyniQDBkz9LmV7gDEqytWyGZLmDXE"
+      "publicKeyMultibase": "zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS"
     }
   ]
 }
@@ -847,6 +847,32 @@ These properties are for use on a verification method object, in the value of
     }]
   }
           </pre>
+        </section>
+
+        <section>
+          <h4>publicKeyMultibase</h4>
+
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+                <th>CDDL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3id.org/security#publicKeyMultibase">security-vocab</a>
+                </td>
+                <td>
+                  <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+                </td>
+                <td>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </section>
 
         <section>
@@ -979,7 +1005,7 @@ These properties are for use on a service object, in the value of
         </pre>
 
       </section>
-      
+
     </section>
 
   </section>
@@ -1190,7 +1216,7 @@ The class of private information related to JWKs is defined
             "type": "Bls12381G2Key2020",
             "controller": "did:example:123",
             "publicKeyBase58": "25ETdUZDVnME6yYuAMjFRCnCPcDmYQcoZDcZuXAfeMhXPvjZg35QmZ7uctBcovA69YDM3Jf7s5BHo4u1y89nY6mHiji8yphZ4AMm4iNCRh35edSg76Dkasu3MY2VS9LnuaVQ",
-   
+
           }
         </pre>
       </section>
