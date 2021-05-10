@@ -1488,7 +1488,6 @@ in a service object.
 
       <section>
         <h4>DIDCommMessaging</h4>
-        <div class="issue" data-number="167"></div>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
@@ -1513,22 +1512,23 @@ in a service object.
         </table>
 
         <pre class="example" title="Example of service and serviceEndpoint properties">
-      {
-        "@context":[
-            "https://www.w3.org/ns/did/v1",
-            "https://didcomm.org/messaging/contexts/v2"
-        ],
-        "id":"did:example:123456789abcdefghi#didcomm-1",
-        "type":"DIDCommMessaging",
-        "serviceEndpoint":"http://example.com/path",
-        "accept":[
-            "didcomm/v2",
-            "didcomm/aip2;env=rfc587"
-        ],
-        "routingKeys":[
-            "did:example:somemediator#somekey"
-        ]
-      }
+{
+  "@context":[
+      "https://www.w3.org/ns/did/v1",
+      "https://didcomm.org/messaging/contexts/v2"
+  ],
+  ...
+  "type":"DIDCommMessaging",
+  "serviceEndpoint":"http://example.com/path",
+  "accept":[
+      "didcomm/v2",
+      "didcomm/aip2;env=rfc587"
+  ],
+  "routingKeys":[
+      "did:example:somemediator#somekey"
+  ]
+  ...
+}
         </pre>
 
       </section>
