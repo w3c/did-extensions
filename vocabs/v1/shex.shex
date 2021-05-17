@@ -17,7 +17,7 @@ _:ControllerShape IRI /^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+/
 _:VerificationMethodShape IRI {
     sec:controller @_:ControllerShape+ ;
     rdf:type IRI+ ;
-    ( sec:publicKeyJwk rdf:JSON {0,1} | sec:publicKeyBase58 LITERAL {0,1} ) {0,1};
+    ( sec:publicKeyJwk rdf:JSON {0,1} | sec:publicKeyMultibase LITERAL {0,1} ) {0,1};
 }
 
 _:ServiceShape IRI {

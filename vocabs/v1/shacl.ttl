@@ -98,7 +98,7 @@ _:VerificationMethodShape a sh:NodeShape ;
             a sh:NodeShape ;
             sh:property
                 [
-                    sh:path sec:publicKeyBase58 ;
+                    sh:path sec:publicKeyMultibase ;
                     sh:minCount 1 ;
                 ],[
                     sh:path sec:publicKeyJwk ;

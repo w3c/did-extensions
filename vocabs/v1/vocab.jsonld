@@ -95,14 +95,14 @@
       "range": "did:VerificationMethod"
     },
     {
-      "@id": "sec:publicKeyBase58",
+      "@id": "sec:publicKeyMultibase",
       "@type": [
         "rdf:Property",
         "owl:DatatypeProperty"
       ],
       "domain": "did:VerificationMethod",
       "isDefinedBy": "https://www.w3.org/TR/did-core/#verification-methods",
-      "label": "A string that conforms to a base58btc encoded public key",
+      "label": "A string that conforms to a multibase encoded public key",
       "range": "xsd:string"
     },
     {
