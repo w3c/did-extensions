@@ -55,12 +55,12 @@
     <rdfs:range rdf:resource="https://www.w3.org/ns/did#VerificationMethod"/>
     <rdfs:isDefinedBy rdf:resource="https://www.w3.org/TR/did-core/#key-agreement"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/security#publicKeyBase58">
+  <rdf:Description rdf:about="https://w3id.org/security#publicKeyMultibase">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:domain rdf:resource="https://www.w3.org/ns/did#VerificationMethod"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>A string that conforms to a base58btc encoded public key</rdfs:label>
+    <rdfs:label>A string that conforms to a multibase encoded public key</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="https://www.w3.org/TR/did-core/#verification-methods"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://www.w3.org/ns/did#service">

@@ -67,7 +67,7 @@
                 "publicKeyJwk" : {
                     "$ref" : "#/definitions/JWK.schema"
                 },
-                "publicKeyBase58" : {
+                "publicKeyMultibase" : {
                     "type" : "string"
                 },
                 "controller" : {
@@ -83,7 +83,7 @@
             },
             "required" : ["id", "type", "controller"],
             "not": {
-                "required" : ["publicKeyJwk","publicKeyBase58"]
+                "required" : ["publicKeyJwk","publicKeyMultibase"]
             },
             "additionalProperties" : true
         },

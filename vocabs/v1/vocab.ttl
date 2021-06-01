@@ -90,11 +90,11 @@ sec:publicKeyJwk a rdf:Property, owl:DatatypeProperty ;
     rdfs:label "Public Key in JWK" ;
 .
 
-sec:publicKeyBase58 a rdf:Property, owl:DatatypeProperty ;
+sec:publicKeyMultibase a rdf:Property, owl:DatatypeProperty ;
     rdfs:domain did:VerificationMethod ;
     rdfs:range xsd:string ;
     rdfs:isDefinedBy <https://www.w3.org/TR/did-core/#verification-methods> ;
-    rdfs:label "A string that conforms to a base58btc encoded public key" ;
+    rdfs:label "A string that conforms to a multibase encoded public key" ;
 .
 
 did:service a rdf:Property ;
