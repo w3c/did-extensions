@@ -806,33 +806,33 @@ These properties are for use on a verification method object, in the value of
         </table>
       </section>
 
-        <section>
-          <h4>publicKeyHex</h4>
-          <table class="simple" style="width: 100%;">
-            <thead>
-              <tr>
-                <th>Normative Definition</th>
-                <th>JSON-LD</th>
-                <th>CDDL</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a href="https://w3id.org/security#publicKeyHex">security-vocab</a>
-                </td>
-                <td>
-                  <a href="https://w3id.org/security/v3-unstable">security-vocab/v3-unstable</a>
-                </td>
-                <td>
-                </td>
-                <td>
-                  <a href="cddl/publicKeyHex.cddl" target="_blank">publicKeyHex.cddl</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <pre class="example" title="Example of publicKeyHex property">
+      <section>
+        <h4>publicKeyHex</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+              <th>CDDL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security#publicKeyHex">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v3-unstable">security-vocab/v3-unstable</a>
+              </td>
+              <td>
+              </td>
+              <td>
+                <a href="cddl/publicKeyHex.cddl" target="_blank">publicKeyHex.cddl</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example" title="Example of publicKeyHex property">
   {
     "@context":[
       "https://www.w3.org/ns/did/v1",
@@ -846,61 +846,61 @@ These properties are for use on a verification method object, in the value of
       "publicKeyHex": "027560af3387d375e3342a6968179ef3c6d04f5d33b2b611cf326d4708badd7770"
     }]
   }
-          </pre>
-        </section>
+        </pre>
+      </section>
 
-        <section>
-          <h4>publicKeyMultibase</h4>
+      <section>
+        <h4>publicKeyMultibase</h4>
 
-          <table class="simple" style="width: 100%;">
-            <thead>
-              <tr>
-                <th>Normative Definition</th>
-                <th>JSON-LD</th>
-                <th>CDDL</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a href="https://w3id.org/security#publicKeyMultibase">security-vocab</a>
-                </td>
-                <td>
-                  <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-                </td>
-                <td>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+              <th>CDDL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security#publicKeyMultibase">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-        <section>
-          <h4>blockchainAccountId</h4>
-          <div class="issue" data-number="165"></div>
-          <table class="simple" style="width: 100%;">
-            <thead>
-              <tr>
-                <th>Normative Definition</th>
-                <th>JSON-LD</th>
-                <th>CDDL</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a href="https://w3id.org/security#blockchainAccountId">security-vocab</a>
-                </td>
-                <td>
-                  <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-                </td>
-                <td>
-                  <span class="issue">CDDL definition pending</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <pre class="example" title="Example of blockchainAccountId property">
+      <section>
+        <h4>blockchainAccountId</h4>
+        <div class="issue" data-number="165"></div>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+              <th>CDDL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security#blockchainAccountId">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+              <td>
+                <span class="issue">CDDL definition pending</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example" title="Example of blockchainAccountId property">
   {
     "@context":[
       "https://www.w3.org/ns/did/v1",
@@ -914,35 +914,35 @@ These properties are for use on a verification method object, in the value of
       "blockchainAccountId":"0xab16a96d359ec26a11e2c2b3d8f8b8942d5bfcdb@eip155:1"
     }]
   }
-          </pre>
-        </section>
+        </pre>
+      </section>
 
-        <section>
-          <h4>ethereumAddress</h4>
-          <span class="advisment">This property is deprecated in favor of <code>blockchainAccountId</code>.</span>
-          <table class="simple" style="width: 100%;">
-            <thead>
-              <tr>
-                <th>Normative Definition</th>
-                <th>JSON-LD</th>
-                <th>CDDL</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a href="https://w3id.org/security#ethereumAddress">security-vocab</a>
-                </td>
-                <td>
-                  <a href="https://w3id.org/security/v3-unstable">security-vocab-v3-unstable</a>
-                </td>
-                <td>
-                  <a href="cddl/ethereumAddress.cddl" target="_blank">ethereumAddress.cddl</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <pre class="example" title="Example of ethereumAddress property">
+      <section>
+        <h4>ethereumAddress</h4>
+        <span class="advisment">This property is deprecated in favor of <code>blockchainAccountId</code>.</span>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+              <th>CDDL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security#ethereumAddress">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v3-unstable">security-vocab-v3-unstable</a>
+              </td>
+              <td>
+                <a href="cddl/ethereumAddress.cddl" target="_blank">ethereumAddress.cddl</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example" title="Example of ethereumAddress property">
   {
     "@context":[
       "https://www.w3.org/ns/did/v1",
@@ -956,11 +956,9 @@ These properties are for use on a verification method object, in the value of
       "ethereumAddress": "0xF3beAC30C498D9E26865F34fCAa57dBB935b0D74"
     }]
   }
-          </pre>
-        </section>
-
-
+        </pre>
       </section>
+    </section>
 
     <section>
       <h3>Service properties</h3>
