@@ -9,5 +9,6 @@ VerificationMethodTypes =
     "GpgVerificationKey2020" / 
     "RsaVerificationKey2018" / 
     "X25519KeyAgreementKey2019" /
-    "EcdsaSecp256k1RecoveryMethod2020"
+    "EcdsaSecp256k1RecoveryMethod2020" /
+    "VerifiableCondition2021"
 
