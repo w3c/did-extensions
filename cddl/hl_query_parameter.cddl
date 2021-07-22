@@ -1,2 +1,0 @@
-;; captured by hl_query_parameter group 
-hl_query_parameter = text .regexp "did\\:[A-Za-z0-9]+\\:[A-Za-z0-9\\.\\-\\:\\_]+\\/?(?<path>[A-Za-z0-9\\/]+)?\\?|\\&(?<hl_query_parameter>hl\\=[A-Za-z0-9]+)\\&?[A-Za-z0-9]+\\#[A-Za-z0-9\\-\\_]+"

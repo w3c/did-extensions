@@ -1,3 +1,0 @@
-DID-document = {
-  @context : "https://www.w3.org/ns/did/v1" / [ 32("https://www.w3.org/ns/did/v1"), 1 *uri ]  / [ "https://www.w3.org/ns/did/v1", 1* ~uri ] 
-}

@@ -1,8 +1,0 @@
-{
-    "id": "did:example:123456789abcdefghi#keys-1",
-    "type":"Ed25519VerificationKey2018",
-    "controller": "did:key:z6Mkf5rGMoatrSj1f4CyvuHBeXJELe9RPdzo2PKGNCKVtZxP",
-    "publicKeyMulticodec": {
-        "/" : "bafyreidykglsfhoixmivffc5uwhcgshx4j465xwqntbmu43nb2dzqwfvae"
-    } 
-}
