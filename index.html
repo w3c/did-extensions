@@ -264,14 +264,6 @@ definitions. We are working on this! This does NOT mean that in future it will
 be possible to submit items to the registry without normative definitions (see <a href="#the-registration-process"></a>).
     </p>
 
-<p>
-  Concise Data Definition Language (CDDL) provides a succinct data definition for representing JSON and CBOR core representations of
-  a DID document as described in the <a href="https://www.w3.org/TR/did-core/#core-representations" target="_blank">DID Core Specification</a> and associated properties registered in this <a href="https://w3c.github.io/did-spec-registries/" target="_blank">DID Spec Registries</a>.
-  The draft composite CDDL definition for the entire DID Document Specification and associated
-  registries can be found <a href="cddl/did-document.cddl" target="_blank">here</a>.
-  Additionally, each Property, Class and Type are described separately below and can be found below the `CDDL` column and apply to JSON and CBOR representations only.
-</p>
-
     <section>
       <h3>DID document properties</h3>
       <p>
@@ -286,7 +278,6 @@ useful to all DID methods.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -296,9 +287,6 @@ useful to all DID methods.
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/id.cddl" target="_blank">id.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -320,7 +308,6 @@ useful to all DID methods.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -330,9 +317,6 @@ useful to all DID methods.
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/controller.cddl" target="_blank">controller.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -355,7 +339,6 @@ useful to all DID methods.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -365,9 +348,6 @@ useful to all DID methods.
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/verificationMethod.cddl" target="_blank">verificationMethod.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -386,7 +366,6 @@ This property has been deprecated in favor or <code>verificationMethod</code>.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -396,9 +375,6 @@ This property has been deprecated in favor or <code>verificationMethod</code>.
               </td>
               <td>
                 <a href="https://w3id.org/security/v1">security-vocab context</a>
-              </td>
-              <td>
-                <a href="cddl/publicKey.cddl" target="_blank">publicKey.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -438,7 +414,6 @@ This property has been deprecated in favor or <code>verificationMethod</code>.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -448,9 +423,6 @@ This property has been deprecated in favor or <code>verificationMethod</code>.
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/service.cddl" target="_blank">service.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -487,7 +459,6 @@ verification relationship</a>.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -497,9 +468,6 @@ verification relationship</a>.
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/assertionMethod.cddl" target="_blank">assertionMethod.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -540,7 +508,6 @@ verification relationship</a>.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -550,9 +517,6 @@ verification relationship</a>.
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/authentication.cddl" target="_blank">authentication.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -593,7 +557,6 @@ verification relationship</a>.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -603,9 +566,6 @@ verification relationship</a>.
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/capabilityDelegation.cddl" target="_blank">capabilityDelegation.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -644,7 +604,6 @@ verification relationship</a>.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -654,9 +613,6 @@ verification relationship</a>.
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/capabilityInvocation.cddl" target="_blank">capabilityInvocation.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -697,7 +653,6 @@ verification relationship</a>.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -707,9 +662,6 @@ verification relationship</a>.
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/keyAgreement.cddl" target="_blank">keyAgreement.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -746,7 +698,6 @@ These properties are for use on a verification method object, in the value of
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -756,9 +707,6 @@ These properties are for use on a verification method object, in the value of
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/publicKeyJwk.cddl" target="_blank">publicKeyJwk.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -787,7 +735,6 @@ These properties are for use on a verification method object, in the value of
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -797,9 +744,6 @@ These properties are for use on a verification method object, in the value of
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/publicKeyBase58.cddl" target="_blank">publicKeyBase58.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -813,7 +757,6 @@ These properties are for use on a verification method object, in the value of
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -825,9 +768,6 @@ These properties are for use on a verification method object, in the value of
                 <a href="https://w3id.org/security/v3-unstable">security-vocab/v3-unstable</a>
               </td>
               <td>
-              </td>
-              <td>
-                <a href="cddl/publicKeyHex.cddl" target="_blank">publicKeyHex.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -857,7 +797,6 @@ These properties are for use on a verification method object, in the value of
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -868,8 +807,6 @@ These properties are for use on a verification method object, in the value of
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
               </td>
-              <td>
-              </td>
             </tr>
           </tbody>
         </table>
@@ -877,13 +814,11 @@ These properties are for use on a verification method object, in the value of
 
       <section>
         <h4>blockchainAccountId</h4>
-        <div class="issue" data-number="165"></div>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -893,9 +828,6 @@ These properties are for use on a verification method object, in the value of
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <span class="issue">CDDL definition pending</span>
               </td>
             </tr>
           </tbody>
@@ -925,7 +857,6 @@ These properties are for use on a verification method object, in the value of
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -935,9 +866,6 @@ These properties are for use on a verification method object, in the value of
               </td>
               <td>
                 <a href="https://w3id.org/security/v3-unstable">security-vocab-v3-unstable</a>
-              </td>
-              <td>
-                <a href="cddl/ethereumAddress.cddl" target="_blank">ethereumAddress.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -973,7 +901,6 @@ These properties are for use on a service object, in the value of
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -983,9 +910,6 @@ These properties are for use on a service object, in the value of
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/serviceEndpoint.cddl" target="_blank">serviceEndpoint.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1035,7 +959,6 @@ The class of private information related to JWKs is defined
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1045,9 +968,6 @@ The class of private information related to JWKs is defined
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1076,7 +996,6 @@ The class of private information related to JWKs is defined
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1086,9 +1005,6 @@ The class of private information related to JWKs is defined
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1118,7 +1034,6 @@ The class of private information related to JWKs is defined
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1128,9 +1043,6 @@ The class of private information related to JWKs is defined
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1154,7 +1066,6 @@ The class of private information related to JWKs is defined
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1164,9 +1075,6 @@ The class of private information related to JWKs is defined
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1190,7 +1098,6 @@ The class of private information related to JWKs is defined
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1200,9 +1107,6 @@ The class of private information related to JWKs is defined
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1227,7 +1131,6 @@ The class of private information related to JWKs is defined
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1237,9 +1140,6 @@ The class of private information related to JWKs is defined
               </td>
               <td>
                 <a href="https://gpg.jsld.org/contexts/lds-gpg2020-v0.0.jsonld">gpg.jsld.org</a>
-              </td>
-              <td>
-                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1269,7 +1169,6 @@ The class of private information related to JWKs is defined
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1279,9 +1178,6 @@ The class of private information related to JWKs is defined
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1320,7 +1216,6 @@ The class of private information related to JWKs is defined
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1330,9 +1225,6 @@ The class of private information related to JWKs is defined
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1361,7 +1253,6 @@ The class of private information related to JWKs is defined
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1371,9 +1262,6 @@ The class of private information related to JWKs is defined
               </td>
               <td>
                 <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-              <td>
-                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1388,7 +1276,6 @@ The class of private information related to JWKs is defined
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1398,9 +1285,6 @@ The class of private information related to JWKs is defined
               </td>
               <td>
                 <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld">lds-ecdsa-secp256k1-recovery2020-0.0.jsonld</a>
-              </td>
-              <td>
-                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1450,7 +1334,6 @@ The class of private information related to JWKs is defined
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1460,9 +1343,6 @@ The class of private information related to JWKs is defined
               </td>
               <td>
                 <a href="https://w3c-ccg.github.io/verifiable-conditions/contexts/verifiable-conditions-2021-v1.json">verifiable-conditions-2021-v1.json</a>
-              </td>
-              <td>
-                <a href="cddl/verificationMethodTypes.cddl" target="_blank">verificationMethodTypes.cddl</a>
               </td>
             </tr>
           </tbody>
@@ -1514,7 +1394,6 @@ in a service object.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1524,9 +1403,6 @@ in a service object.
               </td>
               <td>
                 <a href="https://identity.foundation/.well-known/did-configuration/v1">Well Known DID Configuration</a>
-              </td>
-              <td>
-                <span>CDDL definition pending</span>
               </td>
             </tr>
           </tbody>
@@ -1572,7 +1448,6 @@ in a service object.
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
-              <th>CDDL</th>
             </tr>
           </thead>
           <tbody>
@@ -1582,9 +1457,6 @@ in a service object.
               </td>
               <td>
                 <a href="https://didcomm.org/messaging/contexts/v2">DIDComm Messaging</a>
-              </td>
-              <td>
-                <span>CDDL definition pending</span>
               </td>
             </tr>
           </tbody>
@@ -1768,7 +1640,6 @@ These properties contain information pertaining to the DID resolution request.
           <tr>
             <th>Normative Definition</th>
             <th></th>
-            <th>CDDL</th>
           </tr>
         </thead>
         <tbody>
@@ -1777,9 +1648,6 @@ These properties contain information pertaining to the DID resolution request.
               <a href="https://www.w3.org/TR/did-core/#did-resolution-options">DID Core</a>
             </td>
             <td></td>
-            <td>
-              <a href="cddl/accept.cddl" target="_blank">accept.cddl</a>
-            </td>
           </tr>
         </tbody>
       </table>
@@ -1804,7 +1672,6 @@ These properties contain information pertaining to the DID resolution response.
           <tr>
             <th>Normative Definition</th>
             <th></th>
-            <th>cddl</th>
           </tr>
         </thead>
         <tbody>
@@ -1813,9 +1680,6 @@ These properties contain information pertaining to the DID resolution response.
               <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
             </td>
             <td></td>
-            <td>
-              <a href="cddl/contentType.cddl" target="_blank">contentType.cddl</a>
-            </td>
           </tr>
         </tbody>
       </table>
@@ -1834,7 +1698,6 @@ These properties contain information pertaining to the DID resolution response.
           <tr>
             <th>Normative Definition</th>
             <th></th>
-            <th>CDDL</th>
           </tr>
         </thead>
         <tbody>
@@ -1843,9 +1706,6 @@ These properties contain information pertaining to the DID resolution response.
               <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
             </td>
             <td>
-            </td>
-            <td>
-              <a href="cddl/error.cddl" target="_blank">error.cddl</a>
             </td>
           </tr>
         </tbody>
@@ -1972,7 +1832,6 @@ rather than the DID subject.
           <tr>
             <th>Normative Definition</th>
             <th>JSON-LD</th>
-            <th>CDDL</th>
           </tr>
         </thead>
         <tbody>
@@ -1982,9 +1841,6 @@ rather than the DID subject.
             </td>
             <td>
               <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-            </td>
-            <td>
-              <a href="cddl/created.cddl" target="_blank">created.cddl</a>
             </td>
           </tr>
         </tbody>
@@ -2007,7 +1863,6 @@ rather than the DID subject.
           <tr>
             <th>Normative Definition</th>
             <th>JSON-LD</th>
-            <th>CDDL</th>
           </tr>
         </thead>
         <tbody>
@@ -2018,9 +1873,6 @@ rather than the DID subject.
 
             <td>
               <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-            </td>
-            <td>
-              <a href="cddl/updated.cddl" target="_blank">updated.cddl</a>
             </td>
           </tr>
         </tbody>
@@ -2041,7 +1893,6 @@ rather than the DID subject.
           <tr>
             <th>Normative Definition</th>
             <th>JSON-LD</th>
-            <th>CDDL</th>
           </tr>
         </thead>
         <tbody>
@@ -2052,9 +1903,6 @@ rather than the DID subject.
 
             <td>
               <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-            </td>
-            <td>
-              <a href="cddl/deactivated.cddl" target="_blank">deactivated.cddl</a>
             </td>
           </tr>
         </tbody>
@@ -2075,7 +1923,6 @@ rather than the DID subject.
           <tr>
             <th>Normative Definition</th>
             <th>JSON-LD</th>
-            <th>CDDL</th>
           </tr>
         </thead>
         <tbody>
@@ -2086,9 +1933,6 @@ rather than the DID subject.
 
             <td>
               <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-            </td>
-            <td>
-              <a href="cddl/nextUpdate.cddl" target="_blank">nextUpdate.cddl</a>
             </td>
           </tr>
         </tbody>
@@ -2109,7 +1953,6 @@ rather than the DID subject.
           <tr>
             <th>Normative Definition</th>
             <th>JSON-LD</th>
-            <th>CDDL</th>
           </tr>
         </thead>
         <tbody>
@@ -2120,9 +1963,6 @@ rather than the DID subject.
 
             <td>
               <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-            </td>
-            <td>
-              <a href="cddl/versionId.cddl" target="_blank">versionId.cddl</a>
             </td>
           </tr>
         </tbody>
@@ -2143,7 +1983,6 @@ rather than the DID subject.
           <tr>
             <th>Normative Definition</th>
             <th>JSON-LD</th>
-            <th>CDDL</th>
           </tr>
         </thead>
         <tbody>
@@ -2154,9 +1993,6 @@ rather than the DID subject.
 
             <td>
               <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-            </td>
-            <td>
-              <a href="cddl/nextVersionId.cddl" target="_blank">nextVersionId.cddl</a>
             </td>
           </tr>
         </tbody>
@@ -2177,7 +2013,6 @@ rather than the DID subject.
         <tr>
           <th>Normative Definition</th>
           <th>JSON-LD</th>
-          <th>CDDL</th>
         </tr>
         </thead>
         <tbody>
@@ -2188,9 +2023,6 @@ rather than the DID subject.
 
           <td>
             <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-          </td>
-          <td>
-            <a href="cddl/equivalentId.cddl" target="_blank">equivalentId.cddl</a>
           </td>
         </tr>
         </tbody>
@@ -2211,7 +2043,6 @@ rather than the DID subject.
         <tr>
           <th>Normative Definition</th>
           <th>JSON-LD</th>
-          <th>CDDL</th>
         </tr>
         </thead>
         <tbody>
@@ -2222,9 +2053,6 @@ rather than the DID subject.
 
           <td>
             <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-          </td>
-          <td>
-            <a href="cddl/canonicalId.cddl" target="_blank">canonicalId.cddl</a>
           </td>
         </tr>
         </tbody>

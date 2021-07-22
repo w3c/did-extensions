@@ -1,3 +1,0 @@
-example_uri = { 
-    "hello" : uri / ~uri  
-}
