@@ -421,6 +421,29 @@ useful to all DID methods.
             </tr>
           </tbody>
         </table>
+<pre class="example" title="Example of verificationMethod property">
+{
+  "id": "did:example:123",
+  "verificationMethod": [
+    {
+      "id": "did:example:123#key-1",
+      "type": "Ed25519VerificationKey2018",
+      "controller": "did:example:123",
+      "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+    },
+    {
+      "id": "did:example:123#key-2",
+      "type": "JsonWebKey2020",
+      "controller": "did:example:123",
+      "publicKeyJwk": {
+        "kty": "OKP",
+        "crv": "Ed25519",
+        "x": "r7V8qmdFbwqSlj26eupPew1Lb22vVG5vnjhn3vwEA1Y"
+      },
+    }
+  ]
+}
+</pre>
       </section>
 
       <section>
