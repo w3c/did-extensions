@@ -76,10 +76,38 @@ var respecConfig = {
     companyURL: "https://digitalbazaar.com/",
     w3cid: 41758
   }
-  ]
+  ],
+  otherLinks: [{
+    key: "Related Documents",
+    data: [{
+      value: "DID Core",
+      href: "https://www.w3.org/TR/did-core/"
+    }, {
+      value: "DID Core Implementation Report",
+      href: "https://w3c.github.io/did-test-suite/"
+    }, {
+      value: "DID Use Cases and Requirements",
+      href: "https://www.w3.org/TR/did-use-cases/"
+    }]
+  }]
 };
   </script>
   <style>
+    .label-legend dd{
+      margin-top: 8px;
+    }
+  .label-deprecated {
+    font-weight: bold;
+    background: #ef9a9a;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  .label-no-contact-info {
+    font-weight: bold;
+    background: #ffe082;
+    border-radius: 8px;
+    padding: 4px;
+  }
   pre .highlight {
     font-weight: bold;
     color: green;
@@ -244,6 +272,30 @@ meet a minimum bar, without choosing between them.
     </p>
   </section>
 
+  <section>
+    <h1>The Labeling Process</h1>
+    <p>
+      This section describes labels that are used to categorize registry entries.
+    </p>
+  
+<dl class="label-legend">
+<dt>
+<span class="label-deprecated">Deprecated</span>
+</dt>
+<dd>
+This label is applied to registry entries that should not be relied on.
+</dd>
+<dt>
+<span class="label-no-contact-info">No Contact Info</span>
+</dt>
+<dd>
+This label is applied to registry entries for which no point of contact has been provided.
+</dd>
+</dl>
+
+    
+  </section>
+
 
   <section>
     <h1>Property Names</h1>
@@ -382,13 +434,38 @@ useful to all DID methods.
             </tr>
           </tbody>
         </table>
+<pre class="example" title="Example of verificationMethod property">
+{
+  "id": "did:example:123",
+  "verificationMethod": [
+    {
+      "id": "did:example:123#key-1",
+      "type": "Ed25519VerificationKey2018",
+      "controller": "did:example:123",
+      "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+    },
+    {
+      "id": "did:example:123#key-2",
+      "type": "JsonWebKey2020",
+      "controller": "did:example:123",
+      "publicKeyJwk": {
+        "kty": "OKP",
+        "crv": "Ed25519",
+        "x": "r7V8qmdFbwqSlj26eupPew1Lb22vVG5vnjhn3vwEA1Y"
+      },
+    }
+  ]
+}
+</pre>
       </section>
 
       <section>
         <h4>publicKey</h4>
 
+<span class="label-deprecated">Deprecated</span>
+
 <p class="advisment">
-This property has been deprecated in favor or <code>verificationMethod</code>.
+This property has been deprecated, use <a href="#verificationmethod">verificationMethod</a> instead.
 </p>
 
         <table class="simple" style="width: 100%;">
@@ -2304,9 +2381,7 @@ will not be accepted. We encourage DID method authors to provide an email
 address in the Author Links column, as this helps with maintenance.
     </p>
 
-    <p class="issue">
-      How will we automate the update of the namespace reservations and keep them in sync with the reserved namespace in the Abstract Data Model? See <a href="https://github.com/w3c/did-spec-registries/issues/152">issue #152</a>.
-    </p>
+
 
     <table class="simple">
       <thead>
