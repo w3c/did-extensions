@@ -999,6 +999,43 @@ These properties are for use on a verification method object, in the value of
   }
         </pre>
       </section>
+
+      <section>
+        <h4>cosmosAddress</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v3-unstable">security-vocab-v3-unstable</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example" title="Example of cosmosAddress property">
+  {
+    "@context":[
+      "https://www.w3.org/ns/did/v1",
+      "https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"
+    ],
+    "id":"did:example:t2uflqwqe0fsj0shcfkrvpukewcw40yjj6hdc0",
+    "publicKey":[{
+      "id": "did:example:t2uflqwqe0fsj0shcfkrvpukewcw40yjj6hdc0#vm-3",
+      "controller": "did:example:t2uflqwqe0fsj0shcfkrvpukewcw40yjj6hdc0",
+      "type": "EcdsaSecp256k1RecoveryMethod2020",
+      "cosmosAddress": "example1t2uflqwqe0fsj0shcfkrvpukewcw40yjj6hdc0"
+    }]
+  }
+        </pre>
+      </section>
     </section>
 
     <section>
