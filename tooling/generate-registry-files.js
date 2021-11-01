@@ -7,7 +7,7 @@ const exec = util.promisify(require('child_process').exec);
 
 // set directories and paths
 const registryFile = path.join(__dirname, '../index.html');
-const methodsDir = path.join(__dirname, 'methods');
+const methodsDir = path.join(__dirname, '../methods');
 
 // create directories
 mkdirp.sync(methodsDir);

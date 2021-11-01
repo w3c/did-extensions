@@ -7,3 +7,7 @@ vocabs/v1/test.ttl
 .DS_Store
 .idea
 unresolveable-test-dids.json
+
+
+# remove when methods are used to build table.
+methods
