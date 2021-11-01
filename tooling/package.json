@@ -1,0 +1,19 @@
+{
+  "name": "did-spec-registries-converter",
+  "version": "0.0.1",
+  "description": "DID Spec Registries conversion command line app",
+  "main": "index.js",
+  "dependencies": {
+    "html-entities": "^2.3.2",
+    "mkdirp": "^0.5.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "registry:generate": "node ./generate-registry-files.js"
+  },
+  "author": "Manu Sporny <msporny@digitalbazaar.com> (https://manu.sporny.org/)",
+  "contributors": [
+    "Orie Steele (https://github.com/OR13)"
+  ],
+  "license": "W3C"
+}
