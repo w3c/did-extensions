@@ -1,9 +1,12 @@
 ### Registry Tooling
 
-This directory is meant to temporarily assist editors in converting the registry to a file based approach.
+This directory contains tools for validating entries, and scripts for managing the registries.
 
-We expect these files to be removed before any PRs associated with the new registration process will be accepted.
+
+#### Generating the DID Method Registry
 
 ```
 npm run registry:generate
 ```
+
+This script currently generates the files and then the html from them.
