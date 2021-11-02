@@ -14,40 +14,44 @@ mkdirp.sync(methodsDir);
 
 const validateRegistryEntry = require('./validation');
 
-const getSafeContactObject = (contact)=>{
-  const obj = {}
-  if (contact.includes('href="http')){
-    let website = contact.match(websiteRegex)[1];
-    obj.website = website;
-  }
-  if (contact.includes('href=\"mailto')){
-    let email = contact.match(emailRegex)[1];
-    obj.email = email;
-  } 
-  // no useful structure
-  if (!Object.keys(obj).length){
-    obj.name = contact
-  }
-  // flatten object to single string value.
-  if (obj.website){
-    return obj.website
-  }
-  if (obj.email){
-    return obj.email
-  }
-  return obj.name 
+// we migth consider not allowing html here
+const getUnsafeContact = (contact)=>{
+  // const obj = {}
+  // if (contact.includes('href="http')){
+  //   let website = contact.match(websiteRegex)[1];
+  //   obj.website = website;
+  // }
+  // if (contact.includes('href=\"mailto')){
+  //   let email = contact.match(emailRegex)[1];
+  //   obj.email = email;
+  // } 
+  // // no useful structure
+  // if (!Object.keys(obj).length){
+  //   obj.name = contact
+  // }
+  // // flatten object to single string value.
+  // if (obj.website){
+  //   return obj.website
+  // }
+  // if (obj.email){
+  //   return obj.email
+  // }
+  // return obj.name 
+  return contact;
 }
 
-const getSafeRegistryObject = (registry)=>{
-  const obj = {}
-  if (registry.includes('href=')){
-    let website = registry.match(websiteRegex)[1];
-    obj.website = website;
-  } else {
-    obj.name = registry
-  }
-  // flatten object to single string value.
-  return obj.website ? obj.website : obj.name
+// we migth consider not allowing html here
+const getUnsafeRegistry = (registry)=>{
+  // const obj = {}
+  // if (registry.includes('href=')){
+  //   let website = registry.match(websiteRegex)[1];
+  //   obj.website = website;
+  // } else {
+  //   obj.name = registry
+  // }
+  // // flatten object to single string value.
+  // return obj.website ? obj.website : obj.name
+  return registry;
 }
 
 // analyze DID Methods in index.html and write out individual files
@@ -59,8 +63,8 @@ const getSafeRegistryObject = (registry)=>{
   for(const method of allDidMethods) {
     const name = method[1];
     let status = method[2].toLowerCase();
-    const registry = getSafeRegistryObject(method[3]);
-    const contact = getSafeContactObject(method[4]);
+    const registry = getUnsafeRegistry(method[3]);
+    const contact = getUnsafeContact(method[4]);
  
     let specification = method[5].match(didSpecRegex);
     if(specification === null) {

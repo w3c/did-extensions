@@ -9,7 +9,9 @@
     "mkdirp": "^0.5.5"
   },
   "scripts": {
-    "registry:generate": "node ./generate-registry-files.js"
+    "registry:generate": "npm run registry:generate:files && npm run registry:generate:section",
+    "registry:generate:files": "node ./generate-registry-files.js",
+    "registry:generate:section": "node ./generate-registry-section.js"
   },
   "author": "Manu Sporny <msporny@digitalbazaar.com> (https://manu.sporny.org/)",
   "contributors": [
