@@ -29,8 +29,10 @@ const template = `
     <thead>
       <tr>
         <th>Method Name</th>
+        <!--
         <th>Registry</th>
         <th>Contact</th>
+        -->
         <th>Status</th>
       </tr>
       <tbody>
@@ -42,6 +44,7 @@ const template = `
 <a href="${e.specification}">did:${e.name}:</a>
 </td>
 
+<!--
 <td>
 ${e.registry}
 </td>
@@ -49,6 +52,7 @@ ${e.registry}
 <td>
 ${e.contact}
 </td>
+-->
 
 <td>
 ${e.status}
