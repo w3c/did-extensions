@@ -8,9 +8,11 @@ const emailRegex = /<a href="mailto:(.*)">.*<\/a>/;
 // set directories and paths
 const registryFile = path.join(__dirname, '../index.html');
 const methodsDir = path.join(__dirname, '../methods');
+const sectionDir = path.join(__dirname, '../sections');
 
 // create directories
 mkdirp.sync(methodsDir);
+mkdirp.sync(sectionDir);
 
 const validateRegistryEntry = require('./validation');
 
