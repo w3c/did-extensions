@@ -41,7 +41,7 @@ Your pull request will be reviewed by the registry editors.
 
 Changes regarging the required criteria may be requested.
 
-If there are not objections or changes requested, 
+If there are no objections or changes requested, 
 
-your method will be registered after a minium of 7 days.
+your method will be registered after a minimum of 7 days.
 
