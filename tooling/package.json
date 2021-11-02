@@ -5,12 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "ajv": "^8.6.3",
-    "html-entities": "^2.3.2",
     "js-yaml": "^4.1.0",
-    "mkdirp": "^0.5.5",
-    "yaml-schema-validator": "^1.2.3"
+    "mkdirp": "^0.5.5"
   },
-  "devDependencies": {},
   "scripts": {
     "registry:generate": "node ./generate-registry-files.js"
   },
