@@ -1,0 +1,24 @@
+name: DID Method Registry Validation
+on: [push]
+jobs:
+  validate-registry-entries:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Begin CI...
+        uses: actions/checkout@v2
+      - name: Use Node 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Install
+        working-directory: tooling
+        run: npm i
+
+      # This step will be updated to verification only, 
+      # when the registry is built from the json files
+      # added by the registration process.
+      - name: Generate and then Verify the DID Method Registry
+        working-directory: tooling
+        run: npm run registry:generate
+
+      

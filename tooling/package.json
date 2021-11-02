@@ -4,8 +4,11 @@
   "description": "DID Spec Registries conversion command line app",
   "main": "index.js",
   "dependencies": {
+    "ajv": "^8.6.3",
     "html-entities": "^2.3.2",
-    "mkdirp": "^0.5.5"
+    "js-yaml": "^4.1.0",
+    "mkdirp": "^0.5.5",
+    "yaml-schema-validator": "^1.2.3"
   },
   "devDependencies": {},
   "scripts": {
