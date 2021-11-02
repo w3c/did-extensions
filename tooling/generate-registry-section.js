@@ -34,6 +34,7 @@ const template = `
         <th>Contact</th>
         <th>Status</th>
       </tr>
+      </thead>
       <tbody>
       ${entries.map((e)=>{
         return `
@@ -60,7 +61,7 @@ ${e.status}
       `
       }).join('\n')}
       </tbody>
-    </thead>
+   
   </table>
 </section>
 `
