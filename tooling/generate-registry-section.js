@@ -25,14 +25,13 @@ const template = `
 
 <section id="did-method-registry">
     <h1>Generated DID Methods</h1>
+
     <table class="simple">
     <thead>
       <tr>
         <th>Method Name</th>
-        <!--
         <th>Registry</th>
         <th>Contact</th>
-        -->
         <th>Status</th>
       </tr>
       <tbody>
@@ -44,7 +43,7 @@ const template = `
 <a href="${e.specification}">did:${e.name}:</a>
 </td>
 
-<!--
+
 <td>
 ${e.registry}
 </td>
@@ -52,7 +51,6 @@ ${e.registry}
 <td>
 ${e.contact}
 </td>
--->
 
 <td>
 ${e.status}
@@ -63,7 +61,7 @@ ${e.status}
       }).join('\n')}
       </tbody>
     </thead>
-
+  </table>
 </section>
 `
 fs.writeFileSync(
