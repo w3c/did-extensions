@@ -37,17 +37,23 @@ const template = `
       ${entries.map((e)=>{
         return `
 <tr>
+
 <td>
 <a href="${e.specification}">did:${e.name}:</a>
+</td>
+
 <td>
 ${e.registry}
 </td>
+
 <td>
 ${e.contact}
 </td>
+
 <td>
 ${e.status}
 </td>
+
 </tr>
       `
       }).join('\n')}
