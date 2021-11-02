@@ -44,7 +44,6 @@ const template = `
 <a href="${e.specification}">did:${e.name}:</a>
 </td>
 
-
 <td>
 ${e.registry}
 </td>
