@@ -10,9 +10,10 @@ DID Specification Registries
     out in the same tree and use relative links so that they'll work offline.
    -->
 
-  <script class='remove'
-    src='https://www.w3.org/Tools/respec/respec-w3c'>
-  </script><!--script src='./respec-w3c-common.js' class='remove'></script-->
+ <script class='remove'
+   src='https://www.w3.org/Tools/respec/respec-w3c'></script>
+ <script class='remove'
+   src='common.js'></script>
   <script class="remove" type="text/javascript">
 var respecConfig = {
   wgPublicList: "public-did-wg",
@@ -95,7 +96,8 @@ var respecConfig = {
       value: "DID Use Cases and Requirements",
       href: "https://www.w3.org/TR/did-use-cases/"
     }]
-  }]
+  }],
+  postProcess: [buildDidMethodTables]
 };
   </script>
   <style>
@@ -283,7 +285,7 @@ meet a minimum bar, without choosing between them.
     <p>
       This section describes labels that are used to categorize registry entries.
     </p>
-  
+
 <dl class="label-legend">
 <dt>
 <span class="label-deprecated">Deprecated</span>
@@ -299,7 +301,7 @@ This label is applied to registry entries for which no point of contact has been
 </dd>
 </dl>
 
-    
+
   </section>
 
 
@@ -2388,12 +2390,12 @@ The normative requirements for DID method specifications can be found in
 <a href="https://www.w3.org/TR/did-core/#methods">Decentralized Identifiers
 v1.0: Methods</a> [[DID-CORE]]. DID methods that do not meet these requirements
 will not be accepted. We encourage DID method authors to provide an email
-address in the Author Links column, as this helps with maintenance. 
-If an email address is omitted, a label noting that there is no 
+address in the Author Links column, as this helps with maintenance.
+If an email address is omitted, a label noting that there is no
 contact information for the author will be applied to the registry entry.
     </p>
 
-
+    <table id="did-method-table" class="simple"></table>
 
     <table class="simple">
       <thead>
@@ -2740,7 +2742,7 @@ contact information for the author will be applied to the registry entry.
           <td>
             <a href="https://github.com/veramolabs/did-ens-spec">ENS DID Method</a>
           </td>
-        </tr>        
+        </tr>
         <tr>
           <td>
             did:eosio:
