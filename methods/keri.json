@@ -1,0 +1,9 @@
+{
+  "name": "keri",
+  "status": "registered",
+  "verifiableDataRegistry": "Ledger agnostic",
+  "contactName": "Dr. Sam Smith, Charles Cunningham, Phil Feairheller",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://identity.foundation/keri/did_methods/"
+}
