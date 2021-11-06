@@ -1,0 +1,9 @@
+{
+  "name": "key",
+  "status": "registered",
+  "verifiableDataRegistry": "Ledger-independent DID method based on public/private key pairs",
+  "contactName": "Rick Astley (thank you for your inspiration), Manu Sporny, Dmitri Zagidulin, Dave Longley, Orie Steele",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://w3c-ccg.github.io/did-method-key/"
+}
