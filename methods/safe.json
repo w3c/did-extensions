@@ -1,0 +1,9 @@
+{
+  "name": "safe",
+  "status": "registered",
+  "verifiableDataRegistry": "Gnosis Safe",
+  "contactName": "Gnosis Ltd.",
+  "contactEmail": "safe@gnosis.io",
+  "contactWebsite": "",
+  "specification": "https://github.com/ceramicnetwork/CIP/blob/main/CIPs/CIP-101/CIP-101.md"
+}
