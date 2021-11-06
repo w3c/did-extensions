@@ -1,0 +1,9 @@
+{
+  "name": "sol",
+  "status": "registered",
+  "verifiableDataRegistry": "Solana",
+  "contactName": "Daniel Kelleher",
+  "contactEmail": "",
+  "contactWebsite": "https://github.com/dankelleher",
+  "specification": "https://identity-com.github.io/sol-did/did-method-spec.html"
+}
