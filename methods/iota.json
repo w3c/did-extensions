@@ -1,0 +1,9 @@
+{
+  "name": "iota",
+  "status": "registered",
+  "verifiableDataRegistry": "IOTA",
+  "contactName": "IOTA Foundation",
+  "contactEmail": "",
+  "contactWebsite": "https://iota.org",
+  "specification": "https://wiki.iota.org/identity.rs/specs/did/iota_did_method_spec"
+}
