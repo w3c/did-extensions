@@ -1,0 +1,9 @@
+{
+  "name": "factom",
+  "status": "registered",
+  "verifiableDataRegistry": "Factom",
+  "contactName": "Sphereon, Factomatic, Factom Inc",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/factom-protocol/FIS/blob/master/FIS/DID.md"
+}
