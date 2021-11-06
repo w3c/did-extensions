@@ -1,0 +1,9 @@
+{
+  "name": "ipid",
+  "status": "registered",
+  "verifiableDataRegistry": "IPFS",
+  "contactName": "TranSendX",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://did-ipid.github.io/ipid-did-method/"
+}
