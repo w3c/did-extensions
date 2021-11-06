@@ -1,0 +1,9 @@
+{
+  "name": "v1",
+  "status": "registered",
+  "verifiableDataRegistry": "Veres One",
+  "contactName": "Digital Bazaar",
+  "contactEmail": "",
+  "contactWebsite": "https://digitalbazaar.com/",
+  "specification": "https://w3c-ccg.github.io/did-method-v1/"
+}
