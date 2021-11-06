@@ -1,0 +1,9 @@
+{
+  "name": "orb",
+  "status": "registered",
+  "verifiableDataRegistry": "Ledger agnostic",
+  "contactName": "SecureKey",
+  "contactEmail": "",
+  "contactWebsite": "https://securekey.com/",
+  "specification": "https://trustbloc.github.io/did-method-orb/"
+}
