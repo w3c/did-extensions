@@ -1,0 +1,9 @@
+{
+  "name": "tangle",
+  "status": "registered",
+  "verifiableDataRegistry": "IOTA Tangle",
+  "contactName": "BiiLabs Co., Ltd.",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/TangleID/TangleID/blob/develop/did-method-spec.md"
+}
