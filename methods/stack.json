@@ -1,0 +1,9 @@
+{
+  "name": "stack",
+  "status": "registered",
+  "verifiableDataRegistry": "Bitcoin",
+  "contactName": "Jude Nelson",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/blockstack/blockstack-core/blob/stacks-1.0/docs/blockstack-did-spec.md"
+}
