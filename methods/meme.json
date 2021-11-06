@@ -1,0 +1,9 @@
+{
+  "name": "meme",
+  "status": "registered",
+  "verifiableDataRegistry": "Ledger agnostic",
+  "contactName": "DID Meme Maintainers",
+  "contactEmail": "",
+  "contactWebsite": "https://didme.me/",
+  "specification": "https://github.com/OR13/didme.me#did-method-spec"
+}
