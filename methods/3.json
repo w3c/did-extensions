@@ -1,0 +1,9 @@
+{
+  "name": "3",
+  "status": "registered",
+  "verifiableDataRegistry": "Ceramic Network",
+  "contactName": "Joel Thorstensson",
+  "contactEmail": "oed@3box.io",
+  "contactWebsite": "",
+  "specification": "https://github.com/ceramicnetwork/CIP/blob/main/CIPs/CIP-79/CIP-79.md"
+}
