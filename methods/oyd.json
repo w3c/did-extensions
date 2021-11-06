@@ -1,0 +1,9 @@
+{
+  "name": "oyd",
+  "status": "registered",
+  "verifiableDataRegistry": "Ledger agnostic",
+  "contactName": "OwnYourData.eu",
+  "contactEmail": "",
+  "contactWebsite": "https://ownyourdata.eu/",
+  "specification": "https://github.com/OwnYourData/did-cmd/blob/main/docs/did-spec.md"
+}
