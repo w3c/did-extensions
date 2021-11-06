@@ -1,0 +1,9 @@
+{
+  "name": "nft",
+  "status": "registered",
+  "verifiableDataRegistry": "Ceramic Network",
+  "contactName": "Joel Thorstensson",
+  "contactEmail": "oed@3box.io",
+  "contactWebsite": "",
+  "specification": "https://github.com/ceramicnetwork/CIP/blob/main/CIPs/CIP-94/CIP-94.md"
+}
