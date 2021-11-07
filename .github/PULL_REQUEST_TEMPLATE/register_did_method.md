@@ -35,7 +35,7 @@ Here is an example registration entry:
 }
 ```
 
-Please ensure your pull request and entry are passing the required validation rules.
+Please ensure your pull request and entry pass the required validation rules.
 
 ### Registration Review Process
 
