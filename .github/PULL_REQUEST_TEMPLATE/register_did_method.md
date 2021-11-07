@@ -21,13 +21,17 @@ In order to register a New DID Method, you must add a json file to [./methods](.
 
 Here is an example registration entry:
 
-```json
+```jsonc
 {
-  "status": "registered",
+  // These fields are required
   "name": "example",
+  "status": "registered",
   "specification": "https://w3c-ccg.github.io/did-spec/",
-  "contact": "W3C Credentials Community Group",
-  "registry": "DID Specification"
+  // These fields are optional
+  "contactName": "W3C Credentials Community Group",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "verifiableDataRegistry": "DID Specification"
 }
 ```
 
