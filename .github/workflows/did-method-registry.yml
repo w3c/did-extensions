@@ -21,9 +21,9 @@ jobs:
       # See comment here:
       # https://github.com/w3c/did-spec-registries/pull/357/files#r744278306
       # Note that this will have to happen in the action that deploys PR previews as well.
-      # - name: Generate Registstry Index
-      #   working-directory: tooling
-      #   run: npm run registry:generate:index
+      - name: Generate Registstry Index
+        working-directory: tooling
+        run: npm run registry:generate:index
       
 
       
