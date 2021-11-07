@@ -37,7 +37,7 @@ Please ensure your pull request and entry are passing the required validation ru
 
 Your pull request will be reviewed by the registry editors.
 
-Changes regarging the required criteria may be requested.
+Changes regarding the required criteria may be requested.
 
 If there are no objections or changes requested, 
 
