@@ -1,9 +1,9 @@
 {
-  "name": "example",
-  "status": "registered",
-  "verifiableDataRegistry": "DID Specification",
-  "contactName": "W3C Credentials Community Group",
-  "contactEmail": "",
-  "contactWebsite": "",
-  "specification": "https://w3c-ccg.github.io/did-spec/"
+    "name": "example",
+    "status": "registered",
+    "verifiableDataRegistry": "DID Specification",
+    "contactName": "W3C DID Working Group",
+    "contactEmail": "",
+    "contactWebsite": "",
+    "specification": "https://www.w3.org/TR/did-core/"
 }
