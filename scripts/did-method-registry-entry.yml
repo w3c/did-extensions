@@ -1,0 +1,39 @@
+---
+title: DID Method Registry Entry
+description: This schema defines the shape of did method registrations in the did spec registries
+type: object
+additionalProperties: false
+required:
+  - status
+  - name
+  - specification
+properties:
+  status:
+    description: The status of the entry in the registry
+    type: string
+    enum: 
+      - registered
+      - withdrawn
+      - deprecated
+  name:
+    description: https://www.w3.org/TR/did-core/#dfn-did-methods
+    type: string
+    maxLength: 512
+  specification:
+    description: An active URL that resolves to a human readable did method specification
+    type: string
+    maxLength: 512
+  contact:
+    type: string
+    maxLength: 512
+  registry:
+    description: https://www.w3.org/TR/did-core/#dfn-verifiable-data-registry
+    type: string
+    maxLength: 512
+example: {
+  "status": "",
+  "name": "example",
+  "specification": "https://w3c-ccg.github.io/did-spec/",
+  "registry": "DID Specification",
+  "contact": "W3C Credentials Community Group",
+}

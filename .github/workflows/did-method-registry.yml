@@ -1,0 +1,29 @@
+name: DID Method Registry
+on: [push]
+jobs:
+  validate-entries:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Begin CI...
+        uses: actions/checkout@v2
+      - name: Use Node 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Install
+        working-directory: scripts
+        run: npm i
+
+      - name: Validate Entries
+        working-directory: scripts
+        run: npm run registry:validate
+
+      # See comment here:
+      # https://github.com/w3c/did-spec-registries/pull/357/files#r744278306
+      # Note that this will have to happen in the action that deploys PR previews as well.
+      # - name: Generate Registstry Index
+      #   working-directory: scripts
+      #   run: npm run registry:generate:index
+      
+
+      
