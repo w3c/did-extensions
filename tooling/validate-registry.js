@@ -5,14 +5,17 @@ const fs   = require('fs');
 const path   = require('path');
 const ajv = new Ajv({ strict: false });
 
-const didMethodRegistryDirectory = path.join(__dirname, '../example-registry');
+const didMethodRegistryDirectory = path.join(__dirname, '../methods');
  
 const schema = yaml.load(fs.readFileSync('./did-method-registry-entry.yml', 'utf8'));
 const validate = ajv.compile(schema)
   
 const getAllRegistryEntries = () =>{
     const files = fs.readdirSync(didMethodRegistryDirectory);
-    const entries = files.map((file) => {
+    const entries = files.filter((file)=>{
+        // ignore the index file.
+        return file !== 'index.json';
+    }).map((file) => {
         const fileContent = fs.readFileSync(path.join(didMethodRegistryDirectory, file)).toString();
         return JSON.parse(fileContent);
     }).sort((a, b)=>{
