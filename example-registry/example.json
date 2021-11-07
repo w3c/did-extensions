@@ -1,0 +1,7 @@
+{
+    "status": "registered",
+    "name": "example",
+    "specification": "https://w3c-ccg.github.io/did-spec/",
+    "registry": "DID Specification",
+    "contact": "W3C Credentials Community Group"
+}
