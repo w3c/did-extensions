@@ -1,10 +1,15 @@
-name: Generate DID Method Registry
-on: [push]
+name: Publish DID Method Registry
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
 jobs:
   validate-entries:
     runs-on: ubuntu-latest
     steps:
-      - name: Begin spec-prod...
+      - name: Checkout source code...
         uses: actions/checkout@v2
       - name: Setup Node 14...
         uses: actions/setup-node@v2
@@ -19,3 +24,12 @@ jobs:
       - name: Generate did-spec-registries registry index
         working-directory: tooling
         run: npm run registry:generate:index
+      - name: Deploy to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          exclude_assets: '.git,.github,tooling/node_modules'
+          force_orphan: true
+          user_name: 'didwg[bot]'
+          user_email: 'didwg[bot]@users.noreply.github.com'
