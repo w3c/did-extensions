@@ -39,6 +39,15 @@ properties:
     description: https://www.w3.org/TR/did-core/#dfn-verifiable-data-registry
     type: string
     maxLength: 512
+  implementation:
+    description: An array of URLs to implementations of the DID Method
+    type: array
+    uniqueItems: true
+    minLength: 1
+    maxLength: 32
+    items:
+      type: string
+      maxLength: 512
 
 example: {
     # These fields are required
@@ -49,5 +58,10 @@ example: {
     "contactName": "W3C Credentials Community Group",
     "contactEmail": "public-credentials@w3.org",
     "contactWebsite": "https://w3c-ccg.github.io/",
-    "verifiableDataRegistry": "None (ephemeral DID Method)"
+    "verifiableDataRegistry": "None (ephemeral DID Method)",
+    "implementation": [
+      "https://github.com/digitalbazaar/did-method-key-js",
+      "https://github.com/transmute-industries/did-key.js",
+      "https://github.com/decentralized-identity/did-key.rs"
+    ]
 }
