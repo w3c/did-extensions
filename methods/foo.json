@@ -1,0 +1,9 @@
+{
+    "name": "foo",
+    "status": "registered",
+    "verifiableDataRegistry": "Foo Specification",
+    "contactName": "W3C FOO Working Group",
+    "contactEmail": "",
+    "contactWebsite": "",
+    "specification": "https://www.w3.org/TR/did-method-foo/"
+}
