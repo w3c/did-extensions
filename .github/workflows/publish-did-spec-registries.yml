@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  validate-entries:
+  publish-did-spec-registries:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code...
