@@ -39,6 +39,10 @@ properties:
     description: https://www.w3.org/TR/did-core/#dfn-verifiable-data-registry
     type: string
     maxLength: 512
+  conformanceReport:
+    description: A URL to a DID Test Suite Conformance Report for the DID Method
+    type: string
+    maxLength: 512
 
 example: {
     # These fields are required
@@ -49,5 +53,6 @@ example: {
     "contactName": "W3C Credentials Community Group",
     "contactEmail": "public-credentials@w3.org",
     "contactWebsite": "https://w3c-ccg.github.io/",
-    "verifiableDataRegistry": "None (ephemeral DID Method)"
+    "verifiableDataRegistry": "None (ephemeral DID Method)",
+    "conformanceReport": "https://w3c.github.io/did-test-suite/#method-did-key"
 }
