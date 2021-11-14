@@ -2,6 +2,9 @@
 async function buildDidMethodTables(config) {
   const {document} = window;
   const response = await fetch('methods/index.json');
+  if(response.status !== 200) {
+    throw new Error('Failed retrieve DID Method index.json file.');
+  }
   const allMethods = await response.json();
 
   // set up the API summary table headers
@@ -31,4 +34,7 @@ async function buildDidMethodTables(config) {
     tableBody.appendChild(tableRow);
   }
   table.appendChild(tableBody);
+
 }
+
+window.buildDidMethodTables = buildDidMethodTables;
