@@ -1,5 +1,5 @@
 # .github/workflows/pr-push.yml
-name: CI
+name: Echidna Auto-publish
 on:
   pull_request: {}
   push:
@@ -9,7 +9,21 @@ jobs:
     name: Build, Validate and Deploy
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - name: Begin spec-prod...
+        uses: actions/checkout@v2
+      - name: Setup Node 14...
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Install did-spec-registries tooling...
+        working-directory: tooling
+        run: npm i
+      - name: Validate did-spec-registries DID method entries
+        working-directory: tooling
+        run: npm run registry:validate
+      - name: Generate did-spec-registries registry index
+        working-directory: tooling
+        run: npm run registry:generate:index
       - uses: w3c/spec-prod@v2
         with:
           W3C_ECHIDNA_TOKEN: ${{ secrets.W3C_TR_TOKEN }}
