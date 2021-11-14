@@ -6,10 +6,10 @@ const path   = require('path');
 const ajv = new Ajv({ strict: false });
 
 const didMethodRegistryDirectory = path.join(__dirname, '../methods');
- 
+
 const schema = yaml.load(fs.readFileSync('./did-method-registry-entry.yml', 'utf8'));
 const validate = ajv.compile(schema)
-  
+
 const getAllRegistryEntries = () =>{
     const files = fs.readdirSync(didMethodRegistryDirectory);
     const entries = files.filter((file)=>{
@@ -17,7 +17,16 @@ const getAllRegistryEntries = () =>{
         return file !== 'index.json';
     }).map((file) => {
         const fileContent = fs.readFileSync(path.join(didMethodRegistryDirectory, file)).toString();
-        return JSON.parse(fileContent);
+        let didMethod = {
+          error: 'methods/' + file
+        };
+        try {
+          didMethod = JSON.parse(fileContent);
+        } catch(e) {
+          console.error('❌ Failed to parse DID Method registry entry: ' +
+            'methods/' + file);
+        }
+        return didMethod;
     }).sort((a, b)=>{
         return a.name > b.name ? 1 : -1;
     })
