@@ -25,11 +25,11 @@ jobs:
         working-directory: tooling
         run: npm run registry:generate:index
       - name: Deploy to Github Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
-          exclude_assets: '.github,tooling/node_modules'
-          force_orphan: true
-          user_name: 'didwg[bot]'
-          user_email: 'didwg[bot]@users.noreply.github.com'
+          branch: gh-pages
+          folder: .
+          token: ${{ secrets.GITHUB_TOKEN }}
+          git-config-name: 'didwg[bot]'
+          git-config-email: 'didwg[bot]@users.noreply.github.com'
+          single-commit: true
