@@ -41,6 +41,18 @@ properties:
     description: https://www.w3.org/TR/did-core/#dfn-verifiable-data-registry
     type: string
     maxLength: 512
+  implementation:
+    description: A URL to an implementation of the DID Method
+    type: string
+    maxLength: 512
+  conformanceReport:
+    description: A URL to a DID Test Suite Conformance Report for the DID Method
+    type: string
+    maxLength: 512
+  rubricEvaluation:
+    description: A URL to a DID Method Rubric Evaluation Report for the DID Method
+    type: string
+    maxLength: 512
 
 example: {
     # These fields are required
