@@ -1,6 +1,5 @@
 name: Lint DID Method Registry
 on:
-  push: {}
   pull_request: {}
 
 jobs:
