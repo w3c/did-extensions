@@ -800,18 +800,17 @@ verification relationship</a>.
 
     <section>
       <h3>Verification method properties</h3>
-      <p>
+        <p class="note">
 These properties are for use on a verification method object, in the value of
+<a href="#verificationmethod"><code>verificationMethod</code></a>. An
+implementer is expected to not be relying directly on the linked contexts
+registered below in nearly every case and instead should be including the
+context definitions registered by the 
 <a href="#verificationmethod"><code>verificationMethod</code></a>.
       </p>
 
       <section>
         <h4>publicKeyJwk</h4>
-        <p class="note">
-This property is expected to be embedded within the context definition of a
-public key representation. An implementer should not be relying directly on
-the linked context registered below in nearly every case.
-        </p>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
@@ -856,12 +855,6 @@ This property is deprecated in favor of <code>publicKeyMultibase</code> or
 used in older suites and therefore needs be supported for legacy compatibility,
 but is expected to not be used for newly defined suites.
         </p>
-
-        <p class="note">
-This property is expected to be embedded within the context definition of a
-public key representation. An implementer is expected to not be relying directly
-on the linked context registered below in nearly every case.
-        </p>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
@@ -891,11 +884,6 @@ This property is deprecated in favor of <code>publicKeyMultibase</code> or
 <code>publicKeyJwk</code>. It's generally expected that this term will still be
 used in older suites and therefore needs be supported for legacy compatibility,
 but is expected to not be used for newly defined suites.
-        </p>
-          <p class="note">
-This property is expected to be embedded within the context definition of a
-public key representation. An implementer is expected to not be relying directly
-on the linked context registered below in nearly every case.
         </p>
         <table class="simple" style="width: 100%;">
           <thead>
@@ -936,11 +924,6 @@ on the linked context registered below in nearly every case.
 
       <section>
         <h4>publicKeyMultibase</h4>
-        <p class="note">
-This property is expected to be embedded within the context definition of a
-public key representation. An implementer is expected to not be relying directly
-on the linked context registered below in nearly every case.
-        </p>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
@@ -963,11 +946,6 @@ on the linked context registered below in nearly every case.
 
       <section>
         <h4>blockchainAccountId</h4>
-        <p class="note">
-This property is expected to be embedded within the context definition of a
-public key representation. An implementer is expected to not be relying directly
-on the linked context registered below in nearly every case.
-        </p>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
@@ -1011,12 +989,6 @@ This property is deprecated in favor of <code>blockchainAccountId</code>. It's
 generally expected that this term will still be used in older suites and
 therefore needs be supported for legacy compatibility, but is expected to not be
 used for newly defined suites.
-        </p>
-        
-        <p class="note">
-This property is expected to be embedded within the context definition of a
-public key representation. An implementer is expected to not be relying directly
-on the linked context registered below in nearly every case.
         </p>
         <table class="simple" style="width: 100%;">
           <thead>
@@ -1337,12 +1309,15 @@ review the <a href="https://w3c.github.io/did-core/#verification-material">
       <section>
         <h4>RsaVerificationKey2018</h4>
         <p class="issue">
-This property should be moved into a separate suite and linked to here rather
-than relying on the security vocabulary. There are known issues with the
-first version of the security vocabulary JSON-LD context and the first version
-of the Verifiable Credentials JSON-LD context which will prevent it's usage
-otherwise. For now it's suggested that implementers rely upon the first version
-of the Verifiable Credentials JSON-LD context.
+<a href="https://github.com/w3c/did-spec-registries/issues/370">DID
+Specification Registries Issue 370</a>This property should be moved into a
+separate suite and linked to here rather than relying on the Verifiable
+Credentials vocabulary. There are known issues with the first version of the
+Security vocabulary JSON-LD context and the first version of the Verifiable
+Credentials JSON-LD context which will prevent these contexts from being listed
+in the same document. For now it's suggested that implementers rely upon the
+first version of the Verifiable Credentials JSON-LD context and not rely on
+the Security vocabulary JSON-LD context in the same document.
         </p>
         <table class="simple" style="width: 100%;">
           <thead>
