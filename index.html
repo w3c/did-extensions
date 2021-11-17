@@ -472,7 +472,7 @@ useful to all DID methods.
 
 <span class="label-deprecated">Deprecated</span>
 
-<p class="advisment">
+<p class="advisement">
 This property has been deprecated, use <a href="#verificationmethod">verificationMethod</a> instead.
 </p>
 
@@ -800,14 +800,17 @@ verification relationship</a>.
 
     <section>
       <h3>Verification method properties</h3>
-      <p>
+        <p class="note">
 These properties are for use on a verification method object, in the value of
+<a href="#verificationmethod"><code>verificationMethod</code></a>. An
+implementer is expected to not be relying directly on the linked contexts
+registered below in nearly every case and instead should be including the
+context definitions registered by the 
 <a href="#verificationmethod"><code>verificationMethod</code></a>.
       </p>
 
       <section>
         <h4>publicKeyJwk</h4>
-
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
@@ -821,7 +824,7 @@ These properties are for use on a verification method object, in the value of
                 <a href="https://w3id.org/security#publicKeyJwk">security-vocab</a>
               </td>
               <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+                <a href="https://w3id.org/security/suites/jws-2020/v1">https://w3id.org/security/suites/jws-2020/v1</a>
               </td>
             </tr>
           </tbody>
@@ -844,7 +847,14 @@ These properties are for use on a verification method object, in the value of
 
       <section>
         <h4>publicKeyBase58</h4>
+        <span class="label-deprecated">Deprecated</span>
 
+        <p class="advisement">
+This property is deprecated in favor of <code>publicKeyMultibase</code> or
+<code>publicKeyJwk</code>. It's generally expected that this term will still be
+used in older suites and therefore needs be supported for legacy compatibility,
+but is expected to not be used for newly defined suites.
+        </p>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
@@ -858,7 +868,7 @@ These properties are for use on a verification method object, in the value of
                 <a href="https://w3id.org/security/#publicKeyBase58">security-vocab</a>
               </td>
               <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+                <a href="https://w3id.org/security/v2">https://w3id.org/security/v2</a>
               </td>
             </tr>
           </tbody>
@@ -867,6 +877,14 @@ These properties are for use on a verification method object, in the value of
 
       <section>
         <h4>publicKeyHex</h4>
+        <span class="label-deprecated">Deprecated</span>
+
+        <p class="advisement">
+This property is deprecated in favor of <code>publicKeyMultibase</code> or
+<code>publicKeyJwk</code>. It's generally expected that this term will still be
+used in older suites and therefore needs be supported for legacy compatibility,
+but is expected to not be used for newly defined suites.
+        </p>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
@@ -880,7 +898,7 @@ These properties are for use on a verification method object, in the value of
                 <a href="https://w3id.org/security#publicKeyHex">security-vocab</a>
               </td>
               <td>
-                <a href="https://w3id.org/security/v3-unstable">security-vocab/v3-unstable</a>
+                <a href="https://w3id.org/security/v3-unstable">https://w3id.org/security/v3-unstable</a>
               </td>
               <td>
               </td>
@@ -906,7 +924,6 @@ These properties are for use on a verification method object, in the value of
 
       <section>
         <h4>publicKeyMultibase</h4>
-
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
@@ -920,7 +937,7 @@ These properties are for use on a verification method object, in the value of
                 <a href="https://w3id.org/security#publicKeyMultibase">security-vocab</a>
               </td>
               <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+                <a href="https://w3id.org/security/v3-unstable">https://w3id.org/security/v3-unstable</a>
               </td>
             </tr>
           </tbody>
@@ -942,7 +959,7 @@ These properties are for use on a verification method object, in the value of
                 <a href="https://w3id.org/security#blockchainAccountId">security-vocab</a>
               </td>
               <td>
-                <a href="https://w3id.org/security/suites/secp256k1-2020/v1">https://w3id.org/security/suites/secp256k1-2020</a>
+                <a href="https://w3id.org/security/v3-unstable">https://w3id.org/security/v3-unstable</a>
               </td>
             </tr>
           </tbody>
@@ -966,7 +983,13 @@ These properties are for use on a verification method object, in the value of
 
       <section>
         <h4>ethereumAddress</h4>
-        <span class="advisment">This property is deprecated in favor of <code>blockchainAccountId</code>.</span>
+        <span class="label-deprecated">Deprecated</span>
+        <p class="advisement">
+This property is deprecated in favor of <code>blockchainAccountId</code>. It's
+generally expected that this term will still be used in older suites and
+therefore needs be supported for legacy compatibility, but is expected to not be
+used for newly defined suites.
+        </p>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
@@ -980,7 +1003,7 @@ These properties are for use on a verification method object, in the value of
                 <a href="https://w3id.org/security#ethereumAddress">security-vocab</a>
               </td>
               <td>
-                <a href="https://w3id.org/security/v3-unstable">security-vocab-v3-unstable</a>
+                <a href="https://w3id.org/security/v3-unstable">https://w3id.org/security/v3-unstable</a>
               </td>
             </tr>
           </tbody>
@@ -1063,11 +1086,13 @@ These are values to be used for the <code>type</code> in a verification method o
 <a href="https://github.com/w3c/did-core/issues/240">ISSUE 240 on DID Core</a>: The duplication and/or possible interaction of properties held in a JWK and a verification method are an active topic of discussion in the Working Group. Implementers are cautioned that the behavior of values associated with this property are not stable and might change in the future.
         </p>
 
-<p class="advisment">
+        <p class="advisement">
 Do not include private or extraneous information in verification methods.
-The class of private information related to JWKs is defined
-<a href="https://tools.ietf.org/html/rfc7517#section-8.1.1">here</a>.
-</p>
+The class of private information related to JWKs is defined <a
+  href="https://tools.ietf.org/html/rfc7517#section-8.1.1">here</a>. Please
+review the <a href="https://w3c.github.io/did-core/#verification-material">
+  DID Core specification</a> for additional details on this topic.
+        </p>
 
         <table class="simple" style="width: 100%;">
           <thead>
@@ -1082,7 +1107,7 @@ The class of private information related to JWKs is defined
                 <a href="https://w3c-ccg.github.io/lds-jws2020/">JSON Web Signature 2020</a>
               </td>
               <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+                <a href="https://w3id.org/security/suite/jws-2020/v1">https://w3id.org/security/suite/jws-2020/v1</a>
               </td>
             </tr>
           </tbody>
@@ -1119,7 +1144,7 @@ The class of private information related to JWKs is defined
                 <a href="https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/">Ecdsa Secp256k1 Signature 2019</a>
               </td>
               <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+                <a href="https://w3id.org/security/suites/secp256k1-2019">https://w3id.org/security/suites/secp256k1-2019</a>
               </td>
             </tr>
           </tbody>
@@ -1157,7 +1182,7 @@ The class of private information related to JWKs is defined
                 <a href="https://w3c-ccg.github.io/lds-ed25519-2018/">Ed25519 Signature 2018</a>
               </td>
               <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+                <a href="https://w3id.org/security/suites/ed25519-2018/v1">https://w3id.org/security/suites/ed25519-2018/v1</a>
               </td>
             </tr>
           </tbody>
@@ -1189,7 +1214,7 @@ The class of private information related to JWKs is defined
                 <a href="https://w3c-ccg.github.io/ldp-bbs2020/">BBS+ Signatures 2020</a>
               </td>
               <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+                <a href="https://w3id.org/security/suites/bls12381-2020/v1">https://w3id.org/security/suites/bls12381-2020/v1</a>
               </td>
             </tr>
           </tbody>
@@ -1221,7 +1246,7 @@ The class of private information related to JWKs is defined
                 <a href="https://w3c-ccg.github.io/ldp-bbs2020/">BBS+ Signatures 2020</a>
               </td>
               <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+                <a href="https://w3id.org/security/suites/bls12381-2020/v1">https://w3id.org/security/suites/bls12381-2020/v1</a>
               </td>
             </tr>
           </tbody>
@@ -1246,6 +1271,7 @@ The class of private information related to JWKs is defined
             <tr>
               <th>Normative Definition</th>
               <th>JSON-LD</th>
+              <th>Additional Details</th>
             </tr>
           </thead>
           <tbody>
@@ -1282,7 +1308,17 @@ The class of private information related to JWKs is defined
 
       <section>
         <h4>RsaVerificationKey2018</h4>
-
+        <p class="issue">
+<a href="https://github.com/w3c/did-spec-registries/issues/370">DID
+Specification Registries Issue 370</a> This property should be moved into a
+separate suite and linked to here rather than relying on the Verifiable
+Credentials vocabulary. There are known issues with the first version of the
+Security vocabulary JSON-LD context and the first version of the Verifiable
+Credentials JSON-LD context which will prevent these contexts from being listed
+in the same document. For now it's suggested that implementers rely upon the
+first version of the Verifiable Credentials JSON-LD context and not rely on
+the Security vocabulary JSON-LD context in the same document.
+        </p>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
@@ -1296,7 +1332,7 @@ The class of private information related to JWKs is defined
                 <a href="https://w3c-ccg.github.io/lds-rsa2018/">RSA Signature Suite 2018</a>
               </td>
               <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+                <a href="https://www.w3.org/2018/credentials/v1">https://www.w3.org/2018/credentials/v1</a>
               </td>
             </tr>
           </tbody>
@@ -1343,7 +1379,7 @@ The class of private information related to JWKs is defined
                 <span class="issue">Normative definition pending</span>
               </td>
               <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+                <a href="http://w3id.org/security/suites/x25519-2019/v1">http://w3id.org/security/suites/x25519-2019/v1</a>
               </td>
             </tr>
           </tbody>
@@ -1365,29 +1401,6 @@ The class of private information related to JWKs is defined
       </section>
 
       <section>
-        <h4>SchnorrSecp256k1VerificationKey2019</h4>
-
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-              <th>JSON-LD</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://w3id.org/security/#SchnorrSecp256k1VerificationKey2019">security-vocab</a> <span class="issue">Link is to a placeholder! Definition pending</span>
-              </td>
-              <td>
-                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section>
         <h4>EcdsaSecp256k1RecoveryMethod2020</h4>
 
         <table class="simple" style="width: 100%;">
@@ -1400,10 +1413,10 @@ The class of private information related to JWKs is defined
           <tbody>
             <tr>
               <td>
-                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#ES256K-R">Ecdsa Secp256k1 Recovery Signature 2020</a>
+                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#ES256K-R">ECDSA Secp256k1 Recovery Signature 2020</a>
               </td>
               <td>
-                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld">lds-ecdsa-secp256k1-recovery2020-0.0.jsonld</a>
+                <a href="https://w3id.org/security/suites/secp256k1recovery-2020/v1">https://w3id.org/security/suites/secp256k1recovery-2020</a>
               </td>
             </tr>
           </tbody>
@@ -1458,10 +1471,12 @@ The class of private information related to JWKs is defined
           <tbody>
             <tr>
               <td>
-                <a href="https://w3c-ccg.github.io/verifiable-conditions">Verifiable Condition 2021</a>
+                <a
+                href="https://w3c-ccg.github.io/verifiable-conditions">Verifiable
+                Conditions Verification Method Suite 2021</a>
               </td>
               <td>
-                <a href="https://w3c-ccg.github.io/verifiable-conditions/contexts/verifiable-conditions-2021-v1.json">verifiable-conditions-2021-v1.json</a>
+                <a href="https://w3c-ccg.github.io/verifiable-conditions/contexts/verifiable-conditions-2021-v1.json">https://w3c-ccg.github.io/verifiable-conditions/contexts/verifiable-conditions-2021-v1.json</a>
               </td>
             </tr>
           </tbody>
@@ -1575,6 +1590,7 @@ in a service object.
                 <a href="https://didcomm.org/messaging/v2/">DIDComm Messaging</a>
               </td>
               <td>
+                <span class="issue">A valid JSON-LD context needs to be published.</span>
                 <a href="https://didcomm.org/messaging/contexts/v2">DIDComm Messaging</a>
               </td>
             </tr>
