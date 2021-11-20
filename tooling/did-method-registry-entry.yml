@@ -15,7 +15,7 @@ properties:
   status:
     description: The status of the entry in the registry
     type: string
-    enum: 
+    enum:
       - registered
       - withdrawn
       - deprecated
@@ -23,8 +23,6 @@ properties:
     description: An active URL that resolves to a human readable did method specification
     type: string
     maxLength: 512
-  
-
   contactName:
     description: A person or organization which responds to contact requests
     type: string
@@ -44,12 +42,12 @@ properties:
 
 example: {
     # These fields are required
-    "name": "example",
+    "name": "key",
     "status": "registered",
-    "specification": "https://w3c-ccg.github.io/did-spec/",
+    "specification": "https://w3c-ccg.github.io/did-method-key/",
     # These fields are optional
     "contactName": "W3C Credentials Community Group",
-    "contactEmail": "",
-    "contactWebsite": "",
-    "verifiableDataRegistry": "DID Specification"
+    "contactEmail": "public-credentials@w3.org",
+    "contactWebsite": "https://w3c-ccg.github.io/",
+    "verifiableDataRegistry": "None (ephemeral DID Method)"
 }
