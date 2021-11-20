@@ -15,7 +15,7 @@ properties:
   status:
     description: The status of the entry in the registry
     type: string
-    enum: 
+    enum:
       - registered
       - withdrawn
       - deprecated
@@ -23,8 +23,6 @@ properties:
     description: An active URL that resolves to a human readable did method specification
     type: string
     maxLength: 512
-  
-
   contactName:
     description: A person or organization which responds to contact requests
     type: string
