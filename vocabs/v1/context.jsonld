@@ -14,17 +14,17 @@
       "@container": "@set"
     },
     "authentication": {
-      "@id": "https://w3id.org/security#authenticationMethod",
+      "@id": "https://w3id.org/security#authentication",
       "@type": "@id",
       "@container": "@set"
     },
     "capabilityDelegation": {
-      "@id": "https://w3id.org/security#capabilityDelegationMethod",
+      "@id": "https://w3id.org/security#capabilityDelegation",
       "@type": "@id",
       "@container": "@set"
     },
     "capabilityInvocation": {
-      "@id": "https://w3id.org/security#capabilityInvocationMethod",
+      "@id": "https://w3id.org/security#capabilityInvocation",
       "@type": "@id",
       "@container": "@set"
     },
@@ -33,7 +33,7 @@
       "@type": "@id"
     },
     "keyAgreement": {
-      "@id": "https://w3id.org/security#keyAgreementMethod",
+      "@id": "https://w3id.org/security#keyAgreement",
       "@type": "@id",
       "@container": "@set"
     },
