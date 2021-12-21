@@ -3,7 +3,7 @@
   "status": "registered",
   "verifiableDataRegistry": "Indy Ledgers",
   "contactName": "Stephen Curran",
-  "contactEmail": "",
+  "contactEmail": "swcurran@cloudcompass.ca",
   "contactWebsite": "",
   "specification": "https://hyperledger.github.io/indy-did-method/"
 }
