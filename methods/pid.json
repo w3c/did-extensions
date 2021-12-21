@@ -5,5 +5,5 @@
     "contactName": "Alvin Reyes",
     "contactEmail": "tech@proofid.me",
     "contactWebsite": "https://proofid.me",
-    "specification": "https://github.com/proof-id/pid-did-driver/blob/main/DID%20Method%20Specification.md"
+    "specification": "https://github.com/proof-id/pid-did-driver/blob/main/did-method-specification.md"
   }
