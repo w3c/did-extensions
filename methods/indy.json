@@ -1,7 +1,7 @@
 {
   "name": "indy",
   "status": "registered",
-  "verifiableDataRegistry": "Indy Ledgers",
+  "verifiableDataRegistry": "Any Hyperledger Indy Ledger",
   "contactName": "Stephen Curran",
   "contactEmail": "swcurran@cloudcompass.ca",
   "contactWebsite": "",
