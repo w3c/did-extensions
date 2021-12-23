@@ -3,7 +3,7 @@
   "status": "registered",
   "verifiableDataRegistry": "Ledger agnostic",
   "contactName": "Dr. Sam Smith, Charles Cunningham, Phil Feairheller",
-  "contactEmail": "",
+  "contactEmail": "pfeairheller@gmail.com",
   "contactWebsite": "",
-  "specification": "https://identity.foundation/keri/did_methods/"
+  "specification": "https://weboftrust.github.io/did-keri/"
 }
