@@ -37,9 +37,11 @@ that all of the automated tests pass (no errors reported) or
 your submission will not be reviewed. Common reasons for failed 
 validation includes invalidly formatted JSON files and missing 
 mandatory fields. There will be a checklist that you are expected 
-to complete and attest to its accuracy. The maintainers of this
-repository, who are all volunteers, can then take up to 30 days 
-to process your request.
+to complete and attest to its accuracy. Once you submit your request, 
+your pull request will be reviewed by the registry editors. Changes 
+regarding the required criteria may be requested. If there are no 
+objections or changes requested, your DID method will be 
+registered after a minimum of 7 days and a maximum of 30 days.
 
 ## Adding Anything Else to this Registry
 
