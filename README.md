@@ -12,7 +12,9 @@ https://w3c.github.io/did-spec-registries/.
 ## Adding a DID Method to this Registry
 
 In order to register a new DID method, you must add a JSON file 
-to the [./methods](./methods) directory.
+to the [./methods](./methods) directory and 
+[open a pull request](https://github.com/w3c/did-spec-registries/pulls) 
+to add the file to this repository.
 
 Here is an [example registration entry](https://w3c.github.io/did-spec-registries/methods/example.json):
 
