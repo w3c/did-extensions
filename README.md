@@ -37,7 +37,9 @@ that all of the automated tests pass (no errors reported) or
 your submission will not be reviewed. Common reasons for failed 
 validation includes invalidly formatted JSON files and missing 
 mandatory fields. There will be a checklist that you are expected 
-to complete and attest to its accuracy.
+to complete and attest to its accuracy. The maintainers of this
+repository, who are all volunteers, can then take up to 30 days 
+to process your request.
 
 ## Adding Anything Else to this Registry
 
