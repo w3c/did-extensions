@@ -2,8 +2,8 @@
   "name": "kilt",
   "status": "registered",
   "specification": "https://github.com/KILTprotocol/kilt-did-driver/blob/master/docs/did-spec/spec.md",
+  "contactEmail": "devs@kilt.io",
   "contactName": "BOTLabs GmbH",
   "contactWebsite": "https://www.kilt.io/",
-  "verifiableDataRegistry": "KILT Blockchain",
-  "contactEmail": ""
+  "verifiableDataRegistry": "KILT Blockchain"
 }
