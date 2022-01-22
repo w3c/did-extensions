@@ -3,7 +3,7 @@
   "status": "registered",
   "verifiableDataRegistry": "Ledger agnostic",
   "contactName": "OwnYourData.eu",
-  "contactEmail": "",
+  "contactEmail": "christoph@ownyourdata.eu",
   "contactWebsite": "https://ownyourdata.eu/",
-  "specification": "https://github.com/OwnYourData/did-cmd/blob/main/docs/did-spec.md"
+  "specification": "https://ownyourdata.github.io/oydid/"
 }
