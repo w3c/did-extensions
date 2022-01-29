@@ -1,0 +1,9 @@
+{
+    "name": "psqr",
+    "status": "registered",
+    "verifiableDataRegistry": "Public Square",
+    "contactName": "Christian Gribneau",
+    "contactEmail": "protocol@vpsqr.com",
+    "contactWebsite": "https://vpsqr.com",
+    "specification": "https://vpsqr.com/did-method-psqr/v1/"
+}
