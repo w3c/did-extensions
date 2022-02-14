@@ -1,3 +1,4 @@
+```jsonc
 {
   "name": "tdid",
   "status": "registered",
@@ -7,3 +8,4 @@
   "contactWebsite": "https://cloud.tencent.com/product/tdid",
   "specification": "https://github.com/TencentCloud-Blockchain/TDID-Method-Specification/blob/main/README.md",
 }
+```
