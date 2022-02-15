@@ -1,0 +1,9 @@
+{
+  "name": "ubix",
+  "status": "registered",
+  "verifiableDataRegistry": "UBIX Network",
+  "contactName": "ArcBlock",
+  "contactEmail": "antonyminkowski@gmail.com",
+  "contactWebsite": "minkowski.ru",
+  "specification": "remotecamp/did-spec-registries/readme.md"
+}
