@@ -4,6 +4,6 @@
   "verifiableDataRegistry": "UBIX Network",
   "contactName": "ArcBlock",
   "contactEmail": "antonyminkowski@gmail.com",
-  "contactWebsite": "minkowski.ru",
-  "specification": "remotecamp/did-spec-registries/readme.md"
+  "contactWebsite": "https://minkowski.ru",
+  "specification": "https://remotecamp/did-spec-registries/readme.md"
 }
