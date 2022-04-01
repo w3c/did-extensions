@@ -1,0 +1,9 @@
+{
+  "name": "null",
+  "status": "registered",
+  "specification": "https://digitalbazaar.github.io/did-method-null-spec/",
+  "contactName": "Digital Bazaar, Inc.",
+  "contactEmail": "support@digitalbazaar.com",
+  "contactWebsite": "https://digitalbazaar.com/",
+  "verifiableDataRegistry": "None"
+}
