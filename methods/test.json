@@ -1,0 +1,9 @@
+{
+  "name": "test",
+  "status": "registered",
+  "verifiableDataRegistry": "Test Network",
+  "contactName": "Test",
+  "contactEmail": "test@test.com",
+  "contactWebsite": "fake3",
+  "specification": "https://test.com"
+}
