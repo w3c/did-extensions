@@ -1,0 +1,9 @@
+{
+    "name": "cheqd",
+    "status": "registered",
+    "verifiableDataRegistry": "cheqd",
+    "contactName": "CHEQD FOUNDATION LIMITED",
+    "contactEmail": "contact@cheqd.io",
+    "contactWebsite": "https://cheqd.io",
+    "specification": "https://github.com/cheqd/node-docs/blob/main/architecture/adr-list/adr-002-cheqd-did-method.md"
+}
