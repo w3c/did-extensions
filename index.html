@@ -20,7 +20,7 @@ var respecConfig = {
   group: "did",
 
   // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
-  specStatus: "base",
+  specStatus: "NOTE",
 
   // the specification's short name, as in http://www.w3.org/TR/short-name/
   shortName: "did-spec-registries",
@@ -65,13 +65,13 @@ var respecConfig = {
     company: "mesur.io",
     companyURL: "https://mesur.io/",
     w3cid: 130636
-  }, {
+  }],
+  formerEditors: [{
     name: "Kyle Den Hartog",
     url: "https://www.linkedin.com/in/kyledenhartog/",
     company: "MATTR",
-    companyURL: "https://mattr.global/"
-  }
-],
+    companyURL: "https://mattr.global/",
+  }],
 
   // authors, add as many as you like.
   // This is optional, uncomment if you have authors as well as editors.
@@ -153,7 +153,8 @@ W3C DID Working Group.
 
     <p>
 Comments regarding this document are welcome. Please file issues
-directly on <a href="https://github.com/w3c/did-spec-registries/issues/">GitHub</a>,
+directly on
+<a href="https://github.com/w3c/did-spec-registries/issues/">GitHub</a>,
 or send them
 to <a href="mailto:public-did-wg@w3.org">public-did-wg@w3.org</a> (
 <a href="mailto:public-did-wg-request@w3.org?subject=subscribe">subscribe</a>,
@@ -210,6 +211,9 @@ description of the addition.
       <li>
 Any name or value of a property or parameter MUST be indicative of
 its function. Avoid generic terms such as "myProperty" or "foo".
+      </li>
+      <li>
+Any method name SHOULD avoid generic terms such as "mymethod" or "registry".
       </li>
       <li>
 If there are copyright, trademark, or any intellectual property rights
@@ -601,7 +605,7 @@ verification relationship</a>.
         <pre class="example" title="Example of assertionMethod property">
 {
   ...
-  "publicKey": [{
+  "verificationMethod": [{
     "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
     "type": "EcdsaSecp256k1VerificationKey2019",
     "controller": "did:example:123",
@@ -650,7 +654,7 @@ verification relationship</a>.
         <pre class="example" title="Example of authentication property">
 {
   ...
-  "publicKey": [{
+  "verificationMethod": [{
     "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
     "type": "EcdsaSecp256k1VerificationKey2019",
     "controller": "did:example:123",
@@ -698,7 +702,7 @@ verification relationship</a>.
         <pre class="example" title="Example of capabilityDelegation property">
 {
   ...
-  "publicKey": [{
+  "verificationMethod": [{
     "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
     "type": "EcdsaSecp256k1VerificationKey2019",
     "controller": "did:example:123",
@@ -746,7 +750,7 @@ verification relationship</a>.
         <pre class="example" title="Example of capabilityInvocation property">
 {
   ...
-  "publicKey": [{
+  "verificationMethod": [{
     "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
     "type": "EcdsaSecp256k1VerificationKey2019",
     "controller": "did:example:123",
@@ -922,7 +926,7 @@ but is expected to not be used for newly defined suites.
       "https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"
     ],
     "id":"did:example:123",
-    "publicKey":[{
+    "verificationMethod":[{
       "id": "did:example:123#vm-2",
       "controller": "did:example:123",
       "type": "EcdsaSecp256k1RecoveryMethod2020",
@@ -981,7 +985,7 @@ but is expected to not be used for newly defined suites.
       "https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"
     ],
     "id":"did:example:123",
-    "publicKey":[{
+    "verificationMethod":[{
       "id": "did:example:123#vm-3",
       "controller": "did:example:123",
       "type": "EcdsaSecp256k1RecoveryMethod2020",
@@ -1025,7 +1029,7 @@ used for newly defined suites.
       "https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"
     ],
     "id":"did:example:123",
-    "publicKey":[{
+    "verificationMethod":[{
       "id": "did:example:123#vm-3",
       "controller": "did:example:123",
       "type": "EcdsaSecp256k1RecoveryMethod2020",
@@ -1302,7 +1306,7 @@ specification</a> for additional details on this topic.
     "https://gpg.jsld.org/contexts/lds-gpg2020-v0.0.jsonld"
   ],
   "id":"did:example:123",
-  "publicKey":[{
+  "verificationMethod":[{
     "id": "did:example:123#989ed1057a294c8a3665add842e784c4d08de1e2",
     "type": "PgpVerificationKey2021",
     "controller": "did:example:123",
@@ -1434,7 +1438,7 @@ the Security vocabulary JSON-LD context in the same document.
     "https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"
   ],
   "id":"did:example:123",
-  "publicKey": [
+  "verificationMethod": [
     {
       "id": "did:example:123#vm-1",
       "controller": "did:example:123",
@@ -1757,7 +1761,7 @@ These are entries in DID documents that are specific to the
   </section>
 
   <section>
-    <h1>DID Resolution Input Metadata</h1>
+    <h1>DID Resolution Options</h1>
     <p>
 These properties contain information pertaining to the DID resolution request.
     </p>
@@ -1938,6 +1942,30 @@ These properties contain information pertaining to the DID resolution response.
         <pre class="example" title="Example of representationNotSupported error value">
 {
   "error": "representationNotSupported"
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>internalError</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c-ccg.github.io/did-resolution/#internalerror">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of internalError error value">
+{
+  "error": "internalError"
 }
         </pre>
       </section>
