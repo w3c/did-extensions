@@ -1,5 +1,7 @@
 ![W3C Logo](https://www.w3.org/Icons/w3c_home)
 
+[![Echidna Auto-publish](https://github.com/w3c/did-spec-registries/actions/workflows/auto-publish.yml/badge.svg)](https://github.com/w3c/did-spec-registries/actions/workflows/auto-publish.yml)
+
 # Decentralized Identifier Core Registries v1.0
 
 This repository contains a registry created by the
