@@ -1875,30 +1875,6 @@ These properties contain information pertaining to the DID resolution response.
       </section>
 
       <section>
-        <h4>invalidDidUrl</h4>
-        <table class="simple" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Normative Definition</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.w3.org/TR/did-core/#did-url-dereferencing-metadata">DID Core</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example" title="Example of invalidDidUrl error value">
-{
-  "error": "invalidDidUrl"
-}
-        </pre>
-      </section>
-
-      <section>
         <h4>notFound</h4>
         <table class="simple" style="width: 100%;">
           <thead>
@@ -1969,10 +1945,179 @@ These properties contain information pertaining to the DID resolution response.
 }
         </pre>
       </section>
+      <section>
+        <h4>invalidPublicKey</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c-ccg.github.io/did-resolution/#invalidPublicKey">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
 
+        <pre class="example" title="Example of invalidPublicKey error value">
+{
+  "error": "invalidPublicKey"
+}
+        </pre>
+      </section>
+      <section>
+        <h4>invalidPublicKeyLength</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c-ccg.github.io/did-resolution/#invalidPublicKeyLengthr">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of invalidPublicKeyLength error value">
+{
+  "error": "invalidPublicKeyLength"
+}
+        </pre>
+      </section>
+      <section>
+        <h4>invalidPublicKeyType</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c-ccg.github.io/did-resolution/#invalidPublicKeyType">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of invalidPublicKeyType error value">
+{
+  "error": "invalidPublicKeyType"
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>unsupportedPublicKeyType</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c-ccg.github.io/did-resolution/#unsupportedPublicKeyType">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of unsupportedPublicKeyType error value">
+{
+  "error": "unsupportedPublicKeyType"
+}
+        </pre>
+      </section>
+</section>
+  </section>
+  <section>
+    <h3>DID Dereferencing Metadata</h3>
+    <p>
+These properties contain information pertaining to the DID dereferencing response.
+    </p>
+    <section>
+      <h3>error</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-url-dereferencing-metadata">DID Core</a>
+            </td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of error metadata property">
+{
+  "error": "notFound"
+}
+      </pre>
+      <section>
+        <h4>invalidDidUrl</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-url-dereferencing-metadata">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of invalidDidUrl error value">
+{
+  "error": "invalidDidUrl"
+}
+        </pre>
+      </section>
+      <section>
+        <h4>notFound</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-url-dereferencing-metadata">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of notFound error value">
+{
+  "error": "notFound"
+}
+        </pre>
+      </section>
     </section>
   </section>
-
   <section>
     <h1>DID Document Metadata</h1>
     <p>
