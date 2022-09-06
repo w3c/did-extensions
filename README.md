@@ -2,7 +2,7 @@
 
 [![Echidna Auto-publish](https://github.com/w3c/did-spec-registries/actions/workflows/auto-publish.yml/badge.svg)](https://github.com/w3c/did-spec-registries/actions/workflows/auto-publish.yml)
 
-# Decentralized Identifier Core Registries v1.0
+# Decentralized Identifier Core Registries TEST v1.0
 
 This repository contains a registry created by the
 [W3C Decentralized Identifier Working Group](https://www.w3.org/2019/did-wg/)
