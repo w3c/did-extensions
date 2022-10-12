@@ -1,9 +1,9 @@
 {
-  "name": "vertu",
-  "status": "registered",
-  "verifiableDataRegistry": "",
-  "contactName": "",
-  "contactEmail": "",
-  "contactWebsite": "",
-  "specification": "http://did.vertu.com/spec/"
+    "name": "vertu",
+    "status": "registered",
+    "verifiableDataRegistry": "VERTU",
+    "contactName": "V2",
+    "contactEmail": " bigui.yin@vertu.com", 
+    "contactWebsite": "",
+    "specification": "http://did.vertu.com/spec/"
 }
