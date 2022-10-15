@@ -1,0 +1,9 @@
+{
+  "name": "art",
+  "status": "registered",
+  "specification": "https://github.com/ArtracID/ArtracID-DID-ART-Method",
+  "contactName": "Ming-lam Ng (RealMatter)",
+  "contactEmail": "did_inquiry@artrac.id",
+  "contactWebsite": "www.artracx.com",
+  "verifiableDataRegistry": "Artwork ID Method"
+}
