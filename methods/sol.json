@@ -2,8 +2,8 @@
   "name": "sol",
   "status": "registered",
   "verifiableDataRegistry": "Solana",
-  "contactName": "Daniel Kelleher",
-  "contactEmail": "",
-  "contactWebsite": "https://github.com/dankelleher",
-  "specification": "https://identity-com.github.io/sol-did/did-method-spec.html"
+  "contactName": "Identity.com",
+  "contactEmail": "contact@identity.org",
+  "contactWebsite": "https://identity.com/contact-us",
+  "specification": "https://g.identity.com/sol-did/"
 }
