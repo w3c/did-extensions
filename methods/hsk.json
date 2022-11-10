@@ -1,0 +1,8 @@
+{ 
+  "name": "hsk",
+  "status": "registered",
+  "verifiableDataRegistry": "PlatOn Blockchain",
+  "contactName": "Hashkey Tech",
+  "contactEmail": "panghudidi@gmail.com",
+  "specification": "https://github.com/hashkeydid/hashkeydid-w3c-specification/blob/master/did-specfication/hsk-method.md"
+}
