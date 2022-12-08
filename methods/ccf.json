@@ -1,0 +1,10 @@
+{
+    "name": "ccf",
+    "status": "registered",
+    "verifiableDataRegistry": "Ledger agnostic",
+    "contactName": "Microsoft",
+    "contactEmail": "bmurdoch@microsoft.com",
+    "contactWebsite": "https://www.microsoft.com/en-us/research/project/confidential-consortium-framework/",
+    "specification": "https://github.com/microsoft/did-ccf/blob/main/DID_CCF.md"
+  }
+  
