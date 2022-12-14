@@ -1,7 +1,7 @@
 {
     "name": "ccf",
     "status": "registered",
-    "verifiableDataRegistry": "Ledger agnostic",
+    "verifiableDataRegistry": "CCF",
     "contactName": "Microsoft",
     "contactEmail": "bmurdoch@microsoft.com",
     "contactWebsite": "https://www.microsoft.com/en-us/research/project/confidential-consortium-framework/",
