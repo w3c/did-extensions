@@ -572,6 +572,44 @@ This property has been deprecated, use <a href="#verificationmethod">verificatio
 
     </section>
 
+      <section>
+        <h4>linkedResource</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/earth/did-cosmos##linked-resources">DID
+                  Cosmos Linked Resources</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/earth/NS/iid/v1">Cosmos JSON-LD Context</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      
+        <pre class="example"
+          title="Example of linked resource properties">
+{
+  ...
+  "linkedResource" : [{
+    "id": "did:cosmos:1:impacthub:abc123#resourceHashgraph",
+    "path": "did:cosmos:1:impacthub:nft:abc123/resourceHashgraph",
+    "type": "hashgraph",
+    "proof": "afybeiemxf5abjwjbikoz4mcb3a3dla6ual3jsgpdr4cjr3oz",
+    "endpoint" : "did:cosmos:1:impacthub:nft:abc123?service=mediator"
+}]</pre>
+      
+      </section>
+
+
+
     <section>
       <h3>Verification relationships</h3>
       <p>
