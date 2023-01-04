@@ -1,0 +1,9 @@
+{
+  "name": "ev",
+  "status": "registered",
+  "specification": "https://github.com/KayTrust/did-method-ev",
+  "contactName": "David Ammouial (NTT DATA)",
+  "contactEmail": "david.ammouial@nttdata.com",
+  "contactWebsite": "https://kaytrust.id/",
+  "verifiableDataRegistry": "Any Ethereum or EVM-compatible ledger"
+}
