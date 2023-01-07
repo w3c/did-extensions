@@ -1,0 +1,9 @@
+{
+  "name": "cr",
+  "status": "registered",
+  "specification": "https://github.com/SelfSovereignDrm/core/blob/main/README.md",
+  "contactName": "",
+  "contactEmail": "ssdrm@digicaps.com",
+  "contactWebsite": "",
+  "verifiableDataRegistry": "Hyperledger Fabric"
+}
