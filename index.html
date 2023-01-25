@@ -1631,7 +1631,7 @@ in a service object.
 
       <section>
         <h4>CredentialRegistry</h4>
-        <p>The CredentialRegistry endpoint allows to publish a dedicated service endpoint in a did document from which verifiable credentials can be queried. Each registry endpoint is a REST endpoint. By appending the <code>credentialSubject.id</code> as an URL encoded string to the given endpoint and sending a GET request to that URI, the registry MUST return an array of verifiable credentials associated with the subject id. A sample registry endpoint can be found <a href="https://ssi.eecc.de/api/registry/swagger/#/Credentials/get_api_registry_vcs__id_">here</a>.</p>
+        <p>The CredentialRegistry endpoint allows publication of a dedicated service endpoint in a DID document through which verifiable credentials can be queried. Each registry endpoint is a REST endpoint. When a GET request is sent to the URI formed by appending the <code>credentialSubject.id</code> as a URL-encoded string to the given endpoint URI, the registry MUST return an array of verifiable credentials associated with the subject ID. A sample registry endpoint can be found <a href="https://ssi.eecc.de/api/registry/swagger/#/Credentials/get_api_registry_vcs__id_">here</a>.</p>
         <p class="note">
           Verifiable credential registries are supposed to hold credentials that are publicly accessible by default, e.g., for product passports on a product type level. An additional authentication for limiting access to certain credentials is currently under development.
         </p>
