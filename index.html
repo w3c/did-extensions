@@ -1673,7 +1673,20 @@ in a service object.
   ]
 }
         </pre>
+        <pre class="example" title="Example of a concrete call to the specified serviceEndpoint and example answer">
+$ curl 'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1' -H 'accept: application/ld+json, application/json'
 
+[
+  {
+    "@context": ["https://www.w3.org/2018/credentials/v1",... ],
+    "type": ["VerifiableCredential",...],
+    "credentialSubject": {...},
+    "proof": {...},
+    ...
+  },
+  ...
+]
+        </pre>
       </section>
 
     </section>
