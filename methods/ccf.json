@@ -1,10 +1,10 @@
 {
     "name": "ccf",
     "status": "registered",
-    "verifiableDataRegistry": "CCF",
+    "verifiableDataRegistry": "Confidential Consortium Framework (CCF)",
     "contactName": "Microsoft",
-    "contactEmail": "bmurdoch@microsoft.com",
-    "contactWebsite": "https://www.microsoft.com/en-us/research/project/confidential-consortium-framework/",
+    "contactEmail": "ccf-did@microsoft.com",
+    "contactWebsite": "https://ccf.dev",
     "specification": "https://github.com/microsoft/did-ccf/blob/main/DID_CCF.md"
   }
   
