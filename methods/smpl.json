@@ -1,0 +1,9 @@
+{
+  "name": "smpl",
+  "status": "registered",
+  "verifiableDataRegistry": "",
+  "contactName": "Smpl Identity",
+  "contactEmail": "did@smplecosystem.org",
+  "contactWebsite": "",
+  "specification": "https://smplecosystem.github.io/SmplIdentityChain/specs/did/smpl.html"
+}
