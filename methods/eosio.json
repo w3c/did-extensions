@@ -1,6 +1,6 @@
 {
   "name": "eosio",
-  "status": "registered",
+  "status": "deprecated",
   "verifiableDataRegistry": "EOSIO",
   "contactName": "Gimly Blockchain",
   "contactEmail": "",
