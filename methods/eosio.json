@@ -1,9 +1,9 @@
 {
   "name": "eosio",
   "status": "deprecated",
-  "verifiableDataRegistry": "EOSIO",
-  "contactName": "Gimly Blockchain",
+  "verifiableDataRegistry": "Antelope",
+  "contactName": "Tonomy Foundation",
   "contactEmail": "",
-  "contactWebsite": "https://gimly.io",
-  "specification": "https://github.com/Gimly-Blockchain/eosio-did-spec"
+  "contactWebsite": "https://tonomy.foundation",
+  "specification": "https://github.com/Tonomy-Foundation/antelope-did-spec"
 }
