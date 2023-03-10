@@ -42,7 +42,7 @@ mandatory fields. There will be a checklist that you are expected
 to complete and attest to its accuracy. Once you submit your request, 
 your pull request will be reviewed by the registry editors. Changes 
 regarding the required criteria may be requested. If there are at 
-least two reviews by registry maintainers, and no objections or 
+least two reviews by registry maintainers listed in the CODEOWNERS file, and no objections or 
 changes requested, your DID method will be registered after a 
 minimum of 7 days and a maximum of 30 days.
 
