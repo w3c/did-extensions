@@ -1629,6 +1629,66 @@ in a service object.
 
       </section>
 
+      <section>
+        <h4>CredentialRegistry</h4>
+        <p>The <code>CredentialRegistry</code> endpoint allows publication of a dedicated service endpoint in a DID document, through which verifiable credentials can be queried. Each registry endpoint is a REST endpoint. When a `GET` request is sent to the URI formed by appending the <code>credentialSubject.id</code> as a URL-encoded string to the given endpoint URI, the registry MUST return an array of verifiable credentials associated with the subject ID. A sample registry endpoint can be found <a href="https://ssi.eecc.de/api/registry/swagger/#/Credentials/get_api_registry_vcs__id_">here</a>.</p>
+        <p class="note">
+          Verifiable credential registries are supposed to hold credentials that are publicly accessible by default, e.g., for product passports on a product type level. An additional authentication for limiting access to certain credentials is currently under development.
+        </p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/swagger/#/Credentials/get_api_registry_vcs__id_">Verifiable Credential Registry</a>
+              </td>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/context/credentialregistry">Verifiable Credential Registry</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  ...
+  "service": [
+    {
+      "id": "did:example:123#vcregistry-1",
+      "type": "CredentialRegistry",
+      "serviceEndpoint": {
+        "registries": ["https://registry.example.com/{credentialSubject.id}", "https://identity.foundation/vcs/{credentialSubject.id}"]
+      }
+    },
+    {
+      "id": "did:example:123#vcregistry-2",
+      "type": "CredentialRegistry",
+      "serviceEndpoint": "https://ssi.eecc.de/api/registry/vcs/{credentialSubject.id}"
+    }
+  ]
+}
+        </pre>
+        <pre class="example" title="Example of a concrete call to the specified serviceEndpoint and example answer">
+$ curl 'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1' -H 'accept: application/ld+json, application/json'
+
+[
+  {
+    "@context": ["https://www.w3.org/2018/credentials/v1",... ],
+    "type": ["VerifiableCredential",...],
+    "credentialSubject": {...},
+    "proof": {...},
+    ...
+  },
+  ...
+]
+        </pre>
+      </section>
+
     </section>
 
   </section>
