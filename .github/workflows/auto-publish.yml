@@ -1,7 +1,6 @@
 # .github/workflows/pr-push.yml
 name: Echidna Auto-publish
 on:
-  pull_request: {}
   push:
     branches: [main]
 jobs:
