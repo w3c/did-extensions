@@ -1,0 +1,9 @@
+{
+  "name": "polygonid",
+  "status": "registered",
+  "verifiableDataRegistry": "EVM compatible chains. Primary on Polygon",
+  "contactName": "0xPolygonID",
+  "contactEmail": "",
+  "contactWebsite": "https://polygon.technology/polygon-id",
+  "specification": "https://github.com/0xPolygonID/did-polygonid"
+}
