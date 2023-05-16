@@ -1724,6 +1724,55 @@ $ curl 'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1' -H '
         </pre>
       </section>
 
+      <section>
+        <h4>OpenID4VC</h4>
+        <p>The <code>OpenID4VC</code> service allows publication of the <a href="https://openid.net/openid4vc/">OpenId for verifiable credentials (OpenID4VC)</a> <code>.well-known</code> locations where the endpoints and meta data for both <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenId for verifiable credential issuance (OpenID4VCI)</a> and <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenId for verifiable presentation (OpenID4VP)</a> can be found.</p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>
+                <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>
+              </td>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/context/openid4vc">OpenID4VP</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  ...
+  "service": [
+    {
+      "@context":[
+        "https://www.w3.org/ns/did/v1",
+        "https://ssi.eecc.de/api/registry/context/openid4vc"
+      ],
+      "id": "did:example:123#openid4vc-1",
+      "type": "OpenID4VC",
+      "serviceEndpoint": {
+        "oauth-authorization-server": "https://did.example.com/.well-known/oauth-authorization-server",
+        "openid-credential-issuer": "https://did.example.com/.well-known/openid-credential-issuer",
+      }
+    },
+    {
+      "id": "did:example:123#openid4vc-2",
+      "type": "OpenID4VC",
+      "serviceEndpoint": "https://did.example.com/"
+    }
+  ]
+}
+        </pre>
+      </section>
+
     </section>
 
   </section>
