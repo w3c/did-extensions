@@ -3,7 +3,7 @@
   "status": "registered",
   "specification": "https://github.com/bluesky-social/did-method-plc",
   "contactName": "Bluesky PBLLC",
-  "contactEmail": "hello@blueskyweb.xyz",
+  "contactEmail": "protocol@blueskyweb.xyz",
   "contactWebsite": "https://blueskyweb.xyz/",
   "verifiableDataRegistry": "PLC server at: https://plc.directory"
 }
