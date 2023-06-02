@@ -5,5 +5,5 @@
   "contactName": "Bluesky PBLLC",
   "contactEmail": "protocol@blueskyweb.xyz",
   "contactWebsite": "https://blueskyweb.xyz/",
-  "verifiableDataRegistry": "PLC server at: https://plc.directory"
+  "verifiableDataRegistry": "https://plc.directory"
 }
