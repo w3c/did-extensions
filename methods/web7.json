@@ -1,0 +1,9 @@
+{
+    "name": "web7",
+    "status": "registered",
+    "verifiableDataRegistry": "Web 7.0 Foundation",
+    "contactName": "Web 7.0 Foundation",
+    "contactEmail": "mwherman@parallelspace.net",
+    "contactWebsite": "http://hyperonomy.com",
+    "specification": "https://github.com/Web7Foundation/Specifications/blob/main/methods/did-web7-1-0-1.md"
+}
