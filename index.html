@@ -1725,8 +1725,8 @@ $ curl 'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1' -H '
       </section>
 
       <section>
-        <h4>OpenID4VC</h4>
-        <p>The <code>OpenID4VC</code> service allows publication of the <a href="https://openid.net/openid4vc/">OpenID for Verifiable Credentials (OpenID4VC)</a> <code>.well-known</code> locations where the endpoints and meta data for both <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID for Verifiable Credential issuance (OpenID4VCI)</a> and <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID for Verifiable Presentation (OpenID4VP)</a> can be found.</p>
+        <h4>OpenID4VC Issuance</h4>
+        <p>The <code>OID4VCI</code> service allows publication of the <a href="https://openid.net/openid4vc/">OpenID for Verifiable Credential Issuance (OID4VCI)</a> <code>.well-known</code> locations where the endpoints and meta data for <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID for Verifiable Credential Issuance (OpenID4VCI)</a> can be found.</p>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
@@ -1738,7 +1738,6 @@ $ curl 'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1' -H '
             <tr>
               <td>
                 <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>
-                <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>
               </td>
               <td>
                 <a href="https://ssi.eecc.de/api/registry/context/openid4vc">OpenID4VP</a>
@@ -1756,16 +1755,16 @@ $ curl 'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1' -H '
         "https://www.w3.org/ns/did/v1",
         "https://ssi.eecc.de/api/registry/context/openid4vc"
       ],
-      "id": "did:example:123#openid4vc-1",
-      "type": "OpenID4VC",
+      "id": "did:example:123#oid4vci-1",
+      "type": "OID4VCI",
       "serviceEndpoint": {
         "oauth-authorization-server": "https://did.example.com/.well-known/oauth-authorization-server",
         "openid-credential-issuer": "https://did.example.com/.well-known/openid-credential-issuer",
       }
     },
     {
-      "id": "did:example:123#openid4vc-2",
-      "type": "OpenID4VC",
+      "id": "did:example:123#oid4vci-2",
+      "type": "OID4VCI",
       "serviceEndpoint": "https://did.example.com/"
     }
   ]
