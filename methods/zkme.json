@@ -1,0 +1,9 @@
+{
+    "name": "zkme",
+    "status": "registered",
+    "verifiableDataRegistry": "EVM compatible chains. Primary on Polygon",
+    "contactName": "zkMe",
+    "contactEmail": "",
+    "contactWebsite": "",
+    "specification": "https://github.com/zkMeLabs/zkme-did-method-spec"
+  }
