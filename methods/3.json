@@ -2,8 +2,8 @@
   "name": "3",
   "status": "registered",
   "verifiableDataRegistry": "Ceramic Network",
-  "contactName": "Joel Thorstensson",
-  "contactEmail": "oed@3box.io",
+  "contactName": "3Box Labs",
+  "contactEmail": "devs@3box.io",
   "contactWebsite": "",
   "specification": "https://cips.ceramic.network/CIPs/cip-79"
 }
