@@ -3,7 +3,7 @@
   "status": "registered",
   "verifiableDataRegistry": "Gnosis Safe",
   "contactName": "Gnosis Ltd.",
-  "contactEmail": "safe@gnosis.io",
-  "contactWebsite": "",
+  "contactEmail": "info@safe.global",
+  "contactWebsite": "https://safe.global",
   "specification": "https://cips.ceramic.network/CIPs/cip-101"
 }
