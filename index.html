@@ -1763,8 +1763,8 @@ $ curl 'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1' -H '
 
       <section>
         <h4>OpenID4 Verifiable Presentation</h4>
-        <p>The <code>OID4VP</code> service allows publication of the <a href="https://openid.net/openid4vc/">OpenID for Verifiable Presentation (OID4VP)</a> authorization endpoint, which is the entry point for the <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">presentation flow</a>.</p>
-        <p>The service endpoint `id` MUST be the authorization request endpoint as described in section <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-authorization-request">Authorization Request</a>.</p>
+        <p>The <code>OID4VP</code> service allows publication of how to interact with a credential wallet that conforms with the <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID for Verifiable Presentation (OID4VP)</a> specification.</p>
+        <p>The service endpoint `id` MUST be the Wallet (OAuth2) Issuer Identifier to obtain Wallet Metadata to invoke the wallet as described in section <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-wallet-invocation">Wallet Invocation</a>.</p>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
