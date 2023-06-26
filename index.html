@@ -1668,8 +1668,10 @@ in a service object.
         <h4>CredentialRegistry</h4>
         <p>The <code>CredentialRegistry</code> endpoint allows publication of a dedicated service endpoint in a DID document, through which verifiable credentials can be queried. Each registry endpoint is a REST endpoint. When a `GET` request is sent to the URI formed by appending the <code>credentialSubject.id</code> as a URL-encoded string to the given endpoint URI, the registry MUST return an array of verifiable credentials associated with the subject ID. A sample registry endpoint can be found <a href="https://ssi.eecc.de/api/registry/swagger/#/Credentials/get_api_registry_vcs__id_">here</a>.</p>
         <p class="note">
-          Verifiable credential registries are supposed to hold credentials that are publicly accessible by default, e.g., for product passports on a product type level. An additional authentication for limiting access to certain credentials is currently under development.
+          Verifiable credential registries are supposed to hold credentials that are publicly accessible by default, e.g., for product passports on a product type level. An additional authentication for limiting access to certain credentials or partially disclosed credentials is optional.
         </p>
+        <h4>Authenticated Request</h4>
+        <p>In order to perform an authenticated request, the credential registry endpoint MUST be called with a `POST` request. The request body MUST contain the `vp` property, holding the authenticating verifiable presentation. The `verifiableCredential` field of the presentation MAY be empty. In case the presentation contains credentials, they CAN be used to authenticate the requester beyond its DID. The `domain` field of the presentation MUST be the requested URL of the request. The `challenge` field of the presentation must be an empty string.</p>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
@@ -1722,6 +1724,35 @@ $ curl 'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1' -H '
   ...
 ]
         </pre>
+        <pre class="example" title="Example of an authenticated request">
+$ curl 'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1' \
+    -X POST \
+    -H 'Content-Type: application/json' \
+    -H 'accept: application/ld+json, application/json' \
+    -d '{
+        vp: {
+          "@context": [
+              "https://www.w3.org/2018/credentials/v1",
+              "https://w3id.org/security/suites/ed25519-2020/v1"
+          ],
+          "type": [
+              "VerifiablePresentation"
+          ],
+          "verifiableCredential": [
+              ...
+          ],
+          "proof": {
+              "type": "Ed25519Signature2020",
+              "created": "2023-06-19T10:19:04Z",
+              "verificationMethod": "did:web:requester.domain.com#auth-key",
+              "proofPurpose": "authentication",
+              "challenge": "",
+              "domain": "https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1"
+              "proofValue": "z3BCT7...QoHiGWMn1V"
+          }
+      }
+    }'
+                  </pre>
       </section>
 
     </section>
