@@ -1671,7 +1671,7 @@ in a service object.
           Verifiable credential registries are supposed to hold credentials that are publicly accessible by default, e.g., for product passports on a product type level. An additional authentication for limiting access to certain credentials or partially disclosed credentials is optional.
         </p>
         <h4>Authenticated Request</h4>
-        <p>In order to perform an authenticated request, the credential registry endpoint MUST be called with a `POST` request. The request body MUST contain the `vp` property, holding the authenticating verifiable presentation. The `verifiableCredential` field of the presentation MAY be empty. In case the presentation contains credentials, they CAN be used to authenticate the requester beyond its DID. The `domain` field of the presentation MUST be the URL of the request. The `challenge` field of the presentation MUST be an empty string.</p>
+        <p>In order to perform an authenticated request, the credential registry endpoint MUST be called with a `POST` request. The request body MUST contain the `vp` property, holding the authenticating verifiable presentation. The `verifiableCredential` field of the presentation MAY be empty. If the presentation contains credentials, they MAY be used to authenticate the requester beyond its DID. The `domain` field of the presentation MUST be the URL of the request. The `challenge` field of the presentation MUST be an empty string.</p>
         <table class="simple" style="width: 100%;">
           <thead>
             <tr>
