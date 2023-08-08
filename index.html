@@ -1724,6 +1724,80 @@ $ curl 'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1' -H '
         </pre>
       </section>
 
+      <section>
+        <h4>OpenID4 Verifiable Credential Issuance</h4>
+        <p>The <code>OID4VCI</code> service allows publication of a credential issuer that conforms to the <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID for Verifiable Credential Issuance (OID4VCI)</a> specification.
+        <p>The service endpoint `id` MUST be the Credential Issuer Identifier to get the Credential Issuer Metadata as described in Section <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#credential-issuer-metadata">Credential Issuer Metadata</a> of <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenIDVCI</a>.</p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>
+              </td>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/context/openid4vc">OpenID4VCI</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  ...
+  "service": [
+    {
+      "id": "did:example:123#oid4vci",
+      "type": "OID4VCI",
+      "serviceEndpoint": "https://issuer.example.com/"
+    }
+  ]
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>OpenID4 Verifiable Presentation</h4>
+        <p>The <code>OID4VP</code> service allows publication of how to interact with a credential wallet that conforms with the <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID for Verifiable Presentation (OID4VP)</a> specification.</p>
+        <p>The service endpoint `id` MUST be the Wallet (OAuth2) Issuer Identifier to obtain Wallet Metadata to invoke the wallet as described in section <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-wallet-invocation">Wallet Invocation</a>.</p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-authorization-request">OpenID4VP</a>
+              </td>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/context/openid4vc">OpenID4VP</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  ...
+  "service": [
+    {
+      "id": "did:example:123#oid4vp",
+      "type": "OID4VP",
+      "serviceEndpoint": "https://wallet.example.com"
+    }
+  ]
+}
+        </pre>
+      </section>
+
     </section>
 
   </section>
@@ -2864,8 +2938,12 @@ did:foo:21tDAKCERh95uGgKbJNHYp?resource=true
     <h1>DID Methods</h1>
 
     <p>
-This table summarizes the DID method specifications currently in development.
+This table summarizes the DID method specifications currently in development. 
 The links will be updated as subsequent Implementer’s Drafts are produced.
+This registry does not act as an endorsement of any particular DID method or its
+underlying technologies by the W3C, the W3C Decentralized Identifier Working Group,
+or any affiliated members of the W3C. It exists as a mechanism for developers to
+discover various DID methods that they might wish to implement.
     </p>
     <p>
 The normative requirements for DID method specifications can be found in
