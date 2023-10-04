@@ -1,7 +1,7 @@
 {
   "name": "webs",
   "status": "registered",
-  "specification": "https://github.com/trustoverip/tswg-did-method-webs-specification",
+  "specification": "https://trustoverip.github.io/tswg-did-method-webs-specification/",
   "contactName": "Trust over IP (ToIP) DID Method webs Task Force https://wiki.trustoverip.org/display/HOME/DID+Method+webs+Task+Force#DIDMethodwebsTaskForce-Chairs",
   "contactEmail": "technology-stack-wg@lists.trustoverip.org",
   "contactWebsite": "https://wiki.trustoverip.org/display/HOME/DID+Method+webs+Task+Force",
