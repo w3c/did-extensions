@@ -5,5 +5,5 @@
   "contactName": "Trust over IP (ToIP) DID Method webs Task Force",
   "contactEmail": "technology-stack-wg@lists.trustoverip.org",
   "contactWebsite": "https://wiki.trustoverip.org/display/HOME/DID+Method+webs+Task+Force",
-  "verifiableDataRegistry": "Web, and Key Event Receipt Infrastructure (KERI) https://keri.one/"
+  "verifiableDataRegistry": "Web, and <a href=\"https://keri.one/\">Key Event Receipt Infrastructure (KERI)</a>"
 }
