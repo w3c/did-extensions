@@ -1,0 +1,9 @@
+{
+  "name": "webs",
+  "status": "registered",
+  "specification": "https://trustoverip.github.io/tswg-did-method-webs-specification/",
+  "contactName": "Trust over IP (ToIP) DID Method webs Task Force",
+  "contactEmail": "technology-stack-wg@lists.trustoverip.org",
+  "contactWebsite": "https://wiki.trustoverip.org/display/HOME/DID+Method+webs+Task+Force",
+  "verifiableDataRegistry": "Web, and <a href=\"https://keri.one/\">Key Event Receipt Infrastructure (KERI)</a>"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "lisk",
+  "status": "registered",
+  "verifiableDataRegistry": "Lisk Sidechain",
+  "contactName": "Aldo Suhartono Putra",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/aldhosutra/lisk-did/blob/main/packages/lisk-did-module/docs/did-method-spec.md"
+}

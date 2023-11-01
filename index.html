@@ -59,18 +59,18 @@ var respecConfig = {
     company: "Digital Bazaar",
     companyURL: "https://digitalbazaar.com/",
     w3cid: 41758
-  }, {
-    name: "Michael Prorock",
-    url: "https://www.linkedin.com/in/mprorock/",
-    company: "mesur.io",
-    companyURL: "https://mesur.io/",
-    w3cid: 130636
   }],
   formerEditors: [{
     name: "Kyle Den Hartog",
     url: "https://www.linkedin.com/in/kyledenhartog/",
     company: "MATTR",
     companyURL: "https://mattr.global/",
+  }, {
+    name: "Michael Prorock",
+    url: "https://www.linkedin.com/in/mprorock/",
+    company: "mesur.io",
+    companyURL: "https://mesur.io/",
+    w3cid: 130636
   }],
 
   // authors, add as many as you like.
@@ -569,9 +569,44 @@ This property has been deprecated, use <a href="#verificationmethod">verificatio
         </pre>
 
       </section>
-
+      <section>
+        <h4>linkedResource</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a
+                  href="https://w3id.org/earth/did-cosmos#linked-resources">DID
+                  Cosmos Linked Resources</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/earth/NS/iid/v1">Cosmos JSON-LD
+                  Context</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      
+        <pre class="example" title="Example of linked resource properties">
+    {  
+        ...
+        "linkedResource" : [{
+          "id": "did:cosmos:1:impacthub:nft:abc123#resourceHashgraph",
+          "path": "did:cosmos:1:impacthub:nft:abc123/resourceHashgraph",
+          "type": "hashgraph",
+          "proof": "afybeiemxf5abjwjbikoz4mcb3a3dla6ual3jsgpdr4cjr3oz",
+          "endpoint" : "did:cosmos:1:impacthub:nft:abc123?service=mediator"
+      }]
+    }</pre>
+      
+      </section>
     </section>
-
     <section>
       <h3>Verification relationships</h3>
       <p>
@@ -1154,7 +1189,7 @@ specification</a> for additional details on this topic.
                 <a href="https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/">Ecdsa Secp256k1 Signature 2019</a>
               </td>
               <td>
-                <a href="https://w3id.org/security/suites/secp256k1-2019">https://w3id.org/security/suites/secp256k1-2019</a>
+                <a href="https://w3id.org/security/suites/secp256k1-2019/v1">https://w3id.org/security/suites/secp256k1-2019/v1</a>
               </td>
             </tr>
           </tbody>
@@ -1426,7 +1461,7 @@ the Security vocabulary JSON-LD context in the same document.
                 <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#ES256K-R">ECDSA Secp256k1 Recovery Signature 2020</a>
               </td>
               <td>
-                <a href="https://w3id.org/security/suites/secp256k1recovery-2020/v1">https://w3id.org/security/suites/secp256k1recovery-2020</a>
+                <a href="https://w3id.org/security/suites/secp256k1recovery-2020/v1">https://w3id.org/security/suites/secp256k1recovery-2020/v1</a>
               </td>
             </tr>
           </tbody>
@@ -1627,6 +1662,140 @@ in a service object.
 }
         </pre>
 
+      </section>
+
+      <section>
+        <h4>CredentialRegistry</h4>
+        <p>The <code>CredentialRegistry</code> endpoint allows publication of a dedicated service endpoint in a DID document, through which verifiable credentials can be queried. Each registry endpoint is a REST endpoint. When a `GET` request is sent to the URI formed by appending the <code>credentialSubject.id</code> as a URL-encoded string to the given endpoint URI, the registry MUST return an array of verifiable credentials associated with the subject ID. A sample registry endpoint can be found <a href="https://ssi.eecc.de/api/registry/swagger/#/Credentials/get_api_registry_vcs__id_">here</a>.</p>
+        <p class="note">
+          Verifiable credential registries are supposed to hold credentials that are publicly accessible by default, e.g., for product passports on a product type level. An additional authentication for limiting access to certain credentials is currently under development.
+        </p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/swagger/#/Credentials/get_api_registry_vcs__id_">Verifiable Credential Registry</a>
+              </td>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/context/credentialregistry">Verifiable Credential Registry</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  ...
+  "service": [
+    {
+      "id": "did:example:123#vcregistry-1",
+      "type": "CredentialRegistry",
+      "serviceEndpoint": {
+        "registries": ["https://registry.example.com/{credentialSubject.id}", "https://identity.foundation/vcs/{credentialSubject.id}"]
+      }
+    },
+    {
+      "id": "did:example:123#vcregistry-2",
+      "type": "CredentialRegistry",
+      "serviceEndpoint": "https://ssi.eecc.de/api/registry/vcs/{credentialSubject.id}"
+    }
+  ]
+}
+        </pre>
+        <pre class="example" title="Example of a concrete call to the specified serviceEndpoint and example answer">
+$ curl 'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1' -H 'accept: application/ld+json, application/json'
+
+[
+  {
+    "@context": ["https://www.w3.org/2018/credentials/v1",... ],
+    "type": ["VerifiableCredential",...],
+    "credentialSubject": {...},
+    "proof": {...},
+    ...
+  },
+  ...
+]
+        </pre>
+      </section>
+
+      <section>
+        <h4>OpenID4 Verifiable Credential Issuance</h4>
+        <p>The <code>OID4VCI</code> service allows publication of a credential issuer that conforms to the <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID for Verifiable Credential Issuance (OID4VCI)</a> specification.
+        <p>The service endpoint `id` MUST be the Credential Issuer Identifier to get the Credential Issuer Metadata as described in Section <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#credential-issuer-metadata">Credential Issuer Metadata</a> of <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenIDVCI</a>.</p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>
+              </td>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/context/openid4vc">OpenID4VCI</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  ...
+  "service": [
+    {
+      "id": "did:example:123#oid4vci",
+      "type": "OID4VCI",
+      "serviceEndpoint": "https://issuer.example.com/"
+    }
+  ]
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>OpenID4 Verifiable Presentation</h4>
+        <p>The <code>OID4VP</code> service allows publication of how to interact with a credential wallet that conforms with the <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID for Verifiable Presentation (OID4VP)</a> specification.</p>
+        <p>The service endpoint `id` MUST be the Wallet (OAuth2) Issuer Identifier to obtain Wallet Metadata to invoke the wallet as described in section <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-wallet-invocation">Wallet Invocation</a>.</p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-authorization-request">OpenID4VP</a>
+              </td>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/context/openid4vc">OpenID4VP</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  ...
+  "service": [
+    {
+      "id": "did:example:123#oid4vp",
+      "type": "OID4VP",
+      "serviceEndpoint": "https://wallet.example.com"
+    }
+  ]
+}
+        </pre>
       </section>
 
     </section>
@@ -2769,8 +2938,12 @@ did:foo:21tDAKCERh95uGgKbJNHYp?resource=true
     <h1>DID Methods</h1>
 
     <p>
-This table summarizes the DID method specifications currently in development.
+This table summarizes the DID method specifications currently in development. 
 The links will be updated as subsequent Implementer’s Drafts are produced.
+This registry does not act as an endorsement of any particular DID method or its
+underlying technologies by the W3C, the W3C Decentralized Identifier Working Group,
+or any affiliated members of the W3C. It exists as a mechanism for developers to
+discover various DID methods that they might wish to implement.
     </p>
     <p>
 The normative requirements for DID method specifications can be found in

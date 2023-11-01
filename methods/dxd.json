@@ -1,0 +1,9 @@
+{
+  "name": "dxd",
+  "status": "registered",
+  "verifiableDataRegistry": "fabric.data-alliace.com",
+  "contactName": "Data Alliance Co., Ltd.",
+  "contactEmail": "blockchain@data-alliance.com",
+  "contactWebsite": "https://www.data-alliance.com/",
+  "specification": "https://github.com/Data-Alliance/did-dxd/blob/master/README.md"
+}
