@@ -1,0 +1,9 @@
+{
+  "name": "dotbit",
+  "status": "registered",
+  "verifiableDataRegistry": "Nervos CKB",
+  "contactName": "dotbit",
+  "contactEmail": "jeff@did.id",
+  "contactWebsite": "https://did.id/",
+  "specification": "https://github.com/zgayjjf/dotbit-did-spec"
+}
