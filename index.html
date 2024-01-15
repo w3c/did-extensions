@@ -1668,12 +1668,12 @@ in a service object.
         <h4>Web of Things (WoT) Discovery</h4>
         <p>The <code>WotThing</code> and <code>WotDirectory</code> endpoints allow publication of service endpoints in a DID document
           that can be used to fetch Web of Things (WoT) Thing Descriptions (TDs).
-          In the case of <code>WotThing</code>, the endpoint is a REST service that returns a TD
-          when the GET method is used.  
-          This can be used by either self-describing devices or services but can also be a service
+          The <code>WotThing</code> endpoint is a REST service that returns a TD
+          when the <code>GET</code> method is used.  
+          This can be used for self-describing devices or services or be a service
           separate from the actual device or service described by the TD.
-          The case of <code>WotDirectory</code> is also a REST service that returns a TD but this service is always
-          a Web of Things (WoT) Thing Description Directory (TDD) and the TD returned by a GET always describes the TDD's interface.
+          The <code>WotDirectory</code> is also a REST service that returns a TD, but this service is always
+          a Web of Things (WoT) Thing Description Directory (TDD), and the TD returned by a <code>GET</code> always describes the TDD's interface.
           Details (including normative statements detailing the above) are in the
           <a href="https://www.w3.org/TR/wot-discovery/">WoT Discovery</a> specification.
         </p>
