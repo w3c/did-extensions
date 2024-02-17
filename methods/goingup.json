@@ -1,0 +1,9 @@
+{
+  "name": "goingup",
+  "status": "registered",
+  "verifiableDataRegistry": "Web",
+  "contactName": "Mark Ibanez, Stephania Silva",
+  "contactEmail": "mark@goingup.xyz",
+  "contactWebsite": "https://goingup.xyz",
+  "specification": "https://github.com/w3c-ccg/did-method-web"
+}
