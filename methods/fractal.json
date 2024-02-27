@@ -1,0 +1,9 @@
+{
+  "name": "fractal",
+  "status": "registered",
+  "verifiableDataRegistry": "Fractal Networks",
+  "contactName": "Mo Balaa",
+  "contactEmail": "mo@fractalnetworks.co",
+  "contactWebsite": "https://fractalnetworks.co",
+  "specification": "https://fractalnetworksco.github.io/did-method-fractal/"
+}
