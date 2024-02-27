@@ -1,9 +1,8 @@
 {
   "name": "fractal",
   "status": "registered",
-  "verifiableDataRegistry": "Fractal Networks",
+  "verifiableDataRegistry": "Matrix & Ledger agnostic",
   "contactName": "Mo Balaa",
-  "contactEmail": "mo@fractalnetworks.co",
   "contactWebsite": "https://fractalnetworks.co",
   "specification": "https://fractalnetworksco.github.io/did-method-fractal/"
 }
