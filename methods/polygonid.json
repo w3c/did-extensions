@@ -1,9 +1,9 @@
 {
   "name": "polygonid",
   "status": "registered",
-  "verifiableDataRegistry": "EVM compatible chains. Primary on Polygon",
-  "contactName": "0xPolygonID",
+  "verifiableDataRegistry": "EVM compatible chains. Mainly on Polygon",
+  "contactName": "ZK ID Labs AG, Polygon ID",
   "contactEmail": "",
-  "contactWebsite": "https://polygon.technology/polygon-id",
+  "contactWebsite": "https://www.polygonid.com/",
   "specification": "https://github.com/0xPolygonID/did-polygonid"
 }
