@@ -1,7 +1,7 @@
 {
   "name": "noosphere",
   "status": "registered",
-  "specification": "https://gitlab.com/team-voyant/did-spec",
+  "specification": "https://gitlab.com/noospheretech/did-spec",
   "contactName": "Daniel Zellmer",
   "contactEmail": "daniel@noosphere.tech",
   "contactWebsite": "https://www.noosphere.tech/"
