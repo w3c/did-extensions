@@ -1,0 +1,11 @@
+{
+  // These fields are required
+  "name": "itn",
+  "status": "registered",
+  "specification": "https://github.com/itn-trust/itn-did-spec",
+  // These fields are optional
+  "contactName": "Umed Khudoiberdiev",
+  "contactEmail": "umed@dlt.mobi",
+  "contactWebsite": "https://itn.global/",
+  "verifiableDataRegistry": "Integrated Trust Network"
+}
