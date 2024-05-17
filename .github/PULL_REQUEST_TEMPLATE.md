@@ -4,7 +4,7 @@ Please read these instructions thoroughly in order to ensure that your pull requ
 
 There is a DID Method Registration form below that MUST be included in a DID Method Registration Request. The form includes check boxes that you are expected to fill out when you submit your request.
 
-Once you submit your request, your pull request will be reviewed by the registry editors. Changes regarding the required criteria may be requested. If there are no objections or changes requested, your DID method will be registered after a minimum of 7 days and a maximum of 30 days.
+Once you submit your request, your pull request will be reviewed by the registry editors. Changes regarding the required criteria may be requested. If there are no objections or changes requested, your DID method will be registered after a minimum of 7 days.
 
 ## DID Method Registration Process
 
