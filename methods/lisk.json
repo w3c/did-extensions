@@ -1,9 +1,0 @@
-{
-  "name": "lisk",
-  "status": "registered",
-  "verifiableDataRegistry": "Lisk Sidechain",
-  "contactName": "Aldo Suhartono Putra",
-  "contactEmail": "aldhosutra@gmail.com",
-  "contactWebsite": "https://lisk-did.js.org/",
-  "specification": "https://github.com/aldhosutra/lisk-did/blob/main/packages/lisk-did-module/docs/did-method-spec.md"
-}
