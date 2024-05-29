@@ -2,7 +2,7 @@
   // These fields are required
   "name": "hrdkorea",
   "status": "registered",
-  "specification": "https://github.com/HRDKOR/hrdkorea-did",
+  "specification": "https://hrdkor.github.io/hrdkorea-did/did-method-spec.html",
   // These fields are optional
   "contactName": "HRDKorea",
   "contactEmail": "bcadmin@hrdkorea.or.kr",
