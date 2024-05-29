@@ -5,7 +5,7 @@
   "specification": "https://github.com/HRDKOR/hrdkorea-did",
   // These fields are optional
   "contactName": "HRDKorea",
-  "contactEmail": "",
+  "contactEmail": "bcadmin@hrdkorea.or.kr",
   "contactWebsite": "mo.q-net.or.kr",
   "verifiableDataRegistry": "DID Specification"
 }
