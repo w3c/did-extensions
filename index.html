@@ -1418,7 +1418,7 @@ the Security vocabulary JSON-LD context in the same document.
                 <span class="issue">Normative definition pending</span>
               </td>
               <td>
-                <a href="http://w3id.org/security/suites/x25519-2019/v1">http://w3id.org/security/suites/x25519-2019/v1</a>
+                <a href="https://w3id.org/security/suites/x25519-2019/v1">https://w3id.org/security/suites/x25519-2019/v1</a>
               </td>
             </tr>
           </tbody>
@@ -1615,6 +1615,61 @@ in a service object.
       </section>
 
       <section>
+        <h4>LinkedVerifiablePresentation</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://identity.foundation/linked-vp/">Linked Verifiable Presentation</a>
+              </td>
+              <td>
+                <a href="https://identity.foundation/linked-vp/contexts/v1">Linked Verifiable Presentation</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://identity.foundation/linked-vp/contexts/v1"
+  ],
+  "id": "did:example:123",
+  "verificationMethod": [{
+    "id": "did:example:123#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
+    "type": "JsonWebKey2020",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
+    }
+  }],
+  "service": [
+    {
+      "id": "did:example:123#foo",
+      "type": "LinkedVerifiablePresentation",
+      "serviceEndpoint": ["https://bar.example.com/verifiable-presentation.jsonld"]
+    },
+    {
+      "id": "did:example:123#baz",
+      "type": "LinkedVerifiablePresentation",
+      "serviceEndpoint": "ipfs://bafybeihkoviema7g3gxyt6la7vd5ho32ictqbilu3wnlo3rs7ewhnp7lly/verifiable-presentation.jwt"
+    }
+  ]
+}
+        </pre>
+
+      </section>
+
+      <section>
         <h4>DIDCommMessaging</h4>
         <table class="simple" style="width: 100%;">
           <thead>
@@ -1642,17 +1697,12 @@ in a service object.
       "https://www.w3.org/ns/did/v1",
       "https://didcomm.org/messaging/contexts/v2"
   ],
-  ...
   "type":"DIDCommMessaging",
-  "serviceEndpoint":"http://example.com/path",
-  "accept":[
-      "didcomm/v2",
-      "didcomm/aip2;env=rfc587"
-  ],
-  "routingKeys":[
-      "did:example:somemediator#somekey"
-  ]
-  ...
+  "serviceEndpoint": {
+    "uri": "http://example.com/path",
+    "accept":[ "didcomm/v2", "didcomm/aip2;env=rfc587" ],
+    "routingKeys":[ "did:example:somemediator#somekey" ]
+  }
 }
         </pre>
 
