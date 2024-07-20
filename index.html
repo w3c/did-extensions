@@ -1697,17 +1697,12 @@ in a service object.
       "https://www.w3.org/ns/did/v1",
       "https://didcomm.org/messaging/contexts/v2"
   ],
-  ...
   "type":"DIDCommMessaging",
-  "serviceEndpoint":"http://example.com/path",
-  "accept":[
-      "didcomm/v2",
-      "didcomm/aip2;env=rfc587"
-  ],
-  "routingKeys":[
-      "did:example:somemediator#somekey"
-  ]
-  ...
+  "serviceEndpoint": {
+    "uri": "http://example.com/path",
+    "accept":[ "didcomm/v2", "didcomm/aip2;env=rfc587" ],
+    "routingKeys":[ "did:example:somemediator#somekey" ]
+  }
 }
         </pre>
 
