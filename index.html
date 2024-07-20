@@ -1708,6 +1708,82 @@ in a service object.
 
       </section>
 
+      <section id="wot-discovery-service-type">
+        <h4>Web of Things (WoT) Discovery</h4>
+        <p>The <code>WotThing</code> and <code>WotDirectory</code> endpoints allow publication of service endpoints in a DID document
+          that can be used to fetch Web of Things (WoT) Thing Descriptions (TDs).
+          The <code>WotThing</code> endpoint is a REST service that returns a TD
+          when the <code>GET</code> method is used.  
+          This can be used for self-describing devices or services, or be a service
+          separate from the actual device or service described by the TD.
+          The <code>WotDirectory</code> is also a REST service that returns a TD, but this service is always
+          a Web of Things (WoT) Thing Description Directory (TDD),
+          and the TD returned by a <code>GET</code> always describes the TDD's interface.
+          Details (including normative statements covering the above) are in the
+          <a href="https://www.w3.org/TR/wot-discovery/">WoT Discovery</a> specification.
+        </p>
+
+          <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/wot-discovery/">WoT Discovery</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/2022/wot/discovery-did#WotThing">WotThing</a>
+              </td>
+            </tr><tr>
+              <td>
+                <a href="https://www.w3.org/TR/wot-discovery/">WoT Discovery</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/2022/wot/discovery-did#WotDirectory">WotDirectory</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+<pre class="example" title="Example of WotThing serviceEndpoint properties">
+{
+  "@context":[
+      "https://www.w3.org/ns/did/v1",
+      "https://www.w3.org/2022/wot/discovery-did"
+  ],
+  ...
+  "service": [{
+      "id": "did:example:wotdiscoveryexample#td",
+      "type": "WotThing",
+      "serviceEndpoint":
+          "https://wot.example.com/.well-known/wot"
+  }]
+  ...
+}
+</pre>
+
+<pre class="example" title="Example of WotDirectory serviceEndpoint properties">
+{
+  "@context":[
+      "https://www.w3.org/ns/did/v1",
+      "https://www.w3.org/2022/wot/discovery-did"
+  ],
+  ...
+  "service": [{
+      "id": "did:example:wotdiscoveryexample#tdd",
+      "type": "WotDirectory",
+      "serviceEndpoint":
+          "https://wot.example.com/tdd"
+  }]
+  ...
+}
+</pre>
+        
+    </section>
+
       <section>
         <h4>CredentialRegistry</h4>
         <p>The <code>CredentialRegistry</code> endpoint allows publication of a dedicated service endpoint in a DID document, through which verifiable credentials can be queried. Each registry endpoint is a REST endpoint. When a `GET` request is sent to the URI formed by appending the <code>credentialSubject.id</code> as a URL-encoded string to the given endpoint URI, the registry MUST return an array of verifiable credentials associated with the subject ID. A sample registry endpoint can be found <a href="https://ssi.eecc.de/api/registry/swagger/#/Credentials/get_api_registry_vcs__id_">here</a>.</p>
@@ -1790,7 +1866,6 @@ $ curl 'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1' -H '
             </tr>
           </tbody>
         </table>
-
         <pre class="example" title="Example of service and serviceEndpoint properties">
 {
   ...
