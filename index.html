@@ -126,7 +126,7 @@ var respecConfig = {
 <body>
   <section id='abstract'>
     <p>
-This document serves as an official registry for all known global parameters,
+This document serves as a repository for all known global parameters,
 properties, and values used by the Decentralized Identifier ecosystem.
     </p>
   </section>
@@ -134,8 +134,8 @@ properties, and values used by the Decentralized Identifier ecosystem.
   <section id='sotd'>
 
     <p>
-This registry is under active development and implementers are advised
-against using the registry unless they are directly involved with the
+This repository is under active development and implementers are advised
+against using the repository unless they are directly involved with the
 W3C DID Working Group.
     </p>
 
@@ -159,7 +159,7 @@ and no official endorsement should be inferred.
     </p>
 
     <p>
-Work on this registry has also been supported by the Rebooting the
+Work on this repository has also been supported by the Rebooting the
 Web of Trust community facilitated by Christopher Allen, Shannon
 Appelcline, Kiara Robles, Brian Weller, Betty Dhamers, Kaliya Young,
 Kim Hamilton Duffy, Manu Sporny, Drummond Reed, Joe Andrieu, and
@@ -171,26 +171,30 @@ Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
     <h1>Introduction</h1>
 
     <p>
-This document serves as an official registry for all known global parameters,
+This document serves as an official repository for all known global parameters,
 properties, and values used by the Decentralized Identifier ecosystem.
     </p>
+
+  <section id="conformance"></section>
+
+  </section>
 
   <section>
     <h1>The Registration Process</h1>
     <p>
 Software implementers might find that the existing Decentralized Identifier Core
 specification [[DID-CORE]] is not entirely capable of addressing their use case
-and might need to add a new parameters, properties, or values to this registry
+and might need to add a new parameters, properties, or values to this repository
 in order to achieve their use case in a globally interoperable fashion. In order
-to add a new parameter, property, or value to this registry, an implementer MUST
-submit a modification request for this registry, as a pull request on the
-repository where this registry is hosted, where the modification request adheres
+to add a new parameter, property, or value to this repository, an implementer MUST
+submit a modification request for this repository, as a pull request on the
+repository where this repository is hosted, where the modification request adheres
 to the following policies:
     </p>
 
     <ol>
       <li>
-Any addition to the DID Core Registries MUST specify a human readable
+Any addition to the DID Extensions MUST specify a human readable
 description of the addition.
       </li>
       <li>
@@ -217,12 +221,12 @@ additions include any containing racist language, technologies used to
 persecute minority populations, and unconsented pervasive tracking.
       </li>
       <li>
-Any addition to the DID Core Registries MUST link, via at least a URL,
+Any addition to the DID Extensions MUST link, via at least a URL,
 preferably a content-integrity protected one, to the defining specification so
 that implementers can implement the property.
       </li>
       <li>
-Any addition to the DID Core Registries that is a property or value, MUST
+Any addition to the DID Extensions that is a property or value, MUST
 specify a machine readable JSON-LD Context for the addition.
         <ul>
           <li>
@@ -249,18 +253,18 @@ feature to eliminate the possibility of term conflicts.
         </ul>
       </li>
       <li>
-Properties in the DID Core Registries MUST NOT be removed, only deprecated.
+Properties in the DID Extensions MUST NOT be removed, only deprecated.
       </li>
     </ol>
 
     <p>
 The Editors of the DID Specification Registries MUST consider all of the
-policies above when reviewing additions to the registry and MUST reject registry
+policies above when reviewing additions to the repository and MUST reject repository
 entries if they violate any of the policies in this section. Entities
 registering additions can challenge rejections first with the W3C DID Working
 Group and then, if they are not satisfied with the outcome, with the W3C Staff.
 W3C Staff need not be consulted on changes to the DID Specification Registries,
-but do have the final authority on registry contents. This is to ensure that W3C
+but do have the final authority on repository contents. This is to ensure that W3C
 can adequately respond to time sensitive legal, privacy, security, moral, or
 other pressing concerns without putting an undue operational burden on W3C
 Staff.
@@ -268,7 +272,7 @@ Staff.
 
     <p>
 Entries that are identified to cause interoperability problems MAY be marked as
-such at the discretion of the maintainers of this registry, and if possible,
+such at the discretion of the maintainers of this repository, and if possible,
 after consultation with the entry maintainer.
     </p>
 
@@ -277,10 +281,6 @@ Any submission to the registries that meet all the criteria listed above will be
 accepted for inclusion. These registries enumerate all known mechanisms that
 meet a minimum bar, without choosing between them.
     </p>
-  </section>
-
-  <section id="conformance"></section>
-
   </section>
 
   <section>
