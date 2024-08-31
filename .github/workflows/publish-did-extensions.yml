@@ -5,7 +5,7 @@ on:
       - main
 
 jobs:
-  publish-did-spec-registries:
+  publish-did-extensions:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code...
@@ -14,13 +14,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
-      - name: Install did-spec-registries tooling...
+      - name: Install did-extensions tooling...
         working-directory: tooling
         run: npm i
-      - name: Validate did-spec-registries DID method entries
+      - name: Validate did-extensions DID method entries
         working-directory: tooling
         run: npm run registry:validate
-      - name: Generate did-spec-registries registry index
+      - name: Generate did-extensions registry index
         working-directory: tooling
         run: npm run registry:generate:index
       - name: Deploy to Github Pages
