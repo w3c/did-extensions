@@ -14,7 +14,7 @@ const getAllRegistryEntries = () =>{
     const files = fs.readdirSync(didMethodRegistryDirectory);
     const entries = files.filter((file)=>{
         // ignore the index file.
-        return file !== 'index.json';
+        return !(['index.html', 'index.json'].includes(file));
     }).map((file) => {
         const fileContent = fs.readFileSync(path.join(didMethodRegistryDirectory, file)).toString();
         let didMethod = {
