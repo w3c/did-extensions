@@ -1,24 +1,27 @@
 ![W3C Logo](https://www.w3.org/Icons/w3c_home)
 
-[![Echidna Auto-publish](https://github.com/w3c/did-spec-registries/actions/workflows/auto-publish.yml/badge.svg)](https://github.com/w3c/did-spec-registries/actions/workflows/auto-publish.yml)
+[![Echidna Auto-publish](https://github.com/w3c/did-extensions/actions/workflows/auto-publish.yml/badge.svg)](https://github.com/w3c/did-extensions/actions/workflows/auto-publish.yml)
 
-# Decentralized Identifier Core Registries v1.0
+# Decentralized Identifier Extensions
 
-This repository contains a registry created by the
+This repository contains a list of known DID Extensions that are tracked
+by the
 [W3C Decentralized Identifier Working Group](https://www.w3.org/2019/did-wg/)
-(DID WG) for the purpose of enhancing DID ecosystem interoperability.
+(DID WG) for the purpose of enhancing DID ecosystem interoperability. There
+might be extensions to DIDs other than the ones listed here; this is not
+meant to be an exhaustive or centralized list of extensions.
 
 An Editor's Draft of this repository is available at
-https://w3c.github.io/did-spec-registries/.
+https://w3c.github.io/did-extensions/.
 
-## Adding a DID Method to this Registry
+## Adding a DID Method
 
-In order to register a new DID method, you must add a JSON file 
-to the [./methods](./methods) directory and 
-[open a pull request](https://github.com/w3c/did-spec-registries/pulls) 
+In order to register a new DID method, you must add a JSON file
+to the [./methods](./methods) directory and
+[open a pull request](https://github.com/w3c/did-extensions/pulls)
 to add the file to this repository.
 
-Here is an [example registration entry](https://w3c.github.io/did-spec-registries/methods/example.json):
+Here is an [example registration entry](https://w3c.github.io/did-extensions/methods/example.json):
 
 ```jsonc
 {
@@ -34,19 +37,19 @@ Here is an [example registration entry](https://w3c.github.io/did-spec-registrie
 }
 ```
 
-Your Pull Request will be automatically validated, please ensure 
-that all of the automated tests pass (no errors reported) or 
-your submission will not be reviewed. Common reasons for failed 
-validation includes invalidly formatted JSON files and missing 
-mandatory fields. There will be a checklist that you are expected 
-to complete and attest to its accuracy. Once you submit your request, 
-your pull request will be reviewed by the registry editors. Changes 
-regarding the required criteria may be requested. If there are at 
-least two reviews by registry maintainers listed in the CODEOWNERS file, and no objections or 
-changes requested, your DID method will be registered after a 
+Your Pull Request will be automatically validated, please ensure
+that all of the automated tests pass (no errors reported) or
+your submission will not be reviewed. Common reasons for failed
+validation includes invalidly formatted JSON files and missing
+mandatory fields. There will be a checklist that you are expected
+to complete and attest to its accuracy. Once you submit your request,
+your pull request will be reviewed by the registry editors. Changes
+regarding the required criteria may be requested. If there are at
+least two reviews by registry maintainers listed in the CODEOWNERS file, and no objections or
+changes requested, your DID method will be registered after a
 minimum of 7 days and a maximum of 30 days.
 
-## Adding Anything Else to this Registry
+## Adding Anything Else
 
 Use the standard fork, branch, and pull request workflow to propose changes to
 the registry. Please make branch names informative—by including the issue or
@@ -56,7 +59,7 @@ Editorial changes that improve the readability of the registry or correct
 spelling or grammatical mistakes are welcome.
 
 Non-editorial changes MUST go through a review and approval process that is
-[detailed in the registry](https://w3c.github.io/did-spec-registries/#the-registration-process).
+[detailed in the registry](https://w3c.github.io/did-extensions/#the-registration-process).
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md), about licensing contributions.
 

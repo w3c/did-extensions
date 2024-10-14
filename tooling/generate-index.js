@@ -13,7 +13,7 @@ const indexFile = path.join(methodsDir, 'index.json');
   process.stdout.write('Processing:');
   fs.readdirSync(methodsDir).forEach(filename => {
     // skip index file
-    if(filename === 'index.json') {
+    if(['index.html', 'index.json'].includes(filename)) {
       return;
     }
 
