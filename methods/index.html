@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>
-Decentralized Identifier Extensions
+DID Methods
   </title>
   <meta content='text/html; charset=utf-8' http-equiv='Content-Type'><!--
     === NOTA BENE ===
@@ -10,9 +10,49 @@ Decentralized Identifier Extensions
     out in the same tree and use relative links so that they'll work offline.
    -->
 
- <script class='remove'
-   src='https://www.w3.org/Tools/respec/respec-w3c'></script>
-  <script class="remove" type="text/javascript">
+  <script class='remove' src='https://www.w3.org/Tools/respec/respec-w3c'></script>
+  <script class='remove'>
+/* Build DID Method table using JSON data */
+async function buildDidMethodTables(config) {
+  const {document} = window;
+  const response = await fetch('index.json');
+  if(response.status !== 200) {
+    throw new Error('Failed retrieve DID Method index.json file.');
+  }
+  const allMethods = await response.json();
+
+  // set up the API summary table headers
+  const table = document.getElementById('did-method-table');
+  const tableHeader = document.createElement('thead');
+  tableHeader.innerHTML = '<th>DID&nbsp;Method</th><th>Registry</th>' +
+    '<th>Contact</th>';
+  table.appendChild(tableHeader);
+
+  // summarize each API endpoint
+  const tableBody = document.createElement('tbody');
+  for(const method of allMethods) {
+    const tableRow = document.createElement('tr');
+    const {name, verifiableDataRegistry, contactEmail, contactName,
+      contactWebsite, specification} = method;
+    let contactInfo = contactName;
+    if(contactEmail) {
+      contactInfo += ` (<a href="mailto:${contactEmail}">email</a>)`;
+    }
+    if(contactWebsite) {
+      contactInfo += ` (<a href="${contactWebsite}">website</a>)`;
+    }
+    tableRow.innerHTML =
+      `<td><a href="${specification}">${name}</a></td>` +
+      `<td>${verifiableDataRegistry}</td>` +
+      `<td>${contactInfo}</td>`;
+    tableBody.appendChild(tableRow);
+  }
+  table.appendChild(tableBody);
+
+}
+window.buildDidMethodTables = buildDidMethodTables;
+     </script>
+     <script class="remove" type="text/javascript">
 var respecConfig = {
   wgPublicList: "public-did-wg",
   group: "did",
@@ -21,12 +61,12 @@ var respecConfig = {
   specStatus: "NOTE",
 
   // the specification's short name, as in http://www.w3.org/TR/short-name/
-  shortName: "did-extensions",
+  shortName: "did-extensions/methods",
 
-  edDraftURI: "https://w3c.github.io/did-extensions/",
+  edDraftURI: "https://w3c.github.io/did-extensions/methods/",
 
   // subtitle
-  subtitle: "Known Extensions for the Decentralized Identifier Ecosystem",
+  subtitle: "Known DID Methods in the Decentralized Identifier Ecosystem",
 
   // if you wish the publication date to be other than today, set this
   //publishDate:  "2019-11-07",
@@ -37,9 +77,10 @@ var respecConfig = {
   // previousMaturity:  "WD",
 
   // extend the bibliography entries
+
   github: {
-          repoURL: "https://github.com/w3c/did-extensions/",
-          branch: "main"
+    repoURL: "https://github.com/w3c/did-extensions/",
+    branch: "main"
   },
   includePermalinks: false,
 
@@ -134,7 +175,18 @@ var respecConfig = {
       href: "https://www.w3.org/TR/did-use-cases/"
     }]
   }],
-  postProcess: []
+  postProcess: [window.buildDidMethodTables],
+  localBiblio: {
+    "DID-EXTENSIONS": {
+      title: "Decentralized Identifier Extensions",
+      href: "https://www.w3.org/TR/did-extensions/",
+      authors: [
+        "Manu Sporny",
+      ],
+      status: "NOTE",
+      publisher: "Decentralized Identifier Working Group"
+    }
+  }
 };
   </script>
   <style>
@@ -169,18 +221,11 @@ var respecConfig = {
 <body>
   <section id='abstract'>
     <p>
-This document serves as a repository for all known global parameters,
-properties, and values used by the Decentralized Identifier ecosystem.
+This document serves as a collection of known DID Methods.
     </p>
   </section>
 
   <section id='sotd'>
-
-    <p>
-This repository is under active development and implementers are advised
-against using the repository unless they are directly involved with the
-W3C DID Working Group.
-    </p>
 
     <p>
 Comments regarding this document are welcome. Please file issues
@@ -202,7 +247,7 @@ and no official endorsement should be inferred.
     </p>
 
     <p>
-Work on this repository has also been supported by the Rebooting the
+Work on this registry has also been supported by the Rebooting the
 Web of Trust community facilitated by Christopher Allen, Shannon
 Appelcline, Kiara Robles, Brian Weller, Betty Dhamers, Kaliya Young,
 Kim Hamilton Duffy, Manu Sporny, Drummond Reed, Joe Andrieu, and
@@ -214,154 +259,42 @@ Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
     <h1>Introduction</h1>
 
     <p>
-This document serves as an official repository for all known global parameters,
-properties, and values used by the Decentralized Identifier ecosystem.
+This document serves as a collection of known DID Methods.
     </p>
 
-  <section id="conformance"></section>
+    <section>
+      <h1>The Registration Process</h1>
+      <p>
+The registration process is described in the [[[DID-EXTENSIONS]]].
+      </p>
+    </section>
+
+    <section id="conformance"></section>
 
   </section>
 
   <section>
-    <h1>The Registration Process</h1>
-    <p>
-Software implementers might find that the existing Decentralized Identifier Core
-specification [[DID-CORE]] is not entirely capable of addressing their use case
-and might need to add a new parameters, properties, or values to this repository
-in order to achieve their use case in a globally interoperable fashion. In order
-to add a new parameter, property, or value to this repository, an implementer MUST
-submit a modification request for this repository, as a pull request on the
-repository where this repository is hosted, where the modification request adheres
-to the following policies:
-    </p>
-
-    <ol>
-      <li>
-Any addition to the DID Extensions MUST specify a human readable
-description of the addition.
-      </li>
-      <li>
-Any name or value of a property or parameter MUST be indicative of
-its function. Avoid generic terms such as "myProperty" or "foo".
-      </li>
-      <li>
-Any method name SHOULD avoid generic terms such as "mymethod" or "registry".
-      </li>
-      <li>
-If there are copyright, trademark, or any intellectual property rights
-concerns, the addition and use MUST be authorized in writing by the intellectual
-property rights holder under a
-<a href="https://en.wikipedia.org/wiki/Reasonable_and_non-discriminatory_licensing">F/RAND</a>
-license. Examples include DID Methods that use trademarked brand names,
-property names that utilize the titles of copyrighted works, and patented
-technology that would cause the use of the extension to require licensing a
-patent.
-      </li>
-      <li>
-Any addition MUST NOT create unreasonable legal, security, moral, or privacy
-issues that will result in direct harm to others. Examples of unacceptable
-additions include any containing racist language, technologies used to
-persecute minority populations, and unconsented pervasive tracking.
-      </li>
-      <li>
-Any addition to the DID Extensions MUST link, via at least a URL,
-preferably a content-integrity protected one, to the defining specification so
-that implementers can implement the property.
-      </li>
-      <li>
-Any addition to the DID Extensions that is a property or value, MUST
-specify a machine readable JSON-LD Context for the addition.
-        <ul>
-          <li>
-The JSON-LD Context MUST be included in full as part of the submission.
-          </li>
-          <li>
-A namespace URI MUST be provided for the JSON-LD Context so that consumer
-implementations can consistently map a URI to the full context.
-          </li>
-          <li>
-The URI provided MUST be persistent, and link all terms to their associated
-human readable descriptions.
-          </li>
-          <li>
-The URI provided SHOULD resolve or link to the full context contents.
-          </li>
-          <li>
-JSON-LD Contexts MUST be versioned and MUST NOT be date stamped.
-          </li>
-          <li>
-JSON-LD Contexts SHOULD use scoped terms and MUST use the <code>@protected</code>
-feature to eliminate the possibility of term conflicts.
-          </li>
-        </ul>
-      </li>
-      <li>
-Properties in the DID Extensions MUST NOT be removed, only deprecated.
-      </li>
-    </ol>
+    <h1>DID Methods</h1>
 
     <p>
-The Editors of the DID Specification Registries MUST consider all of the
-policies above when reviewing additions to the repository and MUST reject repository
-entries if they violate any of the policies in this section. Entities
-registering additions can challenge rejections first with the W3C DID Working
-Group and then, if they are not satisfied with the outcome, with the W3C Staff.
-W3C Staff need not be consulted on changes to the DID Specification Registries,
-but do have the final authority on repository contents. This is to ensure that W3C
-can adequately respond to time sensitive legal, privacy, security, moral, or
-other pressing concerns without putting an undue operational burden on W3C
-Staff.
+This table summarizes the DID method specifications currently in development.
+The links will be updated as subsequent Implementer’s Drafts are produced.
+This registry does not act as an endorsement of any particular DID method or its
+underlying technologies by the W3C, the W3C Decentralized Identifier Working Group,
+or any affiliated members of the W3C. It exists as a mechanism for developers to
+discover various DID methods that they might wish to implement.
     </p>
-
     <p>
-Entries that are identified to cause interoperability problems MAY be marked as
-such at the discretion of the maintainers of this repository, and if possible,
-after consultation with the entry maintainer.
+The normative requirements for DID method specifications can be found in
+<a href="https://www.w3.org/TR/did-core/#methods">Decentralized Identifiers
+v1.0: Methods</a> [[DID-CORE]]. DID methods that do not meet these requirements
+will not be accepted. We encourage DID method authors to provide an email
+address in the Author Links column, as this helps with maintenance.
+If an email address is omitted, a label noting that there is no
+contact information for the author will be applied to the registry entry.
     </p>
 
-    <p>
-Any submission to the registries that meet all the criteria listed above will be
-accepted for inclusion. These registries enumerate all known mechanisms that
-meet a minimum bar, without choosing between them.
-    </p>
-  </section>
-
-  <section>
-    <h1>Extensions</h1>
-
-    <p>
-The following documents list known extensions to the DID Ecosystem:
-    </p>
-
-    <table class="simple">
-      <thead>
-        <th>Document</th>
-        <th>Description</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-<a href="properties/">Property&nbsp;and&nbsp;Value&nbsp;Extensions</a>
-          </td>
-          <td>Extensions to DID Document properties and values.</td>
-        </tr>
-        <tr>
-          <td>
-<a href="resolution/">Resolution&nbsp;Extensions</a>
-          </td>
-          <td>Extensions to DID Resolution parameters and results.</td>
-        </tr>
-        <tr>
-          <td>
-<a href="methods/">DID&nbsp;Methods</a>
-          </td>
-          <td>
-Ephemeral, distributed, and fully decentralized mechanisms for supporting
-Decentralized Identifiers across a variety of technology platforms.
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <table id="did-method-table" class="simple"></table>
 
   </section>
 
