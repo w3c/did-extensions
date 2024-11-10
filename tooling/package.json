@@ -9,8 +9,8 @@
     "js-yaml": "^4.1.0"
   },
   "scripts": {
-    "registry:validate": "node ./validate-registry.js",
-    "registry:generate:index": "node ./generate-index.js"
+    "generate": "node ./generate-index.js",
+    "validate": "node ./validate-registry.js"
   },
   "author": "Manu Sporny <msporny@digitalbazaar.com> (https://manu.sporny.org/)",
   "contributors": [
