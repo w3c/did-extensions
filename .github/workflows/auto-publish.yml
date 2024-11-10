@@ -6,27 +6,27 @@ on:
 jobs:
   main:
     name: Build, Validate and Deploy
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Begin spec-prod...
-        uses: actions/checkout@v2
-      - name: Setup Node 16...
-        uses: actions/setup-node@v1
+        uses: actions/checkout@v4
+      - name: Setup Node 22...
+        uses: actions/setup-node@v4
         with:
-          node-version: 16.x
-      - name: Install did-spec-registries tooling...
+          node-version: 22.x
+      - name: Install did-extensions tooling...
         working-directory: tooling
         run: npm i
-      - name: Validate did-spec-registries DID method entries
+      - name: Validate did-extensions DID method entries
         working-directory: tooling
-        run: npm run registry:validate
-      - name: Generate did-spec-registries registry index
+        run: npm run validate
+      - name: Generate did-extensions registry index
         working-directory: tooling
-        run: npm run registry:generate:index
+        run: npm run generate
       - uses: w3c/spec-prod@v2
         with:
           W3C_ECHIDNA_TOKEN: ${{ secrets.W3C_TR_TOKEN }}
           W3C_WG_DECISION_URL: https://www.w3.org/2019/did-wg/Meetings/Minutes/2020-06-09-did#resolution1
           W3C_BUILD_OVERRIDE: |
-             shortName: did-spec-registries
+             shortName: did-extensions
              specStatus: NOTE
