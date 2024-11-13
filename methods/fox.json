@@ -1,0 +1,9 @@
+{
+  "name": "fox",
+  "status": "registered",
+  "specification": "https://github.com/qikfox/fox-did-method/blob/main/README.md",
+  "contactName": "qikfox Cybersecurity Systems",
+  "contactEmail": "devs@qikfox.com",
+  "contactWebsite": "https://www.qikfox.com/",
+  "verifiableDataRegistry": "Trustnet"
+}
