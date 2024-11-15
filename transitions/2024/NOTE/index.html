@@ -22,11 +22,11 @@ dfn{cursor:pointer}
 .dfn-panel li{margin-left:1em}
 .dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
 </style>
-  
-<title>Decentralized Identifier Extensions</title>
-  
 
- 
+<title>Decentralized Identifier Extensions</title>
+
+
+
 <style id="respec-mainstyle">
 @keyframes pop{
 0%{transform:scale(1,1)}
@@ -71,8 +71,8 @@ dd{margin-left:0}
 .removeOnSave{display:none}
 }
 </style>
-  
-  
+
+
 <style>
 
     .label-legend dd{
@@ -101,7 +101,7 @@ dd{margin-left:0}
     -ms-user-select: none;
     user-select: none;
   }
-  
+
 </style>
 
 <meta name="color-scheme" content="light">
@@ -222,14 +222,14 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               </dd>
         <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/did-extensions/">https://w3c.github.io/did-extensions/</a></dd>
         <dt>History:</dt><dd>
-                    <a href="https://www.w3.org/standards/history/did-extensions/">https://www.w3.org/standards/history/did-extensions/</a>
+                    <a data-previous-shortname="did-spec-registries" href="https://www.w3.org/standards/history/did-extensions/">https://www.w3.org/standards/history/did-extensions/</a>
                   </dd><dd>
                     <a href="https://github.com/w3c/did-extensions/commits/main">Commit history</a>
                   </dd>
-        
-        
-        
-        
+
+
+
+
         <dt>Latest Recommendation:</dt><dd><a href="https://www.w3.org/TR/did-spec-registries">https://www.w3.org/TR/did-spec-registries</a></dd>
         <dt>Editors:</dt><dd class="editor p-author h-card vcard" data-editor-id="41758">
     <a class="u-url url p-name fn" href="https://www.linkedin.com/in/manusporny/">Manu Sporny</a> (<a class="p-org org h-org" href="https://digitalbazaar.com/">Digital Bazaar</a>) (2017-present)
@@ -249,7 +249,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       .st1 {
         fill: #fff;
       }
-    
+
 </style>
     <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z" fill="#a6ce39"></path>
     <path class="st1" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"></path>
@@ -264,7 +264,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         <a href="https://github.com/w3c/did-extensions/issues/new/choose">new issue</a>,
         <a href="https://github.com/w3c/did-extensions/issues/">open issues</a>)
       </dd><dd><a href="mailto:public-did-wg@w3.org?subject=%5Bdid-extensions%5D%20YOUR%20TOPIC%20HERE">public-did-wg@w3.org</a> with subject line <kbd>[did-extensions] <em>… message topic …</em></kbd> (<a rel="discussion" href="https://lists.w3.org/Archives/Public/public-did-wg">archives</a>)</dd>
-        
+
         <dt>Related Documents</dt><dd>
     <a href="https://www.w3.org/TR/did-core/">DID Core</a>
   </dd><dd>
@@ -274,13 +274,13 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   </dd>
       </dl>
     </details>
-    
-    
+
+
     <p class="copyright">
     <a href="https://www.w3.org/policies/#copyright">Copyright</a>
     ©
     2024
-    
+
     <a href="https://www.w3.org/">World Wide Web Consortium</a>.
     <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup>
     <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>,
@@ -337,7 +337,7 @@ Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
   <p>
     This document was published by the <a href="https://www.w3.org/groups/wg/did">Decentralized Identifier Working Group</a> as
     a Group Note using the
-        <a href="https://www.w3.org/policies/process/20231103/#recs-and-notes">Note track</a>. 
+        <a href="https://www.w3.org/policies/process/20231103/#recs-and-notes">Note track</a>.
   </p><p>This Group Note is endorsed by
         the <a href="https://www.w3.org/groups/wg/did">Decentralized Identifier Working Group</a>, but is not endorsed by
         <abbr title="World Wide Web Consortium">W3C</abbr> itself nor its
@@ -345,23 +345,23 @@ Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
     This is a draft document and may be updated, replaced or obsoleted by other
     documents at any time. It is inappropriate to cite this document as other
     than work in progress.
-    
+
   </p><p data-deliverer="117488">
-    
+
         The
         <a href="https://www.w3.org/policies/patent-policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent
           Policy</a>
         does not carry any licensing requirements or commitments on this
         document.
-      
-    
+
+
   </p><p>
                       This document is governed by the
                       <a id="w3c_process_revision" href="https://www.w3.org/policies/process/20231103/">03 November 2023 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
                     </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1.1 </bdi>Conformance</a></li></ol></li><li class="tocline"><a class="tocxref" href="#the-registration-process"><bdi class="secno">2. </bdi>The Registration Process</a></li><li class="tocline"><a class="tocxref" href="#extensions"><bdi class="secno">3. </bdi>Extensions</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li></ol></li></ol></nav>
 
   <section class="informative" id="introduction"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#introduction" aria-label="Permalink for Section 1."></a></div><p><em>This section is non-normative.</em></p>
-    
+
 
     <p>
 This document serves as an official repository for all known global parameters,
@@ -379,7 +379,7 @@ properties, and values used by the Decentralized Identifier ecosystem.
   </section>
 
   <section id="the-registration-process"><div class="header-wrapper"><h2 id="x2-the-registration-process"><bdi class="secno">2. </bdi>The Registration Process</h2><a class="self-link" href="#the-registration-process" aria-label="Permalink for Section 2."></a></div>
-    
+
     <p>
 Software implementers might find that the existing Decentralized Identifier Core
 specification [<cite><a class="bibref" data-link-type="biblio" href="#bib-did-core" title="Decentralized Identifiers (DIDs) v1.0">DID-CORE</a></cite>] is not entirely capable of addressing their use case
@@ -483,7 +483,7 @@ meet a minimum bar, without choosing between them.
   </section>
 
   <section id="extensions"><div class="header-wrapper"><h2 id="x3-extensions"><bdi class="secno">3. </bdi>Extensions</h2><a class="self-link" href="#extensions" aria-label="Permalink for Section 3."></a></div>
-    
+
 
     <p>
 The following documents list known extensions to the DID Ecosystem:
@@ -524,7 +524,7 @@ Decentralized Identifiers across a variety of technology platforms.
 
 
 <section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-references"><bdi class="secno">A. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix A.1"></a></div>
-    
+
     <dl class="bibliography"><dt id="bib-did-core">[DID-CORE]</dt><dd>
       <a href="https://www.w3.org/TR/did-core/"><cite>Decentralized Identifiers (DIDs) v1.0</cite></a>. Manu Sporny; Amy Guy; Markus Sabadello; Drummond Reed.  W3C. 19 July 2022. W3C Recommendation. URL: <a href="https://www.w3.org/TR/did-core/">https://www.w3.org/TR/did-core/</a>
     </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
