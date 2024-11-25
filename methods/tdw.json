@@ -1,0 +1,9 @@
+{
+    "name": "tdw",
+    "status": "registered",
+    "verifiableDataRegistry": "Trusted Digital Web",
+    "contactName": "Web 7.0 Foundation",
+    "contactEmail": "mwherman@parallelspace.net",
+    "contactWebsite": "https://did-tdw.directory",
+    "specification": "https://github.com/Web7Foundation/Specifications/blob/main/methods/did-tdw-1-0-1.md"
+}
