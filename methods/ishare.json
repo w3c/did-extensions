@@ -1,9 +1,7 @@
 {
-  // These fields are required
   "name": "ishare",
   "status": "registered",
   "specification": "https://did.ishare.eu/",
-  // These fields are optional
   "contactName": "Rajiv Rajani",
   "contactEmail": "support@ishare.eu",
   "contactWebsite": "https://ishare.eu/",
