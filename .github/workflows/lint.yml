@@ -7,17 +7,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code...
-        uses: actions/checkout@v2
-      - name: Setup Node 16...
-        uses: actions/setup-node@v2
+        uses: actions/checkout@v4
+      - name: Setup Node 22...
+        uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version: 22.x
       - name: Install did-extensions tooling...
         working-directory: tooling
         run: npm i
       - name: Validate did-extensions DID method entries
         working-directory: tooling
-        run: npm run registry:validate
+        run: npm run validate
       - name: Generate did-extensions registry index
         working-directory: tooling
-        run: npm run registry:generate:index
+        run: npm run generate
