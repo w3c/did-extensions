@@ -1,0 +1,9 @@
+{
+  "name": "tr",
+  "status": "registered",
+  "specification": "OUR DID METHOD SPEC- https://w3c-ccg.github.io/did-spec/",
+  "contactName": "TUBITAK BILGEM Blockchain Laboratory",
+  "contactEmail": "bagyonetici@tubitak.gov.tr"
+  "contactWebsite": "https://ssiturkiye.bag.org.tr"
+  "verifiableDataRegistry": "https://github.com/bzlab/ssi-turkiye-spec/blob/main/DID%20Method%20Registration/TR%20SSI%20DID%20Spec%20ReadMe.md"
+}
