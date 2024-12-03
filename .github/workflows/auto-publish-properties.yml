@@ -1,0 +1,21 @@
+# .github/workflows/pr-push.yml
+name: Echidna Auto-publish did-extensions-properties
+on:
+  push:
+    branches: [main]
+    paths: ["properties/**"]
+jobs:
+  main:
+    name: Echidna Auto-publish WD
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: w3c/spec-prod@v2
+        with:
+          SOURCE: properties/index.html
+          TOOLCHAIN: respec
+          W3C_ECHIDNA_TOKEN: ${{ secrets.ECHIDNA_TOKEN_PROPERTIES }}
+          W3C_WG_DECISION_URL: https://www.w3.org/2024/09/24-did-minutes.html#r02
+          W3C_BUILD_OVERRIDE: |
+             shortName: did-extensions-properties
+             specStatus: NOTE
