@@ -1,5 +1,5 @@
 # .github/workflows/pr-push.yml
-name: Echidna Auto-publish
+name: Echidna Auto-publish did-extensions
 on:
   push:
     branches: [main]
@@ -25,8 +25,10 @@ jobs:
         run: npm run generate
       - uses: w3c/spec-prod@v2
         with:
-          #W3C_ECHIDNA_TOKEN: ${{ secrets.W3C_TR_TOKEN }}
-          W3C_WG_DECISION_URL: https://www.w3.org/2019/did-wg/Meetings/Minutes/2020-06-09-did#resolution1
+          SOURCE: index.html
+          TOOLCHAIN: respec
+          W3C_ECHIDNA_TOKEN: ${{ secrets.ECHIDNA_TOKEN_EXTENSIONS }}
+          W3C_WG_DECISION_URL: https://www.w3.org/2024/09/24-did-minutes.html#r02
           W3C_BUILD_OVERRIDE: |
              shortName: did-extensions
              specStatus: NOTE
