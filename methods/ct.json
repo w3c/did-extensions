@@ -1,0 +1,9 @@
+{
+  "name": "ct",
+  "status": "registered",
+  "verifiableDataRegistry": "Circular Trust",
+  "contactName": "",
+  "contactEmail": "sysadmin@blueroominnovation.com",
+  "contactWebsite": "https://circulartrust.eu/",
+  "specification": "https://github.com/blueroominnovation/did-ct-spec"
+}

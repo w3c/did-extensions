@@ -1,0 +1,9 @@
+{
+  "name": "bsv",
+  "status": "registered",
+  "verifiableDataRegistry": "BSV",
+  "contactName": "Thomas Moretti",
+  "contactEmail": "t.moretti@nchain.com",
+  "contactWebsite": "https://www.nchain.com/",
+  "specification": "https://github.com/nchain-research/nChain-Identity-bsvdid-method"
+}

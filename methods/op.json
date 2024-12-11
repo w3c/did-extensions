@@ -1,0 +1,9 @@
+{
+  "name": "op",
+  "status": "registered",
+  "verifiableDataRegistry": "Ocean Protocol",
+  "contactName": "Ocean Protocol",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/oceanprotocol/OEPs/blob/master/7/v0.2/README.md"
+}

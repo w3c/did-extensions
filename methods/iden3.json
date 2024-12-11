@@ -1,0 +1,9 @@
+{
+  "name": "iden3",
+  "status": "registered",
+  "verifiableDataRegistry": "EVM compatible chains",
+  "contactName": "ZK ID Labs AG, Polygon ID",
+  "contactEmail": "",
+  "contactWebsite": "https://www.polygonid.com/",
+  "specification": "https://github.com/0xPolygonID/did-polygonid"
+}

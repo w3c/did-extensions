@@ -1,0 +1,9 @@
+{
+  "name": "io",
+  "status": "registered",
+  "verifiableDataRegistry": "IoTeX",
+  "contactName": "IoTeX Foundation",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/iotexproject/iotex-did/blob/master/README.md"
+}
