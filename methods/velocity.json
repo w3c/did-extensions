@@ -1,0 +1,9 @@
+{
+  "name": "velocity",
+  "status": "registered",
+  "specification": "https://github.com/velocitycareerlabs/did-velocity/blob/main/spec.md",
+  "contactName": "Velocity Network Foundation",
+  "contactEmail": "support@velocitynetwork.foundation",
+  "contactWebsite": "velocitynetwork.foundation",
+  "verifiableDataRegistry": "velocitynetwork"
+}
