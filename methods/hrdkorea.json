@@ -1,0 +1,11 @@
+{
+  // These fields are required
+  "name": "hrdkorea",
+  "status": "registered",
+  "specification": "https://github.com/HRDKOR/hrdkorea-did",
+  // These fields are optional
+  "contactName": "HRDKorea",
+  "contactEmail": "",
+  "contactWebsite": "mq.q-net.or.kr",
+  "verifiableDataRegistry": "DID Specification"
+}
