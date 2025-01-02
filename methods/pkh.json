@@ -1,0 +1,9 @@
+{
+  "name": "pkh",
+  "status": "registered",
+  "verifiableDataRegistry": "Ledger-independent generative DID method based on CAIP-10 keypair expressions",
+  "contactName": "Wayne Chang, Charles Lehner, Juan Caballero, Joel Thorstensson",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/w3c-ccg/did-pkh/blob/90b28ad3c18d63822a8aab3c752302aa64fc9382/did-pkh-method-draft.md"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "panacea",
+  "status": "registered",
+  "verifiableDataRegistry": "Panacea",
+  "contactName": "MediBloc",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/medibloc/panacea-core/blob/master/docs/did.md"
+}

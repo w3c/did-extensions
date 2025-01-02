@@ -1,0 +1,9 @@
+{
+  "name": "echo",
+  "status": "registered",
+  "verifiableDataRegistry": "Echo",
+  "contactName": "Echo Technological Solutions LLC",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/echoprotocol/uni-resolver-driver-did-echo/blob/master/echo_did_specifications.md"
+}
