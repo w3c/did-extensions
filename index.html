@@ -22,6 +22,7 @@ var respecConfig = {
 
   // the specification's short name, as in http://www.w3.org/TR/short-name/
   shortName: "did-extensions",
+  prevRecShortname: "did-spec-registries",
 
   edDraftURI: "https://w3c.github.io/did-extensions/",
 
@@ -29,7 +30,7 @@ var respecConfig = {
   subtitle: "Known Extensions for the Decentralized Identifier Ecosystem",
 
   // if you wish the publication date to be other than today, set this
-  //publishDate:  "2019-11-07",
+  // publishDate:  "2024-11-19",
 
   // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
   // and its maturity status
@@ -44,14 +45,14 @@ var respecConfig = {
   includePermalinks: false,
 
   editors: [{
-    name: "Manu Sporny", url: "http://manu.sporny.org/",
+    name: "Manu Sporny", url: "https://www.linkedin.com/in/manusporny/",
     company: "Digital Bazaar", companyURL: "https://digitalbazaar.com/",
     w3cid: 41758, note: "2017-present"
   }, {
     name: "Markus Sabadello", url: "https://www.linkedin.com/in/markus-sabadello-353a0821",
     company: "Danube Tech", companyURL: "https://danubetech.com/",
     w3cid: 46729, note: "2020-present"
-  }, {
+  }/*, {
     name: "Apurva Chitnis",
     url: "https://apuchitnis.github.io/",
     company: "Koodos",
@@ -60,12 +61,12 @@ var respecConfig = {
     name: "Sten Reijers", url: "https://github.com/stenreijers",
     note: "2024-present"
   }, {
-    name: "Ghislain", url: "https://w3id.org/people/gatemezing",
+    name: "Ghislain Atemezing", url: "https://w3id.org/people/gatemezing",
     company: "European Union Agency for Railways", "companyURL": "https://www.era.europa.eu/",
-    note: "2024-present"
+    w3cid: 116776, note: "2024-present"
   }, {
     name: "Adam Burns", url: "https://www.linkedin.com/in/adampeterburns/",
-    note: "2024-present"
+    w2cid: 160312, note: "2024-present"
   }, {
     name: "Stefannie Tan (ステファニー　タン)", url: "https://github.com/Steffytan",
     company: "SBI Group （SBIホールディングス)", "companyURL": "https://sbigroup.co.jp/",
@@ -76,7 +77,7 @@ var respecConfig = {
     note: "2024-present"
   }, {
     name: "Rajiv Rajani", url: "https://github.com/rajivrajani",
-    note: "2024-present"
+    w3cid: 161889, note: "2024-present"
   }, {
     name: "Ariel Gentile", url: "https://github.com/genaris",
     company: "GenAris Tech", "companyURL": "https://genaris.tech/",
@@ -93,7 +94,7 @@ var respecConfig = {
     name: "Kevin Dean", url: "https://www.linkedin.com/in/kdean/",
     company: "Dolphin Data Development Ltd.",
     note: "2024-present"
-  }],
+  }*/],
   formerEditors: [{
     name: "Orie Steele", url: "https://www.linkedin.com/in/or13b/",
     company: "Transmute", companyURL: "https://www.transmute.industries/",
@@ -106,11 +107,11 @@ var respecConfig = {
     name: "Ivan Herman", url: "https://www.w3.org/People/Ivan/",
     company: "W3C", companyURL: "https://www.w3.org",
     note: "2020-2022", w3cid: 7382, orcid: "0000-0003-0782-2704"
-  }, {
+  }/*, {
     name: "Kyle Den Hartog", url: "https://www.linkedin.com/in/kyledenhartog/",
     company: "MATTR", companyURL: "https://mattr.global/",
     note: "2020-2022"
-  }],
+  }*/],
 
   // authors, add as many as you like.
   // This is optional, uncomment if you have authors as well as editors.
@@ -214,8 +215,9 @@ Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
     <h1>Introduction</h1>
 
     <p>
-This document serves as an official repository for all known global parameters,
-properties, and values used by the Decentralized Identifier ecosystem.
+This document serves as a list of documents that contain known properties and
+values used by DID Methods [[DID-CORE]] and DID Resolution [[DID-RESOLUTION]] in
+the Decentralized Identifier ecosystem.
     </p>
 
   <section id="conformance"></section>
@@ -248,14 +250,34 @@ its function. Avoid generic terms such as "myProperty" or "foo".
 Any method name SHOULD avoid generic terms such as "mymethod" or "registry".
       </li>
       <li>
-If there are copyright, trademark, or any intellectual property rights
-concerns, the addition and use MUST be authorized in writing by the intellectual
-property rights holder under a
-<a href="https://en.wikipedia.org/wiki/Reasonable_and_non-discriminatory_licensing">F/RAND</a>
-license. Examples include DID Methods that use trademarked brand names,
-property names that utilize the titles of copyrighted works, and patented
-technology that would cause the use of the extension to require licensing a
-patent.
+Any DID Method submission MUST not impose any concerns about copyright,
+trademark, or intellectual property rights on the W3C, DID Method
+implementers, or users. To that end, the following apply:
+        <ol>
+          <li>
+DID Method submitters affirm to the best of their knowledge that their 
+submission will not infringe upon or otherwise violate the rights of any third 
+party.
+          </li>
+          <li>
+If there are any known concerns about copyright, trademark, or intellectual
+property rights, the addition and use of a DID Method MUST be authorized in
+writing by the holder of the intellectual property rights under an
+<a href="https://en.wikipedia.org/wiki/Reasonable_and_non-discriminatory_licensing">F/RAND</a> 
+license.
+          </li>
+          <li>
+If a DID Method is subsequently alleged to violate any copyright, trademark, 
+or intellectual property rights, those making the allegation MUST provide 
+documentation of their granted legal rights or an order from a court or 
+arbitral tribunal, in each case of competent jurisdiction.
+          </li>
+          <li>
+Should documentation of legally valid and enforceable copyright, trademark,
+or intellectual property rights be presented, then, at the discretion of the 
+rights holder, the DID Method in question MUST be removed.
+          </li>
+        </ol>
       </li>
       <li>
 Any addition MUST NOT create unreasonable legal, security, moral, or privacy
@@ -341,19 +363,19 @@ The following documents list known extensions to the DID Ecosystem:
       <tbody>
         <tr>
           <td>
-<a href="properties/">Property&nbsp;and&nbsp;Value&nbsp;Extensions</a>
+<a href="https://www.w3.org/TR/did-extensions-properties/">Property&nbsp;and&nbsp;Value&nbsp;Extensions</a>
           </td>
           <td>Extensions to DID Document properties and values.</td>
         </tr>
         <tr>
           <td>
-<a href="resolution/">Resolution&nbsp;Extensions</a>
+<a href="https://www.w3.org/TR/did-extensions-resolution/">Resolution&nbsp;Extensions</a>
           </td>
           <td>Extensions to DID Resolution parameters and results.</td>
         </tr>
         <tr>
           <td>
-<a href="methods/">DID&nbsp;Methods</a>
+<a href="https://www.w3.org/TR/did-extensions-methods/">DID&nbsp;Methods</a>
           </td>
           <td>
 Ephemeral, distributed, and fully decentralized mechanisms for supporting

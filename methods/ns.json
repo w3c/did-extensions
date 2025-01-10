@@ -1,0 +1,9 @@
+{
+    "name": "ns",
+    "status": "registered",
+    "verifiableDataRegistry": "Web 7.0 Foundation",
+    "contactName": "Web 7.0 Foundation",
+    "contactEmail": "mwherman@parallelspace.net",
+    "contactWebsite": "https://didns.directory",
+    "specification": "https://github.com/Web7Foundation/Specifications/blob/main/methods/did-ns-1-0-1.md"
+}
