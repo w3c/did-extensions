@@ -1,0 +1,9 @@
+{
+  "name": "SQL",
+  "status": "registered",
+  "specification": "https://w3c-ccg.github.io/did-spec/"
+  "contactName": "W3C Credentials Community Group",
+  "contactEmail": "CONTACT@STELLARQUANTALABS.ORG",
+  "contactWebsite": "https://stellarquantalabs.org",
+  "verifiableDataRegistry": "https://stellarquantalabs.org/.well-known/did-configuration.json"
+}
