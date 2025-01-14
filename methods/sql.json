@@ -1,7 +1,7 @@
 {
   "name": "sql",
   "status": "registered",
-  "specification": "https://github.com/StellarQuantaLabs/.well-known/blob/main/did.json",
+  "specification": "https://github.com/StellarQuantaLabs/sqlverify/blob/main/README.md",
   "contactName": "Jennifer Aun",
   "contactEmail": "contact@stellarquantalabs.org",
   "contactWebsite": "https://stellarquantalabs.org",
