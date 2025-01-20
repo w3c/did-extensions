@@ -1,6 +1,6 @@
 name: Lint DID Methods
 on:
-  pull_request: {}
+  pull_request:
     paths: ["methods/**"]
 
 jobs:
