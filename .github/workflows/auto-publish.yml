@@ -3,6 +3,8 @@ name: Echidna Auto-publish did-extensions
 on:
   push:
     branches: [main]
+    paths: ["index.html"]
+
 jobs:
   main:
     name: Build, Validate and Deploy
