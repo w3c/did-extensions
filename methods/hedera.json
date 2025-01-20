@@ -1,0 +1,9 @@
+{
+  "name": "hedera",
+  "status": "registered",
+  "verifiableDataRegistry": "Hedera Hashgraph",
+  "contactName": "Hedera Hashgraph, Swisscom Blockchain AG",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/hashgraph/did-method/blob/master/did-method-specification.md"
+}
