@@ -1,6 +1,7 @@
 # .github/workflows/pr-push.yml
 name: Echidna Auto-publish did-extensions-methods
 on:
+  workflow_dispatch: {}
   push:
     branches: [main]
     paths: ["methods/**"]
