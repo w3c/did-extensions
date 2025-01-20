@@ -35,8 +35,24 @@ async function buildDidMethodTables(config) {
     const {name, verifiableDataRegistry, contactEmail, contactName,
       contactWebsite, specification} = method;
     let contactInfo = contactName;
+
+    if(Array.isArray(contactName)) {
+      contactInfo = contactName.join(', ');
+    }
+
     if(contactEmail) {
-      contactInfo += ` (<a href="mailto:${contactEmail}">email</a>)`;
+      const emails = [];
+      if(Array.isArray(contactEmail)) {
+        contactInfo += ' (emails: ';
+        for(const email of contactEmail) {
+          const id = email.split('@', 1)[0];
+          emails.push(`<a href="mailto:${email}">${id}</a>`);
+        }
+      } else {
+        const id = contactEmail.split('@', 1)[0];
+        emails.push(` (<a href="mailto:${contactEmail}">email</a>`);
+      }
+      contactInfo += emails.join(', ') + ')';
     }
     if(contactWebsite) {
       contactInfo += ` (<a href="${contactWebsite}">website</a>)`;

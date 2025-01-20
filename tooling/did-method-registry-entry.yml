@@ -24,13 +24,25 @@ properties:
     type: string
     maxLength: 512
   contactName:
-    description: A person or organization which responds to contact requests
-    type: string
-    maxLength: 512
+    oneOf:
+      - type: string
+        description: A person or organization which responds to contact requests
+        maxLength: 512
+      - type: array
+        items:
+          type: string
+          description: A person or organization which responds to contact requests
+          maxLength: 512
   contactEmail:
-    description: An email to send contact requests
-    type: string
-    maxLength: 512
+    oneOf:
+      - type: string
+        description: An email to send contact requests
+        maxLength: 512
+      - type: array
+        items:
+          type: string
+          description: A person or organization which responds to contact requests
+          maxLength: 512
   contactWebsite:
     description: An website to send contact requests
     type: string
