@@ -1,6 +1,7 @@
 # .github/workflows/pr-push.yml
 name: Echidna Auto-publish did-extensions-methods
 on:
+  workflow_dispatch: {}
   push:
     branches: [main]
     paths: ["methods/**"]
@@ -9,8 +10,23 @@ jobs:
     name: Echidna Auto-publish WD
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: w3c/spec-prod@v2
+      - name: Checkout source...
+        uses: actions/checkout@v4
+      - name: Setup Node 22...
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      - name: Install did-extensions tooling...
+        working-directory: tooling
+        run: npm i
+      - name: Validate did-extensions DID method entries
+        working-directory: tooling
+        run: npm run validate
+      - name: Generate did-extensions registry index
+        working-directory: tooling
+        run: npm run generate
+      - name: Begin spec-prod...
+        uses: w3c/spec-prod@v2
         with:
           SOURCE: methods/index.html
           TOOLCHAIN: respec
