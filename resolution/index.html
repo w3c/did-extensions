@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+DID Resolution Extensions
+  </title>
+  <meta content='text/html; charset=utf-8' http-equiv='Content-Type'><!--
+    === NOTA BENE ===
+    For the three scripts below, if your spec resides on dev.w3 you can check them
+    out in the same tree and use relative links so that they'll work offline.
+   -->
+
+  <script class='remove' src='https://www.w3.org/Tools/respec/respec-w3c'></script>
+  <script class="remove" type="text/javascript">
+var respecConfig = {
+  wgPublicList: "public-did-wg",
+  group: "did",
+
+  // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
+  specStatus: "NOTE",
+
+  // the specification's short name, as in http://www.w3.org/TR/short-name/
+  shortName: "did-extensions-resolution",
+
+  edDraftURI: "https://w3c.github.io/did-extensions/resolution/",
+
+  // subtitle
+  subtitle: "Known Extensions for DID Resolution and Dereferencing",
+
+  // if you wish the publication date to be other than today, set this
+  // publishDate:  "2024-11-19",
+
+  // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+  // and its maturity status
+  // previousPublishDate:  "1977-03-15",
+  // previousMaturity:  "WD",
+
+  // extend the bibliography entries
+
+  github: {
+    repoURL: "https://github.com/w3c/did-extensions/",
+    branch: "main"
+  },
+  includePermalinks: false,
+
+  editors: [{
+    name: "Manu Sporny", url: "https://www.linkedin.com/in/manusporny/",
+    company: "Digital Bazaar", companyURL: "https://digitalbazaar.com/",
+    w3cid: 41758, note: "2017-present"
+  }, {
+    name: "Markus Sabadello", url: "https://www.linkedin.com/in/markus-sabadello-353a0821",
+    company: "Danube Tech", companyURL: "https://danubetech.com/",
+    w3cid: 46729, note: "2020-present"
+  }/*, {
+    name: "Apurva Chitnis",
+    url: "https://apuchitnis.github.io/",
+    company: "Koodos",
+    note: "2024-present"
+  }, {
+    name: "Sten Reijers", url: "https://github.com/stenreijers",
+    note: "2024-present"
+  }, {
+    name: "Ghislain Atemezing", url: "https://w3id.org/people/gatemezing",
+    company: "European Union Agency for Railways", "companyURL": "https://www.era.europa.eu/",
+    w3cid: 116776, note: "2024-present"
+  }, {
+    name: "Adam Burns", url: "https://www.linkedin.com/in/adampeterburns/",
+    w3cid: 160312, note: "2024-present"
+  }, {
+    name: "Stefannie Tan (ステファニー　タン)", url: "https://github.com/Steffytan",
+    company: "SBI Group （SBIホールディングス)", "companyURL": "https://sbigroup.co.jp/",
+    note: "2024-present"
+  }, {
+    name: "IGARASHI Taisei (五十嵐　太清)", url: "https://mizuki.io/",
+    company: "kataru Co., Ltd.", "companyURL": "https://kataru.io/",
+    w3cid: 143360, note: "2024-present"
+  }, {
+    name: "Rajiv Rajani", url: "https://github.com/rajivrajani",
+    w3cid: 161889, note: "2024-present"
+  }, {
+    name: "Ariel Gentile", url: "https://github.com/genaris",
+    company: "GenAris Tech", "companyURL": "https://genaris.tech/",
+    note: "2024-present"
+  }, {
+    name: "Harley Thomas", url: "https://github.com/harleyjackthomas",
+    company: "Trust Provenance", "companyURL": "https://www.trustprovenance.com/",
+    note: "2024-present"
+  }, {
+    name: "Ajay Jadhav", url: "https://github.com/ajile-in",
+    company: "Ayan Works", "companyURL": "https://ayanworks.com/",
+    note: "2024-present"
+  }, {
+    name: "Kevin Dean", url: "https://www.linkedin.com/in/kdean/",
+    company: "Dolphin Data Development Ltd.",
+    note: "2024-present"
+  }*/],
+  formerEditors: [{
+    name: "Orie Steele", url: "https://www.linkedin.com/in/or13b/",
+    company: "Transmute", companyURL: "https://www.transmute.industries/",
+    w3cid: 109171, note: "2020-2022"
+  }, {
+    name: "Amy Guy", url: "https://rhiaro.co.uk/",
+    company: "Digital Bazaar", companyURL: "https://digitalbazaar.com/",
+    w3cid: 69000, note: "2020-2022"
+  }, {
+    name: "Ivan Herman", url: "https://www.w3.org/People/Ivan/",
+    company: "W3C", companyURL: "https://www.w3.org",
+    note: "2020-2022", w3cid: 7382, orcid: "0000-0003-0782-2704"
+  }/*, {
+    name: "Kyle Den Hartog", url: "https://www.linkedin.com/in/kyledenhartog/",
+    company: "MATTR", companyURL: "https://mattr.global/",
+    note: "2020-2022"
+  }*/],
+
+  // authors, add as many as you like.
+  // This is optional, uncomment if you have authors as well as editors.
+  // only "name" is required. Same format as editors.
+  authors: [{
+    name: "The Decentralized Identifier Working Group",
+    url: "https://www.w3.org/groups/wg/did/",
+    company: "W3C",
+    companyURL: "https://www.w3.org/"
+  }],
+  otherLinks: [{
+    key: "Related Documents",
+    data: [{
+      value: "DID Core",
+      href: "https://www.w3.org/TR/did-core/"
+    }, {
+      value: "DID Core Implementation Report",
+      href: "https://w3c.github.io/did-test-suite/"
+    }, {
+      value: "DID Use Cases and Requirements",
+      href: "https://www.w3.org/TR/did-use-cases/"
+    }]
+  }],
+  postProcess: [],
+  localBiblio: {
+    "DID-EXTENSIONS": {
+      title: "Decentralized Identifier Extensions",
+      href: "https://www.w3.org/TR/did-extensions/",
+      authors: [
+        "Manu Sporny",
+      ],
+      status: "NOTE",
+      publisher: "Decentralized Identifier Working Group"
+    }
+  }
+};
+  </script>
+  <style>
+    .label-legend dd{
+      margin-top: 8px;
+    }
+  .label-deprecated {
+    font-weight: bold;
+    background: #ef9a9a;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  .label-no-contact-info {
+    font-weight: bold;
+    background: #ffe082;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  pre .highlight {
+    font-weight: bold;
+    color: green;
+  }
+  pre .comment {
+    color: SteelBlue;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  </style>
+</head>
+<body>
+  <section id='abstract'>
+    <p>
+This document serves as a collection of known DID Resolution and Dereferencing
+extensions.
+    </p>
+  </section>
+
+  <section id='sotd'>
+
+    <p>
+Comments regarding this document are welcome. Please file issues
+directly on
+<a href="https://github.com/w3c/did-extensions/issues/">GitHub</a>,
+or send them
+to <a href="mailto:public-did-wg@w3.org">public-did-wg@w3.org</a> (
+<a href="mailto:public-did-wg-request@w3.org?subject=subscribe">subscribe</a>,
+<a href="https://lists.w3.org/Archives/Public/public-did-wg/">archives</a>).
+    </p>
+
+    <p>
+Portions of the work on this specification have been funded by the
+United States Department of Homeland Security's Science and Technology
+Directorate under contracts HSHQDC-16-R00012-H-SB2016-1-002, 70RSAT20T00000010,
+and HSHQDC-17-C-00019. The content of this specification does not
+necessarily reflect the position or the policy of the U.S. Government
+and no official endorsement should be inferred.
+    </p>
+
+    <p>
+Work on this registry has also been supported by the Rebooting the
+Web of Trust community facilitated by Christopher Allen, Shannon
+Appelcline, Kiara Robles, Brian Weller, Betty Dhamers, Kaliya Young,
+Kim Hamilton Duffy, Manu Sporny, Drummond Reed, Joe Andrieu, and
+Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
+    </p>
+  </section>
+
+  <section class="informative">
+    <h1>Introduction</h1>
+
+    <p>
+This document serves as a collection of known DID Resolution and Dereferencing
+extensions.
+    </p>
+
+    <section>
+      <h1>The Registration Process</h1>
+      <p>
+  The registration process is described in the [[[DID-EXTENSIONS]]].
+      </p>
+    </section>
+
+    <section id="conformance"></section>
+
+  </section>
+
+  <section>
+    <h1>Representations</h1>
+    <p>This table provides a reference for media types and the associated specifications for producing and consuming those representations.</p>
+    <table class="simple" style="width: 100%;">
+      <thead>
+        <tr>
+          <th>Media Type</th>
+          <th>Specification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="application-did-json">
+          <td>application/did+json</td>
+          <td>
+            <a href="https://www.w3.org/TR/did-core#json">DID Core</a>
+          </td>
+        </tr>
+        <tr id="application-did-ld-json">
+          <td>application/did+ld+json</td>
+          <td>
+            <a href="https://www.w3.org/TR/did-core#json-ld">DID Core</a>
+          </td>
+        </tr>
+        <tr id="application-did-cbor">
+          <td>application/did+cbor</td>
+          <td>
+            <a href="https://www.w3.org/TR/did-cbor-representation/#application-did-cbor">The Plain CBOR Representation</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </section>
+
+  <section>
+    <h1>Representation-Specific Entries</h1>
+
+    <section>
+      <h3>JSON</h3>
+
+      <p>
+These are entries in DID documents that are specific to the
+<a href="https://w3c.github.io/did-core/#json">JSON representation</a>.
+      </p>
+      <p>
+(No entries yet)
+      </p>
+    </section>
+
+    <section>
+      <h3>JSON-LD</h3>
+
+      <p>
+These are entries in DID documents that are specific to the
+<a href="https://w3c.github.io/did-core/#json-ld">JSON-LD representation</a>.
+      </p>
+
+      <section>
+        <h4>@context</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#production-0">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+The following values are acceptable values for the <code>@context</code> entry as
+a <a href="https://tools.ietf.org/html/rfc8259#section-7">JSON
+  String</a> or first item of a <a
+  href="https://tools.ietf.org/html/rfc8259#section-5">JSON Array</a>,
+represented as a <a href="https://tools.ietf.org/html/rfc8259#section-7">JSON
+  String</a>.
+        </p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>`@context` Values</th>
+              <th>Specification Version</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">https://www.w3.org/ns/did/v1</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core/">DID Core 1.0 Working draft</a>
+              </td>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of @context in the JSON-LD representation">
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://example.com/blockchain-identity/v1"
+  ],
+  ...
+}
+        </pre>
+
+      </section>
+    </section>
+
+    <section>
+      <h3>CBOR</h3>
+
+      <p>
+These are entries in DID documents that are specific to the
+<a href="https://www.w3.org/TR/did-cbor-representation/">CBOR representation</a>.
+      </p>
+      <p>
+(No entries yet)
+      </p>
+    </section>
+  </section>
+
+  <section>
+    <h1>DID Resolution Options</h1>
+    <p>
+These properties contain information pertaining to the DID resolution request.
+    </p>
+
+    <section>
+      <h3>accept</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-resolution-options">DID Core</a>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of accept metadata property">
+{
+  "accept": "application/did+ld+json"
+}
+      </pre>
+    </section>
+  </section>
+
+  <section>
+    <h3>DID Resolution Metadata</h3>
+    <p>
+These properties contain information pertaining to the DID resolution response.
+    </p>
+    <section>
+      <h3>contentType</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of contentType metadata property">
+{
+  "contentType": "application/did+ld+json"
+}
+      </pre>
+    </section>
+
+    <section>
+      <h3>error</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
+            </td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of error metadata property">
+{
+  "error": "notFound"
+}
+      </pre>
+
+      <section>
+        <h4>invalidDid</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of invalidDid error value">
+{
+  "error": "invalidDid"
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>notFound</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of notFound error value">
+{
+  "error": "notFound"
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>representationNotSupported</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of representationNotSupported error value">
+{
+  "error": "representationNotSupported"
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>methodNotSupported</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#methodnotsupported">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of methodNotSupported error value">
+{
+  "error": "methodNotSupported"
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>internalError</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#internalerror">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of internalError error value">
+{
+  "error": "internalError"
+}
+        </pre>
+      </section>
+      <section>
+        <h4>invalidPublicKey</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#invalidPublicKey">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of invalidPublicKey error value">
+{
+  "error": "invalidPublicKey"
+}
+        </pre>
+      </section>
+      <section>
+        <h4>invalidPublicKeyLength</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#invalidPublicKeyLengthr">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of invalidPublicKeyLength error value">
+{
+  "error": "invalidPublicKeyLength"
+}
+        </pre>
+      </section>
+      <section>
+        <h4>invalidPublicKeyType</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#invalidPublicKeyType">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of invalidPublicKeyType error value">
+{
+  "error": "invalidPublicKeyType"
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>unsupportedPublicKeyType</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#unsupportedPublicKeyType">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of unsupportedPublicKeyType error value">
+{
+  "error": "unsupportedPublicKeyType"
+}
+        </pre>
+      </section>
+
+        <section>
+            <h4>notAllowedVerificationMethodType</h4>
+            <table class="simple" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>Normative Definition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-verification-method-type.md">DID Spec Extension: notAllowedVerificationMethodType</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <pre class="example" title="Example of notAllowedVerificationMethodType error value">
+{
+  "error": "notAllowedVerificationMethodType"
+}
+        </pre>
+        </section>
+
+        <section>
+            <h4>notAllowedKeyType</h4>
+            <table class="simple" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>Normative Definition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-key-type.md">DID Spec Extension: notAllowedKeyType</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <pre class="example" title="Example of notAllowedKeyType error value">
+{
+  "error": "notAllowedKeyType"
+}
+        </pre>
+        </section>
+
+        <section>
+            <h4>notAllowedMethod</h4>
+            <table class="simple" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>Normative Definition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-method.md">DID Spec Extension: notAllowedMethod</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <pre class="example" title="Example of notAllowedMethod error value">
+{
+  "error": "notAllowedMethod"
+}
+        </pre>
+        </section>
+
+        <section>
+            <h4>notAllowedCertificate</h4>
+            <table class="simple" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>Normative Definition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-certificate.md">DID Spec Extension: notAllowedCertificate</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <pre class="example" title="Example of notAllowedCertificate error value">
+{
+  "error": "notAllowedCertificate"
+}
+        </pre>
+        </section>
+
+        <section>
+            <h4>notAllowedLocalDuplicateKey</h4>
+            <table class="simple" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>Normative Definition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-local-duplicate-key.md">DID Spec Extension: notAllowedLocalDuplicateKey</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <pre class="example" title="Example of notAllowedLocalDuplicateKey error value">
+{
+  "error": "notAllowedLocalDuplicateKey"
+}
+        </pre>
+        </section>
+
+        <section>
+            <h4>notAllowedLocalDerivedKey</h4>
+            <table class="simple" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>Normative Definition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-local-derived-key.md">DID Spec Extension: notAllowedLocalDerivedKey</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <pre class="example" title="Example of notAllowedLocalDerivedKey error value">
+{
+  "error": "notAllowedLocalDerivedKey"
+}
+        </pre>
+        </section>
+
+        <section>
+            <h4>notAllowedGlobalDuplicateKey</h4>
+            <table class="simple" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>Normative Definition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-global-duplicate-key.md">DID Spec Extension: notAllowedGlobalDuplicateKey</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <pre class="example" title="Example of notAllowedGlobalDuplicateKey error value">
+{
+  "error": "notAllowedGlobalDuplicateKey"
+}
+        </pre>
+        </section>
+</section>
+  </section>
+  <section>
+    <h3>DID Dereferencing Metadata</h3>
+    <p>
+These properties contain information pertaining to the DID dereferencing response.
+    </p>
+    <section>
+      <h3>error</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-url-dereferencing-metadata">DID Core</a>
+            </td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of error metadata property">
+{
+  "error": "notFound"
+}
+      </pre>
+      <section>
+        <h4>invalidDidUrl</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-url-dereferencing-metadata">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of invalidDidUrl error value">
+{
+  "error": "invalidDidUrl"
+}
+        </pre>
+      </section>
+      <section>
+        <h4>notFound</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-url-dereferencing-metadata">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of notFound error value">
+{
+  "error": "notFound"
+}
+        </pre>
+      </section>
+    </section>
+  </section>
+  <section>
+    <h1>DID Document Metadata</h1>
+    <p>
+These properties contain information pertaining to the DID document itself,
+rather than the DID subject.
+    </p>
+    <section>
+      <h3>created</h3>
+      <p class="issue" >
+        See <a href="https://github.com/w3c/did-core/issues/203">DID Core #203</a>.
+      </p>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata">DID Core</a>
+            </td>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of created property">
+{
+  "created": "2019-03-23T06:35:22Z"
+}
+      </pre>
+    </section>
+
+    <section>
+      <h3>updated</h3>
+      <p class="issue" >
+        See <a href="https://github.com/w3c/did-core/issues/203">DID Core #203</a>.
+      </p>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata">DID Core</a>
+            </td>
+
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of updated property">
+{
+  "updated": "2023-08-10T13:40:06Z"
+}
+      </pre>
+
+    </section>
+
+    <section>
+      <h3>deactivated</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata">DID Core</a>
+            </td>
+
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of deactivated property">
+{
+  "deactivated": true
+}
+      </pre>
+
+    </section>
+
+    <section>
+      <h3>nextUpdate</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata">DID Core</a>
+            </td>
+
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of nextUpdate property">
+{
+  "nextUpdate": "2023-08-10T13:40:06Z"
+}
+      </pre>
+
+    </section>
+
+    <section>
+      <h3>versionId</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata">DID Core</a>
+            </td>
+
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of versionId property">
+{
+  "versionId": "bafyreifederejlobaec6kwpl2mc3tw7qk3j3ey4uytkbiw2qw7dzylud6i"
+}
+      </pre>
+
+    </section>
+
+    <section>
+      <h3>nextVersionId</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata">DID Core</a>
+            </td>
+
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of nextVersionId property">
+{
+  "nextVersionId": "bafyreifederejlobaec6kwpl2mc3tw7qk3j3ey4uytkbiw2qw7dzylud6i"
+}
+      </pre>
+
+    </section>
+
+    <section>
+      <h3>equivalentId</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+        <tr>
+          <th>Normative Definition</th>
+          <th>JSON-LD</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <a href="https://www.w3.org/TR/did-core/#did-document-metadata">DID Core</a>
+          </td>
+
+          <td>
+            <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of equivalentId property">
+{
+  "equivalentId": ["did:example:ABC", "did:example:Abc"]
+}
+      </pre>
+
+    </section>
+
+    <section>
+      <h3>canonicalId</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+        <tr>
+          <th>Normative Definition</th>
+          <th>JSON-LD</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+          </td>
+
+          <td>
+            <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of canonicalId property">
+{
+  "canonicalId": "did:example:ABC"
+}
+      </pre>
+
+    </section>
+  </section>
+
+  <section>
+
+    <h1>Parameters</h1>
+
+    <section>
+      <h3 id="hl-param">hl</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-parameters">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of hl parameter">
+did:example:123?hl=zQmWvQxTqbG2Z9HPJgG57jjwR154cKhbtJenbyYTWkjgF3e
+      </pre>
+    </section>
+
+    <section>
+      <h3 id="service-param">service</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#generic-did-url-parameters">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of service parameter">
+did:example:123?service=agent
+      </pre>
+    </section>
+
+    <section>
+      <h3 id="versionId-param">versionId</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-parameters">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of versionId parameter">
+did:example:123?versionId=4
+      </pre>
+    </section>
+
+    <section>
+      <h3 id="versionTime-param">versionTime</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-parameters">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of versionTime parameter">
+did:example:123?versionTime=2016-10-17T02:41:00Z
+      </pre>
+    </section>
+
+    <section>
+      <h3 id="relativeRef-param">relativeRef</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-parameters">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of relativeRef parameter">
+did:example:123?service=files&amp;relativeRef=%2Fmyresume%2Fdoc%3Fversion%3Dlatest%23intro
+      </pre>
+    </section>
+
+    <section>
+      <h3 id="initialState-param">initialState</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/master/parameters/initial-state.md">DID Spec Extensions by DIF</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of initialState parameter">
+did:example:123?initialState=eyJkZWx0YV9oYXNoIjoiRWlDUlRKZ2Q0U0V2YUZDLW9fNUZjQnZJUkRtWF94Z3RLX3g...
+      </pre>
+    </section>
+
+    <section>
+      <h3 id="transformKeys-param">transformKeys</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/master/parameters/transform-keys.md">DID Spec Extensions by DIF</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of transformKeys parameter">
+did:example:123?transformKeys=jwk
+      </pre>
+    </section>
+
+    <section>
+      <h3 id="signedIetfJsonPatch-param">signedIetfJsonPatch</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/master/parameters/signed-ietf-json-patch.md">DID Spec Extensions by DIF</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Example of signedIetfJsonPatch parameter">
+did:example:123?signedIetfJsonPatch=eyJraWQiOiJkaWQ6ZXhhbXBsZTo0NTYjX1FxMFVMMkZxNjUxUTBGamQ2VH...
+      </pre>
+    </section>
+
+    <section>
+      <h3 id="resource">resource</h3>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://wiki.trustoverip.org/display/HOME/DID+URL+Resource+Parameter+Specification">DID URL Resource Parameter Specification</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="A DID URL with a 'resource' DID parameter">
+did:foo:21tDAKCERh95uGgKbJNHYp?resource=true
+      </pre>
+    </section>
+
+  </section>
+
+</body>
+</html>

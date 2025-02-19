@@ -1,0 +1,9 @@
+{
+  "name": "tz",
+  "status": "registered",
+  "verifiableDataRegistry": "Tezos",
+  "contactName": "Spruce Systems, Inc.",
+  "contactEmail": "",
+  "contactWebsite": "https://spruceid.com",
+  "specification": "https://did-tezos.spruceid.com"
+}

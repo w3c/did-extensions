@@ -1,0 +1,9 @@
+{
+  "name": "kr",
+  "status": "registered",
+  "verifiableDataRegistry": "Korea Mobile Identity System",
+  "contactName": "Ministry of the Interior and Safety, korea",
+  "contactEmail": "",
+  "contactWebsite": "https://github.com/identify202020/did-method/blob/main/did_author.md",
+  "specification": "https://github.com/identify202020/did-method/blob/main/did_kr_method.md"
+}
