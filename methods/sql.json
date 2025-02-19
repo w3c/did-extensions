@@ -1,0 +1,9 @@
+{
+  "name": "sql",
+  "status": "registered",
+  "specification": "https://github.com/StellarQuantaLabs/sqlverify/blob/main/README.md",
+  "contactName": "Jennifer Aun",
+  "contactEmail": "contact@stellarquantalabs.org",
+  "contactWebsite": "https://stellarquantalabs.org",
+  "verifiableDataRegistry": "https://stellarquantalabs.org/.well-known/did.json"
+}
