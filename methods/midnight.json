@@ -1,0 +1,11 @@
+{
+  // These fields are required
+  "name": "midnight",
+  "status": "registered",
+  "specification": "https://github.com/IAMXID/did-midnight",
+  // These fields are optional
+  "contactName": "IAMX AG, 6300 Zug, Switzerland",
+  "contactEmail": "contact@iamx.id",
+  "contactWebsite": "https://iamx.id/"
+  "verifiableDataRegistry": "DID Specification"
+}
