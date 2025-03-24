@@ -72,9 +72,9 @@ var respecConfig = {
     company: "SBI Group （SBIホールディングス)", "companyURL": "https://sbigroup.co.jp/",
     note: "2024-present"
   }, {
-    name: "MIZUKI Sonoko (五十嵐　太清)", url: "https://mizuki.io/",
-    company: "kataru Co., Ltd.", "companyURL": "https://mizuki.io/",
-    note: "2024-present"
+    name: "IGARASHI Taisei (五十嵐　太清)", url: "https://mizuki.io/",
+    company: "kataru Co., Ltd.", "companyURL": "https://kataru.io/",
+    w3cid: 143360, note: "2024-present"
   }, {
     name: "Rajiv Rajani", url: "https://github.com/rajivrajani",
     w3cid: 161889, note: "2024-present"
@@ -215,8 +215,9 @@ Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
     <h1>Introduction</h1>
 
     <p>
-This document serves as an official repository for all known global parameters,
-properties, and values used by the Decentralized Identifier ecosystem.
+This document serves as a list of documents that contain known properties and
+values used by DID Methods [[DID-CORE]] and DID Resolution [[DID-RESOLUTION]] in
+the Decentralized Identifier ecosystem.
     </p>
 
   <section id="conformance"></section>
@@ -249,14 +250,34 @@ its function. Avoid generic terms such as "myProperty" or "foo".
 Any method name SHOULD avoid generic terms such as "mymethod" or "registry".
       </li>
       <li>
-If there are copyright, trademark, or any intellectual property rights
-concerns, the addition and use MUST be authorized in writing by the intellectual
-property rights holder under a
-<a href="https://en.wikipedia.org/wiki/Reasonable_and_non-discriminatory_licensing">F/RAND</a>
-license. Examples include DID Methods that use trademarked brand names,
-property names that utilize the titles of copyrighted works, and patented
-technology that would cause the use of the extension to require licensing a
-patent.
+Any DID Method submission MUST not impose any concerns about copyright,
+trademark, or intellectual property rights on the W3C, DID Method
+implementers, or users. To that end, the following apply:
+        <ol>
+          <li>
+DID Method submitters affirm to the best of their knowledge that their 
+submission will not infringe upon or otherwise violate the rights of any third 
+party.
+          </li>
+          <li>
+If there are any known concerns about copyright, trademark, or intellectual
+property rights, the addition and use of a DID Method MUST be authorized in
+writing by the holder of the intellectual property rights under an
+<a href="https://en.wikipedia.org/wiki/Reasonable_and_non-discriminatory_licensing">F/RAND</a> 
+license.
+          </li>
+          <li>
+If a DID Method is subsequently alleged to violate any copyright, trademark, 
+or intellectual property rights, those making the allegation MUST provide 
+documentation of their granted legal rights or an order from a court or 
+arbitral tribunal, in each case of competent jurisdiction.
+          </li>
+          <li>
+Should documentation of legally valid and enforceable copyright, trademark,
+or intellectual property rights be presented, then, at the discretion of the 
+rights holder, the DID Method in question MUST be removed.
+          </li>
+        </ol>
       </li>
       <li>
 Any addition MUST NOT create unreasonable legal, security, moral, or privacy
