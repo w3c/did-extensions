@@ -1,0 +1,9 @@
+{
+  "name": "nuts",
+  "status": "registered",
+  "verifiableDataRegistry": "Nuts network",
+  "contactName": "Nuts community",
+  "contactEmail": "w3c-did-core@nuts.nl",
+  "contactWebsite": "https://nuts.nl",
+  "specification": "https://nuts-foundation.gitbook.io/drafts/rfc/rfc006-distributed-registry"
+}

@@ -1,0 +1,9 @@
+node_modules
+coverage
+vocabs/shape_test.ttl
+vocabs/v1/test.ttl
+
+.vscode
+.DS_Store
+.idea
+unresolveable-test-dids.json
