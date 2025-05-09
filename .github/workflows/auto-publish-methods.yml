@@ -1,16 +1,16 @@
 # .github/workflows/pr-push.yml
-name: Echidna Auto-publish did-extensions
+name: Echidna Auto-publish did-extensions-methods
 on:
+  workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ["index.html"]
-
+    paths: ["methods/**"]
 jobs:
   main:
-    name: Build, Validate and Deploy
+    name: Echidna Auto-publish WD
     runs-on: ubuntu-latest
     steps:
-      - name: Begin spec-prod...
+      - name: Checkout source...
         uses: actions/checkout@v4
       - name: Setup Node 22...
         uses: actions/setup-node@v4
@@ -25,12 +25,13 @@ jobs:
       - name: Generate did-extensions registry index
         working-directory: tooling
         run: npm run generate
-      - uses: w3c/spec-prod@v2
+      - name: Begin spec-prod...
+        uses: w3c/spec-prod@v2
         with:
-          SOURCE: index.html
+          SOURCE: methods/index.html
           TOOLCHAIN: respec
-          W3C_ECHIDNA_TOKEN: ${{ secrets.ECHIDNA_TOKEN_EXTENSIONS }}
+          W3C_ECHIDNA_TOKEN: ${{ secrets.ECHIDNA_TOKEN_METHODS }}
           W3C_WG_DECISION_URL: https://www.w3.org/2024/09/24-did-minutes.html#r02
           W3C_BUILD_OVERRIDE: |
-             shortName: did-extensions
+             shortName: did-extensions-methods
              specStatus: NOTE

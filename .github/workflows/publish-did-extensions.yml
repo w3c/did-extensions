@@ -1,4 +1,4 @@
-name: Publish DID Method Registry
+name: Github Pages Publication
 on:
   push:
     branches:
