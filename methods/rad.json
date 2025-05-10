@@ -1,0 +1,9 @@
+{
+  "name": "rad",
+  "status": "registered",
+  "verifiableDataRegistry": "Radicle Network",
+  "contactName": "Radicle Team",
+  "contactEmail": "team@radicle.xyz",
+  "contactWebsite": "https://radicle.xyz/",
+  "specification": "https://radicle.xyz/did"
+}
