@@ -56,7 +56,7 @@ did:xrpl:mainnet:rPWSjhFZCQgEKhRnKnn6geavviiaU58M6d
 
 ## 7. Contact
 For questions or feedback, please contact the maintainer at:
-- Email: inme@xrplcreator.net
+- Email: popoashley@hotmail.com
 - DID: did:xrpl:mainnet:rPWSjhFZCQgEKhRnKnn6geavviiaU58M6d
 
 ## 8. Appendix
