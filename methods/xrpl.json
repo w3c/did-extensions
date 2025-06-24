@@ -1,0 +1,9 @@
+{
+  "name": "XRPL",
+  "didMethod": "xrpl",
+  "status": "experimental",
+  "description": "DID Method for the XRP Ledger, with IPFS-hosted context including VaultService, DigestService, and AccountRoot.",
+  "specification": "https://github.com/popoashley/did-extensions/blob/main/method-xrpl.md",
+  "exampleDID": "did:xrpl:mainnet:rPWSjhFZCQgEKhRnKnn6geavviiaU58M6d",
+  "maintainer": "did:xrpl:mainnet:rPWSjhFZCQgEKhRnKnn6geavviiaU58M6d"
+}
