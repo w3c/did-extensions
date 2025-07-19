@@ -1,0 +1,17 @@
+{
+  "name": "mana",
+  "status": "registered",
+  "specification": "https://dx-manacore.eth.link/did-method-mana",
+  "contactName": "MANA ALHARBI",
+  "contactEmail": "",
+  "contactWebsite": "https://dx-manacore.eth.link",
+  "verifiableDataRegistry": [
+    "IPFS",
+    "ENS",
+    "DNS",
+    "HTTPS"
+  ],
+  "decentralization": true,
+  "sovereign": true,
+  "metadataNative": true
+}
