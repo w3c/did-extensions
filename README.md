@@ -1,76 +1,58 @@
-![W3C Logo](https://www.w3.org/Icons/w3c_home)
+# did-extensions
 
-[![Echidna Auto-publish](https://github.com/w3c/did-extensions/actions/workflows/auto-publish.yml/badge.svg)](https://github.com/w3c/did-extensions/actions/workflows/auto-publish.yml)
+🌐 **DX-MANA Extended DID Ecosystem**  
+This repository is a sovereign fork of the official [w3c/did-extensions](https://github.com/w3c/did-extensions), customized and curated for the DX-MANA decentralized identity realm.
 
-# Decentralized Identifier Extensions
+---
 
-This repository contains a list of known DID Extensions that are tracked
-by the
-[W3C Decentralized Identifier Working Group](https://www.w3.org/2019/did-wg/)
-(DID WG) for the purpose of enhancing DID ecosystem interoperability. There
-might be extensions to DIDs other than the ones listed here; this is not
-meant to be an exhaustive or centralized list of extensions.
+## 🧠 Purpose
 
-An Editor's Draft of this repository is available at
-https://w3c.github.io/did-extensions/.
+This repository integrates, extends, and adapts the W3C DID ecosystem specifications to support:
 
-## Adding a DID Method
+- 🧬 Metadata-bound DIDs  
+- 📡 ENS + IPFS native resolution  
+- 🧩 Modular identity schemas  
+- 🧠 Neural-bound identities used by DX-MANA CORE
 
-In order to register a new DID method, you must add a JSON file
-to the [./methods](./methods) directory and
-[open a pull request](https://github.com/w3c/did-extensions/pulls)
-to add the file to this repository.
+---
 
-Here is an [example registration entry](https://w3c.github.io/did-extensions/methods/example.json):
+## 📁 Structure
 
-```jsonc
-{
-  // These fields are required
-  "name": "example",
-  "status": "registered",
-  "specification": "https://w3c-ccg.github.io/did-spec/",
-  // These fields are optional
-  "contactName": "W3C Credentials Community Group",
-  "contactEmail": "",
-  "contactWebsite": "",
-  "verifiableDataRegistry": "DID Specification"
-}
-```
+This repository includes:
 
-Your Pull Request will be automatically validated, please ensure
-that all of the automated tests pass (no errors reported) or
-your submission will not be reviewed. Common reasons for failed
-validation includes invalidly formatted JSON files and missing
-mandatory fields. There will be a checklist that you are expected
-to complete and attest to its accuracy. Once you submit your request,
-your pull request will be reviewed by the registry editors. Changes
-regarding the required criteria may be requested. If there are at
-least two reviews by registry maintainers listed in the CODEOWNERS file, and no objections or
-changes requested, your DID method will be registered after a
-minimum of 7 days and a maximum of 30 days.
+- `methods/` — DX-MANA-specific method entries  
+- `resolution/` — Extended DID resolution behaviors  
+- `tooling/` — Validation tools for sovereign DID entries  
+- `transitions/` — Compatibility layers for schema upgrades
 
-## Adding Anything Else
+---
 
-Use the standard fork, branch, and pull request workflow to propose changes to
-the registry. Please make branch names informative—by including the issue or
-bug number for example.
+## 🛡️ Sovereignty
 
-Editorial changes that improve the readability of the registry or correct
-spelling or grammatical mistakes are welcome.
+- Fully decentralized and contract-controlled  
+- Bound to `did:mana:*` method and its sub-identities  
+- ENS-native: [`dx-manacore.eth`](https://dx-manacore.eth.link)
 
-Non-editorial changes MUST go through a review and approval process that is
-[detailed in the registry](https://w3c.github.io/did-extensions/#the-registration-process).
+---
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md), about licensing contributions.
+## 📡 Verifiable Data Registries
 
-## Code of Conduct
+Supports DIDs anchored on:
 
-W3C functions under a [code of conduct](https://www.w3.org/Consortium/cepc/).
+- `IPFS`  
+- `ENS`  
+- `DNS`  
+- `HTTPS`
 
-## DID Working Group Repositories
+---
 
-- [W3C DID Core Specification v1.0](https://github.com/w3c/did-core)
-- [W3C DID Working Group](https://github.com/w3c/did-wg)
-- [W3C DID Rubric v1.0](https://github.com/w3c/did-rubric)
-- [W3C DID Use Cases v1.0](https://github.com/w3c/did-use-cases)
-- [W3C DID Test Suite and Implementation Report](https://github.com/w3c/did-test-suite)
+## 🔗 Related Repositories
+
+- [`did-method-mana`](https://github.com/dx-manacore/did-method-mana) — W3C DID method definition  
+- [`did-method-registry`](https://github.com/dx-manacore/did-method-registry) — Fork of official registry  
+- [`dx-manacore.eth`](https://dx-manacore.eth.link) — Sovereign Realm Hosting
+
+---
+
+> 🧬 Maintained as part of the DX-MANA Sovereign Intelligence Stack by **MANA ALHARBI**  
+> Powered by: `dx-manacore.eth`
