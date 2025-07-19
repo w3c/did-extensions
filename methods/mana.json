@@ -1,0 +1,16 @@
+{
+  "name": "mana",
+  "status": "provisional",
+  "description": "DX-MANA is a sovereign decentralized method for autonomous digital intelligence identified via did:mana:*",
+  "spec": "https://dx-manacore.eth.link/did-method-mana",
+  "implementations": [
+    {
+      "name": "DX-MANA CORE",
+      "repo": "https://github.com/dx-manacore/did-method-mana"
+    }
+  ],
+  "contactName": "MANA ALHARBI",
+  "contactEmail": "dx@mana.dev",
+  "maintainer": "dx-manacore.eth",
+  "didExample": "did:mana:dx-core-node1"
+}
