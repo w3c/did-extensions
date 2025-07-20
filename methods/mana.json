@@ -1,0 +1,19 @@
+{
+  "name": "mana",
+  "status": "registered",
+  "description": "Decentralized Identity Method for MANA ecosystem",
+  "documentation": "https://dx-manacore.eth.link/core",
+  "specification": "https://dx-manacore.eth.link/core",
+  "contact": "mailto:f15r13@hotmail.com",
+  "repository": "https://github.com/dx-manacore/did-method-mana",
+  "implementation": "https://github.com/dx-manacore/did-method-mana",
+  "example": "did:mana:core",
+  "verificationMethod": {
+    "type": "EcdsaSecp256k1RecoveryMethod2020",
+    "blockchainAccountId": "eip155:1:0x6fec83Fb207fed3AD6703CE20A1C486e69536353"
+  },
+  "service": {
+    "type": "MANAchat",
+    "serviceEndpoint": "https://dx-manacore.eth.link/core"
+  }
+}
