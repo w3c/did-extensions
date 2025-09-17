@@ -1,0 +1,1823 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen Portal - Aadhaar KYC with Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .user-info {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            text-align: right;
+        }
+        
+        .user-info .user-name {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .user-info .logout-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+        
+        .user-info .logout-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .login-container {
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .login-form, .register-form {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #1e3c72;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(30, 60, 114, 0.3);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+        
+        .btn-info {
+            background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+        }
+        
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #6c757d;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background: white;
+            color: #1e3c72;
+            border-bottom: 3px solid #1e3c72;
+        }
+        
+        .tab:hover {
+            background: #e9ecef;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 40px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .card pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .card h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+        
+        .wallet-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .wallet-info h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .wallet-info .did {
+            font-family: 'Courier New', monospace;
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .service-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            border-color: #1e3c72;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .service-card h4 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+        
+        .service-card p {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        .citizens-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .citizen-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .citizen-card:hover {
+            border-color: #1e3c72;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .citizen-card h4 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+        
+        .citizen-card .did {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 5px;
+            margin: 10px 0;
+            word-break: break-all;
+            font-size: 0.9em;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin: 5px;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-approved {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-rejected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-registered {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .form-toggle {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .form-toggle a {
+            color: #1e3c72;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .form-toggle a:hover {
+            text-decoration: underline;
+        }
+        
+        .wallet-section {
+            margin-bottom: 30px;
+        }
+        
+        .wallet-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .wallet-section .card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 100px;
+        }
+        
+        .wallet-section .card pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            border-radius: 4px;
+            margin-right: 8px;
+            margin-bottom: 4px;
+        }
+        
+        .badge-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .badge-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .badge-warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .did-value {
+            font-size: 1.1rem;
+            word-break: break-all;
+            background: #f8f9fa;
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #dee2e6;
+        }
+        
+        .did-meta {
+            margin-top: 1rem;
+        }
+        
+        .did-details {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .detail-item {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .detail-item strong {
+            color: #495057;
+            min-width: 120px;
+        }
+        
+        .transaction-code, .ipfs-code {
+            font-family: 'Courier New', monospace;
+            background: #e9ecef;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            word-break: break-all;
+            color: #495057;
+            border: 1px solid #ced4da;
+        }
+        
+        .transaction-id, .ipfs-hash {
+            font-family: 'Courier New', monospace;
+            background: #e9ecef;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            word-break: break-all;
+            color: #495057;
+            border: 1px solid #ced4da;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .transaction-link, .ipfs-link {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #28a745;
+        }
+        
+        .transaction-url, .ipfs-url {
+            font-family: 'Courier New', monospace;
+            color: #007bff;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        
+        .transaction-url:hover, .ipfs-url:hover {
+            text-decoration: underline;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .service-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .service-card h4 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .service-card p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .service-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .service-category, .service-fee, .service-time {
+            background: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #495057;
+        }
+        
+        .service-fee {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .service-time {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .credentials-list {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .credential-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .credential-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .credential-header h4 {
+            color: #1e3c72;
+            margin: 0;
+        }
+        
+        .credential-details {
+            margin-bottom: 15px;
+        }
+        
+        .credential-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-sm {
+            padding: 5px 15px;
+            font-size: 0.9em;
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .status-item {
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #007bff;
+        }
+        
+        .document-info {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        
+        .document-info p {
+            margin-bottom: 8px;
+        }
+        
+        details {
+            margin-top: 10px;
+        }
+        
+        details summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #007bff;
+        }
+        
+        details pre {
+            margin-top: 10px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+            overflow-x: auto;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login/Register Section -->
+        <div id="authSection">
+            <div class="header">
+                <h1>🇮🇳 Citizen Portal</h1>
+                <p>Aadhaar KYC & Government Services</p>
+            </div>
+            
+            <!-- Login Form -->
+            <div id="loginForm" class="login-container">
+                <div class="login-form">
+                    <h2>Login</h2>
+                    <p>Access your account to manage multiple citizen wallets</p>
+                    
+                    <form id="loginFormElement">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <input type="email" id="loginEmail" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" name="password" required>
+                        </div>
+                        
+                        <button type="submit" class="btn">Login</button>
+                    </form>
+                    
+                    <div class="form-toggle">
+                        <p>Don't have an account? <a href="#" onclick="showRegister()">Register here</a></p>
+                    </div>
+                    
+                    <div id="loginResult" class="hidden"></div>
+                </div>
+            </div>
+            
+            <!-- Register Form -->
+            <div id="registerForm" class="login-container hidden">
+                <div class="register-form">
+                    <h2>Register</h2>
+                    <p>Create an account to manage multiple citizen wallets</p>
+                    
+                    <form id="registerFormElement">
+                        <div class="form-group">
+                            <label for="registerName">Full Name</label>
+                            <input type="text" id="registerName" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerEmail">Email Address</label>
+                            <input type="email" id="registerEmail" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" id="registerPassword" name="password" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success">Register</button>
+                    </form>
+                    
+                    <div class="form-toggle">
+                        <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+                    </div>
+                    
+                    <div id="registerResult" class="hidden"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Application Section -->
+        <div id="mainApp" class="hidden">
+            <div class="header">
+                <h1>🇮🇳 Citizen Portal</h1>
+                <p>Aadhaar KYC & Government Services</p>
+                <div class="user-info">
+                    <div class="user-name" id="userName">Welcome!</div>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('register')">Registration</button>
+                <button class="tab" onclick="showTab('aadhaar')">e-KYC</button>
+                <button class="tab" onclick="showTab('wallet')">Wallet</button>
+                <button class="tab" onclick="showTab('services')">Government Services</button>
+            </div>
+            
+            <!-- Registration Tab -->
+            <div id="register" class="tab-content active">
+                <h2>Register New Citizen</h2>
+                <p>Register a new citizen with personal details to get DID stored on Indy ledger</p>
+                
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Address *</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dob">Date of Birth *</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gender">Gender *</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="occupation">Occupation</label>
+                        <input type="text" id="occupation" name="occupation">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Register Citizen</button>
+                </form>
+                
+                <div id="registrationResult" class="result-message" style="display: none;"></div>
+            </div>
+            
+            <!-- Wallet Tab -->
+            <div id="wallet" class="tab-content">
+                <h2>Digital Wallet</h2>
+                <p>View your DID documents and blockchain credentials</p>
+                
+                <div class="wallet-section">
+                    <h3>Your DID Information</h3>
+                    <div id="didInfo" class="card">
+                        <p>No DID found. Please complete registration first.</p>
+                    </div>
+                </div>
+                
+                <div class="wallet-section">
+                    <h3>DID Document</h3>
+                    <div id="didDocument" class="card">
+                        <p>No DID document available.</p>
+                    </div>
+                </div>
+                
+                <div class="wallet-section">
+                    <h3>Blockchain Status</h3>
+                    <div id="blockchainStatus" class="card">
+                        <p>Checking blockchain connection...</p>
+                    </div>
+                </div>
+                
+                <div class="wallet-section">
+                    <h3>📋 Verifiable Credentials</h3>
+                    <div id="credentialsInfo" class="card">
+                        <p>Loading credentials...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Aadhaar e-KYC Tab -->
+            <div id="aadhaar" class="tab-content">
+                <h2>Aadhaar e-KYC Request</h2>
+                <p>Request Aadhaar e-KYC verification</p>
+                
+                <form id="aadhaarForm">
+                    <div class="form-group">
+                        <label for="aadhaarNumber">Aadhaar Number *</label>
+                        <input type="text" id="aadhaarNumber" name="aadhaar_number" 
+                               pattern="[0-9]{12}" maxlength="12" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="otp">OTP *</label>
+                        <input type="text" id="otp" name="otp" 
+                               pattern="[0-9]{6}" maxlength="6" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-warning">Request Aadhaar e-KYC</button>
+                </form>
+                
+                <div id="aadhaarStatus" class="hidden"></div>
+            </div>
+            
+            <!-- Government Services Tab -->
+            <div id="services" class="tab-content">
+                <h2>Available Government Services</h2>
+                <p>Access government services after Aadhaar e-KYC approval</p>
+                
+                <div id="servicesContent">
+                    <div class="alert alert-info">
+                        Please complete Aadhaar e-KYC first to access government services
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSession = null;
+        let currentCitizenId = null;
+        let userCitizens = [];
+        
+        // Authentication Functions
+        function showLogin() {
+            document.getElementById('loginForm').classList.remove('hidden');
+            document.getElementById('registerForm').classList.add('hidden');
+        }
+        
+        function showRegister() {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('registerForm').classList.remove('hidden');
+        }
+        
+        // Login Form
+        document.getElementById('loginFormElement').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    currentSession = {
+                        session_id: result.session_id,
+                        user_id: result.user_id,
+                        name: result.name
+                    };
+                    
+                    showMainApp();
+                    // NEW WORKFLOW: Check if user has DID, if not, prompt for DID generation
+                    checkUserDIDStatus();
+                } else {
+                    showLoginError(result.error);
+                }
+            } catch (error) {
+                showLoginError('Login failed: ' + error.message);
+            }
+        });
+        
+        // Register Form
+        document.getElementById('registerFormElement').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showRegisterSuccess(result);
+                } else {
+                    showRegisterError(result.error);
+                }
+            } catch (error) {
+                showRegisterError('Registration failed: ' + error.message);
+            }
+        });
+        
+        function showMainApp() {
+            document.getElementById('authSection').classList.add('hidden');
+            document.getElementById('mainApp').classList.remove('hidden');
+            document.getElementById('userName').textContent = `Welcome, ${currentSession.name}!`;
+        }
+        
+        // NEW WORKFLOW FUNCTIONS
+        async function checkUserDIDStatus() {
+            try {
+                const response = await fetch('/api/citizen/check-did-status', {
+                    method: 'GET',
+                    headers: {
+                        'X-Session-ID': currentSession.session_id
+                    }
+                });
+                
+                const result = await response.json();
+                
+                if (result.has_did) {
+                    currentCitizenId = result.citizen_id;
+                    // User has DID - show wallet entries directly
+                    showWalletEntries();
+                } else {
+                    // User doesn't have DID - show DID generation procedure
+                    showDIDGenerationPrompt();
+                }
+            } catch (error) {
+                console.error('Error checking DID status:', error);
+                showDIDGenerationPrompt();
+            }
+        }
+        
+        function showDIDGenerationPrompt() {
+            // Hide registration tab since user needs to generate DID first
+            hideTab('register');
+            
+            document.getElementById('mainContent').innerHTML = `
+                <div class="workflow-step">
+                    <div class="step-header">
+                        <h2>🆔 Step 1: Generate Your Digital Identity (DID)</h2>
+                        <p>Create your blockchain-based digital identity to access government services</p>
+                    </div>
+                    <div class="step-content">
+                        <div class="alert alert-info">
+                            <h3>🔗 Blockchain Digital Identity</h3>
+                            <p>Your DID will be stored on the Hyperledger Indy blockchain</p>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-large" onclick="generateDID()">
+                                🚀 Generate My Blockchain DID
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function showWalletEntries() {
+            // User has DID - show wallet tab and hide registration tab
+            hideTab('register');
+            showTab('wallet');
+            
+            // Load wallet data
+            loadWalletData();
+        }
+        
+        function hideTab(tabName) {
+            const tabElement = document.querySelector(`[onclick="showTab('${tabName}')"]`);
+            if (tabElement) {
+                tabElement.style.display = 'none';
+            }
+        }
+        
+        async function generateDID() {
+            try {
+                const response = await fetch('/api/citizen/generate-did', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Session-ID': currentSession.session_id
+                    },
+                    body: JSON.stringify({
+                        name: currentSession.name,
+                        email: currentSession.email || 'user@example.com',
+                        phone: '+1234567890',
+                        address: '123 Main Street',
+                        dob: '1990-01-01',
+                        gender: 'Other'
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    currentCitizenId = result.citizen_id;
+                    showDIDSuccess(result);
+                } else {
+                    showError(result.error);
+                }
+            } catch (error) {
+                showError('DID generation failed: ' + error.message);
+            }
+        }
+        
+        function showDIDSuccess(result) {
+            document.getElementById('mainContent').innerHTML = `
+                <div class="workflow-step">
+                    <div class="step-header">
+                        <h2>✅ DID Generated Successfully!</h2>
+                        <p>Your blockchain digital identity has been created</p>
+                    </div>
+                    <div class="step-content">
+                        <div class="alert alert-success">
+                            <h3>🆔 Your Digital Identity</h3>
+                            <p><strong>DID:</strong> ${result.did}</p>
+                            <p><strong>Blockchain:</strong> ${result.ledger_type || 'Indy'}</p>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-large" onclick="showWalletEntries()">
+                                ➡️ Access Your Wallet
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function showAadhaarKYCPrompt() {
+            document.getElementById('mainContent').innerHTML = `
+                <div class="workflow-step">
+                    <div class="step-header">
+                        <h2>📱 Step 2: Complete Aadhaar e-KYC</h2>
+                        <p>Verify your identity using Aadhaar to access government services</p>
+                    </div>
+                    <div class="step-content">
+                        <form id="aadhaarKYCForm">
+                            <div class="form-group">
+                                <label for="aadhaar_number">Aadhaar Number</label>
+                                <input type="text" id="aadhaar_number" name="aadhaar_number" 
+                                       placeholder="Enter 12-digit Aadhaar number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="otp">OTP</label>
+                                <input type="text" id="otp" name="otp" 
+                                       placeholder="Enter OTP received on registered mobile" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-large">
+                                    📱 Submit Aadhaar e-KYC Request
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('aadhaarKYCForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                const data = Object.fromEntries(formData);
+                
+                try {
+                    const response = await fetch(`/api/citizen/${currentCitizenId}/aadhaar-request`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Session-ID': currentSession.session_id
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        showAadhaarKYCSuccess(result);
+                    } else {
+                        showError(result.error);
+                    }
+                } catch (error) {
+                    showError('Aadhaar KYC request failed: ' + error.message);
+                }
+            });
+        }
+        
+        function showAadhaarKYCSuccess(result) {
+            document.getElementById('mainContent').innerHTML = `
+                <div class="workflow-step">
+                    <div class="step-header">
+                        <h2>📱 Aadhaar e-KYC Request Submitted!</h2>
+                        <p>Your request has been sent to the government portal for approval</p>
+                    </div>
+                    <div class="step-content">
+                        <div class="alert alert-info">
+                            <h3>📋 Request Details</h3>
+                            <p><strong>Request ID:</strong> ${result.request_id}</p>
+                            <p><strong>Status:</strong> ${result.status}</p>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-large" onclick="proceedToServices()">
+                                🏛️ Access Government Services
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function proceedToServices() {
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelector('[onclick="showTab(\'services\')"]').classList.add('active');
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+            document.getElementById('servicesContent').classList.remove('hidden');
+            loadServices();
+        }
+        
+        function showLoginError(message) {
+            const resultDiv = document.getElementById('loginResult');
+            resultDiv.innerHTML = `
+                <div class="alert alert-danger">
+                    <h3>❌ Login Failed</h3>
+                    <p>${message}</p>
+                </div>
+            `;
+            resultDiv.classList.remove('hidden');
+        }
+        
+        function showRegisterSuccess(result) {
+            const resultDiv = document.getElementById('registerResult');
+            resultDiv.innerHTML = `
+                <div class="alert alert-success">
+                    <h3>✅ Registration Successful!</h3>
+                    <p>User ID: ${result.user_id}</p>
+                    <p>Please login to continue</p>
+                </div>
+            `;
+            resultDiv.classList.remove('hidden');
+            
+            // Auto switch to login after 2 seconds
+            setTimeout(() => {
+                showLogin();
+            }, 2000);
+        }
+        
+        function showRegisterError(message) {
+            const resultDiv = document.getElementById('registerResult');
+            resultDiv.innerHTML = `
+                <div class="alert alert-danger">
+                    <h3>❌ Registration Failed</h3>
+                    <p>${message}</p>
+                </div>
+            `;
+            resultDiv.classList.remove('hidden');
+        }
+        
+        async function logout() {
+            try {
+                await fetch('/api/auth/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ session_id: currentSession.session_id })
+                });
+                
+                currentSession = null;
+                currentCitizenId = null;
+                userCitizens = [];
+                
+                document.getElementById('authSection').classList.remove('hidden');
+                document.getElementById('mainApp').classList.add('hidden');
+                showLogin();
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+        }
+        
+        // Load User Citizens
+        async function loadUserCitizens() {
+            try {
+                const response = await fetch(`/api/user/${currentSession.user_id}/citizens`, {
+                    headers: {
+                        'X-Session-ID': currentSession.session_id
+                    }
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    userCitizens = result.citizens;
+                    displayUserCitizens();
+                } else {
+                    showCitizensError(result.error);
+                }
+            } catch (error) {
+                showCitizensError('Failed to load citizens: ' + error.message);
+            }
+        }
+        
+        function displayUserCitizens() {
+            if (userCitizens.length === 0) {
+                document.getElementById('citizensContent').innerHTML = `
+                    <div class="alert alert-info">
+                        <h3>No Citizens Registered</h3>
+                        <p>You haven't registered any citizens yet. Click "Register New" to create your first citizen wallet.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const citizensHTML = userCitizens.map(citizen => `
+                <div class="citizen-card">
+                    <h4>${citizen.name}</h4>
+                    <div class="did">${citizen.did}</div>
+                    <p><strong>Status:</strong> <span class="status-badge status-${citizen.status.toLowerCase()}">${citizen.status}</span></p>
+                    <p><strong>Created:</strong> ${new Date(citizen.created_at).toLocaleDateString()}</p>
+                    <button class="btn btn-info" onclick="selectCitizen('${citizen.citizen_id}')">Select This Citizen</button>
+                </div>
+            `).join('');
+            
+            document.getElementById('citizensContent').innerHTML = `
+                <div class="alert alert-success">
+                    <h3>✅ ${userCitizens.length} Citizens Found</h3>
+                    <p>Select a citizen to manage their wallet and services</p>
+                </div>
+                <div class="citizens-list">
+                    ${citizensHTML}
+                </div>
+            `;
+        }
+        
+        function showCitizensError(message) {
+            document.getElementById('citizensContent').innerHTML = `
+                <div class="alert alert-danger">
+                    <h3>❌ Error</h3>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+        
+        function selectCitizen(citizenId) {
+            currentCitizenId = citizenId;
+            
+            // Update UI to show selected citizen
+            const selectedCitizen = userCitizens.find(c => c.citizen_id === citizenId);
+            if (selectedCitizen) {
+                document.getElementById('citizensContent').innerHTML = `
+                    <div class="alert alert-success">
+                        <h3>✅ Selected Citizen</h3>
+                        <p><strong>Name:</strong> ${selectedCitizen.name}</p>
+                        <p><strong>DID:</strong> ${selectedCitizen.did}</p>
+                        <p><strong>Status:</strong> <span class="status-badge status-${selectedCitizen.status.toLowerCase()}">${selectedCitizen.status}</span></p>
+                        <button class="btn btn-secondary" onclick="loadUserCitizens()">Back to All Citizens</button>
+                    </div>
+                `;
+                
+                // Load wallet for selected citizen
+                loadWallet();
+            }
+        }
+        
+        // Tab Functions - Updated to handle dynamic content
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab (only if event exists)
+            if (typeof event !== 'undefined' && event.target) {
+                event.target.classList.add('active');
+            } else {
+                // Find the tab button and add active class
+                const tabButton = document.querySelector(`[onclick="showTab('${tabName}')"]`);
+                if (tabButton) {
+                    tabButton.classList.add('active');
+                }
+            }
+            
+            // Load tab-specific data
+            if (tabName === 'citizens') {
+                loadUserCitizens();
+            } else if (tabName === 'wallet') {
+                loadWalletData();
+            } else if (tabName === 'aadhaar') {
+                loadAadhaarStatus();
+            } else if (tabName === 'services' && currentCitizenId) {
+                loadServices();
+            }
+        }
+        
+        // Registration Form
+        document.getElementById('registrationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch('/api/citizen/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Session-ID': currentSession.session_id
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    currentCitizenId = result.citizen_id;
+                    showRegistrationSuccess(result);
+                    loadUserCitizens(); // Refresh citizens list
+                } else {
+                    // Handle "one wallet per account" error specially
+                    if (result.error && result.error.includes('already has a citizen wallet')) {
+                        showWalletExistsError(result);
+                    } else {
+                        showError(result.error);
+                    }
+                }
+            } catch (error) {
+                showError('Registration failed: ' + error.message);
+            }
+        });
+        
+        function showRegistrationSuccess(result) {
+            const resultDiv = document.getElementById('registrationResult');
+            resultDiv.innerHTML = `
+                <div class="alert alert-success">
+                    <h3>✅ Registration Successful!</h3>
+                    <p><strong>Citizen ID:</strong> ${result.citizen_id}</p>
+                    <p><strong>DID:</strong> ${result.did}</p>
+                    <p><strong>Status:</strong> DID stored permanently on Indy ledger</p>
+                </div>
+            `;
+            resultDiv.classList.remove('hidden');
+        }
+        
+        function showError(message) {
+            const resultDiv = document.getElementById('registrationResult');
+            resultDiv.innerHTML = `
+                <div class="alert alert-warning">
+                    <h3>❌ Error</h3>
+                    <p>${message}</p>
+                </div>
+            `;
+            resultDiv.classList.remove('hidden');
+        }
+        
+        function showWalletExistsError(result) {
+            const resultDiv = document.getElementById('registrationResult');
+            resultDiv.innerHTML = `
+                <div class="alert alert-warning">
+                    <h3>⚠️ Wallet Already Exists</h3>
+                    <p>${result.error}</p>
+                    <p><strong>Existing Citizen ID:</strong> ${result.existing_citizen_id}</p>
+                    <p>You can view your existing wallet in the "Wallet" tab.</p>
+                </div>
+            `;
+            resultDiv.classList.remove('hidden');
+        }
+        
+        // Wallet Loading
+        async function loadWallet() {
+            if (!currentCitizenId) {
+                document.getElementById('walletContent').innerHTML = `
+                    <div class="alert alert-info">
+                        Please select a citizen first
+                    </div>
+                `;
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/citizen/${currentCitizenId}/wallet`, {
+                    headers: {
+                        'X-Session-ID': currentSession.session_id
+                    }
+                });
+                
+                const result = await response.json();
+                
+                if (result.wallet) {
+                    document.getElementById('walletContent').innerHTML = `
+                        <div class="wallet-info">
+                            <h3>🆔 My DID</h3>
+                            <div class="did">${result.wallet.did}</div>
+                            
+                            <h3>🔗 IPFS Link</h3>
+                            <div class="did">${result.wallet.ipfs_link}</div>
+                            
+                            <h3>📄 DID Document</h3>
+                            <div class="card">
+                                <pre>${JSON.stringify(result.wallet.did_document, null, 2)}</pre>
+                            </div>
+                            
+                            <button class="btn btn-info" onclick="resolveDID()">Resolve DID</button>
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('walletContent').innerHTML = `
+                        <div class="alert alert-warning">
+                            <h3>❌ Error</h3>
+                            <p>${result.error}</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                document.getElementById('walletContent').innerHTML = `
+                    <div class="alert alert-warning">
+                        <h3>❌ Error</h3>
+                        <p>Failed to load wallet: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Load wallet data for current user
+        async function loadWalletData() {
+            try {
+                // Get current user's DID status
+                const response = await fetch('/api/citizen/check-did-status', {
+                    method: 'GET',
+                    headers: {
+                        'X-Session-ID': currentSession.session_id
+                    }
+                });
+                
+                if (response.status === 401) {
+                    // Session expired, redirect to login
+                    console.log('Session expired, redirecting to login');
+                    localStorage.removeItem('citizen_session');
+                    currentSession = null;
+                    showLogin();
+                    return;
+                }
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                
+                if (result.success && result.has_did) {
+                    // User has DID, show enhanced wallet data
+                    document.getElementById('didInfo').innerHTML = `
+                        <div class="did-display">
+                            <h4>🆔 Your Digital Identity (DID)</h4>
+                            <div class="did-value">
+                                <strong>${result.did}</strong>
+                            </div>
+                            <div class="did-meta">
+                                <span class="badge badge-success">${result.status || 'ACTIVE'}</span>
+                                <span class="badge badge-info">${result.ledger_type || 'Rust Indy Ledger'}</span>
+                                <span class="badge badge-warning">STORED ON LEDGER</span>
+                            </div>
+                            <div class="did-details">
+                                <div class="detail-item">
+                                    <strong>Citizen ID:</strong> ${result.citizen_id || 'N/A'}
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Transaction ID:</strong> 
+                                    <code class="transaction-code">${result.transaction_hash || result.ledger_hash || 'N/A'}</code>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>IPFS Hash:</strong> 
+                                    <code class="ipfs-code">${result.ipfs_cid || result.cloud_hash || 'N/A'}</code>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Display credentials section
+                    let credentialsHtml = '<p>No credentials available.</p>';
+                    if (result.credentials && Object.keys(result.credentials).length > 0) {
+                        credentialsHtml = `
+                            <div class="credentials-list">
+                                ${Object.values(result.credentials).map(cred => `
+                                    <div class="credential-card">
+                                        <div class="credential-header">
+                                            <h4>${cred.credential_type}</h4>
+                                            <span class="badge badge-success">${cred.status}</span>
+                                        </div>
+                                        <div class="credential-details">
+                                            <div class="detail-item">
+                                                <strong>Issuer:</strong> ${cred.issuer}
+                                            </div>
+                                            <div class="detail-item">
+                                                <strong>KYC Level:</strong> ${cred.kyc_level}
+                                            </div>
+                                            <div class="detail-item">
+                                                <strong>Issued:</strong> ${new Date(cred.issued_at).toLocaleDateString()}
+                                            </div>
+                                            <div class="detail-item">
+                                                <strong>Expires:</strong> ${new Date(cred.expires_at).toLocaleDateString()}
+                                            </div>
+                                            <div class="detail-item">
+                                                <strong>Transaction:</strong> 
+                                                <code class="transaction-code">${cred.ledger_transaction}</code>
+                                            </div>
+                                            <div class="detail-item">
+                                                <strong>IPFS CID:</strong> 
+                                                <code class="ipfs-code">${cred.ipfs_cid}</code>
+                                            </div>
+                                        </div>
+                                        <div class="credential-actions">
+                                            <button class="btn btn-sm btn-info" onclick="viewCredential('${cred.credential_id}')">
+                                                📄 View Details
+                                            </button>
+                                            <button class="btn btn-sm btn-success" onclick="verifyCredential('${cred.credential_id}')">
+                                                ✅ Verify
+                                            </button>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    }
+                    
+                    // Safely display DID document
+                    let didDocHtml = '<p>No DID document available.</p>';
+                    if (result.did_document && typeof result.did_document === 'object') {
+                        try {
+                            didDocHtml = `
+                                <div class="did-document">
+                                    <h5>DID Document Details:</h5>
+                                    <div class="document-info">
+                                        <p><strong>ID:</strong> ${result.did_document.id || result.did}</p>
+                                        <p><strong>Verification Method:</strong> ${result.did_document.verificationMethod?.[0]?.type || 'Ed25519VerificationKey2018'}</p>
+                                        <p><strong>Created:</strong> ${result.did_document.created_at || 'N/A'}</p>
+                                    </div>
+                                    <details>
+                                        <summary>View Full Document</summary>
+                                        <pre>${JSON.stringify(result.did_document, null, 2)}</pre>
+                                    </details>
+                                </div>
+                            `;
+                        } catch (e) {
+                            didDocHtml = `<p>DID document available but cannot be displayed.</p>`;
+                        }
+                    }
+                    document.getElementById('didDocument').innerHTML = didDocHtml;
+                    
+                    // Update credentials section
+                    document.getElementById('credentialsInfo').innerHTML = credentialsHtml;
+                    
+                    document.getElementById('blockchainStatus').innerHTML = `
+                        <div class="blockchain-info">
+                            <h4>🔗 Blockchain Status</h4>
+                            <div class="status-grid">
+                                <div class="status-item">
+                                    <strong>Ledger:</strong> ${result.ledger_type || 'Rust Indy Ledger'}
+                                </div>
+                                <div class="status-item">
+                                    <strong>Transaction ID:</strong> 
+                                    <span class="transaction-id">${result.transaction_hash || result.ledger_hash || 'N/A'}</span>
+                                </div>
+                                <div class="status-item">
+                                    <strong>IPFS Hash:</strong> 
+                                    <span class="ipfs-hash">${result.ipfs_cid || result.cloud_hash || 'N/A'}</span>
+                                </div>
+                                <div class="status-item">
+                                    <strong>Cloud Provider:</strong> ${result.cloud_provider || 'IPFS + Rust Ledger'}
+                                </div>
+                                <div class="status-item">
+                                    <strong>Storage Status:</strong> 
+                                    <span class="badge badge-success">STORED ON LEDGER</span>
+                                </div>
+                            </div>
+                            ${result.cloud_url ? `
+                                <div class="ipfs-link">
+                                    <strong>IPFS Link:</strong> 
+                                    <a href="${result.cloud_url}" target="_blank" class="ipfs-url">${result.cloud_url}</a>
+                                </div>
+                            ` : ''}
+                            ${result.transaction_hash || result.ledger_hash ? `
+                                <div class="transaction-link">
+                                    <strong>Ledger Transaction:</strong> 
+                                    <span class="transaction-url">${result.transaction_hash || result.ledger_hash}</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                } else {
+                    // User doesn't have DID yet
+                    document.getElementById('didInfo').innerHTML = `
+                        <p>No DID found. Please complete registration first.</p>
+                    `;
+                    
+                    document.getElementById('didDocument').innerHTML = `
+                        <p>No DID document available.</p>
+                    `;
+                    
+                    document.getElementById('credentialsInfo').innerHTML = `
+                        <p>No credentials available.</p>
+                    `;
+                    
+                    document.getElementById('blockchainStatus').innerHTML = `
+                        <p>No blockchain data available.</p>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading wallet data:', error);
+                document.getElementById('didInfo').innerHTML = `
+                    <p>Error loading DID information: ${error.message}</p>
+                `;
+                
+                document.getElementById('didDocument').innerHTML = `
+                    <p>Error loading DID document.</p>
+                `;
+                
+                document.getElementById('credentialsInfo').innerHTML = `
+                    <p>Error loading credentials.</p>
+                `;
+                
+                document.getElementById('blockchainStatus').innerHTML = `
+                    <p>Error loading blockchain status.</p>
+                `;
+            }
+        }
+        
+        async function resolveDID() {
+            if (!currentCitizenId) return;
+            
+            try {
+                const response = await fetch(`/api/citizen/${currentCitizenId}/resolve-did`, {
+                    method: 'POST',
+                    headers: {
+                        'X-Session-ID': currentSession.session_id
+                    }
+                });
+                const result = await response.json();
+                
+                alert(`DID Resolved!\n\nDID: ${result.did}\n\nMessage: ${result.message}`);
+            } catch (error) {
+                alert('DID resolution failed: ' + error.message);
+            }
+        }
+        
+        // Aadhaar e-KYC Form
+        document.getElementById('aadhaarForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!currentCitizenId) {
+                alert('Please select a citizen first');
+                return;
+            }
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch(`/api/citizen/${currentCitizenId}/aadhaar-request`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Session-ID': currentSession.session_id
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showAadhaarSuccess(result);
+                } else {
+                    showAadhaarError(result.error);
+                }
+            } catch (error) {
+                showAadhaarError('Aadhaar request failed: ' + error.message);
+            }
+        });
+        
+        function showAadhaarSuccess(result) {
+            const statusDiv = document.getElementById('aadhaarStatus');
+            statusDiv.innerHTML = `
+                <div class="alert alert-success">
+                    <h3>✅ Aadhaar e-KYC Request Submitted!</h3>
+                    <p><strong>Request ID:</strong> ${result.request_id}</p>
+                    <p><strong>Status:</strong> <span class="status-badge status-pending">${result.status}</span></p>
+                    <p>Your request has been submitted to the government portal for approval.</p>
+                </div>
+            `;
+            statusDiv.classList.remove('hidden');
+        }
+        
+        function showAadhaarError(message) {
+            const statusDiv = document.getElementById('aadhaarStatus');
+            statusDiv.innerHTML = `
+                <div class="alert alert-warning">
+                    <h3>❌ Error</h3>
+                    <p>${message}</p>
+                </div>
+            `;
+            statusDiv.classList.remove('hidden');
+        }
+        
+        // Services Loading
+        async function loadServices() {
+            if (!currentCitizenId) {
+                document.getElementById('servicesContent').innerHTML = `
+                    <div class="alert alert-info">
+                        Please select a citizen first
+                    </div>
+                `;
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/citizen/government-services', {
+                    headers: {
+                        'X-Session-ID': currentSession.session_id
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                
+                if (result.success && result.services && Object.keys(result.services).length > 0) {
+                    const servicesHTML = Object.values(result.services).map(service => `
+                        <div class="service-card">
+                            <h4>${service.service_name}</h4>
+                            <p>${service.description}</p>
+                            <div class="service-details">
+                                <span class="service-category">${service.category}</span>
+                                <span class="service-fee">${service.fee}</span>
+                                <span class="service-time">${service.processing_time}</span>
+                            </div>
+                            <button class="btn btn-success">Apply Now</button>
+                        </div>
+                    `).join('');
+                    
+                    document.getElementById('servicesContent').innerHTML = `
+                        <div class="alert alert-success">
+                            <h3>✅ Government Services Available!</h3>
+                            <p>You can now access government services</p>
+                        </div>
+                        <div class="services-grid">
+                            ${servicesHTML}
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('servicesContent').innerHTML = `
+                        <div class="alert alert-info">
+                            <h3>ℹ️ ${result.message || 'No services available'}</h3>
+                            <p>Please complete Aadhaar e-KYC first to access government services</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                document.getElementById('servicesContent').innerHTML = `
+                    <div class="alert alert-warning">
+                        <h3>❌ Error</h3>
+                        <p>Failed to load services: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

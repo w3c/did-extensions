@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Indy Ledger Explorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .tab-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .tab-header {
+            display: flex;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 15px 20px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .tab-button.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .rust-indy-stats {
+            margin-bottom: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .rust-indy-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e1e8ed;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .did-cell {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+
+        .verkey-cell {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            word-break: break-all;
+        }
+
+        .id-cell, .seq-cell {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e1e8ed;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #7f8c8d;
+            padding: 40px;
+            font-style: italic;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .tab-content {
+                padding: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+            }
+            
+            .stat-card {
+                padding: 15px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🦀 Rust Indy Ledger Explorer</h1>
+            <p>Real-time monitoring of Rust-style Hyperledger Indy ledger</p>
+        </div>
+
+        <!-- Tab Container -->
+        <div class="tab-container">
+            <div class="tab-header">
+                <button class="tab-button active" onclick="switchTab('rust-indy')">
+                    🦀 Rust Indy Ledger
+                </button>
+            </div>
+            
+            <!-- Rust Indy Ledger Tab -->
+            <div id="rust-indyTab" class="tab-content active">
+                <div class="rust-indy-stats" id="rustIndyStats">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        Loading Rust Indy ledger data...
+                    </div>
+                </div>
+                
+                <div class="rust-indy-sections" id="rustIndySections">
+                    <!-- Data will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8083/api/ledger';
+
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadRustIndyEntries();
+        });
+
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[onclick="switchTab('${tabName}')"]`).classList.add('active');
+            
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(`${tabName}Tab`).classList.add('active');
+            
+            // Load Rust Indy data
+            if (tabName === 'rust-indy') {
+                loadRustIndyEntries();
+            }
+        }
+
+        async function loadRustIndyEntries() {
+            try {
+                const response = await fetch(`${API_BASE}/rust-indy`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayRustIndyData(data);
+                } else {
+                    showError(data.error || 'Failed to load Rust Indy ledger data');
+                }
+            } catch (error) {
+                showError('Network error: ' + error.message);
+            }
+        }
+
+        function displayRustIndyData(data) {
+            const statsContainer = document.getElementById('rustIndyStats');
+            const sectionsContainer = document.getElementById('rustIndySections');
+            
+            if (!statsContainer || !sectionsContainer) return;
+            
+            // Display statistics
+            const stats = data.statistics;
+            statsContainer.innerHTML = `
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">${stats.total_transactions}</div>
+                        <div class="stat-label">Transactions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${stats.total_dids}</div>
+                        <div class="stat-label">DIDs</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${stats.total_credentials}</div>
+                        <div class="stat-label">Credentials</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${stats.total_pools}</div>
+                        <div class="stat-label">Pools</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${stats.total_wallets}</div>
+                        <div class="stat-label">Wallets</div>
+                    </div>
+                </div>
+            `;
+            
+            // Display sections
+            let sectionsHTML = '';
+            
+            // DIDs Section
+            if (data.dids && Object.keys(data.dids).length > 0) {
+                sectionsHTML += `
+                    <div class="section">
+                        <h3>🆔 DIDs (${Object.keys(data.dids).length})</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>DID</th>
+                                        <th>Verkey</th>
+                                        <th>Role</th>
+                                        <th>Status</th>
+                                        <th>IPFS CID</th>
+                                        <th>Created</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${Object.values(data.dids).map(did => `
+                                        <tr>
+                                            <td class="did-cell">${did.did}</td>
+                                            <td class="verkey-cell">${did.verkey}</td>
+                                            <td class="id-cell">${did.role || 'CITIZEN'}</td>
+                                            <td class="seq-cell">${did.status || 'ACTIVE'}</td>
+                                            <td class="verkey-cell">${did.ipfs_cid || 'N/A'}</td>
+                                            <td class="id-cell">${new Date(did.created_at).toLocaleString()}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Credentials Section
+            if (data.credentials && Object.keys(data.credentials).length > 0) {
+                sectionsHTML += `
+                    <div class="section">
+                        <h3>📋 Credentials (${Object.keys(data.credentials).length})</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Citizen DID</th>
+                                        <th>Citizen Name</th>
+                                        <th>KYC Level</th>
+                                        <th>Status</th>
+                                        <th>Verified At</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${Object.values(data.credentials).map(cred => `
+                                        <tr>
+                                            <td class="did-cell">${cred.credential_type}</td>
+                                            <td class="verkey-cell">${cred.citizen_did}</td>
+                                            <td class="id-cell">${cred.citizen_name || 'N/A'}</td>
+                                            <td class="seq-cell">${cred.kyc_level || 'N/A'}</td>
+                                            <td class="seq-cell">${cred.status}</td>
+                                            <td class="id-cell">${new Date(cred.timestamp || cred.verified_at).toLocaleString()}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Transactions Section
+            if (data.transactions && Object.keys(data.transactions).length > 0) {
+                const nymTransactions = Object.values(data.transactions).filter(tx => tx.transaction_type === 'NYM');
+                const credentialTransactions = Object.values(data.transactions).filter(tx => tx.transaction_type === 'CREDENTIAL');
+                
+                sectionsHTML += `
+                    <div class="section">
+                        <h3>📝 NYM Transactions (${nymTransactions.length})</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>DID</th>
+                                        <th>Verkey</th>
+                                        <th>Role</th>
+                                        <th>Hash</th>
+                                        <th>Created</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${nymTransactions.map(tx => `
+                                        <tr>
+                                            <td class="did-cell">${tx.transaction_type}</td>
+                                            <td class="verkey-cell">${tx.did || tx.data?.dest || 'N/A'}</td>
+                                            <td class="verkey-cell">${tx.verkey || tx.data?.verkey || 'N/A'}</td>
+                                            <td class="id-cell">${tx.role || tx.data?.role || 'CITIZEN'}</td>
+                                            <td class="verkey-cell">${tx.transaction_hash || tx.hash || 'N/A'}</td>
+                                            <td class="id-cell">${new Date(tx.timestamp).toLocaleString()}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h3>🔐 Credential Transactions (${credentialTransactions.length})</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Credential Type</th>
+                                        <th>Citizen DID</th>
+                                        <th>Status</th>
+                                        <th>Hash</th>
+                                        <th>Created</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${credentialTransactions.map(tx => `
+                                        <tr>
+                                            <td class="did-cell">${tx.transaction_type}</td>
+                                            <td class="id-cell">${tx.credential_type || 'N/A'}</td>
+                                            <td class="verkey-cell">${tx.citizen_did || 'N/A'}</td>
+                                            <td class="seq-cell">${tx.status || 'N/A'}</td>
+                                            <td class="verkey-cell">${tx.transaction_hash}</td>
+                                            <td class="id-cell">${new Date(tx.timestamp).toLocaleString()}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (sectionsHTML === '') {
+                sectionsHTML = '<div class="section"><h3>📭 No Data Available</h3><p>The Rust Indy ledger is empty.</p></div>';
+            }
+            
+            sectionsContainer.innerHTML = sectionsHTML;
+        }
+
+        function showError(message) {
+            const statsContainer = document.getElementById('rustIndyStats');
+            const sectionsContainer = document.getElementById('rustIndySections');
+            
+            if (statsContainer) {
+                statsContainer.innerHTML = `<div class="error">❌ ${message}</div>`;
+            }
+            if (sectionsContainer) {
+                sectionsContainer.innerHTML = '';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+[package]
+name = "indy-rust-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "0.2", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+thiserror = "1.0"
+sha2 = "0.9"
+hex = "0.4"
+chrono = { version = "0.4", features = ["serde"] }
+rand = "0.8"
+base58 = "0.2"
+ed25519-dalek = "1.0"
+x25519-dalek = "1.0"
+blake2 = "0.9"
+libc = "0.2"
+
+[lib]
+name = "indy_rust_core"
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "indy-rust-cli"
+path = "src/bin/cli.rs"

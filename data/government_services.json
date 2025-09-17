@@ -1,0 +1,122 @@
+{
+  "government_services": {
+    "SERVICE_001": {
+      "service_id": "SERVICE_001",
+      "service_name": "Passport Application",
+      "description": "Apply for Indian Passport with verified Aadhaar KYC",
+      "category": "Identity Documents",
+      "requirements": ["Aadhaar KYC", "Valid ID Proof"],
+      "processing_time": "7-10 business days",
+      "fee": "₹1500",
+      "status": "active",
+      "icon": "📘"
+    },
+    "SERVICE_002": {
+      "service_id": "SERVICE_002", 
+      "service_name": "PAN Card Application",
+      "description": "Apply for Permanent Account Number (PAN) card",
+      "category": "Tax Documents",
+      "requirements": ["Aadhaar KYC", "Address Proof"],
+      "processing_time": "3-5 business days",
+      "fee": "₹107",
+      "status": "active",
+      "icon": "💳"
+    },
+    "SERVICE_003": {
+      "service_id": "SERVICE_003",
+      "service_name": "Voter ID Card",
+      "description": "Register for Voter ID Card with verified identity",
+      "category": "Citizenship Documents", 
+      "requirements": ["Aadhaar KYC", "Age Proof"],
+      "processing_time": "10-15 business days",
+      "fee": "Free",
+      "status": "active",
+      "icon": "🗳️"
+    },
+    "SERVICE_004": {
+      "service_id": "SERVICE_004",
+      "service_name": "Driving License",
+      "description": "Apply for Driving License with verified KYC",
+      "category": "Transport Documents",
+      "requirements": ["Aadhaar KYC", "Medical Certificate"],
+      "processing_time": "15-20 business days", 
+      "fee": "₹200",
+      "status": "active",
+      "icon": "🚗"
+    },
+    "SERVICE_005": {
+      "service_id": "SERVICE_005",
+      "service_name": "Bank Account Opening",
+      "description": "Open bank account with verified Aadhaar KYC",
+      "category": "Financial Services",
+      "requirements": ["Aadhaar KYC", "Income Proof"],
+      "processing_time": "1-2 business days",
+      "fee": "₹500",
+      "status": "active", 
+      "icon": "🏦"
+    },
+    "SERVICE_006": {
+      "service_id": "SERVICE_006",
+      "service_name": "Property Registration",
+      "description": "Register property with verified identity",
+      "category": "Property Services",
+      "requirements": ["Aadhaar KYC", "Property Documents"],
+      "processing_time": "30-45 business days",
+      "fee": "₹10,000",
+      "status": "active",
+      "icon": "🏠"
+    },
+    "SERVICE_007": {
+      "service_id": "SERVICE_007", 
+      "service_name": "Marriage Certificate",
+      "description": "Apply for Marriage Certificate",
+      "category": "Civil Documents",
+      "requirements": ["Aadhaar KYC", "Marriage Proof"],
+      "processing_time": "5-7 business days",
+      "fee": "₹100",
+      "status": "active",
+      "icon": "💒"
+    },
+    "SERVICE_008": {
+      "service_id": "SERVICE_008",
+      "service_name": "Birth Certificate",
+      "description": "Apply for Birth Certificate",
+      "category": "Civil Documents", 
+      "requirements": ["Aadhaar KYC", "Hospital Records"],
+      "processing_time": "3-5 business days",
+      "fee": "₹50",
+      "status": "active",
+      "icon": "👶"
+    }
+  },
+  "categories": {
+    "Identity Documents": {
+      "description": "Essential identity and travel documents",
+      "color": "#3498db"
+    },
+    "Tax Documents": {
+      "description": "Tax-related documents and certificates", 
+      "color": "#e74c3c"
+    },
+    "Citizenship Documents": {
+      "description": "Citizenship and voting related services",
+      "color": "#2ecc71"
+    },
+    "Transport Documents": {
+      "description": "Transportation and vehicle related services",
+      "color": "#f39c12"
+    },
+    "Financial Services": {
+      "description": "Banking and financial services",
+      "color": "#9b59b6"
+    },
+    "Property Services": {
+      "description": "Property and real estate services", 
+      "color": "#34495e"
+    },
+    "Civil Documents": {
+      "description": "Civil status and personal documents",
+      "color": "#e67e22"
+    }
+  }
+}

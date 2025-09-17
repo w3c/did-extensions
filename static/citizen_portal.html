@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen Portal - Aadhaar KYC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #6c757d;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background: white;
+            color: #1e3c72;
+            border-bottom: 3px solid #1e3c72;
+        }
+        
+        .tab:hover {
+            background: #e9ecef;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 40px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #1e3c72;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(30, 60, 114, 0.3);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+        
+        .btn-info {
+            background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+        }
+        
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .card h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+        
+        .wallet-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .wallet-info h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .wallet-info .did {
+            font-family: 'Courier New', monospace;
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .service-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            border-color: #1e3c72;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .service-card h4 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+        
+        .service-card p {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin: 5px;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-approved {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-rejected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🇮🇳 Citizen Portal</h1>
+            <p>Aadhaar KYC & Government Services</p>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('register')">Register</button>
+            <button class="tab" onclick="showTab('wallet')">Wallet</button>
+            <button class="tab" onclick="showTab('aadhaar')">Aadhaar e-KYC</button>
+            <button class="tab" onclick="showTab('services')">Government Services</button>
+        </div>
+        
+        <!-- Registration Tab -->
+        <div id="register" class="tab-content active">
+            <h2>Citizen Registration</h2>
+            <p>Register with your personal details to get your DID stored on Indy ledger</p>
+            
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Address *</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dob">Date of Birth *</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="gender">Gender *</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-success">Register & Generate DID</button>
+            </form>
+            
+            <div id="registrationResult" class="hidden"></div>
+        </div>
+        
+        <!-- Wallet Tab -->
+        <div id="wallet" class="tab-content">
+            <h2>My Wallet</h2>
+            <p>View your generated DID and DID document</p>
+            
+            <div id="walletContent">
+                <div class="alert alert-info">
+                    Please register first to view your wallet
+                </div>
+            </div>
+        </div>
+        
+        <!-- Aadhaar e-KYC Tab -->
+        <div id="aadhaar" class="tab-content">
+            <h2>Aadhaar e-KYC Request</h2>
+            <p>Request Aadhaar e-KYC verification</p>
+            
+            <form id="aadhaarForm">
+                <div class="form-group">
+                    <label for="aadhaarNumber">Aadhaar Number *</label>
+                    <input type="text" id="aadhaarNumber" name="aadhaar_number" 
+                           pattern="[0-9]{12}" maxlength="12" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="otp">OTP *</label>
+                    <input type="text" id="otp" name="otp" 
+                           pattern="[0-9]{6}" maxlength="6" required>
+                </div>
+                
+                <button type="submit" class="btn btn-warning">Request Aadhaar e-KYC</button>
+            </form>
+            
+            <div id="aadhaarStatus" class="hidden"></div>
+        </div>
+        
+        <!-- Government Services Tab -->
+        <div id="services" class="tab-content">
+            <h2>Available Government Services</h2>
+            <p>Access government services after Aadhaar e-KYC approval</p>
+            
+            <div id="servicesContent">
+                <div class="alert alert-info">
+                    Please complete Aadhaar e-KYC first to access government services
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentCitizenId = null;
+        
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            
+            // Load tab-specific data
+            if (tabName === 'wallet' && currentCitizenId) {
+                loadWallet();
+            } else if (tabName === 'services' && currentCitizenId) {
+                loadServices();
+            }
+        }
+        
+        // Registration Form
+        document.getElementById('registrationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch('/api/citizen/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    currentCitizenId = result.citizen_id;
+                    showRegistrationSuccess(result);
+                } else {
+                    showError(result.error);
+                }
+            } catch (error) {
+                showError('Registration failed: ' + error.message);
+            }
+        });
+        
+        function showRegistrationSuccess(result) {
+            const resultDiv = document.getElementById('registrationResult');
+            resultDiv.innerHTML = `
+                <div class="alert alert-success">
+                    <h3>✅ Registration Successful!</h3>
+                    <p><strong>Citizen ID:</strong> ${result.citizen_id}</p>
+                    <p><strong>DID:</strong> ${result.did}</p>
+                    <p><strong>Status:</strong> DID stored permanently on Indy ledger</p>
+                </div>
+            `;
+            resultDiv.classList.remove('hidden');
+        }
+        
+        function showError(message) {
+            const resultDiv = document.getElementById('registrationResult');
+            resultDiv.innerHTML = `
+                <div class="alert alert-warning">
+                    <h3>❌ Error</h3>
+                    <p>${message}</p>
+                </div>
+            `;
+            resultDiv.classList.remove('hidden');
+        }
+        
+        // Wallet Loading
+        async function loadWallet() {
+            if (!currentCitizenId) return;
+            
+            try {
+                const response = await fetch(`/api/citizen/${currentCitizenId}/wallet`);
+                const result = await response.json();
+                
+                if (result.wallet) {
+                    document.getElementById('walletContent').innerHTML = `
+                        <div class="wallet-info">
+                            <h3>🆔 My DID</h3>
+                            <div class="did">${result.wallet.did}</div>
+                            
+                            <h3>🔗 IPFS Link</h3>
+                            <div class="did">${result.wallet.ipfs_link}</div>
+                            
+                            <h3>📄 DID Document</h3>
+                            <div class="card">
+                                <pre>${JSON.stringify(result.wallet.did_document, null, 2)}</pre>
+                            </div>
+                            
+                            <button class="btn btn-info" onclick="resolveDID()">Resolve DID</button>
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('walletContent').innerHTML = `
+                        <div class="alert alert-warning">
+                            <h3>❌ Error</h3>
+                            <p>${result.error}</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                document.getElementById('walletContent').innerHTML = `
+                    <div class="alert alert-warning">
+                        <h3>❌ Error</h3>
+                        <p>Failed to load wallet: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        async function resolveDID() {
+            if (!currentCitizenId) return;
+            
+            try {
+                const response = await fetch(`/api/citizen/${currentCitizenId}/resolve-did`, {
+                    method: 'POST'
+                });
+                const result = await response.json();
+                
+                alert(`DID Resolved!\n\nDID: ${result.did}\n\nMessage: ${result.message}`);
+            } catch (error) {
+                alert('DID resolution failed: ' + error.message);
+            }
+        }
+        
+        // Aadhaar e-KYC Form
+        document.getElementById('aadhaarForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!currentCitizenId) {
+                alert('Please register first');
+                return;
+            }
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch(`/api/citizen/${currentCitizenId}/aadhaar-request`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showAadhaarSuccess(result);
+                } else {
+                    showAadhaarError(result.error);
+                }
+            } catch (error) {
+                showAadhaarError('Aadhaar request failed: ' + error.message);
+            }
+        });
+        
+        function showAadhaarSuccess(result) {
+            const statusDiv = document.getElementById('aadhaarStatus');
+            statusDiv.innerHTML = `
+                <div class="alert alert-success">
+                    <h3>✅ Aadhaar e-KYC Request Submitted!</h3>
+                    <p><strong>Request ID:</strong> ${result.request_id}</p>
+                    <p><strong>Status:</strong> <span class="status-badge status-pending">${result.status}</span></p>
+                    <p>Your request has been submitted to the government portal for approval.</p>
+                </div>
+            `;
+            statusDiv.classList.remove('hidden');
+        }
+        
+        function showAadhaarError(message) {
+            const statusDiv = document.getElementById('aadhaarStatus');
+            statusDiv.innerHTML = `
+                <div class="alert alert-warning">
+                    <h3>❌ Error</h3>
+                    <p>${message}</p>
+                </div>
+            `;
+            statusDiv.classList.remove('hidden');
+        }
+        
+        // Services Loading
+        async function loadServices() {
+            if (!currentCitizenId) return;
+            
+            try {
+                const response = await fetch(`/api/citizen/${currentCitizenId}/services`);
+                const result = await response.json();
+                
+                if (result.services && result.services.length > 0) {
+                    const servicesHTML = result.services.map(service => `
+                        <div class="service-card">
+                            <h4>${service.name}</h4>
+                            <p>${service.description}</p>
+                            <button class="btn btn-success">Apply Now</button>
+                        </div>
+                    `).join('');
+                    
+                    document.getElementById('servicesContent').innerHTML = `
+                        <div class="alert alert-success">
+                            <h3>✅ Aadhaar e-KYC Approved!</h3>
+                            <p>You can now access government services</p>
+                        </div>
+                        <div class="services-grid">
+                            ${servicesHTML}
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('servicesContent').innerHTML = `
+                        <div class="alert alert-info">
+                            <h3>ℹ️ ${result.message}</h3>
+                            <p>Please complete Aadhaar e-KYC first to access government services</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                document.getElementById('servicesContent').innerHTML = `
+                    <div class="alert alert-warning">
+                        <h3>❌ Error</h3>
+                        <p>Failed to load services: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
