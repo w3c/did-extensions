@@ -1,0 +1,9 @@
+{
+  "name": "os",
+  "status": "registered",
+  "specification": "https://github.com/OpenSig/opensig-protocol/blob/main/did/did-os-method-spec.md",
+  "contactName": "David Potter",
+  "contactEmail": "info@opensig.net",
+  "contactWebsite": "https://opensig.net",
+  "verifiableDataRegistry": ""
+}
