@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+Decentralized Identifier Extensions
+  </title>
+  <meta content='text/html; charset=utf-8' http-equiv='Content-Type'><!--
+    === NOTA BENE ===
+    For the three scripts below, if your spec resides on dev.w3 you can check them
+    out in the same tree and use relative links so that they'll work offline.
+   -->
+
+ <script class='remove'
+   src='https://www.w3.org/Tools/respec/respec-w3c'></script>
+  <script class="remove" type="text/javascript">
+var respecConfig = {
+  wgPublicList: "public-did-wg",
+  group: "did",
+
+  // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
+  specStatus: "NOTE",
+
+  // the specification's short name, as in http://www.w3.org/TR/short-name/
+  shortName: "did-extensions",
+  prevRecShortname: "did-spec-registries",
+
+  edDraftURI: "https://w3c.github.io/did-extensions/",
+
+  // subtitle
+  subtitle: "Known Extensions for the Decentralized Identifier Ecosystem",
+
+  // if you wish the publication date to be other than today, set this
+  // publishDate:  "2024-11-19",
+
+  // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+  // and its maturity status
+  // previousPublishDate:  "1977-03-15",
+  // previousMaturity:  "WD",
+
+  // extend the bibliography entries
+  github: {
+          repoURL: "https://github.com/w3c/did-extensions/",
+          branch: "main"
+  },
+  includePermalinks: false,
+
+  editors: [{
+    name: "Manu Sporny", url: "https://www.linkedin.com/in/manusporny/",
+    company: "Digital Bazaar", companyURL: "https://digitalbazaar.com/",
+    w3cid: 41758, note: "2017-present"
+  }, {
+    name: "Markus Sabadello", url: "https://www.linkedin.com/in/markus-sabadello-353a0821",
+    company: "Danube Tech", companyURL: "https://danubetech.com/",
+    w3cid: 46729, note: "2020-present"
+  }/*, {
+    name: "Apurva Chitnis",
+    url: "https://apuchitnis.github.io/",
+    company: "Koodos",
+    note: "2024-present"
+  }, {
+    name: "Sten Reijers", url: "https://github.com/stenreijers",
+    note: "2024-present"
+  }, {
+    name: "Ghislain Atemezing", url: "https://w3id.org/people/gatemezing",
+    company: "European Union Agency for Railways", "companyURL": "https://www.era.europa.eu/",
+    w3cid: 116776, note: "2024-present"
+  }, {
+    name: "Adam Burns", url: "https://www.linkedin.com/in/adampeterburns/",
+    w2cid: 160312, note: "2024-present"
+  }, {
+    name: "Stefannie Tan (ステファニー　タン)", url: "https://github.com/Steffytan",
+    company: "SBI Group （SBIホールディングス)", "companyURL": "https://sbigroup.co.jp/",
+    note: "2024-present"
+  }, {
+    name: "IGARASHI Taisei (五十嵐　太清)", url: "https://mizuki.io/",
+    company: "kataru Co., Ltd.", "companyURL": "https://kataru.io/",
+    w3cid: 143360, note: "2024-present"
+  }, {
+    name: "Rajiv Rajani", url: "https://github.com/rajivrajani",
+    w3cid: 161889, note: "2024-present"
+  }, {
+    name: "Ariel Gentile", url: "https://github.com/genaris",
+    company: "GenAris Tech", "companyURL": "https://genaris.tech/",
+    note: "2024-present"
+  }, {
+    name: "Harley Thomas", url: "https://github.com/harleyjackthomas",
+    company: "Trust Provenance", "companyURL": "https://www.trustprovenance.com/",
+    note: "2024-present"
+  }, {
+    name: "Ajay Jadhav", url: "https://github.com/ajile-in",
+    company: "Ayan Works", "companyURL": "https://ayanworks.com/",
+    note: "2024-present"
+  }, {
+    name: "Kevin Dean", url: "https://www.linkedin.com/in/kdean/",
+    company: "Dolphin Data Development Ltd.",
+    note: "2024-present"
+  }*/],
+  formerEditors: [{
+    name: "Orie Steele", url: "https://www.linkedin.com/in/or13b/",
+    company: "Transmute", companyURL: "https://www.transmute.industries/",
+    w3cid: 109171, note: "2020-2022"
+  }, {
+    name: "Amy Guy", url: "https://rhiaro.co.uk/",
+    company: "Digital Bazaar", companyURL: "https://digitalbazaar.com/",
+    w3cid: 69000, note: "2020-2022"
+  }, {
+    name: "Ivan Herman", url: "https://www.w3.org/People/Ivan/",
+    company: "W3C", companyURL: "https://www.w3.org",
+    note: "2020-2022", w3cid: 7382, orcid: "0000-0003-0782-2704"
+  }/*, {
+    name: "Kyle Den Hartog", url: "https://www.linkedin.com/in/kyledenhartog/",
+    company: "MATTR", companyURL: "https://mattr.global/",
+    note: "2020-2022"
+  }*/],
+
+  // authors, add as many as you like.
+  // This is optional, uncomment if you have authors as well as editors.
+  // only "name" is required. Same format as editors.
+  authors: [{
+    name: "The Decentralized Identifier Working Group",
+    url: "https://www.w3.org/groups/wg/did/",
+    company: "W3C",
+    companyURL: "https://www.w3.org/"
+  }],
+  otherLinks: [{
+    key: "Related Documents",
+    data: [{
+      value: "DID Core",
+      href: "https://www.w3.org/TR/did-core/"
+    }, {
+      value: "DID Core Implementation Report",
+      href: "https://w3c.github.io/did-test-suite/"
+    }, {
+      value: "DID Use Cases and Requirements",
+      href: "https://www.w3.org/TR/did-use-cases/"
+    }]
+  }],
+  postProcess: []
+};
+  </script>
+  <style>
+    .label-legend dd{
+      margin-top: 8px;
+    }
+  .label-deprecated {
+    font-weight: bold;
+    background: #ef9a9a;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  .label-no-contact-info {
+    font-weight: bold;
+    background: #ffe082;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  pre .highlight {
+    font-weight: bold;
+    color: green;
+  }
+  pre .comment {
+    color: SteelBlue;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  </style>
+</head>
+<body>
+  <section id='abstract'>
+    <p>
+This document serves as a repository for all known global parameters,
+properties, and values used by the Decentralized Identifier ecosystem.
+    </p>
+  </section>
+
+  <section id='sotd'>
+
+    <p>
+This repository is under active development and implementers are advised
+against using the repository unless they are directly involved with the
+W3C DID Working Group.
+    </p>
+
+    <p>
+Comments regarding this document are welcome. Please file issues
+directly on
+<a href="https://github.com/w3c/did-extensions/issues/">GitHub</a>,
+or send them
+to <a href="mailto:public-did-wg@w3.org">public-did-wg@w3.org</a> (
+<a href="mailto:public-did-wg-request@w3.org?subject=subscribe">subscribe</a>,
+<a href="https://lists.w3.org/Archives/Public/public-did-wg/">archives</a>).
+    </p>
+
+    <p>
+Portions of the work on this specification have been funded by the
+United States Department of Homeland Security's Science and Technology
+Directorate under contracts HSHQDC-16-R00012-H-SB2016-1-002, 70RSAT20T00000010,
+and HSHQDC-17-C-00019. The content of this specification does not
+necessarily reflect the position or the policy of the U.S. Government
+and no official endorsement should be inferred.
+    </p>
+
+    <p>
+Work on this repository has also been supported by the Rebooting the
+Web of Trust community facilitated by Christopher Allen, Shannon
+Appelcline, Kiara Robles, Brian Weller, Betty Dhamers, Kaliya Young,
+Kim Hamilton Duffy, Manu Sporny, Drummond Reed, Joe Andrieu, and
+Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
+    </p>
+  </section>
+
+  <section class="informative">
+    <h1>Introduction</h1>
+
+    <p>
+This document serves as a list of documents that contain known properties and
+values used by DID Methods [[DID-CORE]] and DID Resolution [[DID-RESOLUTION]] in
+the Decentralized Identifier ecosystem.
+    </p>
+
+  <section id="conformance"></section>
+
+  </section>
+
+  <section>
+    <h1>The Registration Process</h1>
+    <p>
+Software implementers might find that the existing Decentralized Identifier Core
+specification [[DID-CORE]] is not entirely capable of addressing their use case
+and might need to add a new parameters, properties, or values to this repository
+in order to achieve their use case in a globally interoperable fashion. In order
+to add a new parameter, property, or value to this repository, an implementer MUST
+submit a modification request for this repository, as a pull request on the
+repository where this repository is hosted, where the modification request adheres
+to the following policies:
+    </p>
+
+    <ol>
+      <li>
+Any addition to the DID Extensions MUST specify a human readable
+description of the addition.
+      </li>
+      <li>
+Any name or value of a property or parameter MUST be indicative of
+its function. Avoid generic terms such as "myProperty" or "foo".
+      </li>
+      <li>
+Any method name SHOULD avoid generic terms such as "mymethod" or "registry".
+      </li>
+      <li>
+Any DID Method submission MUST not impose any concerns about copyright,
+trademark, or intellectual property rights on the W3C, DID Method
+implementers, or users. To that end, the following apply:
+        <ol>
+          <li>
+DID Method submitters affirm to the best of their knowledge that their 
+submission will not infringe upon or otherwise violate the rights of any third 
+party.
+          </li>
+          <li>
+If there are any known concerns about copyright, trademark, or intellectual
+property rights, the addition and use of a DID Method MUST be authorized in
+writing by the holder of the intellectual property rights under an
+<a href="https://en.wikipedia.org/wiki/Reasonable_and_non-discriminatory_licensing">F/RAND</a> 
+license.
+          </li>
+          <li>
+If a DID Method is subsequently alleged to violate any copyright, trademark, 
+or intellectual property rights, those making the allegation MUST provide 
+documentation of their granted legal rights or an order from a court or 
+arbitral tribunal, in each case of competent jurisdiction.
+          </li>
+          <li>
+Should documentation of legally valid and enforceable copyright, trademark,
+or intellectual property rights be presented, then, at the discretion of the 
+rights holder, the DID Method in question MUST be removed.
+          </li>
+        </ol>
+      </li>
+      <li>
+Any addition MUST NOT create unreasonable legal, security, moral, or privacy
+issues that will result in direct harm to others. Examples of unacceptable
+additions include any containing racist language, technologies used to
+persecute minority populations, and unconsented pervasive tracking.
+      </li>
+      <li>
+Any addition to the DID Extensions MUST link, via at least a URL,
+preferably a content-integrity protected one, to the defining specification so
+that implementers can implement the property.
+      </li>
+      <li>
+Any addition to the DID Extensions that is a property or value, MUST
+specify a machine readable JSON-LD Context for the addition.
+        <ul>
+          <li>
+The JSON-LD Context MUST be included in full as part of the submission.
+          </li>
+          <li>
+A namespace URI MUST be provided for the JSON-LD Context so that consumer
+implementations can consistently map a URI to the full context.
+          </li>
+          <li>
+The URI provided MUST be persistent, and link all terms to their associated
+human readable descriptions.
+          </li>
+          <li>
+The URI provided SHOULD resolve or link to the full context contents.
+          </li>
+          <li>
+JSON-LD Contexts MUST be versioned and MUST NOT be date stamped.
+          </li>
+          <li>
+JSON-LD Contexts SHOULD use scoped terms and MUST use the <code>@protected</code>
+feature to eliminate the possibility of term conflicts.
+          </li>
+        </ul>
+      </li>
+      <li>
+Properties in the DID Extensions MUST NOT be removed, only deprecated.
+      </li>
+    </ol>
+
+    <p>
+The Editors of the DID Specification Registries MUST consider all of the
+policies above when reviewing additions to the repository and MUST reject repository
+entries if they violate any of the policies in this section. Entities
+registering additions can challenge rejections first with the W3C DID Working
+Group and then, if they are not satisfied with the outcome, with the W3C Staff.
+W3C Staff need not be consulted on changes to the DID Specification Registries,
+but do have the final authority on repository contents. This is to ensure that W3C
+can adequately respond to time sensitive legal, privacy, security, moral, or
+other pressing concerns without putting an undue operational burden on W3C
+Staff.
+    </p>
+
+    <p>
+Entries that are identified to cause interoperability problems MAY be marked as
+such at the discretion of the maintainers of this repository, and if possible,
+after consultation with the entry maintainer.
+    </p>
+
+    <p>
+Any submission to the registries that meet all the criteria listed above will be
+accepted for inclusion. These registries enumerate all known mechanisms that
+meet a minimum bar, without choosing between them.
+    </p>
+  </section>
+
+  <section>
+    <h1>Extensions</h1>
+
+    <p>
+The following documents list known extensions to the DID Ecosystem:
+    </p>
+
+    <table class="simple">
+      <thead>
+        <th>Document</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+<a href="https://www.w3.org/TR/did-extensions-properties/">Property&nbsp;and&nbsp;Value&nbsp;Extensions</a>
+          </td>
+          <td>Extensions to DID Document properties and values.</td>
+        </tr>
+        <tr>
+          <td>
+<a href="https://www.w3.org/TR/did-extensions-resolution/">Resolution&nbsp;Extensions</a>
+          </td>
+          <td>Extensions to DID Resolution parameters and results.</td>
+        </tr>
+        <tr>
+          <td>
+<a href="https://www.w3.org/TR/did-extensions-methods/">DID&nbsp;Methods</a>
+          </td>
+          <td>
+Ephemeral, distributed, and fully decentralized mechanisms for supporting
+Decentralized Identifiers across a variety of technology platforms.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </section>
+
+</body>
+</html>
