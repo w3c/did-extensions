@@ -1,0 +1,9 @@
+{
+  "name": "jwks",
+  "status": "registered",
+  "specification": "https://github.com/catena-labs/did-jwks/blob/main/SPEC.md",
+  "verifiableDataRegistry": "JWKS endpoints via OAuth2/OIDC infrastructure",
+  "contactName": "Catena Labs, Matt Venables",
+  "contactEmail": "",
+  "contactWebsite": ""
+}
