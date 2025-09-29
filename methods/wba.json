@@ -1,0 +1,9 @@
+{
+  "name": "wba",
+  "status": "registered",
+  "verifiableDataRegistry": "wba",
+  "contactName": "Gaowei Chang",
+  "contactEmail": "chgaowei@gmail.com",
+  "contactWebsite": "https://agent-network-protocol.com/",
+  "specification": "https://github.com/chgaowei/AgentNetworkProtocol/blob/main/03-did%3Awba%20Method%20Design%20Specification.md"
+}
