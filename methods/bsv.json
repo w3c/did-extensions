@@ -2,8 +2,8 @@
   "name": "bsv",
   "status": "registered",
   "verifiableDataRegistry": "BSV",
-  "contactName": "Thomas Moretti",
-  "contactEmail": "t.moretti@nchain.com",
-  "contactWebsite": "https://www.nchain.com/",
-  "specification": "https://github.com/nchain-research/nChain-Identity-bsvdid-method"
+  "contactName": "Maria Eugenia Lopez",
+  "contactEmail": "identitysoftware@teranode.group",
+  "contactWebsite": "https://teranode.group/",
+  "specification": "https://docs.teranode.group/tng-identity-documentation/did/bsv-did-method-specifications/method-specification.-a-utxo-friendly-method"
 }
