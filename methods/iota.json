@@ -5,5 +5,5 @@
   "contactName": "IOTA Foundation",
   "contactEmail": "",
   "contactWebsite": "https://iota.org",
-  "specification": "https://wiki.iota.org/identity.rs/specs/did/iota_did_method_spec"
+  "specification": "https://docs.iota.org/references/iota-identity/iota-did-method-spec"
 }

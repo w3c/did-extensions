@@ -1,0 +1,9 @@
+{
+    "name": "dime",
+    "status": "registered",
+    "verifiableDataRegistry": "Dimecoin",
+    "contactName": "Douglas Hopping",
+    "contactEmail": "douglas@dimecoinnetwork.com",
+    "contactWebsite": "https://www.dimecoinnetwork.com/",
+    "specification": "https://github.com/dime-coin/dimedid-method"
+  }
