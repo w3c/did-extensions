@@ -4,6 +4,6 @@
   "specification": "https://github.com/IAMXID/did-midnight/blob/main/Midnight_DID_method.md",
   "contactName": "IAMX AG, 6300 Zug, Switzerland",
   "contactEmail": "contact@iamx.id",
-  "contactWebsite": "https://iamx.id/"
+  "contactWebsite": "https://iamx.id/",
   "verifiableDataRegistry": "DID Specification"
 }
