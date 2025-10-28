@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+DID Methods
+  </title>
+  <meta content='text/html; charset=utf-8' http-equiv='Content-Type'><!--
+    === NOTA BENE ===
+    For the three scripts below, if your spec resides on dev.w3 you can check them
+    out in the same tree and use relative links so that they'll work offline.
+   -->
+
+  <script class='remove' src='https://www.w3.org/Tools/respec/respec-w3c'></script>
+  <script class='remove'>
+/* Build DID Method table using JSON data */
+async function buildDidMethodTables(config) {
+  const {document} = window;
+  const response = await fetch('index.json');
+  if(response.status !== 200) {
+    throw new Error('Failed retrieve DID Method index.json file.');
+  }
+  const allMethods = await response.json();
+
+  // set up the API summary table headers
+  const table = document.getElementById('did-method-table');
+  const tableHeader = document.createElement('thead');
+  tableHeader.innerHTML = '<th>DID&nbsp;Method</th><th>Registry</th>' +
+    '<th>Contact</th>';
+  table.appendChild(tableHeader);
+
+  // summarize each API endpoint
+  const tableBody = document.createElement('tbody');
+  for(const method of allMethods) {
+    const tableRow = document.createElement('tr');
+    const {name, verifiableDataRegistry, contactEmail, contactName,
+      contactWebsite, specification} = method;
+    let contactInfo = contactName;
+
+    if(Array.isArray(contactName)) {
+      contactInfo = contactName.join(', ');
+    }
+
+    if(contactEmail) {
+      const emails = [];
+      if(Array.isArray(contactEmail)) {
+        contactInfo += ' (emails: ';
+        for(const email of contactEmail) {
+          const id = email.split('@', 1)[0];
+          emails.push(`<a href="mailto:${email}">${id}</a>`);
+        }
+      } else {
+        const id = contactEmail.split('@', 1)[0];
+        emails.push(` (<a href="mailto:${contactEmail}">email</a>`);
+      }
+      contactInfo += emails.join(', ') + ')';
+    }
+    if(contactWebsite) {
+      contactInfo += ` (<a href="${contactWebsite}">website</a>)`;
+    }
+    tableRow.innerHTML =
+      `<td><a href="${specification}">${name}</a></td>` +
+      `<td>${verifiableDataRegistry}</td>` +
+      `<td>${contactInfo}</td>`;
+    tableBody.appendChild(tableRow);
+  }
+  table.appendChild(tableBody);
+
+}
+window.buildDidMethodTables = buildDidMethodTables;
+     </script>
+     <script class="remove" type="text/javascript">
+var respecConfig = {
+  wgPublicList: "public-did-wg",
+  group: "did",
+
+  // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
+  specStatus: "NOTE",
+
+  // the specification's short name, as in http://www.w3.org/TR/short-name/
+  shortName: "did-extensions-methods",
+
+  edDraftURI: "https://w3c.github.io/did-extensions/methods/",
+
+  // subtitle
+  subtitle: "Known DID Methods in the Decentralized Identifier Ecosystem",
+
+  // if you wish the publication date to be other than today, set this
+  // publishDate:  "2024-11-19",
+
+  // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+  // and its maturity status
+  // previousPublishDate:  "1977-03-15",
+  // previousMaturity:  "WD",
+
+  // extend the bibliography entries
+
+  github: {
+    repoURL: "https://github.com/w3c/did-extensions/",
+    branch: "main"
+  },
+  includePermalinks: false,
+
+  editors: [{
+    name: "Manu Sporny", url: "https://www.linkedin.com/in/manusporny/",
+    company: "Digital Bazaar", companyURL: "https://digitalbazaar.com/",
+    w3cid: 41758, note: "2017-present"
+  }, {
+    name: "Markus Sabadello", url: "https://www.linkedin.com/in/markus-sabadello-353a0821",
+    company: "Danube Tech", companyURL: "https://danubetech.com/",
+    w3cid: 46729, note: "2020-present"
+  }/*, {
+    name: "Apurva Chitnis",
+    url: "https://apuchitnis.github.io/",
+    company: "Koodos",
+    note: "2024-present"
+  }, {
+    name: "Sten Reijers", url: "https://github.com/stenreijers",
+    note: "2024-present"
+  }, {
+    name: "Ghislain Atemezing", url: "https://w3id.org/people/gatemezing",
+    company: "European Union Agency for Railways", "companyURL": "https://www.era.europa.eu/",
+    w3cid: 116776, note: "2024-present"
+  }, {
+    name: "Adam Burns", url: "https://www.linkedin.com/in/adampeterburns/",
+    w3cid: 160312, note: "2024-present"
+  }, {
+    name: "Stefannie Tan (ステファニー　タン)", url: "https://github.com/Steffytan",
+    company: "SBI Group （SBIホールディングス)", "companyURL": "https://sbigroup.co.jp/",
+    note: "2024-present"
+  }, {
+    name: "IGARASHI Taisei (五十嵐　太清)", url: "https://mizuki.io/",
+    company: "kataru Co., Ltd.", "companyURL": "https://kataru.io/",
+    w3cid: 143360, note: "2024-present"
+  }, {
+    name: "Rajiv Rajani", url: "https://github.com/rajivrajani",
+    w3cid: 161889, note: "2024-present"
+  }, {
+    name: "Ariel Gentile", url: "https://github.com/genaris",
+    company: "GenAris Tech", "companyURL": "https://genaris.tech/",
+    note: "2024-present"
+  }, {
+    name: "Harley Thomas", url: "https://github.com/harleyjackthomas",
+    company: "Trust Provenance", "companyURL": "https://www.trustprovenance.com/",
+    note: "2024-present"
+  }, {
+    name: "Ajay Jadhav", url: "https://github.com/ajile-in",
+    company: "Ayan Works", "companyURL": "https://ayanworks.com/",
+    note: "2024-present"
+  }, {
+    name: "Kevin Dean", url: "https://www.linkedin.com/in/kdean/",
+    company: "Dolphin Data Development Ltd.",
+    note: "2024-present"
+  }*/],
+  formerEditors: [{
+    name: "Orie Steele", url: "https://www.linkedin.com/in/or13b/",
+    company: "Transmute", companyURL: "https://www.transmute.industries/",
+    w3cid: 109171, note: "2020-2022"
+  }, {
+    name: "Amy Guy", url: "https://rhiaro.co.uk/",
+    company: "Digital Bazaar", companyURL: "https://digitalbazaar.com/",
+    w3cid: 69000, note: "2020-2022"
+  }, {
+    name: "Ivan Herman", url: "https://www.w3.org/People/Ivan/",
+    company: "W3C", companyURL: "https://www.w3.org",
+    note: "2020-2022", w3cid: 7382, orcid: "0000-0003-0782-2704"
+  }/*, {
+    name: "Kyle Den Hartog", url: "https://www.linkedin.com/in/kyledenhartog/",
+    company: "MATTR", companyURL: "https://mattr.global/",
+    note: "2020-2022"
+  }*/],
+
+  // authors, add as many as you like.
+  // This is optional, uncomment if you have authors as well as editors.
+  // only "name" is required. Same format as editors.
+  authors: [{
+    name: "The Decentralized Identifier Working Group",
+    url: "https://www.w3.org/groups/wg/did/",
+    company: "W3C",
+    companyURL: "https://www.w3.org/"
+  }],
+  otherLinks: [{
+    key: "Related Documents",
+    data: [{
+      value: "DID Core",
+      href: "https://www.w3.org/TR/did-core/"
+    }, {
+      value: "DID Core Implementation Report",
+      href: "https://w3c.github.io/did-test-suite/"
+    }, {
+      value: "DID Use Cases and Requirements",
+      href: "https://www.w3.org/TR/did-use-cases/"
+    }]
+  }],
+  postProcess: [window.buildDidMethodTables],
+  localBiblio: {
+    "DID-EXTENSIONS": {
+      title: "Decentralized Identifier Extensions",
+      href: "https://www.w3.org/TR/did-extensions/",
+      authors: [
+        "Manu Sporny",
+      ],
+      status: "NOTE",
+      publisher: "Decentralized Identifier Working Group"
+    }
+  }
+};
+  </script>
+  <style>
+    .label-legend dd{
+      margin-top: 8px;
+    }
+  .label-deprecated {
+    font-weight: bold;
+    background: #ef9a9a;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  .label-no-contact-info {
+    font-weight: bold;
+    background: #ffe082;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  pre .highlight {
+    font-weight: bold;
+    color: green;
+  }
+  pre .comment {
+    color: SteelBlue;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  </style>
+</head>
+<body>
+  <section id='abstract'>
+    <p>
+This document serves as a collection of known DID Methods.
+    </p>
+  </section>
+
+  <section id='sotd'>
+
+    <p>
+Comments regarding this document are welcome. Please file issues
+directly on
+<a href="https://github.com/w3c/did-extensions/issues/">GitHub</a>,
+or send them
+to <a href="mailto:public-did-wg@w3.org">public-did-wg@w3.org</a> (
+<a href="mailto:public-did-wg-request@w3.org?subject=subscribe">subscribe</a>,
+<a href="https://lists.w3.org/Archives/Public/public-did-wg/">archives</a>).
+    </p>
+
+    <p>
+Portions of the work on this specification have been funded by the
+United States Department of Homeland Security's Science and Technology
+Directorate under contracts HSHQDC-16-R00012-H-SB2016-1-002, 70RSAT20T00000010,
+and HSHQDC-17-C-00019. The content of this specification does not
+necessarily reflect the position or the policy of the U.S. Government
+and no official endorsement should be inferred.
+    </p>
+
+    <p>
+Work on this registry has also been supported by the Rebooting the
+Web of Trust community facilitated by Christopher Allen, Shannon
+Appelcline, Kiara Robles, Brian Weller, Betty Dhamers, Kaliya Young,
+Kim Hamilton Duffy, Manu Sporny, Drummond Reed, Joe Andrieu, and
+Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
+    </p>
+  </section>
+
+  <section class="informative">
+    <h1>Introduction</h1>
+
+    <p>
+This document serves as a collection of known DID Methods.
+    </p>
+
+    <section>
+      <h1>The Registration Process</h1>
+      <p>
+The registration process is described in the [[[DID-EXTENSIONS]]].
+      </p>
+    </section>
+
+    <section id="conformance"></section>
+
+  </section>
+
+  <section>
+    <h1>DID Methods</h1>
+
+    <p>
+This table summarizes the DID method specifications currently in development.
+The links will be updated as subsequent Implementer’s Drafts are produced.
+This registry does not act as an endorsement of any particular DID method or its
+underlying technologies by the W3C, the W3C Decentralized Identifier Working Group,
+or any affiliated members of the W3C. It exists as a mechanism for developers to
+discover various DID methods that they might wish to implement.
+    </p>
+    <p>
+The normative requirements for DID method specifications can be found in
+<a href="https://www.w3.org/TR/did-core/#methods">Decentralized Identifiers
+v1.0: Methods</a> [[DID-CORE]]. DID methods that do not meet these requirements
+will not be accepted. We encourage DID method authors to provide an email
+address in the Author Links column, as this helps with maintenance.
+If an email address is omitted, a label noting that there is no
+contact information for the author will be applied to the registry entry.
+    </p>
+
+    <table id="did-method-table" class="simple"></table>
+
+  </section>
+
+</body>
+</html>

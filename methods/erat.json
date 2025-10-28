@@ -1,0 +1,9 @@
+{
+    "name": "erat",
+    "status": "registered",
+    "verifiableDataRegistry": "DID Specification",
+    "contactName": "ERATOSTHENES project",
+    "contactEmail": "harris.niavis@inlecomsystems.com",
+    "contactWebsite": "https://eratosthenes-project.eu/",
+    "specification": "https://gitlab.com/eratosthenes-h2020/erat-did-spec"
+}
