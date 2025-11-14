@@ -1502,6 +1502,64 @@ the Security vocabulary JSON-LD context in the same document.
         </pre>
       </section>
 
+
+      <section>
+        <h4>ConditionalProof2022</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a
+                href="https://w3c-ccg.github.io/verifiable-conditions/">Conditional Proof 2022</a>
+              </td>
+              <td>
+                <a href="https://w3c-ccg.github.io/verifiable-conditions/">https://w3c-ccg.github.io/verifiable-conditions/</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example">
+          {
+           "id": "did:example:123",
+           "type": "ConditionalProof2022",
+           "verificationMethod": [
+               {
+                   "id": "did:example:123#1",
+                   "controller": "did:example:123",
+                   "type": "ConditionalProof2022",
+                   "conditionAnd": [{
+                       "id": "did:example:123#1-1",
+                       "controller": "did:example:123",
+                       "type": "ConditionalProof2022",
+                       "conditionOr": [{
+                           "id": "did:example:123#1-1-1",
+                           "controller": "did:example:123",
+                           "type": "EcdsaSecp256k1VerificationKey2019",
+                           "publicKeyBase58": "5JBxKqYKzzoHrzeqwp6zXk8wZU3Ah94ChWAinSj1fYmyJvJS5rT"
+                       }, {
+                           "id": "did:example:123#1-1-2",
+                           "controller": "did:example:123",
+                           "type": "Ed25519VerificationKey2018",
+                           "publicKeyBase58": "PZ8Tyr4Nx8MHsRAGMpZmZ6TWY63dXWSCzamP7YTHkZc78MJgqWsAy"
+                       }]
+                   }, {
+                       "id": "did:example:123#1-2",
+                       "controller": "did:example:123",
+                       "type": "Ed25519VerificationKey2018",
+                       "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+                   }]
+               }
+           ]
+       }
+        </pre>
+      </section>
     </section>
 
     <section>
