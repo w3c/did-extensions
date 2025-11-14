@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+DID Document Property Extensions
+  </title>
+  <meta content='text/html; charset=utf-8' http-equiv='Content-Type'><!--
+    === NOTA BENE ===
+    For the three scripts below, if your spec resides on dev.w3 you can check them
+    out in the same tree and use relative links so that they'll work offline.
+   -->
+
+  <script class='remove' src='https://www.w3.org/Tools/respec/respec-w3c'></script>
+  <script class="remove" type="text/javascript">
+var respecConfig = {
+  wgPublicList: "public-did-wg",
+  group: "did",
+
+  // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
+  specStatus: "NOTE",
+
+  // the specification's short name, as in http://www.w3.org/TR/short-name/
+  shortName: "did-extensions-properties",
+
+  edDraftURI: "https://w3c.github.io/did-extensions/properties/",
+
+  // subtitle
+  subtitle: "Known Extensions for DID Document properties and values",
+
+  // if you wish the publication date to be other than today, set this
+  // publishDate:  "2024-11-19",
+
+  // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+  // and its maturity status
+  // previousPublishDate:  "1977-03-15",
+  // previousMaturity:  "WD",
+
+  // extend the bibliography entries
+
+  github: {
+    repoURL: "https://github.com/w3c/did-extensions/",
+    branch: "main"
+  },
+  includePermalinks: false,
+
+  editors: [{
+    name: "Manu Sporny", url: "https://www.linkedin.com/in/manusporny/",
+    company: "Digital Bazaar", companyURL: "https://digitalbazaar.com/",
+    w3cid: 41758, note: "2017-present"
+  }, {
+    name: "Markus Sabadello", url: "https://www.linkedin.com/in/markus-sabadello-353a0821",
+    company: "Danube Tech", companyURL: "https://danubetech.com/",
+    w3cid: 46729, note: "2020-present"
+  }/*, {
+    name: "Apurva Chitnis",
+    url: "https://apuchitnis.github.io/",
+    company: "Koodos",
+    note: "2024-present"
+  }, {
+    name: "Sten Reijers", url: "https://github.com/stenreijers",
+    note: "2024-present"
+  }, {
+    name: "Ghislain Atemezing", url: "https://w3id.org/people/gatemezing",
+    company: "European Union Agency for Railways", "companyURL": "https://www.era.europa.eu/",
+    w3cid: 116776, note: "2024-present"
+  }, {
+    name: "Adam Burns", url: "https://www.linkedin.com/in/adampeterburns/",
+    w3cid: 160312, note: "2024-present"
+  }, {
+    name: "Stefannie Tan (ステファニー　タン)", url: "https://github.com/Steffytan",
+    company: "SBI Group （SBIホールディングス)", "companyURL": "https://sbigroup.co.jp/",
+    note: "2024-present"
+  }, {
+    name: "IGARASHI Taisei (五十嵐　太清)", url: "https://mizuki.io/",
+    company: "kataru Co., Ltd.", "companyURL": "https://kataru.io/",
+    w3cid: 143360, note: "2024-present"
+  }, {
+    name: "Rajiv Rajani", url: "https://github.com/rajivrajani",
+    w3cid: 161889, note: "2024-present"
+  }, {
+    name: "Ariel Gentile", url: "https://github.com/genaris",
+    company: "GenAris Tech", "companyURL": "https://genaris.tech/",
+    note: "2024-present"
+  }, {
+    name: "Harley Thomas", url: "https://github.com/harleyjackthomas",
+    company: "Trust Provenance", "companyURL": "https://www.trustprovenance.com/",
+    note: "2024-present"
+  }, {
+    name: "Ajay Jadhav", url: "https://github.com/ajile-in",
+    company: "Ayan Works", "companyURL": "https://ayanworks.com/",
+    note: "2024-present"
+  }, {
+    name: "Kevin Dean", url: "https://www.linkedin.com/in/kdean/",
+    company: "Dolphin Data Development Ltd.",
+    note: "2024-present"
+  }*/],
+  formerEditors: [{
+    name: "Orie Steele", url: "https://www.linkedin.com/in/or13b/",
+    company: "Transmute", companyURL: "https://www.transmute.industries/",
+    w3cid: 109171, note: "2020-2022"
+  }, {
+    name: "Amy Guy", url: "https://rhiaro.co.uk/",
+    company: "Digital Bazaar", companyURL: "https://digitalbazaar.com/",
+    w3cid: 69000, note: "2020-2022"
+  }/*, {
+    name: "Ivan Herman", url: "https://www.w3.org/People/Ivan/",
+    company: "W3C", companyURL: "https://www.w3.org",
+    note: "2020-2022", w3cid: 7382, orcid: "0000-0003-0782-2704"
+  }, {
+    name: "Kyle Den Hartog", url: "https://www.linkedin.com/in/kyledenhartog/",
+    company: "MATTR", companyURL: "https://mattr.global/",
+    note: "2020-2022"
+  }*/],
+
+  // authors, add as many as you like.
+  // This is optional, uncomment if you have authors as well as editors.
+  // only "name" is required. Same format as editors.
+  authors: [{
+    name: "The Decentralized Identifier Working Group",
+    url: "https://www.w3.org/groups/wg/did/",
+    company: "W3C",
+    companyURL: "https://www.w3.org/"
+  }],
+  otherLinks: [{
+    key: "Related Documents",
+    data: [{
+      value: "DID Core",
+      href: "https://www.w3.org/TR/did-core/"
+    }, {
+      value: "DID Core Implementation Report",
+      href: "https://w3c.github.io/did-test-suite/"
+    }, {
+      value: "DID Use Cases and Requirements",
+      href: "https://www.w3.org/TR/did-use-cases/"
+    }]
+  }],
+  postProcess: [],
+  localBiblio: {
+    "DID-EXTENSIONS": {
+      title: "Decentralized Identifier Extensions",
+      href: "https://www.w3.org/TR/did-extensions/",
+      authors: [
+        "Manu Sporny",
+      ],
+      status: "NOTE",
+      publisher: "Decentralized Identifier Working Group"
+    }
+  }
+};
+  </script>
+  <style>
+    .label-legend dd{
+      margin-top: 8px;
+    }
+  .label-deprecated {
+    font-weight: bold;
+    background: #ef9a9a;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  .label-no-contact-info {
+    font-weight: bold;
+    background: #ffe082;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  pre .highlight {
+    font-weight: bold;
+    color: green;
+  }
+  pre .comment {
+    color: SteelBlue;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  </style>
+</head>
+<body>
+  <section id='abstract'>
+    <p>
+This document serves as a collection of known DID Document properties and
+property values.
+    </p>
+  </section>
+
+  <section id='sotd'>
+
+    <p>
+Comments regarding this document are welcome. Please file issues
+directly on
+<a href="https://github.com/w3c/did-extensions/issues/">GitHub</a>,
+or send them
+to <a href="mailto:public-did-wg@w3.org">public-did-wg@w3.org</a> (
+<a href="mailto:public-did-wg-request@w3.org?subject=subscribe">subscribe</a>,
+<a href="https://lists.w3.org/Archives/Public/public-did-wg/">archives</a>).
+    </p>
+
+    <p>
+Portions of the work on this specification have been funded by the
+United States Department of Homeland Security's Science and Technology
+Directorate under contracts HSHQDC-16-R00012-H-SB2016-1-002, 70RSAT20T00000010,
+and HSHQDC-17-C-00019. The content of this specification does not
+necessarily reflect the position or the policy of the U.S. Government
+and no official endorsement should be inferred.
+    </p>
+
+    <p>
+Work on this registry has also been supported by the Rebooting the
+Web of Trust community facilitated by Christopher Allen, Shannon
+Appelcline, Kiara Robles, Brian Weller, Betty Dhamers, Kaliya Young,
+Kim Hamilton Duffy, Manu Sporny, Drummond Reed, Joe Andrieu, and
+Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
+    </p>
+  </section>
+
+  <section class="informative">
+    <h1>Introduction</h1>
+
+    <p>
+This document serves as a collection of known DID Document properties and
+property values.
+    </p>
+
+    <section>
+      <h1>The Registration Process</h1>
+      <p>
+  The registration process is described in the [[[DID-EXTENSIONS]]].
+      </p>
+    </section>
+
+    <section id="conformance"></section>
+
+  </section>
+
+  <section>
+    <h1>Property Names</h1>
+
+    <p>
+The following section defines the properties available for use in a DID
+document. Note that some of these properties are defined in the
+<a href="https://www.w3.org/TR/did-core">DID Core Specification</a>, and
+others are defined elsewhere and may be method- or domain-specific. Please read
+the associated specifications to ensure that the properties you use are
+appropriate for your implementation. The properties are arranged here according
+to the purpose they serve.
+    </p>
+
+    <p class="issue">
+This registry is a work in progress and some properties are missing normative
+definitions. We are working on this! This does NOT mean that in future it will
+be possible to submit items to the registry without normative definitions (see <a href="#the-registration-process"></a>).
+    </p>
+
+    <section>
+      <h3>DID document properties</h3>
+      <p>
+These properties are foundational to DID documents, and are expected to be
+useful to all DID methods.
+
+      <section>
+        <h4>id</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-subject">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of id property">
+{
+  "id": "did:example:123",
+  ...
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>alsoKnownAs</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#also-known-as">DID Core</a>
+            </td>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of alsoKnownAs property">
+{
+  "alsoKnownAs": "https://example.com/",
+  ...
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>controller</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-controller">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of controller property">
+{
+  "controller": "did:example:123",
+  ...
+}
+        </pre>
+      </section>
+
+
+      <section>
+        <h4>verificationMethod</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#dfn-verification-method">DID Core Terminology</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+<pre class="example" title="Example of verificationMethod property">
+{
+  "id": "did:example:123",
+  "verificationMethod": [
+    {
+      "id": "did:example:123#key-1",
+      "type": "Ed25519VerificationKey2018",
+      "controller": "did:example:123",
+      "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+    },
+    {
+      "id": "did:example:123#key-2",
+      "type": "JsonWebKey2020",
+      "controller": "did:example:123",
+      "publicKeyJwk": {
+        "kty": "OKP",
+        "crv": "Ed25519",
+        "x": "r7V8qmdFbwqSlj26eupPew1Lb22vVG5vnjhn3vwEA1Y"
+      },
+    }
+  ]
+}
+</pre>
+      </section>
+
+      <section>
+        <h4>publicKey</h4>
+
+<span class="label-deprecated">Deprecated</span>
+
+<p class="advisement">
+This property has been deprecated, use <a href="#verificationmethod">verificationMethod</a> instead.
+</p>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/#publicKey">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v1">security-vocab context</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of publicKey property">
+{
+  "id": "did:example:123",
+  "publicKey": [
+    {
+      "id": "did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec",
+      "type": "Ed25519VerificationKey2018",
+      "controller": "did:example:123",
+      "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+    },
+    {
+      "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "controller": "did:example:123",
+      "publicKeyJwk": {
+        "crv": "secp256k1",
+        "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+        "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+        "kty": "EC",
+        "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+      }
+    }
+  ]
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>service</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#services">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  ...
+  "service": [{
+    "id": "did:example:123#edv",
+    "type": "EncryptedDataVault",
+    "serviceEndpoint": "https://edv.example.com/"
+  }]
+}
+        </pre>
+
+      </section>
+      <section>
+        <h4>linkedResource</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a
+                  href="https://w3id.org/earth/did-cosmos#linked-resources">DID
+                  Cosmos Linked Resources</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/earth/NS/iid/v1">Cosmos JSON-LD
+                  Context</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of linked resource properties">
+    {
+        ...
+        "linkedResource" : [{
+          "id": "did:cosmos:1:impacthub:nft:abc123#resourceHashgraph",
+          "path": "did:cosmos:1:impacthub:nft:abc123/resourceHashgraph",
+          "type": "hashgraph",
+          "proof": "afybeiemxf5abjwjbikoz4mcb3a3dla6ual3jsgpdr4cjr3oz",
+          "endpoint" : "did:cosmos:1:impacthub:nft:abc123?service=mediator"
+      }]
+    }</pre>
+
+      </section>
+
+        <section>
+          <h4>dnsValidationDomain</h4>
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://w3id.org/hadids#dnsValidationDomain">High Assurance DIDs with DNS</a>
+                </td>
+                <td>
+                  <a href="https://w3id.org/hadids/v0.5">dnsValidationDomain JSON-LD
+                    Context</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pre class="example" title="Example of dnsValidationDomain property">
+{
+  "dnsValidationDomain": "mydomain.example"
+  ...
+}</pre>
+    </section>
+
+    </section>
+    <section>
+      <h3>Verification relationships</h3>
+      <p>
+These are properties that express the relationship between the DID subject and a
+verification method using a
+<a href="https://w3c.github.io/did-core/#dfn-verification-relationship">
+verification relationship</a>.
+      </p>
+      <section>
+        <h4>assertionMethod</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#assertion">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of assertionMethod property">
+{
+  ...
+  "verificationMethod": [{
+    "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+    "type": "EcdsaSecp256k1VerificationKey2019",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "crv": "secp256k1",
+      "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+      "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+      "kty": "EC",
+      "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+    }
+  }],
+  "assertionMethod": [{
+    "id": "did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
+    "type": "Ed25519VerificationKey2018",
+    "controller": "did:example:123",
+    "publicKeyBase58": "BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"
+  },
+  "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+  ]
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>authentication</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#authentication">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of authentication property">
+{
+  ...
+  "verificationMethod": [{
+    "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+    "type": "EcdsaSecp256k1VerificationKey2019",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "crv": "secp256k1",
+      "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+      "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+      "kty": "EC",
+      "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+    }
+  }],
+  "authentication": [{
+    "id": "did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
+    "type": "Ed25519VerificationKey2018",
+    "controller": "did:example:123",
+    "publicKeyBase58": "BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"
+  },
+  "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+  ]
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>capabilityDelegation</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#capability-invocation">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example" title="Example of capabilityDelegation property">
+{
+  ...
+  "verificationMethod": [{
+    "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+    "type": "EcdsaSecp256k1VerificationKey2019",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "crv": "secp256k1",
+      "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+      "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+      "kty": "EC",
+      "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+    }
+  }],
+  "capabilityDelegation": [{
+    "id": "did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
+    "type": "Ed25519VerificationKey2020",
+    "controller": "did:example:123",
+    "publicKeyMultibase": "z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"
+  },
+  "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+  ]
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>capabilityInvocation</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#capability-invocation">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of capabilityInvocation property">
+{
+  ...
+  "verificationMethod": [{
+    "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+    "type": "EcdsaSecp256k1VerificationKey2019",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "crv": "secp256k1",
+      "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+      "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+      "kty": "EC",
+      "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+    }
+  }],
+  "capabilityInvocation": [{
+    "id": "did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4",
+    "type": "Ed25519VerificationKey2020",
+    "controller": "did:example:123",
+    "publicKeyMultibase": "z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"
+  },
+  "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+  ]
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>keyAgreement</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#key-agreement">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of keyAgreement property">
+{
+  ...
+  "keyAgreement": [
+    {
+      "id": "did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
+      "type": "X25519KeyAgreementKey2019",
+      "controller": "did:example:123",
+      "publicKeyMultibase": "zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS"
+    }
+  ]
+}
+        </pre>
+      </section>
+    </section>
+
+    <section>
+      <h3>Verification method properties</h3>
+        <p class="note">
+These properties are for use on a verification method object, in the value of
+<a href="#verificationmethod"><code>verificationMethod</code></a>. An
+implementer is expected to not be relying directly on the linked contexts
+registered below in nearly every case and instead should be including the
+context definitions registered by the
+<a href="#verificationmethod"><code>verificationMethod</code></a>.
+      </p>
+
+      <section>
+        <h4>publicKeyJwk</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security#publicKeyJwk">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/jws-2020/v1">https://w3id.org/security/suites/jws-2020/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of publicKeyJwk property">
+{
+  "id": "did:example:123#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
+  "type": "JsonWebKey2020",
+  "controller": "did:example:123",
+  "publicKeyJwk": {
+    "crv": "Ed25519",
+    "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ",
+    "kty": "OKP",
+    "kid": "_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"
+  }
+},
+        </pre>
+      </section>
+
+      <section>
+        <h4>publicKeyBase58</h4>
+        <span class="label-deprecated">Deprecated</span>
+
+        <p class="advisement">
+This property is deprecated in favor of <code>publicKeyMultibase</code> or
+<code>publicKeyJwk</code>. It's generally expected that this term will still be
+used in older suites and therefore needs be supported for legacy compatibility,
+but is expected to not be used for newly defined suites.
+        </p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/#publicKeyBase58">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v2">https://w3id.org/security/v2</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h4>publicKeyHex</h4>
+        <span class="label-deprecated">Deprecated</span>
+
+        <p class="advisement">
+This property is deprecated in favor of <code>publicKeyMultibase</code> or
+<code>publicKeyJwk</code>. It's generally expected that this term will still be
+used in older suites and therefore needs be supported for legacy compatibility,
+but is expected to not be used for newly defined suites.
+        </p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security#publicKeyHex">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v3-unstable">https://w3id.org/security/v3-unstable</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example" title="Example of publicKeyHex property">
+  {
+    "@context":[
+      "https://www.w3.org/ns/did/v1",
+      "https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"
+    ],
+    "id":"did:example:123",
+    "verificationMethod":[{
+      "id": "did:example:123#vm-2",
+      "controller": "did:example:123",
+      "type": "EcdsaSecp256k1RecoveryMethod2020",
+      "publicKeyHex": "027560af3387d375e3342a6968179ef3c6d04f5d33b2b611cf326d4708badd7770"
+    }]
+  }
+        </pre>
+      </section>
+
+      <section>
+        <h4>publicKeyMultibase</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security#publicKeyMultibase">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v3-unstable">https://w3id.org/security/v3-unstable</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h4>blockchainAccountId</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security#blockchainAccountId">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v3-unstable">https://w3id.org/security/v3-unstable</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example" title="Example of blockchainAccountId property">
+  {
+    "@context":[
+      "https://www.w3.org/ns/did/v1",
+      "https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"
+    ],
+    "id":"did:example:123",
+    "verificationMethod":[{
+      "id": "did:example:123#vm-3",
+      "controller": "did:example:123",
+      "type": "EcdsaSecp256k1RecoveryMethod2020",
+      "blockchainAccountId":"eip155:1:0xab16a96d359ec26a11e2c2b3d8f8b8942d5bfcdb"
+    }]
+  }
+        </pre>
+      </section>
+
+      <section>
+        <h4>ethereumAddress</h4>
+        <span class="label-deprecated">Deprecated</span>
+        <p class="advisement">
+This property is deprecated in favor of <code>blockchainAccountId</code>. It's
+generally expected that this term will still be used in older suites and
+therefore needs be supported for legacy compatibility, but is expected to not be
+used for newly defined suites.
+        </p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security#ethereumAddress">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v3-unstable">https://w3id.org/security/v3-unstable</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example" title="Example of ethereumAddress property">
+  {
+    "@context":[
+      "https://www.w3.org/ns/did/v1",
+      "https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"
+    ],
+    "id":"did:example:123",
+    "verificationMethod":[{
+      "id": "did:example:123#vm-3",
+      "controller": "did:example:123",
+      "type": "EcdsaSecp256k1RecoveryMethod2020",
+      "ethereumAddress": "0xF3beAC30C498D9E26865F34fCAa57dBB935b0D74"
+    }]
+  }
+        </pre>
+      </section>
+    </section>
+
+    <section>
+      <h3>Service properties</h3>
+      <p>
+These properties are for use on a service object, in the value of
+<a href="#service"><code>service</code></a>.
+      </p>
+      <section>
+        <h4>serviceEndpoint</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#service-endpoints">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  ...
+  "service": [{
+    "id": "did:example:123#edv",
+    "type": "EncryptedDataVault",
+    "serviceEndpoint": "https://edv.example.com/"
+  }]
+}
+        </pre>
+
+      </section>
+
+    </section>
+
+  </section>
+
+  <section>
+    <h1>Property Values</h1>
+
+    <section>
+      <h3>Verification method types</h3>
+      <p>
+These are values to be used for the <code>type</code> in a verification method object.
+      </p>
+
+      <section>
+        <h4>JsonWebKey2020</h4>
+
+      <p class="advisement">
+Do not include private or extraneous information in verification methods. The
+class of private information related to JWKs is defined <a
+href="https://tools.ietf.org/html/rfc7517#section-8.1.1">here</a>. Please review
+the <a href="https://w3c.github.io/did-core/#verification-material"> DID Core
+specification</a> for additional details on this topic.
+        </p>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/lds-jws2020/">JSON Web Signature 2020</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suite/jws-2020/v1">https://w3id.org/security/suite/jws-2020/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of JsonWebKey2020 class">
+  {
+    "id": "did:example:123#_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw",
+    "type": "JsonWebKey2020",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "crv": "P-256",
+      "x": "38M1FDts7Oea7urmseiugGW7tWc3mLpJh6rKe7xINZ8",
+      "y": "nDQW6XZ7b_u2Sy9slofYLlG03sOEoug3I0aAPQ0exs4",
+      "kty": "EC",
+      "kid": "_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw"
+    }
+  }
+        </pre>
+      </section>
+      <section>
+        <h4>EcdsaSecp256k1VerificationKey2019</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/">Ecdsa Secp256k1 Signature 2019</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/secp256k1-2019/v1">https://w3id.org/security/suites/secp256k1-2019/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of EcdsaSecp256k1VerificationKey2019 class">
+{
+  "id": "did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q",
+  "type": "EcdsaSecp256k1VerificationKey2019",
+  "controller": "did:example:123",
+  "publicKeyJwk": {
+    "crv": "secp256k1",
+    "x": "NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4",
+    "y": "qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo",
+    "kty": "EC",
+    "kid": "WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"
+  }
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>Ed25519VerificationKey2018</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/lds-ed25519-2018/">Ed25519 Signature 2018</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/ed25519-2018/v1">https://w3id.org/security/suites/ed25519-2018/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of Ed25519VerificationKey2018 class">
+          {
+            "id": "did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec",
+            "type": "Ed25519VerificationKey2018",
+            "controller": "did:example:123",
+            "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+          }
+        </pre>
+      </section>
+
+      <section>
+        <h4>Bls12381G1Key2020</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/ldp-bbs2020/">BBS+ Signatures 2020</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/bls12381-2020/v1">https://w3id.org/security/suites/bls12381-2020/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of Bls12381G1Key2020 class">
+          {
+            "id": "did:example:123#z3tEGVtEKzdhJB2rT5hLVjwQPis8k7bTM16t7vDZrQaoddk6wZ7or6xPPs1P8H9U16Xe75",
+            "type": "Bls12381G1Key2020",
+            "controller": "did:example:123",
+            "publicKeyBase58": "7bXhTVonHPizXP72AE92PPmRiaXipC519yU7F6NxUFExWpyQo57LuKKBoTyuZ3uWm9",
+          }
+        </pre>
+      </section>
+
+      <section>
+        <h4>Bls12381G2Key2020</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/ldp-bbs2020/">BBS+ Signatures 2020</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/bls12381-2020/v1">https://w3id.org/security/suites/bls12381-2020/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of Bls12382G2Key2020 class">
+          {
+            "id": "did:example:123#zUC7K51WYEsj8y6KPVa1XfwdW5ZJrW5kSbMV619j128T6atCLLXJjjovMZsJ3Ay4STdngRkvM4ygT4qm1mk6HR8FvipSY435nLgYS1TTcaqJAzDWzM1iB9vh3hTL1DEKitwn56i",
+            "type": "Bls12381G2Key2020",
+            "controller": "did:example:123",
+            "publicKeyBase58": "25ETdUZDVnME6yYuAMjFRCnCPcDmYQcoZDcZuXAfeMhXPvjZg35QmZ7uctBcovA69YDM3Jf7s5BHo4u1y89nY6mHiji8yphZ4AMm4iNCRh35edSg76Dkasu3MY2VS9LnuaVQ",
+
+          }
+        </pre>
+      </section>
+
+      <section>
+        <h4>PgpVerificationKey2021</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+              <th>Additional Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/suites/pgp-2021#PgpVerificationKey2021">Linked Data Signatures for PGP</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/pgp-2021/v1">https://w3id.org/security/suites/pgp-2021/v1</a>
+              </td>
+              <td>
+                  Use of this verification key should be in line with the OpenPGP Message Format
+ as defined in <a href="https://datatracker.ietf.org/doc/html/rfc4880">RFC 4880</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example">
+{
+  "@context":[
+    "https://www.w3.org/ns/did/v1",
+    "https://gpg.jsld.org/contexts/lds-gpg2020-v0.0.jsonld"
+  ],
+  "id":"did:example:123",
+  "verificationMethod":[{
+    "id": "did:example:123#989ed1057a294c8a3665add842e784c4d08de1e2",
+    "type": "PgpVerificationKey2021",
+    "controller": "did:example:123",
+    "publicKeyPgp": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.9.0\r\nComment: https://openpgpjs.org\r\n\r\nxjMEXkm5LRYJKwYBBAHaRw8BAQdASmfrjYr7vrjwHNiBsdcImK397Vc3t4BL\r\nE8rnN......v6\r\nDw==\r\n=wSoi\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+  }]
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>RsaVerificationKey2018</h4>
+        <p class="issue">
+<a href="https://github.com/w3c/did-extensions/issues/370">DID
+Specification Registries Issue 370</a> This property should be moved into a
+separate suite and linked to here rather than relying on the Verifiable
+Credentials vocabulary. There are known issues with the first version of the
+Security vocabulary JSON-LD context and the first version of the Verifiable
+Credentials JSON-LD context which will prevent these contexts from being listed
+in the same document. For now it's suggested that implementers rely upon the
+first version of the Verifiable Credentials JSON-LD context and not rely on
+the Security vocabulary JSON-LD context in the same document.
+        </p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/lds-rsa2018/">RSA Signature Suite 2018</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/2018/credentials/v1">https://www.w3.org/2018/credentials/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example">
+  {
+    "id": "did:example:123#key-0",
+    "type": "RsaVerificationKey2018",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "kty":"RSA",
+      "e":"AQAB",
+      "use":"sig",
+      "kid":"tNksV42EUs3Xct9AkgZyFWglItRGMxVZ1A1XM68SNq0
+      "n":"kO2d_qQTEBjYFGcoY_da7ziFY4L2QX14K7snCee09n-cY2eP-oJXk8T2_lL20YnpYhf4i
+      jhkWHGU8kY8-FWPRrzSeu3JUMVSZoqTgoAiKWdnSLNvPVxvGuD2CiA3T6AkwUC03D2AkOLCcJV
+      8h_hxUEPeDawF7ArpuJW5DXzEJjE7gOjN4r6d7VB6sd5y-3la54H2ADz2amHLdBWs30fL4BRBH
+      lVdx0YmF37V4u5yvnnb5Iyr3kBXJes8t0MUMPkjqEEXRmukpKUzZYNpWDXY0tVcXeK5sRx0DAn
+      lNgNNf14-vsyjGkj2Rz0oGW73jjWa8dw-yVlDEHyIkQU9-UY4dFXbVjdIO8j_5ghh62o1T7Y4w
+      5CWMc-FxPE3LHe-_teW97X__NN-ToYgfi42IvV2mYOdQMCbvnvY2oMdK3b9wmeVi0marToauL5
+      LMg5xHDKopmIR7E3VyRtNYwDFAZ89kadcbSrZ8zTR5APaB7Tmp2L2ZfXKxqKQuxlFTTCcZtg4e
+      5AN8QuYdI18DEDQn2umUU_Twj7k4CXvuIKVL8p4yRHC4CHAGIm9cH_t11dF3wXygaENVOGRXQu
+      0g1iKq0mO2rWpOqkGJ5uXMFb5lx54i8uOjCdZ9y2el28xA55Ve95KCxeTHp997Bn3TIgbeQ-B_
+      -3PBVTuuAAH8y9fFNKtu5E"
+    }
+  }
+        </pre>
+      </section>
+
+      <section>
+        <h4>X25519KeyAgreementKey2019</h4>
+        <div class="issue" data-number="164"></div>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="issue">Normative definition pending</span>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/x25519-2019/v1">https://w3id.org/security/suites/x25519-2019/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example" title="Example of X25519KeyAgreementKey2019">
+  {
+    ...
+    "keyAgreement": [
+      {
+        "id": "did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
+        "type": "X25519KeyAgreementKey2019",
+        "controller": "did:example:123",
+        "publicKeyBase58": "9hFgmPVfmBZwRvFEyniQDBkz9LmV7gDEqytWyGZLmDXE"
+      }
+    ]
+  }
+        </pre>
+
+      </section>
+
+      <section>
+        <h4>EcdsaSecp256k1RecoveryMethod2020</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#ES256K-R">ECDSA Secp256k1 Recovery Signature 2020</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/secp256k1recovery-2020/v1">https://w3id.org/security/suites/secp256k1recovery-2020/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example">
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"
+  ],
+  "id":"did:example:123",
+  "verificationMethod": [
+    {
+      "id": "did:example:123#vm-1",
+      "controller": "did:example:123",
+      "type": "EcdsaSecp256k1RecoveryMethod2020",
+      "publicKeyJwk": {
+        "crv": "secp256k1",
+        "kid": "JUvpllMEYUZ2joO59UNui_XYDqxVqiFLLAJ8klWuPBw",
+        "kty": "EC",
+        "x": "dWCvM4fTdeM0KmloF57zxtBPXTOythHPMm1HCLrdd3A",
+        "y": "36uMVGM7hnw-N6GnjFcihWE3SkrhMLzzLCdPMXPEXlA"
+      }
+    },
+    {
+      "id": "did:example:123#vm-2",
+      "controller": "did:example:123",
+      "type": "EcdsaSecp256k1RecoveryMethod2020",
+      "publicKeyHex": "027560af3387d375e3342a6968179ef3c6d04f5d33b2b611cf326d4708badd7770"
+    },
+    {
+      "id": "did:example:123#vm-3",
+      "controller": "did:example:123",
+      "type": "EcdsaSecp256k1RecoveryMethod2020",
+      "ethereumAddress": "0xF3beAC30C498D9E26865F34fCAa57dBB935b0D74"
+    }
+  ]
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>VerifiableCondition2021</h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a
+                href="https://w3c-ccg.github.io/verifiable-conditions">Verifiable
+                Conditions Verification Method Suite 2021</a>
+              </td>
+              <td>
+                <a href="https://w3c-ccg.github.io/verifiable-conditions/contexts/verifiable-conditions-2021-v1.json">https://w3c-ccg.github.io/verifiable-conditions/contexts/verifiable-conditions-2021-v1.json</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example">
+          {
+              "id": "did:example:123#1",
+              "controller": "did:example:123",
+              "type": "VerifiableCondition2021",
+              "conditionAnd": [{
+                  "id": "did:example:123#1-1",
+                  "controller": "did:example:123",
+                  "type": "VerifiableCondition2021",
+                  "conditionOr": [{
+                      "id": "did:example:123#1-1-1",
+                      "controller": "did:example:123",
+                      "type": "EcdsaSecp256k1VerificationKey2019",
+                      "publicKeyBase58": "5JBxKqYKzzoHrzeqwp6zXk8wZU3Ah94ChWAinSj1fYmyJvJS5rT"
+                  }, {
+                      "id": "did:example:123#1-1-2",
+                      "controller": "did:example:123",
+                      "type": "Ed25519VerificationKey2018",
+                      "publicKeyBase58": "PZ8Tyr4Nx8MHsRAGMpZmZ6TWY63dXWSCzamP7YTHkZc78MJgqWsAy"
+                  }]
+              }, {
+                  "id": "did:example:123#1-2",
+                  "controller": "did:example:123",
+                  "type": "Ed25519VerificationKey2018",
+                  "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+              }]
+          }
+        </pre>
+      </section>
+
+    </section>
+
+    <section>
+      <h3>Service types</h3>
+      <p>
+These are values to be used for the <code>type</code> property
+in a service object.
+      </p>
+
+      <section>
+        <h4>LinkedDomains</h4>
+        <div class="issue" data-number="167"></div>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://identity.foundation/.well-known/resources/did-configuration/">Well Known DID Configuration</a>
+              </td>
+              <td>
+                <a href="https://identity.foundation/.well-known/did-configuration/v1">Well Known DID Configuration</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  "@context": ["https://www.w3.org/ns/did/v1","https://identity.foundation/.well-known/did-configuration/v1"],
+  "id": "did:example:123",
+  "verificationMethod": [{
+    "id": "did:example:123#456",
+    "type": "JsonWebKey2020",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
+    }
+  }],
+  "service": [
+    {
+      "id":"did:example:123#foo",
+      "type": "LinkedDomains",
+      "serviceEndpoint": {
+        "origins": ["https://foo.example.com", "https://identity.foundation"]
+      }
+    },
+    {
+      "id":"did:example:123#bar",
+      "type": "LinkedDomains",
+      "serviceEndpoint": "https://bar.example.com"
+    }
+  ]
+}
+        </pre>
+
+      </section>
+
+      <section>
+        <h4>LinkedVerifiablePresentation</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://identity.foundation/linked-vp/">Linked Verifiable Presentation</a>
+              </td>
+              <td>
+                <a href="https://identity.foundation/linked-vp/contexts/v1">Linked Verifiable Presentation</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://identity.foundation/linked-vp/contexts/v1"
+  ],
+  "id": "did:example:123",
+  "verificationMethod": [{
+    "id": "did:example:123#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
+    "type": "JsonWebKey2020",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
+    }
+  }],
+  "service": [
+    {
+      "id": "did:example:123#foo",
+      "type": "LinkedVerifiablePresentation",
+      "serviceEndpoint": ["https://bar.example.com/verifiable-presentation.jsonld"]
+    },
+    {
+      "id": "did:example:123#baz",
+      "type": "LinkedVerifiablePresentation",
+      "serviceEndpoint": "ipfs://bafybeihkoviema7g3gxyt6la7vd5ho32ictqbilu3wnlo3rs7ewhnp7lly/verifiable-presentation.jwt"
+    }
+  ]
+}
+        </pre>
+
+      </section>
+
+      <section>
+        <h4>DIDCommMessaging</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://didcomm.org/messaging/v2/">DIDComm Messaging</a>
+              </td>
+              <td>
+                <span class="issue">A valid JSON-LD context needs to be published.</span>
+                <a href="https://didcomm.org/messaging/contexts/v2">DIDComm Messaging</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  "@context":[
+      "https://www.w3.org/ns/did/v1",
+      "https://didcomm.org/messaging/contexts/v2"
+  ],
+  "type":"DIDCommMessaging",
+  "serviceEndpoint": {
+    "uri": "http://example.com/path",
+    "accept":[ "didcomm/v2", "didcomm/aip2;env=rfc587" ],
+    "routingKeys":[ "did:example:somemediator#somekey" ]
+  }
+}
+        </pre>
+
+      </section>
+
+      <section id="wot-discovery-service-type">
+        <h4>Web of Things (WoT) Discovery</h4>
+        <p>The <code>WotThing</code> and <code>WotDirectory</code> endpoints allow publication of service endpoints in a DID document
+          that can be used to fetch Web of Things (WoT) Thing Descriptions (TDs).
+          The <code>WotThing</code> endpoint is a REST service that returns a TD
+          when the <code>GET</code> method is used.
+          This can be used for self-describing devices or services, or be a service
+          separate from the actual device or service described by the TD.
+          The <code>WotDirectory</code> is also a REST service that returns a TD, but this service is always
+          a Web of Things (WoT) Thing Description Directory (TDD),
+          and the TD returned by a <code>GET</code> always describes the TDD's interface.
+          Details (including normative statements covering the above) are in the
+          <a href="https://www.w3.org/TR/wot-discovery/">WoT Discovery</a> specification.
+        </p>
+
+          <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/wot-discovery/">WoT Discovery</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/2022/wot/discovery-did#WotThing">WotThing</a>
+              </td>
+            </tr><tr>
+              <td>
+                <a href="https://www.w3.org/TR/wot-discovery/">WoT Discovery</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/2022/wot/discovery-did#WotDirectory">WotDirectory</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+<pre class="example" title="Example of WotThing serviceEndpoint properties">
+{
+  "@context":[
+      "https://www.w3.org/ns/did/v1",
+      "https://www.w3.org/2022/wot/discovery-did"
+  ],
+  ...
+  "service": [{
+      "id": "did:example:wotdiscoveryexample#td",
+      "type": "WotThing",
+      "serviceEndpoint":
+          "https://wot.example.com/.well-known/wot"
+  }]
+  ...
+}
+</pre>
+
+<pre class="example" title="Example of WotDirectory serviceEndpoint properties">
+{
+  "@context":[
+      "https://www.w3.org/ns/did/v1",
+      "https://www.w3.org/2022/wot/discovery-did"
+  ],
+  ...
+  "service": [{
+      "id": "did:example:wotdiscoveryexample#tdd",
+      "type": "WotDirectory",
+      "serviceEndpoint":
+          "https://wot.example.com/tdd"
+  }]
+  ...
+}
+</pre>
+
+    </section>
+
+      <section>
+        <h4>CredentialRegistry</h4>
+        <p>The <code>CredentialRegistry</code> endpoint allows publication of a dedicated service endpoint in a DID document, through which verifiable credentials can be queried. Each registry endpoint is a REST endpoint. When a `GET` request is sent to the URI formed by appending the <code>credentialSubject.id</code> as a URL-encoded string to the given endpoint URI, the registry MUST return an array of verifiable credentials associated with the subject ID. A sample registry endpoint can be found <a href="https://ssi.eecc.de/api/registry/swagger/#/Credentials/get_api_registry_vcs__id_">here</a>.</p>
+        <p class="note">
+          Verifiable credential registries are supposed to hold credentials that are publicly accessible by default, e.g., for product passports on a product type level. An additional authentication for limiting access to certain credentials is currently under development.
+        </p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/swagger/#/Credentials/get_api_registry_vcs__id_">Verifiable Credential Registry</a>
+              </td>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/context/credentialregistry">Verifiable Credential Registry</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  ...
+  "service": [
+    {
+      "id": "did:example:123#vcregistry-1",
+      "type": "CredentialRegistry",
+      "serviceEndpoint": {
+        "registries": ["https://registry.example.com/{credentialSubject.id}", "https://identity.foundation/vcs/{credentialSubject.id}"]
+      }
+    },
+    {
+      "id": "did:example:123#vcregistry-2",
+      "type": "CredentialRegistry",
+      "serviceEndpoint": "https://ssi.eecc.de/api/registry/vcs/{credentialSubject.id}"
+    }
+  ]
+}
+        </pre>
+        <pre class="example" title="Example of a concrete call to the specified serviceEndpoint and example answer">
+$ curl 'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1' -H 'accept: application/ld+json, application/json'
+
+[
+  {
+    "@context": ["https://www.w3.org/2018/credentials/v1",... ],
+    "type": ["VerifiableCredential",...],
+    "credentialSubject": {...},
+    "proof": {...},
+    ...
+  },
+  ...
+]
+        </pre>
+      </section>
+
+      <section>
+        <h4>OpenID4 Verifiable Credential Issuance</h4>
+        <p>The <code>OID4VCI</code> service allows publication of a credential issuer that conforms to the <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID for Verifiable Credential Issuance (OID4VCI)</a> specification.
+        <p>The service endpoint `id` MUST be the Credential Issuer Identifier to get the Credential Issuer Metadata as described in Section <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#credential-issuer-metadata">Credential Issuer Metadata</a> of <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenIDVCI</a>.</p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>
+              </td>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/context/openid4vc">OpenID4VCI</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  ...
+  "service": [
+    {
+      "id": "did:example:123#oid4vci",
+      "type": "OID4VCI",
+      "serviceEndpoint": "https://issuer.example.com/"
+    }
+  ]
+}
+        </pre>
+      </section>
+
+      <section>
+        <h4>OpenID4 Verifiable Presentation</h4>
+        <p>The <code>OID4VP</code> service allows publication of how to interact with a credential wallet that conforms with the <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID for Verifiable Presentation (OID4VP)</a> specification.</p>
+        <p>The service endpoint `id` MUST be the Wallet (OAuth2) Issuer Identifier to obtain Wallet Metadata to invoke the wallet as described in section <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-wallet-invocation">Wallet Invocation</a>.</p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-authorization-request">OpenID4VP</a>
+              </td>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/context/openid4vc">OpenID4VP</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of service and serviceEndpoint properties">
+{
+  ...
+  "service": [
+    {
+      "id": "did:example:123#oid4vp",
+      "type": "OID4VP",
+      "serviceEndpoint": "https://wallet.example.com"
+    }
+  ]
+}
+        </pre>
+      </section>
+
+    </section>
+
+  </section>
+
+</body>
+</html>

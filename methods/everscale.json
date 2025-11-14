@@ -1,0 +1,9 @@
+{
+  "name": "everscale",
+  "status": "registered",
+  "specification": "https://git.defispace.com/ssi-4/everscale-did-registry/-/blob/master/docs/documentation.md",
+  "verifiableDataRegistry": "Everscale blockchain",
+  "contactName": "Dmitry V. Samorodkin",
+  "contactEmail": "ds@radianceteam.com",
+  "contactWebsite": "https://www.radianceteam.com/"
+}

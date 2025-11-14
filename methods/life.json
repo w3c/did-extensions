@@ -1,0 +1,9 @@
+{
+  "name": "life",
+  "status": "registered",
+  "verifiableDataRegistry": "RChain",
+  "contactName": "lifeID Foundation",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://lifeid.github.io/did-method-spec/"
+}
