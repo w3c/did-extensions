@@ -1,0 +1,7 @@
+{
+  "name": "drop",
+  "status": "provisional",
+  "verifiableDataRegistry": "Algorand",
+  "specification": "https://tenman1739-alt.github.io/did-drop-spec/",
+  "contact": "mailto:r.ron@oldmanor.co"
+}
