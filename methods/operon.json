@@ -1,9 +1,9 @@
 {
   "name": "operon",
   "status": "registered",
-  "verifiableDataRegistry": "Operon Trust Fabric",
-  "contactName": "Operon Cloud",
-  "contactEmail": "contact@operon.cloud",
-  "contactWebsite": "https://did.operon.cloud/1.0/identifiers/did:operon:root",
+  "verifiableDataRegistry": "Operon.Cloud Platform",
+  "contactName": "Operon.Cloud",
+  "contactEmail": "info@operon.cloud",
+  "contactWebsite": "https://www.operon.cloud",
   "specification": "https://operon.cloud/did-method/operon"
 }
