@@ -1,0 +1,9 @@
+{
+  "name": "ckb",
+  "status": "registered",
+  "verifiableDataRegistry": "CKB blockchain mainnet",
+  "contactName": "DID CKB Group",
+  "contactEmail": "did-ckb@cryptape.com",
+  "contactWebsite": "https://github.com/web5fans/web5-wips",
+  "specification": "https://github.com/web5fans/web5-wips/blob/master/01.md"
+}
