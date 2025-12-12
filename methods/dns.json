@@ -1,0 +1,9 @@
+{
+  "name": "dns",
+  "status": "registered",
+  "verifiableDataRegistry": "Domain Name System (DNS)",
+  "contactName": "Danube Tech",
+  "contactEmail": "markus@danubetech.com",
+  "contactWebsite": "https://danubetech.com",
+  "specification": "https://danubetech.github.io/did-method-dns/"
+}

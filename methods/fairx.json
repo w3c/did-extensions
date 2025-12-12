@@ -1,0 +1,9 @@
+{
+    "name": "fairx",
+    "status": "deprecated",
+    "verifiableDataRegistry": "FairX Node",
+    "contactName": "Michael Dowling",
+    "contactEmail": "mdowling@gmail.com",
+    "contactWebsite": "https://github.com/fairxio/",
+    "specification": "https://github.com/fairxio/protocol/tree/main/did"
+  }
