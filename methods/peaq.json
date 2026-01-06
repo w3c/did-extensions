@@ -1,0 +1,9 @@
+{
+    "name": "peaq",
+    "status": "registered",
+    "specification": "https://github.com/peaqnetwork/peaq-did-specifications",
+    "contactEmail": "info@peaq.network",
+    "contactName": "Peaq Technology GmbH",
+    "contactWebsite": "https://www.peaq.network",
+    "verifiableDataRegistry": "peaq Blockchain"
+  }

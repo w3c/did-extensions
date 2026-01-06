@@ -1,0 +1,9 @@
+{
+  "name": "dht",
+  "status": "registered",
+  "verifiableDataRegistry": "Mainline DHT",
+  "contactName": "TBD",
+  "contactEmail": "",
+  "contactWebsite": "https://www.tbd.website",
+  "specification": "https://did-dht.com/"
+}

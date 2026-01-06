@@ -1,0 +1,9 @@
+{
+  "name": "operon",
+  "status": "registered",
+  "verifiableDataRegistry": "Operon.Cloud Platform",
+  "contactName": "Operon.Cloud",
+  "contactEmail": "info@operon.cloud",
+  "contactWebsite": "https://www.operon.cloud",
+  "specification": "https://operon.cloud/did-method/operon"
+}

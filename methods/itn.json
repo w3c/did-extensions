@@ -1,0 +1,9 @@
+{
+  "name": "itn",
+  "status": "registered",
+  "specification": "https://github.com/itn-trust/itn-did-spec",
+  "contactName": "Umed Khudoiberdiev",
+  "contactEmail": "umed@dlt.mobi",
+  "contactWebsite": "https://itn.global/",
+  "verifiableDataRegistry": "Hyperledger Fabric (Private Network) and Arbitrum One"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "ethr",
+  "status": "registered",
+  "verifiableDataRegistry": "Ethereum",
+  "contactName": "uPort",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/decentralized-identity/ethr-did-resolver/blob/master/doc/did-method-spec.md"
+}
