@@ -141,7 +141,7 @@ Creating a `did:pqie` DID involves binding citizen attributes to a lattice-based
 3.  **Identifier Derivation**: The identifier is generated via $H(A(x) \circ pk_{ntt})$. This process is binding and irreversible.
 4.  **Document Construction**: A W3C-conformant DID Document is created, containing the public key $pk$. 
 5.  **Digital Envelope**: The document MUST be encrypted using the Digital Envelope process (§6.1). A shared secret $SS$ is generated, and the document is encrypted with AES-256-GCM.
-6.  **Ledger Submission**: The following metadata MUST be submitted to the ledger (Hyperledger Indy NYM transaction):
+6.  **Ledger Submission**: The following metadata MUST be submitted to the ledger as a **NYM transaction** (for Hyperledger Indy):
     - `id`: The `did:pqie` identifier.
     - `public_key`: The Ring-LWE public key.
     - `ipfs_cid`: The CID of the encrypted Digital Envelope on IPFS.
@@ -149,15 +149,21 @@ Creating a `did:pqie` DID involves binding citizen attributes to a lattice-based
 
 ### 6.2 Read (Resolve)
 
-A `did:pqie` DID resolution returns a DID Resolution Result containing the decrypted DID Document.
+A `did:pqie` DID resolution returns a W3C DID Resolution Result containing the `didDocument`, `didResolutionMetadata`, and `didDocumentMetadata`.
 
-**Resolution Steps:**
-1.  **Lookup**: The resolver queries the ledger for the `did:pqie` identifier. If not found, it MUST return a `notFound` error.
-2.  **Fetch**: Retrieve the encrypted package $P$ from IPFS using the anchored `ipfs_cid`.
-3.  **Decapsulate**: The resolver (or client) MUST recover the shared secret $SS$ using the subject's public key (if authorized) or providing the required decapsulation key.
-4.  **Decrypt**: Decrypt the JSON-LD document. If the decryption fails (e.g., HMAC mismatch), the resolver MUST return a `securityError`.
-5.  **Verify**: The signature $sig$ MUST be verified against the subject's public key using the Lattice Signature verification algorithm (§6.2). Failure to verify MUST result in an `invalidDidDocument` error.
-6.  **Metadata Enrichment**: The resolver MUST attach `didDocumentMetadata` containing `versionId`, `created`, and `updated` timestamps.
+**Resolution Logic:**
+1.  **Registry Lookup**: The resolver tries to resolve via a local **DID Registry** cache first.
+2.  **Documents Store**: If not in cache, it checks the **DID Documents store**.
+3.  **Registration Fallback**: If still not found, it falls back to querying the ledger (Hyperledger Indy).
+4.  **Fetch**: Retrieve the encrypted package $P$ from IPFS using the anchored `ipfs_cid`.
+5.  **Decapsulate**: Recover the shared secret $SS$ using the subject's public key or decapsulation key.
+6.  **Decrypt**: Decrypt the JSON-LD document. If decryption fails, return a `securityError`.
+7.  **Verify**: Verify the lattice signature.
+8.  **Metadata Enrichment**: Attach `didDocumentMetadata` (e.g., `versionId`, `created`, `updated`).
+
+**Universal Resolver Interface:**
+Compliant resolvers MUST support the Universal Resolver API:
+`GET /1.0/identifiers/{did}`
 
 **Error Handling:**
 | Error Code | Meaning |
@@ -172,21 +178,22 @@ A `did:pqie` DID resolution returns a DID Resolution Result containing the decry
 **Authorization:** Any update to a `did:pqie` document MUST be signed by the controller's private key. In cases where multiple controllers are defined, $M$-of-$N$ signatures SHOULD be required.
 
 **Update Process:**
-1.  **Modification**: The controller modifies the DID Document (e.g., adding a new `service` endpoint).
-2.  **Versioning**: The `versionId` property MUST be incremented.
+1.  **Modification**: An **authenticated partial update** is requested by the controller.
+2.  **Versioning**: The `versionId` property MUST be incremented in the document.
 3.  **Re-encryption**: The updated document is re-encrypted into a new Digital Envelope.
-4.  **IPFS Upload**: The new package is uploaded to IPFS, resulting in a new CID.
-5.  **Ledger Update**: An `ATTRIB` transaction is sent to the ledger, pointing the DID to the new `ipfs_cid`.
-6.  **Consistency**: Resolvers MUST ensure they return the latest version by default unless a `versionId` is specified in the resolution options.
+4.  **IPFS Upload**: The new package is uploaded to IPFS.
+5.  **Ledger Update**: A **DID_UPDATE** (or `ATTRIB`) transaction is written to the ledger, anchoring the new `ipfs_cid`.
+6.  **Consistency**: Resolvers MUST return the latest version by default.
 
 ### 6.4 Deactivate
 
-**Authorization**: Deactivation is a permanent, terminal operation. It MUST be signed by the primary controller.
+**Authorization**: Deactivation is a terminal operation. It MUST be authorized by the **Government authority** or the primary controller.
 
 1.  **Revocation Request**: A signed deactivation transaction is submitted to the ledger.
-2.  **Registry Update**: The DID Registry marks the DID state as `DEACTIVATED`. 
-3.  **Verification**: Any subsequent resolution results MUST return a DID document with `deactivated: true` in the metadata.
-4.  **Irreversibility**: A deactivated `did:pqie` DID CANNOT be updated or re-activated.
+2.  **Registry Update**: The Registry marks the DID state as `DEACTIVATED` (deactivated: true).
+3.  **Credential Revocation**: All associated Verifiable Credentials for this DID MUST be revoked.
+4.  **Verification**: Subsequent resolution results MUST return a DID document with `deactivated: true`.
+5.  **Irreversibility**: A deactivated `did:pqie` DID CANNOT be updated or re-activated.
 
 ---
 
@@ -218,6 +225,11 @@ The use of IPFS CIDs ensures data integrity. If even a single bit of the encrypt
 ### 7.5 Cryptographic Agility
 
 While the current specification defaults to Ring-LWE (Kyber-compatible), the `latticeParams` field in the DID document allows for a managed transition to future NIST-approved algorithms without changing the fundamental method structure.
+
+### 7.6 Rate Limiting
+
+To prevent DoS attacks on shared resolvers and ledger interfaces, implementers MUST enforce rate limiting. The default policy is:
+**5 tokens/hour/user** (or requests/hour/IP).
 
 ---
 

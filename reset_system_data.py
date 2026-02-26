@@ -94,11 +94,51 @@ def reset():
         },
         "indy_ledger.json": {"transactions": [], "total_transactions": 0},
         "unified_vc_ledger.json": {
-            "ledger_id": "unified_vc_ledger_v1",
-            "created_at": datetime.now(timezone.utc).isoformat(),
-            "total_credentials": 0,
+            "ledger_metadata": {
+                "ledger_id": "unified_vc_cross_blockchain_ledger_v1",
+                "version": "1.0.0",
+                "created_at": datetime.now(timezone.utc).isoformat(),
+                "last_updated": datetime.now(timezone.utc).isoformat(),
+                "supported_blockchains": ["indy", "ethereum", "polkadot", "hyperledger_fabric"],
+                "total_credentials": 0,
+                "total_transactions": 0,
+                "cross_chain_credentials": 0,
+                "active_credentials": 0,
+                "revoked_credentials": 0,
+                "suspended_credentials": 0
+            },
+            "performance_metrics": {
+                "total_issuances": 0,
+                "total_updates": 0,
+                "total_revocations": 0,
+                "average_transaction_time_ms": 0,
+                "average_transaction_cost_tokens": 0,
+                "throughput_tps": 0,
+                "blockchain_distribution": {},
+                "transaction_times": [],
+                "transaction_costs": [],
+                "scalability_metrics": {
+                    "max_concurrent_transactions": 0,
+                    "peak_tps": 0,
+                    "latency_p95_ms": 0,
+                    "latency_p99_ms": 0
+                }
+            },
             "credentials": {},
-            "transactions": {}
+            "transactions": {},
+            "cross_chain_mappings": {},
+            "blockchain_registries": {
+                "indy": {"dids": {}, "credentials": {}},
+                "ethereum": {"dids": {}, "credentials": {}},
+                "polkadot": {"dids": {}, "credentials": {}},
+                "hyperledger_fabric": {"dids": {}, "credentials": {}}
+            },
+            "misuse_protection": {
+                "fraud_detection_count": 0,
+                "blocked_attempts": 0,
+                "suspicious_patterns": [],
+                "rate_limits": {}
+            }
         },
         "unified_indy_ledger.json": {"transactions": {}, "total": 0},
         "auto_identity_tokens.json": {
