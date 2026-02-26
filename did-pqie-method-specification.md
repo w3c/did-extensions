@@ -128,138 +128,120 @@ All `did:pqie` documents are stored as encrypted blobs:
 
 ---
 
-## 7. CRUD Operations
+## 6. CRUD Operations
 
-### 7.1 Create
+This section defines the operations for managing `did:pqie` Decentralized Identifiers. All operations MUST be performed through a compliant PQIE-Client to ensure cryptographic integrity.
 
-**Prerequisites:** Citizen has provided personal attributes for KYC and a post-quantum public key has been generated.
+### 6.1 Create (Register)
 
-**Steps:**
+Creating a `did:pqie` DID involves binding citizen attributes to a lattice-based identifier.
 
-1. **Generate identifier** using the algorithm in §5.2.
-2. **Generate key pair** `(pk, sk)` using Ring-LWE keypair generation based on the Kyber-1024 parameters.
-3. **Build DID Document** containing the public key and initial service endpoints.
-4. **Sign and Encrypt**: Use the Lattice Signature (§6.2) and Digital Envelope (§6.1) to protect the document.
-5. **Upload to IPFS**: The encrypted ciphertext package $P$ is uploaded to IPFS.
-6. **Submit NYM transaction**: The `did:pqie` identifier, public key hash, and IPFS CID are submitted to the Hyperledger Indy ledger.
+1.  **Attribute Preparation**: The controller provides a set of identity attributes (e.g., name, birth year). These are MUST be transformed into a polynomial $A(x) \in \mathbb{Z}_q[x]/(x^n + 1)$ using the PQIE lifting process.
+2.  **Key Generation**: A Ring-LWE key pair $(pk, sk)$ MUST be generated using Kyber-1024 parameters ($n=512, q=24593$).
+3.  **Identifier Derivation**: The identifier is generated via $H(A(x) \circ pk_{ntt})$. This process is binding and irreversible.
+4.  **Document Construction**: A W3C-conformant DID Document is created, containing the public key $pk$. 
+5.  **Digital Envelope**: The document MUST be encrypted using the Digital Envelope process (§6.1). A shared secret $SS$ is generated, and the document is encrypted with AES-256-GCM.
+6.  **Ledger Submission**: The following metadata MUST be submitted to the ledger (Hyperledger Indy NYM transaction):
+    - `id`: The `did:pqie` identifier.
+    - `public_key`: The Ring-LWE public key.
+    - `ipfs_cid`: The CID of the encrypted Digital Envelope on IPFS.
+    - `timestamp`: The creation time.
 
----
+### 6.2 Read (Resolve)
 
-### 7.2 Read (Resolve)
+A `did:pqie` DID resolution returns a DID Resolution Result containing the decrypted DID Document.
 
-**A `did:pqie` DID resolution involves the following verification flow:**
+**Resolution Steps:**
+1.  **Lookup**: The resolver queries the ledger for the `did:pqie` identifier. If not found, it MUST return a `notFound` error.
+2.  **Fetch**: Retrieve the encrypted package $P$ from IPFS using the anchored `ipfs_cid`.
+3.  **Decapsulate**: The resolver (or client) MUST recover the shared secret $SS$ using the subject's public key (if authorized) or providing the required decapsulation key.
+4.  **Decrypt**: Decrypt the JSON-LD document. If the decryption fails (e.g., HMAC mismatch), the resolver MUST return a `securityError`.
+5.  **Verify**: The signature $sig$ MUST be verified against the subject's public key using the Lattice Signature verification algorithm (§6.2). Failure to verify MUST result in an `invalidDidDocument` error.
+6.  **Metadata Enrichment**: The resolver MUST attach `didDocumentMetadata` containing `versionId`, `created`, and `updated` timestamps.
 
-1. **Fetch**: Query the ledger for the `ipfs_cid` associated with the DID.
-2. **Retrieve**: Fetch the encrypted package $P$ (ciphertext, kem, sig) from IPFS.
-3. **Decapsulate**: Use the subject's public key $pk$ to recover the shared secret $SS = Decap(pk, kem)$.
-4. **Decrypt**: Derive $key = HKDF(SS)$ and decrypt the ciphertext to reveal the JSON-LD DID Document.
-5. **Verify**: Compute the digest of the decrypted doc and verify the lattice signature $sig$ against $sig\_pub$.
-6. **Integrity**: Ensure the document ID matches the requested DID.
+**Error Handling:**
+| Error Code | Meaning |
+|------------|---------|
+| `invalidDid` | The DID string does not follow the `did:pqie` ABNF. |
+| `notFound` | No registration found for this DID on the ledger. |
+| `securityError` | Decryption or signature verification failed. |
+| `deactivated` | The DID has been permanently revoked. |
 
-**Resolution Result:**
-The resolver returns the decrypted W3C DID Document and metadata.
+### 6.3 Update
 
----
-
-### 7.3 Update
-
-**Authorization:** Updates MUST be authorized by the DID subject via a cryptographic challenge-response.
+**Authorization:** Any update to a `did:pqie` document MUST be signed by the controller's private key. In cases where multiple controllers are defined, $M$-of-$N$ signatures SHOULD be required.
 
 **Update Process:**
-1. **Authentication**: Subject proves ownership via signature.
-2. **Modification**: Desired changes are applied to the decrypted document.
-3. **Re-encryption**: The updated document is re-encoded into a new Digital Envelope.
-4. **Ledger Update**: Submit an `ATTRIB` transaction with the new IPFS CID.
-5. **State Transition**: Ledger transitions from $S_n \rightarrow S_{n+1}$.
+1.  **Modification**: The controller modifies the DID Document (e.g., adding a new `service` endpoint).
+2.  **Versioning**: The `versionId` property MUST be incremented.
+3.  **Re-encryption**: The updated document is re-encrypted into a new Digital Envelope.
+4.  **IPFS Upload**: The new package is uploaded to IPFS, resulting in a new CID.
+5.  **Ledger Update**: An `ATTRIB` transaction is sent to the ledger, pointing the DID to the new `ipfs_cid`.
+6.  **Consistency**: Resolvers MUST ensure they return the latest version by default unless a `versionId` is specified in the resolution options.
+
+### 6.4 Deactivate
+
+**Authorization**: Deactivation is a permanent, terminal operation. It MUST be signed by the primary controller.
+
+1.  **Revocation Request**: A signed deactivation transaction is submitted to the ledger.
+2.  **Registry Update**: The DID Registry marks the DID state as `DEACTIVATED`. 
+3.  **Verification**: Any subsequent resolution results MUST return a DID document with `deactivated: true` in the metadata.
+4.  **Irreversibility**: A deactivated `did:pqie` DID CANNOT be updated or re-activated.
 
 ---
 
-### 7.4 Deactivate
+## 7. Security Considerations
 
-**Authorization:** Terminal deactivation requires an authorized government mandate or subject retirement.
+This section addresses the requirements of [DID-CORE] Section 7.1 and follows [RFC3552] guidelines.
 
-**Process:**
-1. **Revocation Request**: Submit signed deactivation request.
-2. **Ledger Transaction**: Send `DID_DEACTIVATE` transaction.
-3. **Terminal State**: Once deactivated, a DID is cryptographically invalid for all compliant verifiers.
+### 7.1 Post-Quantum HARDNESS (Ring-LWE)
 
----
+The core security of `did:pqie` relies on the Ring Learning With Errors (Ring-LWE) problem. Unlike RSA or ECC, which are vulnerable to Shor's algorithm, lattice-based problems remain hard for both classical and quantum adversaries. 
+- **Quantum Bit-Security**: 256 bits for Kyber-1024 parameters.
+- **Side-Channel Mitigation**: Implementations MUST use constant-time polynomial multiplication (NTT) to prevent timing attacks. The inclusion of the `_tanh_activation` function provides a non-linear layer that complicates power analysis attacks.
 
-## 8. Security Considerations
+### 7.2 Key Management
 
-## 8. Security Considerations
+Secure handling of private keys is critical.
+- **Storage**: Controllers SHOULD store private keys in hardware-backed security modules (HSM) or Trusted Execution Environments (TEE).
+- **Public Key Handling**: Public keys for `did:pqie` are larger than ECDSA keys (~1.2KB). Network protocols MUST accommodate these larger payloads.
+- **Rotation**: Controllers SHOULD rotate keys periodically. Since `did:pqie` identifiers are tied to attributes and the initial public key, rotation is handled by adding new verification methods while preserving the DID identifier.
 
-### 8.1 Post-Quantum Security
+### 7.3 Replay Attacks
 
-The `did:pqie` method derives its security from the **Ring Learning With Errors (Ring-LWE)** problem. The hardness of Ring-LWE is equivalent to worst-case hard problems on ideal lattices, providing IND-CPA security.
+Every transaction (Update, Deactivate) MUST include a unique nonce and a reference to the previous `versionId`. Ledger nodes MUST reject any transaction that attempts to re-apply a previous state or uses a stale version identifier.
 
-- **Security level:** 128-bit post-quantum (equivalent to 256-bit classical security).
-- **Algorithm family:** MODULE-LWE (based on the CRYSTALS-Kyber submission to NIST).
-- **Key sizes:** 1024-byte public keys and 1632-byte secret keys (Kyber-1024 parameters).
+### 7.4 Data Integrity and Forgery
 
-### 8.2 Key Management and Protection
+The use of IPFS CIDs ensures data integrity. If even a single bit of the encrypted DID Document is changed, the CID will no longer match the ledger's anchor, flagging a security violation. Lattice signatures provide non-repudiation, ensuring only the controller could have produced the update.
 
-Private keys for `did:pqie` must be handled with extreme care, as they represent the ultimate authority over the identity.
-- **Secure Enclaves**: Implementations SHOULD use Hardware Security Modules (HSMs) or Secure Enclaves (e.g., Apple T2, Android StrongBox) for key generation and storage.
-- **Side-Channel Protections**: The cryptographic implementation uses constant-time polynomial arithmetic to mitigate timing attacks. The `_tanh_activation` step further obfuscates power traces.
-- **Key Rotation**: Subjects MUST rotate keys if a compromise is suspected.
+### 7.5 Cryptographic Agility
 
-### 8.3 Data Availability and Persistence
-
-Since the DID Document is stored on IPFS, its availability depends on content being pinned.
-- **Pinning Services**: Government nodes and authorized registrars MUST pin DID Documents.
-- **Ledger Anchoring**: The Hyperledger Indy ledger acts as a permanent, immutable index.
-
-### 8.4 Denial of Service (DoS)
-
-Method-specific resolvers MUST implement rate limiting to prevent infrastructure exhaustion.
-- **Resolver Limits**: Public resolvers SHOULD limit requests based on IP or authenticated subject.
-- **Ledger Protection**: Hyperledger Indy's consensus mechanism naturally limits transaction volume.
-
-### 8.5 Data Forgery Prevention
-
-The `did:pqie` method prevents forgery through post-quantum lattice signatures. Only the controller of the DID can authorize updates or deactivations.
-
-### 8.6 Cryptographic Agility
-
-The specification supports cryptographic agility. While Kyber-1024 is the current default, the `latticeParams` field allows for future NIST-standardized lattice algorithms.
-
-### 8.7 Security Margin Comparison
-
-| Scheme | n | q | Quantum Bit-Security |
-|--------|---|---|----------------------|
-| **PQIE-Enc** | 512 | 24577 | 256 |
-| Dilithium-III | 256 | 8380417 | 192 |
-| Falcon-512 | 512 | 12289 | 128 |
+While the current specification defaults to Ring-LWE (Kyber-compatible), the `latticeParams` field in the DID document allows for a managed transition to future NIST-approved algorithms without changing the fundamental method structure.
 
 ---
 
-## 9. Privacy Considerations
+## 8. Privacy Considerations
 
-### 9.1 Minimal PII and Metadata Leakage
+### 8.1 Minimal Disclosure and PII
 
-DID Documents for `did:pqie` MUST NOT contain raw Aadhaar numbers or biometric data.
-- **Content Minimization**: Only verification methods and service endpoints are stored.
-- **Metadata Protection**: Infrastructure providers SHOULD anonymize access logs.
+The `did:pqie` method is designed for privacy-preserving KYC. 
+- **PII Protection**: Raw PII (e.g., Aadhaar number) NEVER appears in the DID Document or on the ledger. 
+- **Gaussian Blurring**: The attribute-to-polynomial mapping adds Gaussian noise ($\sigma=4.0$), ensuring that the resulting polynomial $A(x)$ is computationally indistinguishable from a random polynomial to anyone without the secret key.
 
-### 9.2 Gaussian Noise and Obfuscation
+### 8.2 Correlation and Tracking
 
-The transformation of citizen attributes into the DID identifier uses Gaussian noise masking (σ=4.0). This ensures identifier unlinkability to the underlying PII.
+Multi-ledger and multi-DID strategies are encouraged to prevent correlation.
+- **Pairwise DIDs**: Users SHOULD generate unique DIDs for different service providers to prevent cross-service tracking.
+- **Metadata Anonymity**: Ledger nodes SHOULD NOT log the IP addresses of parties performing resolution to prevent geographical tracking.
 
-### 9.3 Surveillance and Correlation
+### 8.3 Observation and Surveillance
 
-Resolver implementations SHOULD mitigate surveillance risks by:
-- **No-Phone-Home**: Resolvers SHOULD NOT report resolution activity.
-- **Pairwise DIDs**: Subjects SHOULD use distinct DIDs for different service providers.
-- **Selective Disclosure**: Verifiable Presentations SHOULD be used.
+The "Encrypted-by-Default" nature of `did:pqie` DID Documents prevents passive observers (e.g., IPFS nodes, ISP) from reading the content of the DID Document. Only the authorized resolver or controller can peek inside the "Digital Envelope."
 
-### 9.4 Stored Data Compromise
+### 8.4 Right to Erasure
 
-While the ledger is public, it only contains public keys and IPFS CIDs. A compromise of the ledger does not reveal PII.
-
-### 9.5 Right to Erasure (GDPR Art. 17)
-
-Deactivation (§7.4) provides a logical "Right to Erasure." While the ledger is immutable, a deactivated DID is cryptographically invalid.
+Aligning with GDPR Article 17, `did:pqie` supports deactivation. While the ledger record is immutable, the deactivation makes the DID cryptographically useless. Controllers wishing to achieve complete erasure MUST ensure they un-pin and remove their content from IPFS nodes they control.
 
 ---
 
