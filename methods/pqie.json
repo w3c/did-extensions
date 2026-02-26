@@ -1,0 +1,9 @@
+{
+    "name": "pqie",
+    "status": "registered",
+    "specification": "https://dixadholakiya.github.io/pqie-did-spec/",
+    "contactName": "PQIE Research Group",
+    "contactEmail": "support@pqie.network",
+    "contactWebsite": "https://pqie.network",
+    "verifiableDataRegistry": "Hyperledger Indy + IPFS"
+}
