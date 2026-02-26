@@ -1,0 +1,63 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+
+    "id": "@id",
+    "type": "@type",
+
+    "pqie": "https://pqie.network/ns/did/v1#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "sec": "https://w3id.org/security#",
+
+    "PQIE-LatticeSignature2024": {
+      "@id": "pqie:LatticeSignature2024",
+      "@type": "@id"
+    },
+    "PQIE-RingLWE2024": {
+      "@id": "pqie:RingLWE2024",
+      "@type": "@id"
+    },
+    "RingLWESignature2024": {
+      "@id": "pqie:RingLWESignature2024",
+      "@type": "@id"
+    },
+    "AadhaarKYCCredential": {
+      "@id": "pqie:AadhaarKYCCredential",
+      "@type": "@id"
+    },
+    "AadhaarKYCService": {
+      "@id": "pqie:AadhaarKYCService",
+      "@type": "@id"
+    },
+    "CredentialVerificationService": {
+      "@id": "pqie:CredentialVerificationService",
+      "@type": "@id"
+    },
+
+    "publicKeyLattice": {
+      "@id": "pqie:publicKeyLattice",
+      "@type": "xsd:string"
+    },
+    "latticeParams": {
+      "@id": "pqie:latticeParams",
+      "@type": "@json"
+    },
+    "verifiableCredentialHash": {
+      "@id": "pqie:verifiableCredentialHash",
+      "@type": "xsd:string"
+    },
+    "kycLevel": {
+      "@id": "pqie:kycLevel",
+      "@type": "xsd:string"
+    },
+    "kycStatus": {
+      "@id": "pqie:kycStatus",
+      "@type": "xsd:string"
+    },
+    "aadhaarReference": {
+      "@id": "pqie:aadhaarReference",
+      "@type": "xsd:string"
+    }
+  }
+}

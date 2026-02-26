@@ -70,11 +70,46 @@ def main():
         government_process.terminate()
         return
     
+    time.sleep(2)  # Wait a bit
+    
+    # Start SDIS Public Resolver Service
+    resolver_process = start_server(
+        "server/sdis_public_resolver_perfect.py", 
+        8085, 
+        "SDIS Public Resolver Service (Perfect Logic)"
+    )
+    
+    if not resolver_process:
+        print("❌ Failed to start SDIS Public Resolver Service")
+        citizen_process.terminate()
+        government_process.terminate()
+        ledger_process.terminate()
+        return
+    
+    time.sleep(2)  # Wait a bit
+    
+    # Start Auto Identity Token Integration Server
+    auto_token_process = start_server(
+        "server/auto_identity_token_integration_server.py", 
+        8080, 
+        "Auto Identity Token Integration Server"
+    )
+    
+    if not auto_token_process:
+        print("❌ Failed to start Auto Identity Token Integration Server")
+        citizen_process.terminate()
+        government_process.terminate()
+        ledger_process.terminate()
+        resolver_process.terminate()
+        return
+    
     print("\n🎉 All servers started successfully!")
     print("=" * 50)
     print("📱 Citizen Portal: http://localhost:8082")
     print("🏛️ Government Portal: http://localhost:8081")
     print("🔍 Ledger Explorer: http://localhost:8083")
+    print("🌐 SDIS Public Resolver: http://localhost:8085")
+    print("🎫 Auto Identity Token API: http://localhost:8080")
     print("\n📋 Features:")
     print("✅ User login/registration")
     print("✅ DID generation and storage on Indy ledger")
@@ -83,6 +118,18 @@ def main():
     print("✅ Government services access")
     print("✅ Unified ledger explorer")
     print("✅ Real-time ledger monitoring")
+    print("✅ W3C-compliant DID resolution")
+    print("✅ Universal Resolver integration")
+    print("✅ Rust VC Credential Manager")
+    print("✅ DID Registry System")
+    print("✅ Credential Ledger System")
+    print("✅ Auto Identity Token Generation")
+    print("✅ DID Retrieval and Resolution")
+    print("✅ VC Integration over Indy Ledger")
+    print("✅ Multi-blockchain interoperability")
+    print("✅ Verifiable Credentials over Indy Ledger")
+    print("✅ Ethereum blockchain integration")
+    print("✅ Cross-chain identity bridging")
     
     print("\n🔄 Servers are running... Press Ctrl+C to stop")
     
@@ -104,6 +151,14 @@ def main():
                 print("❌ Ledger Explorer Server stopped")
                 break
                 
+            if resolver_process.poll() is not None:
+                print("❌ SDIS Public Resolver Service stopped")
+                break
+                
+            if auto_token_process.poll() is not None:
+                print("❌ Auto Identity Token Integration Server stopped")
+                break
+                
     except KeyboardInterrupt:
         print("\n🛑 Stopping servers...")
         
@@ -111,11 +166,15 @@ def main():
         citizen_process.terminate()
         government_process.terminate()
         ledger_process.terminate()
+        resolver_process.terminate()
+        auto_token_process.terminate()
         
         # Wait for graceful shutdown
         citizen_process.wait()
         government_process.wait()
         ledger_process.wait()
+        resolver_process.wait()
+        auto_token_process.wait()
         
         print("✅ All servers stopped")
 

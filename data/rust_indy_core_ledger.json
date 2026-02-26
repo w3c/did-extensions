@@ -1,16 +1,739 @@
 {
-  "transactions": {},
-  "dids": {},
-  "credentials": {},
-  "pools": {},
-  "wallets": {},
   "metadata": {
-    "created_at": "2025-09-17T00:31:47.489807Z",
     "version": "2.0",
-    "ledger_type": "rust_indy_core",
-    "last_updated": "2025-09-17T00:31:47.489807Z",
-    "total_transactions": 0,
-    "total_dids": 0,
-    "total_credentials": 0
+    "ledger_type": "rust_style_indy",
+    "created_at": "2026-02-24T14:20:40.792298+00:00",
+    "last_updated": "2026-02-25T00:52:51.048197Z",
+    "total_transactions": 28,
+    "total_dids": 15,
+    "total_credentials": 0,
+    "total_pools": 0,
+    "total_wallets": 15
+  },
+  "pools": {},
+  "wallets": {
+    "wallet_34ab5586cc303b29": {
+      "created_at": "2026-02-24T14:46:03.371188+00:00",
+      "status": "ACTIVE",
+      "key_hash": -4493302182300954813
+    },
+    "wallet_20d0039f1429fc5d": {
+      "created_at": "2026-02-24T14:55:13.510885+00:00",
+      "status": "ACTIVE",
+      "key_hash": 1553662755984872919
+    },
+    "wallet_adc28b599c8cfd8c": {
+      "created_at": "2026-02-24T14:56:35.918228+00:00",
+      "status": "ACTIVE",
+      "key_hash": 1553662755984872919
+    },
+    "wallet_64c22be922a8d52b": {
+      "created_at": "2026-02-24T14:58:03.150021+00:00",
+      "status": "ACTIVE",
+      "key_hash": 1553662755984872919
+    },
+    "wallet_206a9ff2e5a036f9": {
+      "created_at": "2026-02-24T14:59:01.720622+00:00",
+      "status": "ACTIVE",
+      "key_hash": 1553662755984872919
+    },
+    "wallet_eaade628799816ef": {
+      "created_at": "2026-02-24T15:04:49.085803+00:00",
+      "status": "ACTIVE",
+      "key_hash": 1553662755984872919
+    },
+    "wallet_da664c8b3366e055": {
+      "created_at": "2026-02-24T15:05:29.677437+00:00",
+      "status": "ACTIVE",
+      "key_hash": -8661285365727619366
+    },
+    "wallet_17ca920746b96d80": {
+      "created_at": "2026-02-24T15:05:45.454567+00:00",
+      "status": "ACTIVE",
+      "key_hash": -8661285365727619366
+    },
+    "wallet_65f86b590b0e7116": {
+      "created_at": "2026-02-24T15:06:50.123983+00:00",
+      "status": "ACTIVE",
+      "key_hash": -8519717927770517869
+    },
+    "wallet_97871b621e723554": {
+      "created_at": "2026-02-24T15:07:10.398723+00:00",
+      "status": "ACTIVE",
+      "key_hash": -8519717927770517869
+    },
+    "wallet_d045b6ffcd3412a2": {
+      "created_at": "2026-02-24T17:11:45.488464+00:00",
+      "status": "ACTIVE",
+      "key_hash": 5491436306389186902
+    },
+    "wallet_bf2feb96d7490945": {
+      "created_at": "2026-02-24T17:11:57.217219+00:00",
+      "status": "ACTIVE",
+      "key_hash": 5491436306389186902
+    },
+    "wallet_bbcc5773c7bb3351": {
+      "created_at": "2026-02-24T17:12:52.953537+00:00",
+      "status": "ACTIVE",
+      "key_hash": 5491436306389186902
+    },
+    "wallet_9434ca4f9a2ac119": {
+      "created_at": "2026-02-24T17:17:27.819276+00:00",
+      "status": "ACTIVE",
+      "key_hash": 5491436306389186902
+    },
+    "wallet_284304f67ca7f1ce": {
+      "created_at": "2026-02-24T17:57:50.688794+00:00",
+      "status": "ACTIVE",
+      "key_hash": 4948022496625108733
+    }
+  },
+  "dids": {
+    "did:sdis:f8fc:750e:34ab5586cc303b29": {
+      "did": "did:sdis:f8fc:750e:34ab5586cc303b29",
+      "verkey": "~f0465ba8700d5d2d6eb115282a5c2562e7abf5f28a5aacf8b8e42c04fb1d24da",
+      "transaction_hash": "rust_txn_2153e06787a04b62",
+      "status": "ACTIVE"
+    },
+    "did:sdis:f86e:92b6:20d0039f1429fc5d": {
+      "did": "did:sdis:f86e:92b6:20d0039f1429fc5d",
+      "verkey": "~8d7b8b2c3300f1fbdd805401d6371784011b5d0a7d95260c17b04f6190e590b5",
+      "transaction_hash": "rust_txn_066f9b95e5603cfd",
+      "status": "ACTIVE"
+    },
+    "did:sdis:9ba7:332e:adc28b599c8cfd8c": {
+      "did": "did:sdis:9ba7:332e:adc28b599c8cfd8c",
+      "verkey": "~e8d8791048e78297f07668b3b9a490b6ce30420b15b6a678983a3c1538b0e637",
+      "transaction_hash": "rust_txn_f431b9f33aa4e29b",
+      "status": "ACTIVE"
+    },
+    "did:sdis:18fc:46b1:64c22be922a8d52b": {
+      "did": "did:sdis:18fc:46b1:64c22be922a8d52b",
+      "verkey": "~db373675c69ab81d38d22efc66ad29ff353f224780a9fa80e65b2a8b7d4eda4d",
+      "transaction_hash": "rust_txn_506ad3eb64a10ae0",
+      "status": "ACTIVE"
+    },
+    "did:sdis:fe6e:e1b0:206a9ff2e5a036f9": {
+      "did": "did:sdis:fe6e:e1b0:206a9ff2e5a036f9",
+      "verkey": "~7a265f52dc48fc0ab3e54b08eacd1db93abc8f9199dcd6979b9bfb8ddde1e7b8",
+      "transaction_hash": "rust_txn_23afbd28f666dadc",
+      "status": "ACTIVE"
+    },
+    "did:sdis:47dd:5fb6:eaade628799816ef": {
+      "did": "did:sdis:47dd:5fb6:eaade628799816ef",
+      "verkey": "~6c5f0af8acc8528e866621c5e1e69ddaac4726a0ac7e3ccbca92f76fc5d35b95",
+      "transaction_hash": "rust_txn_3922c1bdc8b09cf6",
+      "status": "ACTIVE"
+    },
+    "did:sdis:287a:79d7:da664c8b3366e055": {
+      "did": "did:sdis:287a:79d7:da664c8b3366e055",
+      "verkey": "~68c2811f450dcc562a6883ed21f5521dc020936919beb9679adccf78b6b6c172",
+      "transaction_hash": "rust_txn_a985d26d38bff2a4",
+      "status": "ACTIVE"
+    },
+    "did:sdis:b3b2:33be:17ca920746b96d80": {
+      "did": "did:sdis:b3b2:33be:17ca920746b96d80",
+      "verkey": "~851a367675d1f72fad1ccb3a6d9c0cfeb755e88c033fa414bdd6e19c425bc2e3",
+      "transaction_hash": "rust_txn_e3a5604febf2d931",
+      "status": "ACTIVE"
+    },
+    "did:sdis:99cd:e0e0:65f86b590b0e7116": {
+      "did": "did:sdis:99cd:e0e0:65f86b590b0e7116",
+      "verkey": "~5e728f2ba7f226ff44a2292de4f0aa069e256111bca508cecd2210774aa87dff",
+      "transaction_hash": "rust_txn_79f076e0317c9ec8",
+      "status": "ACTIVE"
+    },
+    "did:sdis:1254:58b0:97871b621e723554": {
+      "did": "did:sdis:1254:58b0:97871b621e723554",
+      "verkey": "~e9e92eb7cfc898991b775a6e5e9c5558c1e8e8e8f6d3b03b80900e1cface1d8b",
+      "transaction_hash": "rust_txn_7f1e1acc6c68adf4",
+      "status": "ACTIVE"
+    },
+    "did:sdis:1314:59d4:d045b6ffcd3412a2": {
+      "did": "did:sdis:1314:59d4:d045b6ffcd3412a2",
+      "verkey": "~cf0e1a669f022247609dbe84545e8e4d6f4f1c4b257c584e9229c672e7113d44",
+      "transaction_hash": "rust_txn_78fb72ddbb0d6052",
+      "status": "ACTIVE"
+    },
+    "did:sdis:dfae:f7a9:bf2feb96d7490945": {
+      "did": "did:sdis:dfae:f7a9:bf2feb96d7490945",
+      "verkey": "~ea9b97b5d6ec70cc230bc3c234c2de41fce7bb587c45bc9ed63e8ce69c3b88a3",
+      "transaction_hash": "rust_txn_aa10690086f83cf6",
+      "status": "ACTIVE"
+    },
+    "did:sdis:ac9c:07e4:bbcc5773c7bb3351": {
+      "did": "did:sdis:ac9c:07e4:bbcc5773c7bb3351",
+      "verkey": "~e00c9e9c851f4c05bf61272cec6153e5512a867076deb0f740e2b50b8ac052a0",
+      "transaction_hash": "rust_txn_d9414b70b52f7456",
+      "status": "ACTIVE"
+    },
+    "did:sdis:72ce:a420:9434ca4f9a2ac119": {
+      "did": "did:sdis:72ce:a420:9434ca4f9a2ac119",
+      "verkey": "~98bca8df64c251508a479394cdfbaee5d9f485850201c42599102dd74b50882c",
+      "transaction_hash": "rust_txn_7aef57847a0c7f4a",
+      "status": "ACTIVE"
+    },
+    "did:sdis:7e396d8a1893326b50c89:bd81f4091893303a1636b:284304f67ca7f1ce": {
+      "did": "did:sdis:7e396d8a1893326b50c89:bd81f4091893303a1636b:284304f67ca7f1ce",
+      "verkey": "~05bdf6bf0442b49f25ca79a50f8420ead8b90f22e31addf7ec8fca87f4c06dfb",
+      "transaction_hash": "rust_txn_73534b860808bb3b",
+      "status": "ACTIVE"
+    }
+  },
+  "credentials": {},
+  "transactions": {
+    "rust_txn_5c7adadcac6dea7b": {
+      "id": "rust_txn_5c7adadcac6dea7b",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:6936:412f:5863d4f0c0cc6e90",
+        "verkey": "~16d02c16262188f60f5210ea12d1a6534d708a4bebcf939cff736b09a0db91a1",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T20:12:37.878900",
+        "ipfs_cid": "QmaLW6at9WZuANSpAbu391vgXVhx3WKzJX6m6f11oVmprf"
+      },
+      "timestamp": "2026-02-24T14:42:37.899761+00:00",
+      "hash": "5c7adadcac6dea7b",
+      "status": "COMMITTED",
+      "seq_no": 1,
+      "signature": null
+    },
+    "rust_txn_2153e06787a04b62": {
+      "id": "rust_txn_2153e06787a04b62",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:f8fc:750e:34ab5586cc303b29",
+        "verkey": "~f0465ba8700d5d2d6eb115282a5c2562e7abf5f28a5aacf8b8e42c04fb1d24da",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T20:16:03.358626",
+        "ipfs_cid": "QmRAb4dTvySY942BB7za7btWxW9VtDfUVB2BbXSD1h52pT"
+      },
+      "timestamp": "2026-02-24T14:46:03.371168+00:00",
+      "hash": "2153e06787a04b62",
+      "status": "COMMITTED",
+      "seq_no": 2,
+      "signature": null
+    },
+    "rust_txn_066f9b95e5603cfd": {
+      "id": "rust_txn_066f9b95e5603cfd",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:f86e:92b6:20d0039f1429fc5d",
+        "verkey": "~8d7b8b2c3300f1fbdd805401d6371784011b5d0a7d95260c17b04f6190e590b5",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T20:25:13.485676",
+        "ipfs_cid": "QmVqnx6hVPqpDLgecGreXzRjNnrZ1W38P7rJmErPj1kxhD"
+      },
+      "timestamp": "2026-02-24T14:55:13.510862+00:00",
+      "hash": "066f9b95e5603cfd",
+      "status": "COMMITTED",
+      "seq_no": 3,
+      "signature": null
+    },
+    "rust_txn_f431b9f33aa4e29b": {
+      "id": "rust_txn_f431b9f33aa4e29b",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:9ba7:332e:adc28b599c8cfd8c",
+        "verkey": "~e8d8791048e78297f07668b3b9a490b6ce30420b15b6a678983a3c1538b0e637",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T20:26:35.906575",
+        "ipfs_cid": "QmNgGGLcTTB9RA5gqJmDRTg9fwu1ycQcsW3Kd6j84GYBKX"
+      },
+      "timestamp": "2026-02-24T14:56:35.918196+00:00",
+      "hash": "f431b9f33aa4e29b",
+      "status": "COMMITTED",
+      "seq_no": 4,
+      "signature": null
+    },
+    "rust_txn_506ad3eb64a10ae0": {
+      "id": "rust_txn_506ad3eb64a10ae0",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:18fc:46b1:64c22be922a8d52b",
+        "verkey": "~db373675c69ab81d38d22efc66ad29ff353f224780a9fa80e65b2a8b7d4eda4d",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T20:28:03.138937",
+        "ipfs_cid": "QmXuDKyo9ZP5ovricfgfpCyKHkW8LpQVx3rhnZRvdsSobm"
+      },
+      "timestamp": "2026-02-24T14:58:03.149991+00:00",
+      "hash": "506ad3eb64a10ae0",
+      "status": "COMMITTED",
+      "seq_no": 5,
+      "signature": null
+    },
+    "rust_txn_23afbd28f666dadc": {
+      "id": "rust_txn_23afbd28f666dadc",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:fe6e:e1b0:206a9ff2e5a036f9",
+        "verkey": "~7a265f52dc48fc0ab3e54b08eacd1db93abc8f9199dcd6979b9bfb8ddde1e7b8",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T20:29:01.710631",
+        "ipfs_cid": "QmXWKzH88oMGn13CtMnN6peFtEYnZwFEDk2jj9Hj6s6x5T"
+      },
+      "timestamp": "2026-02-24T14:59:01.720597+00:00",
+      "hash": "23afbd28f666dadc",
+      "status": "COMMITTED",
+      "seq_no": 6,
+      "signature": null
+    },
+    "rust_txn_3922c1bdc8b09cf6": {
+      "id": "rust_txn_3922c1bdc8b09cf6",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:47dd:5fb6:eaade628799816ef",
+        "verkey": "~6c5f0af8acc8528e866621c5e1e69ddaac4726a0ac7e3ccbca92f76fc5d35b95",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T20:34:49.070724",
+        "ipfs_cid": "QmfYnugeVwLW7bLD6eUCLJcc9iVeUNABABZ51WGf8hzqsR"
+      },
+      "timestamp": "2026-02-24T15:04:49.085779+00:00",
+      "hash": "3922c1bdc8b09cf6",
+      "status": "COMMITTED",
+      "seq_no": 7,
+      "signature": null
+    },
+    "rust_txn_a985d26d38bff2a4": {
+      "id": "rust_txn_a985d26d38bff2a4",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:287a:79d7:da664c8b3366e055",
+        "verkey": "~68c2811f450dcc562a6883ed21f5521dc020936919beb9679adccf78b6b6c172",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T20:35:29.667852",
+        "ipfs_cid": "Qm89e59e1736f2216ccff662a61f6d762d61d24df1893d"
+      },
+      "timestamp": "2026-02-24T15:05:29.677414+00:00",
+      "hash": "a985d26d38bff2a4",
+      "status": "COMMITTED",
+      "seq_no": 8,
+      "signature": null
+    },
+    "rust_txn_e3a5604febf2d931": {
+      "id": "rust_txn_e3a5604febf2d931",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:b3b2:33be:17ca920746b96d80",
+        "verkey": "~851a367675d1f72fad1ccb3a6d9c0cfeb755e88c033fa414bdd6e19c425bc2e3",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T20:35:45.444333",
+        "ipfs_cid": "Qmd0cf10f17509a0c8e1a809fcc79c07ba1f57fc189c10"
+      },
+      "timestamp": "2026-02-24T15:05:45.454530+00:00",
+      "hash": "e3a5604febf2d931",
+      "status": "COMMITTED",
+      "seq_no": 9,
+      "signature": null
+    },
+    "rust_txn_79f076e0317c9ec8": {
+      "id": "rust_txn_79f076e0317c9ec8",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:99cd:e0e0:65f86b590b0e7116",
+        "verkey": "~5e728f2ba7f226ff44a2292de4f0aa069e256111bca508cecd2210774aa87dff",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T20:36:50.113540",
+        "ipfs_cid": "Qmcbdc21e42ed27cff3e045704e11b50cacd98ed7140f0"
+      },
+      "timestamp": "2026-02-24T15:06:50.123962+00:00",
+      "hash": "79f076e0317c9ec8",
+      "status": "COMMITTED",
+      "seq_no": 10,
+      "signature": null
+    },
+    "rust_txn_7f1e1acc6c68adf4": {
+      "id": "rust_txn_7f1e1acc6c68adf4",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:1254:58b0:97871b621e723554",
+        "verkey": "~e9e92eb7cfc898991b775a6e5e9c5558c1e8e8e8f6d3b03b80900e1cface1d8b",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T20:37:10.384724",
+        "ipfs_cid": "Qm3c13877f9bf573839594a43e2c0e25814a733e2da762"
+      },
+      "timestamp": "2026-02-24T15:07:10.398684+00:00",
+      "hash": "7f1e1acc6c68adf4",
+      "status": "COMMITTED",
+      "seq_no": 11,
+      "signature": null
+    },
+    "rust_txn_78fb72ddbb0d6052": {
+      "id": "rust_txn_78fb72ddbb0d6052",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:1314:59d4:d045b6ffcd3412a2",
+        "verkey": "~cf0e1a669f022247609dbe84545e8e4d6f4f1c4b257c584e9229c672e7113d44",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T22:41:45.474293",
+        "ipfs_cid": "Qm91d1963b4bac09bd74175f78c3b1681751db9a387b93"
+      },
+      "timestamp": "2026-02-24T17:11:45.488441+00:00",
+      "hash": "78fb72ddbb0d6052",
+      "status": "COMMITTED",
+      "seq_no": 12,
+      "signature": null
+    },
+    "rust_txn_aa10690086f83cf6": {
+      "id": "rust_txn_aa10690086f83cf6",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:dfae:f7a9:bf2feb96d7490945",
+        "verkey": "~ea9b97b5d6ec70cc230bc3c234c2de41fce7bb587c45bc9ed63e8ce69c3b88a3",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T22:41:57.205860",
+        "ipfs_cid": "Qmffdb5a41558ae852a4ec9916e8754cdd89b32963fc7b"
+      },
+      "timestamp": "2026-02-24T17:11:57.217195+00:00",
+      "hash": "aa10690086f83cf6",
+      "status": "COMMITTED",
+      "seq_no": 13,
+      "signature": null
+    },
+    "rust_txn_d9414b70b52f7456": {
+      "id": "rust_txn_d9414b70b52f7456",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:ac9c:07e4:bbcc5773c7bb3351",
+        "verkey": "~e00c9e9c851f4c05bf61272cec6153e5512a867076deb0f740e2b50b8ac052a0",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T22:42:52.936875",
+        "ipfs_cid": "Qmf444457d2fce03d4cd3a65918d20c4e599b79dc1d43e"
+      },
+      "timestamp": "2026-02-24T17:12:52.953517+00:00",
+      "hash": "d9414b70b52f7456",
+      "status": "COMMITTED",
+      "seq_no": 14,
+      "signature": null
+    },
+    "rust_txn_7aef57847a0c7f4a": {
+      "id": "rust_txn_7aef57847a0c7f4a",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:72ce:a420:9434ca4f9a2ac119",
+        "verkey": "~98bca8df64c251508a479394cdfbaee5d9f485850201c42599102dd74b50882c",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T22:47:27.797194",
+        "ipfs_cid": "Qm428d01e259760041b5aa817743374fffc97fddc848dd"
+      },
+      "timestamp": "2026-02-24T17:17:27.819236+00:00",
+      "hash": "7aef57847a0c7f4a",
+      "status": "COMMITTED",
+      "seq_no": 15,
+      "signature": null
+    },
+    "rust_txn_73534b860808bb3b": {
+      "id": "rust_txn_73534b860808bb3b",
+      "transaction_type": "NYM",
+      "data": {
+        "type": "NYM",
+        "dest": "did:sdis:7e396d8a1893326b50c89:bd81f4091893303a1636b:284304f67ca7f1ce",
+        "verkey": "~05bdf6bf0442b49f25ca79a50f8420ead8b90f22e31addf7ec8fca87f4c06dfb",
+        "role": "TRUST_ANCHOR",
+        "timestamp": "2026-02-24T23:27:50.645807",
+        "ipfs_cid": "QmWAnJ7xKwsYpgyYvjqhwWx46jKgXG5M2uorqTw2zv4ZxU"
+      },
+      "timestamp": "2026-02-24T17:57:50.688371+00:00",
+      "hash": "73534b860808bb3b",
+      "status": "COMMITTED",
+      "seq_no": 16,
+      "signature": null
+    },
+    "rust_cred_955b4189f10c9b73": {
+      "id": "rust_cred_955b4189f10c9b73",
+      "transaction_type": "CREDENTIAL",
+      "data": {
+        "credential_type": "AADHAAR_KYC",
+        "citizen_did": "did:sdis:f86e:92b6:20d0039f1429fc5d",
+        "credential_data": {
+          "credential_type": "AADHAAR_KYC",
+          "citizen_did": "did:sdis:f86e:92b6:20d0039f1429fc5d",
+          "citizen_name": "E2E Test User 1f40cc22",
+          "aadhaar_number": "999888771f40cc22",
+          "kyc_level": "LEVEL_1",
+          "verified_at": "2026-02-24T20:25:17.542063",
+          "verified_by": "GOVERNMENT_PORTAL",
+          "status": "VERIFIED"
+        },
+        "timestamp": "2026-02-24T20:25:17.543886",
+        "status": "VERIFIED",
+        "credential_id": "rust_cred_955b4189f10c9b73"
+      },
+      "timestamp": "2026-02-24T14:55:17.543925+00:00",
+      "status": "COMMITTED",
+      "seq_no": 17
+    },
+    "rust_cred_4afcd7ccab8d3e57": {
+      "id": "rust_cred_4afcd7ccab8d3e57",
+      "transaction_type": "CREDENTIAL",
+      "data": {
+        "credential_type": "AADHAAR_KYC",
+        "citizen_did": "did:sdis:9ba7:332e:adc28b599c8cfd8c",
+        "credential_data": {
+          "credential_type": "AADHAAR_KYC",
+          "citizen_did": "did:sdis:9ba7:332e:adc28b599c8cfd8c",
+          "citizen_name": "E2E Test User 3d34a2d2",
+          "aadhaar_number": "999888773d34a2d2",
+          "kyc_level": "LEVEL_1",
+          "verified_at": "2026-02-24T20:26:39.953176",
+          "verified_by": "GOVERNMENT_PORTAL",
+          "status": "VERIFIED"
+        },
+        "timestamp": "2026-02-24T20:26:39.953381",
+        "status": "VERIFIED",
+        "credential_id": "rust_cred_4afcd7ccab8d3e57"
+      },
+      "timestamp": "2026-02-24T14:56:39.953438+00:00",
+      "status": "COMMITTED",
+      "seq_no": 18
+    },
+    "rust_cred_6fe2821c0739291c": {
+      "id": "rust_cred_6fe2821c0739291c",
+      "transaction_type": "CREDENTIAL",
+      "data": {
+        "credential_type": "AADHAAR_KYC",
+        "citizen_did": "did:sdis:18fc:46b1:64c22be922a8d52b",
+        "credential_data": {
+          "credential_type": "AADHAAR_KYC",
+          "citizen_did": "did:sdis:18fc:46b1:64c22be922a8d52b",
+          "citizen_name": "E2E Test User ef061963",
+          "aadhaar_number": "99988877ef061963",
+          "kyc_level": "LEVEL_1",
+          "verified_at": "2026-02-24T20:28:07.185183",
+          "verified_by": "GOVERNMENT_PORTAL",
+          "status": "VERIFIED"
+        },
+        "timestamp": "2026-02-24T20:28:07.185369",
+        "status": "VERIFIED",
+        "credential_id": "rust_cred_6fe2821c0739291c"
+      },
+      "timestamp": "2026-02-24T14:58:07.185436+00:00",
+      "status": "COMMITTED",
+      "seq_no": 19
+    },
+    "rust_cred_10aa2dfc099eaecf": {
+      "id": "rust_cred_10aa2dfc099eaecf",
+      "transaction_type": "CREDENTIAL",
+      "data": {
+        "credential_type": "AADHAAR_KYC",
+        "citizen_did": "did:sdis:fe6e:e1b0:206a9ff2e5a036f9",
+        "credential_data": {
+          "credential_type": "AADHAAR_KYC",
+          "citizen_did": "did:sdis:fe6e:e1b0:206a9ff2e5a036f9",
+          "citizen_name": "E2E Test User 410bde49",
+          "aadhaar_number": "99988877410bde49",
+          "kyc_level": "LEVEL_1",
+          "verified_at": "2026-02-24T20:29:05.759024",
+          "verified_by": "GOVERNMENT_PORTAL",
+          "status": "VERIFIED"
+        },
+        "timestamp": "2026-02-24T20:29:05.759169",
+        "status": "VERIFIED",
+        "credential_id": "rust_cred_10aa2dfc099eaecf"
+      },
+      "timestamp": "2026-02-24T14:59:05.759249+00:00",
+      "status": "COMMITTED",
+      "seq_no": 20
+    },
+    "rust_cred_3d32ed200c2bebe3": {
+      "id": "rust_cred_3d32ed200c2bebe3",
+      "transaction_type": "CREDENTIAL",
+      "data": {
+        "credential_type": "AADHAAR_KYC",
+        "citizen_did": "did:sdis:47dd:5fb6:eaade628799816ef",
+        "credential_data": {
+          "credential_type": "AADHAAR_KYC",
+          "citizen_did": "did:sdis:47dd:5fb6:eaade628799816ef",
+          "citizen_name": "E2E Test User d8e66507",
+          "aadhaar_number": "99988877d8e66507",
+          "kyc_level": "LEVEL_1",
+          "verified_at": "2026-02-24T20:34:53.124109",
+          "verified_by": "GOVERNMENT_PORTAL",
+          "status": "VERIFIED"
+        },
+        "timestamp": "2026-02-24T20:34:53.124278",
+        "status": "VERIFIED",
+        "credential_id": "rust_cred_3d32ed200c2bebe3"
+      },
+      "timestamp": "2026-02-24T15:04:53.124323+00:00",
+      "status": "COMMITTED",
+      "seq_no": 21
+    },
+    "rust_cred_7ecc542eb9799638": {
+      "id": "rust_cred_7ecc542eb9799638",
+      "transaction_type": "CREDENTIAL",
+      "data": {
+        "credential_type": "AADHAAR_KYC",
+        "citizen_did": "did:sdis:b3b2:33be:17ca920746b96d80",
+        "credential_data": {
+          "credential_type": "AADHAAR_KYC",
+          "citizen_did": "did:sdis:b3b2:33be:17ca920746b96d80",
+          "citizen_name": "E2E Test User 1ce3aad4",
+          "aadhaar_number": "999888771ce3aad4",
+          "kyc_level": "LEVEL_1",
+          "verified_at": "2026-02-24T20:35:49.491767",
+          "verified_by": "GOVERNMENT_PORTAL",
+          "status": "VERIFIED"
+        },
+        "timestamp": "2026-02-24T20:35:49.493534",
+        "status": "VERIFIED",
+        "credential_id": "rust_cred_7ecc542eb9799638"
+      },
+      "timestamp": "2026-02-24T15:05:49.493597+00:00",
+      "status": "COMMITTED",
+      "seq_no": 22
+    },
+    "rust_cred_bd94d984ffc0480e": {
+      "id": "rust_cred_bd94d984ffc0480e",
+      "transaction_type": "CREDENTIAL",
+      "data": {
+        "credential_type": "AADHAAR_KYC",
+        "citizen_did": "did:sdis:1254:58b0:97871b621e723554",
+        "credential_data": {
+          "credential_type": "AADHAAR_KYC",
+          "citizen_did": "did:sdis:1254:58b0:97871b621e723554",
+          "citizen_name": "E2E Test User bb11b2b5",
+          "aadhaar_number": "99988877bb11b2b5",
+          "kyc_level": "LEVEL_1",
+          "verified_at": "2026-02-24T20:37:14.428727",
+          "verified_by": "GOVERNMENT_PORTAL",
+          "status": "VERIFIED"
+        },
+        "timestamp": "2026-02-24T20:37:14.430000",
+        "status": "VERIFIED",
+        "credential_id": "rust_cred_bd94d984ffc0480e"
+      },
+      "timestamp": "2026-02-24T15:07:14.430040+00:00",
+      "status": "COMMITTED",
+      "seq_no": 23
+    },
+    "rust_cred_79c949dbf10a4558": {
+      "id": "rust_cred_79c949dbf10a4558",
+      "transaction_type": "CREDENTIAL",
+      "data": {
+        "credential_type": "AADHAAR_KYC",
+        "citizen_did": "did:sdis:dfae:f7a9:bf2feb96d7490945",
+        "credential_data": {
+          "credential_type": "AADHAAR_KYC",
+          "citizen_did": "did:sdis:dfae:f7a9:bf2feb96d7490945",
+          "citizen_name": "E2E Test User 355884f6",
+          "aadhaar_number": "99988877355884f6",
+          "kyc_level": "LEVEL_1",
+          "verified_at": "2026-02-24T22:42:01.256469",
+          "verified_by": "GOVERNMENT_PORTAL",
+          "status": "VERIFIED"
+        },
+        "timestamp": "2026-02-24T22:42:01.261018",
+        "status": "VERIFIED",
+        "credential_id": "rust_cred_79c949dbf10a4558"
+      },
+      "timestamp": "2026-02-24T17:12:01.261084+00:00",
+      "status": "COMMITTED",
+      "seq_no": 24
+    },
+    "rust_cred_d3610e638d1ce945": {
+      "id": "rust_cred_d3610e638d1ce945",
+      "transaction_type": "CREDENTIAL",
+      "data": {
+        "credential_type": "AADHAAR_KYC",
+        "citizen_did": "did:sdis:ac9c:07e4:bbcc5773c7bb3351",
+        "credential_data": {
+          "credential_type": "AADHAAR_KYC",
+          "citizen_did": "did:sdis:ac9c:07e4:bbcc5773c7bb3351",
+          "citizen_name": "E2E Test User af638e38",
+          "aadhaar_number": "99988877af638e38",
+          "kyc_level": "LEVEL_1",
+          "verified_at": "2026-02-24T22:42:56.986362",
+          "verified_by": "GOVERNMENT_PORTAL",
+          "status": "VERIFIED"
+        },
+        "timestamp": "2026-02-24T22:42:56.986694",
+        "status": "VERIFIED",
+        "credential_id": "rust_cred_d3610e638d1ce945"
+      },
+      "timestamp": "2026-02-24T17:12:56.986777+00:00",
+      "status": "COMMITTED",
+      "seq_no": 25
+    },
+    "rust_cred_65e5e6a3d42d934e": {
+      "id": "rust_cred_65e5e6a3d42d934e",
+      "transaction_type": "CREDENTIAL",
+      "data": {
+        "credential_type": "AADHAAR_KYC",
+        "citizen_did": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530",
+        "credential_data": {
+          "credential_type": "AADHAAR_KYC",
+          "citizen_did": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530",
+          "citizen_name": "Dixa Koradia",
+          "aadhaar_number": "123456789012",
+          "kyc_level": "LEVEL_1",
+          "verified_at": "2026-02-24T23:06:22.901541",
+          "verified_by": "GOVERNMENT_PORTAL",
+          "status": "VERIFIED"
+        },
+        "timestamp": "2026-02-24T23:06:22.904513",
+        "status": "VERIFIED",
+        "credential_id": "rust_cred_65e5e6a3d42d934e"
+      },
+      "timestamp": "2026-02-24T17:36:22.904621+00:00",
+      "status": "COMMITTED",
+      "seq_no": 27
+    },
+    "rust_cred_1e12880bc9969968": {
+      "id": "rust_cred_1e12880bc9969968",
+      "transaction_type": "CREDENTIAL",
+      "data": {
+        "credential_id": "rust_cred_1e12880bc9969968",
+        "credential_type": "AADHAAR_KYC",
+        "citizen_did": "did:sdis:7e396d8a1893326b50c89:bd81f4091893303a1636b:284304f67ca7f1ce",
+        "citizen_name": "Joe",
+        "aadhaar_number": "123456789012",
+        "kyc_level": "LEVEL_1",
+        "verified_at": "2026-02-25T00:39:41.726317",
+        "verified_by": "GOVERNMENT_PORTAL",
+        "status": "REVOKED",
+        "verifiable_credential_hash": "6cb72ce75a223e34b92ed7231c2d11a203d06064b6eb6d26aa0eaccbe43f56a6",
+        "record_id": "AADHAAR_REC_AADHAAR_REQ_ba4229a2eda1c892",
+        "ledger_id": "AADHAAR_KYC_LEDGER_284304f6",
+        "revoked_at": "2026-02-25T00:52:51.048197",
+        "revocation_reason": "Test revocation reason via automation"
+      },
+      "timestamp": "2026-02-25T00:39:41.745199Z",
+      "hash": "14e3676c323b101175d98176485aee79359f4d91d78c6da6a2242816a3c05e8d",
+      "status": "REVOKED",
+      "seq_no": 28
+    },
+    "revocation_d5716ab455f4f4c9": {
+      "id": "revocation_d5716ab455f4f4c9",
+      "transaction_type": "CREDENTIAL_REVOCATION",
+      "data": {
+        "citizen_did": "did:sdis:7e396d8a1893326b50c89:bd81f4091893303a1636b:284304f67ca7f1ce",
+        "original_credential_id": "a4ff07f38d6e05ddb09d94af253a753a3e058d44e59d65f3f5076098f4479cad",
+        "revocation_reason": "Test revocation reason via automation",
+        "reason_code": "VC_ADMINISTRATIVE",
+        "revoked_by": "Government Official",
+        "revoked_at": "2026-02-25T00:52:51.048197",
+        "status": "COMMITTED"
+      },
+      "timestamp": "2026-02-25T00:52:51.048197Z",
+      "hash": "ed7c50f5cbed3a6446015187b275fcdb0477fc96b6237aba64484e3041c8541d",
+      "status": "COMMITTED",
+      "seq_no": 28
+    }
   }
 }

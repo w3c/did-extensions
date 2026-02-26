@@ -14,6 +14,8 @@ A comprehensive Aadhaar e-KYC (Electronic Know Your Customer) system built with 
 - **Ledger Explorer**: Real-time ledger monitoring with comprehensive transaction history
 - **Digital Wallet**: Citizen wallet with DID documents and blockchain credentials
 - **Government Services**: Post-KYC government service access
+- **Quantum-Secure Signatures**: Post-quantum cryptographic signature system with SPHINCS+ and hybrid algorithms
+- **Auto Identity Tokens**: Quantum-secure auto identity tokens for government services access
 
 ### 🔧 Technical Features
 - **Rust-Style Indy Implementation**: High-performance ledger operations with JSON persistence
@@ -24,6 +26,10 @@ A comprehensive Aadhaar e-KYC (Electronic Know Your Customer) system built with 
 - **Real-time Updates**: Live ledger monitoring and cross-portal synchronization
 - **Hybrid Blockchain Manager**: Integration between Rust Indy and traditional Indy
 - **Credential Management**: Aadhaar KYC credentials stored on Rust ledger
+- **Post-Quantum Cryptography**: SPHINCS+ hash-based signatures and Ed25519 quantum-hybrid algorithms
+- **Multi-Signature Support**: Quantum-secure multi-signature schemes for enhanced security
+- **Quantum-Resistant Hashing**: SHA3-256 and other quantum-resistant hash functions
+- **Signature Verification**: Real-time quantum signature verification for government services
 
 ## 🏗️ System Architecture
 
@@ -57,12 +63,23 @@ A comprehensive Aadhaar e-KYC (Electronic Know Your Customer) system built with 
    - Credential management with verification tracking
    - Transaction history with hash verification
 
+5. **Quantum-Secure Signature System** (`server/quantum_secure_signature_system.py`)
+   - SPHINCS+ hash-based post-quantum signatures
+   - Ed25519 with quantum-resistant hash functions
+   - Multi-signature quantum-secure schemes
+   - Signature generation and verification
+   - Integration with auto identity tokens
+   - Government service signature verification
+
 ## 🛠️ Installation & Setup
 
 ### Prerequisites
 - **Python 3.9+** with aiohttp and requests libraries
 - **IPFS node** running on `http://127.0.0.1:5001`
 - **Web browser** for accessing the portals
+- **Post-Quantum Cryptography Libraries**:
+  - `pyspx` for SPHINCS+ signatures: `pip install pyspx`
+  - `cryptography` for Ed25519 and hash functions: `pip install cryptography`
 
 ### Quick Start
 ```bash
@@ -71,7 +88,7 @@ git clone <repository-url>
 cd DPC5_aadhaar-kyc-system
 
 # Install Python dependencies
-pip install aiohttp requests
+pip install aiohttp requests pyspx cryptography
 
 # Start IPFS node (if not already running)
 ipfs daemon &
@@ -92,6 +109,8 @@ python3 server/ledger_explorer_server.py &
 - **Citizen Portal**: http://localhost:8082
 - **Government Portal**: http://localhost:8081
 - **Ledger Explorer**: http://localhost:8083
+- **SDIS Public Resolver**: http://localhost:8085
+- **Auto Identity Token API**: http://localhost:8080
 
 ## 📋 Usage
 
@@ -101,15 +120,18 @@ python3 server/ledger_explorer_server.py &
 3. **Generate DID**: Create SDIS DID with IPFS document storage
 4. **Request Aadhaar e-KYC**: Submit verification request with Aadhaar number
 5. **Wait for Approval**: Government reviews and approves/rejects request
-6. **Access Services**: Use verified credentials for government services (if approved)
-7. **View Wallet**: Access digital wallet with DID documents and credentials
+6. **Receive Auto Identity Token**: Get quantum-secure auto identity token after approval
+7. **Access Services**: Use quantum-secure token for government services access
+8. **View Wallet**: Access digital wallet with DID documents, credentials, and quantum tokens
 
 ### Government Workflow
 1. **Login**: Access government portal (admin/admin123)
 2. **Review Requests**: View pending Aadhaar e-KYC requests with citizen details
 3. **Approve/Reject**: Process citizen requests with approval or rejection reason
-4. **Store Credentials**: Approved credentials automatically stored on Rust Indy ledger
-5. **Monitor Status**: Track request status and rejection reasons
+4. **Generate Quantum Tokens**: Auto identity tokens with quantum-secure signatures generated upon approval
+5. **Store Credentials**: Approved credentials automatically stored on Rust Indy ledger
+6. **Verify Signatures**: Verify quantum-secure signatures for government service access
+7. **Monitor Status**: Track request status, rejection reasons, and signature statistics
 
 ### Ledger Explorer
 1. **View Statistics**: Complete ledger overview with transaction counts
@@ -117,6 +139,7 @@ python3 server/ledger_explorer_server.py &
 3. **Credential Tracking**: Monitor Aadhaar KYC credentials and verification status
 4. **Transaction History**: Complete audit trail of all NYM and credential transactions
 5. **Rust Indy Ledger**: Dedicated high-performance ledger data view
+6. **Quantum Signatures**: View quantum-secure signature statistics and verification records
 
 ## 🔧 Configuration
 
@@ -137,6 +160,14 @@ python3 server/ledger_explorer_server.py &
 - **Session Duration**: Persistent across server restarts
 - **Authentication**: Session ID-based authentication
 
+### Quantum-Secure Signature Configuration
+- **SPHINCS+ Algorithm**: Hash-based post-quantum signatures with 128-bit security
+- **Ed25519 Quantum-Hybrid**: Ed25519 with SHA3-256 quantum-resistant hashing
+- **Multi-Signature Support**: 3-of-3 threshold quantum-secure multi-signatures
+- **Signature Ledger**: `data/quantum_signature_ledger.json`
+- **Key Management**: Secure keypair generation and storage
+- **Verification**: Real-time signature verification for government services
+
 ## 📊 Data Storage
 
 ### File Structure
@@ -149,7 +180,9 @@ data/
 ├── government_services.json        # Available government services
 ├── did_documents.json              # DID document references
 ├── indy_ledger.json                # Legacy ledger data
-└── rust_style_indy_ledger.json    # Rust Indy ledger data
+├── rust_style_indy_ledger.json    # Rust Indy ledger data
+├── quantum_signature_ledger.json  # Quantum-secure signature ledger
+└── auto_identity_tokens.json      # Auto identity token records
 ```
 
 ### Data Models
@@ -200,6 +233,28 @@ data/
 }
 ```
 
+#### Quantum-Secure Auto Identity Token
+```json
+{
+  "token_id": "QTOKEN_xxxxx",
+  "citizen_did": "did:sdis:QmHash:verkey_hash",
+  "token_data": {
+    "kyc_approved": true,
+    "kyc_level": "LEVEL_1",
+    "aadhaar_verified": true,
+    "government_services_access": true
+  },
+  "keypair_id": "SPHINCS_xxxxx",
+  "signature_id": "SIG_SPHINCS_xxxxx",
+  "public_key": "base64_encoded_public_key",
+  "signature": "base64_encoded_signature",
+  "signature_type": "sphincs_plus",
+  "quantum_secure": true,
+  "created_at": "2025-09-17T...",
+  "expires_at": "2025-09-18T..."
+}
+```
+
 ## 🧪 Testing
 
 ### Test DID Creation
@@ -243,6 +298,16 @@ curl -X POST http://localhost:8082/api/citizen/generate-did \
   -H "X-Session-ID: session_id" \
   -d '{"full_name":"Test User","email":"test@example.com","phone":"1234567890","address":"Test Address"}'
 
+# Test quantum signature verification
+curl -X POST http://localhost:8081/api/government/verify-quantum-signature \
+  -H "Content-Type: application/json" \
+  -d '{"signature_id":"SIG_SPHINCS_xxxxx","message":"test message"}'
+
+# Test auto identity token generation
+curl -X POST http://localhost:8080/api/tokens/generate \
+  -H "Content-Type: application/json" \
+  -d '{"citizen_did":"did:sdis:QmHash:verkey_hash","token_type":"identity_token"}'
+
 # Test ledger data
 curl http://localhost:8083/api/ledger/rust-indy
 ```
@@ -265,6 +330,9 @@ curl http://localhost:8083/api/ledger/rust-indy
 - `POST /api/government/approve-aadhaar` - Approve Aadhaar request
 - `POST /api/government/reject-aadhaar` - Reject Aadhaar request
 - `GET /api/government/stats` - Get government portal statistics
+- `POST /api/government/verify-quantum-signature` - Verify quantum-secure signature
+- `POST /api/government/verify-token-signature` - Verify auto identity token signature
+- `GET /api/government/signature-statistics` - Get quantum signature statistics
 
 ### Ledger Explorer (`http://localhost:8083`)
 - `GET /api/ledger/entries` - All ledger entries with pagination
@@ -274,6 +342,17 @@ curl http://localhost:8083/api/ledger/rust-indy
 - `GET /api/ledger/stats` - Ledger statistics
 - `GET /api/ledger/did/{did}` - Get specific DID details
 - `GET /api/ledger/search` - Search ledger entries
+
+### Auto Identity Token API (`http://localhost:8080`)
+- `POST /api/tokens/generate` - Generate auto identity token
+- `POST /api/tokens/generate/{token_type}` - Generate specific token type
+- `POST /api/tokens/verify` - Verify auto identity token
+- `GET /api/tokens/verify/{token_id}` - Verify token by ID
+- `POST /api/tokens/{token_id}/revoke` - Revoke auto identity token
+- `GET /api/tokens/statistics` - Get token statistics
+- `GET /api/did/{citizen_did}/retrieve` - Retrieve DID data
+- `GET /api/did/{citizen_did}/resolve` - Resolve DID using SDIS Public Resolver
+- `GET /api/did/{citizen_did}/credentials` - Get VC credentials for DID
 
 ## 🚀 Performance
 
@@ -292,6 +371,14 @@ curl http://localhost:8083/api/ledger/rust-indy
 - **Immutable**: Content-addressed storage
 - **Distributed**: Decentralized document storage
 
+### Quantum-Secure Signature Performance
+- **SPHINCS+ Signatures**: 17KB signature size, 128-bit security level
+- **Ed25519 Quantum-Hybrid**: 64-byte signatures with SHA3-256 hashing
+- **Multi-Signature Support**: 3-of-3 threshold with 256-bit security
+- **Fast Verification**: Real-time signature verification
+- **Quantum Resistance**: Protection against quantum computer attacks
+- **Scalable**: Efficient handling of large signature volumes
+
 ## 🔒 Security Features
 
 - **Session Management**: Secure session handling with persistence
@@ -301,6 +388,11 @@ curl http://localhost:8083/api/ledger/rust-indy
 - **Authentication**: Session-based authentication across portals
 - **Data Validation**: Input validation and sanitization
 - **Error Handling**: Comprehensive error handling and logging
+- **Quantum-Secure Signatures**: Post-quantum cryptographic protection
+- **Multi-Signature Security**: Enhanced security through multiple signatures
+- **Quantum-Resistant Hashing**: SHA3-256 and other quantum-resistant algorithms
+- **Auto Identity Token Security**: Quantum-secure token generation and verification
+- **Government Service Protection**: Quantum signature verification for service access
 
 ## 📈 Monitoring
 
@@ -312,12 +404,17 @@ curl http://localhost:8083/api/ledger/rust-indy
 - **Rust Indy Tab**: Dedicated high-performance ledger view
 - **Search and Filter**: Advanced search capabilities
 - **Export Options**: Data export for analysis
+- **Quantum Signature Statistics**: Monitor quantum-secure signature usage
+- **Auto Identity Token Tracking**: Track token generation and verification
 
 ### Government Portal Monitoring
 - **Request Count**: Real-time pending request count
 - **Approval Statistics**: Track approval/rejection rates
 - **Cooldown Tracking**: Monitor citizen cooldown periods
 - **Status Updates**: Live status updates across portals
+- **Quantum Signature Verification**: Monitor signature verification statistics
+- **Auto Identity Token Generation**: Track token generation and usage
+- **Government Service Access**: Monitor service access with quantum tokens
 
 ## 🛠️ Development
 
@@ -330,7 +427,14 @@ DPC5_aadhaar-kyc-system/
 │   ├── ledger_explorer_server.py  # Ledger explorer backend
 │   ├── hybrid_sdis_implementation.py # Hybrid blockchain manager
 │   ├── real_blockchain_did.py     # DID management
-│   └── ipfs_util.py               # IPFS integration utilities
+│   ├── ipfs_util.py               # IPFS integration utilities
+│   ├── quantum_secure_signature_system.py # Quantum-secure signatures
+│   ├── auto_identity_token_generator.py # Auto identity token system
+│   ├── auto_identity_token_integration_server.py # Token API server
+│   ├── rust_vc_credential_manager.py # Rust VC credential management
+│   ├── did_registry_system.py     # DID registry system
+│   ├── credential_ledger_system.py # Credential ledger system
+│   └── sdis_public_resolver_perfect.py # SDIS public resolver
 ├── static/                        # Frontend files
 │   ├── citizen_portal_with_login.html # Citizen portal UI
 │   ├── government_portal.html     # Government portal UI
@@ -353,6 +457,10 @@ DPC5_aadhaar-kyc-system/
 - `rust_style_indy.py` - Core Rust-style Indy implementation
 - `server/hybrid_sdis_implementation.py` - Hybrid blockchain manager
 - `server/ipfs_util.py` - IPFS integration utilities
+- `server/quantum_secure_signature_system.py` - Quantum-secure signature system
+- `server/auto_identity_token_generator.py` - Auto identity token generation
+- `server/auto_identity_token_integration_server.py` - Token API server
+- `server/rust_vc_credential_manager.py` - Rust VC credential management
 - `static/citizen_portal_with_login.html` - Citizen portal UI
 - `static/government_portal.html` - Government portal UI
 - `static/ledger_explorer.html` - Ledger explorer UI
@@ -389,6 +497,15 @@ rm data/user_sessions.json
 # Backup and reset data
 cp -r data data_backup
 rm data/*.json
+```
+
+#### Quantum Signature Issues
+```bash
+# Check quantum signature dependencies
+pip install pyspx cryptography
+
+# Verify quantum signature system
+python3 -c "from server.quantum_secure_signature_system import QuantumSecureSignatureSystem; print('Quantum signatures OK')"
 ```
 
 ### Debug Mode
@@ -430,9 +547,76 @@ For support and questions:
 - [ ] Blockchain network integration
 - [ ] Advanced security features
 - [ ] Performance optimizations
+- [ ] Additional post-quantum algorithms (CRYSTALS-Dilithium, FALCON)
+- [ ] Quantum key distribution (QKD) integration
+- [ ] Hardware security module (HSM) support
+- [ ] Zero-knowledge proof integration
+- [ ] Advanced multi-signature schemes
+- [ ] Quantum random number generation
 
 ---
 
-**Built with ❤️ using Rust-inspired Indy implementation and real IPFS integration**
+**Built with ❤️ using Rust-inspired Indy implementation, real IPFS integration, and quantum-secure signatures**
 
 *Last updated: September 17, 2025*
+
+## 🔐 Quantum-Secure Signature System
+
+### Overview
+The Aadhaar KYC system implements a comprehensive quantum-secure signature system designed to protect against future quantum computer attacks. The system uses multiple post-quantum cryptographic algorithms to ensure long-term security.
+
+### Supported Algorithms
+
+#### 1. SPHINCS+ (Hash-based Signatures)
+- **Security Level**: 128-bit
+- **Signature Size**: 17,088 bytes
+- **Key Size**: 32 bytes
+- **Quantum Resistance**: Yes
+- **Use Case**: Primary quantum-secure signatures
+
+#### 2. Ed25519 Quantum-Hybrid
+- **Security Level**: 128-bit
+- **Signature Size**: 64 bytes
+- **Key Size**: 32 bytes
+- **Quantum Resistance**: Yes (with SHA3-256)
+- **Use Case**: Fast quantum-resistant signatures
+
+#### 3. Multi-Signature Quantum-Secure
+- **Security Level**: 256-bit
+- **Signature Size**: 192 bytes (3 signatures)
+- **Key Size**: 96 bytes (3 keys)
+- **Quantum Resistance**: Yes
+- **Use Case**: Enhanced security for critical operations
+
+### Integration with SDIS DID Method
+
+The quantum-secure signature system is fully integrated with the SDIS DID method:
+
+1. **DID Generation**: Quantum-secure keypairs are generated during DID creation
+2. **Document Signing**: DID documents are signed with quantum-secure signatures
+3. **Token Generation**: Auto identity tokens include quantum-secure signatures
+4. **Service Access**: Government services verify quantum signatures for access
+
+### Auto Identity Token Flow
+
+1. **Citizen Registration**: Generate SDIS DID with quantum-secure keypair
+2. **Aadhaar KYC Request**: Submit KYC request with quantum signature
+3. **Government Approval**: Government approves and generates quantum-secure auto identity token
+4. **Token Delivery**: Citizen receives quantum-secure token with signature
+5. **Service Access**: Citizen uses token for government services with quantum signature verification
+
+### Security Benefits
+
+- **Quantum Resistance**: Protection against future quantum computer attacks
+- **Long-term Security**: Signatures remain secure for decades
+- **Multiple Algorithms**: Redundancy with different post-quantum approaches
+- **Real-time Verification**: Fast signature verification for government services
+- **Audit Trail**: Complete signature verification history
+
+### Implementation Details
+
+- **Library**: `pyspx` for SPHINCS+ signatures
+- **Library**: `cryptography` for Ed25519 and hash functions
+- **Storage**: JSON-based signature ledger
+- **Integration**: Seamless integration with existing DID and VC systems
+- **Performance**: Optimized for real-time government service access 

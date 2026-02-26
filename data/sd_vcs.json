@@ -1,0 +1,133 @@
+{
+  "sd_vcs": {
+    "sd_vc_ed70d5885977496db9b9bf0f": {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://dixadholakiya.github.io/pqie-did-spec/context.jsonld",
+        "https://pqie.network/ns/selective-disclosure/v1"
+      ],
+      "id": "sd_vc_ed70d5885977496db9b9bf0f",
+      "type": [
+        "VerifiableCredential",
+        "SelectiveDisclosureCredential"
+      ],
+      "issuer": {
+        "id": "did:pqie:gov:india:uidai",
+        "name": "UIDAI"
+      },
+      "issuanceDate": "2026-02-25T00:00:00Z",
+      "expirationDate": null,
+      "credentialSubject": {
+        "id": "did:pqie:5135e697:8b7ecf94:a3f21bc0",
+        "claim_count": 4,
+        "claim_names": [
+          "credential_data",
+          "kyc_level",
+          "kyc_status",
+          "name"
+        ],
+        "claim_commitments": {
+          "name": "3e8bca0677e83fdc70643c2cd0e04af1c8f9cf5861fc67c0ce363b102574f9812b2cab03560979cd7160950dc69b2c4741117341b4b2d2d05a16d51c4bea37cf",
+          "kyc_status": "291c09605022e16b0f2a711027bb164779bca86e8eecc1ca1cf4ae004250a863ec7939ef26924519ac3b3f05d017fe9715d12af07d0211cdf2a50cfe5e4b7715",
+          "kyc_level": "c8a4bcc9e127565b8e37268cec6a8c5bc253f473a0ff967ac54db14df691a538a56202d7ff344ddf8a429d14986059b968f1415310c6df2c0767d2c0fe71a48a",
+          "credential_data": "cd98a7757b7398bb978e080e7a997928478100ee3ac8a4c50fcfb9314ee01c82e0287209f6db37c4b4823a9e7af1b88f4a10a77b6e9a9f9605056aa82f26fd0e"
+        },
+        "mandatory_claims": [
+          "kyc_status"
+        ]
+      },
+      "selectiveDisclosure": {
+        "type": "MerkleCommitmentSD2024",
+        "merkle_algo": "SHA3-512",
+        "merkle_root": "777774fd25bfa9a330dcb88fa24adbf50b2e41c7dd1c28d9b1bab1112c65489f059ff7c05b439d2a598cd6135fe1f0ac3fc01cf95a23331b354db84fdc1c54fa",
+        "leaf_count": 4
+      },
+      "proof": {
+        "type": "RingLWESignature2024",
+        "created": "2026-02-25T01:31:23.141114+00:00",
+        "verificationMethod": "did:pqie:gov:india:uidai#key-1",
+        "proofPurpose": "assertionMethod",
+        "merkle_root_sig": "8d6587386fa8bd50aba945dee3a5812f40f30cb90e58221411f3428c3020808133fa6cb7322d333ba239a7299b7ff0f17a689c5b8e48b1c11dd354368d0de240"
+      },
+      "originalVcId": "vc_mock_test_001",
+      "originalVcType": [
+        "VerifiableCredential",
+        "AadhaarKYCCredential"
+      ]
+    }
+  },
+  "holder_secrets": {
+    "sd_vc_ed70d5885977496db9b9bf0f": {
+      "citizen_did": "did:pqie:5135e697:8b7ecf94:a3f21bc0",
+      "secrets": {
+        "credential_data": {
+          "salt": "c2246010a8c59e13c33650f3f38ee9ba",
+          "value": {
+            "aadhaar_number": "REDACTED",
+            "address": "Mumbai, Maharashtra"
+          },
+          "commitment": "cd98a7757b7398bb978e080e7a997928478100ee3ac8a4c50fcfb9314ee01c82e0287209f6db37c4b4823a9e7af1b88f4a10a77b6e9a9f9605056aa82f26fd0e",
+          "leaf_index": 0,
+          "merkle_proof": [
+            {
+              "sibling": "c8a4bcc9e127565b8e37268cec6a8c5bc253f473a0ff967ac54db14df691a538a56202d7ff344ddf8a429d14986059b968f1415310c6df2c0767d2c0fe71a48a",
+              "position": "right"
+            },
+            {
+              "sibling": "e18e33365ffd2754fcc108ec5b7dd1a9b6a222bc3ad5ebb5fe6e5743023af29b0f495a2daf7cef863da23e368385992d1f917294903cc9bb5fb7106b24b277b4",
+              "position": "right"
+            }
+          ]
+        },
+        "kyc_level": {
+          "salt": "b946a381140d5125e242e34d9036c77c",
+          "value": "LEVEL_1",
+          "commitment": "c8a4bcc9e127565b8e37268cec6a8c5bc253f473a0ff967ac54db14df691a538a56202d7ff344ddf8a429d14986059b968f1415310c6df2c0767d2c0fe71a48a",
+          "leaf_index": 1,
+          "merkle_proof": [
+            {
+              "sibling": "cd98a7757b7398bb978e080e7a997928478100ee3ac8a4c50fcfb9314ee01c82e0287209f6db37c4b4823a9e7af1b88f4a10a77b6e9a9f9605056aa82f26fd0e",
+              "position": "left"
+            },
+            {
+              "sibling": "e18e33365ffd2754fcc108ec5b7dd1a9b6a222bc3ad5ebb5fe6e5743023af29b0f495a2daf7cef863da23e368385992d1f917294903cc9bb5fb7106b24b277b4",
+              "position": "right"
+            }
+          ]
+        },
+        "kyc_status": {
+          "salt": "97401a0bd05d894866bbbedfd029722e",
+          "value": "APPROVED",
+          "commitment": "291c09605022e16b0f2a711027bb164779bca86e8eecc1ca1cf4ae004250a863ec7939ef26924519ac3b3f05d017fe9715d12af07d0211cdf2a50cfe5e4b7715",
+          "leaf_index": 2,
+          "merkle_proof": [
+            {
+              "sibling": "3e8bca0677e83fdc70643c2cd0e04af1c8f9cf5861fc67c0ce363b102574f9812b2cab03560979cd7160950dc69b2c4741117341b4b2d2d05a16d51c4bea37cf",
+              "position": "right"
+            },
+            {
+              "sibling": "08a983d823e1262af7304dbed81ab7068e13d44d65c3380b9f7b7eda10356c7dbb32e2f9ca1d4503489b246b6e603e01fc459112ae761b4f1e01221a64db4b2c",
+              "position": "left"
+            }
+          ]
+        },
+        "name": {
+          "salt": "3f24314a9c061c407588dd7632a122ba",
+          "value": "Ravi Kumar",
+          "commitment": "3e8bca0677e83fdc70643c2cd0e04af1c8f9cf5861fc67c0ce363b102574f9812b2cab03560979cd7160950dc69b2c4741117341b4b2d2d05a16d51c4bea37cf",
+          "leaf_index": 3,
+          "merkle_proof": [
+            {
+              "sibling": "291c09605022e16b0f2a711027bb164779bca86e8eecc1ca1cf4ae004250a863ec7939ef26924519ac3b3f05d017fe9715d12af07d0211cdf2a50cfe5e4b7715",
+              "position": "left"
+            },
+            {
+              "sibling": "08a983d823e1262af7304dbed81ab7068e13d44d65c3380b9f7b7eda10356c7dbb32e2f9ca1d4503489b246b6e603e01fc459112ae761b4f1e01221a64db4b2c",
+              "position": "left"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

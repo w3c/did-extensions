@@ -1,0 +1,7 @@
+numpy>=1.21.0
+cryptography>=3.4.8
+web3>=5.31.0
+eth-account>=0.8.0
+solc>=0.8.0
+flask>=2.3.0
+flask-cors>=4.0.0

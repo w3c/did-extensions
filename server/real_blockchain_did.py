@@ -203,18 +203,50 @@ class RealBlockchainDIDManager:
     async def create_indy_did(self, citizen_data: Dict[str, Any]) -> Dict[str, Any]:
         """Create DID using did:sdis method on Hyperledger Indy ledger with IPFS CID"""
         try:
-            print("🔗 Starting SDIS DID creation with IPFS CID...")
-            # Generate unique DID using SDIS method
-            unique_id = f"{citizen_data['name']}_{citizen_data['email']}_{datetime.now().timestamp()}"
-            did_hash1 = hashlib.sha256(unique_id.encode()).hexdigest()[:16]
-            did_hash2 = hashlib.sha256(f"{unique_id}_secondary".encode()).hexdigest()[:16]
-            sdis_did = f"did:sdis:{did_hash1}:{did_hash2}"
-            print(f"🆔 Generated SDIS DID: {sdis_did}")
+            print("🔗 Starting SDIS DID creation with IPFS CID using Ring-LWE...")
+            from server.ring_lwe_did_generator import generate_complete_did, validate_birthdate
             
-            # Create DID document
-            did_document = {
-                "@context": "https://www.w3.org/ns/did/v1",
-                "id": sdis_did,
+            # Ensure all required fields are present
+            name = citizen_data.get('name', citizen_data.get('full_name', 'Unknown'))
+            email = citizen_data.get('email', '')
+            phone = citizen_data.get('phone', '')
+            address = citizen_data.get('address', '')
+            birthdate = citizen_data.get('dob', citizen_data.get('birthdate', citizen_data.get('birth_date')))
+            gender = citizen_data.get('gender', '')
+            
+            # Validate birthdate if provided
+            if birthdate:
+                is_valid, error_msg = validate_birthdate(birthdate)
+                if not is_valid:
+                    print(f"⚠️ Invalid birthdate '{birthdate}': {error_msg}. Using default.")
+                    birthdate = "1970-01-01"
+            else:
+                birthdate = "1970-01-01"
+                print(f"⚠️ No birthdate provided, using default: {birthdate}")
+            
+            # Prepare complete citizen data for Ring-LWE
+            complete_citizen_data = {
+                'name': name,
+                'email': email,
+                'phone': phone,
+                'address': address,
+                'dob': birthdate,
+                'gender': gender,
+                'aadhaar_number': citizen_data.get('aadhaar_number', '')
+            }
+            
+            # Generate DID using Ring-LWE
+            print(f"🔐 Generating quantum-secure DID using Ring-LWE for: {name}")
+            print(f"   Using all registration fields: name, email, phone, address, dob, gender")
+            
+            # Issue DID document using Ring-LWE
+            sdis_did, did_document_base = generate_complete_did(complete_citizen_data)
+            
+            print(f"🆔 Generated Ring-LWE DID: {sdis_did}")
+            
+            # Use the generated DID document from Ring-LWE and enhance it
+            did_document = did_document_base.copy()
+            did_document.update({
                 "verificationMethod": [{
                     "id": f"{sdis_did}#key-1",
                     "type": "Ed25519VerificationKey2018",
@@ -231,11 +263,15 @@ class RealBlockchainDIDManager:
                 "citizen_info": citizen_data,
                 "created_at": datetime.now().isoformat(),
                 "status": "ACTIVE"
-            }
+            })
+            
+            # Extract hash from DID for file naming (handle did:sdis:hash1:hash2:id)
+            did_parts = sdis_did.split(':')
+            did_hash = did_parts[2] if len(did_parts) > 2 else did_parts[-1]
             
             # Upload DID document to IPFS
             print("☁️ Uploading DID document to IPFS...")
-            ipfs_cid = await self.upload_to_ipfs(did_document, f"{did_hash1}.json")
+            ipfs_cid = await self.upload_to_ipfs(did_document, f"{did_hash}.json")
             print(f"☁️ IPFS CID: {ipfs_cid}")
             
             # Create Indy ledger transaction
@@ -261,12 +297,12 @@ class RealBlockchainDIDManager:
                 "did_document": did_document,
                 "ledger_hash": ledger_hash,
                 "ipfs_cid": ipfs_cid,
-                "ipfs_url": f"https://ipfs.io/ipfs/{ipfs_cid}",
+                "ipfs_url": f"http://localhost:8080/ipfs/{ipfs_cid}",
                 "ledger_type": "indy",
                 "status": "STORED",
                 "nym_transaction": ledger_hash,
                 "cloud_provider": "ipfs",
-                "cloud_url": f"https://ipfs.io/ipfs/{ipfs_cid}"
+                "cloud_url": f"http://localhost:8080/ipfs/{ipfs_cid}"
             }
             
         except Exception as e:
@@ -326,7 +362,7 @@ class RealBlockchainDIDManager:
                 import os
                 
                 # Initialize Rust core with ledger file
-                ledger_file = str(Path(__file__).parent.parent / 'data' / 'rust_indy_ledger.json')
+                ledger_file = str(Path(__file__).parent.parent / 'data' / 'rust_indy_core_ledger.json')
                 rust_core = IndyRustCore(ledger_file)
                 
                 # Write NYM transaction using Rust core
@@ -406,7 +442,7 @@ class RealBlockchainDIDManager:
                 "did": did,
                 "document": document,
                 "ipfs_cid": ipfs_cid,
-                "ipfs_url": f"https://ipfs.io/ipfs/{ipfs_cid}",
+                "ipfs_url": f"http://localhost:8080/ipfs/{ipfs_cid}",
                 "stored_at": datetime.now().isoformat(),
                 "status": "ACTIVE"
             }
@@ -469,12 +505,12 @@ class RealBlockchainDIDManager:
             "did_document": did_document,
             "ledger_hash": ledger_hash,
             "ipfs_cid": ipfs_cid,
-            "ipfs_url": f"https://ipfs.io/ipfs/{ipfs_cid}",
+            "ipfs_url": f"http://localhost:8080/ipfs/{ipfs_cid}",
             "ledger_type": ledger_type,
             "status": "STORED",
             "nym_transaction": ledger_hash,
             "cloud_provider": "ipfs",
-            "cloud_url": f"https://ipfs.io/ipfs/{ipfs_cid}"
+            "cloud_url": f"http://localhost:8080/ipfs/{ipfs_cid}"
         }
     
     async def create_ethereum_did(self, citizen_data: Dict[str, Any]) -> Dict[str, Any]:

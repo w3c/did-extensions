@@ -1,0 +1,9 @@
+{
+    "name": "pqie",
+    "status": "registered",
+    "specification": "https://pqie.network/did-method-spec/v1",
+    "contactName": "PQIE Research Group",
+    "contactEmail": "support@pqie.network",
+    "contactWebsite": "https://pqie.network",
+    "verifiableDataRegistry": "Hyperledger Indy + IPFS"
+}

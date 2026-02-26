@@ -68,5 +68,5 @@ def download_from_ipfs(ipfs_hash: str) -> Optional[Dict[Any, Any]]:
 
 
 def get_ipfs_link(cid: str) -> str:
-    """Generate IPFS link from CID"""
-    return f"https://ipfs.io/ipfs/{cid}"
+    """Generate IPFS link from CID - uses local gateway (content only pinned locally)"""
+    return f"http://localhost:8080/ipfs/{cid}"

@@ -26,3 +26,7 @@ crate-type = ["cdylib", "rlib"]
 [[bin]]
 name = "indy-rust-cli"
 path = "src/bin/cli.rs"
+
+[[bin]]
+name = "unified-ledger"
+path = "src/bin/unified_ledger.rs"

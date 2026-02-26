@@ -27,7 +27,10 @@ class RustStyleIndyLedger:
         if self.ledger_file.exists():
             try:
                 with open(self.ledger_file, 'r') as f:
-                    return json.load(f)
+                    data = json.load(f)
+                    if isinstance(data, dict):
+                        return data
+                    return {}
             except Exception as e:
                 print(f"⚠️ Failed to load ledger: {e}")
                 return {}
@@ -43,6 +46,9 @@ class RustStyleIndyLedger:
     
     def _ensure_ledger_structure(self):
         """Ensure ledger has proper structure"""
+        if not isinstance(self.ledger_data, dict):
+            self.ledger_data = {}
+            
         if not self.ledger_data:
             self.ledger_data = {
                 "metadata": {
@@ -63,6 +69,27 @@ class RustStyleIndyLedger:
                 "transactions": {}
             }
             self._save_ledger()
+        else:
+            # Ensure all required keys exist
+            required_keys = ["pools", "wallets", "dids", "credentials", "transactions", "metadata"]
+            modified = False
+            for key in required_keys:
+                if key not in self.ledger_data:
+                    self.ledger_data[key] = {} if key != "metadata" else {
+                        "version": "2.0",
+                        "ledger_type": "rust_style_indy",
+                        "created_at": datetime.now(timezone.utc).isoformat(),
+                        "last_updated": datetime.now(timezone.utc).isoformat(),
+                        "total_transactions": 0,
+                        "total_dids": 0,
+                        "total_credentials": 0,
+                        "total_pools": 0,
+                        "total_wallets": 0
+                    }
+                    modified = True
+            
+            if modified:
+                self._save_ledger()
     
     def _generate_transaction_hash(self, data: Dict[str, Any]) -> str:
         """Generate deterministic transaction hash"""
@@ -201,6 +228,24 @@ class RustStyleIndyLedger:
             if dest in self.ledger_data["dids"]:
                 self.ledger_data["dids"][dest]["transaction_hash"] = transaction_id
                 self.ledger_data["dids"][dest]["status"] = "ACTIVE"
+            else:
+                self.ledger_data["dids"][dest] = {
+                    "did": dest,
+                    "verkey": transaction_data.get("verkey", ""),
+                    "transaction_hash": transaction_id,
+                    "status": "ACTIVE"
+                }
+                self.ledger_data["metadata"]["total_dids"] += 1
+                
+            # Create a virtual wallet for the citizen if not exists
+            wallet_name = f"wallet_{dest[-16:]}"
+            if wallet_name not in self.ledger_data["wallets"]:
+                self.ledger_data["wallets"][wallet_name] = {
+                    "created_at": datetime.now(timezone.utc).isoformat(),
+                    "status": "ACTIVE",
+                    "key_hash": hash("virtual_key")
+                }
+                self.ledger_data["metadata"]["total_wallets"] += 1
             
             # Update metadata
             self.ledger_data["metadata"]["total_transactions"] += 1

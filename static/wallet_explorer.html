@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Indy Ledger | Wallet Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-tabs a {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            border-right: 1px solid #eee;
+            transition: background 0.3s;
+        }
+
+        .nav-tabs a:last-child {
+            border-right: none;
+        }
+
+        .nav-tabs a:hover {
+            background: #f8f9fa;
+        }
+
+        .nav-tabs a.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e1e8ed;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .json-pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .search-box button {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .search-box button:hover {
+            background: #5a6fd6;
+        }
+
+        h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🦀 Rust Indy Portal</h1>
+            <p>Wallet Details Explorer</p>
+        </div>
+
+        <div class="nav-tabs">
+            <a href="/explorer/wallet" class="active">Wallet Details</a>
+            <a href="/explorer/did">DID Information</a>
+            <a href="/explorer/credentials">Credentials</a>
+            <a href="/explorer/transactions">Transactions</a>
+            <a href="/">Overview</a>
+        </div>
+
+        <div class="content-card">
+            <div class="search-box">
+                <input type="text" id="walletDid" placeholder="Enter DID to lookup wallet details...">
+                <button onclick="lookupWallet()">Lookup</button>
+            </div>
+
+            <div id="walletResult">
+                <div class="no-data" style="text-align:center; color:#777; padding:40px;">
+                    Enter a DID to query the ledger for wallet details.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8083/api/ledger';
+
+        async function lookupWallet() {
+            const did = document.getElementById('walletDid').value.trim();
+            if (!did) {
+                alert('Please enter a DID');
+                return;
+            }
+
+            const resultDiv = document.getElementById('walletResult');
+            resultDiv.innerHTML = '<div class="loading"><div class="spinner"></div>Searching ledger...</div>';
+
+            try {
+                // We'll search through NYM transactions to find info about this DID
+                const response = await fetch(`${API_BASE}/rust-indy`);
+                const data = await response.json();
+
+                if (data.success && data.ledger_data && data.ledger_data.nym_transactions) {
+                    const txns = Object.values(data.ledger_data.nym_transactions)
+                        .filter(tx => tx.dest === did || tx.origin === did);
+
+                    if (txns.length > 0) {
+                        resultDiv.innerHTML = `
+                            <h3>Wallet Details Found</h3>
+                            <p style="margin-bottom:10px;">Found ${txns.length} transaction(s) associated with this DID on the Rust Indy ledger.</p>
+                            <pre class="json-pre">${JSON.stringify(txns, null, 2)}</pre>
+                        `;
+                    } else {
+                        resultDiv.innerHTML = `<div class="error" style="background:#fee;color:#c33;padding:15px;border-radius:5px;">No wallet or transactions found for DID: ${did}</div>`;
+                    }
+                } else {
+                    resultDiv.innerHTML = `<div class="error" style="background:#fee;color:#c33;padding:15px;border-radius:5px;">Failed to parse ledger data.</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error" style="background:#fee;color:#c33;padding:15px;border-radius:5px;">Error: ${error.message}</div>`;
+            }
+        }
+    </script>
+</body>
+
+</html>

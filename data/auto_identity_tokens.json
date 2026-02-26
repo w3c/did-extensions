@@ -1,0 +1,622 @@
+{
+  "ledger_id": "auto_identity_token_ledger_v1",
+  "created_at": "2026-02-24T14:20:40.792306+00:00",
+  "total_tokens": 13,
+  "active_tokens": 13,
+  "expired_tokens": 0,
+  "revoked_tokens": 0,
+  "tokens": {
+    "auto_token_identity_token_91b8698f5557ffe6fad16540a760541e": {
+      "token_id": "auto_token_identity_token_91b8698f5557ffe6fad16540a760541e",
+      "token_type": "identity_token",
+      "citizen_did": "did:sdis:f86e:92b6:20d0039f1429fc5d",
+      "claims": {
+        "jti": "auto_token_identity_token_91b8698f5557ffe6fad16540a760541e",
+        "iss": "aadhaar-kyc-system",
+        "aud": "government-services",
+        "sub": "did:sdis:f86e:92b6:20d0039f1429fc5d",
+        "iat": 1771944917.574183,
+        "exp": 1772031317.574166,
+        "token_type": "identity_token",
+        "scope": [
+          "identity",
+          "kyc",
+          "services"
+        ],
+        "did": "did:sdis:f86e:92b6:20d0039f1429fc5d",
+        "did_status": "ACTIVE",
+        "did_registered_at": null,
+        "resolution_status": "SUCCESS",
+        "resolution_source": "local_rust_ledger",
+        "vc_credentials_count": 0,
+        "vc_credentials": [],
+        "kyc_approved": true,
+        "kyc_level": "LEVEL_1",
+        "aadhaar_verified": true,
+        "government_services_access": true,
+        "citizen_name": "E2E Test User 1f40cc22",
+        "aadhaar_number": null,
+        "pqie_token_id": "token_693222e2d4a96996",
+        "name": null,
+        "email": null,
+        "phone": null
+      },
+      "status": "ACTIVE",
+      "created_at": "2026-02-24T20:25:17.574408",
+      "expires_at": "2026-02-25T20:25:17.574166",
+      "ledger_index": 1
+    },
+    "auto_token_identity_token_335935844958559b3e3c47128d574bba": {
+      "token_id": "auto_token_identity_token_335935844958559b3e3c47128d574bba",
+      "token_type": "identity_token",
+      "citizen_did": "did:sdis:9ba7:332e:adc28b599c8cfd8c",
+      "claims": {
+        "jti": "auto_token_identity_token_335935844958559b3e3c47128d574bba",
+        "iss": "aadhaar-kyc-system",
+        "aud": "government-services",
+        "sub": "did:sdis:9ba7:332e:adc28b599c8cfd8c",
+        "iat": 1771944999.997946,
+        "exp": 1772031399.997935,
+        "token_type": "identity_token",
+        "scope": [
+          "identity",
+          "kyc",
+          "services"
+        ],
+        "did": "did:sdis:9ba7:332e:adc28b599c8cfd8c",
+        "did_status": "ACTIVE",
+        "did_registered_at": null,
+        "resolution_status": "SUCCESS",
+        "resolution_source": "local_rust_ledger",
+        "vc_credentials_count": 0,
+        "vc_credentials": [],
+        "kyc_approved": true,
+        "kyc_level": "LEVEL_1",
+        "aadhaar_verified": true,
+        "government_services_access": true,
+        "citizen_name": "E2E Test User 3d34a2d2",
+        "aadhaar_number": null,
+        "pqie_token_id": "token_fb1892725455f5f2",
+        "name": null,
+        "email": null,
+        "phone": null
+      },
+      "status": "ACTIVE",
+      "created_at": "2026-02-24T20:26:39.998215",
+      "expires_at": "2026-02-25T20:26:39.997935",
+      "ledger_index": 2
+    },
+    "auto_token_identity_token_1dc8588ac35d57c502ebda0a1794d275": {
+      "token_id": "auto_token_identity_token_1dc8588ac35d57c502ebda0a1794d275",
+      "token_type": "identity_token",
+      "citizen_did": "did:sdis:18fc:46b1:64c22be922a8d52b",
+      "claims": {
+        "jti": "auto_token_identity_token_1dc8588ac35d57c502ebda0a1794d275",
+        "iss": "aadhaar-kyc-system",
+        "aud": "government-services",
+        "sub": "did:sdis:18fc:46b1:64c22be922a8d52b",
+        "iat": 1771945087.228169,
+        "exp": 1772031487.228157,
+        "token_type": "identity_token",
+        "scope": [
+          "identity",
+          "kyc",
+          "services"
+        ],
+        "did": "did:sdis:18fc:46b1:64c22be922a8d52b",
+        "did_status": "ACTIVE",
+        "did_registered_at": null,
+        "resolution_status": "SUCCESS",
+        "resolution_source": "local_rust_ledger",
+        "vc_credentials_count": 0,
+        "vc_credentials": [],
+        "kyc_approved": true,
+        "kyc_level": "LEVEL_1",
+        "aadhaar_verified": true,
+        "government_services_access": true,
+        "citizen_name": "E2E Test User ef061963",
+        "aadhaar_number": null,
+        "pqie_token_id": "token_75448e04106d7934",
+        "name": null,
+        "email": null,
+        "phone": null
+      },
+      "status": "ACTIVE",
+      "created_at": "2026-02-24T20:28:07.228423",
+      "expires_at": "2026-02-25T20:28:07.228157",
+      "ledger_index": 3
+    },
+    "auto_token_identity_token_4a86f05042dc312d03e79c1f05bc63c3": {
+      "token_id": "auto_token_identity_token_4a86f05042dc312d03e79c1f05bc63c3",
+      "token_type": "identity_token",
+      "citizen_did": "did:sdis:fe6e:e1b0:206a9ff2e5a036f9",
+      "claims": {
+        "jti": "auto_token_identity_token_4a86f05042dc312d03e79c1f05bc63c3",
+        "iss": "aadhaar-kyc-system",
+        "aud": "government-services",
+        "sub": "did:sdis:fe6e:e1b0:206a9ff2e5a036f9",
+        "iat": 1771945145.801476,
+        "exp": 1772031545.801466,
+        "token_type": "identity_token",
+        "scope": [
+          "identity",
+          "kyc",
+          "services"
+        ],
+        "did": "did:sdis:fe6e:e1b0:206a9ff2e5a036f9",
+        "did_status": "ACTIVE",
+        "did_registered_at": null,
+        "resolution_status": "SUCCESS",
+        "resolution_source": "local_rust_ledger",
+        "vc_credentials_count": 0,
+        "vc_credentials": [],
+        "kyc_approved": true,
+        "kyc_level": "LEVEL_1",
+        "aadhaar_verified": true,
+        "government_services_access": true,
+        "citizen_name": "E2E Test User 410bde49",
+        "aadhaar_number": null,
+        "pqie_token_id": "token_61c0524b6a8c5d13",
+        "name": null,
+        "email": null,
+        "phone": null
+      },
+      "status": "ACTIVE",
+      "created_at": "2026-02-24T20:29:05.801724",
+      "expires_at": "2026-02-25T20:29:05.801466",
+      "ledger_index": 4
+    },
+    "auto_token_identity_token_2d0da0ce8ac20e0a839990bdb67459cd": {
+      "token_id": "auto_token_identity_token_2d0da0ce8ac20e0a839990bdb67459cd",
+      "token_type": "identity_token",
+      "citizen_did": "did:sdis:47dd:5fb6:eaade628799816ef",
+      "claims": {
+        "jti": "auto_token_identity_token_2d0da0ce8ac20e0a839990bdb67459cd",
+        "iss": "aadhaar-kyc-system",
+        "aud": "government-services",
+        "sub": "did:sdis:47dd:5fb6:eaade628799816ef",
+        "iat": 1771945493.170411,
+        "exp": 1772031893.170401,
+        "token_type": "identity_token",
+        "scope": [
+          "identity",
+          "kyc",
+          "services"
+        ],
+        "did": "did:sdis:47dd:5fb6:eaade628799816ef",
+        "did_status": "ACTIVE",
+        "did_registered_at": null,
+        "resolution_status": "SUCCESS",
+        "resolution_source": "local_rust_ledger",
+        "vc_credentials_count": 0,
+        "vc_credentials": [],
+        "kyc_approved": true,
+        "kyc_level": "LEVEL_1",
+        "aadhaar_verified": true,
+        "government_services_access": true,
+        "citizen_name": "E2E Test User d8e66507",
+        "aadhaar_number": null,
+        "pqie_token_id": "token_8300ebdd8626258b",
+        "name": null,
+        "email": null,
+        "phone": null
+      },
+      "status": "ACTIVE",
+      "created_at": "2026-02-24T20:34:53.170612",
+      "expires_at": "2026-02-25T20:34:53.170401",
+      "ledger_index": 5
+    },
+    "auto_token_identity_token_2a385386bf9a7723cb6a80411e289b9e": {
+      "token_id": "auto_token_identity_token_2a385386bf9a7723cb6a80411e289b9e",
+      "token_type": "identity_token",
+      "citizen_did": "did:sdis:b3b2:33be:17ca920746b96d80",
+      "claims": {
+        "jti": "auto_token_identity_token_2a385386bf9a7723cb6a80411e289b9e",
+        "iss": "aadhaar-kyc-system",
+        "aud": "government-services",
+        "sub": "did:sdis:b3b2:33be:17ca920746b96d80",
+        "iat": 1771945549.540756,
+        "exp": 1772031949.540743,
+        "token_type": "identity_token",
+        "scope": [
+          "identity",
+          "kyc",
+          "services"
+        ],
+        "did": "did:sdis:b3b2:33be:17ca920746b96d80",
+        "did_status": "ACTIVE",
+        "did_registered_at": null,
+        "resolution_status": "SUCCESS",
+        "resolution_source": "local_rust_ledger",
+        "vc_credentials_count": 0,
+        "vc_credentials": [],
+        "kyc_approved": true,
+        "kyc_level": "LEVEL_1",
+        "aadhaar_verified": true,
+        "government_services_access": true,
+        "citizen_name": "E2E Test User 1ce3aad4",
+        "aadhaar_number": null,
+        "pqie_token_id": "token_c2033bb7cf55a99f",
+        "name": null,
+        "email": null,
+        "phone": null
+      },
+      "status": "ACTIVE",
+      "created_at": "2026-02-24T20:35:49.540966",
+      "expires_at": "2026-02-25T20:35:49.540743",
+      "ledger_index": 6
+    },
+    "auto_token_identity_token_2dc3fcfd1d2403a01eff8077727bb18e": {
+      "token_id": "auto_token_identity_token_2dc3fcfd1d2403a01eff8077727bb18e",
+      "token_type": "identity_token",
+      "citizen_did": "did:sdis:1254:58b0:97871b621e723554",
+      "claims": {
+        "jti": "auto_token_identity_token_2dc3fcfd1d2403a01eff8077727bb18e",
+        "iss": "aadhaar-kyc-system",
+        "aud": "government-services",
+        "sub": "did:sdis:1254:58b0:97871b621e723554",
+        "iat": 1771945634.455873,
+        "exp": 1772032034.455865,
+        "token_type": "identity_token",
+        "scope": [
+          "identity",
+          "kyc",
+          "services"
+        ],
+        "did": "did:sdis:1254:58b0:97871b621e723554",
+        "did_status": "ACTIVE",
+        "did_registered_at": null,
+        "resolution_status": "SUCCESS",
+        "resolution_source": "local_rust_ledger",
+        "vc_credentials_count": 0,
+        "vc_credentials": [],
+        "kyc_approved": true,
+        "kyc_level": "LEVEL_1",
+        "aadhaar_verified": true,
+        "government_services_access": true,
+        "citizen_name": "E2E Test User bb11b2b5",
+        "aadhaar_number": null,
+        "pqie_token_id": "token_42303f806acd8e85",
+        "name": null,
+        "email": null,
+        "phone": null
+      },
+      "status": "ACTIVE",
+      "created_at": "2026-02-24T20:37:14.456021",
+      "expires_at": "2026-02-25T20:37:14.455865",
+      "ledger_index": 7
+    },
+    "auto_token_identity_token_28457b0265e8d0cf401a43e676b568cc": {
+      "token_id": "auto_token_identity_token_28457b0265e8d0cf401a43e676b568cc",
+      "token_type": "identity_token",
+      "citizen_did": "did:sdis:dfae:f7a9:bf2feb96d7490945",
+      "claims": {
+        "jti": "auto_token_identity_token_28457b0265e8d0cf401a43e676b568cc",
+        "iss": "aadhaar-kyc-system",
+        "aud": "government-services",
+        "sub": "did:sdis:dfae:f7a9:bf2feb96d7490945",
+        "iat": 1771953121.305107,
+        "exp": 1772039521.305095,
+        "token_type": "identity_token",
+        "scope": [
+          "identity",
+          "kyc",
+          "services"
+        ],
+        "did": "did:sdis:dfae:f7a9:bf2feb96d7490945",
+        "did_status": "ACTIVE",
+        "did_registered_at": null,
+        "resolution_status": "SUCCESS",
+        "resolution_source": "local_rust_ledger",
+        "vc_credentials_count": 0,
+        "vc_credentials": [],
+        "kyc_approved": true,
+        "kyc_level": "LEVEL_1",
+        "aadhaar_verified": true,
+        "government_services_access": true,
+        "citizen_name": "E2E Test User 355884f6",
+        "aadhaar_number": null,
+        "pqie_token_id": "token_b52d031e159aa184",
+        "name": null,
+        "email": null,
+        "phone": null
+      },
+      "status": "ACTIVE",
+      "created_at": "2026-02-24T22:42:01.305315",
+      "expires_at": "2026-02-25T22:42:01.305095",
+      "ledger_index": 8
+    },
+    "auto_token_identity_token_ed1845a7e71291d77685634b75b6caa1": {
+      "token_id": "auto_token_identity_token_ed1845a7e71291d77685634b75b6caa1",
+      "token_type": "identity_token",
+      "citizen_did": "did:sdis:ac9c:07e4:bbcc5773c7bb3351",
+      "claims": {
+        "jti": "auto_token_identity_token_ed1845a7e71291d77685634b75b6caa1",
+        "iss": "aadhaar-kyc-system",
+        "aud": "government-services",
+        "sub": "did:sdis:ac9c:07e4:bbcc5773c7bb3351",
+        "iat": 1771953177.031106,
+        "exp": 1772039577.031077,
+        "token_type": "identity_token",
+        "scope": [
+          "identity",
+          "kyc",
+          "services"
+        ],
+        "did": "did:sdis:ac9c:07e4:bbcc5773c7bb3351",
+        "did_status": "ACTIVE",
+        "did_registered_at": null,
+        "resolution_status": "SUCCESS",
+        "resolution_source": "local_rust_ledger",
+        "vc_credentials_count": 0,
+        "vc_credentials": [],
+        "kyc_approved": true,
+        "kyc_level": "LEVEL_1",
+        "aadhaar_verified": true,
+        "government_services_access": true,
+        "citizen_name": "E2E Test User af638e38",
+        "aadhaar_number": null,
+        "pqie_token_id": "token_0fb5f2b3ce91c697",
+        "name": null,
+        "email": null,
+        "phone": null
+      },
+      "status": "ACTIVE",
+      "created_at": "2026-02-24T22:42:57.031390",
+      "expires_at": "2026-02-25T22:42:57.031077",
+      "ledger_index": 9
+    },
+    "auto_token_identity_token_406cee8a1a8597fbdbfca7a2d5b8fd3a": {
+      "token_id": "auto_token_identity_token_406cee8a1a8597fbdbfca7a2d5b8fd3a",
+      "token_type": "identity_token",
+      "citizen_did": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530",
+      "claims": {
+        "jti": "auto_token_identity_token_406cee8a1a8597fbdbfca7a2d5b8fd3a",
+        "iss": "aadhaar-kyc-system",
+        "aud": "government-services",
+        "sub": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530",
+        "iat": 1771953341.465589,
+        "exp": 1772039741.465576,
+        "token_type": "identity_token",
+        "scope": [
+          "identity",
+          "kyc",
+          "services"
+        ],
+        "did": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530",
+        "did_status": "ACTIVE",
+        "did_registered_at": "2026-02-24T19:53:50.668789",
+        "resolution_status": "SUCCESS",
+        "resolution_source": "local_did_registry",
+        "vc_credentials_count": 0,
+        "vc_credentials": [],
+        "kyc_approved": true,
+        "kyc_level": "LEVEL_1",
+        "aadhaar_verified": true,
+        "government_services_access": true,
+        "citizen_name": "Dixa Koradia",
+        "aadhaar_number": "",
+        "pqie_token_id": "token_70ebac710b85d3cb",
+        "name": "",
+        "email": "",
+        "phone": ""
+      },
+      "status": "ACTIVE",
+      "created_at": "2026-02-24T22:45:41.465739",
+      "expires_at": "2026-02-25T22:45:41.465576",
+      "ledger_index": 10
+    },
+    "auto_token_identity_token_7868186d5ab513835a967bf5ece8c2a8": {
+      "token_id": "auto_token_identity_token_7868186d5ab513835a967bf5ece8c2a8",
+      "token_type": "identity_token",
+      "citizen_did": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530",
+      "claims": {
+        "jti": "auto_token_identity_token_7868186d5ab513835a967bf5ece8c2a8",
+        "iss": "aadhaar-kyc-system",
+        "aud": "government-services",
+        "sub": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530",
+        "iat": 1771954582.9735,
+        "exp": 1772040982.973492,
+        "token_type": "identity_token",
+        "scope": [
+          "identity",
+          "kyc",
+          "services"
+        ],
+        "did": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530",
+        "did_status": "ACTIVE",
+        "did_registered_at": "2026-02-24T19:53:50.668789",
+        "resolution_status": "SUCCESS",
+        "resolution_source": "local_did_registry",
+        "vc_credentials_count": 0,
+        "vc_credentials": [],
+        "kyc_approved": true,
+        "kyc_level": "LEVEL_1",
+        "aadhaar_verified": true,
+        "government_services_access": true,
+        "citizen_name": "Dixa Koradia",
+        "aadhaar_number": "",
+        "pqie_token_id": "token_57be5366aed0ee0a",
+        "name": "",
+        "email": "",
+        "phone": ""
+      },
+      "status": "ACTIVE",
+      "created_at": "2026-02-24T23:06:22.974865",
+      "expires_at": "2026-02-25T23:06:22.973492",
+      "ledger_index": 11
+    },
+    "auto_token_identity_token_e79e94edb29800193961a34d2df8f42a": {
+      "token_id": "auto_token_identity_token_e79e94edb29800193961a34d2df8f42a",
+      "token_type": "identity_token",
+      "citizen_did": "did:sdis:7e396d8a1893326b50c89:bd81f4091893303a1636b:284304f67ca7f1ce",
+      "claims": {
+        "jti": "auto_token_identity_token_e79e94edb29800193961a34d2df8f42a",
+        "iss": "aadhaar-kyc-system",
+        "aud": "government-services",
+        "sub": "did:sdis:7e396d8a1893326b50c89:bd81f4091893303a1636b:284304f67ca7f1ce",
+        "iat": 1771955980.641388,
+        "exp": 1772042380.641369,
+        "token_type": "identity_token",
+        "scope": [
+          "identity",
+          "kyc",
+          "services"
+        ],
+        "did": "did:sdis:7e396d8a1893326b50c89:bd81f4091893303a1636b:284304f67ca7f1ce",
+        "did_status": "ACTIVE",
+        "did_registered_at": "2026-02-24T23:27:50.695654",
+        "resolution_status": "SUCCESS",
+        "resolution_source": "local_did_registry",
+        "vc_credentials_count": 0,
+        "vc_credentials": [],
+        "kyc_approved": true,
+        "kyc_level": "LEVEL_1",
+        "aadhaar_verified": true,
+        "government_services_access": true,
+        "citizen_name": "Joe",
+        "aadhaar_number": "",
+        "pqie_token_id": "token_05c37c544946c353",
+        "name": "",
+        "email": "",
+        "phone": ""
+      },
+      "status": "ACTIVE",
+      "created_at": "2026-02-24T23:29:40.642119",
+      "expires_at": "2026-02-25T23:29:40.641369",
+      "ledger_index": 12
+    },
+    "auto_token_identity_token_c60a6451de983be2097a7b84c7426aef": {
+      "token_id": "auto_token_identity_token_c60a6451de983be2097a7b84c7426aef",
+      "token_type": "identity_token",
+      "citizen_did": "did:sdis:7e396d8a1893326b50c89:bd81f4091893303a1636b:284304f67ca7f1ce",
+      "claims": {
+        "jti": "auto_token_identity_token_c60a6451de983be2097a7b84c7426aef",
+        "iss": "aadhaar-kyc-system",
+        "aud": "government-services",
+        "sub": "did:sdis:7e396d8a1893326b50c89:bd81f4091893303a1636b:284304f67ca7f1ce",
+        "iat": 1771960181.826486,
+        "exp": 1772046581.826453,
+        "token_type": "identity_token",
+        "scope": [
+          "identity",
+          "kyc",
+          "services"
+        ],
+        "did": "did:sdis:7e396d8a1893326b50c89:bd81f4091893303a1636b:284304f67ca7f1ce",
+        "did_status": "ACTIVE",
+        "did_registered_at": "2026-02-24T23:27:50.695654",
+        "resolution_status": "SUCCESS",
+        "resolution_source": "local_did_registry",
+        "vc_credentials_count": 0,
+        "vc_credentials": [],
+        "kyc_approved": true,
+        "kyc_level": "LEVEL_1",
+        "aadhaar_verified": true,
+        "government_services_access": true,
+        "citizen_name": "Joe",
+        "aadhaar_number": "",
+        "pqie_token_id": "token_04ca3b17f4e1c347",
+        "name": "",
+        "email": "",
+        "phone": ""
+      },
+      "status": "ACTIVE",
+      "created_at": "2026-02-25T00:39:41.826692",
+      "expires_at": "2026-02-26T00:39:41.826453",
+      "ledger_index": 13
+    }
+  },
+  "token_indexes": {
+    "by_citizen_did": {
+      "did:sdis:f86e:92b6:20d0039f1429fc5d": [
+        "auto_token_identity_token_91b8698f5557ffe6fad16540a760541e"
+      ],
+      "did:sdis:9ba7:332e:adc28b599c8cfd8c": [
+        "auto_token_identity_token_335935844958559b3e3c47128d574bba"
+      ],
+      "did:sdis:18fc:46b1:64c22be922a8d52b": [
+        "auto_token_identity_token_1dc8588ac35d57c502ebda0a1794d275"
+      ],
+      "did:sdis:fe6e:e1b0:206a9ff2e5a036f9": [
+        "auto_token_identity_token_4a86f05042dc312d03e79c1f05bc63c3"
+      ],
+      "did:sdis:47dd:5fb6:eaade628799816ef": [
+        "auto_token_identity_token_2d0da0ce8ac20e0a839990bdb67459cd"
+      ],
+      "did:sdis:b3b2:33be:17ca920746b96d80": [
+        "auto_token_identity_token_2a385386bf9a7723cb6a80411e289b9e"
+      ],
+      "did:sdis:1254:58b0:97871b621e723554": [
+        "auto_token_identity_token_2dc3fcfd1d2403a01eff8077727bb18e"
+      ],
+      "did:sdis:dfae:f7a9:bf2feb96d7490945": [
+        "auto_token_identity_token_28457b0265e8d0cf401a43e676b568cc"
+      ],
+      "did:sdis:ac9c:07e4:bbcc5773c7bb3351": [
+        "auto_token_identity_token_ed1845a7e71291d77685634b75b6caa1"
+      ],
+      "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530": [
+        "auto_token_identity_token_406cee8a1a8597fbdbfca7a2d5b8fd3a",
+        "auto_token_identity_token_7868186d5ab513835a967bf5ece8c2a8"
+      ],
+      "did:sdis:7e396d8a1893326b50c89:bd81f4091893303a1636b:284304f67ca7f1ce": [
+        "auto_token_identity_token_e79e94edb29800193961a34d2df8f42a",
+        "auto_token_identity_token_c60a6451de983be2097a7b84c7426aef"
+      ]
+    },
+    "by_token_type": {
+      "identity_token": [
+        "auto_token_identity_token_91b8698f5557ffe6fad16540a760541e",
+        "auto_token_identity_token_335935844958559b3e3c47128d574bba",
+        "auto_token_identity_token_1dc8588ac35d57c502ebda0a1794d275",
+        "auto_token_identity_token_4a86f05042dc312d03e79c1f05bc63c3",
+        "auto_token_identity_token_2d0da0ce8ac20e0a839990bdb67459cd",
+        "auto_token_identity_token_2a385386bf9a7723cb6a80411e289b9e",
+        "auto_token_identity_token_2dc3fcfd1d2403a01eff8077727bb18e",
+        "auto_token_identity_token_28457b0265e8d0cf401a43e676b568cc",
+        "auto_token_identity_token_ed1845a7e71291d77685634b75b6caa1",
+        "auto_token_identity_token_406cee8a1a8597fbdbfca7a2d5b8fd3a",
+        "auto_token_identity_token_7868186d5ab513835a967bf5ece8c2a8",
+        "auto_token_identity_token_e79e94edb29800193961a34d2df8f42a",
+        "auto_token_identity_token_c60a6451de983be2097a7b84c7426aef"
+      ]
+    },
+    "by_status": {
+      "ACTIVE": [
+        "auto_token_identity_token_91b8698f5557ffe6fad16540a760541e",
+        "auto_token_identity_token_335935844958559b3e3c47128d574bba",
+        "auto_token_identity_token_1dc8588ac35d57c502ebda0a1794d275",
+        "auto_token_identity_token_4a86f05042dc312d03e79c1f05bc63c3",
+        "auto_token_identity_token_2d0da0ce8ac20e0a839990bdb67459cd",
+        "auto_token_identity_token_2a385386bf9a7723cb6a80411e289b9e",
+        "auto_token_identity_token_2dc3fcfd1d2403a01eff8077727bb18e",
+        "auto_token_identity_token_28457b0265e8d0cf401a43e676b568cc",
+        "auto_token_identity_token_ed1845a7e71291d77685634b75b6caa1",
+        "auto_token_identity_token_406cee8a1a8597fbdbfca7a2d5b8fd3a",
+        "auto_token_identity_token_7868186d5ab513835a967bf5ece8c2a8",
+        "auto_token_identity_token_e79e94edb29800193961a34d2df8f42a",
+        "auto_token_identity_token_c60a6451de983be2097a7b84c7426aef"
+      ]
+    },
+    "by_issued_date": {
+      "2026-02-24": [
+        "auto_token_identity_token_91b8698f5557ffe6fad16540a760541e",
+        "auto_token_identity_token_335935844958559b3e3c47128d574bba",
+        "auto_token_identity_token_1dc8588ac35d57c502ebda0a1794d275",
+        "auto_token_identity_token_4a86f05042dc312d03e79c1f05bc63c3",
+        "auto_token_identity_token_2d0da0ce8ac20e0a839990bdb67459cd",
+        "auto_token_identity_token_2a385386bf9a7723cb6a80411e289b9e",
+        "auto_token_identity_token_2dc3fcfd1d2403a01eff8077727bb18e",
+        "auto_token_identity_token_28457b0265e8d0cf401a43e676b568cc",
+        "auto_token_identity_token_ed1845a7e71291d77685634b75b6caa1",
+        "auto_token_identity_token_406cee8a1a8597fbdbfca7a2d5b8fd3a",
+        "auto_token_identity_token_7868186d5ab513835a967bf5ece8c2a8",
+        "auto_token_identity_token_e79e94edb29800193961a34d2df8f42a"
+      ],
+      "2026-02-25": [
+        "auto_token_identity_token_c60a6451de983be2097a7b84c7426aef"
+      ]
+    }
+  }
+}

@@ -14,6 +14,7 @@ async fn main() {
         println!("  did create <wallet_name> <wallet_key> [seed]");
         println!("  ledger nym <dest> <verkey> [role]");
         println!("  ledger verify <did>");
+        println!("  ledger credential <credential_data>");
         println!("  stats");
         process::exit(1);
     }
@@ -110,7 +111,7 @@ async fn main() {
         },
         "ledger" => {
             if args.len() < 3 {
-                eprintln!("Usage: ledger <nym|verify> [args...]");
+                eprintln!("Usage: ledger <nym|verify|credential> [args...]");
                 process::exit(1);
             }
             
@@ -157,6 +158,34 @@ async fn main() {
                         },
                         Err(e) => {
                             eprintln!("❌ Failed to verify DID: {}", e);
+                            process::exit(1);
+                        }
+                    }
+                },
+                "credential" => {
+                    if args.len() < 4 {
+                        eprintln!("Usage: ledger credential <credential_data>");
+                        process::exit(1);
+                    }
+                    
+                    let credential_data = &args[3];
+                    
+                    // Parse credential data as JSON
+                    let credential_json: serde_json::Value = match serde_json::from_str(credential_data) {
+                        Ok(data) => data,
+                        Err(e) => {
+                            eprintln!("❌ Invalid JSON credential data: {}", e);
+                            process::exit(1);
+                        }
+                    };
+                    
+                    match core.write_credential_transaction(credential_json).await {
+                        Ok(tx_id) => {
+                            println!("✅ Credential transaction written successfully");
+                            println!("   Transaction ID: {}", tx_id);
+                        },
+                        Err(e) => {
+                            eprintln!("❌ Failed to write credential transaction: {}", e);
                             process::exit(1);
                         }
                     }

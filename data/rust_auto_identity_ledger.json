@@ -1,0 +1,18 @@
+{
+  "metadata": {
+    "version": "2.0",
+    "ledger_type": "rust_style_indy",
+    "created_at": "2026-02-24T14:21:25.618190+00:00",
+    "last_updated": "2026-02-24T14:21:25.618197+00:00",
+    "total_transactions": 0,
+    "total_dids": 0,
+    "total_credentials": 0,
+    "total_pools": 0,
+    "total_wallets": 0
+  },
+  "pools": {},
+  "wallets": {},
+  "dids": {},
+  "credentials": {},
+  "transactions": {}
+}

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Indy Ledger | DID Explorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-tabs a {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            border-right: 1px solid #eee;
+            transition: background 0.3s;
+        }
+
+        .nav-tabs a:last-child {
+            border-right: none;
+        }
+
+        .nav-tabs a:hover {
+            background: #f8f9fa;
+        }
+
+        .nav-tabs a.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e1e8ed;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .json-pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e1e8ed;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .did-cell {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            background: #d4edda;
+            color: #155724;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🦀 Rust Indy Portal</h1>
+            <p>DID Explorer</p>
+        </div>
+
+        <div class="nav-tabs">
+            <a href="/explorer/wallet">Wallet Details</a>
+            <a href="/explorer/did" class="active">DID Information</a>
+            <a href="/explorer/credentials">Credentials</a>
+            <a href="/explorer/transactions">Transactions</a>
+            <a href="/">Overview</a>
+        </div>
+
+        <div class="content-card">
+            <h3>Registered DIDs on Ledger</h3>
+            <div id="didResult">
+                <div class="loading">
+                    <div class="spinner"></div>Loading DIDs...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8083/api/ledger';
+
+        async function loadDIDs() {
+            const resultDiv = document.getElementById('didResult');
+            try {
+                const response = await fetch(`${API_BASE}/rust-indy`);
+                const data = await response.json();
+
+                if (data.success && data.ledger_data && data.ledger_data.nym_transactions) {
+                    const txns = Object.values(data.ledger_data.nym_transactions);
+
+                    if (txns.length > 0) {
+                        let html = '<table><thead><tr><th>DID</th><th>VerKey</th><th>Role</th><th>Status</th></tr></thead><tbody>';
+                        txns.forEach(tx => {
+                            html += `
+                                <tr>
+                                    <td class="did-cell">${tx.dest || 'N/A'}</td>
+                                    <td class="did-cell">${tx.verkey || 'N/A'}</td>
+                                    <td><span class="badge" style="background:#e2e3e5;color:#383d41">${tx.role || 'USER'}</span></td>
+                                    <td><span class="badge">ACTIVE</span></td>
+                                </tr>
+                            `;
+                        });
+                        html += '</tbody></table>';
+                        html += `<h4 style="margin-top:20px;">Raw Ledger Document</h4>`;
+                        html += `<pre class="json-pre">${JSON.stringify(data.ledger_data.nym_transactions, null, 2)}</pre>`;
+                        resultDiv.innerHTML = html;
+                    } else {
+                        resultDiv.innerHTML = '<p>No DIDs registered yet.</p>';
+                    }
+                } else {
+                    resultDiv.innerHTML = '<div class="error" style="background:#fee;color:#c33;padding:15px;border-radius:5px;">Failed to parse ledger data.</div>';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error" style="background:#fee;color:#c33;padding:15px;border-radius:5px;">Error: ${error.message}</div>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadDIDs);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+{
+  "services": {},
+  "total": 0,
+  "service_requests": {
+    "service_req_7ec0dee9c0d30647aa38518017abeeac": {
+      "request_id": "service_req_7ec0dee9c0d30647aa38518017abeeac",
+      "service_id": "SERVICE_PASSPORT",
+      "service_name": "Passport Application",
+      "citizen_did": "did:sdis:dfae:f7a9:bf2feb96d7490945",
+      "citizen_name": "E2E Test User 355884f6",
+      "verifiable_presentation": {
+        "@context": [
+          "https://www.w3.org/2018/credentials/v1",
+          "https://www.w3.org/2018/credentials/presentation/v1"
+        ],
+        "type": [
+          "VerifiablePresentation",
+          "ServiceRequestPresentation"
+        ],
+        "holder": "did:sdis:dfae:f7a9:bf2feb96d7490945",
+        "verifiableCredential": [
+          {
+            "@context": {},
+            "id": null,
+            "type": [
+              "VerifiableCredential",
+              ""
+            ],
+            "credentialSubject": {
+              "id": "did:sdis:dfae:f7a9:bf2feb96d7490945",
+              "credential_type": "",
+              "status": "GENERATED"
+            },
+            "credentialStatus": {
+              "status": "GENERATED"
+            }
+          }
+        ],
+        "service_request": {
+          "service_id": "SERVICE_PASSPORT",
+          "service_name": "Passport Application",
+          "requested_at": "2026-02-24T22:42:04.342744"
+        },
+        "proof": {
+          "type": "Ed25519Signature2020",
+          "created": "2026-02-24T22:42:04.342760",
+          "verificationMethod": "did:sdis:dfae:f7a9:bf2feb96d7490945#key-1",
+          "proofPurpose": "assertionMethod"
+        }
+      },
+      "identity_token": {
+        "token_id": "auto_token_identity_token_28457b0265e8d0cf401a43e676b568cc",
+        "token_type": "identity_token",
+        "created_at": "2026-02-24T22:42:01.305315",
+        "expires_at": "2026-02-25T22:42:01.305095",
+        "signature_type": "Quantum-Secure",
+        "quantum_secure": false,
+        "status": "ACTIVE"
+      },
+      "vc_credential": {
+        "credential_id": null,
+        "vc_number": "VC_None",
+        "credential_type": "",
+        "status": "GENERATED",
+        "issued_at": "",
+        "expires_at": "2026-02-25T22:42:01.305095",
+        "issued_by": "Government of India",
+        "credential_data": {},
+        "transaction_id": "rust_cred_7525ad5c003a24e7",
+        "revoked_at": null,
+        "revocation_reason": null,
+        "ledger_source": "rust_indy_ledger"
+      },
+      "status": "PENDING",
+      "requested_at": "2026-02-24T22:42:04.343160",
+      "requested_timestamp": 1771953124.343163,
+      "approved_at": null,
+      "rejected_at": null,
+      "approved_by": null,
+      "rejected_by": null,
+      "rejection_reason": null,
+      "grant_id": null
+    },
+    "service_req_64e642566941374130eadd7f0a6867fe": {
+      "request_id": "service_req_64e642566941374130eadd7f0a6867fe",
+      "service_id": "SERVICE_PASSPORT",
+      "service_name": "Passport Application",
+      "citizen_did": "did:sdis:ac9c:07e4:bbcc5773c7bb3351",
+      "citizen_name": "E2E Test User af638e38",
+      "verifiable_presentation": {
+        "@context": [
+          "https://www.w3.org/2018/credentials/v1",
+          "https://www.w3.org/2018/credentials/presentation/v1"
+        ],
+        "type": [
+          "VerifiablePresentation",
+          "ServiceRequestPresentation"
+        ],
+        "holder": "did:sdis:ac9c:07e4:bbcc5773c7bb3351",
+        "verifiableCredential": [
+          {
+            "@context": {},
+            "id": null,
+            "type": [
+              "VerifiableCredential",
+              ""
+            ],
+            "credentialSubject": {
+              "id": "did:sdis:ac9c:07e4:bbcc5773c7bb3351",
+              "credential_type": "",
+              "status": "GENERATED"
+            },
+            "credentialStatus": {
+              "status": "GENERATED"
+            }
+          }
+        ],
+        "service_request": {
+          "service_id": "SERVICE_PASSPORT",
+          "service_name": "Passport Application",
+          "requested_at": "2026-02-24T22:43:00.069500"
+        },
+        "proof": {
+          "type": "Ed25519Signature2020",
+          "created": "2026-02-24T22:43:00.069510",
+          "verificationMethod": "did:sdis:ac9c:07e4:bbcc5773c7bb3351#key-1",
+          "proofPurpose": "assertionMethod"
+        }
+      },
+      "identity_token": {
+        "token_id": "auto_token_identity_token_ed1845a7e71291d77685634b75b6caa1",
+        "token_type": "identity_token",
+        "created_at": "2026-02-24T22:42:57.031390",
+        "expires_at": "2026-02-25T22:42:57.031077",
+        "signature_type": "Quantum-Secure",
+        "quantum_secure": false,
+        "status": "ACTIVE"
+      },
+      "vc_credential": {
+        "credential_id": null,
+        "vc_number": "VC_None",
+        "credential_type": "",
+        "status": "GENERATED",
+        "issued_at": "",
+        "expires_at": "2026-02-25T22:42:57.031077",
+        "issued_by": "Government of India",
+        "credential_data": {},
+        "transaction_id": "rust_cred_791c9afb7bac4178",
+        "revoked_at": null,
+        "revocation_reason": null,
+        "ledger_source": "rust_indy_ledger"
+      },
+      "status": "PENDING",
+      "requested_at": "2026-02-24T22:43:00.070061",
+      "requested_timestamp": 1771953180.070067,
+      "approved_at": null,
+      "rejected_at": null,
+      "approved_by": null,
+      "rejected_by": null,
+      "rejection_reason": null,
+      "grant_id": null
+    }
+  },
+  "service_grants": {},
+  "ledger_metadata": {
+    "ledger_id": "service_ledger_v1",
+    "created_at": "2026-02-24T22:42:04.343092",
+    "total_requests": 2,
+    "approved_requests": 0,
+    "rejected_requests": 0,
+    "pending_requests": 2,
+    "last_updated": "2026-02-24T22:43:00.070072"
+  }
+}

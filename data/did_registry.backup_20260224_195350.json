@@ -1,0 +1,129 @@
+{
+  "registry_metadata": {
+    "registry_id": "aadhaar_did_registry_v2",
+    "version": "2.0.0",
+    "created_at": "2026-02-24T14:20:40.791965+00:00",
+    "last_updated": "2026-02-24T19:53:50.668835",
+    "total_dids": 1,
+    "active_dids": 1,
+    "revoked_dids": 0,
+    "max_dids": 1000000
+  },
+  "registry_settings": {
+    "backup_enabled": true,
+    "indexing_enabled": true,
+    "auto_cleanup": false,
+    "retention_days": 3650
+  },
+  "indexes": {
+    "by_status": {
+      "ACTIVE": [],
+      "REVOKED": [],
+      "SUSPENDED": []
+    },
+    "by_blockchain": {
+      "indy": []
+    },
+    "by_citizen_name": {}
+  },
+  "statistics": {
+    "blockchain_distribution": {
+      "indy": 1,
+      "ethereum": 0,
+      "other": 0
+    },
+    "monthly_registrations": {
+      "2026-02": 1
+    },
+    "daily_registrations": {
+      "2026-02-24": 1
+    },
+    "status_distribution": {
+      "ACTIVE": 0,
+      "REVOKED": 0,
+      "SUSPENDED": 0
+    }
+  },
+  "dids": {
+    "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530": {
+      "did": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530",
+      "registry_index": 1,
+      "did_document": {
+        "@context": "https://www.w3.org/ns/did/v1",
+        "id": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530",
+        "verificationMethod": [
+          {
+            "id": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530#key-1",
+            "type": "Ed25519VerificationKey2018",
+            "controller": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530",
+            "publicKeyBase58": "~ec7661aa91e7b4a7425e33be984704bdbfe6f732623e1373f6ea69825ae29ebb"
+          }
+        ],
+        "authentication": [
+          "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530#key-1"
+        ],
+        "assertionMethod": [
+          "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530#key-1"
+        ],
+        "service": [
+          {
+            "id": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530#aadhaar-kyc",
+            "type": "AadhaarKYCService",
+            "serviceEndpoint": "https://aadhaar-kyc.gov.in/verify"
+          }
+        ],
+        "citizen_info": {
+          "name": "Dixa Koradia",
+          "email": "dixadholakiya@gmail.com",
+          "phone": "09664526296",
+          "address": "C-501,Kalash Recidency",
+          "dob": "3221-02-11",
+          "gender": "Female",
+          "occupation": "cffd"
+        },
+        "created_at": "2026-02-24T19:53:50.648243",
+        "status": "ACTIVE"
+      },
+      "citizen_data": {
+        "name": "",
+        "email": "",
+        "phone": "",
+        "address": "",
+        "dob": "",
+        "gender": "",
+        "aadhaar_number": ""
+      },
+      "blockchain_info": {
+        "blockchain": "indy",
+        "ledger_type": "indy",
+        "transaction_hash": "indy_tx_1bb0ba8c6c7f33a379acf5c9cf47c974",
+        "block_number": 1
+      },
+      "verification_methods": [
+        {
+          "id": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530#key-1",
+          "type": "Ed25519VerificationKey2018",
+          "controller": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530",
+          "public_key": "~ec7661aa91e7b4a7425e33be984704bdbfe6f732623e1373f6ea69825ae29ebb"
+        }
+      ],
+      "services": [
+        {
+          "id": "did:sdis:1bb9df83c8d77ffc:f3fda6640c148530#aadhaar-kyc",
+          "type": "AadhaarKYCService",
+          "service_endpoint": "https://aadhaar-kyc.gov.in/verify"
+        }
+      ],
+      "status": "ACTIVE",
+      "registered_at": "2026-02-24T19:53:50.668789",
+      "last_updated": "2026-02-24T19:53:50.668794",
+      "expires_at": "2036-02-22T19:53:50.668796",
+      "metadata": {
+        "created_by": "did_registry_system",
+        "version": "2.0.0",
+        "backup_enabled": true,
+        "indexed": true
+      }
+    }
+  }
+}

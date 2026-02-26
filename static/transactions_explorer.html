@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Indy Ledger | Transactions Explorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-tabs a {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            border-right: 1px solid #eee;
+            transition: background 0.3s;
+        }
+
+        .nav-tabs a:last-child {
+            border-right: none;
+        }
+
+        .nav-tabs a:hover {
+            background: #f8f9fa;
+        }
+
+        .nav-tabs a.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e1e8ed;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .json-pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e1e8ed;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .hash-cell {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            background: #cce5ff;
+            color: #004085;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🦀 Rust Indy Portal</h1>
+            <p>Transactions Explorer</p>
+        </div>
+
+        <div class="nav-tabs">
+            <a href="/explorer/wallet">Wallet Details</a>
+            <a href="/explorer/did">DID Information</a>
+            <a href="/explorer/credentials">Credentials</a>
+            <a href="/explorer/transactions" class="active">Transactions</a>
+            <a href="/">Overview</a>
+        </div>
+
+        <div class="content-card">
+            <h3>Raw Ledger Transactions</h3>
+            <div id="txResult">
+                <div class="loading">
+                    <div class="spinner"></div>Loading Transactions...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8083/api/ledger';
+
+        async function loadTransactions() {
+            const resultDiv = document.getElementById('txResult');
+            try {
+                // Fetch Identity Ledger (Rust Indy)
+                const response = await fetch(`${API_BASE}/rust-indy`);
+                const data = await response.json();
+
+                // Fetch VC Ledger
+                const vcResponse = await fetch(`${API_BASE}/rust-indy/vc`);
+                const vcData = await vcResponse.json();
+
+                const nymTxns = data.success ? Object.values(data.ledger_data?.nym_transactions || {}) : [];
+                const vcTxns = vcData.success ? Object.values(vcData.ledger_data?.credential_transactions || {}) : [];
+
+                const allTxns = [
+                    ...nymTxns.map(tx => ({ type: 'NYM', date: tx.timestamp || Date.now() / 1000, id: tx.transaction_id, data: tx })),
+                    ...vcTxns.map(tx => ({ type: 'CREDENTIAL', date: tx.timestamp || Date.now() / 1000, id: tx.transaction_id, data: tx }))
+                ].sort((a, b) => b.date - a.date); // Sort by newest
+
+                if (allTxns.length > 0) {
+                    let html = '<table><thead><tr><th>Type</th><th>Transaction ID</th><th>Date/Time</th></tr></thead><tbody>';
+                    allTxns.forEach(tx => {
+                        const dateStr = new Date(tx.date * (tx.date < 1e12 ? 1000 : 1)).toLocaleString();
+                        html += `
+                            <tr>
+                                <td><span class="badge">${tx.type}</span></td>
+                                <td class="hash-cell">${tx.id || 'N/A'}</td>
+                                <td>${dateStr}</td>
+                            </tr>
+                        `;
+                    });
+                    html += '</tbody></table>';
+
+                    html += `<h4 style="margin-top:20px;">Identity Ledger JSON</h4>`;
+                    html += `<pre class="json-pre">${JSON.stringify(nymTxns, null, 2)}</pre>`;
+
+                    html += `<h4 style="margin-top:20px;">VC Ledger JSON</h4>`;
+                    html += `<pre class="json-pre">${JSON.stringify(vcTxns, null, 2)}</pre>`;
+
+                    resultDiv.innerHTML = html;
+                } else {
+                    resultDiv.innerHTML = '<p>No transactions found on the ledger.</p>';
+                }
+
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error" style="background:#fee;color:#c33;padding:15px;border-radius:5px;">Error: ${error.message}</div>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadTransactions);
+    </script>
+</body>
+
+</html>
