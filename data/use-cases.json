@@ -43,6 +43,7 @@
       "detailLevel": "full",
       "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability"],
       "actors": ["individual", "organization"],
+      "audience": ["persons", "business"],
       "tags": ["identity", "self-sovereign"]
     },
     {
@@ -54,6 +55,7 @@
       "detailLevel": "full",
       "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-crypto-verifiability", "req-crypto-extensibility", "req-interoperability"],
       "actors": ["issuer", "holder", "verifier"],
+      "audience": ["persons", "business", "enterprise"],
       "tags": ["credentials", "verifiable", "attestation"]
     },
     {
@@ -65,6 +67,7 @@
       "detailLevel": "full",
       "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-crypto-verifiability", "req-service-endpoints"],
       "actors": ["individual", "organization"],
+      "audience": ["persons", "business"],
       "tags": ["messaging", "encryption", "didcomm"]
     },
     {
@@ -76,6 +79,7 @@
       "detailLevel": "full",
       "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-interoperability"],
       "actors": ["consumer", "merchant", "payment-provider"],
+      "audience": ["persons", "business"],
       "tags": ["commerce", "payments", "retail"]
     },
     {
@@ -87,6 +91,7 @@
       "detailLevel": "brief",
       "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-legal-compatibility"],
       "actors": ["patient", "provider", "insurer"],
+      "audience": ["persons", "enterprise"],
       "tags": ["health", "medical", "records"]
     },
     {
@@ -98,6 +103,7 @@
       "detailLevel": "brief",
       "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-inter-jurisdictional", "req-legal-compatibility"],
       "actors": ["traveler", "border-authority", "airline"],
+      "audience": ["persons"],
       "tags": ["travel", "border", "passport"]
     },
     {
@@ -109,6 +115,7 @@
       "detailLevel": "brief",
       "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-interoperability"],
       "actors": ["institution", "student", "employer"],
+      "audience": ["persons"],
       "tags": ["education", "academic", "diploma"]
     },
     {
@@ -120,6 +127,7 @@
       "detailLevel": "brief",
       "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-inter-jurisdictional", "req-legal-compatibility", "req-uniqueness"],
       "actors": ["citizen", "government-agency"],
+      "audience": ["persons"],
       "tags": ["government", "civic", "public-services"]
     },
     {
@@ -131,6 +139,7 @@
       "detailLevel": "brief",
       "requiredRequirements": ["req-decentralization", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-service-endpoints", "req-composability"],
       "actors": ["manufacturer", "shipper", "retailer", "consumer"],
+      "audience": ["business", "enterprise"],
       "tags": ["supply-chain", "provenance", "tracking"]
     },
     {
@@ -142,6 +151,7 @@
       "detailLevel": "brief",
       "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-legal-compatibility", "req-uniqueness", "req-key-rotation"],
       "actors": ["customer", "bank", "regulator"],
+      "audience": ["persons", "business", "enterprise"],
       "tags": ["finance", "banking", "kyc", "aml"]
     },
     {
@@ -153,6 +163,7 @@
       "detailLevel": "brief",
       "requiredRequirements": ["req-decentralization", "req-security", "req-proof-based", "req-crypto-verifiability", "req-service-endpoints", "req-did-resolution"],
       "actors": ["device", "manufacturer", "operator"],
+      "audience": ["enterprise"],
       "tags": ["iot", "devices", "machine-identity"]
     },
     {
@@ -164,6 +175,7 @@
       "detailLevel": "brief",
       "requiredRequirements": ["req-decentralization", "req-control", "req-security", "req-proof-based", "req-crypto-verifiability", "req-key-rotation", "req-deactivation"],
       "actors": ["member", "dao", "governance-token-holder"],
+      "audience": ["business"],
       "tags": ["dao", "governance", "web3"]
     },
     {
@@ -175,6 +187,7 @@
       "detailLevel": "full",
       "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-crypto-verifiability", "req-equivalence"],
       "actors": ["individual"],
+      "audience": ["persons"],
       "tags": ["privacy", "pseudonymous", "selective-disclosure"]
     },
     {
@@ -186,6 +199,7 @@
       "detailLevel": "brief",
       "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-legal-compatibility", "req-uniqueness"],
       "actors": ["individual", "legal-entity", "court"],
+      "audience": ["persons", "business"],
       "tags": ["legal", "notarization", "contracts"]
     },
     {
@@ -197,6 +211,7 @@
       "detailLevel": "full",
       "requiredRequirements": ["req-decentralization", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-inter-jurisdictional", "req-service-endpoints"],
       "actors": ["importer", "exporter", "customs-authority"],
+      "audience": ["business", "enterprise"],
       "tags": ["trade", "customs", "import-export"]
     },
     {
@@ -208,6 +223,7 @@
       "detailLevel": "full",
       "requiredRequirements": ["req-decentralization", "req-control", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-inter-jurisdictional", "req-metadata"],
       "actors": ["manufacturer", "owner", "regulator"],
+      "audience": ["persons", "business"],
       "tags": ["vehicle", "automotive", "vin"]
     },
     {
@@ -219,6 +235,7 @@
       "detailLevel": "full",
       "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-portability", "req-interoperability"],
       "actors": ["worker", "employer", "training-provider"],
+      "audience": ["persons"],
       "tags": ["skills", "workforce", "portable-credentials"]
     },
     {
@@ -230,6 +247,7 @@
       "detailLevel": "brief",
       "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-inter-jurisdictional", "req-portability"],
       "actors": ["displaced-person", "aid-organization", "government"],
+      "audience": ["persons"],
       "tags": ["humanitarian", "refugees", "aid"]
     }
   ]
