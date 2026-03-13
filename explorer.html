@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DID Method Explorer — W3C DID Extensions</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-card: #1e293b;
+      --bg-hover: #334155;
+      --border: #334155;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --green: #22c55e;
+      --green-bg: rgba(34,197,94,0.1);
+      --yellow: #eab308;
+      --yellow-bg: rgba(234,179,8,0.1);
+      --red: #ef4444;
+      --red-bg: rgba(239,68,68,0.1);
+      --purple: #a855f7;
+      --purple-bg: rgba(168,85,247,0.1);
+      --cyan: #06b6d4;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+    /* Header */
+    .header { text-align: center; margin-bottom: 3rem; }
+    .header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .header h1 span { color: var(--accent); }
+    .header p { color: var(--text-muted); font-size: 1.1rem; }
+
+    /* Tabs */
+    .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+    .tab { padding: 0.75rem 1.5rem; cursor: pointer; color: var(--text-muted); border-bottom: 2px solid transparent; transition: all 0.2s; font-size: 0.95rem; }
+    .tab:hover { color: var(--text); background: var(--bg-hover); }
+    .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* Cards */
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+    .card p { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* Status badges */
+    .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+    .badge-core { background: var(--green-bg); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+    .badge-common { background: var(--yellow-bg); color: var(--yellow); border: 1px solid rgba(234,179,8,0.3); }
+    .badge-specialized { background: var(--purple-bg); color: var(--purple); border: 1px solid rgba(168,85,247,0.3); }
+    .badge-covered { background: var(--green-bg); color: var(--green); }
+    .badge-partial { background: var(--yellow-bg); color: var(--yellow); }
+    .badge-uncovered { background: var(--red-bg); color: var(--red); }
+    .badge-category { background: rgba(59,130,246,0.1); color: var(--accent); border: 1px solid rgba(59,130,246,0.3); }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    th { color: var(--text-muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    tr:hover { background: var(--bg-hover); }
+
+    /* Form elements */
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; }
+    .form-group .hint { color: var(--text-dim); font-size: 0.8rem; margin-bottom: 0.5rem; }
+    input[type="text"], textarea, select {
+      width: 100%; padding: 0.6rem 0.8rem; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 0.5rem; color: var(--text); font-size: 0.9rem; font-family: inherit;
+    }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); }
+    textarea { resize: vertical; min-height: 60px; }
+    select { cursor: pointer; }
+
+    /* Buttons */
+    .btn { padding: 0.6rem 1.2rem; border-radius: 0.5rem; border: none; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; }
+    .btn-primary { background: var(--accent); color: white; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+    .btn-outline:hover { background: rgba(59,130,246,0.1); }
+    .btn-sm { padding: 0.3rem 0.8rem; font-size: 0.8rem; }
+
+    /* Use case grid */
+    .uc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .uc-card { cursor: pointer; transition: all 0.2s; }
+    .uc-card:hover { border-color: var(--accent); }
+    .uc-card.selected { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    .uc-card h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .uc-card .req-count { color: var(--text-dim); font-size: 0.8rem; }
+
+    /* Requirements checklist */
+    .req-item { padding: 1rem; border: 1px solid var(--border); border-radius: 0.5rem; margin-bottom: 0.75rem; }
+    .req-item.required { border-left: 3px solid var(--accent); }
+    .req-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+    .req-name { font-weight: 600; font-size: 0.95rem; }
+    .req-question { color: var(--text-muted); font-size: 0.85rem; font-style: italic; margin-bottom: 0.75rem; }
+    .req-status-group { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .req-status-btn { padding: 0.3rem 0.8rem; border-radius: 0.375rem; border: 1px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; font-size: 0.8rem; transition: all 0.15s; }
+    .req-status-btn:hover { border-color: var(--text); color: var(--text); }
+    .req-status-btn.active-covered { background: var(--green-bg); color: var(--green); border-color: var(--green); }
+    .req-status-btn.active-partial { background: var(--yellow-bg); color: var(--yellow); border-color: var(--yellow); }
+    .req-status-btn.active-uncovered { background: var(--red-bg); color: var(--red); border-color: var(--red); }
+
+    /* Overlap alert */
+    .overlap-alert { background: rgba(234,179,8,0.08); border: 1px solid rgba(234,179,8,0.3); border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.5rem; }
+    .overlap-alert h4 { color: var(--yellow); margin-bottom: 0.5rem; }
+    .overlap-method { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid rgba(234,179,8,0.15); }
+    .overlap-method:last-child { border-bottom: none; }
+    .overlap-pct { font-weight: 700; font-size: 1.1rem; }
+    .overlap-high { color: var(--red); }
+    .overlap-medium { color: var(--yellow); }
+    .overlap-low { color: var(--green); }
+
+    /* Progress bar */
+    .progress-bar { width: 100%; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin: 0.5rem 0; }
+    .progress-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+
+    /* Stats row */
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    .stat-card { text-align: center; }
+    .stat-value { font-size: 2rem; font-weight: 700; color: var(--accent); }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* JSON output */
+    .json-output { background: #0d1117; border: 1px solid var(--border); border-radius: 0.5rem; padding: 1rem; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.8rem; overflow-x: auto; white-space: pre; max-height: 500px; overflow-y: auto; color: #c9d1d9; }
+
+    /* Category color dots */
+    .cat-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .uc-grid { grid-template-columns: 1fr; }
+      .tabs { overflow-x: auto; }
+    }
+
+    /* Step indicator */
+    .steps { display: flex; gap: 0; margin-bottom: 2rem; }
+    .step { flex: 1; text-align: center; padding: 0.75rem; border-bottom: 3px solid var(--border); color: var(--text-dim); font-size: 0.85rem; transition: all 0.2s; }
+    .step.active { border-bottom-color: var(--accent); color: var(--accent); }
+    .step.completed { border-bottom-color: var(--green); color: var(--green); }
+    .step-number { display: block; font-size: 1.2rem; font-weight: 700; }
+
+    .hidden { display: none !important; }
+
+    /* Search */
+    .search-bar { position: relative; margin-bottom: 1.5rem; }
+    .search-bar input { padding-left: 2.5rem; }
+    .search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: var(--text-dim); }
+
+    /* Suggestion box */
+    .suggestion { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 0.5rem; padding: 1rem; margin-top: 0.75rem; font-size: 0.85rem; }
+    .suggestion strong { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>DID Method <span>Explorer</span></h1>
+      <p>Browse registered methods, assess fitness, and discover overlaps before submitting</p>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="registry">Registry</div>
+      <div class="tab" data-tab="assess">Self-Assessment</div>
+      <div class="tab" data-tab="matrix">Requirements Matrix</div>
+    </div>
+
+    <!-- ═══ TAB: REGISTRY ═══ -->
+    <div class="tab-content active" id="tab-registry">
+      <div class="stats-row" id="registry-stats"></div>
+      <div class="search-bar">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" id="registry-search" placeholder="Search methods by name, category, or use case...">
+      </div>
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Category</th>
+              <th>Primary Use Case</th>
+              <th>Requirements</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="registry-table"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══ TAB: SELF-ASSESSMENT ═══ -->
+    <div class="tab-content" id="tab-assess">
+      <div class="steps" id="form-steps">
+        <div class="step active" data-step="1"><span class="step-number">1</span> Use Case</div>
+        <div class="step" data-step="2"><span class="step-number">2</span> Requirements</div>
+        <div class="step" data-step="3"><span class="step-number">3</span> Method Info</div>
+        <div class="step" data-step="4"><span class="step-number">4</span> Review</div>
+      </div>
+
+      <!-- Step 1: Use Case -->
+      <div class="form-step" id="step-1">
+        <div class="card">
+          <h3>What is your method's primary use case?</h3>
+          <p style="margin-bottom: 1rem;">Select the use case that best describes your method's target scenario. This determines which requirements are expected.</p>
+          <div class="uc-grid" id="uc-grid"></div>
+          <div style="margin-top: 1rem; text-align: center;">
+            <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 0.5rem;">Don't see your use case?</p>
+            <button class="btn btn-outline btn-sm" onclick="showNewUcForm()">+ Propose New Use Case</button>
+          </div>
+          <div id="new-uc-form" class="hidden" style="margin-top: 1rem;">
+            <div class="form-group">
+              <label>Use Case Name</label>
+              <input type="text" id="new-uc-name" placeholder="e.g., Decentralized Social Media">
+            </div>
+            <div class="form-group">
+              <label>Category</label>
+              <select id="new-uc-category"></select>
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea id="new-uc-desc" placeholder="Describe the use case scenario..."></textarea>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: right; margin-top: 1rem;">
+          <button class="btn btn-primary" onclick="goToStep(2)" id="btn-step2" disabled>Next: Requirements →</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Requirements -->
+      <div class="form-step hidden" id="step-2">
+        <div id="overlap-container"></div>
+        <div class="card">
+          <h3>Requirements Assessment</h3>
+          <p style="margin-bottom: 0.5rem;">Requirements from your selected use case are pre-checked. Mark each as covered, partial, or uncovered — and explain how or why.</p>
+          <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+            <div><span class="badge badge-core">CORE</span> Expected for most methods</div>
+            <div><span class="badge badge-common">COMMON</span> Important for adoption</div>
+            <div><span class="badge badge-specialized">SPECIALIZED</span> Use case dependent</div>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <div class="progress-bar"><div class="progress-fill" id="req-progress" style="width: 0%; background: var(--accent);"></div></div>
+            <span style="font-size: 0.8rem; color: var(--text-dim);" id="req-progress-text">0 of 22 assessed</span>
+          </div>
+        </div>
+
+        <div id="req-section-core"><h4 style="margin: 1rem 0 0.5rem; color: var(--green);">Core Requirements</h4></div>
+        <div id="req-section-common"><h4 style="margin: 1rem 0 0.5rem; color: var(--yellow);">Common Requirements</h4></div>
+        <div id="req-section-specialized"><h4 style="margin: 1rem 0 0.5rem; color: var(--purple);">Specialized Requirements</h4></div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+          <button class="btn btn-outline" onclick="goToStep(1)">← Back</button>
+          <button class="btn btn-primary" onclick="goToStep(3)">Next: Method Info →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Method Info -->
+      <div class="form-step hidden" id="step-3">
+        <div class="card">
+          <h3>Method Details</h3>
+          <div class="form-group">
+            <label>Method Name</label>
+            <p class="hint">Describe what the method does or where it anchors identity. See <a href="NAMING.md" style="color: var(--accent);">naming convention</a>.</p>
+            <input type="text" id="method-name" placeholder="e.g., web, key, peer, sns">
+            <div id="name-feedback" style="margin-top: 0.5rem;"></div>
+          </div>
+          <div class="form-group">
+            <label>Specification URL</label>
+            <input type="text" id="method-spec" placeholder="https://your-spec-url.example.com">
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="method-category">
+              <option value="">Select a category...</option>
+              <option value="key-derived">Key-derived — identity from cryptographic keys</option>
+              <option value="web-anchored">Web-anchored — identity tied to web domains</option>
+              <option value="ledger-anchored">Ledger-anchored — identity on a blockchain</option>
+              <option value="service-anchored">Service-anchored — identity via naming service</option>
+              <option value="peer-local">Peer/Local — peer-to-peer or offline</option>
+              <option value="dht-anchored">DHT-anchored — distributed hash table</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Parent Domain (if extending an existing method)</label>
+            <input type="text" id="method-parent" placeholder="e.g., web (for did:webvh)">
+          </div>
+          <div class="form-group">
+            <label>Extends (methods this builds upon)</label>
+            <input type="text" id="method-extends" placeholder="e.g., web, key (comma-separated)">
+          </div>
+          <div class="form-group">
+            <label>Calls (methods interacted with during resolution)</label>
+            <input type="text" id="method-calls" placeholder="e.g., key (comma-separated)">
+          </div>
+          <div class="form-group">
+            <label>Verifiable Data Registry</label>
+            <input type="text" id="method-vdr" placeholder="e.g., Ethereum, Solana, Web, IPFS">
+          </div>
+          <div class="form-group">
+            <label>Contact Name</label>
+            <input type="text" id="method-contact" placeholder="Your name or organization">
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+          <button class="btn btn-outline" onclick="goToStep(2)">← Back</button>
+          <button class="btn btn-primary" onclick="goToStep(4)">Next: Review →</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Review & Generate -->
+      <div class="form-step hidden" id="step-4">
+        <div id="final-overlap"></div>
+        <div class="card">
+          <h3>Summary</h3>
+          <div id="summary-content"></div>
+        </div>
+        <div class="card">
+          <h3>Generated Method JSON</h3>
+          <p style="margin-bottom: 0.75rem; color: var(--text-muted); font-size: 0.85rem;">Copy this JSON, save as <code>methods/&lt;your-method-name&gt;.json</code>, and submit a Pull Request.</p>
+          <pre class="json-output" id="json-output"></pre>
+          <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+            <button class="btn btn-primary" onclick="copyJson()">Copy JSON</button>
+            <button class="btn btn-outline" onclick="downloadJson()">Download JSON</button>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+          <button class="btn btn-outline" onclick="goToStep(3)">← Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ TAB: REQUIREMENTS MATRIX ═══ -->
+    <div class="tab-content" id="tab-matrix">
+      <div class="card">
+        <h3>Requirements × Methods Matrix</h3>
+        <p style="margin-bottom: 1rem; color: var(--text-muted);">Coverage of W3C requirements across registered methods with extended data.</p>
+        <div style="overflow-x: auto;">
+          <table id="matrix-table">
+            <thead><tr id="matrix-header"></tr></thead>
+            <tbody id="matrix-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ═══════════════════════════════════════════════════════════
+    // DATA LOADING
+    // ═══════════════════════════════════════════════════════════
+
+    let useCasesData = null;
+    let requirementsData = null;
+    let methodsData = [];
+    let selectedUseCase = null;
+    let assessments = {};
+
+    async function loadData() {
+      try {
+        const [ucRes, reqRes] = await Promise.all([
+          fetch('data/use-cases.json'),
+          fetch('data/requirements.json')
+        ]);
+        useCasesData = await ucRes.json();
+        requirementsData = await reqRes.json();
+
+        // Load all method JSON files from the examples directory
+        // In production, this would read from methods/ with a manifest
+        try {
+          const exRes = await fetch('data/examples/web.json');
+          if (exRes.ok) methodsData.push(await exRes.json());
+        } catch (e) { /* no examples yet */ }
+
+        // Also try loading any methods that have extended data
+        // For now, we load from the methods directory via a manifest
+        await loadMethodsManifest();
+
+        renderAll();
+      } catch (e) {
+        console.error('Failed to load data:', e);
+      }
+    }
+
+    async function loadMethodsManifest() {
+      // In a real deployment, the CI script generates this manifest
+      // For now, we use the examples directory
+      try {
+        const res = await fetch('data/methods-manifest.json');
+        if (res.ok) {
+          const manifest = await res.json();
+          const results = await Promise.all(
+            manifest.methods.map(m => fetch(`methods/${m}.json`).then(r => r.json()).catch(() => null))
+          );
+          results.filter(Boolean).forEach(m => {
+            if (!methodsData.find(existing => existing.name === m.name)) {
+              methodsData.push(m);
+            }
+          });
+        }
+      } catch (e) { /* no manifest yet */ }
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // TAB NAVIGATION
+    // ═══════════════════════════════════════════════════════════
+
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ═══════════════════════════════════════════════════════════
+    // STEP NAVIGATION
+    // ═══════════════════════════════════════════════════════════
+
+    function goToStep(n) {
+      document.querySelectorAll('.form-step').forEach(s => s.classList.add('hidden'));
+      document.getElementById('step-' + n).classList.remove('hidden');
+      document.querySelectorAll('.step').forEach(s => {
+        const sn = parseInt(s.dataset.step);
+        s.classList.remove('active', 'completed');
+        if (sn === n) s.classList.add('active');
+        else if (sn < n) s.classList.add('completed');
+      });
+
+      if (n === 2) renderRequirements();
+      if (n === 4) renderReview();
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // REGISTRY TAB
+    // ═══════════════════════════════════════════════════════════
+
+    function renderRegistry() {
+      const stats = document.getElementById('registry-stats');
+      const totalMethods = methodsData.length;
+      const withReqs = methodsData.filter(m => m.requirements).length;
+      const categories = [...new Set(methodsData.filter(m => m.category).map(m => m.category))];
+
+      stats.innerHTML = `
+        <div class="card stat-card"><div class="stat-value">${totalMethods}</div><div class="stat-label">Registered Methods</div></div>
+        <div class="card stat-card"><div class="stat-value">${withReqs}</div><div class="stat-label">With Requirements Data</div></div>
+        <div class="card stat-card"><div class="stat-value">${categories.length}</div><div class="stat-label">Categories</div></div>
+        <div class="card stat-card"><div class="stat-value">${useCasesData ? useCasesData.useCases.length : 0}</div><div class="stat-label">Use Cases</div></div>
+      `;
+
+      renderRegistryTable(methodsData);
+
+      document.getElementById('registry-search').addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase();
+        const filtered = methodsData.filter(m =>
+          m.name.toLowerCase().includes(q) ||
+          (m.category || '').toLowerCase().includes(q) ||
+          (m.verifiableDataRegistry || '').toLowerCase().includes(q)
+        );
+        renderRegistryTable(filtered);
+      });
+    }
+
+    function renderRegistryTable(methods) {
+      const tbody = document.getElementById('registry-table');
+      if (methods.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color: var(--text-dim); padding: 2rem;">No methods with extended data yet. Be the first — use the Self-Assessment tab!</td></tr>';
+        return;
+      }
+      tbody.innerHTML = methods.map(m => {
+        const reqCount = m.requirements ? Object.values(m.requirements).filter(r => r.status === 'covered').length : 0;
+        const totalReqs = m.requirements ? Object.keys(m.requirements).length : 0;
+        const uc = m.primaryUseCase && useCasesData
+          ? useCasesData.useCases.find(u => u.id === m.primaryUseCase)
+          : null;
+        return `<tr>
+          <td><strong>did:${m.name}</strong></td>
+          <td>${m.category ? `<span class="badge badge-category">${m.category}</span>` : '<span style="color:var(--text-dim)">—</span>'}</td>
+          <td>${uc ? uc.name : (m.primaryUseCase || '<span style="color:var(--text-dim)">—</span>')}</td>
+          <td>${totalReqs > 0 ? `
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+              <div class="progress-bar" style="width:80px;"><div class="progress-fill" style="width:${(reqCount/totalReqs)*100}%;background:var(--green);"></div></div>
+              <span style="font-size:0.8rem;color:var(--text-dim);">${reqCount}/${totalReqs}</span>
+            </div>` : '—'}</td>
+          <td><span class="badge badge-covered">${m.status}</span></td>
+        </tr>`;
+      }).join('');
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // USE CASE SELECTION (Step 1)
+    // ═══════════════════════════════════════════════════════════
+
+    function renderUseCases() {
+      if (!useCasesData) return;
+      const grid = document.getElementById('uc-grid');
+      const categorySelect = document.getElementById('new-uc-category');
+
+      categorySelect.innerHTML = useCasesData.categories.map(c =>
+        `<option value="${c.id}">${c.name}</option>`
+      ).join('');
+
+      // Group by category
+      const byCategory = {};
+      useCasesData.useCases.forEach(uc => {
+        if (!byCategory[uc.category]) byCategory[uc.category] = [];
+        byCategory[uc.category].push(uc);
+      });
+
+      let html = '';
+      useCasesData.categories.forEach(cat => {
+        const ucs = byCategory[cat.id] || [];
+        if (ucs.length === 0) return;
+        html += `<div style="grid-column: 1/-1; margin-top: 0.5rem;"><span class="cat-dot" style="background:${cat.color};"></span><strong style="font-size:0.85rem; color:var(--text-muted);">${cat.name}</strong></div>`;
+        ucs.forEach(uc => {
+          html += `
+            <div class="card uc-card" data-uc="${uc.id}" onclick="selectUseCase('${uc.id}')">
+              <h4>${uc.name}</h4>
+              <p style="font-size:0.8rem; margin-bottom:0.5rem;">${uc.description}</p>
+              <span class="req-count">${uc.requiredRequirements.length} requirements</span>
+              ${uc.actors ? `<div style="margin-top:0.25rem;">${uc.actors.map(a => `<span style="font-size:0.7rem;color:var(--text-dim);margin-right:0.5rem;">• ${a}</span>`).join('')}</div>` : ''}
+            </div>`;
+        });
+      });
+      grid.innerHTML = html;
+    }
+
+    function selectUseCase(id) {
+      selectedUseCase = useCasesData.useCases.find(u => u.id === id);
+      document.querySelectorAll('.uc-card').forEach(c => c.classList.remove('selected'));
+      const card = document.querySelector(`.uc-card[data-uc="${id}"]`);
+      if (card) card.classList.add('selected');
+      document.getElementById('btn-step2').disabled = false;
+    }
+
+    function showNewUcForm() {
+      document.getElementById('new-uc-form').classList.toggle('hidden');
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // REQUIREMENTS ASSESSMENT (Step 2)
+    // ═══════════════════════════════════════════════════════════
+
+    function renderRequirements() {
+      if (!requirementsData) return;
+      const sections = { core: '', common: '', specialized: '' };
+      const requiredReqIds = selectedUseCase ? selectedUseCase.requiredRequirements : [];
+
+      requirementsData.requirements.forEach(req => {
+        const isRequired = requiredReqIds.includes(req.id);
+        const current = assessments[req.id] || {};
+
+        sections[req.tier] += `
+          <div class="req-item ${isRequired ? 'required' : ''}" id="req-${req.id}">
+            <div class="req-header">
+              <span class="req-name">
+                ${isRequired ? '&#9733; ' : ''}${req.name}
+                <span class="badge badge-${req.tier}">${req.tier}</span>
+              </span>
+              <a href="${req.w3cSection}" target="_blank" style="color:var(--accent);font-size:0.8rem;">W3C Spec ↗</a>
+            </div>
+            <div class="req-question">${req.question}</div>
+            <div class="req-status-group">
+              <button class="req-status-btn ${current.status === 'covered' ? 'active-covered' : ''}"
+                onclick="setReqStatus('${req.id}', 'covered', this)">✓ Covered</button>
+              <button class="req-status-btn ${current.status === 'partial' ? 'active-partial' : ''}"
+                onclick="setReqStatus('${req.id}', 'partial', this)">◐ Partial</button>
+              <button class="req-status-btn ${current.status === 'uncovered' ? 'active-uncovered' : ''}"
+                onclick="setReqStatus('${req.id}', 'uncovered', this)">✗ Uncovered</button>
+            </div>
+            <textarea placeholder="${current.status === 'uncovered' ? 'Why is this not covered? What is the design trade-off?' : 'How does your method satisfy this requirement?'}"
+              oninput="setReqDetail('${req.id}', this.value)">${current.detail || ''}</textarea>
+            <div id="req-suggestion-${req.id}" style="margin-top: 0.5rem;"></div>
+          </div>`;
+      });
+
+      document.getElementById('req-section-core').innerHTML = '<h4 style="margin: 1rem 0 0.5rem; color: var(--green);">Core Requirements</h4>' + sections.core;
+      document.getElementById('req-section-common').innerHTML = '<h4 style="margin: 1rem 0 0.5rem; color: var(--yellow);">Common Requirements</h4>' + sections.common;
+      document.getElementById('req-section-specialized').innerHTML = '<h4 style="margin: 1rem 0 0.5rem; color: var(--purple);">Specialized Requirements</h4>' + sections.specialized;
+
+      updateProgress();
+      computeOverlaps();
+    }
+
+    function setReqStatus(reqId, status, btn) {
+      if (!assessments[reqId]) assessments[reqId] = {};
+      assessments[reqId].status = status;
+
+      const parent = btn.closest('.req-status-group');
+      parent.querySelectorAll('.req-status-btn').forEach(b => {
+        b.classList.remove('active-covered', 'active-partial', 'active-uncovered');
+      });
+      btn.classList.add('active-' + status);
+
+      updateProgress();
+      computeOverlaps();
+
+      // Show suggestion for uncovered requirements
+      if (status === 'uncovered' || status === 'partial') {
+        showReqSuggestion(reqId, status);
+      } else {
+        document.getElementById('req-suggestion-' + reqId).innerHTML = '';
+      }
+    }
+
+    function setReqDetail(reqId, detail) {
+      if (!assessments[reqId]) assessments[reqId] = {};
+      assessments[reqId].detail = detail;
+    }
+
+    function showReqSuggestion(reqId, status) {
+      const el = document.getElementById('req-suggestion-' + reqId);
+      // Find methods that cover this requirement
+      const covering = methodsData.filter(m => {
+        if (!m.requirements) return false;
+        const key = Object.keys(m.requirements).find(k => k.toLowerCase().includes(reqId.replace('req-', '').replace(/-/g, '_').toLowerCase()));
+        return key && m.requirements[key].status === 'covered';
+      });
+
+      if (covering.length > 0) {
+        el.innerHTML = `<div class="suggestion">
+          <strong>&#128161;</strong> Methods that solve this: ${covering.map(m => `<strong>did:${m.name}</strong>`).join(', ')}.
+          Could your method <strong>call</strong> or <strong>extend</strong> one of these?
+        </div>`;
+      }
+    }
+
+    function updateProgress() {
+      const total = requirementsData.requirements.length;
+      const assessed = Object.keys(assessments).filter(k => assessments[k].status).length;
+      const pct = (assessed / total) * 100;
+      document.getElementById('req-progress').style.width = pct + '%';
+      document.getElementById('req-progress-text').textContent = `${assessed} of ${total} assessed`;
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // OVERLAP DETECTION
+    // ═══════════════════════════════════════════════════════════
+
+    function computeOverlaps() {
+      const container = document.getElementById('overlap-container');
+      if (methodsData.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      const myCovered = new Set(
+        Object.entries(assessments)
+          .filter(([, v]) => v.status === 'covered' || v.status === 'partial')
+          .map(([k]) => k)
+      );
+
+      if (myCovered.size === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      const overlaps = methodsData
+        .filter(m => m.requirements)
+        .map(m => {
+          const theirReqs = new Set();
+          Object.entries(m.requirements).forEach(([key, val]) => {
+            if (val.status === 'covered' || val.status === 'partial') {
+              // Convert key format back to req-id format
+              const normalized = 'req-' + key.replace(/^R\d+_/, '').toLowerCase().replace(/_/g, '-');
+              theirReqs.add(normalized);
+            }
+          });
+          const intersection = [...myCovered].filter(r => theirReqs.has(r));
+          const pct = myCovered.size > 0 ? Math.round((intersection.length / myCovered.size) * 100) : 0;
+          const onlyTheirs = [...theirReqs].filter(r => !myCovered.has(r));
+          const onlyMine = [...myCovered].filter(r => !theirReqs.has(r));
+          return { method: m, pct, shared: intersection, onlyTheirs, onlyMine };
+        })
+        .filter(o => o.pct > 30)
+        .sort((a, b) => b.pct - a.pct);
+
+      if (overlaps.length === 0) {
+        container.innerHTML = `<div class="card" style="border-color: var(--green); background: var(--green-bg);">
+          <h4 style="color: var(--green);">&#10003; No significant overlaps detected</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Your method's requirement coverage appears distinct from existing methods.</p>
+        </div>`;
+        return;
+      }
+
+      container.innerHTML = `<div class="overlap-alert">
+        <h4>&#9888; Overlap Detected — Consider These Methods</h4>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.75rem;">
+          Methods with similar requirement coverage. Consider contributing to an existing effort or documenting your differentiation.
+        </p>
+        ${overlaps.map(o => `
+          <div class="overlap-method">
+            <div>
+              <strong>did:${o.method.name}</strong>
+              <span style="color:var(--text-dim); font-size:0.8rem; margin-left:0.5rem;">${o.method.category || ''}</span>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.25rem;">
+                Shared: ${o.shared.length} reqs ·
+                They add: ${o.onlyTheirs.length} ·
+                You add: ${o.onlyMine.length}
+              </div>
+              ${o.onlyMine.length > 0 ? `<div style="font-size:0.75rem; color:var(--cyan); margin-top:0.25rem;">Your differentiation: ${o.onlyMine.map(r => r.replace('req-', '')).join(', ')}</div>` : ''}
+            </div>
+            <div>
+              <span class="overlap-pct ${o.pct >= 80 ? 'overlap-high' : o.pct >= 50 ? 'overlap-medium' : 'overlap-low'}">${o.pct}%</span>
+              <div style="font-size:0.7rem; color:var(--text-dim);">overlap</div>
+            </div>
+          </div>
+          ${o.pct >= 80 ? `<div class="suggestion" style="margin: 0.5rem 0;">
+            <strong>&#128161; High overlap:</strong> Consider <a href="${o.method.specification || '#'}" style="color:var(--accent);" target="_blank">contributing to did:${o.method.name}</a>
+            or extending it as <strong>did:${o.method.name}-&lt;yours&gt;</strong> using the CODEX composability pattern.
+          </div>` : ''}
+        `).join('')}
+      </div>`;
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // METHOD INFO (Step 3) — Name Check
+    // ═══════════════════════════════════════════════════════════
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const nameInput = document.getElementById('method-name');
+      if (nameInput) {
+        nameInput.addEventListener('input', (e) => {
+          checkMethodName(e.target.value);
+        });
+      }
+    });
+
+    function checkMethodName(name) {
+      const fb = document.getElementById('name-feedback');
+      if (!name) { fb.innerHTML = ''; return; }
+
+      const lower = name.toLowerCase().trim();
+      const existing = methodsData.find(m => m.name.toLowerCase() === lower);
+      const descriptivePatterns = ['web', 'key', 'peer', 'dns', 'pkh', 'jwk', 'sol', 'ethr', 'dht', 'self'];
+      const looksDescriptive = descriptivePatterns.some(p => lower.includes(p)) || lower.length <= 5;
+
+      let html = '';
+      if (existing) {
+        html = `<div class="suggestion" style="border-color: var(--red); background: var(--red-bg);">
+          <strong>&#9888; Name collision:</strong> <strong>did:${existing.name}</strong> is already registered.
+          Consider <strong>did:${lower}-2</strong> or a more descriptive variant like <strong>did:${lower}-&lt;differentiator&gt;</strong>.
+        </div>`;
+      } else if (!looksDescriptive && lower.length > 6) {
+        html = `<div class="suggestion">
+          <strong>&#128161; Naming tip:</strong> "${lower}" may not be self-describing.
+          Consider naming after what your method does or where it anchors identity
+          (e.g., did:web, did:key, did:peer). See <a href="NAMING.md" style="color:var(--accent);">naming convention</a>.
+        </div>`;
+      } else {
+        html = `<div style="color: var(--green); font-size: 0.85rem;">&#10003; did:${lower} — looks good!</div>`;
+      }
+      fb.innerHTML = html;
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // REVIEW & JSON GENERATION (Step 4)
+    // ═══════════════════════════════════════════════════════════
+
+    function renderReview() {
+      const name = document.getElementById('method-name').value || 'unnamed';
+      const spec = document.getElementById('method-spec').value || '';
+      const category = document.getElementById('method-category').value || '';
+      const parent = document.getElementById('method-parent').value || '';
+      const ext = document.getElementById('method-extends').value || '';
+      const calls = document.getElementById('method-calls').value || '';
+      const vdr = document.getElementById('method-vdr').value || '';
+      const contact = document.getElementById('method-contact').value || '';
+
+      const covered = Object.values(assessments).filter(a => a.status === 'covered').length;
+      const partial = Object.values(assessments).filter(a => a.status === 'partial').length;
+      const uncovered = Object.values(assessments).filter(a => a.status === 'uncovered').length;
+
+      document.getElementById('summary-content').innerHTML = `
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div><strong>Method:</strong> did:${name}</div>
+          <div><strong>Category:</strong> ${category || '—'}</div>
+          <div><strong>Use Case:</strong> ${selectedUseCase ? selectedUseCase.name : '—'}</div>
+          <div><strong>Parent:</strong> ${parent || '—'}</div>
+          <div><strong>Extends:</strong> ${ext || '—'}</div>
+          <div><strong>Calls:</strong> ${calls || '—'}</div>
+        </div>
+        <div style="margin-top: 1rem; display:flex; gap: 1rem;">
+          <span class="badge badge-covered">${covered} covered</span>
+          <span class="badge badge-partial">${partial} partial</span>
+          <span class="badge badge-uncovered">${uncovered} uncovered</span>
+        </div>
+      `;
+
+      // Build the JSON
+      const methodJson = {
+        name: name,
+        status: 'registered',
+        specification: spec
+      };
+
+      if (contact) methodJson.contactName = contact;
+      methodJson.contactEmail = '';
+      methodJson.contactWebsite = '';
+      if (vdr) methodJson.verifiableDataRegistry = vdr;
+      if (category) methodJson.category = category;
+      if (parent) methodJson.parentDomain = parent;
+      if (ext) methodJson.extends = ext.split(',').map(s => s.trim()).filter(Boolean);
+      if (calls) methodJson.calls = calls.split(',').map(s => s.trim()).filter(Boolean);
+      if (selectedUseCase) {
+        methodJson.primaryUseCase = selectedUseCase.id;
+        methodJson.supportedUseCases = [selectedUseCase.id];
+      }
+
+      // Build requirements
+      const reqs = {};
+      requirementsData.requirements.forEach(req => {
+        const a = assessments[req.id];
+        const key = req.id.replace('req-', '').replace(/-/g, '_');
+        const capKey = key.split('_').map((w, i) => {
+          return w.charAt(0).toUpperCase() + w.slice(1);
+        }).join('_');
+        reqs[`${capKey}`] = {
+          tier: req.tier,
+          status: a ? a.status : '',
+          detail: a ? (a.detail || '') : ''
+        };
+      });
+      methodJson.requirements = reqs;
+
+      const jsonStr = JSON.stringify(methodJson, null, 2);
+      document.getElementById('json-output').textContent = jsonStr;
+
+      // Final overlap
+      computeOverlapsForReview();
+    }
+
+    function computeOverlapsForReview() {
+      const container = document.getElementById('final-overlap');
+      // Reuse same logic
+      const myCovered = new Set(
+        Object.entries(assessments)
+          .filter(([, v]) => v.status === 'covered' || v.status === 'partial')
+          .map(([k]) => k)
+      );
+
+      if (myCovered.size === 0 || methodsData.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      const overlaps = methodsData.filter(m => m.requirements).map(m => {
+        const theirReqs = new Set();
+        Object.entries(m.requirements).forEach(([key, val]) => {
+          if (val.status === 'covered' || val.status === 'partial') {
+            const normalized = 'req-' + key.replace(/^R\d+_/, '').toLowerCase().replace(/_/g, '-');
+            theirReqs.add(normalized);
+          }
+        });
+        const intersection = [...myCovered].filter(r => theirReqs.has(r));
+        const pct = Math.round((intersection.length / myCovered.size) * 100);
+        return { method: m, pct };
+      }).filter(o => o.pct > 30).sort((a, b) => b.pct - a.pct);
+
+      if (overlaps.length > 0) {
+        container.innerHTML = `<div class="overlap-alert">
+          <h4>&#9888; Overlap Summary</h4>
+          ${overlaps.map(o => `<div class="overlap-method">
+            <span><strong>did:${o.method.name}</strong></span>
+            <span class="overlap-pct ${o.pct >= 80 ? 'overlap-high' : o.pct >= 50 ? 'overlap-medium' : 'overlap-low'}">${o.pct}%</span>
+          </div>`).join('')}
+        </div>`;
+      } else {
+        container.innerHTML = '';
+      }
+    }
+
+    function copyJson() {
+      const text = document.getElementById('json-output').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = event.target;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy JSON', 2000);
+      });
+    }
+
+    function downloadJson() {
+      const text = document.getElementById('json-output').textContent;
+      const name = document.getElementById('method-name').value || 'method';
+      const blob = new Blob([text], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = name + '.json'; a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // REQUIREMENTS MATRIX TAB
+    // ═══════════════════════════════════════════════════════════
+
+    function renderMatrix() {
+      if (!requirementsData || methodsData.length === 0) {
+        document.getElementById('matrix-body').innerHTML = '<tr><td colspan="2" style="text-align:center;color:var(--text-dim);padding:2rem;">No methods with requirements data yet. Use the Self-Assessment tab to add the first!</td></tr>';
+        return;
+      }
+
+      const methods = methodsData.filter(m => m.requirements);
+      const header = document.getElementById('matrix-header');
+      header.innerHTML = '<th>Requirement</th><th>Tier</th>' + methods.map(m => `<th style="writing-mode:vertical-rl;text-orientation:mixed;font-size:0.75rem;">did:${m.name}</th>`).join('');
+
+      const body = document.getElementById('matrix-body');
+      body.innerHTML = requirementsData.requirements.map(req => {
+        const cells = methods.map(m => {
+          const key = Object.keys(m.requirements).find(k =>
+            k.toLowerCase().replace(/_/g, '').includes(req.id.replace('req-', '').replace(/-/g, ''))
+          );
+          const val = key ? m.requirements[key] : null;
+          if (!val || !val.status) return '<td style="text-align:center;color:var(--text-dim);">—</td>';
+          const icons = { covered: '&#10003;', partial: '&#9673;', uncovered: '&#10007;' };
+          const colors = { covered: 'var(--green)', partial: 'var(--yellow)', uncovered: 'var(--red)' };
+          return `<td style="text-align:center;color:${colors[val.status]};" title="${val.detail || ''}">${icons[val.status]}</td>`;
+        }).join('');
+        return `<tr><td>${req.name}</td><td><span class="badge badge-${req.tier}">${req.tier}</span></td>${cells}</tr>`;
+      }).join('');
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // INIT
+    // ═══════════════════════════════════════════════════════════
+
+    function renderAll() {
+      renderRegistry();
+      renderUseCases();
+      renderMatrix();
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
