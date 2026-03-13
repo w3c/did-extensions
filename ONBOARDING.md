@@ -76,20 +76,47 @@ communicate the trade-offs in your method.
 
 ### Step 4: Write Your Method Specification
 
-Your specification should define:
+Your specification **must be written in Markdown** and hosted in this repository
+under `specs/<your-method>/`. This ensures:
 
-1. **Method-specific identifier syntax** — the method-specific-id portion of
-   `did:<method-name>:<method-specific-id>`
-2. **CRUD operations** — Create, Read (Resolve), Update, Deactivate
-3. **Security and privacy considerations**
-4. **DID Document representation** — which verification methods, services,
-   and properties your method supports
+- No broken links — spec and registration live in the same repo
+- Always the latest version — no drift between registry URL and actual spec
+- GitHub-native editing — anyone can fix a typo via PR without touching HTML
+- Standardized structure — every spec follows the same template and sections
 
-See the [DID Implementation Guide](https://www.w3.org/TR/did-imp-guide/) for
-practical guidance.
+**Start with the template:**
 
-- **Spec:** [w3c.github.io/did-imp-guide](https://w3c.github.io/did-imp-guide/)
-- **Repo:** [w3c/did-imp-guide](https://github.com/w3c/did-imp-guide)
+```bash
+cp specs/TEMPLATE.md specs/<your-method>/spec.md
+```
+
+For complex methods, split into numbered section files (see
+[did:sns](https://github.com/Attestto-com/did-sns-spec/tree/main/did-sns/spec)
+as the reference — 14 sections covering abstract, use cases, trust model,
+privacy, CRUD, security, interoperability, and more).
+
+The template defines 14 sections — 8 required, 3 recommended, 3 optional:
+
+| Required | Recommended | Optional |
+|---|---|---|
+| Abstract | Trust Model | Metadata Schema |
+| Use Case & Requirements | Interoperability | Implementation Notes |
+| DID Syntax | Architectural Rationale | |
+| DID Document | W3C Requirements Coverage | |
+| CRUD Operations | | |
+| Security Considerations | | |
+| Privacy Considerations | | |
+| References | | |
+
+See [specs/README.md](./specs/README.md) for the full template documentation
+and a list of the 10 best-documented methods as examples.
+
+Also review the [DID Implementation Guide](https://www.w3.org/TR/did-imp-guide/)
+for practical guidance.
+
+- **Template:** [specs/TEMPLATE.md](./specs/TEMPLATE.md)
+- **Examples:** [specs/README.md](./specs/README.md)
+- **W3C Guide:** [w3c.github.io/did-imp-guide](https://w3c.github.io/did-imp-guide/)
 
 ### Step 5: Define DID Resolution Behavior
 
@@ -128,23 +155,42 @@ See [NAMING.md](./NAMING.md) for the naming convention and guidelines.
 
 ### Step 8: Register Your Method
 
-Add a JSON file to the [methods/](./methods/) directory and
-[open a pull request](https://github.com/w3c/did-extensions/pulls).
+Use the **[Self-Assessment Form](./explorer.html)** to generate your
+registration JSON. The form walks you through:
+
+1. **Select your use case** — see which requirements apply
+2. **Assess each requirement** — covered / partial / uncovered with explanations
+3. **Check for overlaps** — discover existing methods with similar coverage
+4. **Enter method details** — name validation, category, composability
+5. **Download JSON** — pre-filled registration file for your PR
+
+Alternatively, copy the [template](./data/method-template.json) manually.
+
+Your PR should include:
+
+```
+methods/<your-method>.json       ← registration (from the form)
+specs/<your-method>/spec.md      ← specification (from the template)
+```
+
+The `specification` field in your JSON should point to your in-repo spec:
 
 ```jsonc
 {
   "name": "your-method-name",
   "status": "registered",
-  "specification": "https://your-spec-url",
-  "contactName": "Your Name",
-  "contactEmail": "",
-  "contactWebsite": "",
-  "verifiableDataRegistry": "Description of your VDR"
+  "specification": "./specs/your-method-name/spec.md",
+  "category": "web-anchored",
+  "primaryUseCase": "uc-credentials",
+  "requirements": { ... }
 }
 ```
 
-Registration criteria are **mechanical** — valid JSON, a spec URL, no IP
-conflicts. See [the registration process](https://w3c.github.io/did-extensions/#the-registration-process)
+Registration criteria are **mechanical** — valid JSON, a spec in Markdown, no
+name collisions. The CI runs [validate-extended.js](./tooling/validate-extended.js)
+to check naming, requirement coverage, and overlap detection.
+
+See [the registration process](https://w3c.github.io/did-extensions/#the-registration-process)
 for details.
 
 ### Step 9: Consider a Universal Resolver Driver
@@ -176,6 +222,9 @@ conformance, or standardization.
 
 ## Related Resources
 
+- [Self-Assessment Form](./explorer.html) — interactive form to assess fitness, detect overlaps, and generate JSON
+- [Specification Template](./specs/TEMPLATE.md) — standard Markdown template for method specs
+- [Best-Documented Methods](./specs/README.md) — top 10 reference examples
 - [Ecosystem Repository Map](./REPO-MAP.md) — all active repositories across W3C, W3C-CCG, and DIF
 - [Cross-References](./data/cross-references.json) — structured links between requirements, rubric criteria, and registry entries
 - [Method Naming Convention](./NAMING.md) — guidelines for choosing descriptive method names
