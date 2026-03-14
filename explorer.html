@@ -1876,16 +1876,10 @@
         const rKey = 'R' + (idx + 1);
         let metCount = 0;
         const cells = matrixMethods.map(m => {
-          const reqTech = (m.reqTechs || {})[rKey] || {};
           const inReqMet = (m.reqMet || []).includes(rKey);
-
           if (inReqMet) {
             metCount++;
             return `<td style="text-align:center;color:var(--green);">✓</td>`;
-          }
-          // Check if partial — has approach/techs but not in reqMet
-          if (reqTech.approach || (reqTech.techs && reqTech.techs.length > 0)) {
-            return `<td style="text-align:center;color:var(--yellow);" title="${reqTech.approach || 'Partial coverage'}">P</td>`;
           }
           return `<td style="text-align:center;color:rgba(100,116,139,0.3);">·</td>`;
         }).join('');
@@ -2090,10 +2084,8 @@
               ${met ? '✓ Met' : '✗ Not met'}
             </div>
             <div style="width:100%;padding-left:3rem;margin-top:0.25rem;">
-              ${approach ? `<div style="font-size:0.8rem;color:var(--text);margin-bottom:0.2rem;">${approach}</div>` : ''}
-              ${techs.length > 0 ? `<div style="display:flex;gap:0.3rem;flex-wrap:wrap;margin-bottom:0.2rem;">${techs.map(t => `<span class="pill">${t}</span>`).join('')}</div>` : ''}
-              ${satisfaction ? `<div style="font-size:0.75rem;color:var(--text-muted);line-height:1.5;margin-top:0.2rem;">${satisfaction}</div>` : ''}
-              ${!met && approach ? `<div style="font-size:0.75rem;color:var(--text-muted);font-style:italic;margin-top:0.2rem;">Gap: ${approach}</div>` : ''}
+              <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.3rem;">${req.description}</div>
+              ${!met ? `<div style="font-size:0.75rem;color:var(--red);font-style:italic;margin-top:0.2rem;">Gap: This method does not cover this requirement.</div>` : ''}
               <div style="display:flex;gap:1rem;margin-top:0.2rem;">
                 ${ownSpecLink ? `<a href="${ownSpecLink}" target="_blank" style="font-size:0.7rem;color:var(--green);">Method spec ↗</a>` : ''}
                 ${req.w3cSection ? `<a href="${req.w3cSection}" target="_blank" style="font-size:0.7rem;color:var(--text-dim);">W3C ref ↗</a>` : ''}
