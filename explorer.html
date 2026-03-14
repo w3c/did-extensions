@@ -357,6 +357,11 @@
         <div><span class="ctx-label">Use Case:</span> <span class="ctx-value empty" id="ctx-usecase">not selected</span></div>
         <div><span class="ctx-label">Industries:</span> <span class="ctx-value empty" id="ctx-industries">—</span></div>
         <div><span class="ctx-label">Repo:</span> <span class="ctx-value empty" id="ctx-repo">—</span></div>
+        <div style="margin-left:auto;display:flex;gap:0.4rem;align-items:center;">
+          <button class="btn btn-outline btn-sm" onclick="saveProgress()" id="btn-save" title="Save progress to browser">💾 Save</button>
+          <button class="btn btn-outline btn-sm" onclick="loadProgress()" id="btn-load" style="display:none;" title="Restore saved progress">↩ Restore</button>
+          <span id="save-status" style="font-size:0.7rem;color:var(--text-dim);"></span>
+        </div>
       </div>
       <div class="steps" id="form-steps">
         <div class="step active" data-step="1"><span class="step-number">1</span> Use Case</div>
@@ -887,6 +892,111 @@
 
       if (n === 2) renderRequirements();
       if (n === 4) renderReview();
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // SAVE / RESTORE PROGRESS
+    // ═══════════════════════════════════════════════════════════
+    const SAVE_KEY = 'did_explorer_assessment';
+
+    function saveProgress() {
+      const formInputs = {};
+      ['method-name', 'method-repo', 'method-category', 'method-contact',
+       'method-vdr', 'method-industries', 'method-parent', 'method-extends', 'method-calls'
+      ].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) formInputs[id] = el.value;
+      });
+      // Spec link inputs
+      const specLinks = {};
+      document.querySelectorAll('.spec-link').forEach(el => {
+        if (el.dataset.section && el.value) specLinks[el.dataset.section] = el.value;
+      });
+      // Current step
+      const activeStep = document.querySelector('.step.active');
+      const currentStep = activeStep ? parseInt(activeStep.dataset.step) : 1;
+
+      const state = {
+        selectedUseCaseId: selectedUseCase ? selectedUseCase.id : null,
+        audiences: [...selectedAudiences],
+        assessments: JSON.parse(JSON.stringify(assessments)),
+        formInputs,
+        specLinks,
+        currentStep,
+        savedAt: new Date().toISOString(),
+      };
+      localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+      const status = document.getElementById('save-status');
+      status.textContent = 'Saved ✓';
+      status.style.color = 'var(--green)';
+      setTimeout(() => { status.textContent = ''; }, 2500);
+      checkSavedProgress();
+    }
+
+    function loadProgress() {
+      const raw = localStorage.getItem(SAVE_KEY);
+      if (!raw) return;
+      try {
+        const state = JSON.parse(raw);
+        // Restore use case
+        if (state.selectedUseCaseId && useCasesData) {
+          selectedUseCase = useCasesData.useCases.find(u => u.id === state.selectedUseCaseId) || null;
+        }
+        // Restore audiences
+        if (state.audiences) {
+          selectedAudiences = new Set(state.audiences);
+          document.querySelectorAll('.audience-btn').forEach(btn => {
+            btn.classList.toggle('active', selectedAudiences.has(btn.dataset.audience));
+          });
+        }
+        // Restore assessments
+        if (state.assessments) assessments = state.assessments;
+        // Restore form inputs
+        if (state.formInputs) {
+          Object.entries(state.formInputs).forEach(([id, val]) => {
+            const el = document.getElementById(id);
+            if (el) el.value = val;
+          });
+        }
+        // Restore spec links
+        if (state.specLinks) {
+          document.querySelectorAll('.spec-link').forEach(el => {
+            if (el.dataset.section && state.specLinks[el.dataset.section]) {
+              el.value = state.specLinks[el.dataset.section];
+            }
+          });
+        }
+        // Re-render and navigate
+        if (selectedUseCase) {
+          document.getElementById('btn-step2').disabled = false;
+          renderUseCases();
+        }
+        updateContextBar();
+        goToStep(state.currentStep || 1);
+
+        const status = document.getElementById('save-status');
+        const when = state.savedAt ? new Date(state.savedAt).toLocaleString() : '';
+        status.textContent = `Restored from ${when}`;
+        status.style.color = 'var(--cyan)';
+        setTimeout(() => { status.textContent = ''; }, 3500);
+      } catch (e) {
+        console.warn('Failed to restore progress:', e);
+      }
+    }
+
+    function checkSavedProgress() {
+      const raw = localStorage.getItem(SAVE_KEY);
+      const btn = document.getElementById('btn-load');
+      if (raw && btn) {
+        try {
+          const state = JSON.parse(raw);
+          const when = state.savedAt ? new Date(state.savedAt).toLocaleDateString() : '';
+          btn.style.display = '';
+          btn.textContent = `↩ Restore${when ? ' (' + when + ')' : ''}`;
+        } catch { btn.style.display = 'none'; }
+      } else if (btn) {
+        btn.style.display = 'none';
+      }
     }
 
     // ═══════════════════════════════════════════════════════════
@@ -2570,6 +2680,7 @@
       renderUseCases();
       renderMatrix();
       renderEcosystem();
+      checkSavedProgress();
     }
 
     loadData();
