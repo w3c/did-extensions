@@ -2129,7 +2129,7 @@
         requirementsData.requirements.forEach((req, idx) => {
           const rKey = 'R' + (idx + 1);
           const met = myReqSet.has(rKey);
-          matrixHtml += `<td style="text-align:center;color:${met?'var(--green)':'var(--red)'};">${met ? '✓' : '·'}</td>`;
+          matrixHtml += `<td style="text-align:center;color:${met?'var(--green)':'var(--red)'};">${met ? '✓' : '✗'}</td>`;
         });
         matrixHtml += `<td style="text-align:center;">${reqMet.length}</td></tr>`;
 
@@ -2140,7 +2140,7 @@
           requirementsData.requirements.forEach((req, idx) => {
             const rKey = 'R' + (idx + 1);
             const met = omSet.has(rKey);
-            matrixHtml += `<td style="text-align:center;color:${met?'var(--green)':'rgba(100,116,139,0.3)'};">${met ? '✓' : '·'}</td>`;
+            matrixHtml += `<td style="text-align:center;color:${met?'var(--green)':'rgba(239,68,68,0.5)'};">${met ? '✓' : '✗'}</td>`;
           });
           matrixHtml += `<td style="text-align:center;">${om.reqMet.length}</td></tr>`;
         });
