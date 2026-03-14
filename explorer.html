@@ -1465,34 +1465,40 @@
         return;
       }
 
+      // Group overlaps by shared requirement
+      const reqToMethods = new Map();
+      for (const o of overlaps) {
+        for (const r of o.shared) {
+          if (!reqToMethods.has(r)) reqToMethods.set(r, []);
+          reqToMethods.get(r).push({ name: o.method.method, pct: o.pct });
+        }
+      }
+      // Sort requirements by number of methods covering them (descending)
+      const reqRows = [...reqToMethods.entries()]
+        .sort((a, b) => b[1].length - a[1].length)
+        .map(([r, methods]) => {
+          const methodList = methods
+            .sort((a, b) => b.pct - a.pct)
+            .map(m => {
+              const cls = m.pct >= 80 ? 'overlap-high' : m.pct >= 50 ? 'overlap-medium' : 'overlap-low';
+              return `<span style="color:var(${cls === 'overlap-high' ? '--red' : cls === 'overlap-medium' ? '--yellow' : '--green'})">${m.name}</span> <span style="font-size:0.7rem;color:var(--text-dim);">${m.pct}%</span>`;
+            }).join(', ');
+          // Find requirement description
+          const reqObj = requirementsData.requirements.find(req => getReqIdToRMap()[req.id] === r);
+          const reqLabel = reqObj ? reqObj.name : r;
+          return `<div style="display:flex;gap:0.5rem;align-items:baseline;padding:0.3rem 0;border-bottom:1px solid rgba(234,179,8,0.1);">
+            <span style="font-weight:600;white-space:nowrap;min-width:2rem;">${r}</span>
+            <span style="color:var(--text-muted);font-size:0.8rem;min-width:10rem;">${reqLabel}</span>
+            <span style="font-size:0.8rem;flex:1;">${methodList}</span>
+          </div>`;
+        });
+
       container.innerHTML = `<div class="overlap-alert">
-        <h4>&#9888; Overlap Detected — Consider These Methods</h4>
-        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.75rem;">
-          Compared against ${registryData.methods.length} registered methods. Methods with similar requirement coverage shown below.
+        <h4>&#9888; Overlap Detected — ${overlaps.length} similar methods across ${reqToMethods.size} shared requirements</h4>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem;">
+          Compared against ${registryData.methods.length} registered methods. Color = Jaccard similarity (red &ge;80%, yellow &ge;50%, green &lt;50%).
         </p>
-        ${overlaps.map(o => `
-          <div class="overlap-method">
-            <div>
-              <strong>${o.method.method}</strong>
-              <span style="color:var(--text-dim); font-size:0.8rem; margin-left:0.5rem;">${o.method.registryType || ''}</span>
-              ${o.method.focalUseCase ? `<span style="color:var(--text-muted); font-size:0.75rem; margin-left:0.5rem;">${o.method.focalUseCase}</span>` : ''}
-              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.25rem;">
-                Shared: ${o.shared.length} reqs ·
-                They add: ${o.onlyTheirs.length} ·
-                You add: ${o.onlyMine.length}
-              </div>
-              ${o.onlyMine.length > 0 ? `<div style="font-size:0.75rem; color:var(--cyan); margin-top:0.25rem;">Your differentiation: ${o.onlyMine.join(', ')}</div>` : ''}
-            </div>
-            <div>
-              <span class="overlap-pct ${o.pct >= 80 ? 'overlap-high' : o.pct >= 50 ? 'overlap-medium' : 'overlap-low'}">${o.pct}%</span>
-              <div style="font-size:0.7rem; color:var(--text-dim);">overlap</div>
-            </div>
-          </div>
-          ${o.pct >= 80 ? `<div class="suggestion" style="margin: 0.5rem 0;">
-            <strong>&#128161; High overlap:</strong> Consider <a href="${o.method.repoUrl || '#'}" style="color:var(--accent);" target="_blank">contributing to ${o.method.method}</a>
-            or extending it as <strong>${o.method.method}-&lt;yours&gt;</strong> using the CODEX composability pattern.
-          </div>` : ''}
-        `).join('')}
+        ${reqRows.join('')}
       </div>`;
     }
 
@@ -1766,12 +1772,13 @@
         .slice(0, 10);
 
       if (overlaps.length > 0) {
+        const methodList = overlaps.map(o => {
+          const cls = o.pct >= 80 ? '--red' : o.pct >= 50 ? '--yellow' : '--green';
+          return `<span style="color:var(${cls});">${o.method.method}</span> <span style="font-size:0.75rem;color:var(--text-dim);">${o.pct}%</span>`;
+        }).join(', ');
         container.innerHTML = `<div class="overlap-alert">
-          <h4>&#9888; Overlap Summary</h4>
-          ${overlaps.map(o => `<div class="overlap-method">
-            <span><strong>${o.method.method}</strong></span>
-            <span class="overlap-pct ${o.pct >= 80 ? 'overlap-high' : o.pct >= 50 ? 'overlap-medium' : 'overlap-low'}">${o.pct}%</span>
-          </div>`).join('')}
+          <h4>&#9888; Overlap Summary — ${overlaps.length} similar methods</h4>
+          <p style="font-size:0.85rem;margin-top:0.35rem;">${methodList}</p>
         </div>`;
       } else {
         container.innerHTML = '';
@@ -2268,13 +2275,18 @@
             const met = new Set(m.reqMet || []);
             return requiredRs.every(r => met.has(r));
           });
-          const partialMethods = methods.filter(m => {
-            if (getMaturity(m).level < 1) return false;
+          // Find best partial coverage percentage (highest % among non-full methods)
+          let bestPartialPct = 0;
+          methods.forEach(m => {
+            if (getMaturity(m).level < 1) return;
             const met = new Set(m.reqMet || []);
             const covered = requiredRs.filter(r => met.has(r)).length;
-            return covered > 0 && covered < requiredRs.length;
+            if (covered > 0 && covered < requiredRs.length) {
+              const pct = Math.round((covered / requiredRs.length) * 100);
+              if (pct > bestPartialPct) bestPartialPct = pct;
+            }
           });
-          return { uc, full: coveringMethods.length, partial: partialMethods.length };
+          return { uc, full: coveringMethods.length, bestPartialPct, reqCount: requiredRs.length };
         }).sort((a, b) => a.full - b.full);
 
         const maxFull = Math.max(...ucGaps.map(g => g.full), 1);
@@ -2284,7 +2296,7 @@
           return `<div class="gap-bar">
             <span class="gap-label">${g.uc.name}</span>
             <div class="gap-bar-track"><div class="gap-bar-fill" style="width:${pct}%;background:${color};"></div></div>
-            <span class="gap-pct" style="color:${color};">${g.full} full${g.partial > 0 ? `, ${g.partial} partial` : ''}</span>
+            <span class="gap-pct" style="color:${color};">${g.full} full${g.full === 0 && g.bestPartialPct > 0 ? ` (best: ${g.bestPartialPct}% of ${g.reqCount} reqs)` : ''}</span>
           </div>`;
         }).join('');
       }
