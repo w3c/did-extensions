@@ -2429,32 +2429,53 @@
       }).join('');
 
       // ── OPPORTUNITY MATRIX ──
+      // For each use case, find methods that cover ≥50% of its requirements ("relevant methods").
+      // Each cell shows how many relevant methods meet that specific requirement.
+      // Empty = requirement not needed by this use case. Red = 0 relevant methods. Yellow = few. Green = many.
       if (useCasesData) {
         const matrixEl = document.getElementById('eco-opportunity-matrix');
-        const specializedReqs = requirementsData.requirements.filter(r => r.tier !== 'core');
+        const allReqs = requirementsData.requirements;
+        // Only show non-core requirements (core are met by nearly everyone, not interesting for gaps)
+        const specializedReqs = allReqs.filter(r => r.tier !== 'core');
         let html = '<thead><tr><th style="text-align:left;min-width:120px;">Use Case</th>';
-        specializedReqs.forEach((req, idx) => {
-          const rKey = 'R' + (requirementsData.requirements.indexOf(req) + 1);
+        specializedReqs.forEach(req => {
+          const rKey = 'R' + (allReqs.indexOf(req) + 1);
           html += `<th style="writing-mode:vertical-rl;text-orientation:mixed;padding:0.2rem;font-size:0.6rem;" title="${req.name}">${rKey}</th>`;
         });
-        html += '<th style="font-size:0.65rem;">Score</th></tr></thead><tbody>';
+        html += '<th style="font-size:0.65rem;">Relevant</th><th style="font-size:0.65rem;">Gaps</th></tr></thead><tbody>';
 
         useCasesData.useCases.forEach(uc => {
           const requiredReqIds = new Set(uc.requiredRequirements);
-          html += `<tr><td style="font-size:0.7rem;white-space:nowrap;">${uc.name}</td>`;
-          let ucScore = 0;
-          specializedReqs.forEach(req => {
-            const rKey = 'R' + (requirementsData.requirements.indexOf(req) + 1);
-            const isRequired = requiredReqIds.has(req.id);
-            const count = l1Plus.filter(m => (m.reqMet || []).includes(rKey)).length;
-            const bg = !isRequired ? 'transparent' : count === 0 ? 'rgba(239,68,68,0.3)' : count <= 2 ? 'rgba(234,179,8,0.2)' : 'rgba(34,197,94,0.15)';
-            const txt = !isRequired ? '<span style="color:var(--text-dim);">·</span>' : `<span style="color:${count === 0 ? 'var(--red)' : count <= 2 ? 'var(--yellow)' : 'var(--green)'};">${count}</span>`;
-            if (isRequired && count === 0) ucScore += 2;
-            else if (isRequired && count <= 2) ucScore += 1;
-            html += `<td style="text-align:center;background:${bg};font-size:0.65rem;">${txt}</td>`;
+          // Map required req IDs to R-keys
+          const requiredRKeys = uc.requiredRequirements.map(id => reqMap[id]).filter(Boolean);
+          // "Relevant" = L1+ methods covering ≥50% of this use case's requirements
+          const relevantMethods = l1Plus.filter(m => {
+            const met = new Set(m.reqMet || []);
+            const covered = requiredRKeys.filter(r => met.has(r)).length;
+            return requiredRKeys.length > 0 && (covered / requiredRKeys.length) >= 0.5;
           });
-          const scoreColor = ucScore >= 6 ? 'var(--red)' : ucScore >= 3 ? 'var(--yellow)' : 'var(--green)';
-          html += `<td style="text-align:center;font-weight:600;color:${scoreColor};font-size:0.7rem;">${ucScore}</td></tr>`;
+          const totalRelevant = relevantMethods.length;
+
+          html += `<tr><td style="font-size:0.7rem;white-space:nowrap;">${uc.name}</td>`;
+          let gapCount = 0;
+          specializedReqs.forEach(req => {
+            const rKey = 'R' + (allReqs.indexOf(req) + 1);
+            const isRequired = requiredReqIds.has(req.id);
+            if (!isRequired) {
+              html += `<td style="text-align:center;font-size:0.65rem;"></td>`;
+              return;
+            }
+            // Count relevant methods that meet THIS requirement
+            const count = relevantMethods.filter(m => (m.reqMet || []).includes(rKey)).length;
+            const bg = count === 0 ? 'rgba(239,68,68,0.3)' : count <= 2 ? 'rgba(234,179,8,0.2)' : 'rgba(34,197,94,0.15)';
+            const color = count === 0 ? 'var(--red)' : count <= 2 ? 'var(--yellow)' : 'var(--green)';
+            if (count === 0) gapCount++;
+            html += `<td style="text-align:center;background:${bg};font-size:0.65rem;"><span style="color:${color};">${count}</span></td>`;
+          });
+          const relevantColor = totalRelevant === 0 ? 'var(--red)' : totalRelevant <= 3 ? 'var(--yellow)' : 'var(--green)';
+          const gapColor = gapCount === 0 ? 'var(--green)' : gapCount <= 2 ? 'var(--yellow)' : 'var(--red)';
+          html += `<td style="text-align:center;font-weight:600;color:${relevantColor};font-size:0.7rem;">${totalRelevant}</td>`;
+          html += `<td style="text-align:center;font-weight:600;color:${gapColor};font-size:0.7rem;">${gapCount > 0 ? gapCount : '—'}</td></tr>`;
         });
 
         html += '</tbody>';
