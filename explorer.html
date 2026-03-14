@@ -243,7 +243,7 @@
     .detail-stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: 0.375rem; padding: 0.6rem; text-align: center; }
     .detail-stat .val { font-size: 1.1rem; font-weight: 700; }
     .detail-stat .lbl { font-size: 0.65rem; color: var(--text-dim); }
-    .detail-section { margin-bottom: 1.5rem; }
+    .detail-section { margin: 1.25rem 0 1.5rem 0; }
     .detail-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; padding-bottom: 0.35rem; border-bottom: 1px solid var(--border); }
     .req-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(51,65,85,0.3); }
     .req-row:last-child { border-bottom: none; }
@@ -2047,7 +2047,7 @@
       if (m.repoUrl) links.push(`<a href="${m.repoUrl}" target="_blank" style="color:var(--accent);">GitHub</a>`);
       if (m.npm) links.push(`<a href="${m.npm.url}" target="_blank" style="color:var(--accent);">npm: ${m.npm.package}</a>`);
       if (links.length > 0) {
-        html += `<div class="detail-section"><h3>Links</h3><div style="display:flex;gap:1.5rem;">${links.join('')}</div></div>`;
+        html += `<div class="detail-section"><h3>Links</h3><div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.5rem;">${links.join('')}</div></div>`;
       }
 
       // W3C Requirements with tier tabs + coverage matrix
