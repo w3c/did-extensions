@@ -1,0 +1,9 @@
+{
+  "name": "elastos",
+  "status": "registered",
+  "verifiableDataRegistry": "Elastos ID Sidechain",
+  "contactName": "Elastos Foundation",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/elastos/Elastos.DID.Method/blob/master/DID/Elastos-DID-Method-Specification_en.md"
+}

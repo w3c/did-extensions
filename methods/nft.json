@@ -1,0 +1,9 @@
+{
+  "name": "nft",
+  "status": "registered",
+  "verifiableDataRegistry": "Ceramic Network",
+  "contactName": "3Box Labs",
+  "contactEmail": "devs@3box.io",
+  "contactWebsite": "https://3boxlabs.com/",
+  "specification": "https://cips.ceramic.network/CIPs/cip-94"
+}
