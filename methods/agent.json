@@ -1,0 +1,9 @@
+{
+  "name": "agent",
+  "status": "registered",
+  "verifiableDataRegistry": "Self-issued Ed25519 keys with SHA-256 truncated identifiers for AI agent identity and delegation",
+  "contactName": "Kanoniv",
+  "contactEmail": "",
+  "contactWebsite": "https://kanoniv.com",
+  "specification": "https://github.com/kanoniv/agent-auth/blob/main/spec/AGENT-IDENTITY.md"
+}
