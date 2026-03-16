@@ -1,0 +1,9 @@
+{
+  "name": "etherland",
+  "status": "registered",
+  "specification": "https://github.com/EtherlandCertificates/did-etherland/",
+  "contactName": "Etherland / Alexis Brand",
+  "contactEmail": "hub@etherland.tech",
+  "contactWebsite": "https://etherland.tech",
+  "verifiableDataRegistry": "EVM-compatible blockchains (chain-specific deployments per submethod)"
+}
