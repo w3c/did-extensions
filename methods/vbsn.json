@@ -1,0 +1,9 @@
+{
+  "name": "vbsn",
+  "status": "registered",
+  "verifiableDataRegistry": "VBSN Blockchain",
+  "contactName": "vbsn",
+  "contactEmail": "tech@vbsn.vn",
+  "contactWebsite": "https://vbsn.vn/#li%C3%AAn-h%E1%BB%87",
+  "specification": "https://github.com/OneMatrixL1/did-method-specs/blob/main/vbsn-did-specs.md"
+}
