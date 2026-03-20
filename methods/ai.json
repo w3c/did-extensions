@@ -5,5 +5,5 @@
   "contactName": "Cowshed AI Working Group",
   "contactEmail": "chang3en@gmail.com",
   "contactWebsite": "https://did-ai.io",
-  "verifiableDataRegistry": "https://did-ai.io"
+  "verifiableDataRegistry": "Centralized HTTP registry operated by the method maintainers (Phase 1); later phases will anchor to a federated network of trusted nodes, enabling decentralized governance."
 }
