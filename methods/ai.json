@@ -1,0 +1,9 @@
+{
+  "name": "ai",
+  "status": "registered",
+  "specification": "https://raw.githubusercontent.com/did-ai/did-method-spec/refs/tags/v0.1.0/specification.md",
+  "contactName": "Cowshed AI Working Group",
+  "contactEmail": "chang3en@gmail.com",
+  "contactWebsite": "https://did-ai.io",
+  "verifiableDataRegistry": "https://did-ai.io"
+}
