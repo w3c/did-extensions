@@ -1,0 +1,8 @@
+{
+  "name": "aip",
+  "status": "registered",
+  "specification": "https://github.com/provai-dev/aip-spec/blob/main/spec/AIP-CORE-v0.1.md",
+  "contactName": "Provai",
+  "contactEmail": "spec@provai.dev",
+  "contactWebsite": "https://provai.dev"
+}
