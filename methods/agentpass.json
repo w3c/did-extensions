@@ -1,0 +1,9 @@
+{
+  "name": "agentpass",
+  "status": "provisional",
+  "verifiableDataRegistry": "AgentPass Trust Registry",
+  "contactName": "Raza Sharif",
+  "contactEmail": "contact@agentsign.dev",
+  "contactWebsite": "https://agentpass.co.uk",
+  "specification": "https://datatracker.ietf.org/doc/draft-sharif-agent-payment-trust-00/"
+}
