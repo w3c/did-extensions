@@ -1,0 +1,9 @@
+{
+    "name": "bts",
+    "status": "provisional",
+    "specification": "https://borealisacademy.com/specs/did-bts/v1",
+    "verifiableDataRegistry": "Borealis Trust Score registry (REST API) with optional Hedera Consensus Service anchoring for immutable audit trails",
+    "contactName": "Borealis Protocol Ltd",
+    "contactEmail": "support@borealisprotocol.ai",
+    "contactWebsite": "https://borealisprotocol.ai"
+}
