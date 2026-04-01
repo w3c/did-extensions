@@ -1,0 +1,9 @@
+{
+  "name": "aip",
+  "status": "registered",
+  "verifiableDataRegistry": "AIP - the AI Agent Identity Protocol",
+  "contactName": "Paras Singla",
+  "contactEmail": "spec@provai.dev",
+  "contactWebsite": "https://github.com/provai-dev/aip-spec",
+  "specification": "https://github.com/provai-dev/aip-spec/blob/main/spec/latest/core.md"
+}
