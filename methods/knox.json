@@ -1,0 +1,9 @@
+{
+    "name": "knox",
+    "status": "registered",
+    "verifiableDataRegistry": "Knox Networks",
+    "contactName": "Francis Kim",
+    "contactEmail": "developers@knox-networks.com",
+    "contactWebsite": "https://www.knox-networks.com/",
+    "specification": "https://github.com/knox-networks/knox-did-specification"
+  }

@@ -1,0 +1,9 @@
+{
+  "name": "nda",
+  "status": "registered",
+  "specification": "https://did-specs.ndachain.vn",
+  "contactName": "NDA Chain",
+  "contactEmail": "contact@ndachain.vn",
+  "contactWebsite": "https://ndachain.vn",
+  "verifiableDataRegistry": "NDA Chain"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "unik",
+  "status": "registered",
+  "verifiableDataRegistry": "<a href=\"https://docs.uns.network/\">uns.network</a>",
+  "contactName": "Space Elephant SAS",
+  "contactEmail": "",
+  "contactWebsite": "https://www.spacelephant.org/",
+  "specification": "https://github.com/unik-name/did-method-spec/blob/main/did-unik/UNIK-DID-Specification.md"
+}

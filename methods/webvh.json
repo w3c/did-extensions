@@ -1,0 +1,21 @@
+{
+  "name": "webvh",
+  "status": "registered",
+  "verifiableDataRegistry": "Web",
+  "contactName": [
+    "Stephen Curran",
+    "John Jordan",
+    "Andrew Whitehead",
+    "Brian Richter",
+    "Michel Sahli",
+    "Martina Kolpondinos",
+    "Dmitri Zagidulin"
+  ],
+  "contactEmail": [
+    "swcurran@cloudcompass.ca",
+    "martina@kosmaconnect.net",
+    "brian@aviary.tech"
+  ],
+  "contactWebsite": "https://didwebvh.info",
+  "specification": "https://identity.foundation/didwebvh/"
+}
