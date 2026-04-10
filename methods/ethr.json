@@ -2,8 +2,8 @@
   "name": "ethr",
   "status": "registered",
   "verifiableDataRegistry": "Ethereum",
-  "contactName": "uPort",
-  "contactEmail": "",
-  "contactWebsite": "",
+  "contactName": "Mircea Nistor",
+  "contactEmail": "ethr@mirceanis.xyz",
+  "contactWebsite": "https://mirceanis.xyz",
   "specification": "https://github.com/decentralized-identity/ethr-did-resolver/blob/master/doc/did-method-spec.md"
 }
