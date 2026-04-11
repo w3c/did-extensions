@@ -1,7 +1,7 @@
 {
   "name": "moltrust",
   "status": "registered",
-  "specification": "https://moltrust.ch/did-method-spec",
+  "specification": "https://moltrust.ch/did-method-spec.html",
   "contactName": "Lars Kroehl",
   "contactEmail": "kersten.kroehl@cryptokri.ch",
   "contactWebsite": "https://moltrust.ch",
