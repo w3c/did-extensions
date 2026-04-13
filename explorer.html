@@ -1,0 +1,2689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DID Method Catalogue — W3C DID Extensions</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-card: #1e293b;
+      --bg-hover: #334155;
+      --border: #334155;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --text-dim: #94a3b8;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --green: #22c55e;
+      --green-bg: rgba(34,197,94,0.1);
+      --yellow: #eab308;
+      --yellow-bg: rgba(234,179,8,0.1);
+      --red: #ef4444;
+      --red-bg: rgba(239,68,68,0.1);
+      --purple: #a855f7;
+      --purple-bg: rgba(168,85,247,0.1);
+      --cyan: #06b6d4;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem; padding-bottom: 50px; }
+
+    /* Header */
+    .header { text-align: center; margin-top: 30px; margin-bottom: 50px; }
+    .header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.15rem; }
+    .header h1 span { color: var(--accent); }
+    .header p { color: var(--text-muted); font-size: 0.85rem; }
+
+    /* Tabs */
+    .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
+    .tab { padding: 0.5rem 1.2rem; cursor: pointer; color: var(--text-muted); border-bottom: 2px solid transparent; transition: all 0.2s; font-size: 0.85rem; }
+    .tab:hover { color: var(--text); background: var(--bg-hover); }
+    .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* Cards */
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1rem; margin-bottom: 0.75rem; }
+    .card h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .card p { color: var(--text); font-size: 0.8rem; }
+
+    /* Status badges */
+    .badge { display: inline-block; padding: 0.1rem 0.45rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 600; }
+    .badge-core { background: var(--green-bg); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+    .badge-common { background: var(--yellow-bg); color: var(--yellow); border: 1px solid rgba(234,179,8,0.3); }
+    .badge-specialized { background: var(--purple-bg); color: var(--purple); border: 1px solid rgba(168,85,247,0.3); }
+    .badge-covered { background: var(--green-bg); color: var(--green); }
+    .badge-partial { background: var(--yellow-bg); color: var(--yellow); }
+    .badge-uncovered { background: var(--red-bg); color: var(--red); }
+    .badge-category { background: rgba(59,130,246,0.1); color: var(--accent); border: 1px solid rgba(59,130,246,0.3); }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 0.45rem 0.65rem; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
+    th { color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    tr:hover { background: var(--bg-hover); }
+
+    /* Form elements */
+    .form-group { margin-bottom: 1rem; }
+    #spec-links-grid .form-group { margin-bottom: 0; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 0.25rem; font-size: 0.85rem; }
+    .form-group .hint { color: var(--text-dim); font-size: 0.75rem; margin-bottom: 0.25rem; }
+    input[type="text"], textarea, select {
+      width: 100%; padding: 0.45rem 0.7rem; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 0.375rem; color: var(--text); font-size: 0.8rem; font-family: inherit;
+    }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); }
+    textarea { resize: vertical; min-height: 40px; }
+    select { cursor: pointer; }
+
+    /* Buttons */
+    .btn { padding: 0.4rem 1rem; border-radius: 0.375rem; border: none; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: all 0.2s; }
+    .btn-primary { background: var(--accent); color: white; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+    .btn-outline:hover { background: rgba(59,130,246,0.1); }
+    .btn-sm { padding: 0.3rem 0.8rem; font-size: 0.8rem; }
+
+    /* Use case layout — sidebar + detail */
+    .uc-layout { display: grid; grid-template-columns: 260px 1fr; gap: 0.75rem; min-height: 300px; }
+    .uc-sidebar { overflow-y: auto; max-height: 500px; }
+    .uc-cat-label { font-size: 0.7rem; font-weight: 600; color: var(--text-dim); padding: 0.35rem 0.4rem 0.15rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .uc-item { cursor: pointer; padding: 0.4rem 0.5rem; border-radius: 0.375rem; font-size: 0.8rem; transition: all 0.15s; display: flex; align-items: center; gap: 0.4rem; }
+    .uc-item:hover { background: var(--bg-hover); }
+    .uc-item.selected { background: rgba(234,179,8,0.15); color: var(--yellow); }
+    .uc-item .uc-req-count { font-size: 0.65rem; color: var(--text-dim); margin-left: auto; }
+    .uc-detail { padding: 0 0.75rem; overflow-y: auto; max-height: 500px; }
+    .uc-detail h4 { font-size: 1rem; margin-bottom: 0.35rem; }
+    .uc-detail p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .uc-detail .uc-meta { font-size: 0.8rem; color: var(--text-muted); }
+    @media (max-width: 768px) {
+      .uc-layout { grid-template-columns: 1fr; }
+      .uc-sidebar { max-height: 200px; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    }
+
+    /* Requirements checklist */
+    .req-item { padding: 0.5rem 0.65rem; border: 1px solid var(--border); border-radius: 0.375rem; margin-bottom: 0.35rem; }
+    .req-item.required { border-color: rgba(34,197,94,0.35); background: rgba(34,197,94,0.03); }
+    .req-item:not(.required) { opacity: 0.75; }
+    .req-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.2rem; }
+    .req-name { font-weight: 600; font-size: 0.85rem; }
+    .req-tag { font-size: 0.6rem; font-weight: 600; padding: 0.1rem 0.35rem; border-radius: 0.2rem; }
+    .req-tag-required { background: var(--red-bg); color: var(--red); }
+    .req-tag-optional { background: rgba(100,116,139,0.12); color: var(--text-dim); }
+    .req-tier-tabs { display: flex; gap: 0; margin-top: 0.4rem; border: 1px solid var(--border); border-radius: 0.375rem; overflow: hidden; width: fit-content; }
+    .req-tier-tab { display: flex; align-items: center; gap: 0.4rem; padding: 0.35rem 1rem; border: none; border-right: 1px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; font-size: 0.8rem; font-weight: 500; transition: all 0.15s; }
+    .req-tier-tab:last-child { border-right: none; }
+    .req-tier-tab:hover { background: var(--bg-hover); color: var(--text); }
+    .req-tier-tab.active[data-tier="core"] { background: var(--green-bg); color: var(--green); }
+    .req-tier-tab.active[data-tier="common"] { background: var(--yellow-bg); color: var(--yellow); }
+    .req-tier-tab.active[data-tier="specialized"] { background: var(--purple-bg); color: var(--purple); }
+    .req-tier-panel { margin-top: 0.35rem; }
+    .req-question { color: var(--yellow); font-size: 0.75rem; font-style: italic; margin-bottom: 0.3rem; }
+    .req-status-group { display: flex; gap: 0.35rem; margin-bottom: 0.35rem; }
+    .req-status-btn { padding: 0.2rem 0.6rem; border-radius: 0.25rem; border: 1px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; font-size: 0.75rem; transition: all 0.15s; }
+    .req-status-btn:hover { border-color: var(--text); color: var(--text); }
+    .req-status-btn.active-covered { background: var(--green-bg); color: var(--green); border-color: var(--green); }
+    .req-status-btn.active-partial { background: var(--yellow-bg); color: var(--yellow); border-color: var(--yellow); }
+    .req-status-btn.active-uncovered { background: var(--red-bg); color: var(--red); border-color: var(--red); }
+
+    /* Overlap alert */
+    .overlap-alert { background: rgba(234,179,8,0.08); border: 1px solid rgba(234,179,8,0.3); border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 1rem; }
+    .overlap-alert h4 { color: var(--yellow); margin-bottom: 0.35rem; font-size: 0.9rem; }
+    .overlap-method { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid rgba(234,179,8,0.15); }
+    .overlap-method:last-child { border-bottom: none; }
+    .overlap-pct { font-weight: 700; font-size: 1.1rem; }
+    .overlap-high { color: var(--red); }
+    .overlap-medium { color: var(--yellow); }
+    .overlap-low { color: var(--green); }
+
+    /* Progress bar */
+    .progress-bar { width: 100%; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin: 0.5rem 0; }
+    .progress-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+
+    /* Stats row */
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
+    .stat-card { text-align: center; padding: 0.6rem !important; transition: border-color 0.15s, background 0.15s; }
+    .stat-card:hover { border-color: var(--accent); background: var(--bg-hover); }
+    .stat-value { font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+    .stat-label { font-size: 0.7rem; color: var(--text-muted); }
+
+    /* JSON output */
+    .json-output { background: #0d1117; border: 1px solid var(--border); border-radius: 0.375rem; padding: 0.75rem; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.7rem; overflow-x: auto; white-space: pre; max-height: 400px; overflow-y: auto; color: #c9d1d9; }
+
+    /* Card footer */
+    .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.75rem; margin-top: 0.75rem; border-top: 1px solid var(--border); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container { padding: 0.75rem; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .uc-layout { grid-template-columns: 1fr; }
+      .tabs { overflow-x: auto; }
+    }
+
+    /* Step indicator */
+    .steps { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .step { flex: 1; display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; border: 1px solid var(--border); border-radius: 0.375rem; color: var(--text-dim); font-size: 0.75rem; transition: all 0.2s; background: transparent; }
+    .step.active { border-color: var(--accent); color: var(--accent); background: rgba(59,130,246,0.05); }
+    .step.completed { border-color: var(--green); color: var(--green); background: rgba(34,197,94,0.05); }
+    .step-number { font-size: 1.1rem; font-weight: 700; min-width: 1.2rem; }
+
+    .hidden { display: none !important; }
+
+    /* Sticky context bar */
+    .context-bar { position: sticky; top: 0; z-index: 10; background: var(--bg-card); border: 1px solid var(--border); border-radius: 0.375rem; padding: 0.5rem 0.75rem; margin-bottom: 0.75rem; display: flex; gap: 1.5rem; align-items: center; font-size: 0.75rem; backdrop-filter: blur(8px); }
+    .context-bar .ctx-label { color: var(--text-dim); }
+    .context-bar .ctx-value { color: var(--text); font-weight: 600; }
+    .context-bar .ctx-value.empty { color: var(--text-dim); font-style: italic; font-weight: 400; }
+
+    /* Search */
+    .search-bar { position: relative; margin-bottom: 0.75rem; }
+    .search-bar input { padding-left: 2.5rem; }
+    .search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: var(--text-dim); }
+
+    /* Suggestion box */
+    .suggestion { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 0.375rem; padding: 0.6rem; margin-top: 0.5rem; font-size: 0.75rem; }
+    .suggestion strong { color: var(--accent); }
+
+    /* Industry & region pills */
+    .pill { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 0.25rem; font-size: 0.65rem; font-weight: 500; background: rgba(100,116,139,0.15); color: var(--text-muted); white-space: nowrap; }
+    .pill-region { background: rgba(59,130,246,0.12); color: var(--accent); }
+    .pill-stage { padding: 0.15rem 0.5rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 600; }
+    .pill-stage-production { background: var(--green-bg); color: var(--green); }
+    .pill-stage-development { background: rgba(234,179,8,0.12); color: var(--yellow); }
+    .pill-stage-staging { background: rgba(59,130,246,0.12); color: var(--accent); }
+    .pill-stage-rd { background: rgba(168,85,247,0.12); color: var(--purple); }
+    .pill-stage-discontinued { background: var(--red-bg); color: var(--red); }
+    .more-pill { color: var(--text-dim); font-size: 0.65rem; cursor: default; }
+    .na-text { color: var(--red); font-size: 0.75rem; }
+    .dim-text { color: var(--text-muted); font-size: 0.75rem; }
+
+    /* Pagination */
+    .page-btn { padding: 0.25rem 0.6rem; border-radius: 0.25rem; border: 1px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; font-size: 0.75rem; transition: all 0.15s; }
+    .page-btn:hover { border-color: var(--text); color: var(--text); }
+    .page-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+    /* Disclaimer banner */
+    .disclaimer { background: rgba(234,179,8,0.06); border: 1px solid rgba(234,179,8,0.2); border-radius: 0.375rem; padding: 0.6rem 0.75rem; margin-bottom: 0.75rem; font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
+    .disclaimer strong { color: var(--yellow); }
+    .disclaimer a { color: var(--accent); }
+
+    /* Maturity levels */
+    .maturity { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.1rem 0.5rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 600; white-space: nowrap; }
+    .maturity-l0 { background: rgba(100,116,139,0.15); color: var(--text-dim); }
+    .maturity-l1 { background: rgba(59,130,246,0.12); color: var(--accent); }
+    .maturity-l2 { background: rgba(234,179,8,0.12); color: var(--yellow); }
+    .maturity-l3 { background: var(--green-bg); color: var(--green); }
+    .maturity-l4 { background: rgba(168,85,247,0.12); color: var(--purple); }
+    .maturity-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .maturity-l0 .maturity-dot { background: var(--text-dim); }
+    .maturity-l1 .maturity-dot { background: var(--accent); }
+    .maturity-l2 .maturity-dot { background: var(--yellow); }
+    .maturity-l3 .maturity-dot { background: var(--green); }
+    .maturity-l4 .maturity-dot { background: var(--purple); }
+
+    /* Date aging colors */
+    .date-fresh { color: var(--green); }
+    .date-stale { color: var(--yellow); }
+    .date-old { color: #f97316; }
+    .date-dead { color: var(--red); }
+
+    /* Detail page */
+    .detail-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 100; background: var(--bg); overflow-y: auto; padding: 2rem; }
+    .detail-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); font-size: 0.85rem; cursor: pointer; margin-bottom: 1rem; border: none; background: none; font-family: inherit; }
+    .detail-back:hover { text-decoration: underline; }
+    .detail-header { margin-bottom: 1.5rem; }
+    .detail-header h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .detail-header .detail-meta { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; }
+    .detail-header .detail-meta-right { margin-left: auto; display: flex; gap: 1.5rem; align-items: center; }
+    .detail-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin: 1rem 0 1.5rem; max-width: 800px; }
+    .detail-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.5rem; margin-bottom: 1.5rem; }
+    .detail-stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: 0.375rem; padding: 0.6rem; text-align: center; }
+    .detail-stat .val { font-size: 1.1rem; font-weight: 700; }
+    .detail-stat .lbl { font-size: 0.65rem; color: var(--text-dim); }
+    .detail-section { margin: 1.25rem 0 1.5rem 0; }
+    .detail-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; padding-bottom: 0.35rem; border-bottom: 1px solid var(--border); }
+    .req-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(51,65,85,0.3); }
+    .req-row:last-child { border-bottom: none; }
+    .req-num { width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
+    .req-num-met { background: var(--green-bg); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+    .req-num-unmet { background: rgba(100,116,139,0.1); color: var(--text-dim); border: 1px solid var(--border); }
+
+    /* Ecosystem gap dashboard */
+    .gap-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1rem; }
+    .gap-bar { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .gap-bar-fill { height: 8px; border-radius: 4px; transition: width 0.3s; }
+    .gap-bar-track { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+    .gap-label { font-size: 0.8rem; min-width: 140px; }
+    .gap-pct { font-size: 0.8rem; font-weight: 600; min-width: 40px; text-align: right; }
+    .sla-box { background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.2); border-radius: 0.375rem; padding: 0.75rem; font-size: 0.8rem; }
+    .sla-box h4 { color: var(--accent); margin-bottom: 0.35rem; }
+
+    /* Audience filter */
+    .audience-filter { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .audience-filter label { font-weight: 600; font-size: 0.85rem; color: var(--text-muted); margin-right: 0.5rem; align-self: center; }
+    .audience-btn { padding: 0.35rem 0.85rem; border-radius: 0.375rem; border: 1px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; font-size: 0.8rem; font-weight: 500; transition: all 0.15s; }
+    .audience-btn:hover { border-color: var(--text); color: var(--text); }
+    .audience-btn.active { background: rgba(59,130,246,0.12); color: var(--accent); border-color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="disclaimer" style="max-width:1200px;margin:0.75rem auto 0;padding:0.5rem 0.75rem;">
+    <strong>&#9888; This is a catalogue, not a registry.</strong>
+    Listing here does <strong>not</strong> constitute endorsement or approval.
+    For <strong>visibility</strong> and <strong>namespace deconfliction</strong> only.
+    Standardization: <a href="https://github.com/w3c/did-rubric" target="_blank">DID Rubric</a> ·
+    Conformance: <a href="https://github.com/w3c/did-test-suite" target="_blank">DID Test Suite</a> ·
+    <a href="#" onclick="document.querySelector('[data-tab=ecosystem]').click();return false;">Maturity process</a>
+  </div>
+  <div class="container">
+    <div class="header">
+      <h1>DID Method <span>Catalogue</span></h1>
+      <p>A development catalogue for DID method visibility — not a registry, not an endorsement</p>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="catalogue">Catalogue</div>
+      <div class="tab" data-tab="ecosystem">Ecosystem</div>
+      <div class="tab" data-tab="assess">Self-Assessment</div>
+      <div class="tab" data-tab="matrix">Requirements Matrix</div>
+    </div>
+
+    <!-- ═══ TAB: CATALOGUE ═══ -->
+    <div class="tab-content active" id="tab-catalogue">
+      <div class="stats-row" id="registry-stats"></div>
+      <div class="card" style="padding:0.5rem 0.75rem;margin-bottom:0.75rem;">
+        <div style="display:flex;gap:0.5rem;align-items:center;">
+          <div class="search-bar" style="flex:1;min-width:140px;margin-bottom:0;">
+            <span class="search-icon">&#128269;</span>
+            <input type="text" id="registry-search" placeholder="Search methods...">
+          </div>
+          <select id="filter-stage" style="font-size:0.75rem;padding:0.35rem 0.5rem;background:var(--bg);border:1px solid var(--border);border-radius:0.375rem;color:var(--text);width:auto;">
+            <option value="">All Stages</option>
+          </select>
+          <select id="filter-region" style="font-size:0.75rem;padding:0.35rem 0.5rem;background:var(--bg);border:1px solid var(--border);border-radius:0.375rem;color:var(--text);width:auto;">
+            <option value="">All Regions</option>
+          </select>
+          <select id="filter-status" style="font-size:0.75rem;padding:0.35rem 0.5rem;background:var(--bg);border:1px solid var(--border);border-radius:0.375rem;color:var(--text);width:auto;">
+            <option value="">All Status</option>
+            <option value="active">Active</option>
+            <option value="specLive">Spec Live</option>
+            <option value="archived">Archived</option>
+          </select>
+          <select id="filter-maturity" style="font-size:0.75rem;padding:0.35rem 0.5rem;background:var(--bg);border:1px solid var(--border);border-radius:0.375rem;color:var(--text);width:auto;">
+            <option value="">All Maturity</option>
+            <option value="0">L0 Legacy</option>
+            <option value="1">L1 Assessed</option>
+            <option value="2">L2 PR'd</option>
+            <option value="3">L3 Under Review</option>
+          </select>
+          <select id="filter-reqpct" style="font-size:0.75rem;padding:0.35rem 0.5rem;background:var(--bg);border:1px solid var(--border);border-radius:0.375rem;color:var(--text);width:auto;">
+            <option value="">Any Req %</option>
+            <option value="90">≥ 90%</option>
+            <option value="70">≥ 70%</option>
+            <option value="50">≥ 50%</option>
+            <option value="1">≥ 1%</option>
+          </select>
+          <button onclick="clearAllFilters()" style="font-size:0.7rem;padding:0.3rem 0.6rem;background:transparent;border:1px solid var(--border);border-radius:0.375rem;color:var(--text-muted);cursor:pointer;" title="Clear all filters">✕ Clear</button>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+        <span style="font-size:0.8rem;color:var(--text-muted);" id="registry-count">225 methods found</span>
+        <div style="display:flex;gap:0.5rem;align-items:center;font-size:0.7rem;color:var(--text-dim);" id="col-toggles">
+          <span>Columns:</span>
+          <label style="cursor:pointer;"><input type="checkbox" class="col-toggle" data-col="blockchain" onchange="applyRegistryFilters()"> Blockchain</label>
+          <label style="cursor:pointer;"><input type="checkbox" class="col-toggle" data-col="reqPct" onchange="applyRegistryFilters()"> Req%</label>
+          <label style="cursor:pointer;"><input type="checkbox" class="col-toggle" data-col="specLive" onchange="applyRegistryFilters()"> Spec</label>
+          <label style="cursor:pointer;"><input type="checkbox" class="col-toggle" data-col="industries" onchange="applyRegistryFilters()"> Industries</label>
+          <label style="cursor:pointer;"><input type="checkbox" class="col-toggle" data-col="npm" onchange="applyRegistryFilters()"> npm</label>
+        </div>
+        <span style="font-size:0.8rem;color:var(--text-dim);margin-left:auto;" id="registry-page-info">Page 1 of 5</span>
+      </div>
+      <div class="card" style="padding:0;overflow-x:auto;">
+        <table>
+          <thead><tr id="registry-thead"></tr></thead>
+          <tbody id="registry-table"></tbody>
+        </table>
+      </div>
+      <div style="display:flex;justify-content:center;gap:0.5rem;margin-top:0.75rem;" id="registry-pagination"></div>
+    </div>
+
+    <!-- ═══ TAB: SELF-ASSESSMENT ═══ -->
+    <div class="tab-content" id="tab-assess">
+      <div class="context-bar" id="context-bar">
+        <div><span class="ctx-label">Method:</span> <span class="ctx-value empty" id="ctx-method">not set</span></div>
+        <div><span class="ctx-label">Use Case:</span> <span class="ctx-value empty" id="ctx-usecase">not selected</span></div>
+        <div><span class="ctx-label">Industries:</span> <span class="ctx-value empty" id="ctx-industries">—</span></div>
+        <div><span class="ctx-label">Repo:</span> <span class="ctx-value empty" id="ctx-repo">—</span></div>
+        <div style="margin-left:auto;display:flex;gap:0.4rem;align-items:center;">
+          <button class="btn btn-outline btn-sm" onclick="saveProgress()" id="btn-save" title="Save progress to browser">💾 Save</button>
+          <button class="btn btn-outline btn-sm" onclick="loadProgress()" id="btn-load" style="display:none;" title="Restore saved progress">↩ Restore</button>
+          <span id="save-status" style="font-size:0.7rem;color:var(--text-dim);"></span>
+        </div>
+      </div>
+      <div class="steps" id="form-steps">
+        <div class="step active" data-step="1"><span class="step-number">1</span> Use Case</div>
+        <div class="step" data-step="2"><span class="step-number">2</span> Requirements</div>
+        <div class="step" data-step="3"><span class="step-number">3</span> Method Info</div>
+        <div class="step" data-step="4"><span class="step-number">4</span> Review</div>
+      </div>
+
+      <!-- Step 1: Use Case -->
+      <div class="form-step" id="step-1">
+        <div class="card" style="display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+            <h3 style="margin:0;">Select a use case</h3>
+            <span style="color:var(--text-dim);font-size:0.8rem;">— this determines which requirements apply</span>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:0.5rem;">
+              <span style="font-size:0.75rem;color:var(--text-dim);">Audience:</span>
+              <button class="audience-btn active" data-audience="persons" onclick="toggleAudience(this)">Persons</button>
+              <button class="audience-btn active" data-audience="business" onclick="toggleAudience(this)">Business</button>
+              <button class="audience-btn active" data-audience="enterprise" onclick="toggleAudience(this)">Enterprise</button>
+            </div>
+          </div>
+          <div class="uc-layout" style="flex:1;">
+            <div class="uc-sidebar" id="uc-sidebar"></div>
+            <div class="uc-detail" id="uc-detail">
+              <p style="color:var(--text-dim);font-style:italic;padding-top:2rem;text-align:center;">Select a use case from the list</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+              <span style="color:var(--text-dim);font-size:0.8rem;">Don't see your use case?</span>
+              <a href="https://github.com/w3c/did-use-cases/issues/new" target="_blank" class="btn btn-outline btn-sm">Propose at W3C ↗</a>
+            </div>
+            <button class="btn btn-primary" onclick="goToStep(2)" id="btn-step2" disabled>Next: Requirements →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Requirements -->
+      <div class="form-step hidden" id="step-2">
+        <div id="overlap-container"></div>
+        <div class="card" style="padding:0.65rem 0.75rem;">
+          <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:0.4rem;">
+            <h3 style="margin:0;">Requirements Assessment</h3>
+            <span style="font-size:0.8rem;color:var(--text-muted);">Mark each as covered, partial, or uncovered — and explain how.</span>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:0.5rem;">
+              <div class="progress-bar" style="margin:0;width:120px;"><div class="progress-fill" id="req-progress" style="width: 0%; background: var(--accent);"></div></div>
+              <span style="font-size:0.75rem;color:var(--text-dim);white-space:nowrap;" id="req-progress-text">0/22</span>
+            </div>
+          </div>
+          <div class="req-tier-tabs">
+            <button class="req-tier-tab active" data-tier="core" onclick="switchReqTier('core')">Core <span id="req-tab-count-core" style="font-size:0.7rem;opacity:0.7;"></span></button>
+            <button class="req-tier-tab" data-tier="common" onclick="switchReqTier('common')">Common <span id="req-tab-count-common" style="font-size:0.7rem;opacity:0.7;"></span></button>
+            <button class="req-tier-tab" data-tier="specialized" onclick="switchReqTier('specialized')">Specialized <span id="req-tab-count-specialized" style="font-size:0.7rem;opacity:0.7;"></span></button>
+          </div>
+        </div>
+
+        <div id="req-section-core" class="req-tier-panel"></div>
+        <div id="req-section-common" class="req-tier-panel hidden"></div>
+        <div id="req-section-specialized" class="req-tier-panel hidden"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+          <button class="btn btn-outline" onclick="goToStep(1)">← Back</button>
+          <button class="btn btn-primary" onclick="goToStep(3)">Next: Method Info →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Method Info -->
+      <div class="form-step hidden" id="step-3">
+        <div class="card">
+          <h3>Method Identity</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label>Method Name *</label>
+              <p class="hint">Descriptive, not branded. See <a href="NAMING.md" style="color: var(--accent);">naming convention</a>.</p>
+              <input type="text" id="method-name" placeholder="e.g., web, key, peer, sns" oninput="checkMethodName(this.value); updateContextBar();">
+              <div id="name-feedback" style="margin-top: 0.35rem;"></div>
+            </div>
+            <div class="form-group">
+              <label>Category *</label>
+              <p class="hint">How your method anchors identity.</p>
+              <select id="method-category">
+                <option value="">Select a category...</option>
+                <option value="key-derived">Key-derived — cryptographic keys</option>
+                <option value="web-anchored">Web-anchored — web domains</option>
+                <option value="ledger-anchored">Ledger-anchored — blockchain</option>
+                <option value="service-anchored">Service-anchored — naming service</option>
+                <option value="peer-local">Peer/Local — P2P or offline</option>
+                <option value="dht-anchored">DHT-anchored — hash table</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Specification Repository *</label>
+            <p class="hint">GitHub repo URL containing your Markdown spec. The spec must live inside this repo.</p>
+            <input type="text" id="method-repo" placeholder="https://github.com/your-org/did-method-name" oninput="updateSpecPaths(); updateContextBar();">
+          </div>
+          <div class="form-group">
+            <label>Contact Name *</label>
+            <input type="text" id="method-contact" placeholder="Your name or organization">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label>Verifiable Data Registry</label>
+              <input type="text" id="method-vdr" placeholder="e.g., Ethereum, Solana, Web, IPFS">
+            </div>
+            <div class="form-group">
+              <label>Industries / Sectors</label>
+              <input type="text" id="method-industries" placeholder="e.g., Finance, Healthcare, Government" oninput="updateContextBar();">
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Specification Sections</h3>
+          <p style="margin-bottom: 0.5rem;">Provide the anchored link to each section of your spec. Based on the <a href="specs/TEMPLATE.md" style="color: var(--accent);">standard template</a>.</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem 0.75rem;" id="spec-links-grid">
+            <div class="form-group">
+              <label style="font-size:0.75rem;">Abstract *</label>
+              <input type="text" class="spec-link" data-section="abstract" placeholder="" style="font-size:0.7rem;">
+            </div>
+            <div class="form-group">
+              <label style="font-size:0.75rem;">Use Case & Requirements *</label>
+              <input type="text" class="spec-link" data-section="use-case" placeholder="" style="font-size:0.7rem;">
+            </div>
+            <div class="form-group">
+              <label style="font-size:0.75rem;">DID Syntax *</label>
+              <input type="text" class="spec-link" data-section="did-syntax" placeholder="" style="font-size:0.7rem;">
+            </div>
+            <div class="form-group">
+              <label style="font-size:0.75rem;">DID Document *</label>
+              <input type="text" class="spec-link" data-section="did-document" placeholder="" style="font-size:0.7rem;">
+            </div>
+            <div class="form-group">
+              <label style="font-size:0.75rem;">CRUD Operations *</label>
+              <input type="text" class="spec-link" data-section="crud" placeholder="" style="font-size:0.7rem;">
+            </div>
+            <div class="form-group">
+              <label style="font-size:0.75rem;">Security Considerations *</label>
+              <input type="text" class="spec-link" data-section="security" placeholder="" style="font-size:0.7rem;">
+            </div>
+            <div class="form-group">
+              <label style="font-size:0.75rem;">Privacy Considerations *</label>
+              <input type="text" class="spec-link" data-section="privacy" placeholder="" style="font-size:0.7rem;">
+            </div>
+            <div class="form-group">
+              <label style="font-size:0.75rem;">References *</label>
+              <input type="text" class="spec-link" data-section="references" placeholder="" style="font-size:0.7rem;">
+            </div>
+            <div class="form-group">
+              <label style="font-size:0.75rem; color: var(--text-dim);">Trust Model</label>
+              <input type="text" class="spec-link" data-section="trust-model" placeholder="" style="font-size:0.7rem;">
+            </div>
+            <div class="form-group">
+              <label style="font-size:0.75rem; color: var(--text-dim);">Interoperability</label>
+              <input type="text" class="spec-link" data-section="interop" placeholder="" style="font-size:0.7rem;">
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>CODEX — Composability</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label>Parent Domain</label>
+              <input type="text" id="method-parent" placeholder="e.g., web">
+            </div>
+            <div class="form-group">
+              <label>Extends</label>
+              <input type="text" id="method-extends" placeholder="e.g., web, key">
+            </div>
+            <div class="form-group">
+              <label>Calls</label>
+              <input type="text" id="method-calls" placeholder="e.g., key">
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+          <button class="btn btn-outline" onclick="goToStep(2)">← Back</button>
+          <button class="btn btn-primary" onclick="goToStep(4)">Next: Review →</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Review & Generate -->
+      <div class="form-step hidden" id="step-4">
+        <div id="review-blockers"></div>
+        <div id="final-overlap"></div>
+
+        <!-- Scorecard -->
+        <div class="card" style="padding:0.65rem 0.75rem;">
+          <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+            <h3 style="margin:0;">Readiness Scorecard</h3>
+            <span id="review-overall-badge" style="font-size:0.85rem;font-weight:700;"></span>
+          </div>
+          <div id="scorecard-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.5rem;"></div>
+        </div>
+
+        <!-- Summary -->
+        <div class="card" style="padding:0.65rem 0.75rem;">
+          <h3 style="margin-bottom:0.4rem;">Method Summary</h3>
+          <div id="summary-content"></div>
+        </div>
+
+        <!-- Requirements review with tabs -->
+        <div class="card" style="padding:0.65rem 0.75rem;">
+          <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:0.4rem;">
+            <h3 style="margin:0;">Requirements Review</h3>
+            <span id="review-req-summary" style="font-size:0.8rem;color:var(--text-muted);"></span>
+          </div>
+          <div class="req-tier-tabs">
+            <button class="req-tier-tab active" data-tier="core" onclick="switchReviewReqTier('core')">Core <span id="rev-tab-core"></span></button>
+            <button class="req-tier-tab" data-tier="common" onclick="switchReviewReqTier('common')">Common <span id="rev-tab-common"></span></button>
+            <button class="req-tier-tab" data-tier="specialized" onclick="switchReviewReqTier('specialized')">Specialized <span id="rev-tab-specialized"></span></button>
+          </div>
+          <div id="review-reqs-core" class="review-tier-panel" style="margin-top:0.5rem;"></div>
+          <div id="review-reqs-common" class="review-tier-panel hidden" style="margin-top:0.5rem;"></div>
+          <div id="review-reqs-specialized" class="review-tier-panel hidden" style="margin-top:0.5rem;"></div>
+        </div>
+
+        <!-- JSON output -->
+        <div class="card" style="padding:0.65rem 0.75rem;">
+          <h3 style="margin-bottom:0.4rem;">Generated Method JSON</h3>
+          <p style="margin-bottom:0.5rem;color:var(--text-muted);font-size:0.8rem;">Save as <code>methods/&lt;your-method-name&gt;.json</code> and submit a PR with your <code>specs/</code> Markdown.</p>
+          <pre class="json-output" id="json-output"></pre>
+          <div style="margin-top:0.75rem;display:flex;gap:0.5rem;">
+            <button class="btn btn-primary" onclick="copyJson()">Copy JSON</button>
+            <button class="btn btn-outline" onclick="downloadJson()">Download JSON</button>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;margin-top:0.75rem;">
+          <button class="btn btn-outline" onclick="goToStep(3)">← Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ TAB: ECOSYSTEM ═══ -->
+    <div class="tab-content" id="tab-ecosystem">
+      <div class="disclaimer">
+        <strong>&#9888; Catalogue ≠ endorsement.</strong>
+        Listing a method here means it is <strong>known to exist</strong> — nothing more.
+        No quality guarantee, no conformance claim, no standardization status is implied.
+      </div>
+
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <h3>Maturity Ladder</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem;">
+          Every method should self-assess. No more meaningless abandoned entries. The form ensures ecosystem discovery, cooperation, and prevents blind duplication.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Name</th>
+              <th>What It Means</th>
+              <th>Gate</th>
+              <th>Where</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="opacity:0.5;">
+              <td><span class="maturity maturity-l0"><span class="maturity-dot"></span>L0</span></td>
+              <td><strong>Listed</strong></td>
+              <td style="font-size:0.8rem;">Legacy entry — name exists but no self-assessment. <strong>Should not exist going forward.</strong></td>
+              <td style="font-size:0.8rem;">Pre-form era</td>
+              <td style="font-size:0.8rem;">This repo</td>
+            </tr>
+            <tr>
+              <td><span class="maturity maturity-l1"><span class="maturity-dot"></span>L1</span></td>
+              <td><strong>Self-Assessed</strong></td>
+              <td style="font-size:0.8rem;">Completed the Self-Assessment form. Understands the ecosystem, verified no blind duplication, documented use case and requirement coverage. <strong>Value: planning and understanding.</strong></td>
+              <td style="font-size:0.8rem;">Form completed</td>
+              <td style="font-size:0.8rem;"><a href="https://github.com/w3c/did-extensions" style="color:var(--accent);">did-extensions</a></td>
+            </tr>
+            <tr>
+              <td><span class="maturity maturity-l2"><span class="maturity-dot"></span>L2</span></td>
+              <td><strong>PR Submitted</strong></td>
+              <td style="font-size:0.8rem;">Author believes the method adds value after L1 discovery. Opens PR with JSON + Markdown spec. Community volunteers and watchlist approvers begin review.</td>
+              <td style="font-size:0.8rem;">PR opened</td>
+              <td style="font-size:0.8rem;"><a href="https://github.com/w3c/did-extensions" style="color:var(--accent);">did-extensions</a></td>
+            </tr>
+            <tr>
+              <td><span class="maturity maturity-l3"><span class="maturity-dot"></span>L3</span></td>
+              <td><strong>Under Review</strong></td>
+              <td style="font-size:0.8rem;">PR open and under community review — comments, fixes, overlap justification in progress. Waiting for merge approval. <strong>Green light to proceed to Rubric once merged.</strong></td>
+              <td style="font-size:0.8rem;">PR under review (~monthly batches)</td>
+              <td style="font-size:0.8rem;"><a href="https://github.com/w3c/did-extensions" style="color:var(--accent);">did-extensions</a></td>
+            </tr>
+            <tr>
+              <td><span class="maturity maturity-l4"><span class="maturity-dot"></span>L4</span></td>
+              <td><strong>Rubric-Reviewed</strong></td>
+              <td style="font-size:0.8rem;">Formal standardization review. DID Rubric evaluation across 36 criteria in 8 categories by the working group.</td>
+              <td style="font-size:0.8rem;">WG evaluation (~yearly)</td>
+              <td style="font-size:0.8rem;"><a href="https://github.com/w3c/did-rubric" style="color:var(--accent);">did-rubric</a> (external)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sla-box" style="margin-bottom: 1.5rem;">
+        <h4>Review Process & SLAs</h4>
+        <p style="margin-bottom: 0.5rem;"><strong>L1 → L2:</strong> Self-assessment is immediate. Once complete, you can open a PR at any time.</p>
+        <p style="margin-bottom: 0.5rem;"><strong>L2 → L3:</strong> PRs are reviewed in <strong>monthly batches</strong>. Community volunteers and approvers check: valid JSON, Markdown spec, overlap justification, and requirement coverage. Comments and fixes happen during this phase — this IS the conformance process.</p>
+        <p style="margin-bottom: 0.5rem;"><strong>L3 → L4:</strong> Methods under review that get merged can request Rubric evaluation at <a href="https://github.com/w3c/did-rubric" style="color:var(--accent);">did-rubric</a>. The WG evaluates <strong>~1 method per year</strong>.</p>
+        <p><strong>Important:</strong> Being listed or accepted creates <strong>no endorsement or obligation</strong>. This is a development catalogue for visibility and ecosystem coordination.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+        <div class="gap-card">
+          <h3 style="font-size: 0.95rem; margin-bottom: 0.75rem;">Maturity Distribution</h3>
+          <div id="eco-maturity-dist"></div>
+        </div>
+        <div class="gap-card">
+          <h3 style="font-size: 0.95rem; margin-bottom: 0.75rem;">Activity Health</h3>
+          <div id="eco-activity-health"></div>
+        </div>
+      </div>
+
+      <div class="gap-card" style="margin-bottom: 1.5rem;">
+        <h3 style="font-size: 0.95rem; margin-bottom: 0.75rem;">Use Case Coverage Gaps</h3>
+        <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 1rem;">
+          How well are W3C use cases covered by methods at L1+ (self-assessed or higher)?
+        </p>
+        <div id="eco-usecase-gaps"></div>
+      </div>
+
+      <div class="gap-card" style="margin-bottom: 1.5rem;">
+        <h3 style="font-size: 0.95rem; margin-bottom: 0.75rem;">Requirement Coverage Across Catalogue</h3>
+        <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 1rem;">
+          Percentage of catalogued methods that cover each W3C requirement (any level).
+        </p>
+        <div id="eco-req-coverage"></div>
+      </div>
+
+      <div class="gap-card" style="margin-bottom: 1.5rem;">
+        <h3 style="font-size: 0.95rem; margin-bottom: 0.75rem;">Gap Analysis — Where New Methods Are Needed</h3>
+        <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 1rem;">
+          Identifies underserved areas where new DID methods would add the most value to the ecosystem.
+        </p>
+        <div id="eco-gap-analysis"></div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+        <div class="gap-card">
+          <h3 style="font-size: 0.95rem; margin-bottom: 0.75rem;">Regional Coverage</h3>
+          <p style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 0.75rem;">Active (L1+) methods per region.</p>
+          <div id="eco-region-gaps"></div>
+        </div>
+        <div class="gap-card">
+          <h3 style="font-size: 0.95rem; margin-bottom: 0.75rem;">Stage Distribution</h3>
+          <p style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 0.75rem;">Development lifecycle stages of active methods.</p>
+          <div id="eco-stage-dist"></div>
+        </div>
+      </div>
+
+      <div class="gap-card" style="margin-bottom: 1.5rem;">
+        <h3 style="font-size: 0.95rem; margin-bottom: 0.75rem;">Opportunity Matrix — Use Case × Requirement Gaps</h3>
+        <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 1rem;">
+          Cells show how many L1+ methods fully cover each requirement for each use case. Red = zero coverage, yellow = weak, green = strong.
+        </p>
+        <div style="overflow-x:auto;">
+          <table id="eco-opportunity-matrix" style="font-size:0.7rem;"></table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ TAB: REQUIREMENTS MATRIX ═══ -->
+    <div class="tab-content" id="tab-matrix">
+      <div class="card" style="padding:0.65rem 0.75rem;">
+        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+          <h3 style="margin:0;">Requirements × Methods Matrix</h3>
+          <span style="font-size:0.75rem;color:var(--text-muted);">
+            <span style="color:var(--green);">✓</span> met ·
+            <span style="color:var(--yellow);">P</span> partial ·
+            <span style="color:var(--text-dim);">·</span> not met
+          </span>
+          <div style="margin-left:auto;display:flex;gap:0.5rem;align-items:center;">
+            <select id="matrix-ecosystem" onchange="renderMatrix()" style="font-size:0.75rem;padding:0.3rem 0.5rem;background:var(--bg);border:1px solid var(--border);border-radius:0.375rem;color:var(--text);width:auto;">
+              <option value="">Top 20 by coverage</option>
+              <option value="Ethereum">Ethereum ecosystem</option>
+              <option value="Solana">Solana ecosystem</option>
+              <option value="Bitcoin">Bitcoin ecosystem</option>
+              <option value="DIF">DIF methods</option>
+            </select>
+            <select id="matrix-count" onchange="renderMatrix()" style="font-size:0.75rem;padding:0.3rem 0.5rem;background:var(--bg);border:1px solid var(--border);border-radius:0.375rem;color:var(--text);width:auto;">
+              <option value="20">20 methods</option>
+              <option value="30">30 methods</option>
+              <option value="50">50 methods</option>
+            </select>
+          </div>
+        </div>
+        <div style="overflow-x:auto;">
+          <table id="matrix-table" style="font-size:0.7rem;">
+            <thead><tr id="matrix-header"></tr></thead>
+            <tbody id="matrix-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ METHOD DETAIL OVERLAY ═══ -->
+  <div class="detail-overlay hidden" id="detail-overlay">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <button class="detail-back" onclick="closeDetail()">&#8592; Back to Catalogue</button>
+      <div id="detail-content"></div>
+    </div>
+  </div>
+
+  <script>
+    // ═══════════════════════════════════════════════════════════
+    // DATA LOADING
+    // ═══════════════════════════════════════════════════════════
+
+    let useCasesData = null;
+    let requirementsData = null;
+    let registryData = null;  // Full 225-method registry
+    let methodsData = [];     // Assessment examples for overlap detection
+    let selectedUseCase = null;
+    let assessments = {};
+    let selectedAudiences = new Set(['persons', 'business', 'enterprise']);
+    let registryPage = 1;
+    const REGISTRY_PAGE_SIZE = 50;
+
+    async function loadData() {
+      try {
+        const [ucRes, reqRes, regRes] = await Promise.all([
+          fetch('data/use-cases.json'),
+          fetch('data/requirements.json'),
+          fetch('data/methods-registry.json')
+        ]);
+        useCasesData = await ucRes.json();
+        requirementsData = await reqRes.json();
+        if (regRes.ok) registryData = await regRes.json();
+
+        // Load assessment examples for overlap detection
+        try {
+          const exRes = await fetch('data/examples/web.json');
+          if (exRes.ok) methodsData.push(await exRes.json());
+        } catch (e) { /* no examples yet */ }
+
+        renderAll();
+      } catch (e) {
+        console.error('Failed to load data:', e);
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // HELPERS — Maturity, Date aging
+    // ═══════════════════════════════════════════════════════════
+
+    function getMaturity(m) {
+      // L0: Listed — legacy entry, no self-assessment. Should not exist going forward.
+      // L1: Self-Assessed — completed the form. Understands ecosystem, verified no blind duplication.
+      //     Value: planning, discovery, cooperation. Required before PR.
+      // L2: PR Submitted — author believes method adds value after L1. PR open with JSON + Markdown spec.
+      //     Community volunteers and approvers review.
+      // L3: Under Review — PR open, community review in progress (comments, fixes, overlap justification).
+      //     Waiting for merge. Green light to proceed to Rubric once merged.
+      // L4: Rubric-Reviewed — formal standardization review at DID Rubric repo (external).
+      if (m.stage === 'Production' && m.active && m.specLive && m.reqPct >= 90) return { level: 4, label: 'L4', name: 'Rubric-Reviewed' };
+      if (m.active && m.specLive && m.reqPct >= 50) return { level: 3, label: 'L3', name: 'Under Review' };
+      if (m.active && m.focalUseCase && (m.regions || []).length > 0) return { level: 2, label: 'L2', name: 'PR Submitted' };
+      if (m.focalUseCase || (m.reqPct && m.reqPct > 0)) return { level: 1, label: 'L1', name: 'Self-Assessed' };
+      return { level: 0, label: 'L0', name: 'Listed' };
+    }
+
+    function getDateClass(dateStr) {
+      if (!dateStr) return 'date-dead';
+      const now = new Date();
+      const d = new Date(dateStr);
+      const months = (now - d) / (1000 * 60 * 60 * 24 * 30);
+      if (months <= 6) return 'date-fresh';
+      if (months <= 12) return 'date-stale';
+      if (months <= 24) return 'date-old';
+      return 'date-dead';
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return '<span class="date-dead">N/A</span>';
+      const d = new Date(dateStr);
+      const str = d.toISOString().split('T')[0];
+      return `<span class="${getDateClass(dateStr)}">${str}</span>`;
+    }
+
+    function maturityHtml(m) {
+      const mat = getMaturity(m);
+      return `<span class="maturity maturity-l${mat.level}"><span class="maturity-dot"></span>${mat.label}</span>`;
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // TAB NAVIGATION
+    // ═══════════════════════════════════════════════════════════
+
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ═══════════════════════════════════════════════════════════
+    // STEP NAVIGATION
+    // ═══════════════════════════════════════════════════════════
+
+    function goToStep(n) {
+      // Gate Step 4: check required requirements are assessed
+      if (n === 4 && selectedUseCase) {
+        const requiredIds = selectedUseCase.requiredRequirements || [];
+        const missing = requiredIds.filter(rid => {
+          const a = assessments[rid];
+          return !a || !a.status;
+        });
+        if (missing.length > 0) {
+          const names = missing.map(rid => requirementsData.requirements.find(r => r.id === rid)?.name || rid);
+          alert(`Cannot proceed — ${missing.length} required requirement(s) not assessed:\n\n${names.join('\n')}\n\nGo back to Step 2 and assess all required requirements.`);
+          return;
+        }
+      }
+
+      document.querySelectorAll('.form-step').forEach(s => s.classList.add('hidden'));
+      document.getElementById('step-' + n).classList.remove('hidden');
+      document.querySelectorAll('.step').forEach(s => {
+        const sn = parseInt(s.dataset.step);
+        s.classList.remove('active', 'completed');
+        if (sn === n) s.classList.add('active');
+        else if (sn < n) s.classList.add('completed');
+      });
+
+      if (n === 2) renderRequirements();
+      if (n === 4) renderReview();
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // SAVE / RESTORE PROGRESS
+    // ═══════════════════════════════════════════════════════════
+    const SAVE_KEY = 'did_explorer_assessment';
+
+    function saveProgress() {
+      const formInputs = {};
+      ['method-name', 'method-repo', 'method-category', 'method-contact',
+       'method-vdr', 'method-industries', 'method-parent', 'method-extends', 'method-calls'
+      ].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) formInputs[id] = el.value;
+      });
+      // Spec link inputs
+      const specLinks = {};
+      document.querySelectorAll('.spec-link').forEach(el => {
+        if (el.dataset.section && el.value) specLinks[el.dataset.section] = el.value;
+      });
+      // Current step
+      const activeStep = document.querySelector('.step.active');
+      const currentStep = activeStep ? parseInt(activeStep.dataset.step) : 1;
+
+      const state = {
+        selectedUseCaseId: selectedUseCase ? selectedUseCase.id : null,
+        audiences: [...selectedAudiences],
+        assessments: JSON.parse(JSON.stringify(assessments)),
+        formInputs,
+        specLinks,
+        currentStep,
+        savedAt: new Date().toISOString(),
+      };
+      localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+      const status = document.getElementById('save-status');
+      status.textContent = 'Saved ✓';
+      status.style.color = 'var(--green)';
+      setTimeout(() => { status.textContent = ''; }, 2500);
+      checkSavedProgress();
+    }
+
+    function loadProgress() {
+      const raw = localStorage.getItem(SAVE_KEY);
+      if (!raw) return;
+      try {
+        const state = JSON.parse(raw);
+        // Restore use case
+        if (state.selectedUseCaseId && useCasesData) {
+          selectedUseCase = useCasesData.useCases.find(u => u.id === state.selectedUseCaseId) || null;
+        }
+        // Restore audiences
+        if (state.audiences) {
+          selectedAudiences = new Set(state.audiences);
+          document.querySelectorAll('.audience-btn').forEach(btn => {
+            btn.classList.toggle('active', selectedAudiences.has(btn.dataset.audience));
+          });
+        }
+        // Restore assessments
+        if (state.assessments) assessments = state.assessments;
+        // Restore form inputs
+        if (state.formInputs) {
+          Object.entries(state.formInputs).forEach(([id, val]) => {
+            const el = document.getElementById(id);
+            if (el) el.value = val;
+          });
+        }
+        // Restore spec links
+        if (state.specLinks) {
+          document.querySelectorAll('.spec-link').forEach(el => {
+            if (el.dataset.section && state.specLinks[el.dataset.section]) {
+              el.value = state.specLinks[el.dataset.section];
+            }
+          });
+        }
+        // Re-render and navigate
+        if (selectedUseCase) {
+          document.getElementById('btn-step2').disabled = false;
+          renderUseCases();
+        }
+        updateContextBar();
+        goToStep(state.currentStep || 1);
+
+        const status = document.getElementById('save-status');
+        const when = state.savedAt ? new Date(state.savedAt).toLocaleString() : '';
+        status.textContent = `Restored from ${when}`;
+        status.style.color = 'var(--cyan)';
+        setTimeout(() => { status.textContent = ''; }, 3500);
+      } catch (e) {
+        console.warn('Failed to restore progress:', e);
+      }
+    }
+
+    function checkSavedProgress() {
+      const raw = localStorage.getItem(SAVE_KEY);
+      const btn = document.getElementById('btn-load');
+      if (raw && btn) {
+        try {
+          const state = JSON.parse(raw);
+          const when = state.savedAt ? new Date(state.savedAt).toLocaleDateString() : '';
+          btn.style.display = '';
+          btn.textContent = `↩ Restore${when ? ' (' + when + ')' : ''}`;
+        } catch { btn.style.display = 'none'; }
+      } else if (btn) {
+        btn.style.display = 'none';
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // CATALOGUE TAB
+    // ═══════════════════════════════════════════════════════════
+
+    function renderCatalogue() {
+      if (!registryData) return;
+      const s = registryData.stats;
+      const methods = registryData.methods;
+
+      // Compute maturity stats
+      const matCounts = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 };
+      methods.forEach(m => { matCounts[getMaturity(m).level]++; });
+
+      const stats = document.getElementById('registry-stats');
+      stats.innerHTML = `
+        <div class="card stat-card" style="cursor:pointer;" onclick="statFilter('all')" title="Show all methods"><div class="stat-value">${s.total}</div><div class="stat-label">Catalogued</div></div>
+        <div class="card stat-card" style="cursor:pointer;" onclick="statFilter('mat','0')" title="Filter: L0 Legacy"><div class="stat-value" style="color:var(--text-dim);">${matCounts[0]}</div><div class="stat-label">L0 Legacy</div></div>
+        <div class="card stat-card" style="cursor:pointer;" onclick="statFilter('mat','1')" title="Filter: L1+ Assessed"><div class="stat-value" style="color:var(--accent);">${matCounts[1]}</div><div class="stat-label">L1 Assessed</div></div>
+        <div class="card stat-card" style="cursor:pointer;" onclick="statFilter('mat','2')" title="Filter: L2+ PR Submitted"><div class="stat-value" style="color:var(--yellow);">${matCounts[2]}</div><div class="stat-label">L2 PR'd</div></div>
+        <div class="card stat-card" style="cursor:pointer;" onclick="statFilter('mat','3')" title="Filter: L3+ Under Review"><div class="stat-value" style="color:var(--green);">${matCounts[3]}</div><div class="stat-label">L3 Under Review</div></div>
+        <div class="card stat-card" style="cursor:pointer;" onclick="statFilter('status','active')" title="GitHub repo shows recent activity"><div class="stat-value">${s.active}</div><div class="stat-label">Active Repo</div></div>
+        <div class="card stat-card" style="cursor:pointer;" onclick="statFilter('status','archived')" title="GitHub repo is archived"><div class="stat-value">${s.archived}</div><div class="stat-label">Archived</div></div>
+        <div class="card stat-card" style="cursor:pointer;" onclick="statFilter('status','specLive')" title="Spec URL is live/reachable"><div class="stat-value">${s.pq}</div><div class="stat-label">Post-Quantum</div></div>
+      `;
+
+      // Populate filter dropdowns
+      const stageSelect = document.getElementById('filter-stage');
+      (registryData.stageOptions || []).forEach(st => {
+        const opt = document.createElement('option');
+        opt.value = st; opt.textContent = st;
+        stageSelect.appendChild(opt);
+      });
+      const regionSelect = document.getElementById('filter-region');
+      (registryData.regionOptions || []).forEach(r => {
+        const opt = document.createElement('option');
+        opt.value = r; opt.textContent = r;
+        regionSelect.appendChild(opt);
+      });
+
+      // Attach filter listeners
+      const filterIds = ['registry-search', 'filter-stage', 'filter-region', 'filter-status', 'filter-maturity', 'filter-reqpct'];
+      filterIds.forEach(id => {
+        document.getElementById(id).addEventListener('input', () => { activeStatFilter = null; highlightActiveStatCard(); registryPage = 1; applyRegistryFilters(); });
+        document.getElementById(id).addEventListener('change', () => { activeStatFilter = null; highlightActiveStatCard(); registryPage = 1; applyRegistryFilters(); });
+      });
+
+      applyRegistryFilters();
+    }
+
+    let activeStatFilter = null; // track current stat filter for toggle
+
+    function statFilter(type, value) {
+      const filterKey = type + ':' + (value || '');
+
+      // Toggle: clicking the same card again clears the filter
+      if (activeStatFilter === filterKey) {
+        activeStatFilter = null;
+        clearAllFilters();
+        return;
+      }
+
+      // Reset all filters first
+      document.getElementById('registry-search').value = '';
+      document.getElementById('filter-stage').value = '';
+      document.getElementById('filter-region').value = '';
+      document.getElementById('filter-status').value = '';
+      document.getElementById('filter-maturity').value = '';
+      document.getElementById('filter-reqpct').value = '';
+
+      if (type === 'mat') {
+        document.getElementById('filter-maturity').value = value;
+      } else if (type === 'status') {
+        document.getElementById('filter-status').value = value;
+      }
+
+      activeStatFilter = filterKey;
+      registryPage = 1;
+      applyRegistryFilters();
+      highlightActiveStatCard();
+    }
+
+    function clearAllFilters() {
+      activeStatFilter = null;
+      document.getElementById('registry-search').value = '';
+      document.getElementById('filter-stage').value = '';
+      document.getElementById('filter-region').value = '';
+      document.getElementById('filter-status').value = '';
+      document.getElementById('filter-maturity').value = '';
+      document.getElementById('filter-reqpct').value = '';
+      registryPage = 1;
+      applyRegistryFilters();
+      highlightActiveStatCard();
+    }
+
+    function highlightActiveStatCard() {
+      document.querySelectorAll('.stat-card').forEach(card => {
+        card.style.borderColor = '';
+        card.style.background = '';
+      });
+      if (!activeStatFilter) return;
+      // Find the active card by matching onclick
+      document.querySelectorAll('.stat-card').forEach(card => {
+        const onclick = card.getAttribute('onclick') || '';
+        if (activeStatFilter === 'all:' && onclick.includes("'all'")) {
+          card.style.borderColor = 'var(--accent)';
+        } else if (activeStatFilter.startsWith('mat:') && onclick.includes("'mat','"+activeStatFilter.split(':')[1]+"'")) {
+          card.style.borderColor = 'var(--accent)';
+        } else if (activeStatFilter.startsWith('status:') && onclick.includes("'status','"+activeStatFilter.split(':')[1]+"'")) {
+          card.style.borderColor = 'var(--accent)';
+        }
+      });
+    }
+
+    function applyRegistryFilters() {
+      if (!registryData) return;
+      const q = document.getElementById('registry-search').value.toLowerCase();
+      const stage = document.getElementById('filter-stage').value;
+      const region = document.getElementById('filter-region').value;
+      const status = document.getElementById('filter-status').value;
+      const matFilter = document.getElementById('filter-maturity').value;
+      const reqPct = parseInt(document.getElementById('filter-reqpct').value) || 0;
+
+      const filtered = registryData.methods.filter(m => {
+        if (q && !m.method.toLowerCase().includes(q) && !(m.focalUseCase || '').toLowerCase().includes(q) && !(m.blockchain || '').toLowerCase().includes(q) && !m.industries.some(i => i.toLowerCase().includes(q))) return false;
+        if (stage && m.stage !== stage) return false;
+        if (region && !(m.regions || []).includes(region)) return false;
+        if (status === 'active' && !m.active) return false;
+        if (status === 'specLive' && !m.specLive) return false;
+        if (status === 'archived' && !m.archived) return false;
+        if (matFilter !== '' && getMaturity(m).level !== parseInt(matFilter)) return false;
+        if (reqPct && (m.reqPct || 0) < reqPct) return false;
+        return true;
+      });
+
+      renderRegistryTable(filtered);
+    }
+
+    let catalogueSortKey = '';
+    let catalogueSortAsc = true;
+
+    function getVisibleCols() {
+      const cols = [];
+      document.querySelectorAll('.col-toggle:checked').forEach(cb => cols.push(cb.dataset.col));
+      return new Set(cols);
+    }
+
+    function sortCatalogue(key) {
+      if (catalogueSortKey === key) { catalogueSortAsc = !catalogueSortAsc; }
+      else { catalogueSortKey = key; catalogueSortAsc = true; }
+      registryPage = 1;
+      applyRegistryFilters();
+    }
+
+    function renderRegistryTable(methods) {
+      const extraCols = getVisibleCols();
+      const sortArrow = (key) => catalogueSortKey === key ? (catalogueSortAsc ? ' ↑' : ' ↓') : '';
+
+      // Sort — default: top 5 by stars, rest by reqPct then stage
+      if (catalogueSortKey) {
+        methods = [...methods].sort((a, b) => {
+          let va, vb;
+          switch (catalogueSortKey) {
+            case 'method': va = a.method; vb = b.method; break;
+            case 'maturity': va = getMaturity(a).level; vb = getMaturity(b).level; break;
+            case 'useCase': va = a.focalUseCase || ''; vb = b.focalUseCase || ''; break;
+            case 'stage': va = a.stage || ''; vb = b.stage || ''; break;
+            case 'lastCommit': va = a.lastCommit || ''; vb = b.lastCommit || ''; break;
+            case 'stars': va = a.stars || 0; vb = b.stars || 0; break;
+            case 'reqPct': va = a.reqPct || 0; vb = b.reqPct || 0; break;
+            case 'blockchain': va = a.blockchain || ''; vb = b.blockchain || ''; break;
+            default: return 0;
+          }
+          if (typeof va === 'string') return catalogueSortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+          return catalogueSortAsc ? va - vb : vb - va;
+        });
+      } else {
+        // Default sort: top 5 by stars desc, rest by reqPct desc then stage asc
+        const byStars = [...methods].sort((a, b) => (b.stars || 0) - (a.stars || 0));
+        const top5 = byStars.slice(0, 5);
+        const top5Set = new Set(top5.map(m => m.method));
+        const rest = methods.filter(m => !top5Set.has(m.method)).sort((a, b) => {
+          const rDiff = (b.reqPct || 0) - (a.reqPct || 0);
+          if (rDiff !== 0) return rDiff;
+          return (a.stage || '').localeCompare(b.stage || '');
+        });
+        methods = [...top5, ...rest];
+      }
+
+      const tbody = document.getElementById('registry-table');
+      const totalPages = Math.max(1, Math.ceil(methods.length / REGISTRY_PAGE_SIZE));
+      if (registryPage > totalPages) registryPage = totalPages;
+      const start = (registryPage - 1) * REGISTRY_PAGE_SIZE;
+      const page = methods.slice(start, start + REGISTRY_PAGE_SIZE);
+
+      document.getElementById('registry-count').textContent = `${methods.length} methods found`;
+      document.getElementById('registry-page-info').textContent = `Page ${registryPage} of ${totalPages}`;
+
+      // Dynamic header
+      const thead = document.getElementById('registry-thead');
+      let hdr = `<th style="width:2rem;">#</th>
+        <th style="cursor:pointer;" onclick="sortCatalogue('method')">Method${sortArrow('method')}</th>
+        <th style="cursor:pointer;" onclick="sortCatalogue('maturity')">Maturity${sortArrow('maturity')}</th>
+        <th style="cursor:pointer;" onclick="sortCatalogue('useCase')">Use Case${sortArrow('useCase')}</th>`;
+      if (extraCols.has('blockchain')) hdr += `<th style="cursor:pointer;" onclick="sortCatalogue('blockchain')">Blockchain${sortArrow('blockchain')}</th>`;
+      hdr += `<th>Region</th>
+        <th style="cursor:pointer;" onclick="sortCatalogue('stage')">Stage${sortArrow('stage')}</th>`;
+      if (extraCols.has('reqPct')) hdr += `<th style="cursor:pointer;text-align:right;" onclick="sortCatalogue('reqPct')">Req%${sortArrow('reqPct')}</th>`;
+      if (extraCols.has('specLive')) hdr += `<th>Spec</th>`;
+      if (extraCols.has('industries')) hdr += `<th>Industries</th>`;
+      if (extraCols.has('npm')) hdr += `<th>npm</th>`;
+      hdr += `<th style="cursor:pointer;text-align:right;" onclick="sortCatalogue('lastCommit')">Last Activity${sortArrow('lastCommit')}</th>
+        <th style="cursor:pointer;text-align:right;width:3rem;" onclick="sortCatalogue('stars')">Stars${sortArrow('stars')}</th>`;
+      thead.innerHTML = hdr;
+
+      const colSpan = thead.children.length;
+
+      if (page.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="${colSpan}" style="text-align:center;color:var(--text-dim);padding:2rem;">No methods match your filters.</td></tr>`;
+        document.getElementById('registry-pagination').innerHTML = '';
+        return;
+      }
+
+      tbody.innerHTML = page.map((m, i) => {
+        const num = start + i + 1;
+        const uc = m.focalUseCase || '<span class="dim-text">—</span>';
+        const regs = m.regions || [];
+        const regHtml = regs.length > 0 ? regs.slice(0, 3).map(r => `<span class="pill pill-region">${r}</span>`).join(' ') : '<span class="dim-text">—</span>';
+        const stageClass = m.stage ? 'pill-stage-' + m.stage.toLowerCase().replace(/[&\s]/g, '-').replace('r-d', 'rd') : '';
+        const stageHtml = m.stage ? `<span class="pill pill-stage ${stageClass}">${m.stage}</span>` : '<span class="dim-text">—</span>';
+        const starsHtml = m.stars > 0 ? `<span style="font-size:0.75rem;">&#9734; ${m.stars}</span>` : '<span class="dim-text">—</span>';
+
+        let row = `<td style="color:var(--text-dim);">${num}</td>
+          <td><strong>${m.method}</strong></td>
+          <td>${maturityHtml(m)}</td>
+          <td style="font-size:0.8rem;">${uc}</td>`;
+        if (extraCols.has('blockchain')) row += `<td style="font-size:0.75rem;">${m.blockchain || '<span class="dim-text">—</span>'}</td>`;
+        row += `<td>${regHtml}</td><td>${stageHtml}</td>`;
+        if (extraCols.has('reqPct')) {
+          const pct = m.reqPct || 0;
+          const pctColor = pct >= 90 ? 'var(--green)' : pct >= 50 ? 'var(--yellow)' : 'var(--text-dim)';
+          row += `<td style="text-align:right;font-size:0.75rem;color:${pctColor};font-weight:600;">${pct}%</td>`;
+        }
+        if (extraCols.has('specLive')) row += `<td style="text-align:center;">${m.specLive ? '<span style="color:var(--green);">✓</span>' : '<span class="dim-text">—</span>'}</td>`;
+        if (extraCols.has('industries')) {
+          const inds = (m.industries || []).slice(0, 2).map(id => `<span class="pill">${id.replace(/-/g,' ')}</span>`).join(' ');
+          row += `<td>${inds || '<span class="dim-text">—</span>'}</td>`;
+        }
+        if (extraCols.has('npm')) row += `<td style="font-size:0.7rem;">${m.npm ? `<a href="${m.npm.url}" target="_blank" style="color:var(--accent);">${m.npm.package}</a>` : '<span class="dim-text">—</span>'}</td>`;
+        row += `<td style="text-align:right;font-size:0.75rem;">${formatDate(m.lastCommit)}</td>
+          <td style="text-align:right;">${starsHtml}</td>`;
+
+        return `<tr style="cursor:pointer;" onclick="openDetail('${m.method}')">${row}</tr>`;
+      }).join('');
+
+      // Pagination
+      const pagDiv = document.getElementById('registry-pagination');
+      if (totalPages <= 1) { pagDiv.innerHTML = ''; return; }
+      let pagHtml = '';
+      if (registryPage > 1) pagHtml += `<button class="page-btn" onclick="registryPage=${registryPage-1};applyRegistryFilters();">&#8592;</button>`;
+      for (let p = 1; p <= totalPages; p++) {
+        if (p === 1 || p === totalPages || Math.abs(p - registryPage) <= 2) {
+          pagHtml += `<button class="page-btn ${p===registryPage?'active':''}" onclick="registryPage=${p};applyRegistryFilters();">${p}</button>`;
+        } else if (Math.abs(p - registryPage) === 3) {
+          pagHtml += '<span style="color:var(--text-dim);align-self:center;">...</span>';
+        }
+      }
+      if (registryPage < totalPages) pagHtml += `<button class="page-btn" onclick="registryPage=${registryPage+1};applyRegistryFilters();">&#8594;</button>`;
+      pagDiv.innerHTML = pagHtml;
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // USE CASE SELECTION (Step 1)
+    // ═══════════════════════════════════════════════════════════
+
+    function toggleAudience(btn) {
+      const audience = btn.dataset.audience;
+      if (selectedAudiences.has(audience)) {
+        // Don't allow deselecting all
+        if (selectedAudiences.size <= 1) return;
+        selectedAudiences.delete(audience);
+        btn.classList.remove('active');
+      } else {
+        selectedAudiences.add(audience);
+        btn.classList.add('active');
+      }
+      renderUseCases();
+    }
+
+    function renderUseCases() {
+      if (!useCasesData) return;
+      const sidebar = document.getElementById('uc-sidebar');
+
+      // Filter by audience
+      const filtered = useCasesData.useCases.filter(uc => {
+        const ucAudiences = uc.audience || ['persons', 'business', 'enterprise'];
+        return ucAudiences.some(a => selectedAudiences.has(a));
+      });
+
+      // Group by category
+      const byCategory = {};
+      filtered.forEach(uc => {
+        if (!byCategory[uc.category]) byCategory[uc.category] = [];
+        byCategory[uc.category].push(uc);
+      });
+
+      let html = '';
+      useCasesData.categories.forEach(cat => {
+        const ucs = byCategory[cat.id] || [];
+        if (ucs.length === 0) return;
+        html += `<div class="uc-cat-label">${cat.name}</div>`;
+        ucs.forEach(uc => {
+          const sel = selectedUseCase && selectedUseCase.id === uc.id ? ' selected' : '';
+          html += `<div class="uc-item${sel}" data-uc="${uc.id}" onclick="selectUseCase('${uc.id}')">
+            <span>${uc.name}</span>
+            <span class="uc-req-count">${uc.requiredRequirements.length}</span>
+          </div>`;
+        });
+      });
+
+      const total = useCasesData.useCases.length;
+      const shown = filtered.length;
+      if (shown < total) {
+        html = `<div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.5rem;">${shown} of ${total} use cases</div>` + html;
+      }
+      sidebar.innerHTML = html;
+    }
+
+    function renderUcDetail(uc) {
+      const detail = document.getElementById('uc-detail');
+      const audienceTags = (uc.audience || []).map(a => {
+        const labels = { persons: 'Persons', business: 'Business', enterprise: 'Enterprise' };
+        return `<span class="badge badge-category">${labels[a] || a}</span>`;
+      }).join(' ');
+
+      // Build requirements list
+      const reqMap = getReqIdToRMap();
+      const reqsById = {};
+      if (requirementsData) requirementsData.requirements.forEach(r => { reqsById[r.id] = r; });
+
+      const reqListHtml = uc.requiredRequirements.map(rid => {
+        const r = reqsById[rid];
+        if (!r) return '';
+        const rNum = reqMap[rid] || '';
+        return `<div style="display:flex;align-items:center;gap:0.5rem;padding:0.25rem 0;">
+          <span style="font-size:0.7rem;font-weight:700;color:var(--text-dim);min-width:1.8rem;">${rNum}</span>
+          <span style="font-size:0.8rem;">${r.name}</span>
+          <span class="badge badge-${r.tier}" style="font-size:0.6rem;">${r.tier}</span>
+        </div>`;
+      }).join('');
+
+      // Find example methods covering ≥70% of this use case's requirements
+      const ucRNums = new Set(uc.requiredRequirements.map(rid => reqMap[rid]).filter(Boolean));
+      let examplesHtml = '';
+      if (registryData && ucRNums.size > 0) {
+        const matches = registryData.methods
+          .map(m => {
+            const mReqs = new Set(m.reqMet || []);
+            const overlap = [...ucRNums].filter(r => mReqs.has(r)).length;
+            return { method: m.method, pct: Math.round(overlap / ucRNums.size * 100), stars: m.stars, active: m.active };
+          })
+          .filter(m => m.pct >= 70)
+          .sort((a, b) => b.pct - a.pct)
+          .slice(0, 8);
+
+        if (matches.length > 0) {
+          examplesHtml = `
+            <div style="margin-top:0.75rem;">
+              <div style="font-size:0.75rem;font-weight:600;color:var(--text-dim);margin-bottom:0.35rem;text-transform:uppercase;letter-spacing:0.04em;">Example methods covering this use case</div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.35rem;">
+                ${matches.map(m => `<span class="pill" style="cursor:pointer;" onclick="openDetail('${m.method}')" title="${m.pct}% requirement coverage">${m.method} <span style="color:var(--green);font-size:0.6rem;">${m.pct}%</span></span>`).join('')}
+              </div>
+            </div>`;
+        }
+      }
+
+      detail.innerHTML = `
+        <h4>${uc.name}</h4>
+        <p>${uc.description}</p>
+        <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+          ${audienceTags}
+          ${uc.actors ? uc.actors.map(a => `<span class="pill" style="margin-right:0.15rem;">${a}</span>`).join('') : ''}
+          ${uc.w3cSection ? `<a href="${uc.w3cSection}" target="_blank" style="color:var(--accent);font-size:0.75rem;margin-left:auto;">W3C Reference ↗</a>` : ''}
+        </div>
+        <div style="font-size:0.75rem;font-weight:600;color:var(--text-dim);margin-bottom:0.3rem;text-transform:uppercase;letter-spacing:0.04em;">Required capabilities (${uc.requiredRequirements.length})</div>
+        <div style="border:1px solid var(--border);border-radius:0.375rem;padding:0.4rem 0.6rem;margin-bottom:0.5rem;">
+          ${reqListHtml}
+        </div>
+        ${uc.tags ? `<div style="margin-bottom:0.35rem;">${uc.tags.map(t => `<span style="color:var(--text-dim);font-size:0.75rem;margin-right:0.5rem;">#${t}</span>`).join('')}</div>` : ''}
+        ${examplesHtml}
+      `;
+    }
+
+    function selectUseCase(id) {
+      selectedUseCase = useCasesData.useCases.find(u => u.id === id);
+      document.querySelectorAll('.uc-item').forEach(c => c.classList.remove('selected'));
+      const item = document.querySelector(`.uc-item[data-uc="${id}"]`);
+      if (item) item.classList.add('selected');
+      renderUcDetail(selectedUseCase);
+      document.getElementById('btn-step2').disabled = false;
+      updateContextBar();
+    }
+
+
+    // ═══════════════════════════════════════════════════════════
+    // REQUIREMENTS ASSESSMENT (Step 2)
+    // ═══════════════════════════════════════════════════════════
+
+    function renderRequirements() {
+      if (!requirementsData) return;
+      const sections = { core: '', common: '', specialized: '' };
+      const requiredReqIds = selectedUseCase ? selectedUseCase.requiredRequirements : [];
+
+      requirementsData.requirements.forEach(req => {
+        const isRequired = requiredReqIds.includes(req.id);
+        const current = assessments[req.id] || {};
+
+        sections[req.tier] += `
+          <div class="req-item ${isRequired ? 'required' : 'optional'}" id="req-${req.id}">
+            <div class="req-header">
+              <span class="req-name">
+                ${req.name}
+                <span class="badge badge-${req.tier}">${req.tier}</span>
+                ${isRequired ? '<span class="req-tag req-tag-required">REQUIRED BY USE CASE</span>' : ''}
+              </span>
+              <a href="${req.w3cSection}" target="_blank" style="color:var(--accent);font-size:0.7rem;">W3C Spec ↗</a>
+            </div>
+            <div class="req-question">${req.question}</div>
+            <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:0.35rem;">
+              <div class="req-status-group" style="margin-bottom:0;">
+                <button class="req-status-btn ${current.status === 'covered' ? 'active-covered' : ''}"
+                  onclick="setReqStatus('${req.id}', 'covered', this)">✓ Covered</button>
+                <button class="req-status-btn ${current.status === 'partial' ? 'active-partial' : ''}"
+                  onclick="setReqStatus('${req.id}', 'partial', this)">◐ Partial</button>
+                <button class="req-status-btn ${current.status === 'uncovered' ? 'active-uncovered' : ''}"
+                  onclick="setReqStatus('${req.id}', 'uncovered', this)">✗ Uncovered</button>
+              </div>
+              <input type="text" placeholder="Optional — spec section link (required for JSON export)"
+                style="flex:1;font-size:0.7rem;padding:0.25rem 0.5rem;"
+                value="${current.specLink || ''}"
+                oninput="setReqSpecLink('${req.id}', this.value)">
+            </div>
+            <textarea placeholder="${current.status === 'uncovered' ? 'Why is this not covered? What is the design trade-off?' : 'How does your method satisfy this requirement?'}"
+              oninput="setReqDetail('${req.id}', this.value)">${current.detail || ''}</textarea>
+            <div id="req-suggestion-${req.id}" style="margin-top: 0.35rem;"></div>
+          </div>`;
+      });
+
+      document.getElementById('req-section-core').innerHTML = sections.core;
+      document.getElementById('req-section-common').innerHTML = sections.common;
+      document.getElementById('req-section-specialized').innerHTML = sections.specialized;
+
+      // Update tab counts
+      const counts = { core: 0, common: 0, specialized: 0 };
+      requirementsData.requirements.forEach(r => { counts[r.tier] = (counts[r.tier] || 0) + 1; });
+      document.getElementById('req-tab-count-core').textContent = counts.core;
+      document.getElementById('req-tab-count-common').textContent = counts.common;
+      document.getElementById('req-tab-count-specialized').textContent = counts.specialized;
+
+      updateProgress();
+      computeOverlaps();
+    }
+
+    function switchReqTier(tier) {
+      document.querySelectorAll('.req-tier-tab').forEach(t => t.classList.toggle('active', t.dataset.tier === tier));
+      document.querySelectorAll('.req-tier-panel').forEach(p => {
+        p.classList.toggle('hidden', !p.id.endsWith(tier));
+      });
+    }
+
+    function setReqStatus(reqId, status, btn) {
+      if (!assessments[reqId]) assessments[reqId] = {};
+      assessments[reqId].status = status;
+
+      const parent = btn.closest('.req-status-group');
+      parent.querySelectorAll('.req-status-btn').forEach(b => {
+        b.classList.remove('active-covered', 'active-partial', 'active-uncovered');
+      });
+      btn.classList.add('active-' + status);
+
+      updateProgress();
+      computeOverlaps();
+
+      // Show suggestion for uncovered requirements
+      if (status === 'uncovered' || status === 'partial') {
+        showReqSuggestion(reqId, status);
+      } else {
+        document.getElementById('req-suggestion-' + reqId).innerHTML = '';
+      }
+    }
+
+    function setReqDetail(reqId, detail) {
+      if (!assessments[reqId]) assessments[reqId] = {};
+      assessments[reqId].detail = detail;
+    }
+
+    function showReqSuggestion(reqId, status) {
+      const el = document.getElementById('req-suggestion-' + reqId);
+      // Find methods that cover this requirement
+      const covering = methodsData.filter(m => {
+        if (!m.requirements) return false;
+        const key = Object.keys(m.requirements).find(k => k.toLowerCase().includes(reqId.replace('req-', '').replace(/-/g, '_').toLowerCase()));
+        return key && m.requirements[key].status === 'covered';
+      });
+
+      if (covering.length > 0) {
+        el.innerHTML = `<div class="suggestion">
+          <strong>&#128161;</strong> Methods that solve this: ${covering.map(m => `<strong>did:${m.name}</strong>`).join(', ')}.
+          Could your method <strong>call</strong> or <strong>extend</strong> one of these?
+        </div>`;
+      }
+    }
+
+    function updateProgress() {
+      const total = requirementsData.requirements.length;
+      const assessed = Object.keys(assessments).filter(k => assessments[k].status).length;
+      const pct = (assessed / total) * 100;
+      document.getElementById('req-progress').style.width = pct + '%';
+      document.getElementById('req-progress-text').textContent = `${assessed} of ${total} assessed`;
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // OVERLAP DETECTION
+    // ═══════════════════════════════════════════════════════════
+
+    // Build req-id → R-number mapping
+    function getReqIdToRMap() {
+      if (!requirementsData) return {};
+      const map = {};
+      requirementsData.requirements.forEach((r, i) => { map[r.id] = 'R' + (i + 1); });
+      return map;
+    }
+
+    function computeOverlaps() {
+      const container = document.getElementById('overlap-container');
+      if (!registryData || registryData.methods.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      const reqMap = getReqIdToRMap();
+      // Exclude core requirements from overlap — every method has them, so they inflate similarity
+      const coreReqRs = new Set(requirementsData.requirements.filter(r => r.tier === 'core').map((r, i) => reqMap[r.id]).filter(Boolean));
+      const myCoveredReqIds = Object.entries(assessments)
+        .filter(([, v]) => v.status === 'covered' || v.status === 'partial')
+        .map(([k]) => k);
+      const myCoveredRs = new Set(myCoveredReqIds.map(id => reqMap[id]).filter(r => r && !coreReqRs.has(r)));
+
+      if (myCoveredRs.size === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      // Jaccard similarity on non-core requirements only
+      const overlaps = registryData.methods
+        .filter(m => m.reqMet && m.reqMet.length > 0)
+        .map(m => {
+          const theirRs = new Set((m.reqMet || []).filter(r => !coreReqRs.has(r)));
+          const shared = [...myCoveredRs].filter(r => theirRs.has(r));
+          const unionSize = new Set([...myCoveredRs, ...theirRs]).size;
+          const pct = unionSize > 0 ? Math.round((shared.length / unionSize) * 100) : 0;
+          const onlyTheirs = [...theirRs].filter(r => !myCoveredRs.has(r));
+          const onlyMine = [...myCoveredRs].filter(r => !theirRs.has(r));
+          return { method: m, pct, shared, onlyTheirs, onlyMine };
+        })
+        .filter(o => o.pct > 30)
+        .sort((a, b) => b.pct - a.pct)
+        .slice(0, 10);
+
+      if (overlaps.length === 0) {
+        container.innerHTML = `<div class="card" style="border-color: var(--green); background: var(--green-bg);">
+          <h4 style="color: var(--green);">&#10003; No significant overlaps detected</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Your method's requirement coverage appears distinct from existing ${registryData.methods.length} registered methods.</p>
+        </div>`;
+        return;
+      }
+
+      // Group overlaps by shared requirement
+      const reqToMethods = new Map();
+      for (const o of overlaps) {
+        for (const r of o.shared) {
+          if (!reqToMethods.has(r)) reqToMethods.set(r, []);
+          reqToMethods.get(r).push({ name: o.method.method, pct: o.pct });
+        }
+      }
+      // Sort requirements by number of methods covering them (descending)
+      const reqRows = [...reqToMethods.entries()]
+        .sort((a, b) => b[1].length - a[1].length)
+        .map(([r, methods]) => {
+          const methodList = methods
+            .sort((a, b) => b.pct - a.pct)
+            .map(m => {
+              const cls = m.pct >= 80 ? 'overlap-high' : m.pct >= 50 ? 'overlap-medium' : 'overlap-low';
+              return `<span style="color:var(${cls === 'overlap-high' ? '--red' : cls === 'overlap-medium' ? '--yellow' : '--green'})">${m.name}</span> <span style="font-size:0.7rem;color:var(--text-dim);">${m.pct}%</span>`;
+            }).join(', ');
+          // Find requirement description
+          const reqObj = requirementsData.requirements.find(req => getReqIdToRMap()[req.id] === r);
+          const reqLabel = reqObj ? reqObj.name : r;
+          return `<div style="display:flex;gap:0.5rem;align-items:baseline;padding:0.3rem 0;border-bottom:1px solid rgba(234,179,8,0.1);">
+            <span style="font-weight:600;white-space:nowrap;min-width:2rem;">${r}</span>
+            <span style="color:var(--text-muted);font-size:0.8rem;min-width:10rem;">${reqLabel}</span>
+            <span style="font-size:0.8rem;flex:1;">${methodList}</span>
+          </div>`;
+        });
+
+      container.innerHTML = `<div class="overlap-alert">
+        <h4>&#9888; Overlap Detected — ${overlaps.length} similar methods across ${reqToMethods.size} shared requirements</h4>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem;">
+          Compared against ${registryData.methods.length} registered methods. Color = Jaccard similarity (red &ge;80%, yellow &ge;50%, green &lt;50%).
+        </p>
+        ${reqRows.join('')}
+      </div>`;
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // METHOD INFO (Step 3) — Name Check
+    // ═══════════════════════════════════════════════════════════
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const nameInput = document.getElementById('method-name');
+      if (nameInput) {
+        nameInput.addEventListener('input', (e) => {
+          checkMethodName(e.target.value);
+        });
+      }
+    });
+
+    function checkMethodName(name) {
+      const fb = document.getElementById('name-feedback');
+      if (!name) { fb.innerHTML = ''; return; }
+
+      const lower = name.toLowerCase().trim();
+      const existing = registryData ? registryData.methods.find(m => m.method.replace('did:', '').toLowerCase() === lower) : null;
+      const descriptivePatterns = ['web', 'key', 'peer', 'dns', 'pkh', 'jwk', 'sol', 'ethr', 'dht', 'self'];
+      const looksDescriptive = descriptivePatterns.some(p => lower.includes(p)) || lower.length <= 5;
+
+      let html = '';
+      if (existing) {
+        html = `<div class="suggestion" style="border-color: var(--red); background: var(--red-bg);">
+          <strong>&#9888; Name collision:</strong> <strong>${existing.method}</strong> is already registered.
+          Consider <strong>did:${lower}-2</strong> or a more descriptive variant like <strong>did:${lower}-&lt;differentiator&gt;</strong>.
+        </div>`;
+      } else if (!looksDescriptive && lower.length > 6) {
+        html = `<div class="suggestion">
+          <strong>&#128161; Naming tip:</strong> "${lower}" may not be self-describing.
+          Consider naming after what your method does or where it anchors identity
+          (e.g., did:web, did:key, did:peer). See <a href="NAMING.md" style="color:var(--accent);">naming convention</a>.
+        </div>`;
+      } else {
+        html = `<div style="color: var(--green); font-size: 0.85rem;">&#10003; did:${lower} — looks good!</div>`;
+      }
+      fb.innerHTML = html;
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // REVIEW & JSON GENERATION (Step 4)
+    // ═══════════════════════════════════════════════════════════
+
+    function switchReviewReqTier(tier) {
+      document.querySelectorAll('#step-4 .req-tier-tab').forEach(t => t.classList.toggle('active', t.dataset.tier === tier));
+      document.querySelectorAll('.review-tier-panel').forEach(p => {
+        p.classList.toggle('hidden', !p.id.endsWith(tier));
+      });
+    }
+
+    function renderReview() {
+      const name = document.getElementById('method-name').value || 'unnamed';
+      const repo = document.getElementById('method-repo').value || '';
+      const category = document.getElementById('method-category').value || '';
+      const parent = document.getElementById('method-parent').value || '';
+      const ext = document.getElementById('method-extends').value || '';
+      const calls = document.getElementById('method-calls').value || '';
+      const vdr = document.getElementById('method-vdr').value || '';
+      const contact = document.getElementById('method-contact').value || '';
+      const industries = document.getElementById('method-industries').value || '';
+
+      const covered = Object.values(assessments).filter(a => a.status === 'covered').length;
+      const partial = Object.values(assessments).filter(a => a.status === 'partial').length;
+      const uncovered = Object.values(assessments).filter(a => a.status === 'uncovered').length;
+      const unassessed = 22 - covered - partial - uncovered;
+
+      // ── Validation & Scorecard ──
+      const requiredReqIds = selectedUseCase ? selectedUseCase.requiredRequirements : [];
+      const blockers = [];
+      const warnings = [];
+
+      // Check required requirements
+      const reqMissing = [];
+      const reqUncovered = [];
+      requiredReqIds.forEach(rid => {
+        const a = assessments[rid];
+        const rName = requirementsData.requirements.find(r => r.id === rid)?.name || rid;
+        if (!a || !a.status) reqMissing.push(rName);
+        else if (a.status === 'uncovered' && (!a.detail || a.detail.trim().length < 10)) reqUncovered.push(rName);
+      });
+      if (reqMissing.length > 0) blockers.push(`<strong>${reqMissing.length} required requirement(s) not assessed:</strong> ${reqMissing.join(', ')}`);
+      if (reqUncovered.length > 0) blockers.push(`<strong>${reqUncovered.length} required requirement(s) marked uncovered without explanation:</strong> ${reqUncovered.join(', ')}. Explain the design trade-off.`);
+
+      // Check common requirements that are uncovered without explanation
+      const commonUnexplained = [];
+      requirementsData.requirements.filter(r => r.tier === 'common').forEach(req => {
+        const a = assessments[req.id];
+        if (a && a.status === 'uncovered' && (!a.detail || a.detail.trim().length < 10)) {
+          commonUnexplained.push(req.name);
+        }
+      });
+      if (commonUnexplained.length > 0) warnings.push(`<strong>Common requirements uncovered without explanation:</strong> ${commonUnexplained.join(', ')}. Explain why these are not needed for your use case.`);
+
+      // Check method name
+      if (!name || name === 'unnamed') blockers.push('Method name is required.');
+      if (!category) warnings.push('No category selected.');
+      if (unassessed > 0) warnings.push(`${unassessed} requirement(s) not yet assessed.`);
+
+      // Spec section validation
+      const specLinks = {};
+      const dupeUrls = {};
+      document.querySelectorAll('.spec-link').forEach(input => {
+        if (input.value) {
+          specLinks[input.dataset.section] = input.value;
+          dupeUrls[input.value] = (dupeUrls[input.value] || 0) + 1;
+        }
+      });
+      const dupes = Object.entries(dupeUrls).filter(([,c]) => c > 1).map(([url]) => url);
+      if (dupes.length > 0) warnings.push(`Duplicate spec section URLs detected: ${dupes.join(', ')}`);
+
+      // Render blockers
+      const blockerEl = document.getElementById('review-blockers');
+      if (blockers.length > 0) {
+        blockerEl.innerHTML = `<div style="background:var(--red-bg);border:1px solid rgba(239,68,68,0.3);border-radius:0.375rem;padding:0.6rem 0.75rem;margin-bottom:0.5rem;font-size:0.8rem;">
+          <strong style="color:var(--red);">&#10006; Cannot proceed to PR — fix these issues:</strong>
+          <ul style="margin:0.3rem 0 0 1.2rem;color:var(--text);">${blockers.map(b => `<li>${b}</li>`).join('')}</ul>
+        </div>`;
+      } else {
+        blockerEl.innerHTML = '';
+      }
+
+      // ── Scorecard ──
+      const scores = [
+        { label: 'Use Case', pass: !!selectedUseCase, detail: selectedUseCase ? selectedUseCase.name : 'Not selected' },
+        { label: 'Method Name', pass: name && name !== 'unnamed', detail: name && name !== 'unnamed' ? `did:${name}` : 'Missing' },
+        { label: 'Required Reqs', pass: reqMissing.length === 0 && reqUncovered.length === 0, detail: `${requiredReqIds.length - reqMissing.length - reqUncovered.length}/${requiredReqIds.length} satisfied` },
+        { label: 'Common Reqs', pass: commonUnexplained.length === 0, detail: commonUnexplained.length === 0 ? 'All explained' : `${commonUnexplained.length} unexplained` },
+        { label: 'Coverage', pass: covered + partial >= 15, detail: `${covered} covered, ${partial} partial` },
+        { label: 'Category', pass: !!category, detail: category || 'Not set' },
+      ];
+      const passCount = scores.filter(s => s.pass).length;
+      const overallPass = blockers.length === 0;
+
+      document.getElementById('review-overall-badge').innerHTML = overallPass
+        ? `<span style="color:var(--green);">✓ Ready for PR</span>`
+        : `<span style="color:var(--red);">✗ ${blockers.length} blocker(s)</span>`;
+      if (warnings.length > 0) {
+        document.getElementById('review-overall-badge').innerHTML += ` <span style="color:var(--yellow);font-size:0.75rem;font-weight:400;">${warnings.length} warning(s)</span>`;
+      }
+
+      document.getElementById('scorecard-grid').innerHTML = scores.map(s => `
+        <div style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;border:1px solid ${s.pass ? 'rgba(34,197,94,0.3)' : 'rgba(239,68,68,0.3)'};border-radius:0.375rem;background:${s.pass ? 'rgba(34,197,94,0.04)' : 'rgba(239,68,68,0.04)'};">
+          <span style="font-size:1rem;color:${s.pass ? 'var(--green)' : 'var(--red)'};">${s.pass ? '✓' : '✗'}</span>
+          <div>
+            <div style="font-size:0.8rem;font-weight:600;">${s.label}</div>
+            <div style="font-size:0.7rem;color:var(--text-muted);">${s.detail}</div>
+          </div>
+        </div>
+      `).join('') + (warnings.length > 0 ? `<div style="grid-column:1/-1;background:var(--yellow-bg);border:1px solid rgba(234,179,8,0.3);border-radius:0.375rem;padding:0.5rem 0.75rem;font-size:0.75rem;">
+        <strong style="color:var(--yellow);">⚠ Warnings:</strong>
+        <ul style="margin:0.2rem 0 0 1.2rem;">${warnings.map(w => `<li>${w}</li>`).join('')}</ul>
+      </div>` : '');
+
+      // ── Summary ──
+      document.getElementById('summary-content').innerHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.35rem 1rem;font-size:0.85rem;">
+          <div><strong>Method:</strong> did:${name}</div>
+          <div><strong>Category:</strong> ${category || '—'}</div>
+          <div><strong>Use Case:</strong> ${selectedUseCase ? selectedUseCase.name : '—'}</div>
+          <div><strong>Parent:</strong> ${parent || '—'}</div>
+          <div><strong>Extends:</strong> ${ext || '—'}</div>
+          <div><strong>Calls:</strong> ${calls || '—'}</div>
+        </div>
+      `;
+
+      // ── Requirements review with tier tabs ──
+      const tierHtml = { core: '', common: '', specialized: '' };
+      const tierCounts = { core: 0, common: 0, specialized: 0 };
+      requirementsData.requirements.forEach(req => {
+        tierCounts[req.tier]++;
+        const a = assessments[req.id] || {};
+        const isRequired = requiredReqIds.includes(req.id);
+        const statusColor = a.status === 'covered' ? 'var(--green)' : a.status === 'partial' ? 'var(--yellow)' : a.status === 'uncovered' ? 'var(--red)' : 'var(--text-dim)';
+        const statusLabel = a.status ? (a.status.charAt(0).toUpperCase() + a.status.slice(1)) : 'Not assessed';
+        const statusIcon = a.status === 'covered' ? '✓' : a.status === 'partial' ? '◐' : a.status === 'uncovered' ? '✗' : '—';
+
+        tierHtml[req.tier] += `
+          <div style="padding:0.4rem 0;border-bottom:1px solid rgba(51,65,85,0.3);display:flex;align-items:flex-start;gap:0.5rem;">
+            <span style="color:${statusColor};font-size:0.9rem;min-width:1.2rem;text-align:center;margin-top:0.1rem;">${statusIcon}</span>
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;">
+                <span style="font-weight:600;font-size:0.85rem;">${req.name}</span>
+                ${isRequired ? '<span class="req-tag req-tag-required">REQUIRED</span>' : ''}
+                <span style="margin-left:auto;font-size:0.75rem;color:${statusColor};font-weight:600;">${statusLabel}</span>
+              </div>
+              ${a.detail ? `<div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.2rem;">${a.detail}</div>` : (isRequired && (!a.status || a.status === 'uncovered') ? `<div style="font-size:0.75rem;color:var(--red);margin-top:0.2rem;">⚠ Explanation required</div>` : '')}
+              ${a.specLink ? `<div style="font-size:0.7rem;margin-top:0.15rem;"><a href="${a.specLink}" target="_blank" style="color:var(--accent);">Spec: ${a.specLink}</a></div>` : ''}
+            </div>
+          </div>`;
+      });
+
+      document.getElementById('review-reqs-core').innerHTML = tierHtml.core;
+      document.getElementById('review-reqs-common').innerHTML = tierHtml.common;
+      document.getElementById('review-reqs-specialized').innerHTML = tierHtml.specialized;
+      document.getElementById('rev-tab-core').textContent = tierCounts.core;
+      document.getElementById('rev-tab-common').textContent = tierCounts.common;
+      document.getElementById('rev-tab-specialized').textContent = tierCounts.specialized;
+      document.getElementById('review-req-summary').innerHTML = `<span class="badge badge-covered">${covered}</span> <span class="badge badge-partial">${partial}</span> <span class="badge badge-uncovered">${uncovered}</span>`;
+
+      // ── Build JSON ──
+      const methodJson = {
+        name: name,
+        status: 'registered',
+        repository: repo,
+        specification: `./specs/${name}/spec.md`
+      };
+
+      if (contact) methodJson.contactName = contact;
+      methodJson.contactEmail = '';
+      methodJson.contactWebsite = '';
+      if (vdr) methodJson.verifiableDataRegistry = vdr;
+      if (industries) methodJson.industries = industries.split(',').map(s => s.trim()).filter(Boolean);
+      if (category) methodJson.category = category;
+      if (parent) methodJson.parentDomain = parent;
+      if (ext) methodJson.extends = ext.split(',').map(s => s.trim()).filter(Boolean);
+      if (calls) methodJson.calls = calls.split(',').map(s => s.trim()).filter(Boolean);
+      if (selectedUseCase) {
+        methodJson.primaryUseCase = selectedUseCase.id;
+        methodJson.supportedUseCases = [selectedUseCase.id];
+      }
+
+      if (Object.keys(specLinks).length > 0) methodJson.specSections = specLinks;
+
+      const reqs = {};
+      requirementsData.requirements.forEach(req => {
+        const a = assessments[req.id];
+        const key = req.id.replace('req-', '').replace(/-/g, '_');
+        const capKey = key.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('_');
+        const entry = { tier: req.tier, status: a ? a.status : '', detail: a ? (a.detail || '') : '' };
+        if (a && a.specLink) entry.specLink = a.specLink;
+        reqs[capKey] = entry;
+      });
+      methodJson.requirements = reqs;
+
+      document.getElementById('json-output').textContent = JSON.stringify(methodJson, null, 2);
+
+      // Final overlap
+      computeOverlapsForReview();
+    }
+
+    function computeOverlapsForReview() {
+      const container = document.getElementById('final-overlap');
+      if (!registryData) { container.innerHTML = ''; return; }
+
+      const reqMap = getReqIdToRMap();
+      const coreRs = new Set(requirementsData.requirements.filter(r => r.tier === 'core').map(r => reqMap[r.id]).filter(Boolean));
+      const myCoveredRs = new Set(
+        Object.entries(assessments)
+          .filter(([, v]) => v.status === 'covered' || v.status === 'partial')
+          .map(([k]) => reqMap[k])
+          .filter(r => r && !coreRs.has(r))
+      );
+
+      if (myCoveredRs.size === 0) { container.innerHTML = ''; return; }
+
+      const overlaps = registryData.methods
+        .filter(m => m.reqMet && m.reqMet.length > 0)
+        .map(m => {
+          const theirRs = new Set((m.reqMet || []).filter(r => !coreRs.has(r)));
+          const shared = [...myCoveredRs].filter(r => theirRs.has(r));
+          const unionSize = new Set([...myCoveredRs, ...theirRs]).size;
+          const pct = unionSize > 0 ? Math.round((shared.length / unionSize) * 100) : 0;
+          return { method: m, pct };
+        })
+        .filter(o => o.pct > 30)
+        .sort((a, b) => b.pct - a.pct)
+        .slice(0, 10);
+
+      if (overlaps.length > 0) {
+        const methodList = overlaps.map(o => {
+          const cls = o.pct >= 80 ? '--red' : o.pct >= 50 ? '--yellow' : '--green';
+          return `<span style="color:var(${cls});">${o.method.method}</span> <span style="font-size:0.75rem;color:var(--text-dim);">${o.pct}%</span>`;
+        }).join(', ');
+        container.innerHTML = `<div class="overlap-alert">
+          <h4>&#9888; Overlap Summary — ${overlaps.length} similar methods</h4>
+          <p style="font-size:0.85rem;margin-top:0.35rem;">${methodList}</p>
+        </div>`;
+      } else {
+        container.innerHTML = '';
+      }
+    }
+
+    function copyJson() {
+      const text = document.getElementById('json-output').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = event.target;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy JSON', 2000);
+      });
+    }
+
+    function downloadJson() {
+      const text = document.getElementById('json-output').textContent;
+      const name = document.getElementById('method-name').value || 'method';
+      const blob = new Blob([text], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = name + '.json'; a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // REQUIREMENTS MATRIX TAB
+    // ═══════════════════════════════════════════════════════════
+
+    let matrixSortCol = -1;
+    let matrixSortAsc = true;
+
+    function renderMatrix() {
+      if (!requirementsData || !registryData) {
+        document.getElementById('matrix-body').innerHTML = '<tr><td colspan="2" style="text-align:center;color:var(--text-dim);padding:2rem;">Loading data...</td></tr>';
+        return;
+      }
+
+      const ecosystem = document.getElementById('matrix-ecosystem').value;
+      const maxCount = parseInt(document.getElementById('matrix-count').value) || 20;
+
+      // Filter methods by ecosystem or default top N
+      let candidates = registryData.methods.filter(m => m.reqMet && m.reqMet.length > 0);
+      if (ecosystem) {
+        const eco = ecosystem.toLowerCase();
+        candidates = candidates.filter(m => {
+          const bc = (m.blockchain || '').toLowerCase();
+          const method = m.method.toLowerCase();
+          const inds = (m.industries || []).join(' ').toLowerCase();
+          if (eco === 'ethereum') return bc.includes('ethereum') || method.includes('ethr') || method.includes('ens') || method.includes('erc');
+          if (eco === 'solana') return bc.includes('solana') || method.includes('sol') || method.includes('sns');
+          if (eco === 'bitcoin') return bc.includes('bitcoin') || method.includes('btc') || method.includes('ion');
+          if (eco === 'dif') return (m.repoUrl || '').includes('decentralized-identity');
+          return true;
+        });
+      }
+
+      let matrixMethods = candidates
+        .sort((a, b) => (b.reqPct || 0) - (a.reqPct || 0))
+        .slice(0, maxCount);
+
+      // Sort by specific column if set
+      if (matrixSortCol >= 0 && matrixSortCol < matrixMethods.length) {
+        const sortMethod = matrixMethods[matrixSortCol];
+        const sortReqSet = new Set(sortMethod.reqMet || []);
+        // Re-sort requirements by whether this method meets them
+        // (handled in row rendering below via sorted index)
+      }
+
+      if (matrixMethods.length === 0) {
+        document.getElementById('matrix-body').innerHTML = '<tr><td colspan="2" style="text-align:center;color:var(--text-dim);padding:2rem;">No methods found for this filter.</td></tr>';
+        return;
+      }
+
+      const header = document.getElementById('matrix-header');
+      header.innerHTML = '<th style="min-width:160px;">Requirement</th><th>Tier</th>' +
+        matrixMethods.map((m, i) => {
+          const sortIndicator = matrixSortCol === i ? (matrixSortAsc ? ' ↑' : ' ↓') : '';
+          return `<th style="writing-mode:vertical-rl;text-orientation:mixed;font-size:0.7rem;padding:0.3rem;cursor:pointer;" onclick="matrixSortBy(${i})" title="Sort by ${m.method}">
+            <span style="display:inline-flex;align-items:center;gap:0.2rem;">
+              <span onclick="event.stopPropagation();openDetail('${m.method}')" style="text-decoration:underline;cursor:pointer;">${m.method}</span>${sortIndicator}
+            </span>
+          </th>`;
+        }).join('') +
+        '<th style="text-align:center;">Grade</th><th style="text-align:center;min-width:80px;">Gaps</th>';
+
+      // Build rows — optionally sorted by a specific method column
+      let reqOrder = requirementsData.requirements.map((req, idx) => ({ req, idx }));
+      if (matrixSortCol >= 0 && matrixSortCol < matrixMethods.length) {
+        const sortMethodReqs = new Set(matrixMethods[matrixSortCol].reqMet || []);
+        reqOrder.sort((a, b) => {
+          const aKey = 'R' + (a.idx + 1);
+          const bKey = 'R' + (b.idx + 1);
+          const aMet = sortMethodReqs.has(aKey) ? 1 : 0;
+          const bMet = sortMethodReqs.has(bKey) ? 1 : 0;
+          return matrixSortAsc ? bMet - aMet : aMet - bMet;
+        });
+      }
+
+      const body = document.getElementById('matrix-body');
+      body.innerHTML = reqOrder.map(({ req, idx }) => {
+        const rKey = 'R' + (idx + 1);
+        let metCount = 0;
+        const cells = matrixMethods.map(m => {
+          const inReqMet = (m.reqMet || []).includes(rKey);
+          if (inReqMet) {
+            metCount++;
+            return `<td style="text-align:center;color:var(--green);">✓</td>`;
+          }
+          return `<td style="text-align:center;color:rgba(100,116,139,0.3);">·</td>`;
+        }).join('');
+        const pct = matrixMethods.length ? Math.round(metCount / matrixMethods.length * 100) : 0;
+        const grade = pct >= 95 ? 'A+' : pct >= 85 ? 'A' : pct >= 70 ? 'B' : pct >= 50 ? 'C' : pct >= 30 ? 'D' : 'F';
+        const gradeColor = pct >= 85 ? 'var(--green)' : pct >= 70 ? 'var(--yellow)' : pct >= 50 ? 'var(--text-muted)' : 'var(--red, #ef4444)';
+        // Gaps: methods that DON'T meet this requirement
+        const gapMethods = matrixMethods.filter(m => !(m.reqMet || []).includes(rKey));
+        const gapHtml = gapMethods.length === 0
+          ? '<span style="color:var(--green);font-size:0.65rem;">None</span>'
+          : gapMethods.slice(0, 5).map(m =>
+              `<span style="color:var(--red, #ef4444);font-size:0.6rem;cursor:pointer;text-decoration:underline;" onclick="openDetail('${m.method}')">${m.method}</span>`
+            ).join(', ') + (gapMethods.length > 5 ? `<span style="font-size:0.6rem;color:var(--text-dim);"> +${gapMethods.length - 5}</span>` : '');
+        return `<tr>
+          <td style="font-size:0.75rem;">${req.name}</td>
+          <td><span class="badge badge-${req.tier}" style="font-size:0.6rem;">${req.tier}</span></td>
+          ${cells}
+          <td style="text-align:center;font-size:0.8rem;color:${gradeColor};font-weight:700;">${grade}</td>
+          <td style="font-size:0.65rem;max-width:200px;overflow:hidden;text-overflow:ellipsis;">${gapHtml}</td>
+        </tr>`;
+      }).join('');
+
+      // Total row
+      const totalReqs = reqOrder.length;
+      body.innerHTML += `<tr style="border-top:2px solid var(--border);font-weight:600;">
+        <td>Total</td><td></td>
+        ${matrixMethods.map(m => {
+          const count = (m.reqMet || []).length;
+          const color = count >= 18 ? 'var(--green)' : count >= 12 ? 'var(--yellow)' : 'var(--text-dim)';
+          return `<td style="text-align:center;font-size:0.7rem;color:${color};">${count}</td>`;
+        }).join('')}
+        <td></td><td></td>
+      </tr>`;
+    }
+
+    function matrixSortBy(colIdx) {
+      if (matrixSortCol === colIdx) {
+        matrixSortAsc = !matrixSortAsc;
+      } else {
+        matrixSortCol = colIdx;
+        matrixSortAsc = true;
+      }
+      renderMatrix();
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // METHOD DETAIL PAGE
+    // ═══════════════════════════════════════════════════════════
+
+    function openDetail(methodName) {
+      if (!registryData) return;
+      const m = registryData.methods.find(x => x.method === methodName);
+      if (!m) return;
+
+      const mat = getMaturity(m);
+      const overlay = document.getElementById('detail-overlay');
+      const content = document.getElementById('detail-content');
+
+      // Header
+      const regs = (m.regions || []).map(r => `<span class="pill pill-region">${r}</span>`).join(' ');
+      const stageClass = m.stage ? 'pill-stage-' + m.stage.toLowerCase().replace(/[&\s]/g, '-').replace('r-d', 'rd') : '';
+      const stageHtml = m.stage ? `<span class="pill pill-stage ${stageClass}">${m.stage}</span>` : '';
+
+      // Requirements met
+      const reqMet = m.reqMet || [];
+      const reqTotal = 22;
+      const reqPct = m.reqPct || 0;
+
+      // Industry labels
+      const industryLabels = {
+        'cross-border-finance': 'Cross-Border Finance & Payments',
+        'banking-kyc': 'Banking & KYC/AML',
+        'defi-identity': 'DeFi & On-Chain Identity',
+        'government-eid': 'Government eID',
+        'academic-credentials': 'Academic Credentials & Diplomas',
+        'patient-health': 'Patient & Health Records',
+        'messaging': 'Messaging & Communication',
+        'supply-chain': 'Supply Chain & Logistics',
+        'social-media': 'Social Media & Reputation',
+      };
+
+      let html = `
+        <div class="detail-header">
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <h1>${m.method}</h1>
+            ${maturityHtml(m)}
+            ${stageHtml}
+          </div>
+          <div class="detail-meta">
+            <span>${m.blockchain || m.registryType || '—'}</span>
+            ${m.specLive ? '<span style="color:var(--green);">Spec Live</span>' : ''}
+            ${m.npm ? `<a href="${m.npm.url}" target="_blank" style="color:var(--accent);">npm</a>` : ''}
+            ${regs}
+            <div class="detail-meta-right">
+              <span>Last activity: ${formatDate(m.lastCommit)}</span>
+              ${m.stars > 0 ? `<span>&#9734; ${m.stars}</span>` : ''}
+            </div>
+          </div>
+        </div>
+
+        <div class="disclaimer">
+          <strong>&#9888; Catalogue listing ≠ endorsement.</strong>
+          This method is at <strong>${mat.label} (${mat.name})</strong>.
+          ${mat.level === 0 ? 'Legacy entry — no self-assessment completed. Should complete the Self-Assessment form.' : ''}
+          ${mat.level === 1 ? 'Self-assessed but not yet submitted for community review.' : ''}
+          ${mat.level === 2 ? 'PR submitted, awaiting community conformance review.' : ''}
+          ${mat.level === 3 ? 'Accepted after community review. Eligible for Rubric evaluation.' : ''}
+          ${mat.level === 4 ? 'Rubric-reviewed by the working group.' : ''}
+          Listing here creates no endorsement or obligation.
+        </div>
+      `;
+
+      // Focal use case + description
+      if (m.focalUseCase || m.useCaseSummary) {
+        html += `<p class="detail-desc">`;
+        if (m.focalUseCase) html += `<strong>Focal use case:</strong> ${m.focalUseCase}<br>`;
+        if (m.useCaseSummary) html += m.useCaseSummary;
+        html += `</p>`;
+      }
+
+      // Stat boxes
+      html += `<div class="detail-grid">
+        <div class="detail-stat"><div class="val" style="color:${reqPct>=90?'var(--green)':reqPct>=50?'var(--yellow)':'var(--text-dim)'};">${reqPct}%</div><div class="lbl">Req Coverage</div></div>
+        <div class="detail-stat"><div class="val">${reqMet.length}/${reqTotal}</div><div class="lbl">Requirements Met</div></div>
+        <div class="detail-stat"><div class="val">${m.specLive ? (m.specLength ? Math.round(m.specLength/1000)+'K' : 'Yes') : 'No'}</div><div class="lbl">Spec Size</div></div>
+        <div class="detail-stat"><div class="val">${m.active ? '<span style="color:var(--green);">Yes</span>' : '<span style="color:var(--text-dim);">No</span>'}</div><div class="lbl">Active</div></div>
+        <div class="detail-stat"><div class="val">${m.archived ? '<span style="color:var(--red);">Yes</span>' : 'No'}</div><div class="lbl">Archived</div></div>
+        <div class="detail-stat"><div class="val">${m.stars || 0}</div><div class="lbl">GitHub Stars</div></div>
+      </div>`;
+
+      // Industries (only if the method has them)
+      const inds = m.industries || [];
+      if (inds.length > 0) {
+        html += `<div class="detail-section">
+          <h3>Industries</h3>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+            ${inds.map(id => `<span class="pill">${industryLabels[id] || id.replace(/-/g, ' ')}</span>`).join('')}
+          </div>
+        </div>`;
+      }
+
+      // Links — prefer Markdown spec over HTML
+      const links = [];
+      if (m.specUrl) {
+        // Convert GitHub HTML pages to raw Markdown where possible
+        let specDisplay = m.specUrl;
+        let specHref = m.specUrl;
+        if (m.repoUrl && m.specUrl.includes(m.repoUrl.replace('github.com','').replace(/\/$/,''))) {
+          // spec is in the same repo — link to the repo's spec/ dir
+          specHref = m.repoUrl.replace(/\/$/, '') + '/tree/main/spec';
+          specDisplay = 'Spec (Markdown)';
+        } else if (m.specUrl.endsWith('.html') || m.specUrl.includes('w3c-ccg.github.io') || m.specUrl.includes('w3c.github.io')) {
+          specDisplay = 'Spec (HTML)';
+        } else {
+          specDisplay = 'Specification';
+        }
+        links.push(`<a href="${specHref}" target="_blank" style="color:var(--accent);">${specDisplay}</a>`);
+      }
+      if (m.repoUrl) links.push(`<a href="${m.repoUrl}" target="_blank" style="color:var(--accent);">GitHub</a>`);
+      if (m.npm) links.push(`<a href="${m.npm.url}" target="_blank" style="color:var(--accent);">npm: ${m.npm.package}</a>`);
+      if (links.length > 0) {
+        html += `<div class="detail-section"><h3>Links</h3><div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.5rem;">${links.join('')}</div></div>`;
+      }
+
+      // W3C Requirements with tier tabs + coverage matrix
+      if (requirementsData) {
+        const reqTechs = m.reqTechs || {};
+        const reqSat = m.reqSatisfaction || {};
+        const detailId = 'detail-' + Date.now();
+
+        // Build per-tier HTML
+        const tierContent = { core: '', common: '', specialized: '' };
+        const tierCounts = { core: 0, common: 0, specialized: 0 };
+
+        requirementsData.requirements.forEach((req, idx) => {
+          const rKey = 'R' + (idx + 1);
+          const met = reqMet.includes(rKey);
+          const tech = reqTechs[rKey] || {};
+          const satisfaction = reqSat[rKey] || null;
+          const approach = tech.approach || '';
+          const techs = (tech.techs || []).filter(t => t.length > 0);
+          tierCounts[req.tier]++;
+
+          // Build spec link for this method's own spec section
+          const methodSpecBase = m.repoUrl ? m.repoUrl.replace(/\/$/, '') + '/tree/main' : '';
+          const specSectionMap = {
+            'req-decentralization': 'spec/06-security.md', 'req-control': 'spec/05-crud.md',
+            'req-privacy': 'spec/07-privacy.md', 'req-security': 'spec/06-security.md',
+            'req-proof-based': 'spec/04-did-document.md', 'req-persistence': 'spec/05-crud.md',
+            'req-crypto-verifiability': 'spec/06-security.md', 'req-interoperability': 'spec/09-interoperability.md',
+            'req-portability': 'spec/09-interoperability.md', 'req-key-rotation': 'spec/05-crud.md',
+            'req-deactivation': 'spec/05-crud.md', 'req-service-endpoints': 'spec/04-did-document.md',
+          };
+          const ownSpecLink = methodSpecBase && specSectionMap[req.id] ? methodSpecBase + '/' + specSectionMap[req.id] : '';
+
+          tierContent[req.tier] += `<div class="req-row" style="flex-wrap:wrap;">
+            <div class="req-num ${met ? 'req-num-met' : 'req-num-unmet'}">${rKey}</div>
+            <div style="flex:1;min-width:200px;">
+              <div style="font-size:0.85rem;font-weight:500;">${req.name}</div>
+            </div>
+            <div style="font-size:0.85rem;font-weight:600;color:${met?'var(--green)':'var(--red)'};">
+              ${met ? '✓ Met' : '✗ Not met'}
+            </div>
+            <div style="width:100%;padding-left:3rem;margin-top:0.25rem;">
+              <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.3rem;">${req.description}</div>
+              ${!met ? `<div style="font-size:0.75rem;color:var(--red);font-style:italic;margin-top:0.2rem;">Gap: This method does not cover this requirement.</div>` : ''}
+              <div style="display:flex;gap:1rem;margin-top:0.2rem;">
+                ${ownSpecLink ? `<a href="${ownSpecLink}" target="_blank" style="font-size:0.7rem;color:var(--green);">Method spec ↗</a>` : ''}
+                ${req.w3cSection ? `<a href="${req.w3cSection}" target="_blank" style="font-size:0.7rem;color:var(--text-dim);">W3C ref ↗</a>` : ''}
+              </div>
+            </div>
+          </div>`;
+        });
+
+        // Coverage matrix — this method vs top 10 similar methods
+        const myReqSet = new Set(reqMet);
+        let matrixMethods = [];
+        if (registryData) {
+          matrixMethods = registryData.methods
+            .filter(om => om.method !== m.method && (om.reqMet || []).length > 0)
+            .map(om => {
+              const omReqs = new Set(om.reqMet || []);
+              const overlap = [...myReqSet].filter(r => omReqs.has(r)).length;
+              return { method: om.method, reqMet: om.reqMet || [], overlap, pct: myReqSet.size > 0 ? Math.round(overlap / myReqSet.size * 100) : 0 };
+            })
+            .sort((a, b) => b.overlap - a.overlap)
+            .slice(0, 10);
+        }
+
+        let matrixHtml = `<div style="overflow-x:auto;"><table style="font-size:0.7rem;">
+          <thead><tr><th style="min-width:100px;">Method</th>`;
+        requirementsData.requirements.forEach((req, idx) => {
+          matrixHtml += `<th style="text-align:center;min-width:30px;padding:0.2rem;" title="${req.name}">R${idx+1}</th>`;
+        });
+        matrixHtml += `<th style="text-align:center;">Total</th></tr></thead><tbody>`;
+
+        // This method row
+        matrixHtml += `<tr style="background:rgba(59,130,246,0.08);font-weight:600;"><td>${m.method}</td>`;
+        requirementsData.requirements.forEach((req, idx) => {
+          const rKey = 'R' + (idx + 1);
+          const met = myReqSet.has(rKey);
+          matrixHtml += `<td style="text-align:center;color:${met?'var(--green)':'var(--red)'};">${met ? '✓' : '✗'}</td>`;
+        });
+        matrixHtml += `<td style="text-align:center;">${reqMet.length}</td></tr>`;
+
+        // Similar methods
+        matrixMethods.forEach(om => {
+          const omSet = new Set(om.reqMet);
+          matrixHtml += `<tr><td><span style="cursor:pointer;color:var(--accent);" onclick="openDetail('${om.method}')">${om.method}</span></td>`;
+          requirementsData.requirements.forEach((req, idx) => {
+            const rKey = 'R' + (idx + 1);
+            const met = omSet.has(rKey);
+            matrixHtml += `<td style="text-align:center;color:${met?'var(--green)':'rgba(239,68,68,0.5)'};">${met ? '✓' : '✗'}</td>`;
+          });
+          matrixHtml += `<td style="text-align:center;">${om.reqMet.length}</td></tr>`;
+        });
+        matrixHtml += `</tbody></table></div>`;
+
+        const coreMet = requirementsData.requirements.filter((r, i) => r.tier === 'core' && myReqSet.has('R'+(i+1))).length;
+        const coreTotal = tierCounts.core;
+        const commonMet = requirementsData.requirements.filter((r, i) => r.tier === 'common' && myReqSet.has('R'+(i+1))).length;
+        const commonTotal = tierCounts.common;
+        const specMet = requirementsData.requirements.filter((r, i) => r.tier === 'specialized' && myReqSet.has('R'+(i+1))).length;
+        const specTotal = tierCounts.specialized;
+
+        html += `<div class="detail-section">
+          <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+            <h3 style="border:none;padding:0;margin:0;">W3C Requirements (${reqMet.length}/${reqTotal} — ${reqPct}%)</h3>
+          </div>
+          <div class="progress-bar" style="margin-bottom:0.5rem;"><div class="progress-fill" style="width:${reqPct}%;background:${reqPct>=90?'var(--green)':reqPct>=50?'var(--yellow)':'var(--red)'};"></div></div>
+          <div class="req-tier-tabs" style="margin-bottom:0.5rem;">
+            <button class="req-tier-tab active" data-tier="core" onclick="switchDetailReqTab(this,'${detailId}','core')">Core <span style="font-size:0.7rem;opacity:0.7;">${coreMet}/${coreTotal}</span></button>
+            <button class="req-tier-tab" data-tier="common" onclick="switchDetailReqTab(this,'${detailId}','common')">Common <span style="font-size:0.7rem;opacity:0.7;">${commonMet}/${commonTotal}</span></button>
+            <button class="req-tier-tab" data-tier="specialized" onclick="switchDetailReqTab(this,'${detailId}','specialized')">Specialized <span style="font-size:0.7rem;opacity:0.7;">${specMet}/${specTotal}</span></button>
+            <button class="req-tier-tab" data-tier="matrix" onclick="switchDetailReqTab(this,'${detailId}','matrix')">Coverage Matrix</button>
+          </div>
+          <div id="${detailId}-core" class="detail-req-panel">${tierContent.core}</div>
+          <div id="${detailId}-common" class="detail-req-panel hidden">${tierContent.common}</div>
+          <div id="${detailId}-specialized" class="detail-req-panel hidden">${tierContent.specialized}</div>
+          <div id="${detailId}-matrix" class="detail-req-panel hidden">${matrixHtml}</div>
+        </div>`;
+      }
+
+      // Maturity path
+      html += `<div class="detail-section">
+        <h3>Maturity Path</h3>
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+          ${[0,1,2,3,4].map(l => {
+            const names = ['Listed (legacy)', 'Self-Assessed', 'PR Submitted', 'Accepted', 'Rubric-Reviewed'];
+            const repos = ['did-extensions', 'did-extensions', 'did-extensions', 'did-extensions', 'did-rubric'];
+            const current = l === mat.level;
+            const done = l < mat.level;
+            return `<div style="flex:1;min-width:140px;padding:0.6rem;border:1px solid ${current?'var(--accent)':done?'var(--green)':'var(--border)'};border-radius:0.375rem;background:${current?'rgba(59,130,246,0.05)':done?'rgba(34,197,94,0.03)':'transparent'};">
+              <div><span class="maturity maturity-l${l}"><span class="maturity-dot"></span>L${l}</span></div>
+              <div style="font-size:0.8rem;font-weight:600;margin-top:0.25rem;">${names[l]}</div>
+              <div style="font-size:0.7rem;color:var(--text-dim);">${repos[l]}</div>
+              ${current ? '<div style="font-size:0.65rem;color:var(--accent);margin-top:0.25rem;">&#8592; Current</div>' : ''}
+              ${done ? '<div style="font-size:0.65rem;color:var(--green);margin-top:0.25rem;">&#10003; Done</div>' : ''}
+            </div>`;
+          }).join('')}
+        </div>
+      </div>`;
+
+      content.innerHTML = html;
+      overlay.classList.remove('hidden');
+      overlay.scrollTop = 0;
+    }
+
+    function switchDetailReqTab(btn, prefix, tier) {
+      const parent = btn.closest('.detail-section');
+      parent.querySelectorAll('.req-tier-tab').forEach(t => t.classList.toggle('active', t.dataset.tier === tier));
+      parent.querySelectorAll('.detail-req-panel').forEach(p => {
+        p.classList.toggle('hidden', !p.id.endsWith('-' + tier));
+      });
+    }
+
+    function closeDetail() {
+      document.getElementById('detail-overlay').classList.add('hidden');
+    }
+
+    // Close detail on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDetail();
+    });
+
+    // ═══════════════════════════════════════════════════════════
+    // ECOSYSTEM DASHBOARD
+    // ═══════════════════════════════════════════════════════════
+
+    function renderEcosystem() {
+      if (!registryData || !requirementsData) return;
+      const methods = registryData.methods;
+
+      // Maturity distribution
+      const matCounts = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 };
+      methods.forEach(m => { matCounts[getMaturity(m).level]++; });
+      const matNames = ['L0 Listed (legacy)', 'L1 Self-Assessed', 'L2 PR Submitted', 'L3 Under Review', 'L4 Rubric-Reviewed'];
+      const matColors = ['var(--text-dim)', 'var(--accent)', 'var(--yellow)', 'var(--green)', 'var(--purple)'];
+      const matDist = document.getElementById('eco-maturity-dist');
+      matDist.innerHTML = [0,1,2,3,4].map(l => {
+        const pct = Math.round((matCounts[l] / methods.length) * 100);
+        return `<div class="gap-bar">
+          <span class="gap-label">${matNames[l]}</span>
+          <div class="gap-bar-track"><div class="gap-bar-fill" style="width:${pct}%;background:${matColors[l]};"></div></div>
+          <span class="gap-pct" style="color:${matColors[l]};">${matCounts[l]} (${pct}%)</span>
+        </div>`;
+      }).join('');
+
+      // Activity health
+      const now = new Date();
+      const actBuckets = { fresh: 0, stale: 0, old: 0, dead: 0, unknown: 0 };
+      methods.forEach(m => {
+        if (!m.lastCommit) { actBuckets.unknown++; return; }
+        const months = (now - new Date(m.lastCommit)) / (1000 * 60 * 60 * 24 * 30);
+        if (months <= 6) actBuckets.fresh++;
+        else if (months <= 12) actBuckets.stale++;
+        else if (months <= 24) actBuckets.old++;
+        else actBuckets.dead++;
+      });
+      const actEl = document.getElementById('eco-activity-health');
+      const actItems = [
+        { label: '< 6 months (fresh)', count: actBuckets.fresh, color: 'var(--green)' },
+        { label: '6-12 months (stale)', count: actBuckets.stale, color: 'var(--yellow)' },
+        { label: '1-2 years (old)', count: actBuckets.old, color: '#f97316' },
+        { label: '> 2 years (dead)', count: actBuckets.dead, color: 'var(--red)' },
+        { label: 'Unknown', count: actBuckets.unknown, color: 'var(--text-dim)' },
+      ];
+      actEl.innerHTML = actItems.map(a => {
+        const pct = Math.round((a.count / methods.length) * 100);
+        return `<div class="gap-bar">
+          <span class="gap-label">${a.label}</span>
+          <div class="gap-bar-track"><div class="gap-bar-fill" style="width:${pct}%;background:${a.color};"></div></div>
+          <span class="gap-pct" style="color:${a.color};">${a.count} (${pct}%)</span>
+        </div>`;
+      }).join('');
+
+      // Use case coverage gaps
+      if (useCasesData) {
+        const ucEl = document.getElementById('eco-usecase-gaps');
+        // For each use case, count how many L1+ methods cover its required requirements
+        const ucGaps = useCasesData.useCases.map(uc => {
+          const reqMap = getReqIdToRMap();
+          const requiredRs = uc.requiredRequirements.map(id => reqMap[id]).filter(Boolean);
+          const coveringMethods = methods.filter(m => {
+            if (getMaturity(m).level < 1) return false;
+            const met = new Set(m.reqMet || []);
+            return requiredRs.every(r => met.has(r));
+          });
+          // Find best partial coverage percentage (highest % among non-full methods)
+          let bestPartialPct = 0;
+          methods.forEach(m => {
+            if (getMaturity(m).level < 1) return;
+            const met = new Set(m.reqMet || []);
+            const covered = requiredRs.filter(r => met.has(r)).length;
+            if (covered > 0 && covered < requiredRs.length) {
+              const pct = Math.round((covered / requiredRs.length) * 100);
+              if (pct > bestPartialPct) bestPartialPct = pct;
+            }
+          });
+          return { uc, full: coveringMethods.length, bestPartialPct, reqCount: requiredRs.length };
+        }).sort((a, b) => a.full - b.full);
+
+        const maxFull = Math.max(...ucGaps.map(g => g.full), 1);
+        ucEl.innerHTML = ucGaps.map(g => {
+          const pct = Math.round((g.full / maxFull) * 100);
+          const color = g.full === 0 ? 'var(--red)' : g.full <= 2 ? 'var(--yellow)' : 'var(--green)';
+          return `<div class="gap-bar">
+            <span class="gap-label">${g.uc.name}</span>
+            <div class="gap-bar-track"><div class="gap-bar-fill" style="width:${pct}%;background:${color};"></div></div>
+            <span class="gap-pct" style="color:${color};">${g.full} full${g.full === 0 && g.bestPartialPct > 0 ? ` (best: ${g.bestPartialPct}% of ${g.reqCount} reqs)` : ''}</span>
+          </div>`;
+        }).join('');
+      }
+
+      // Requirement coverage across all methods
+      const reqEl = document.getElementById('eco-req-coverage');
+      const withReqs = methods.filter(m => m.reqMet && m.reqMet.length > 0);
+      reqEl.innerHTML = requirementsData.requirements.map((req, idx) => {
+        const rKey = 'R' + (idx + 1);
+        const count = withReqs.filter(m => m.reqMet.includes(rKey)).length;
+        const pct = withReqs.length > 0 ? Math.round((count / withReqs.length) * 100) : 0;
+        const color = pct >= 70 ? 'var(--green)' : pct >= 40 ? 'var(--yellow)' : 'var(--red)';
+        return `<div class="gap-bar">
+          <span class="gap-label">${rKey} ${req.name}</span>
+          <div class="gap-bar-track"><div class="gap-bar-fill" style="width:${pct}%;background:${color};"></div></div>
+          <span class="gap-pct" style="color:${color};">${pct}%</span>
+        </div>`;
+      }).join('');
+
+      // ── GAP ANALYSIS ──
+      const gapEl = document.getElementById('eco-gap-analysis');
+      const l1Plus = methods.filter(m => getMaturity(m).level >= 1);
+      const reqMap = getReqIdToRMap();
+
+      // 1. Find underserved use cases (fewest fully-covering L1+ methods)
+      const ucScores = (useCasesData ? useCasesData.useCases : []).map(uc => {
+        const requiredRs = uc.requiredRequirements.map(id => reqMap[id]).filter(Boolean);
+        const full = l1Plus.filter(m => {
+          const met = new Set(m.reqMet || []);
+          return requiredRs.every(r => met.has(r));
+        });
+        return { uc, fullCount: full.length, reqCount: requiredRs.length };
+      }).sort((a, b) => a.fullCount - b.fullCount);
+
+      // 2. Find weakest requirements (lowest coverage among L1+ methods)
+      const reqScores = requirementsData.requirements.map((req, idx) => {
+        const rKey = 'R' + (idx + 1);
+        const count = l1Plus.filter(m => (m.reqMet || []).includes(rKey)).length;
+        const pct = l1Plus.length > 0 ? Math.round((count / l1Plus.length) * 100) : 0;
+        return { req, rKey, count, pct };
+      }).sort((a, b) => a.pct - b.pct);
+
+      // 3. Build gap narrative
+      const underservedUCs = ucScores.filter(u => u.fullCount <= 2).slice(0, 5);
+      const weakReqs = reqScores.filter(r => r.pct < 40).slice(0, 5);
+
+      let gapHtml = '';
+
+      // Underserved use cases
+      if (underservedUCs.length > 0) {
+        gapHtml += `<div style="margin-bottom:1rem;">
+          <h4 style="font-size:0.85rem;color:var(--red);margin-bottom:0.5rem;">Underserved Use Cases</h4>
+          <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.5rem;">Use cases with ≤2 fully-covering L1+ methods — high-value targets for new methods.</p>
+          <div style="display:flex;flex-direction:column;gap:0.3rem;">
+            ${underservedUCs.map(u => {
+              const severity = u.fullCount === 0 ? 'var(--red)' : 'var(--yellow)';
+              return `<div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;">
+                <span style="color:${severity};font-weight:600;min-width:1.5rem;text-align:right;">${u.fullCount}</span>
+                <span>${u.uc.name}</span>
+                <span style="color:var(--text-dim);font-size:0.7rem;">(needs ${u.reqCount} reqs)</span>
+              </div>`;
+            }).join('')}
+          </div>
+        </div>`;
+      } else {
+        gapHtml += `<div style="margin-bottom:1rem;color:var(--green);font-size:0.85rem;">All use cases have 3+ fully-covering methods.</div>`;
+      }
+
+      // Weak requirements
+      if (weakReqs.length > 0) {
+        gapHtml += `<div style="margin-bottom:1rem;">
+          <h4 style="font-size:0.85rem;color:var(--yellow);margin-bottom:0.5rem;">Weakest Requirements</h4>
+          <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.5rem;">Requirements with <40% coverage among L1+ methods — ecosystem-wide blind spots.</p>
+          <div style="display:flex;flex-direction:column;gap:0.3rem;">
+            ${weakReqs.map(r => {
+              const severity = r.pct < 20 ? 'var(--red)' : 'var(--yellow)';
+              return `<div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;">
+                <span style="color:${severity};font-weight:600;min-width:2.5rem;text-align:right;">${r.pct}%</span>
+                <span>${r.rKey} ${r.req.name}</span>
+                <span style="color:var(--text-dim);font-size:0.7rem;">(${r.count}/${l1Plus.length} methods)</span>
+              </div>`;
+            }).join('')}
+          </div>
+        </div>`;
+      }
+
+      // Summary stat line
+      const avgReqCoverage = l1Plus.length > 0 ? Math.round(l1Plus.reduce((s, m) => s + (m.reqPct || 0), 0) / l1Plus.length) : 0;
+      const activeRate = methods.length > 0 ? Math.round((methods.filter(m => m.active).length / methods.length) * 100) : 0;
+      gapHtml += `<div style="display:flex;gap:1.5rem;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--border);font-size:0.8rem;">
+        <div><strong style="color:var(--accent);">${l1Plus.length}</strong> <span style="color:var(--text-muted);">L1+ methods</span></div>
+        <div><strong style="color:var(--accent);">${avgReqCoverage}%</strong> <span style="color:var(--text-muted);">avg req coverage</span></div>
+        <div><strong style="color:var(--accent);">${activeRate}%</strong> <span style="color:var(--text-muted);">active repos</span></div>
+      </div>`;
+
+      gapEl.innerHTML = gapHtml;
+
+      // ── REGIONAL COVERAGE ──
+      const regionEl = document.getElementById('eco-region-gaps');
+      const regionCounts = {};
+      l1Plus.forEach(m => {
+        (m.regions || []).forEach(r => { regionCounts[r] = (regionCounts[r] || 0) + 1; });
+      });
+      const regionsSorted = Object.entries(regionCounts).sort((a, b) => b[1] - a[1]);
+      const maxRegion = regionsSorted.length > 0 ? regionsSorted[0][1] : 1;
+      regionEl.innerHTML = regionsSorted.length > 0 ? regionsSorted.map(([region, count]) => {
+        const pct = Math.round((count / maxRegion) * 100);
+        const color = count <= 2 ? 'var(--red)' : count <= 5 ? 'var(--yellow)' : 'var(--green)';
+        return `<div class="gap-bar">
+          <span class="gap-label">${region}</span>
+          <div class="gap-bar-track"><div class="gap-bar-fill" style="width:${pct}%;background:${color};"></div></div>
+          <span class="gap-pct" style="color:${color};">${count}</span>
+        </div>`;
+      }).join('') : '<span style="color:var(--text-dim);font-size:0.8rem;">No regional data available</span>';
+
+      // ── STAGE DISTRIBUTION ──
+      const stageEl = document.getElementById('eco-stage-dist');
+      const stageCounts = {};
+      l1Plus.forEach(m => {
+        const st = m.stage || 'Unknown';
+        stageCounts[st] = (stageCounts[st] || 0) + 1;
+      });
+      const stagesSorted = Object.entries(stageCounts).sort((a, b) => b[1] - a[1]);
+      const maxStage = stagesSorted.length > 0 ? stagesSorted[0][1] : 1;
+      const stageColors = { 'Production': 'var(--green)', 'Development': 'var(--yellow)', 'Deprecated': 'var(--red)', 'Unknown': 'var(--text-dim)' };
+      stageEl.innerHTML = stagesSorted.map(([stage, count]) => {
+        const pct = Math.round((count / maxStage) * 100);
+        const color = stageColors[stage] || 'var(--accent)';
+        return `<div class="gap-bar">
+          <span class="gap-label">${stage}</span>
+          <div class="gap-bar-track"><div class="gap-bar-fill" style="width:${pct}%;background:${color};"></div></div>
+          <span class="gap-pct" style="color:${color};">${count}</span>
+        </div>`;
+      }).join('');
+
+      // ── OPPORTUNITY MATRIX ──
+      // For each use case, find methods that cover ≥50% of its requirements ("relevant methods").
+      // Each cell shows how many relevant methods meet that specific requirement.
+      // Empty = requirement not needed by this use case. Red = 0 relevant methods. Yellow = few. Green = many.
+      if (useCasesData) {
+        const matrixEl = document.getElementById('eco-opportunity-matrix');
+        const allReqs = requirementsData.requirements;
+        // Only show non-core requirements (core are met by nearly everyone, not interesting for gaps)
+        const specializedReqs = allReqs.filter(r => r.tier !== 'core');
+        let html = '<thead><tr><th style="text-align:left;min-width:120px;">Use Case</th>';
+        specializedReqs.forEach(req => {
+          const rKey = 'R' + (allReqs.indexOf(req) + 1);
+          html += `<th style="writing-mode:vertical-rl;text-orientation:mixed;padding:0.2rem;font-size:0.6rem;" title="${req.name}">${rKey}</th>`;
+        });
+        html += '<th style="font-size:0.65rem;">Relevant</th><th style="font-size:0.65rem;">Gaps</th></tr></thead><tbody>';
+
+        useCasesData.useCases.forEach(uc => {
+          const requiredReqIds = new Set(uc.requiredRequirements);
+          // Map required req IDs to R-keys
+          const requiredRKeys = uc.requiredRequirements.map(id => reqMap[id]).filter(Boolean);
+          // "Relevant" = L1+ methods covering ≥50% of this use case's requirements
+          const relevantMethods = l1Plus.filter(m => {
+            const met = new Set(m.reqMet || []);
+            const covered = requiredRKeys.filter(r => met.has(r)).length;
+            return requiredRKeys.length > 0 && (covered / requiredRKeys.length) >= 0.5;
+          });
+          const totalRelevant = relevantMethods.length;
+
+          html += `<tr><td style="font-size:0.7rem;white-space:nowrap;">${uc.name}</td>`;
+          let gapCount = 0;
+          specializedReqs.forEach(req => {
+            const rKey = 'R' + (allReqs.indexOf(req) + 1);
+            const isRequired = requiredReqIds.has(req.id);
+            if (!isRequired) {
+              html += `<td style="text-align:center;font-size:0.65rem;"></td>`;
+              return;
+            }
+            // Count relevant methods that meet THIS requirement
+            const count = relevantMethods.filter(m => (m.reqMet || []).includes(rKey)).length;
+            const bg = count === 0 ? 'rgba(239,68,68,0.3)' : count <= 2 ? 'rgba(234,179,8,0.2)' : 'rgba(34,197,94,0.15)';
+            const color = count === 0 ? 'var(--red)' : count <= 2 ? 'var(--yellow)' : 'var(--green)';
+            if (count === 0) gapCount++;
+            html += `<td style="text-align:center;background:${bg};font-size:0.65rem;"><span style="color:${color};">${count}</span></td>`;
+          });
+          const relevantColor = totalRelevant === 0 ? 'var(--red)' : totalRelevant <= 3 ? 'var(--yellow)' : 'var(--green)';
+          const gapColor = gapCount === 0 ? 'var(--green)' : gapCount <= 2 ? 'var(--yellow)' : 'var(--red)';
+          html += `<td style="text-align:center;font-weight:600;color:${relevantColor};font-size:0.7rem;">${totalRelevant}</td>`;
+          html += `<td style="text-align:center;font-weight:600;color:${gapColor};font-size:0.7rem;">${gapCount > 0 ? gapCount : '—'}</td></tr>`;
+        });
+
+        html += '</tbody>';
+        matrixEl.innerHTML = html;
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // CONTEXT BAR & SPEC PATHS
+    // ═══════════════════════════════════════════════════════════
+
+    function updateContextBar() {
+      const name = document.getElementById('method-name');
+      const repo = document.getElementById('method-repo');
+      const industries = document.getElementById('method-industries');
+
+      const ctxMethod = document.getElementById('ctx-method');
+      const ctxUsecase = document.getElementById('ctx-usecase');
+      const ctxIndustries = document.getElementById('ctx-industries');
+      const ctxRepo = document.getElementById('ctx-repo');
+
+      if (name && name.value) {
+        ctxMethod.textContent = 'did:' + name.value;
+        ctxMethod.classList.remove('empty');
+      } else {
+        ctxMethod.textContent = 'not set';
+        ctxMethod.classList.add('empty');
+      }
+
+      if (selectedUseCase) {
+        ctxUsecase.textContent = selectedUseCase.name;
+        ctxUsecase.classList.remove('empty');
+      } else {
+        ctxUsecase.textContent = 'not selected';
+        ctxUsecase.classList.add('empty');
+      }
+
+      if (industries && industries.value) {
+        ctxIndustries.textContent = industries.value;
+        ctxIndustries.classList.remove('empty');
+      } else if (selectedUseCase && selectedUseCase.tags) {
+        ctxIndustries.textContent = selectedUseCase.tags.slice(0, 3).join(', ');
+        ctxIndustries.classList.remove('empty');
+      } else {
+        ctxIndustries.textContent = '—';
+        ctxIndustries.classList.add('empty');
+      }
+
+      if (repo && repo.value) {
+        const short = repo.value.replace('https://github.com/', '');
+        ctxRepo.textContent = short;
+        ctxRepo.classList.remove('empty');
+      } else {
+        ctxRepo.textContent = '—';
+        ctxRepo.classList.add('empty');
+      }
+    }
+
+    function updateSpecPaths() {
+      const repo = document.getElementById('method-repo');
+      if (!repo || !repo.value) return;
+      const base = repo.value.replace(/\/$/, '');
+      const name = (document.getElementById('method-name') || {}).value || 'method';
+
+      // Auto-fill spec link placeholders with repo-based paths
+      document.querySelectorAll('.spec-link').forEach(input => {
+        const section = input.dataset.section;
+        if (!input.value) {
+          input.placeholder = base + '/blob/main/spec/' + section + '.md';
+        }
+      });
+    }
+
+    function setReqSpecLink(reqId, link) {
+      if (!assessments[reqId]) assessments[reqId] = {};
+      assessments[reqId].specLink = link;
+    }
+
+    // Also remove the old method-name listener and use inline oninput
+    // (already done in the HTML above)
+
+    // ═══════════════════════════════════════════════════════════
+    // INIT
+    // ═══════════════════════════════════════════════════════════
+
+    function renderAll() {
+      renderCatalogue();
+      renderUseCases();
+      renderMatrix();
+      renderEcosystem();
+      checkSavedProgress();
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
