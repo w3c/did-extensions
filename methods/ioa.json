@@ -1,0 +1,9 @@
+{
+  "name": "ioa",
+  "status": "registered",
+  "verifiableDataRegistry": "TChain",
+  "contactName": "teleinfo caict",
+  "contactEmail": "blockchain@teleinfo.cn",
+  "contactWebsite": "",
+  "specification": "https://github.com/teleinfo-bif/ioa/blob/main/doc/en/IOA%20Protocol%20Specification.md"
+}
