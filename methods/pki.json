@@ -1,0 +1,9 @@
+{
+  "name": "pki",
+  "status": "registered",
+  "specification": "https://github.com/shecablockchain/did-pki-specification/blob/main/README.md",
+  "contactName": "Shanghai Electronic Certification Authority Co., Ltd.",
+  "contactEmail": "wangzhitao@sheca.com",
+  "contactWebsite": "https://www.sheca.com/",
+  "verifiableDataRegistry": "Shanghai Identity Chain"
+}
