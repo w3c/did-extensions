@@ -1,0 +1,9 @@
+{
+  "name": "trail",
+  "status": "provisional",
+  "verifiableDataRegistry": "TRAIL Registry (https://registry.trailprotocol.org)",
+  "specification": "https://github.com/trailprotocol/trail-did-method/blob/main/spec/did-method-trail-v1.md",
+  "contactName": "Christian Hommrich",
+  "contactEmail": "christian.hommrich@gmail.com",
+  "contactWebsite": "https://trailprotocol.org"
+}
