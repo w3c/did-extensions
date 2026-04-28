@@ -1,0 +1,9 @@
+{
+  "name": "ans",
+  "status": "registered",
+  "verifiableDataRegistry": "TChain",
+  "contactName": "PaperProof Labs",
+  "contactEmail": "paperproof.labs@gmail.com",
+  "contactWebsite": "paperproof.wal.app",
+  "specification": "https://github.com/PaperProofLabs/ans/blob/main/doc/en/ANS%20Protocol%20Specification.md"
+}
