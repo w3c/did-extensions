@@ -1,0 +1,9 @@
+{
+  "name": "aip",
+  "status": "registered",
+  "verifiableDataRegistry": "Solana",
+  "contactName": "AIP Working Group",
+  "contactEmail": "emptylabs0@gmail.com",
+  "contactWebsite": "https://github.com/dr-wilson-empty/aip-beta",
+  "specification": "https://github.com/dr-wilson-empty/aip-beta/blob/feat/agent-identity-standard/standards/did-aip-method-spec.md"
+}
