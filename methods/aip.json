@@ -5,5 +5,5 @@
   "contactName": "Paras Singla",
   "contactEmail": "spec@provai.dev",
   "contactWebsite": "https://github.com/provai-dev/aip-spec",
-  "specification": "https://github.com/provai-dev/aip-spec/blob/main/spec/v0.3/aip-spec.md"
+  "specification": "https://www.ietf.org/archive/id/draft-singla-agent-identity-protocol-01.html"
 }
