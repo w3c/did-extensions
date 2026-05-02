@@ -1,0 +1,9 @@
+{
+  "name": "ans",
+  "status": "registered",
+  "verifiableDataRegistry": "bif",
+  "contactName": "iiiiot caict",
+  "contactEmail": "xujinliang@caict.ac.cn",
+  "contactWebsite": "https://bitfactory.cn/",
+  "specification": "https://github.com/wolfbrother/did-ans/tree/main/doc/en"
+}
