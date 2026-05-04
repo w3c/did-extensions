@@ -1,7 +1,7 @@
 {
   "name": "yadacoin",
   "status": "registered",
-  "specification": "https://pdxwebdev.github.io/yadacoin/did-yadacoin-method-spec.html",
+  "specification": "https://pdxwebdev.github.io/yadacoin-agent-auth-spec/did-yadacoin-method-spec.html",
   "contactName": "Matthew Vogel",
   "contactEmail": "info@yadacoin.io",
   "contactWebsite": "https://yadacoin.io",
