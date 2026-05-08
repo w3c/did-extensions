@@ -1,0 +1,10 @@
+{
+    "name": "neuralkey",
+    "status": "registered",
+    "specification": "https://neuralkey.neuralsh.com/neuralkey-spec-page",
+
+    "contactName": "Sereyvuth Kim",
+    "contactEmail": "kimsereyvuth@gmail.com",
+    "contactWebsite": "https://neuralkey.neuralsh.com",
+    "verifiableDataRegistry": "Neuralkey DIDs Network"
+}
