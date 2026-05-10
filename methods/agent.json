@@ -1,0 +1,7 @@
+{
+  "name": "agent",
+  "status": "provisional",
+  "specification": "https://github.com/m31527/AgentDID/blob/main/docs/did-spec.md",
+  "contact": "https://github.com/m31527/AgentDID/issues",
+  "notes": "Decentralized identity protocol for AI agents and autonomous systems. Extends W3C DID 1.0 with Capability Declaration (pre-declared agent intent), Action Logging (tamper-proof on-chain audit trail), and Reputation Registry (algorithmic trust score 0-100). Non-commercial, MIT licensed. Reference implementation deployed on Ethereum Sepolia testnet at 0x05623871958D6d648953e64B1cdb562Adc28019B. Live demo: https://agentdid.web.app"
+}
