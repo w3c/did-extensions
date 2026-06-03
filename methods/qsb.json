@@ -1,0 +1,9 @@
+{
+  "name": "qsb",
+  "status": "registered",
+  "specification": "https://github.com/Quantum-Blockchains/qsb-did-specifications",
+  "contactEmail": "info@quantumblockchains.io",
+  "contactName": "Quantum Blockchains",
+  "contactWebsite": "https://www.quantumblockchains.io/",
+  "verifiableDataRegistry": "QSB Blockchain"
+}
