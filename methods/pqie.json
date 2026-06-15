@@ -1,8 +1,10 @@
 {
-    "name": "pqie",
-    "status": "registered",
-    "specification": "https://dixadholakiya.github.io/pqie-did-spec/",
-    "contactName": "PQIE Research Group",
-    "contactEmail": "dixadholakiya@gmail.com",
-    "verifiableDataRegistry": "Hyperledger Indy + IPFS"
+  "name": "pqie",
+  "status": "registered",
+  "verifiableDataRegistry": "Hyperledger Indy / IPFS",
+  "contactName": "Dixa Dholakiya (PQIE Research Group)",
+  "contactEmail": "dixadholakiya@gmail.com",
+  "contactWebsite": "https://dixadholakiya.github.io/pqie-did-spec/",
+  "specification": "https://dixadholakiya.github.io/pqie-did-spec/",
+  "resolverEndpoint": "https://pqie-resolver-production.up.railway.app/1.0/identifiers/"
 }
