@@ -1,0 +1,157 @@
+name: AI Spec Review DID Methods
+on:
+  # Automatic: run on PRs that add/modify method entries.
+  pull_request:
+    paths: ["methods/**"]
+  # Manual: re-run against any PR (including PRs opened before this workflow
+  # existed) from the Actions tab, by supplying the PR number.
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "Pull request number to review"
+        required: true
+        type: string
+  # Comment-triggered: re-run by commenting `/ai-review` on a pull request.
+  issue_comment:
+    types: [created]
+
+# Least-privilege: read the code, write PR comments. No write access to the repo
+# contents. On fork PRs the pull_request event provides a read-only token and no
+# secrets, so the review self-reports that it could not run (rather than failing)
+# — a maintainer then re-triggers it via `/ai-review` or workflow_dispatch, which
+# run in the base-repo context with the secret available.
+permissions:
+  contents: read
+  pull-requests: write
+
+# One in-flight review per PR; cancel superseded runs when new commits land.
+concurrency:
+  group: ai-spec-review-${{ github.event.pull_request.number || github.event.issue.number || inputs.pr_number }}
+  cancel-in-progress: true
+
+jobs:
+  ai-spec-review:
+    # Skip issue_comment events unless they are a `/ai-review` command on a PR.
+    if: >-
+      github.event_name != 'issue_comment' ||
+      (github.event.issue.pull_request != null &&
+       startsWith(github.event.comment.body, '/ai-review'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve pull request number...
+        id: pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            let prNumber;
+            if (context.eventName === 'pull_request') {
+              prNumber = context.payload.pull_request.number;
+            } else if (context.eventName === 'issue_comment') {
+              prNumber = context.payload.issue.number;
+            } else { // workflow_dispatch
+              prNumber = parseInt('${{ inputs.pr_number }}', 10);
+            }
+            const {owner, repo} = context.repo;
+            const {data: pr} = await github.rest.pulls.get(
+              {owner, repo, pull_number: prNumber});
+            core.setOutput('number', String(prNumber));
+            core.setOutput('base_sha', pr.base.sha);
+            core.setOutput('head_sha', pr.head.sha);
+            core.setOutput('head_ref', pr.head.ref);
+
+      - name: Checkout source code...
+        uses: actions/checkout@v4
+        with:
+          # Check out the PR head so the changed method files are present, and
+          # get full history so we can diff against the base.
+          ref: ${{ steps.pr.outputs.head_sha }}
+          fetch-depth: 0
+
+      - name: Setup Node 22...
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      - name: Determine changed method files...
+        id: changed
+        env:
+          BASE_SHA: ${{ steps.pr.outputs.base_sha }}
+          HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
+        run: |
+          # Make sure both endpoints of the diff are available locally.
+          git fetch --no-tags --depth=1 origin "$BASE_SHA" || true
+          # Added (A), Copied (C), Modified (M), Renamed (R) entries under methods/.
+          # Deletions are intentionally excluded — a removed entry needs no spec review.
+          FILES="$(git diff --name-only --diff-filter=ACMR "$BASE_SHA" "$HEAD_SHA" -- 'methods/**' || true)"
+          echo "Changed method files:"
+          echo "$FILES"
+          {
+            echo "files<<EOF"
+            echo "$FILES"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Install did-extensions tooling...
+        working-directory: tooling
+        run: npm i
+
+      - name: Run AI preliminary specification review...
+        id: review
+        working-directory: tooling
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CHANGED_FILES: ${{ steps.changed.outputs.files }}
+          REVIEW_OUTPUT: ${{ github.workspace }}/ai-spec-review.md
+        # Do not fail the step here; we always want to post the comment first.
+        # The gating decision is made in the "Enforce" step below using the
+        # exit code captured here.
+        run: |
+          set +e
+          npm run --silent spec-review
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          set -e
+
+      - name: Post/update review comment...
+        if: always()
+        uses: actions/github-script@v7
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+        with:
+          script: |
+            const fs = require('fs');
+            const marker = '<!-- ai-spec-review -->';
+            let body;
+            try {
+              body = fs.readFileSync(
+                `${process.env.GITHUB_WORKSPACE}/ai-spec-review.md`, 'utf8');
+            } catch (e) {
+              body = '## 🤖 AI Preliminary Specification Review\n\n' +
+                '> ⚠️ The review did not produce a report. A registry editor ' +
+                'should review the specification(s) manually.';
+            }
+            body = `${marker}\n${body}`;
+
+            const {owner, repo} = context.repo;
+            const issue_number = parseInt(process.env.PR_NUMBER, 10);
+            const {data: comments} = await github.rest.issues.listComments(
+              {owner, repo, issue_number, per_page: 100});
+            const existing = comments.find(
+              (c) => c.body && c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment(
+                {owner, repo, comment_id: existing.id, body});
+            } else {
+              await github.rest.issues.createComment(
+                {owner, repo, issue_number, body});
+            }
+
+      - name: Enforce preliminary review result...
+        if: always()
+        run: |
+          CODE="${{ steps.review.outputs.exit_code }}"
+          if [ "$CODE" = "1" ]; then
+            echo "::error::One or more submissions failed the AI preliminary" \
+              "specification review. See the PR comment for details."
+            exit 1
+          fi
+          echo "AI preliminary specification review passed (exit code $CODE)."
