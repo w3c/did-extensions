@@ -116,18 +116,14 @@ is and does, sufficient for an implementer to understand its purpose.
 
 ## SHOULD / OPTIONAL criteria (advisory — reported as warnings)
 
-### S1. `specification` link is content-integrity protected (SHOULD)
-The `specification` URL preferably points to a versioned, stable, or otherwise
-content-integrity-protected location rather than a mutable branch tip.
-
-### S2. `contactEmail` present (OPTIONAL)
+### S1. `contactEmail` present (OPTIONAL)
 The JSON entry includes a `contactEmail`.
 
-### S3. `verifiableDataRegistry` present (OPTIONAL)
+### S2. `verifiableDataRegistry` present (OPTIONAL)
 The JSON entry includes a `verifiableDataRegistry` describing where the DIDs are
 anchored.
 
-### S4. Intellectual-property posture is clear (SHOULD)
+### S3. Intellectual-property posture is clear (SHOULD)
 The specification does not raise obvious unresolved copyright, trademark, or
 intellectual-property concerns. Flag only clear issues; absence of an explicit
 IP statement is a warning, not a failure.
