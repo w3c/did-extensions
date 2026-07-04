@@ -156,9 +156,9 @@ function buildSystemPrompt(checklist) {
     'return a structured verdict. You are advisory: a human editor makes the',
     'final decision. Be fair and specific — judge ONLY what is present in the',
     'fetched specification text and the submitted JSON entry. Do not assume a',
-    'section exists because the method is well-known. When the specification',
-    'could not be fetched, mark every spec-dependent MUST item as "warn" (never',
-    '"fail") so a transient fetch failure does not wrongly block a submission.',
+    'section exists because the method is well-known. You are always given the',
+    'fetched specification text; an unreachable specification is handled before',
+    'you are called and never reaches you.',
     '',
     'Evaluate every checklist item and return one entry per item. Cite the',
     'relevant part of the specification in your reason when you can. The overall',
@@ -189,21 +189,15 @@ function buildUserPrompt({relPath, entry, spec}) {
   parts.push(JSON.stringify(entry, null, 2));
   parts.push('```');
   parts.push('');
-  if(spec.error) {
-    parts.push(
-      `The specification at ${entry.specification} could NOT be fetched: ` +
-      `${spec.error}. Mark spec-dependent MUST items as "warn" (do not fail ` +
-      'the review on a fetch failure), and note the fetch problem in the ' +
-      'relevant reasons.');
-  } else {
-    parts.push(
-      `Fetched specification from ${entry.specification} ` +
-      `(content-type: ${spec.contentType})` +
-      (spec.truncated ? ' — TRUNCATED to fit the review budget.' : '') + ':');
-    parts.push('```');
-    parts.push(spec.body);
-    parts.push('```');
-  }
+  // A fetch failure never reaches this function — reviewSubmission short-circuits
+  // to a hard M1 failure before calling the model. This path always has a spec.
+  parts.push(
+    `Fetched specification from ${entry.specification} ` +
+    `(content-type: ${spec.contentType})` +
+    (spec.truncated ? ' — TRUNCATED to fit the review budget.' : '') + ':');
+  parts.push('```');
+  parts.push(spec.body);
+  parts.push('```');
   return parts.join('\n');
 }
 
@@ -272,6 +266,33 @@ async function reviewSubmission(client, checklist, relPath) {
   }
 
   const spec = await fetchSpec(entry.specification);
+  if(spec.error) {
+    // A specification that cannot be retrieved cannot be reviewed. This is a
+    // hard failure of M1 (the specification must be reachable), decided by the
+    // script itself — there is no point calling the model with no spec text.
+    return {
+      relPath,
+      entry,
+      specFetchError: spec.error,
+      review: {
+        overall: 'fail',
+        summary:
+          `The specification at ${entry.specification} could not be fetched ` +
+          `(${spec.error}), so the submission cannot be reviewed.`,
+        items: [{
+          id: 'M1',
+          title: 'Specification is reachable and is a DID Method specification',
+          level: 'MUST',
+          status: 'fail',
+          reason:
+            `Fetching ${entry.specification} failed: ${spec.error}. The ` +
+            'specification MUST resolve to a reachable, human-readable DID ' +
+            'Method specification. Fix the `specification` URL (or ensure the ' +
+            'document is publicly reachable) and re-run the review.'
+        }]
+      }
+    };
+  }
 
   const message = await createWithRetry(client, {
     model: MODEL,
@@ -295,13 +316,28 @@ async function reviewSubmission(client, checklist, relPath) {
 
 const STATUS_ICON = {pass: '✅', fail: '❌', warn: '⚠️', 'n/a': '➖'};
 
+// Render a specification URL as a safe Markdown link. GitHub linkifies bare
+// URLs, but we wrap it so the label is clean and any `)` in the URL can't break
+// the link syntax.
+function specLink(url) {
+  if(!url) {
+    return '_none provided_';
+  }
+  const safe = String(url).replace(/\)/g, '%29').replace(/\s+/g, '');
+  return `[${url}](${safe})`;
+}
+
 function renderSubmission(result) {
   const lines = [];
-  const title = result.entry ? (result.entry.name || result.relPath)
-    : result.relPath;
   lines.push(`### \`${result.relPath}\`${result.entry ?
     ` — method \`did:${result.entry.name}\`` : ''}`);
   lines.push('');
+  // Surface the specification link at the top of every submission so reviewers
+  // can click through to confirm it exists and read it without leaving the PR.
+  if(result.entry) {
+    lines.push(`**Specification:** ${specLink(result.entry.specification)}`);
+    lines.push('');
+  }
 
   if(result.skipped) {
     lines.push(`_Skipped: ${result.skipped}._`);
@@ -321,10 +357,11 @@ function renderSubmission(result) {
   lines.push(review.summary);
   lines.push('');
   if(result.specFetchError) {
-    lines.push(`> ⚠️ The specification could not be fetched ` +
-      `(${result.specFetchError}); spec-dependent items were evaluated ` +
-      'conservatively and marked as warnings rather than failures. A human ' +
-      'reviewer should confirm the specification manually.');
+    lines.push(`> ❌ The specification could not be fetched ` +
+      `(${result.specFetchError}). A specification that cannot be retrieved ` +
+      'cannot be reviewed, so this is a hard failure of the "specification is ' +
+      'reachable" requirement (M1). Confirm the specification link above ' +
+      'resolves publicly, then re-run the review.');
     lines.push('');
   }
   lines.push('| | Item | Level | Status | Notes |');

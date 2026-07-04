@@ -41,9 +41,10 @@ a borderline case.
 
 The reviewer must judge **only what is present in the fetched specification
 text** plus the submitted JSON entry. It must not assume a section exists because
-the method is well-known. When the specification could not be fetched, every
-spec-dependent item is `warn` (never `fail`) so that a transient fetch failure
-does not wrongly block a submission.
+the method is well-known. If the specification cannot be fetched at all, it
+cannot be reviewed: this is a hard failure of M1 and the overall verdict is
+FAIL (see M1). The automated tooling detects an unreachable specification and
+fails the review directly, without asking the model to guess.
 
 The overall verdict is **FAIL** if any MUST item is `fail`; otherwise **PASS**
 (warnings are surfaced but do not fail the review).
@@ -55,7 +56,10 @@ The overall verdict is **FAIL** if any MUST item is `fail`; otherwise **PASS**
 ### M1. Specification is reachable and is a DID Method specification
 The `specification` URL in the JSON entry resolves to human-readable content
 that is recognizably a DID Method specification (not a 404, a login wall, an
-unrelated page, or an empty repository).
+unrelated page, or an empty repository). A specification that cannot be
+fetched (missing URL, network error, timeout, non-2xx response, etc.) is a
+**hard `fail`** — a specification that cannot be retrieved cannot be reviewed.
+The automated tooling enforces this directly.
 
 ### M2. DID Method Syntax is defined
 The specification defines the DID Method Syntax — the ABNF or equivalent grammar
