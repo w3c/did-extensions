@@ -1,0 +1,7 @@
+{
+  "name": "cndomain",
+  "status": "registered",
+  "specification": "https://cndomain-dev.github.io/did-method-cndomain/did-cndomain-method-specification-draft.html",
+  "contactName": "did:cndomain Draft Editors",
+  "contactWebsite": "https://github.com/cndomain-dev/did-method-cndomain"
+}
