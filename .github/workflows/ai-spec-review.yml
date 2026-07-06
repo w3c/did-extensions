@@ -1,7 +1,19 @@
 name: AI Spec Review DID Methods
 on:
   # Automatic: run on PRs that add/modify method entries.
-  pull_request:
+  #
+  # NOTE: pull_request_target runs in the *base* repository's context, so it has
+  # access to repository secrets (ANTHROPIC_API_KEY) and a write-scoped token
+  # even for pull requests opened from forks. The plain `pull_request` event does
+  # NOT — GitHub gives fork PRs no secrets and a read-only token — which is why
+  # the review could neither run nor post a comment on fork PRs.
+  #
+  # SECURITY: because this event is privileged, this workflow MUST NOT execute
+  # any code from the pull request. It installs the tooling from the trusted base
+  # repository and only ever reads the PR's changed `methods/*.json` files as
+  # data (JSON.parse). It never runs `npm install`, build steps, or scripts from
+  # the PR checkout. Do not add steps that execute PR-authored code here.
+  pull_request_target:
     paths: ["methods/**"]
   # Manual: re-run against any PR (including PRs opened before this workflow
   # existed) from the Actions tab, by supplying the PR number.
@@ -16,10 +28,7 @@ on:
     types: [created]
 
 # Least-privilege: read the code, write PR comments. No write access to the repo
-# contents. On fork PRs the pull_request event provides a read-only token and no
-# secrets, so the review self-reports that it could not run (rather than failing)
-# — a maintainer then re-triggers it via `/ai-review` or workflow_dispatch, which
-# run in the base-repo context with the secret available.
+# contents.
 permissions:
   contents: read
   pull-requests: write
@@ -38,13 +47,13 @@ jobs:
        startsWith(github.event.comment.body, '/ai-review'))
     runs-on: ubuntu-latest
     steps:
-      - name: Resolve pull request number...
+      - name: Resolve pull request...
         id: pr
         uses: actions/github-script@v7
         with:
           script: |
             let prNumber;
-            if (context.eventName === 'pull_request') {
+            if (context.eventName === 'pull_request_target') {
               prNumber = context.payload.pull_request.number;
             } else if (context.eventName === 'issue_comment') {
               prNumber = context.payload.issue.number;
@@ -57,43 +66,70 @@ jobs:
             core.setOutput('number', String(prNumber));
             core.setOutput('base_sha', pr.base.sha);
             core.setOutput('head_sha', pr.head.sha);
-            core.setOutput('head_ref', pr.head.ref);
+            // Full "owner:branch" head ref for the gh CLI checkout below.
+            core.setOutput('head_repo', pr.head.repo.full_name);
 
-      - name: Checkout source code...
+      # 1) Check out the TRUSTED base repository (the branch this workflow runs
+      #    from). This is where the tooling and review script come from — never
+      #    from the pull request.
+      - name: Checkout base repository (trusted)...
         uses: actions/checkout@v4
-        with:
-          # Check out the PR head so the changed method files are present, and
-          # get full history so we can diff against the base.
-          ref: ${{ steps.pr.outputs.head_sha }}
-          fetch-depth: 0
 
       - name: Setup Node 22...
         uses: actions/setup-node@v4
         with:
           node-version: 22.x
 
-      - name: Determine changed method files...
+      # 2) Install the tooling from the TRUSTED base checkout, before any PR
+      #    content is present. This guarantees `npm install` never runs a
+      #    package.json / lifecycle script authored by the pull request.
+      - name: Install did-extensions tooling (from base)...
+        working-directory: tooling
+        run: npm ci || npm i
+
+      # 3) Fetch ONLY the changed method JSON files from the pull request head
+      #    into a scratch directory, using the GitHub CLI (read-only). We do not
+      #    check out or trust the rest of the fork. These files are pure data and
+      #    are only ever read via JSON.parse by the review script.
+      - name: Fetch changed method files from the PR (data only)...
         id: changed
         env:
-          BASE_SHA: ${{ steps.pr.outputs.base_sha }}
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
           HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
         run: |
-          # Make sure both endpoints of the diff are available locally.
-          git fetch --no-tags --depth=1 origin "$BASE_SHA" || true
-          # Added (A), Copied (C), Modified (M), Renamed (R) entries under methods/.
-          # Deletions are intentionally excluded — a removed entry needs no spec review.
-          FILES="$(git diff --name-only --diff-filter=ACMR "$BASE_SHA" "$HEAD_SHA" -- 'methods/**' || true)"
-          echo "Changed method files:"
-          echo "$FILES"
+          set -euo pipefail
+          mkdir -p pr-methods
+          # List files changed in the PR, restricted to methods/*.json additions,
+          # copies, modifications and renames (deletions need no spec review).
+          mapfile -t FILES < <(gh pr diff "$PR_NUMBER" --name-only \
+            | grep -E '^methods/.*\.json$' || true)
+          KEPT=()
+          for f in "${FILES[@]:-}"; do
+            [ -z "$f" ] && continue
+            base="$(basename "$f")"
+            case "$base" in
+              index.html|index.json|example.json) continue ;;
+            esac
+            # Download the file's content at the PR head commit. This is a raw
+            # data blob — never executed.
+            if gh api "repos/${REPO}/contents/${f}?ref=${HEAD_SHA}" \
+                 --jq '.content' 2>/dev/null | base64 -d > "pr-methods/${base}"; then
+              # Overlay the PR's version of the file onto the base checkout so the
+              # review script (which reads from ../methods) sees the submission.
+              cp "pr-methods/${base}" "methods/${base}"
+              KEPT+=("$f")
+              echo "Fetched $f"
+            else
+              echo "Could not fetch $f from PR head; skipping."
+            fi
+          done
           {
             echo "files<<EOF"
-            echo "$FILES"
+            for f in "${KEPT[@]:-}"; do [ -n "$f" ] && echo "$f"; done
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
-
-      - name: Install did-extensions tooling...
-        working-directory: tooling
-        run: npm i
 
       - name: Run AI preliminary specification review...
         id: review
@@ -113,6 +149,7 @@ jobs:
 
       - name: Post/update review comment...
         if: always()
+        continue-on-error: true
         uses: actions/github-script@v7
         env:
           PR_NUMBER: ${{ steps.pr.outputs.number }}
@@ -133,16 +170,26 @@ jobs:
 
             const {owner, repo} = context.repo;
             const issue_number = parseInt(process.env.PR_NUMBER, 10);
-            const {data: comments} = await github.rest.issues.listComments(
-              {owner, repo, issue_number, per_page: 100});
-            const existing = comments.find(
-              (c) => c.body && c.body.includes(marker));
-            if (existing) {
-              await github.rest.issues.updateComment(
-                {owner, repo, comment_id: existing.id, body});
-            } else {
-              await github.rest.issues.createComment(
-                {owner, repo, issue_number, body});
+            try {
+              const {data: comments} = await github.rest.issues.listComments(
+                {owner, repo, issue_number, per_page: 100});
+              const existing = comments.find(
+                (c) => c.body && c.body.includes(marker));
+              if (existing) {
+                await github.rest.issues.updateComment(
+                  {owner, repo, comment_id: existing.id, body});
+              } else {
+                await github.rest.issues.createComment(
+                  {owner, repo, issue_number, body});
+              }
+            } catch (e) {
+              // Commenting can fail (e.g. token permissions); do not fail the
+              // whole run over it — the verdict is still enforced below and the
+              // report is available in the job summary.
+              core.warning(`Could not post the review comment: ${e.message}`);
+              await core.summary
+                .addRaw(body)
+                .write();
             }
 
       - name: Enforce preliminary review result...
