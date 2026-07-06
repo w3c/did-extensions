@@ -75,10 +75,10 @@ jobs:
       - name: Checkout base repository (trusted)...
         uses: actions/checkout@v7
 
-      - name: Setup Node 22...
+      - name: Setup Node 24...
         uses: actions/setup-node@v6
         with:
-          node-version: 22.x
+          node-version: 24.x
 
       # 2) Install the tooling from the TRUSTED base checkout, before any PR
       #    content is present. This guarantees `npm install` never runs a
