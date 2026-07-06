@@ -49,7 +49,7 @@ jobs:
     steps:
       - name: Resolve pull request...
         id: pr
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             let prNumber;
@@ -73,10 +73,10 @@ jobs:
       #    from). This is where the tooling and review script come from — never
       #    from the pull request.
       - name: Checkout base repository (trusted)...
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node 22...
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22.x
 
@@ -150,7 +150,7 @@ jobs:
       - name: Post/update review comment...
         if: always()
         continue-on-error: true
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           PR_NUMBER: ${{ steps.pr.outputs.number }}
         with:
