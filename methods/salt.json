@@ -1,0 +1,9 @@
+{
+  "name": "salt",
+  "status": "registered",
+  "specification": "https://github.com/stage-tech/did-methods/blob/main/salt.md",
+  "contactName": "Salt",
+  "contactEmail": "did@salt.music",
+  "contactWebsite": "https://salt.music",
+  "verifiableDataRegistry": "ID Service"
+}

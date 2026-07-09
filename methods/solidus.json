@@ -1,0 +1,9 @@
+{
+    "name": "solidus",
+    "status": "registered",
+    "verifiableDataRegistry": "Solidus Network",
+    "contactName": "Solidus Network",
+    "contactEmail": "info@solidus.network",
+    "contactWebsite": "https://solidus.network",
+    "specification": "https://github.com/solidusnetwork/did-solidus-spec/blob/v0.1.0/SPEC.md"
+}
