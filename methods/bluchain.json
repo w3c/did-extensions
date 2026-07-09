@@ -1,0 +1,9 @@
+{
+    "name": "bluchain",
+    "status": "provisional",
+    "specification": "https://bitbucket.org/blucloudsrl/did-driver-bluchain/src/master/spec.md",
+    "contactName": "Blucloud",
+    "contactEmail": "devs@blucloud.it",
+    "contactWebsite": "https://www.blucloud.it",
+    "verifiableDataRegistry": "Bluchain"
+}

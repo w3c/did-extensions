@@ -42,7 +42,20 @@ that all of the automated tests pass (no errors reported) or
 your submission will not be reviewed. Common reasons for failed
 validation includes invalidly formatted JSON files and missing
 mandatory fields. There will be a checklist that you are expected
-to complete and attest to its accuracy. Once you submit your request,
+to complete and attest to its accuracy.
+
+In addition to the automated validation, an **AI-based preliminary
+specification review** runs automatically on your pull request. It fetches the
+specification you link to and checks it against the
+[registration checklist](./tooling/spec-review-checklist.md) (DID Method syntax,
+CRUD operations, Security and Privacy Considerations, and so on), then posts an
+advisory pass/fail report as a comment on your pull request. This review is a
+preliminary aid for the registry editors and does not replace their review; if
+it reports a failing required item, address it and push an update to re-run the
+check. Editors can re-run the review at any time by commenting `/ai-review` on
+the pull request.
+
+Once you submit your request,
 your pull request will be reviewed by the registry editors. Changes
 regarding the required criteria may be requested. If there are at
 least two reviews by registry maintainers listed in the CODEOWNERS file, and no objections or
