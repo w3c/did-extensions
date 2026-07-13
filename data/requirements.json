@@ -1,0 +1,209 @@
+{
+  "version": "2.0.0",
+  "source": "https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/",
+  "tierDefinitions": {
+    "core": "Referenced by ≥70% of use cases. Expected for most methods.",
+    "common": "Referenced by 40-69% of use cases. Important for broad adoption.",
+    "specialized": "Referenced by <40% of use cases. Depends on target use case."
+  },
+  "requirements": [
+    {
+      "id": "req-decentralization",
+      "name": "Decentralization",
+      "tier": "core",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req1",
+      "description": "DIDs should eliminate the requirement for centralized authorities or single points of failure in identifier management.",
+      "question": "Does your method operate without a single centralized authority that can unilaterally control, revoke, or censor identifiers?",
+      "rubricCriteria": ["rulemaking", "design"]
+    },
+    {
+      "id": "req-control",
+      "name": "Control",
+      "tier": "core",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req2",
+      "description": "DID controllers must be able to control their identifiers without requiring permission from external authorities.",
+      "question": "Can the DID controller update, rotate keys, and manage their identifier without needing approval from any third party?",
+      "rubricCriteria": ["rulemaking"]
+    },
+    {
+      "id": "req-privacy",
+      "name": "Privacy",
+      "tier": "core",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req3",
+      "description": "Entity owners must be able to control the privacy of their information, including the amount and type of PII exposed.",
+      "question": "Does your method allow the DID controller to minimize personal information exposure? Can they use the DID without revealing their real-world identity?",
+      "rubricCriteria": ["privacy"]
+    },
+    {
+      "id": "req-security",
+      "name": "Security",
+      "tier": "core",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req4",
+      "description": "DIDs must provide sufficient security for requesting parties to depend on DID Documents for their required level of assurance.",
+      "question": "Does your method provide cryptographic security guarantees (integrity, authenticity) that relying parties can trust?",
+      "rubricCriteria": ["security"]
+    },
+    {
+      "id": "req-proof-based",
+      "name": "Proof-based",
+      "tier": "core",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req5",
+      "description": "DID Documents must provide cryptographic proof mechanisms (e.g., digital signatures) to authenticate DID controllers.",
+      "question": "Does your DID Document include verification methods (public keys, proof types) that enable cryptographic authentication?",
+      "rubricCriteria": ["security"]
+    },
+    {
+      "id": "req-persistence",
+      "name": "Persistence",
+      "tier": "core",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req9",
+      "description": "DIDs must be persistent enough to be long-lived so they can serve as long-term identifiers.",
+      "question": "Will your DIDs continue to resolve and remain valid over years/decades? What happens if infrastructure changes?",
+      "rubricCriteria": ["operation"]
+    },
+    {
+      "id": "req-crypto-verifiability",
+      "name": "Cryptographic Verifiability",
+      "tier": "core",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req11",
+      "description": "It must be possible to cryptographically verify the DID Controller, including verification of the claims in the DID Document.",
+      "question": "Can a verifier cryptographically confirm that the entity presenting the DID is its legitimate controller?",
+      "rubricCriteria": ["security"]
+    },
+    {
+      "id": "req-crypto-extensibility",
+      "name": "Cryptographic Extensibility",
+      "tier": "core",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req12",
+      "description": "The DID infrastructure must not be limited to a single cryptographic suite or algorithm.",
+      "question": "Does your method support multiple cryptographic algorithms? Can new algorithms be added without changing the method specification?",
+      "rubricCriteria": ["security"]
+    },
+    {
+      "id": "req-discoverability",
+      "name": "Discoverability",
+      "tier": "common",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req6",
+      "description": "DIDs must be designed so authorized parties can discover them and learn more about the entities they represent.",
+      "question": "How can someone discover your DID? Is there a well-known resolution path, registry, or lookup mechanism?",
+      "rubricCriteria": ["design"]
+    },
+    {
+      "id": "req-interoperability",
+      "name": "Interoperability",
+      "tier": "common",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req7",
+      "description": "DIDs should be broadly interoperable with existing tools and software systems.",
+      "question": "Does your method work with existing DID toolkits (Veramo, SpruceID, etc.)? Is there a Universal Resolver driver?",
+      "rubricCriteria": ["design"]
+    },
+    {
+      "id": "req-portability",
+      "name": "Portability",
+      "tier": "common",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req8",
+      "description": "DIDs should be system- and network-independent, enabling portability across platforms.",
+      "question": "Can a DID created with your method be migrated to a different infrastructure without changing the identifier?",
+      "rubricCriteria": ["design", "alternatives"]
+    },
+    {
+      "id": "req-inter-jurisdictional",
+      "name": "Inter-jurisdictional",
+      "tier": "common",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req310",
+      "description": "DIDs must not depend on the legal jurisdiction in which they are issued. Valid anywhere without loss of fidelity.",
+      "question": "Does your method work globally without requiring jurisdiction-specific modifications or approvals?",
+      "rubricCriteria": ["rulemaking", "design"]
+    },
+    {
+      "id": "req-key-rotation",
+      "name": "Key Rotation without ID Change",
+      "tier": "common",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req13",
+      "description": "It must be possible to rotate cryptographic keys without changing the DID.",
+      "question": "Can the DID controller rotate their keys while keeping the same DID identifier?",
+      "rubricCriteria": ["enforcement"]
+    },
+    {
+      "id": "req-uniqueness",
+      "name": "Uniqueness",
+      "tier": "common",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req18",
+      "description": "Every DID must be globally unique, with negligible probability of collision.",
+      "question": "How does your method guarantee global uniqueness? What is the collision probability?",
+      "rubricCriteria": []
+    },
+    {
+      "id": "req-service-endpoints",
+      "name": "Service Endpoint Support",
+      "tier": "specialized",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req14",
+      "description": "The infrastructure must enable the discovery of service endpoints for a given entity.",
+      "question": "Does your DID Document support service endpoints? Can relying parties discover services (messaging, APIs, etc.) via the DID?",
+      "rubricCriteria": []
+    },
+    {
+      "id": "req-composability",
+      "name": "Composability",
+      "tier": "specialized",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req15",
+      "description": "DIDs should be combinable with other technologies to form more complex applications.",
+      "question": "Can your method compose with VCs, DIDComm, or other DID methods? Does it extend or call other methods?",
+      "rubricCriteria": []
+    },
+    {
+      "id": "req-equivalence",
+      "name": "Equivalence",
+      "tier": "specialized",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req16",
+      "description": "It must be possible to describe equivalence relationships between two DIDs.",
+      "question": "Does your method support alsoKnownAs or similar properties to link equivalent identifiers?",
+      "rubricCriteria": []
+    },
+    {
+      "id": "req-legal-compatibility",
+      "name": "Legal Compatibility",
+      "tier": "specialized",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req17",
+      "description": "The system must support the legal rights and regulatory obligations of its users.",
+      "question": "Is your method compatible with regulatory frameworks (eIDAS, GDPR, etc.)? Can it support legally binding transactions?",
+      "rubricCriteria": ["rulemaking"]
+    },
+    {
+      "id": "req-metadata",
+      "name": "Metadata",
+      "tier": "specialized",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req19",
+      "description": "The infrastructure must support the association of metadata with an identifier.",
+      "question": "Does your resolution process return metadata (created, updated, deactivated timestamps, version info)?",
+      "rubricCriteria": []
+    },
+    {
+      "id": "req-did-resolution",
+      "name": "DID Resolution",
+      "tier": "specialized",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req20",
+      "description": "The infrastructure must support the resolution of a DID to a DID Document.",
+      "question": "How is your DID resolved to a DID Document? What is the resolution protocol and expected latency?",
+      "rubricCriteria": ["operation"]
+    },
+    {
+      "id": "req-crud-operations",
+      "name": "CRUD Operations",
+      "tier": "specialized",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req21",
+      "description": "DID methods must define how CRUD operations are performed for their specific method.",
+      "question": "Does your spec clearly define Create, Read, Update, and Deactivate operations?",
+      "rubricCriteria": ["operation"]
+    },
+    {
+      "id": "req-deactivation",
+      "name": "Deactivation",
+      "tier": "specialized",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req22",
+      "description": "It must be possible to deactivate a DID, after which no further updates or authentications should be possible.",
+      "question": "Can a DID be permanently deactivated? What does the resolution response look like after deactivation?",
+      "rubricCriteria": ["enforcement"]
+    }
+  ]
+}
