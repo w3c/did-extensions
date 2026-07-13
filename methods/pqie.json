@@ -5,6 +5,5 @@
   "contactName": "Dixa Dholakiya (PQIE Research Group)",
   "contactEmail": "dixadholakiya@gmail.com",
   "contactWebsite": "https://dixadholakiya.github.io/pqie-did-spec/",
-  "specification": "https://dixadholakiya.github.io/pqie-did-spec/",
-  "resolverEndpoint": "https://pqie-resolver-production.up.railway.app/1.0/identifiers/"
+  "specification": "https://dixadholakiya.github.io/pqie-did-spec/"
 }
