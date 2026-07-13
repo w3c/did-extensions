@@ -1,6 +1,9 @@
 {
   "name": "cari",
   "status": "registered",
-  "specification": "https://github.com/CariHQ/did-cari-method-spec",
-  "contactWebsite": "https://github.com/CariHQ/did-cari-method-spec/issues"
+  "verifiableDataRegistry": "Cari platform DID registry (HTTPS DID Resolution binding)",
+  "contactName": "Kenroy George",
+  "contactEmail": "hello@cari.global",
+  "contactWebsite": "https://cari.global",
+  "specification": "https://github.com/CariHQ/did-cari-method-spec"
 }
