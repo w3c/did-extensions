@@ -1,0 +1,204 @@
+name: AI Spec Review DID Methods
+on:
+  # Automatic: run on PRs that add/modify method entries.
+  #
+  # NOTE: pull_request_target runs in the *base* repository's context, so it has
+  # access to repository secrets (ANTHROPIC_API_KEY) and a write-scoped token
+  # even for pull requests opened from forks. The plain `pull_request` event does
+  # NOT — GitHub gives fork PRs no secrets and a read-only token — which is why
+  # the review could neither run nor post a comment on fork PRs.
+  #
+  # SECURITY: because this event is privileged, this workflow MUST NOT execute
+  # any code from the pull request. It installs the tooling from the trusted base
+  # repository and only ever reads the PR's changed `methods/*.json` files as
+  # data (JSON.parse). It never runs `npm install`, build steps, or scripts from
+  # the PR checkout. Do not add steps that execute PR-authored code here.
+  pull_request_target:
+    paths: ["methods/**"]
+  # Manual: re-run against any PR (including PRs opened before this workflow
+  # existed) from the Actions tab, by supplying the PR number.
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "Pull request number to review"
+        required: true
+        type: string
+  # Comment-triggered: re-run by commenting `/ai-review` on a pull request.
+  issue_comment:
+    types: [created]
+
+# Least-privilege: read the code, write PR comments. No write access to the repo
+# contents.
+permissions:
+  contents: read
+  pull-requests: write
+
+# One in-flight review per PR; cancel superseded runs when new commits land.
+concurrency:
+  group: ai-spec-review-${{ github.event.pull_request.number || github.event.issue.number || inputs.pr_number }}
+  cancel-in-progress: true
+
+jobs:
+  ai-spec-review:
+    # Skip issue_comment events unless they are a `/ai-review` command on a PR.
+    if: >-
+      github.event_name != 'issue_comment' ||
+      (github.event.issue.pull_request != null &&
+       startsWith(github.event.comment.body, '/ai-review'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve pull request...
+        id: pr
+        uses: actions/github-script@v9
+        with:
+          script: |
+            let prNumber;
+            if (context.eventName === 'pull_request_target') {
+              prNumber = context.payload.pull_request.number;
+            } else if (context.eventName === 'issue_comment') {
+              prNumber = context.payload.issue.number;
+            } else { // workflow_dispatch
+              prNumber = parseInt('${{ inputs.pr_number }}', 10);
+            }
+            const {owner, repo} = context.repo;
+            const {data: pr} = await github.rest.pulls.get(
+              {owner, repo, pull_number: prNumber});
+            core.setOutput('number', String(prNumber));
+            core.setOutput('base_sha', pr.base.sha);
+            core.setOutput('head_sha', pr.head.sha);
+            // Full "owner:branch" head ref for the gh CLI checkout below.
+            core.setOutput('head_repo', pr.head.repo.full_name);
+
+      # 1) Check out the TRUSTED base repository (the branch this workflow runs
+      #    from). This is where the tooling and review script come from — never
+      #    from the pull request.
+      - name: Checkout base repository (trusted)...
+        uses: actions/checkout@v7
+
+      - name: Setup Node 24...
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.x
+
+      # 2) Install the tooling from the TRUSTED base checkout, before any PR
+      #    content is present. This guarantees `npm install` never runs a
+      #    package.json / lifecycle script authored by the pull request.
+      - name: Install did-extensions tooling (from base)...
+        working-directory: tooling
+        run: npm ci || npm i
+
+      # 3) Fetch ONLY the changed method JSON files from the pull request head
+      #    into a scratch directory, using the GitHub CLI (read-only). We do not
+      #    check out or trust the rest of the fork. These files are pure data and
+      #    are only ever read via JSON.parse by the review script.
+      - name: Fetch changed method files from the PR (data only)...
+        id: changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+          HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
+        run: |
+          set -euo pipefail
+          mkdir -p pr-methods
+          # List files changed in the PR, restricted to methods/*.json additions,
+          # copies, modifications and renames (deletions need no spec review).
+          mapfile -t FILES < <(gh pr diff "$PR_NUMBER" --name-only \
+            | grep -E '^methods/.*\.json$' || true)
+          KEPT=()
+          for f in "${FILES[@]:-}"; do
+            [ -z "$f" ] && continue
+            base="$(basename "$f")"
+            case "$base" in
+              index.html|index.json|example.json) continue ;;
+            esac
+            # Download the file's content at the PR head commit. This is a raw
+            # data blob — never executed.
+            if gh api "repos/${REPO}/contents/${f}?ref=${HEAD_SHA}" \
+                 --jq '.content' 2>/dev/null | base64 -d > "pr-methods/${base}"; then
+              # Overlay the PR's version of the file onto the base checkout so the
+              # review script (which reads from ../methods) sees the submission.
+              cp "pr-methods/${base}" "methods/${base}"
+              KEPT+=("$f")
+              echo "Fetched $f"
+            else
+              echo "Could not fetch $f from PR head; skipping."
+            fi
+          done
+          {
+            echo "files<<EOF"
+            for f in "${KEPT[@]:-}"; do [ -n "$f" ] && echo "$f"; done
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Run AI preliminary specification review...
+        id: review
+        working-directory: tooling
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CHANGED_FILES: ${{ steps.changed.outputs.files }}
+          REVIEW_OUTPUT: ${{ github.workspace }}/ai-spec-review.md
+        # Do not fail the step here; we always want to post the comment first.
+        # The gating decision is made in the "Enforce" step below using the
+        # exit code captured here.
+        run: |
+          set +e
+          npm run --silent spec-review
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          set -e
+
+      - name: Post/update review comment...
+        if: always()
+        continue-on-error: true
+        uses: actions/github-script@v9
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+        with:
+          script: |
+            const fs = require('fs');
+            const marker = '<!-- ai-spec-review -->';
+            let body;
+            try {
+              body = fs.readFileSync(
+                `${process.env.GITHUB_WORKSPACE}/ai-spec-review.md`, 'utf8');
+            } catch (e) {
+              body = '## 🤖 AI Preliminary Specification Review\n\n' +
+                '> ⚠️ The review did not produce a report. A registry editor ' +
+                'should review the specification(s) manually.';
+            }
+            body = `${marker}\n${body}`;
+
+            const {owner, repo} = context.repo;
+            const issue_number = parseInt(process.env.PR_NUMBER, 10);
+            try {
+              const {data: comments} = await github.rest.issues.listComments(
+                {owner, repo, issue_number, per_page: 100});
+              const existing = comments.find(
+                (c) => c.body && c.body.includes(marker));
+              if (existing) {
+                await github.rest.issues.updateComment(
+                  {owner, repo, comment_id: existing.id, body});
+              } else {
+                await github.rest.issues.createComment(
+                  {owner, repo, issue_number, body});
+              }
+            } catch (e) {
+              // Commenting can fail (e.g. token permissions); do not fail the
+              // whole run over it — the verdict is still enforced below and the
+              // report is available in the job summary.
+              core.warning(`Could not post the review comment: ${e.message}`);
+              await core.summary
+                .addRaw(body)
+                .write();
+            }
+
+      - name: Enforce preliminary review result...
+        if: always()
+        run: |
+          CODE="${{ steps.review.outputs.exit_code }}"
+          if [ "$CODE" = "1" ]; then
+            echo "::error::One or more submissions failed the AI preliminary" \
+              "specification review. See the PR comment for details."
+            exit 1
+          fi
+          echo "AI preliminary specification review passed (exit code $CODE)."
