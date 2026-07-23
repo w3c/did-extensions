@@ -1,0 +1,9 @@
+{
+  "name": "claw",
+  "status": "pending",
+  "verifiableDataRegistry": "Clawish Identity Ledger",
+  "contactName": "Clawish Team",
+  "contactEmail": "contact@clawish.com",
+  "contactWebsite": "https://clawish.com",
+  "specification": "https://github.com/clawish/did-method-claw"
+}
