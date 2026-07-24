@@ -1,0 +1,9 @@
+{
+  "name": "oan",
+  "status": "registered",
+  "verifiableDataRegistry": "OpenAgenet root-governed registry and blockchain-backed authorization bulletin",
+  "contactName": "OpenAgenet (OAN)",
+  "contactEmail": "xujinliang@caict.ac.cn; jlxufly@gmail.com",
+  "contactWebsite": "https://github.com/OpenAgenet",
+  "specification": "https://github.com/OpenAgenet/oan-public-docs/blob/main/did-oan-specs/doc/OAN%20DID%20Method%20Specification.md"
+}

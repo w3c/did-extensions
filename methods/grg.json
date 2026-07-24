@@ -1,0 +1,9 @@
+{
+  "name": "grg",
+  "status": "registered",
+  "verifiableDataRegistry": "GrgChain",
+  "contactName": "GRGBanking Blockchain Express Co. Ltd.",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/GrgChain/DID-method-specs/blob/master/README.md"
+}

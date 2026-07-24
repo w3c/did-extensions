@@ -1,0 +1,9 @@
+{
+  "name": "web",
+  "status": "registered",
+  "verifiableDataRegistry": "Web",
+  "contactName": "Oliver Terbu, Mike Xu, Dmitri Zagidulin, Amy Guy",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/w3c-ccg/did-method-web"
+}

@@ -1,0 +1,2913 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 25.6.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>span.example-title{text-transform:none}aside.example,div.example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}div.illegal-example{color:red}div.illegal-example p{color:#000}aside.example,div.example{padding:.5em;border-left-width:.5em;border-left-style:solid;border-color:#e0cb52;background:#fcfaee}aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}aside.example div.example span.example-title{color:#999}</style><style>.issue-label{text-transform:initial}.warning>p:first-child{margin-top:0}.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}span.warning{padding:.1em .5em .15em}.issue.closed span.issue-number{text-decoration:line-through}.warning{border-color:#f11;border-width:.2em;border-style:solid;background:#fbe9e9}.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}li.task-list-item{list-style:none}input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}</style>
+  <title>DID Specification Registries</title>
+  
+
+  <style id="respec-mainstyle">@keyframes pop{0%{transform:scale(1,1)}25%{transform:scale(1.25,1.25);opacity:.75}100%{transform:scale(1,1)}}.hljs{background:0 0!important}a abbr,h1 abbr,h2 abbr,h3 abbr,h4 abbr,h5 abbr,h6 abbr{border:none}dfn{font-weight:700}a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}a.bibref{text-decoration:none}.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}@supports not (text-decoration:red wavy underline){.respec-offending-element:not(pre){display:inline-block}.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}}#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}cite .bibref{font-style:normal}code{color:#c63501}th code{color:inherit}a[href].orcid{padding-left:4px;padding-right:4px}a[href].orcid>svg{margin-bottom:-2px}.toc a,.tof a{text-decoration:none}a .figno,a .secno{color:#000}ol.tof,ul.tof{list-style:none outside none}.caption{margin-top:.5em;font-style:italic}table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}.simple th a{color:#fff;padding:3px 5px;text-align:left}.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}.simple td{padding:3px 10px;border-top:1px solid #ddd}.simple tr:nth-child(even){background:#f0f6ff}.section dd>p:first-child{margin-top:0}.section dd>p:last-child{margin-bottom:0}.section dd{margin-bottom:1em}.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}#issue-summary>ul,.respec-dfn-list{column-count:2}#issue-summary li,.respec-dfn-list li{list-style:none}details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}details.respec-tests-details>*{padding-right:2em}details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}details.respec-tests-details>ul{width:100%;margin-top:-.3em}details.respec-tests-details>li{padding-left:1em}a[href].self-link:hover{opacity:1;text-decoration:none;background-color:transparent}h2,h3,h4,h5,h6{position:relative}aside.example .marker>a.self-link{color:inherit}h2>a.self-link,h3>a.self-link,h4>a.self-link,h5>a.self-link,h6>a.self-link{border:none;color:inherit;font-size:83%;height:2em;left:-1.6em;opacity:.5;position:absolute;text-align:center;text-decoration:none;top:0;transition:opacity .2s;width:2em}h2>a.self-link::before,h3>a.self-link::before,h4>a.self-link::before,h5>a.self-link::before,h6>a.self-link::before{content:"§";display:block}@media (max-width:767px){dd{margin-left:0}h2>a.self-link,h3>a.self-link,h4>a.self-link,h5>a.self-link,h6>a.self-link{left:auto;top:auto}}@media print{.removeOnSave{display:none}}</style>
+  
+  <style>
+  pre .highlight {
+    font-weight: bold;
+    color: green;
+  }
+  pre .comment {
+    color: SteelBlue;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  </style>
+<meta name="description" content=""><link rel="canonical" href="https://www.w3.org/TR/did-spec-registries/"><style>.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}.hljs-comment,.hljs-quote{color:#717277;font-style:italic}.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4}.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;font-weight:700}.hljs-literal{color:#0b76c5}.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c}.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01}.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801}.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.hljs-link{text-decoration:underline}</style><style>var{position:relative;cursor:pointer}var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#000}var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#000;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}</style><script id="initialUserConfig" type="application/json">{
+  "wgPublicList": "public-did-wg",
+  "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/117488/status",
+  "wg": "Decentralized Identifier Working Group",
+  "wgURI": "https://www.w3.org/2019/did-wg/",
+  "wgId": 117488,
+  "specStatus": "FPWD-NOTE",
+  "shortName": "did-spec-registries",
+  "edDraftURI": "https://w3c.github.io/did-spec-registries/",
+  "subtitle": "The interoperability registry for Decentralized Identifiers",
+  "publishDate": "2020-06-18",
+  "github": {
+    "repoURL": "https://github.com/w3c/did-spec-registries/",
+    "branch": "master"
+  },
+  "includePermalinks": false,
+  "editors": [
+    {
+      "name": "Orie Steele",
+      "url": "https://www.linkedin.com/in/or13b/",
+      "company": "Transmute",
+      "companyURL": "https://www.transmute.industries/",
+      "w3cid": 109171
+    },
+    {
+      "name": "Manu Sporny",
+      "url": "http://manu.sporny.org/",
+      "company": "Digital Bazaar",
+      "companyURL": "https://digitalbazaar.com/",
+      "w3cid": 41758
+    }
+  ],
+  "authors": [
+    {
+      "name": "Orie Steele",
+      "url": "https://www.linkedin.com/in/or13b/",
+      "company": "Transmute",
+      "companyURL": "https://www.transmute.industries/",
+      "w3cid": 109171
+    },
+    {
+      "name": "Manu Sporny",
+      "url": "http://manu.sporny.org/",
+      "company": "Digital Bazaar",
+      "companyURL": "https://digitalbazaar.com/",
+      "w3cid": 41758
+    }
+  ],
+  "publishISODate": "2020-06-18T00:00:00.000Z",
+  "generatedSubtitle": "First Public Working Group Note 18 June 2020"
+}</script><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WG-NOTE.css"></head>
+<body class="h-entry"><div class="head">
+    <a class="logo" href="https://www.w3.org/"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"></a> <h1 id="title" class="title">DID Specification Registries</h1>
+    <h2 id="subtitle" class="subtitle">The interoperability registry for Decentralized Identifiers</h2>
+    <h2>
+      W3C Working Group Note
+      <time class="dt-published" datetime="2020-06-18">18 June 2020</time>
+    </h2>
+    <dl>
+      <dt>This version:</dt><dd>
+              <a class="u-url" href="https://www.w3.org/TR/2020/NOTE-did-spec-registries-20200618/">https://www.w3.org/TR/2020/NOTE-did-spec-registries-20200618/</a>
+            </dd><dt>Latest published version:</dt><dd>
+              <a href="https://www.w3.org/TR/did-spec-registries/">https://www.w3.org/TR/did-spec-registries/</a>
+            </dd>
+      <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/did-spec-registries/">https://w3c.github.io/did-spec-registries/</a></dd>
+      
+      
+      
+      
+      
+      <dt>Editors:</dt>
+      <dd class="p-author h-card vcard" data-editor-id="109171"><a class="u-url url p-name fn" href="https://www.linkedin.com/in/or13b/">Orie Steele</a>
+            (<a class="p-org org h-org h-card" href="https://www.transmute.industries/">Transmute</a>)
+          </dd><dd class="p-author h-card vcard" data-editor-id="41758"><a class="u-url url p-name fn" href="http://manu.sporny.org/">Manu Sporny</a>
+            (<a class="p-org org h-org h-card" href="https://digitalbazaar.com/">Digital Bazaar</a>)
+          </dd>
+      
+      <dt>
+              Authors:
+            </dt><dd class="p-author h-card vcard" data-editor-id="109171"><a class="u-url url p-name fn" href="https://www.linkedin.com/in/or13b/">Orie Steele</a>
+            (<a class="p-org org h-org h-card" href="https://www.transmute.industries/">Transmute</a>)
+          </dd><dd class="p-author h-card vcard" data-editor-id="41758"><a class="u-url url p-name fn" href="http://manu.sporny.org/">Manu Sporny</a>
+            (<a class="p-org org h-org h-card" href="https://digitalbazaar.com/">Digital Bazaar</a>)
+          </dd>
+      <dt>Participate:</dt><dd>
+    <a href="https://github.com/w3c/did-spec-registries/">GitHub w3c/did-spec-registries</a>
+  </dd><dd>
+    <a href="https://github.com/w3c/did-spec-registries/issues/">File a bug</a>
+  </dd><dd>
+    <a href="https://github.com/w3c/did-spec-registries/commits/master">Commit history</a>
+  </dd><dd>
+    <a href="https://github.com/w3c/did-spec-registries/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    
+    <p class="copyright">
+    <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
+    ©
+    2020
+    
+    <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+    <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>,
+    <a href="https://ev.buaa.edu.cn/">Beihang</a>). 
+    W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+    <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a rel="license" href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules
+    apply.
+  </p>
+    <hr title="Separator for header">
+  </div>
+  <section id="abstract" class="introductory"><h2>Abstract</h2>
+    <p>
+    </p>
+    <p>
+This document serves as an official registry for all known global parameters,
+properties, and values used by the Decentralized Identifier ecosystem.
+    </p>
+  </section>
+
+  <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this
+      document at the time of its publication. Other documents may supersede
+      this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision
+      of this technical report can be found in the
+      <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
+      https://www.w3.org/TR/.</em></p>
+
+    <p>
+This registry is under active development and implementers are advised
+against using the registry unless they are directly involved with the
+<abbr title="World Wide Web Consortium">W3C</abbr> DID Working Group.
+    </p>
+
+    <p>
+Comments regarding this document are welcome. Please file issues
+directly on <a href="https://github.com/w3c/did-spec-registries/issues/">GitHub</a>,
+or send them
+to <a href="mailto:public-did-wg@w3.org">public-did-wg@w3.org</a> (
+<a href="mailto:public-did-wg-request@w3.org?subject=subscribe">subscribe</a>,
+<a href="https://lists.w3.org/Archives/Public/public-did-wg/">archives</a>).
+    </p>
+
+    <p>
+Portions of the work on this specification have been funded by the
+United States Department of Homeland Security's Science and Technology
+Directorate under contracts HSHQDC-16-R00012-H-SB2016-1-002, 70RSAT20T00000010,
+and HSHQDC-17-C-00019. The content of this specification does not
+necessarily reflect the position or the policy of the U.S. Government
+and no official endorsement should be inferred.
+    </p>
+
+    <p>
+Work on this registry has also been supported by the Rebooting the
+Web of Trust community facilitated by Christopher Allen, Shannon
+Appelcline, Kiara Robles, Brian Weller, Betty Dhamers, Kaliya Young,
+Kim Hamilton Duffy, Manu Sporny, Drummond Reed, Joe Andrieu, and
+Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
+    </p>
+  <p>
+    This document was published by the <a href="https://www.w3.org/2019/did-wg/">Decentralized Identifier Working Group</a> as a
+    First Public Working Group Note.
+    
+  </p><p>
+    <a href="https://github.com/w3c/did-spec-registries/issues/">GitHub Issues</a> are preferred for
+          discussion of this specification.
+        
+    Alternatively, you can send comments to our mailing list.
+          Please send them to
+          <a href="mailto:public-did-wg@w3.org">public-did-wg@w3.org</a>
+          (<a href="https://lists.w3.org/Archives/Public/public-did-wg/">archives</a>).
+        
+  </p><p>
+    Publication as a Working Group Note does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
+    Membership. This is a draft document and may be updated, replaced or
+    obsoleted by other documents at any time. It is inappropriate to cite this
+    document as other than work in progress.
+  </p><p data-deliverer="117488">
+    
+        This document was produced by a group
+        operating under the
+        <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+       
+    
+    
+  </p><p>
+                  This document is governed by the
+                  <a id="w3c_process_revision" href="https://www.w3.org/2019/Process-20190301/">1 March 2019 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1. </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">2. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#the-registration-process"><bdi class="secno">3. </bdi>The Registration Process</a></li><li class="tocline"><a class="tocxref" href="#properties"><bdi class="secno">4. </bdi>Properties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#base-properties"><bdi class="secno">4.1 </bdi>Base properties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#context"><bdi class="secno">4.1.1 </bdi><span data-lt="@context" data-dfn-type="dfn">@context</span></a></li><li class="tocline"><a class="tocxref" href="#id-0"><bdi class="secno">4.1.2 </bdi><span data-lt="id" data-dfn-type="dfn">id</span></a></li><li class="tocline"><a class="tocxref" href="#controller-0"><bdi class="secno">4.1.3 </bdi><span data-lt="controller" data-dfn-type="dfn">controller</span></a></li><li class="tocline"><a class="tocxref" href="#verificationmethod"><bdi class="secno">4.1.4 </bdi><span data-lt="verificationMethod" data-dfn-type="dfn">verificationMethod</span></a></li><li class="tocline"><a class="tocxref" href="#publickey"><bdi class="secno">4.1.5 </bdi><span data-lt="publicKey" data-dfn-type="dfn">publicKey</span></a></li><li class="tocline"><a class="tocxref" href="#service-0"><bdi class="secno">4.1.6 </bdi><span data-lt="service" data-dfn-type="dfn">service</span></a></li><li class="tocline"><a class="tocxref" href="#proof-0"><bdi class="secno">4.1.7 </bdi><span data-lt="proof" data-dfn-type="dfn">proof</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#services"><bdi class="secno">4.2 </bdi>Services</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#serviceendpoint"><bdi class="secno">4.2.1 </bdi><span data-lt="serviceEndpoint" data-dfn-type="dfn">serviceEndpoint</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#verification-relationships"><bdi class="secno">4.3 </bdi>Verification relationships</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#assertionmethod"><bdi class="secno">4.3.1 </bdi><span data-lt="assertionMethod" data-dfn-type="dfn">assertionMethod</span></a></li><li class="tocline"><a class="tocxref" href="#authentication-0"><bdi class="secno">4.3.2 </bdi><span data-lt="authentication" data-dfn-type="dfn">authentication</span></a></li><li class="tocline"><a class="tocxref" href="#capabilitydelegation"><bdi class="secno">4.3.3 </bdi><span data-lt="capabilityDelegation" data-dfn-type="dfn">capabilityDelegation</span></a></li><li class="tocline"><a class="tocxref" href="#capabilityinvocation"><bdi class="secno">4.3.4 </bdi><span data-lt="capabilityInvocation" data-dfn-type="dfn">capabilityInvocation</span></a></li><li class="tocline"><a class="tocxref" href="#keyagreement"><bdi class="secno">4.3.5 </bdi><span data-lt="keyAgreement" data-dfn-type="dfn">keyAgreement</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#verification-method-properties"><bdi class="secno">4.4 </bdi>Verification method properties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ethereumaddress"><bdi class="secno">4.4.1 </bdi><span data-lt="ethereumAddress" data-dfn-type="dfn">ethereumAddress</span></a></li><li class="tocline"><a class="tocxref" href="#publickeyhex"><bdi class="secno">4.4.2 </bdi><span data-lt="publicKeyHex" data-dfn-type="dfn">publicKeyHex</span></a></li><li class="tocline"><a class="tocxref" href="#publickeyjwk"><bdi class="secno">4.4.3 </bdi><span data-lt="publicKeyJwk" data-dfn-type="dfn">publicKeyJwk</span></a></li><li class="tocline"><a class="tocxref" href="#publickeybase58"><bdi class="secno">4.4.4 </bdi><span data-lt="publicKeyBase58" data-dfn-type="dfn">publicKeyBase58</span></a></li><li class="tocline"><a class="tocxref" href="#publickeypem"><bdi class="secno">4.4.5 </bdi><span data-lt="publicKeyPem" data-dfn-type="dfn">publicKeyPem</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#verification-method-types"><bdi class="secno">4.5 </bdi>Verification method types</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#jwsverificationkey2020"><bdi class="secno">4.5.1 </bdi><span data-lt="JwsVerificationKey2020" data-dfn-type="dfn">JwsVerificationKey2020</span></a></li><li class="tocline"><a class="tocxref" href="#ecdsasecp256k1verificationkey2019"><bdi class="secno">4.5.2 </bdi><span data-lt="EcdsaSecp256k1VerificationKey2019" data-dfn-type="dfn">EcdsaSecp256k1VerificationKey2019</span></a></li><li class="tocline"><a class="tocxref" href="#ed25519verificationkey2018"><bdi class="secno">4.5.3 </bdi><span data-lt="Ed25519VerificationKey2018" data-dfn-type="dfn">Ed25519VerificationKey2018</span></a></li><li class="tocline"><a class="tocxref" href="#gpgverificationkey2020"><bdi class="secno">4.5.4 </bdi><span data-lt="GpgVerificationKey2020" data-dfn-type="dfn">GpgVerificationKey2020</span></a></li><li class="tocline"><a class="tocxref" href="#rsaverificationkey2018"><bdi class="secno">4.5.5 </bdi><span data-lt="RsaVerificationKey2018" data-dfn-type="dfn">RsaVerificationKey2018</span></a></li><li class="tocline"><a class="tocxref" href="#x25519keyagreementkey2019"><bdi class="secno">4.5.6 </bdi><span data-lt="X25519KeyAgreementKey2019" data-dfn-type="dfn">X25519KeyAgreementKey2019</span></a></li><li class="tocline"><a class="tocxref" href="#schnorrsecp256k1verificationkey2019"><bdi class="secno">4.5.7 </bdi><span data-lt="SchnorrSecp256k1VerificationKey2019" data-dfn-type="dfn">SchnorrSecp256k1VerificationKey2019</span></a></li><li class="tocline"><a class="tocxref" href="#ecdsasecp256k1recoverymethod2020"><bdi class="secno">4.5.8 </bdi><span data-lt="EcdsaSecp256k1RecoveryMethod2020" data-dfn-type="dfn">EcdsaSecp256k1RecoveryMethod2020</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#did-resolution-options"><bdi class="secno">4.6 </bdi>DID resolution options</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#accept-0"><bdi class="secno">4.6.1 </bdi><span data-lt="accept" data-dfn-type="dfn">accept</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#did-resolution-metadata"><bdi class="secno">4.7 </bdi>DID resolution metadata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#content-type-0"><bdi class="secno">4.7.1 </bdi><span data-lt="content-type" data-dfn-type="dfn">content-type</span></a></li><li class="tocline"><a class="tocxref" href="#error-0"><bdi class="secno">4.7.2 </bdi><span data-lt="error" data-dfn-type="dfn">error</span></a></li><li class="tocline"><a class="tocxref" href="#invalid-did-0"><bdi class="secno">4.7.3 </bdi><span data-lt="invalid-did" data-dfn-type="dfn">invalid-did</span></a></li><li class="tocline"><a class="tocxref" href="#unauthorized-0"><bdi class="secno">4.7.4 </bdi><span data-lt="unauthorized" data-dfn-type="dfn">unauthorized</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#did-document-metadata"><bdi class="secno">4.8 </bdi>DID document metadata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#created-0"><bdi class="secno">4.8.1 </bdi><span data-lt="created" data-dfn-type="dfn">created</span></a></li><li class="tocline"><a class="tocxref" href="#updated-0"><bdi class="secno">4.8.2 </bdi><span data-lt="updated" data-dfn-type="dfn">updated</span></a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#parameters"><bdi class="secno">5. </bdi>Parameters</a></li><li class="tocline"><a class="tocxref" href="#did-methods"><bdi class="secno">6. </bdi>DID Methods</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>
+        Normative references
+      </a></li></ol></li></ol></nav>
+
+  <section id="conformance"><h2 id="x1-conformance"><bdi class="secno">1. </bdi>Conformance<a class="self-link" aria-label="§" href="#conformance"></a></h2><p>
+      As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.
+    </p><p>
+        The key words <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, <em class="rfc2119">MUST NOT</em>, and <em class="rfc2119">SHOULD</em> in this document
+        are to be interpreted as described in
+        <a href="https://tools.ietf.org/html/bcp14">BCP 14</a>
+        [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
+        when, and only when, they appear in all capitals, as shown here.
+      </p></section>
+
+  <section class="informative" id="introduction">
+    <h2 id="x2-introduction"><bdi class="secno">2. </bdi>Introduction<a class="self-link" aria-label="§" href="#introduction"></a></h2><p><em>This section is non-normative.</em></p>
+
+    <p>
+This document serves as an official registry for all known global parameters,
+properties, and values used by the Decentralized Identifier ecosystem.
+    </p>
+  </section>
+
+  <section id="the-registration-process">
+    <h2 id="x3-the-registration-process"><bdi class="secno">3. </bdi>The Registration Process<a class="self-link" aria-label="§" href="#the-registration-process"></a></h2>
+    <p>
+Software implementers might find that the existing Decentralized Identifier Core
+specification [<cite><a class="bibref" data-link-type="biblio" href="#bib-did-core" title="Decentralized Identifiers (DIDs) v1.0">DID-CORE</a></cite>] is not entirely capable of addressing their use case
+and might need to add a new parameters, properties, or values to this registry
+in order to achieve their use case in a globally interoperable fashion. In order
+to add a new parameter, property, or value to this registry, an implementer <em class="rfc2119" title="MUST">MUST</em>
+submit a modification request for this registry, as a Github Pull Request, where
+the modification request adheres to the following rules:
+    </p>
+
+    <ol>
+      <li>
+Any addition to the DID Core Registries <em class="rfc2119" title="MUST">MUST</em> specify a human readable
+description of the addition.
+      </li>
+      <li>
+Any addition to the DID Core Registries <em class="rfc2119" title="MUST">MUST</em> link, via at least a URL,
+preferably a content-integrity protected one, to the defining specification so
+that implementers can implement the property.
+      </li>
+      <li>
+Any addition to the DID Core Registries that is a property or value, <em class="rfc2119" title="MUST">MUST</em>
+specify a machine readable JSON-LD Context for the addition.
+        <ul>
+          <li>
+The JSON-LD Context <em class="rfc2119" title="MUST">MUST</em> be included in full as part of the submission.
+          </li>
+          <li>
+A namespace URI <em class="rfc2119" title="MUST">MUST</em> be provided for the JSON-LD Context so that consumer
+implementations can consistently map a URI to the full context.
+          </li>
+          <li>
+The URI provided <em class="rfc2119" title="MUST">MUST</em> be persistent, and link all terms to their associated
+human readable descriptions.
+          </li>
+          <li>
+The URI provided <em class="rfc2119" title="SHOULD">SHOULD</em> resolve or link to the full context contents.
+          </li>
+          <li>
+JSON-LD Contexts <em class="rfc2119" title="MUST">MUST</em> be versioned and <em class="rfc2119" title="MUST NOT">MUST NOT</em> be date stamped.
+          </li>
+          <li>
+JSON-LD Contexts <em class="rfc2119" title="SHOULD">SHOULD</em> use scoped terms and <em class="rfc2119" title="MUST">MUST</em> use the <code>@protected</code>
+feature to eliminate the possibility of term conflicts.
+          </li>
+        </ul>
+      </li>
+      <li>
+Any addition to the DID Core Registries <em class="rfc2119" title="MUST">MUST</em> specify a non-normative JSON Schema
+(the defining specification is normative) for the addition.
+      </li>
+      <li>
+Properties in the DID Core Registries <em class="rfc2119" title="MUST NOT">MUST NOT</em> be removed, only deprecated.
+      </li>
+    </ol>
+
+    <p>
+Additions that do not meet these criteria <em class="rfc2119" title="MUST NOT">MUST NOT</em> be accepted. Entries that
+are identified to cause interoperability problems <em class="rfc2119" title="MAY">MAY</em> be marked as such
+at the discretion of the maintainers of this registry, and if possible, after
+consultation with the entry maintainer.
+    </p>
+  </section>
+
+
+  <section id="properties">
+    <h2 id="x4-properties"><bdi class="secno">4. </bdi>Properties<a class="self-link" aria-label="§" href="#properties"></a></h2>
+    <p>
+The following section defines the properties available for use in a DID
+document. Note that some of these properties are defined in the
+<a href="https://www.w3.org/TR/did-core">DID Core Specification</a>, and
+others are defined elsewhere and may be method- or domain-specific. Please read
+the associated specifications to ensure that the properties you use are
+appropriate for your implementation. The properties are arranged here according
+to the purpose they serve.
+    </p>
+
+    <div class="issue" id="issue-container-generatedID"><div role="heading" class="issue-title marker" id="h-issue" aria-level="3"><span>Issue</span></div><p class="">
+This registry is a work in progress and some properties are missing normative
+definitions. We are working on this! This does NOT mean that in future it will
+be possible to submit items to the registry without normative definitions (see <a href="#the-registration-process" class="sec-ref">§&nbsp;<bdi class="secno">3. </bdi>The Registration Process</a>).
+    </p></div>
+
+    <section id="base-properties">
+      <h3 id="x4-1-base-properties"><bdi class="secno">4.1 </bdi>Base properties<a class="self-link" aria-label="§" href="#base-properties"></a></h3>
+      <p>
+These properties are foundational to DID documents, and are expected to be
+useful to all DID methods.
+      </p><section id="context">
+        <h4 id="x4-1-1-context"><bdi class="secno">4.1.1 </bdi><dfn data-lt="@context" data-dfn-type="dfn" id="@context">@context</dfn><a class="self-link" aria-label="§" href="#context"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#production-0">DID Core</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-1-example-of-context-property">
+        <div class="marker">
+    <a class="self-link" href="#example-1-example-of-context-property">Example<bdi> 1</bdi></a><span class="example-title">: Example of @context property</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  <span class="hljs-string">"@context"</span>: [
+    <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span>,
+    <span class="hljs-string">"https://example.com/blockchain-identity/v1"</span>
+  ],
+  ...
+}</code></pre>
+      </div>
+
+      </section>
+
+      <section id="id-0">
+        <h4 id="x4-1-2-id"><bdi class="secno">4.1.2 </bdi><dfn data-lt="id" data-dfn-type="dfn" id="id">id</dfn><a class="self-link" aria-label="§" href="#id-0"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-subject">DID Core</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-2-example-of-id-property">
+        <div class="marker">
+    <a class="self-link" href="#example-2-example-of-id-property">Example<bdi> 2</bdi></a><span class="example-title">: Example of id property</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123"</span>,
+  ...
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="controller-0">
+        <h4 id="x4-1-3-controller"><bdi class="secno">4.1.3 </bdi><dfn data-lt="controller" data-dfn-type="dfn" id="controller">controller</dfn><a class="self-link" aria-label="§" href="#controller-0"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#authorization-and-delegation">DID Core</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-3-example-of-controller-property">
+        <div class="marker">
+    <a class="self-link" href="#example-3-example-of-controller-property">Example<bdi> 3</bdi></a><span class="example-title">: Example of controller property</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+  ...
+}</code></pre>
+      </div>
+      </section>
+
+
+      <section id="verificationmethod">
+        <h4 id="x4-1-4-verificationmethod"><bdi class="secno">4.1.4 </bdi><dfn data-lt="verificationMethod" data-dfn-type="dfn" id="verificationMethod">verificationMethod</dfn><a class="self-link" aria-label="§" href="#verificationmethod"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#dfn-verification-method">DID Core Terminology</a> <span class="issue">(property definition pending)</span>
+              </td>
+              <td>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="publickey">
+        <h4 id="x4-1-5-publickey"><bdi class="secno">4.1.5 </bdi><dfn data-lt="publicKey" data-dfn-type="dfn" id="publicKey">publicKey</dfn><a class="self-link" aria-label="§" href="#publickey"></a></h4>
+
+        <div class="issue" id="issue-container-generatedID-0"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="5"><span>Issue</span></div><p class="">
+This property may be replaced entirely by <code>verificationMethod</code> in
+DID Core. See <a href="https://github.com/w3c/did-core/issues/283">issue
+#283</a>.
+        </p></div>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#dfn-publickey">DID Core</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-4-example-of-publickey-property">
+        <div class="marker">
+    <a class="self-link" href="#example-4-example-of-publickey-property">Example<bdi> 4</bdi></a><span class="example-title">: Example of publicKey property</span>
+  </div> <pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"did:example:123"</span>,
+  <span class="hljs-attr">"publicKey"</span>: [
+    {
+      <span class="hljs-attr">"id"</span>: <span class="hljs-string">"did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec"</span>,
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"Ed25519VerificationKey2018"</span>,
+      <span class="hljs-attr">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+      <span class="hljs-attr">"publicKeyBase58"</span>: <span class="hljs-string">"H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"</span>
+    },
+    {
+      <span class="hljs-attr">"id"</span>: <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>,
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1VerificationKey2019"</span>,
+      <span class="hljs-attr">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+      <span class="hljs-attr">"publicKeyJwk"</span>: {
+        <span class="hljs-attr">"crv"</span>: <span class="hljs-string">"secp256k1"</span>,
+        <span class="hljs-attr">"x"</span>: <span class="hljs-string">"NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4"</span>,
+        <span class="hljs-attr">"y"</span>: <span class="hljs-string">"qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo"</span>,
+        <span class="hljs-attr">"kty"</span>: <span class="hljs-string">"EC"</span>,
+        <span class="hljs-attr">"kid"</span>: <span class="hljs-string">"WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+      }
+    }
+  ]
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="service-0">
+        <h4 id="x4-1-6-service"><bdi class="secno">4.1.6 </bdi><dfn data-lt="service" data-dfn-type="dfn" id="service">service</dfn><a class="self-link" aria-label="§" href="#service-0"></a></h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#service-endpoints">DID Core</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-5-example-of-service-and-serviceendpoint-properties">
+        <div class="marker">
+    <a class="self-link" href="#example-5-example-of-service-and-serviceendpoint-properties">Example<bdi> 5</bdi></a><span class="example-title">: Example of service and serviceEndpoint properties</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  ...
+  <span class="hljs-string">"service"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#edv"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"EncryptedDataVault"</span>,
+    <span class="hljs-string">"serviceEndpoint"</span>: <span class="hljs-string">"https://edv.example.com/"</span>
+  }]
+}</code></pre>
+      </div>
+
+      </section>
+
+      <section id="proof-0">
+        <h4 id="x4-1-7-proof"><bdi class="secno">4.1.7 </bdi><dfn data-lt="proof" data-dfn-type="dfn" id="proof">proof</dfn><a class="self-link" aria-label="§" href="#proof-0"></a></h4>
+        <div class="issue" id="issue-container-generatedID-1"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="5"><span>Issue</span></div><p class="">
+Subject to removal from DID Core - see
+<a href="https://github.com/w3c/did-core/issues/293">issue #293</a>.
+        </p></div>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c.github.io/did-core/#proof">DID Core</a>
+              </td>
+              <td>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+
+    </section>
+
+    <section id="services">
+      <h3 id="x4-2-services"><bdi class="secno">4.2 </bdi>Services<a class="self-link" aria-label="§" href="#services"></a></h3>
+      <p>
+These terms are properties or types belonging to objects in the value of
+<a href="#service" class="internalDFN" data-link-type="dfn">service</a>.
+      </p>
+      <section id="serviceendpoint">
+        <h4 id="x4-2-1-serviceendpoint"><bdi class="secno">4.2.1 </bdi><dfn data-lt="serviceEndpoint" data-dfn-type="dfn" id="serviceEndpoint">serviceEndpoint</dfn><a class="self-link" aria-label="§" href="#serviceendpoint"></a></h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#service-endpoints">DID Core</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-6-example-of-service-and-serviceendpoint-properties">
+        <div class="marker">
+    <a class="self-link" href="#example-6-example-of-service-and-serviceendpoint-properties">Example<bdi> 6</bdi></a><span class="example-title">: Example of service and serviceEndpoint properties</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  ...
+  <span class="hljs-string">"service"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#edv"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"EncryptedDataVault"</span>,
+    <span class="hljs-string">"serviceEndpoint"</span>: <span class="hljs-string">"https://edv.example.com/"</span>
+  }]
+}</code></pre>
+      </div>
+
+      </section>
+    </section>
+
+    <section id="verification-relationships">
+      <h3 id="x4-3-verification-relationships"><bdi class="secno">4.3 </bdi>Verification relationships<a class="self-link" aria-label="§" href="#verification-relationships"></a></h3>
+      <p>
+A DID document expresses the relationship between the DID subject and a
+verification method using a
+<a href="https://w3c.github.io/did-core/#dfn-verification-relationship">
+verification relationship</a>.
+      </p>
+      <section id="assertionmethod">
+        <h4 id="x4-3-1-assertionmethod"><bdi class="secno">4.3.1 </bdi><dfn data-lt="assertionMethod" data-dfn-type="dfn" id="assertionMethod">assertionMethod</dfn><a class="self-link" aria-label="§" href="#assertionmethod"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/#assertionMethod">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-7-example-of-assertionmethod-property">
+        <div class="marker">
+    <a class="self-link" href="#example-7-example-of-assertionmethod-property">Example<bdi> 7</bdi></a><span class="example-title">: Example of assertionMethod property</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  ...
+  <span class="hljs-string">"publicKey"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1VerificationKey2019"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyJwk"</span>: {
+      <span class="hljs-string">"crv"</span>: <span class="hljs-string">"secp256k1"</span>,
+      <span class="hljs-string">"x"</span>: <span class="hljs-string">"NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4"</span>,
+      <span class="hljs-string">"y"</span>: <span class="hljs-string">"qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo"</span>,
+      <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+      <span class="hljs-string">"kid"</span>: <span class="hljs-string">"WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+    }
+  }],
+  <span class="hljs-string">"assertionMethod"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Ed25519VerificationKey2018"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyBase58"</span>: <span class="hljs-string">"BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"</span>
+  },
+  <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+  ]
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="authentication-0">
+        <h4 id="x4-3-2-authentication"><bdi class="secno">4.3.2 </bdi><dfn data-lt="authentication" data-dfn-type="dfn" id="authentication">authentication</dfn><a class="self-link" aria-label="§" href="#authentication-0"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#authentication">DID Core</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-8-example-of-authentication-property">
+        <div class="marker">
+    <a class="self-link" href="#example-8-example-of-authentication-property">Example<bdi> 8</bdi></a><span class="example-title">: Example of authentication property</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  ...
+  <span class="hljs-string">"publicKey"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1VerificationKey2019"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyJwk"</span>: {
+      <span class="hljs-string">"crv"</span>: <span class="hljs-string">"secp256k1"</span>,
+      <span class="hljs-string">"x"</span>: <span class="hljs-string">"NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4"</span>,
+      <span class="hljs-string">"y"</span>: <span class="hljs-string">"qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo"</span>,
+      <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+      <span class="hljs-string">"kid"</span>: <span class="hljs-string">"WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+    }
+  }],
+  <span class="hljs-string">"authentication"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Ed25519VerificationKey2018"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyBase58"</span>: <span class="hljs-string">"BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"</span>
+  },
+  <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+  ]
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="capabilitydelegation">
+        <h4 id="x4-3-3-capabilitydelegation"><bdi class="secno">4.3.3 </bdi><dfn data-lt="capabilityDelegation" data-dfn-type="dfn" id="capabilityDelegation">capabilityDelegation</dfn><a class="self-link" aria-label="§" href="#capabilitydelegation"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/#capabilityDelegation">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-9-example-of-capabilitydelegation-property">
+        <div class="marker">
+    <a class="self-link" href="#example-9-example-of-capabilitydelegation-property">Example<bdi> 9</bdi></a><span class="example-title">: Example of capabilityDelegation property</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  ...
+  <span class="hljs-string">"publicKey"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1VerificationKey2019"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyJwk"</span>: {
+      <span class="hljs-string">"crv"</span>: <span class="hljs-string">"secp256k1"</span>,
+      <span class="hljs-string">"x"</span>: <span class="hljs-string">"NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4"</span>,
+      <span class="hljs-string">"y"</span>: <span class="hljs-string">"qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo"</span>,
+      <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+      <span class="hljs-string">"kid"</span>: <span class="hljs-string">"WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+    }
+  }],
+  <span class="hljs-string">"capabilityDelegation"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Ed25519VerificationKey2018"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyBase58"</span>: <span class="hljs-string">"BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"</span>
+  },
+  <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+  ]
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="capabilityinvocation">
+        <h4 id="x4-3-4-capabilityinvocation"><bdi class="secno">4.3.4 </bdi><dfn data-lt="capabilityInvocation" data-dfn-type="dfn" id="capabilityInvocation">capabilityInvocation</dfn><a class="self-link" aria-label="§" href="#capabilityinvocation"></a></h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/#capabilityInvocation">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-10-example-of-capabilityinvocation-property">
+        <div class="marker">
+    <a class="self-link" href="#example-10-example-of-capabilityinvocation-property">Example<bdi> 10</bdi></a><span class="example-title">: Example of capabilityInvocation property</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  ...
+  <span class="hljs-string">"publicKey"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1VerificationKey2019"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyJwk"</span>: {
+      <span class="hljs-string">"crv"</span>: <span class="hljs-string">"secp256k1"</span>,
+      <span class="hljs-string">"x"</span>: <span class="hljs-string">"NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4"</span>,
+      <span class="hljs-string">"y"</span>: <span class="hljs-string">"qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo"</span>,
+      <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+      <span class="hljs-string">"kid"</span>: <span class="hljs-string">"WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+    }
+  }],
+  <span class="hljs-string">"capabilityInvocation"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Ed25519VerificationKey2018"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyBase58"</span>: <span class="hljs-string">"BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"</span>
+  },
+  <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+  ]
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="keyagreement">
+        <h4 id="x4-3-5-keyagreement"><bdi class="secno">4.3.5 </bdi><dfn data-lt="keyAgreement" data-dfn-type="dfn" id="keyAgreement">keyAgreement</dfn><a class="self-link" aria-label="§" href="#keyagreement"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/#keyAgreement">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/publicKey/publicKey.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-11-example-of-keyagreement-property">
+        <div class="marker">
+    <a class="self-link" href="#example-11-example-of-keyagreement-property">Example<bdi> 11</bdi></a><span class="example-title">: Example of keyAgreement property</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  ...
+  <span class="hljs-string">"keyAgreement"</span>: [
+    {
+      <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"X25519KeyAgreementKey2019"</span>,
+      <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+      <span class="hljs-string">"publicKeyBase58"</span>: <span class="hljs-string">"9hFgmPVfmBZwRvFEyniQDBkz9LmV7gDEqytWyGZLmDXE"</span>
+    }
+  ]
+}</code></pre>
+      </div>
+      </section>
+    </section>
+
+    <section id="verification-method-properties">
+      <h3 id="x4-4-verification-method-properties"><bdi class="secno">4.4 </bdi>Verification method properties<a class="self-link" aria-label="§" href="#verification-method-properties"></a></h3>
+      <p>
+These properties are for use on a verification method object, not on the DID document itself.
+      </p>
+      <section id="ethereumaddress">
+        <h4 id="x4-4-1-ethereumaddress"><bdi class="secno">4.4.1 </bdi><dfn data-lt="ethereumAddress" data-dfn-type="dfn" id="ethereumAddress">ethereumAddress</dfn><a class="self-link" aria-label="§" href="#ethereumaddress"></a></h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#ethereumAddress">ESRS2020</a>
+              </td>
+              <td>
+              </td>
+              <td>
+                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld">esrs2020</a>
+              </td>
+              
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-12-example-of-ethereumaddress-property">
+        <div class="marker">
+    <a class="self-link" href="#example-12-example-of-ethereumaddress-property">Example<bdi> 12</bdi></a><span class="example-title">: Example of ethereumAddress property</span>
+  </div> <pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"@context"</span>:[
+    <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span>,
+    <span class="hljs-string">"https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"</span>
+  ],
+  <span class="hljs-attr">"id"</span>:<span class="hljs-string">"did:example:123"</span>,
+  <span class="hljs-attr">"publicKey"</span>:[{
+    <span class="hljs-attr">"id"</span>: <span class="hljs-string">"did:example:123#vm-3"</span>,
+    <span class="hljs-attr">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1RecoveryMethod2020"</span>,
+    <span class="hljs-attr">"ethereumAddress"</span>: <span class="hljs-string">"0xF3beAC30C498D9E26865F34fCAa57dBB935b0D74"</span>
+  }]
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="publickeyhex">
+        <h4 id="x4-4-2-publickeyhex"><bdi class="secno">4.4.2 </bdi><dfn data-lt="publicKeyHex" data-dfn-type="dfn" id="publicKeyHex">publicKeyHex</dfn><a class="self-link" aria-label="§" href="#publickeyhex"></a></h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#publicKeyHex">ESRS2020</a>
+              </td>
+              <td>
+              </td>
+              <td>
+                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld">esrs2020</a>
+              </td>
+              
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-13-example-of-publickeyhex-property">
+        <div class="marker">
+    <a class="self-link" href="#example-13-example-of-publickeyhex-property">Example<bdi> 13</bdi></a><span class="example-title">: Example of publicKeyHex property</span>
+  </div> <pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"@context"</span>:[
+    <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span>,
+    <span class="hljs-string">"https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"</span>
+  ],
+  <span class="hljs-attr">"id"</span>:<span class="hljs-string">"did:example:123"</span>,
+  <span class="hljs-attr">"publicKey"</span>:[{
+    <span class="hljs-attr">"id"</span>: <span class="hljs-string">"did:example:123#vm-2"</span>,
+    <span class="hljs-attr">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1RecoveryMethod2020"</span>,
+    <span class="hljs-attr">"publicKeyHex"</span>: <span class="hljs-string">"027560af3387d375e3342a6968179ef3c6d04f5d33b2b611cf326d4708badd7770"</span>
+  }]
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="publickeyjwk">
+        <h4 id="x4-4-3-publickeyjwk"><bdi class="secno">4.4.3 </bdi><dfn data-lt="publicKeyJwk" data-dfn-type="dfn" id="publicKeyJwk">publicKeyJwk</dfn><a class="self-link" aria-label="§" href="#publickeyjwk"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="issue">Normative definition pending</span>
+              </td>
+              <td>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-14-example-of-publickeyjwk-property">
+        <div class="marker">
+    <a class="self-link" href="#example-14-example-of-publickeyjwk-property">Example<bdi> 14</bdi></a><span class="example-title">: Example of publicKeyJwk property</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"JsonWebKey2020"</span>,
+  <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+  <span class="hljs-string">"publicKeyJwk"</span>: {
+    <span class="hljs-string">"crv"</span>: <span class="hljs-string">"Ed25519"</span>,
+    <span class="hljs-string">"x"</span>: <span class="hljs-string">"VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"</span>,
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"OKP"</span>,
+    <span class="hljs-string">"kid"</span>: <span class="hljs-string">"_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"</span>
+  }
+},</code></pre>
+      </div>
+      </section>
+
+      <section id="publickeybase58">
+        <h4 id="x4-4-4-publickeybase58"><bdi class="secno">4.4.4 </bdi><dfn data-lt="publicKeyBase58" data-dfn-type="dfn" id="publicKeyBase58">publicKeyBase58</dfn><a class="self-link" aria-label="§" href="#publickeybase58"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/#publicKeyBase58">security-vocab</a>
+              </td>
+              <td>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+
+      <section id="publickeypem">
+        <h4 id="x4-4-5-publickeypem"><bdi class="secno">4.4.5 </bdi><dfn data-lt="publicKeyPem" data-dfn-type="dfn" id="publicKeyPem">publicKeyPem</dfn><a class="self-link" aria-label="§" href="#publickeypem"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/#publicKeyPem">security-vocab</a>
+              </td>
+              <td>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+    </section>
+
+    <section id="verification-method-types">
+      <h3 id="x4-5-verification-method-types"><bdi class="secno">4.5 </bdi>Verification method types<a class="self-link" aria-label="§" href="#verification-method-types"></a></h3>
+      <p>
+These are <em>classes</em> not a <em>properties</em> - in other words, use them
+for the value of <code>type</code> in a verification method object.
+      </p>
+      <section id="jwsverificationkey2020">
+        <h4 id="x4-5-1-jwsverificationkey2020"><bdi class="secno">4.5.1 </bdi><dfn data-lt="JwsVerificationKey2020" data-dfn-type="dfn" id="JwsVerificationKey2020">JwsVerificationKey2020</dfn><a class="self-link" aria-label="§" href="#jwsverificationkey2020"></a></h4>
+
+        <div class="issue" id="issue-container-generatedID-2"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="5"><span>Issue</span></div><p class="">
+<a href="https://github.com/w3c/did-core/issues/240">ISSUE 240 on DID Core</a>: The duplication and/or possible interaction of properties held in a JWK and a verification method are an active topic of discussion in the Working Group. Implementers are cautioned that the behavior of values associated with this property are not stable and might change in the future.
+        </p></div>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="issue">Normative definition pending</span>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/publicKey/JwsVerificationKey2020.json">JSON Schema</a>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-15-example-of-jwsverificationkey2020-class">
+        <div class="marker">
+    <a class="self-link" href="#example-15-example-of-jwsverificationkey2020-class">Example<bdi> 15</bdi></a><span class="example-title">: Example of JwsVerificationKey2020 class</span>
+  </div> <pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"did:example:123#_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"JwsVerificationKey2020"</span>,
+  <span class="hljs-attr">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+  <span class="hljs-attr">"publicKeyJwk"</span>: {
+    <span class="hljs-attr">"crv"</span>: <span class="hljs-string">"P-256"</span>,
+    <span class="hljs-attr">"x"</span>: <span class="hljs-string">"38M1FDts7Oea7urmseiugGW7tWc3mLpJh6rKe7xINZ8"</span>,
+    <span class="hljs-attr">"y"</span>: <span class="hljs-string">"nDQW6XZ7b_u2Sy9slofYLlG03sOEoug3I0aAPQ0exs4"</span>,
+    <span class="hljs-attr">"kty"</span>: <span class="hljs-string">"EC"</span>,
+    <span class="hljs-attr">"kid"</span>: <span class="hljs-string">"_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw"</span>
+  }
+}</code></pre>
+      </div>
+      </section>
+      <section id="ecdsasecp256k1verificationkey2019">
+        <h4 id="x4-5-2-ecdsasecp256k1verificationkey2019"><bdi class="secno">4.5.2 </bdi><dfn data-lt="EcdsaSecp256k1VerificationKey2019" data-dfn-type="dfn" id="EcdsaSecp256k1VerificationKey2019">EcdsaSecp256k1VerificationKey2019</dfn><a class="self-link" aria-label="§" href="#ecdsasecp256k1verificationkey2019"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/">Ecdsa Secp256k1 Signature 2019</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/publicKey/EcdsaSecp256k1VerificationKey2019.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-16-example-of-ecdsasecp256k1verificationkey2019-class">
+        <div class="marker">
+    <a class="self-link" href="#example-16-example-of-ecdsasecp256k1verificationkey2019-class">Example<bdi> 16</bdi></a><span class="example-title">: Example of EcdsaSecp256k1VerificationKey2019 class</span>
+  </div> <pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1VerificationKey2019"</span>,
+  <span class="hljs-attr">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+  <span class="hljs-attr">"publicKeyJwk"</span>: {
+    <span class="hljs-attr">"crv"</span>: <span class="hljs-string">"secp256k1"</span>,
+    <span class="hljs-attr">"x"</span>: <span class="hljs-string">"NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4"</span>,
+    <span class="hljs-attr">"y"</span>: <span class="hljs-string">"qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo"</span>,
+    <span class="hljs-attr">"kty"</span>: <span class="hljs-string">"EC"</span>,
+    <span class="hljs-attr">"kid"</span>: <span class="hljs-string">"WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+  }
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="ed25519verificationkey2018">
+        <h4 id="x4-5-3-ed25519verificationkey2018"><bdi class="secno">4.5.3 </bdi><dfn data-lt="Ed25519VerificationKey2018" data-dfn-type="dfn" id="Ed25519VerificationKey2018">Ed25519VerificationKey2018</dfn><a class="self-link" aria-label="§" href="#ed25519verificationkey2018"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/lds-ed25519-2018/">Ed25519 Signature 2018</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/publicKey/Ed25519VerificationKey2018.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-17-example-of-ed25519verificationkey2018-class">
+        <div class="marker">
+    <a class="self-link" href="#example-17-example-of-ed25519verificationkey2018-class">Example<bdi> 17</bdi></a><span class="example-title">: Example of Ed25519VerificationKey2018 class</span>
+  </div> <pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"Ed25519VerificationKey2018"</span>,
+  <span class="hljs-attr">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+  <span class="hljs-attr">"publicKeyBase58"</span>: <span class="hljs-string">"H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"</span>
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="gpgverificationkey2020">
+        <h4 id="x4-5-4-gpgverificationkey2020"><bdi class="secno">4.5.4 </bdi><dfn data-lt="GpgVerificationKey2020" data-dfn-type="dfn" id="GpgVerificationKey2020">GpgVerificationKey2020</dfn><a class="self-link" aria-label="§" href="#gpgverificationkey2020"></a></h4>
+        <div class="warning" id="issue-container-generatedID-3"><div role="heading" class="warning-title marker" id="h-warning" aria-level="5"><span>Warning</span></div><p class="">
+          No support for "Pure JSON" or "CBOR" is currently provided.
+        </p></div>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://gpg.jsld.org/contexts/#GpgVerificationKey2020">Linked Data Signatures for GPG</a>
+              </td>
+              <td>
+                Not supported
+              </td>
+              <td>
+                <a href="https://gpg.jsld.org/contexts/lds-gpg2020-v0.0.jsonld">gpg.jsld.org</a>
+              </td>
+              <td>
+                Not supported
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-18">
+        <div class="marker">
+    <a class="self-link" href="#example-18">Example<bdi> 18</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"@context"</span>:[
+    <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span>,
+    <span class="hljs-string">"https://gpg.jsld.org/contexts/lds-gpg2020-v0.0.jsonld"</span>
+  ],
+  <span class="hljs-attr">"id"</span>:<span class="hljs-string">"did:example:123"</span>,
+  <span class="hljs-attr">"publicKey"</span>:[{
+    <span class="hljs-attr">"id"</span>: <span class="hljs-string">"did:example:123#989ed1057a294c8a3665add842e784c4d08de1e2"</span>,
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"GpgVerificationKey2020"</span>,
+    <span class="hljs-attr">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-attr">"publicKeyGpg"</span>: <span class="hljs-string">"-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.9.0\r\nComment: https://openpgpjs.org\r\n\r\nxjMEXkm5LRYJKwYBBAHaRw8BAQdASmfrjYr7vrjwHNiBsdcImK397Vc3t4BL\r\nE8rnN......v6\r\nDw==\r\n=wSoi\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"</span>
+  }]
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="rsaverificationkey2018">
+        <h4 id="x4-5-5-rsaverificationkey2018"><bdi class="secno">4.5.5 </bdi><dfn data-lt="RsaVerificationKey2018" data-dfn-type="dfn" id="RsaVerificationKey2018">RsaVerificationKey2018</dfn><a class="self-link" aria-label="§" href="#rsaverificationkey2018"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/lds-rsa2018/">RSA Signature Suite 2018</a>
+              </td>
+              <td>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-19">
+        <div class="marker">
+    <a class="self-link" href="#example-19">Example<bdi> 19</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"did:example:123#key-0"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"RsaVerificationKey2018"</span>,
+  <span class="hljs-attr">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+  <span class="hljs-attr">"publicKeyPem"</span>: <span class="hljs-string">"-----BEGIN PUBLIC KEY...END PUBLIC KEY-----\r\n"</span>
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="x25519keyagreementkey2019">
+        <h4 id="x4-5-6-x25519keyagreementkey2019"><bdi class="secno">4.5.6 </bdi><dfn data-lt="X25519KeyAgreementKey2019" data-dfn-type="dfn" id="X25519KeyAgreementKey2019">X25519KeyAgreementKey2019</dfn><a class="self-link" aria-label="§" href="#x25519keyagreementkey2019"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="issue">Normative definition pending</span>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-20-example-of-x25519keyagreementkey2019">
+        <div class="marker">
+    <a class="self-link" href="#example-20-example-of-x25519keyagreementkey2019">Example<bdi> 20</bdi></a><span class="example-title">: Example of X25519KeyAgreementKey2019</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  ...
+  <span class="hljs-string">"keyAgreement"</span>: [
+    {
+      <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"X25519KeyAgreementKey2019"</span>,
+      <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+      <span class="hljs-string">"publicKeyBase58"</span>: <span class="hljs-string">"9hFgmPVfmBZwRvFEyniQDBkz9LmV7gDEqytWyGZLmDXE"</span>
+    }
+  ]
+}</code></pre>
+      </div>
+
+      </section>
+
+      <section id="schnorrsecp256k1verificationkey2019">
+        <h4 id="x4-5-7-schnorrsecp256k1verificationkey2019"><bdi class="secno">4.5.7 </bdi><dfn data-lt="SchnorrSecp256k1VerificationKey2019" data-dfn-type="dfn" id="SchnorrSecp256k1VerificationKey2019">SchnorrSecp256k1VerificationKey2019</dfn><a class="self-link" aria-label="§" href="#schnorrsecp256k1verificationkey2019"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/#SchnorrSecp256k1VerificationKey2019">security-vocab</a> <span class="issue">Link is to a placeholder! Definition pending</span>
+              </td>
+              <td>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="ecdsasecp256k1recoverymethod2020">
+        <h4 id="x4-5-8-ecdsasecp256k1recoverymethod2020"><bdi class="secno">4.5.8 </bdi><dfn data-lt="EcdsaSecp256k1RecoveryMethod2020" data-dfn-type="dfn" id="EcdsaSecp256k1RecoveryMethod2020">EcdsaSecp256k1RecoveryMethod2020</dfn><a class="self-link" aria-label="§" href="#ecdsasecp256k1recoverymethod2020"></a></h4>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#ES256K-R">ESRS2020</a>
+              </td>
+              <td>
+              </td>
+              <td>
+                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/lds-ecdsa-secp256k1-recovery2020-0.0.jsonld">esrs2020</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-21">
+        <div class="marker">
+    <a class="self-link" href="#example-21">Example<bdi> 21</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs json">{
+<span class="hljs-attr">"@context"</span>:[
+  <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span>,
+  <span class="hljs-string">"https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"</span>
+],
+<span class="hljs-attr">"id"</span>:<span class="hljs-string">"did:example:123"</span>,
+<span class="hljs-attr">"publicKey"</span>:[{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"did:example:123#vm-1"</span>,
+  <span class="hljs-attr">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1RecoveryMethod2020"</span>,
+  <span class="hljs-attr">"publicKeyJwk"</span>: {
+    <span class="hljs-attr">"crv"</span>: <span class="hljs-string">"secp256k1"</span>,
+    <span class="hljs-attr">"kid"</span>: <span class="hljs-string">"JUvpllMEYUZ2joO59UNui_XYDqxVqiFLLAJ8klWuPBw"</span>,
+    <span class="hljs-attr">"kty"</span>: <span class="hljs-string">"EC"</span>,
+    <span class="hljs-attr">"x"</span>: <span class="hljs-string">"dWCvM4fTdeM0KmloF57zxtBPXTOythHPMm1HCLrdd3A"</span>,
+    <span class="hljs-attr">"y"</span>: <span class="hljs-string">"36uMVGM7hnw-N6GnjFcihWE3SkrhMLzzLCdPMXPEXlA"</span>
+  }
+},
+{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"did:example:123#vm-2"</span>,
+  <span class="hljs-attr">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1RecoveryMethod2020"</span>,
+  <span class="hljs-attr">"publicKeyHex"</span>: <span class="hljs-string">"027560af3387d375e3342a6968179ef3c6d04f5d33b2b611cf326d4708badd7770"</span>
+},
+{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"did:example:123#vm-3"</span>,
+    <span class="hljs-attr">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1RecoveryMethod2020"</span>,
+    <span class="hljs-attr">"ethereumAddress"</span>: <span class="hljs-string">"0xF3beAC30C498D9E26865F34fCAa57dBB935b0D74"</span>
+  }]
+}</code></pre>
+      </div>
+      </section>
+
+    </section>
+
+    <section id="did-resolution-options">
+      <h3 id="x4-6-did-resolution-options"><bdi class="secno">4.6 </bdi>DID resolution options<a class="self-link" aria-label="§" href="#did-resolution-options"></a></h3>
+      <p>
+These properties contain information pertaining to the DID resolution request.
+      </p>
+
+      <section id="accept-0">
+        <h4 id="x4-6-1-accept"><bdi class="secno">4.6.1 </bdi><dfn data-lt="accept" data-dfn-type="dfn" id="accept">accept</dfn><a class="self-link" aria-label="§" href="#accept-0"></a></h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    <section id="did-resolution-metadata">
+      <h3 id="x4-7-did-resolution-metadata"><bdi class="secno">4.7 </bdi>DID resolution metadata<a class="self-link" aria-label="§" href="#did-resolution-metadata"></a></h3>
+      <p>
+These properties contain information pertaining to the DID resolution response.
+      </p>
+      <section id="content-type-0">
+        <h4 id="x4-7-1-content-type"><bdi class="secno">4.7.1 </bdi><dfn data-lt="content-type" data-dfn-type="dfn" id="content-type">content-type</dfn><a class="self-link" aria-label="§" href="#content-type-0"></a></h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="error-0">
+        <h4 id="x4-7-2-error"><bdi class="secno">4.7.2 </bdi><dfn data-lt="error" data-dfn-type="dfn" id="error">error</dfn><a class="self-link" aria-label="§" href="#error-0"></a></h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="invalid-did-0">
+        <h4 id="x4-7-3-invalid-did"><bdi class="secno">4.7.3 </bdi><dfn data-lt="invalid-did" data-dfn-type="dfn" id="invalid-did">invalid-did</dfn><a class="self-link" aria-label="§" href="#invalid-did-0"></a></h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="unauthorized-0">
+        <h4 id="x4-7-4-unauthorized"><bdi class="secno">4.7.4 </bdi><dfn data-lt="unauthorized" data-dfn-type="dfn" id="unauthorized">unauthorized</dfn><a class="self-link" aria-label="§" href="#unauthorized-0"></a></h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    <section id="did-document-metadata">
+      <h3 id="x4-8-did-document-metadata"><bdi class="secno">4.8 </bdi>DID document metadata<a class="self-link" aria-label="§" href="#did-document-metadata"></a></h3>
+      <p>
+These properties contain information pertaining to the DID document iself,
+rather than the DID subject.
+      </p>
+      <section id="created-0">
+        <h4 id="x4-8-1-created"><bdi class="secno">4.8.1 </bdi><dfn data-lt="created" data-dfn-type="dfn" id="created">created</dfn><a class="self-link" aria-label="§" href="#created-0"></a></h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#created">DID Core</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-22">
+        <div class="marker">
+    <a class="self-link" href="#example-22">Example<bdi> 22</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"created"</span>: <span class="hljs-string">"2002-10-10T17:00:00Z"</span>
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="updated-0">
+        <h4 id="x4-8-2-updated"><bdi class="secno">4.8.2 </bdi><dfn data-lt="updated" data-dfn-type="dfn" id="updated">updated</dfn><a class="self-link" aria-label="§" href="#updated-0"></a></h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON Schema</th>
+              <th>JSON-LD</th>
+              <th>CBOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#updated">DID Core</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/schemas/didDocument/didDocument.json">JSON Schema</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-spec-registries/contexts/did-v1.jsonld">/did/v1</a>
+              </td>
+              <td>
+                CBOR
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-23-example-of-updated-property">
+        <div class="marker">
+    <a class="self-link" href="#example-23-example-of-updated-property">Example<bdi> 23</bdi></a><span class="example-title">: Example of updated property</span>
+  </div> <pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"updated"</span>: <span class="hljs-string">"2016-10-17T02:41:00Z"</span>
+}</code></pre>
+      </div>
+
+      </section>
+    </section>
+
+  </section>
+
+  <section id="parameters">
+
+    <h2 id="x5-parameters"><bdi class="secno">5. </bdi>Parameters<a class="self-link" aria-label="§" href="#parameters"></a></h2>
+
+
+        <table class="simple">
+          <thead>
+            <tr>
+              <th>
+Name
+              </th>
+              <th>
+Description
+              </th>
+              <th>
+Specification
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+<code>hl</code>
+              </td>
+              <td>
+A resource hash of the DID document to add integrity protection, as
+specified in <a href="https://tools.ietf.org/id/draft-sporny-hashlink">
+Hashlink</a> specification.
+              </td>
+              <td>
+[<cite><a class="bibref" data-link-type="biblio" href="#bib-did-core" title="Decentralized Identifiers (DIDs) v1.0">DID-CORE</a></cite>]
+              </td>
+            </tr>
+            <tr>
+              <td>
+<code>service</code>
+              </td>
+              <td>
+Identifies a service from the DID document by service ID.
+              </td>
+              <td>
+[<cite><a class="bibref" data-link-type="biblio" href="#bib-did-core" title="Decentralized Identifiers (DIDs) v1.0">DID-CORE</a></cite>]
+              </td>
+            </tr>
+            <tr>
+              <td>
+<code style="white-space: nowrap;">version-id</code>
+              </td>
+              <td>
+Identifies a specific version of a DID document to be resolved (the
+version ID could be sequential, or a UUID, or method-specific). Note that
+this parameter might not be supported by all DID methods.
+              </td>
+              <td>
+[<cite><a class="bibref" data-link-type="biblio" href="#bib-did-core" title="Decentralized Identifiers (DIDs) v1.0">DID-CORE</a></cite>]
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+<code style="white-space: nowrap;">version-time</code>
+              </td>
+              <td>
+Identifies a certain version timestamp of a DID document to be resolved.
+That is, the DID document that was valid for a DID at a certain
+time. Note that this parameter might not be supported by all DID methods.
+              </td>
+              <td>
+[<cite><a class="bibref" data-link-type="biblio" href="#bib-did-core" title="Decentralized Identifiers (DIDs) v1.0">DID-CORE</a></cite>]
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+    <div class="issue" id="issue-container-number-32"><div role="heading" class="issue-title marker" id="h-issue-3" aria-level="3"><a href="https://github.com/w3c/did-spec-registries/issues/32"><span class="issue-number">Issue 32</span></a><span class="issue-label">: Add Example to The Core Parameters</span></div><p class="">
+      Example needed.
+    </p></div>
+    <div class="issue" id="issue-container-number-30"><div role="heading" class="issue-title marker" id="h-issue-4" aria-level="3"><a href="https://github.com/w3c/did-spec-registries/issues/30"><span class="issue-number">Issue 30</span></a><span class="issue-label">: Add Example to The Parameters Extension Registry</span></div><p class="">
+      Example needed.
+    </p></div>
+
+  </section>
+
+  <section id="did-methods">
+    <h2 id="x6-did-methods"><bdi class="secno">6. </bdi>DID Methods<a class="self-link" aria-label="§" href="#did-methods"></a></h2>
+
+
+    <p>
+This table summarizes the DID method specifications currently in development.
+The links will be updated as subsequent Implementer’s Drafts are produced.
+    </p>
+
+    <table class="simple">
+      <thead>
+        <tr>
+          <th>Method Name</th>
+          <th>Status</th>
+          <th>DLT or Network</th>
+          <th>Authors</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>
+              did:abt:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              ABT Network
+          </td>
+          <td>
+              ArcBlock
+          </td>
+          <td>
+              <a href="https://arcblock.github.io/abt-did-spec/">ABT DID Method</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+              did:btcr:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              Bitcoin
+          </td>
+          <td>
+              Christopher Allen, Ryan Grant, Kim Hamilton Duffy
+          </td>
+          <td>
+            <a href="https://w3c-ccg.github.io/didm-btcr">BTCR DID Method</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+              did:stack:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              Bitcoin
+          </td>
+          <td>
+              Jude Nelson
+          </td>
+          <td>
+             <a href="https://github.com/blockstack/blockstack-core/blob/stacks-1.0/docs/blockstack-did-spec.md">Blockstack DID Method</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+              did:erc725:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              Ethereum
+          </td>
+          <td>
+              Markus Sabadello, Fabian Vogelsteller, Peter Kolarov
+          </td>
+          <td>
+            <a href="https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-spring2018/blob/master/topics-and-advance-readings/DID-Method-erc725.md">erc725 DID Method</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+              did:example:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              DID Specification
+          </td>
+          <td>
+              <abbr title="World Wide Web Consortium">W3C</abbr> Credentials Community Group
+          </td>
+          <td>
+            <a href="https://w3c-ccg.github.io/did-spec/">DID Specification</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+              did:ipid:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              IPFS
+          </td>
+          <td>
+              TranSendX
+          </td>
+          <td>
+            <a href="https://did-ipid.github.io/ipid-did-method/">IPID DID method</a>
+          </td>
+        </tr>
+
+        <tr>
+            <td>
+                did:life:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                RChain
+            </td>
+            <td>
+                lifeID Foundation
+            </td>
+            <td>
+              <a href="https://lifeid.github.io/did-method-spec/">lifeID DID Method</a>
+            </td>
+          </tr>
+
+        <tr>
+          <td>
+              did:sov:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              Sovrin
+          </td>
+          <td>
+              Mike Lodder
+          </td>
+          <td>
+            <a href="https://sovrin-foundation.github.io/sovrin/spec/did-method-spec-template.html">Sovrin DID Method</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+              did:uport:
+          </td>
+          <td>
+              DEPRECATED
+          </td>
+          <td>
+              Ethereum
+          </td>
+          <td>
+              uPort
+          </td>
+          <td>
+          </td>
+        </tr>
+
+        <tr>
+            <td>
+                did:ethr:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                Ethereum
+            </td>
+            <td>
+                uPort
+            </td>
+            <td>
+                <a href="https://github.com/uport-project/ethr-did-resolver/blob/develop/doc/did-method-spec.md">ETHR DID Method</a>
+            </td>
+        </tr>
+
+        <tr>
+          <td>
+              did:v1:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              Veres One
+          </td>
+          <td>
+              Digital Bazaar
+          </td>
+          <td>
+            <a href="https://w3c-ccg.github.io/did-method-v1/">Veres One DID Method</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              did:com:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              commercio.network
+          </td>
+          <td>
+              Commercio Consortium
+          </td>
+          <td>
+              <a href="https://github.com/commercionetwork/Commercio.network-DID-Method-Specification/">Commercio.network DID Method</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              did:dom:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              Ethereum
+          </td>
+          <td>
+              Dominode
+          </td>
+          <td>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+              did:ont:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              Ontology
+          </td>
+          <td>
+              Ontology Foundation
+          </td>
+          <td>
+            <a href="https://github.com/ontio/ontology-DID/blob/master/docs/en/DID-ONT-method.md">Ontology DID Method</a>
+          </td>
+        </tr>
+
+            <tr>
+          <td>
+              did:vvo:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              Vivvo
+          </td>
+          <td>
+              Vivvo Application Studios
+          </td>
+          <td>
+            <a href="https://vivvo.github.io/vivvo-did-scheme/spec/did-method-spec-template.html">Vivvo DID Method</a>
+          </td>
+        </tr>
+    	<tr>
+          <td>
+              did:aergo:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              <a href="https://www.aergo.io/">Aergo</a>
+          </td>
+          <td>
+              <a href="https://www.blocko.io/">Blocko</a>
+          </td>
+          <td>
+              <a href="https://github.com/aergoio/aergo-identity/blob/master/doc/did-method-spec.md">Aergo DID Method</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              did:icon:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              ICON
+          </td>
+          <td>
+              ICONLOOP
+          </td>
+          <td>
+            <a href="https://github.com/icon-project/icon-DID/blob/master/docs/ICON-DID-method.md">ICON DID Method</a>
+          </td>
+        </tr>
+    	<tr>
+          <td>
+              did:iwt:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              InfoWallet
+          </td>
+          <td>
+              Raonsecure
+          </td>
+          <td>
+            <a href="https://github.com/infowallet/did_method/blob/master/did_method.md">InfoWallet DID Method</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+              did:ockam:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              Ockam
+          </td>
+          <td>
+              Ockam
+          </td>
+          <td>
+            <a href="https://github.com/ockam-network/did-method-spec/blob/master/README.md">Ockam DID Method</a>
+          </td>
+        </tr>
+
+        <tr>
+            <td>
+                did:ala:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                Alastria
+            </td>
+            <td>
+                Alastria National Blockchain Ecosystem
+            </td>
+            <td>
+              <a href="https://github.com/alastria/alastria-identity/wiki/Alastria-DID-Method-Specification-(Quorum-version)">Alastria DID Method</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                did:op:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                Ocean Protocol
+            </td>
+            <td>
+                Ocean Protocol
+            </td>
+            <td>
+              <a href="https://github.com/oceanprotocol/OEPs/blob/master/7/v0.2/README.md">Ocean Protocol DID Method</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                did:jlinc:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                JLINC Protocol
+            </td>
+            <td>
+                Victor Grey
+            </td>
+            <td>
+              <a href="https://did-spec.jlinc.org/">JLINC Protocol DID Method</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                did:ion:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                Bitcoin
+            </td>
+            <td>
+                Various DIF contributors
+            </td>
+            <td>
+              <a href="https://github.com/decentralized-identity/ion-did-method">ION DID Method</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                did:jolo:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                Ethereum
+            </td>
+            <td>
+                Jolocom
+            </td>
+            <td>
+              <a href="https://github.com/jolocom/jolocom-did-driver/blob/master/jolocom-did-method-specification.md">Jolocom DID Method</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                did:bryk:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                bryk
+            </td>
+            <td>
+                Marcos Allende, Sandra Murcia, Flavia Munhoso, Ruben Cessa
+            </td>
+            <td>
+                <a href="https://github.com/bryk-io/did-method/blob/master/README.md">bryk DID Method</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                did:peer:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                peer
+            </td>
+            <td>
+                Daniel Hardman
+            </td>
+            <td>
+                <a href="https://openssi.github.io/peer-did-method-spec/index.html">peer DID Method</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                did:selfkey:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                Ethereum
+            </td>
+            <td>
+                SelfKey
+            </td>
+            <td>
+                <a href="https://github.com/SelfKeyFoundation/selfkey-identity/blob/develop/DIDMethodSpecs.md">SelfKey DID Method</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                did:meta:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                Metadium
+            </td>
+            <td>
+                Metadium Foundation
+            </td>
+            <td>
+                <a href="https://github.com/METADIUM/meta-DID/blob/master/doc/DID-method-metadium.md">Metadium DID Method</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                did:tys:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+              DID Specification
+            </td>
+            <td>
+                Chainyard
+            </td>
+            <td>
+                <a href="https://github.com/chainyard-tys/tys/blob/master/README.md">TYS DID Method</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                did:git:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                DID Specification
+            </td>
+            <td>
+                Internet Identity Workshop
+            </td>
+            <td>
+                <a href="https://github.com/dhuseby/did-git-spec/blob/master/did-git-spec.md">Git DID Method</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                did:tangle:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                IOTA Tangle
+            </td>
+            <td>
+                BiiLabs Co., Ltd.
+            </td>
+            <td>
+                <a href="https://github.com/TangleID/TangleID/blob/develop/did-method-spec.md">TangleID DID Method</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                did:emtrust:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                Hyperledger Fabric
+            </td>
+            <td>
+                Halialabs Pte Ltd.
+            </td>
+            <td>
+                <a href="https://github.com/Halialabs/did-spec/blob/gh-pages/readme.md">Emtrust DID Method</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                did:ttm:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                TMChain
+            </td>
+            <td>
+                Token.TM
+            </td>
+            <td>
+                <a href="https://github.com/TokenTM/TM-DID/blob/master/docs/en/DID_spec.md">TM DID Method</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                did:wlk:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                Weelink Network
+            </td>
+            <td>
+                Weelink
+            </td>
+            <td>
+                <a href="https://weelink-team.github.io/weelink/DIDDesignEn">Weelink DID Method</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                did:pistis:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                Ethereum
+            </td>
+            <td>
+                Andrea Taglia, Matteo Sinico
+            </td>
+            <td>
+                <a href="https://github.com/uino95/ssi/blob/consensys/dashboard/server/pistis/pistis-did-resolver/README.md">Pistis DID Method</a>
+            </td>
+        </tr>
+        <tr>
+    	    <td>
+    	      did:holo:
+    	    </td>
+    	    <td>
+    	      PROVISIONAL
+    	    </td>
+    	    <td>
+    	      Holochain
+    	    </td>
+    	    <td>
+    	      Holo.Host
+    	    </td>
+    	    <td>
+    	      <a href="https://github.com/WebOfTrustInfo/rwot9-prague/blob/master/draft-documents/did:hc-method.md">Holochain DID Method</a>
+    	    </td>
+        </tr>
+        <tr>
+          <td>
+            did:web:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Web
+          </td>
+          <td>
+            Oliver Terbu, Mike Xu, Dmitri Zagidulin, Amy Guy
+          </td>
+          <td>
+            <a href="https://github.com/w3c-ccg/did-method-web">Web DID Method</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            did:io:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            IoTeX
+          </td>
+          <td>
+            IoTeX Foundation
+          </td>
+          <td>
+            <a href="https://github.com/iotexproject/iotex-did/blob/master/README.md">IoTeX DID Method</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            did:vaultie:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Ethereum
+          </td>
+          <td>
+            Vaultie Inc.
+          </td>
+          <td>
+            <a href="https://github.com/vaultie/vaultie-did-method/blob/master/vaultie-did-method-specification.md">Vaultie DID Method</a>
+          </td>
+        </tr>
+        <tr>
+            <td>
+                did:moac:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                MOAC
+            </td>
+            <td>
+                MOAC Blockchain Tech, Inc.
+            </td>
+            <td>
+                <a href="https://github.com/DavidRicardoWilde/moac-did/blob/master/did-moac-method.md">MOAC DID Method</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                did:omn:
+    	      </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+    		        OmniOne
+            </td>
+            <td>
+                OmniOne
+            </td>
+            <td>
+                <a href="https://github.com/OmniOneID/did_method/blob/master/did_method.md">OmniOne DID Method</a>
+            </td>
+        </tr>
+        <tr>
+    	<td>
+    	    did:work:
+    	</td>
+    	<td>
+    	    PROVISIONAL
+    	</td>
+    	<td>
+    	    Hyperledger Fabric
+    	</td>
+    	<td>
+    	    Workday, Inc.
+    	</td>
+    	<td>
+    	    <a href="https://workday.github.io/work-did-method-spec/">Workday DID Method</a>
+    	</td>
+        </tr>
+
+
+        <tr>
+          <td>
+            did:vid:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            VP
+          </td>
+          <td>
+            VP Inc.
+          </td>
+          <td>
+            <a href="https://github.com/vpayment/did-method-spec/blob/master/vid.md">VP DID Method</a>
+          </td>
+        </tr>
+        <tr>
+            <td>
+              did:ccp:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Quorum
+            </td>
+            <td>
+              Baidu, Inc.
+            </td>
+            <td>
+              <a href="https://did.baidu.com/did-spec/">Cloud DID Method</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              did:jnctn:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Jnctn Network
+            </td>
+            <td>
+              Jnctn Limited
+            </td>
+            <td>
+              <a href="https://github.com/jnctn/did-method-spec/">JNCTN DID Method</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                did:evan:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                evan.network
+            </td>
+            <td>
+                evan GmbH
+            </td>
+            <td>
+              <a href="https://github.com/evannetwork/evan.network-DID-method-specification/blob/master/evan_did_method_spec.md">evan.network DID Method</a>
+            </td>
+          </tr>
+        <tr>
+            <td>
+              did:elastos:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Elastos ID Sidechain
+            </td>
+            <td>
+              Elastos Foundation
+            </td>
+            <td>
+              <a href="https://github.com/elastos/Elastos.DID.Method/blob/master/DID/Elastos-DID-Method-Specification_en.md">Elastos DID Method</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              did:kilt:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              KILT Blockchain
+            </td>
+            <td>
+              BOTLabs GmbH
+            </td>
+            <td>
+              <a href="https://github.com/KILTprotocol/kilt-did-driver/blob/master/DID%20Method%20Specification.md">KILT DID Method</a>
+            </td>
+        </tr>
+        <tr>
+          <td>
+            did:elem:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Element DID
+          </td>
+          <td>
+            Transmute
+          </td>
+          <td>
+            <a href="https://github.com/decentralized-identity/element/blob/master/docs/did-method-spec/spec.md">ELEM DID Method</a>
+          </td>
+        </tr>
+        <tr>
+            <td>
+              did:github:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              Github
+            </td>
+            <td>
+              Transmute
+            </td>
+            <td>
+              <a href="https://docs.github-did.com/did-method-spec/">GitHub DID Method</a>
+            </td>
+        </tr>
+    <tr>
+            <td>
+              did:bid:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              bif
+            </td>
+            <td>
+              teleinfo caict
+            </td>
+            <td>
+              <a href="https://github.com/teleinfo-bif/bid/tree/master/doc/en">BIF DID Method</a>
+            </td>
+        </tr>
+        <tr>
+          <td>
+            did:ptn:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            PalletOne
+          </td>
+          <td>
+            PalletOne
+          </td>
+          <td>
+            <a href="https://github.com/palletone/palletone-DID/blob/master/docs/did-method/README.md">PalletOne DID Method</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              did:echo:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              Echo
+          </td>
+          <td>
+              Echo Technological Solutions LLC
+          </td>
+          <td>
+             <a href="https://github.com/echoprotocol/uni-resolver-driver-did-echo/blob/master/echo_did_specifications.md">Echo DID Method</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            did:trustbloc:
+          </td>
+          <td>
+            PROVISIONAL
+          </td>
+          <td>
+            Hyperledger Fabric
+          </td>
+          <td>
+            SecureKey
+          </td>
+          <td>
+            <a href="https://github.com/trustbloc/trustbloc-did-method/blob/master/docs/spec/trustbloc-did-method.md">TrustBloc DID Method</a>
+          </td>
+        </tr>
+        <tr>
+            <td>
+              did:san:
+            </td>
+            <td>
+              PROVISIONAL
+            </td>
+            <td>
+              SAN Cloudchain
+            </td>
+            <td>
+              YLZ Inc.
+            </td>
+            <td>
+              <a href="https://github.com/Baasze/DID-method-specification">SAN DID Method</a>
+            </td>
+        </tr>
+        <tr>
+          <td>
+              did:gatc:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              Ethereum, Hyperledger Fabric, Hyperledger Besu, Alastria
+          </td>
+          <td>
+              <a href="https://gataca.io/">Gataca</a>
+          </td>
+          <td>
+              <a href="https://github.com/gatacaid/gataca-did-method">Gataca DID Method</a>
+          </td>
+        </tr>
+        <tr>
+            <td>
+                did:factom:
+            </td>
+            <td>
+                PROVISIONAL
+            </td>
+            <td>
+                Factom
+            </td>
+            <td>
+                Sphereon, Factomatic, Factom Inc
+            </td>
+            <td>
+                <a href="https://github.com/factom-protocol/FIS/blob/master/FIS/DID.md">Factom DID Method</a>
+            </td>
+        </tr>
+        <tr>
+          <td>
+              did:signor:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              Ethereum, Hedera Hashgraph, Quorum, Hyperledger Besu
+          </td>
+          <td>
+              <a href="https://cryptonics.consulting/">Cryptonics</a>
+          </td>
+          <td>
+              <a href="https://github.com/cryptonicsconsulting/signor-did-contracts/blob/master/did-method-spec.md">Signor DID Method</a>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              did:hedera:
+          </td>
+          <td>
+              PROVISIONAL
+          </td>
+          <td>
+              Hedera Hashgraph
+          </td>
+          <td>
+              Hedera Hashgraph, Swisscom Blockchain AG
+          </td>
+          <td>
+              <a href="https://github.com/hashgraph/did-method/blob/master/did-method-specification.md">Hedera Hashgraph DID Method</a>
+          </td>
+      </tr>
+      <tr>
+        <td>
+            did:schema:
+        </td>
+        <td>
+            PROVISIONAL
+        </td>
+        <td>
+            Multiple storage networks, currently public IPFS and evan.network IPFS
+        </td>
+        <td>
+            51nodes GmbH
+        </td>
+        <td>
+            <a href="https://github.com/51nodes/schema-registry-did-method/blob/master/README.md">Schema Registry DID Method</a>
+        </td>
+    </tr>
+      </tbody>
+    </table>
+
+  </section>
+
+
+
+
+<section id="references" class="appendix"><h2 id="a-references"><bdi class="secno">A. </bdi>References<a class="self-link" aria-label="§" href="#references"></a></h2><section id="normative-references">
+      <h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>
+        Normative references
+      <a class="self-link" aria-label="§" href="#normative-references"></a></h3>
+    <dl class="bibliography">
+      <dt id="bib-did-core">[DID-CORE]</dt><dd><a href="https://www.w3.org/TR/did-core/"><cite>Decentralized Identifiers (DIDs) v1.0</cite></a>. Drummond Reed; Manu Sporny; Markus Sabadello; Dave Longley; Christopher Allen.  W3C. 21 April 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/did-core/">https://www.w3.org/TR/did-core/</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://tools.ietf.org/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a></dd><dt id="bib-rfc8174">[RFC8174]</dt><dd><a href="https://tools.ietf.org/html/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc8174">https://tools.ietf.org/html/rfc8174</a></dd>
+    </dl></section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

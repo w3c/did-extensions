@@ -1,0 +1,9 @@
+{
+  "name": "m2m",
+  "status": "registered",
+  "verifiableDataRegistry": "Hyperledger Indy",
+  "contactName": "SmartM2M. Co., Ltd",
+  "contactEmail": "smartm2m@smartm2m.co.kr",
+  "contactWebsite": "https://www.smartm2m.co.kr/",
+  "specification": "https://github.com/m2mblockchain/DID-Method-m2m/blob/main/README.md"
+}

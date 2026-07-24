@@ -1,0 +1,9 @@
+{
+  "name": "aergo",
+  "status": "registered",
+  "verifiableDataRegistry": "<a href=\"https://www.aergo.io/\">Aergo</a>",
+  "contactName": "Blocko",
+  "contactEmail": "",
+  "contactWebsite": "https://www.blocko.io/",
+  "specification": "https://github.com/aergoio/aergo-identity/blob/master/doc/did-method-spec.md"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "psi",
+  "status": "registered",
+  "verifiableDataRegistry": "LEDGIS",
+  "contactName": "Police Science Institution",
+  "contactEmail": "",
+  "contactWebsite": "https://www.psi.go.kr/",
+  "specification": "https://github.com/didpsi/psi-DID/blob/main/docs/did:psi-method-spec_eng.md"
+}

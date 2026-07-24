@@ -1,0 +1,9 @@
+{
+  "name": "did",
+  "status": "registered",
+  "verifiableDataRegistry": "Decentralized Identifiers",
+  "contactName": "Spruce Systems, Inc.",
+  "contactEmail": "",
+  "contactWebsite": "https://spruceid.com",
+  "specification": "https://did-did.spruceid.com"
+}

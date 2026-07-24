@@ -1,0 +1,9 @@
+{
+  "name": "dyne",
+  "status": "registered",
+  "verifiableDataRegistry": "Dyne.org Foundation",
+  "contactName": "Andrea D'Intino",
+  "contactEmail": "info@dyne.org",
+  "contactWebsite": "https://dyne.org",
+  "specification": "https://dyne.github.io/W3C-DID"
+}

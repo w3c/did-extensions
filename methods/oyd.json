@@ -1,0 +1,9 @@
+{
+  "name": "oyd",
+  "status": "registered",
+  "verifiableDataRegistry": "Ledger agnostic",
+  "contactName": "OwnYourData.eu",
+  "contactEmail": "christoph@ownyourdata.eu",
+  "contactWebsite": "https://ownyourdata.eu/",
+  "specification": "https://ownyourdata.github.io/oydid/"
+}

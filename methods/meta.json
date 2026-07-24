@@ -1,0 +1,9 @@
+{
+  "name": "meta",
+  "status": "registered",
+  "verifiableDataRegistry": "Metadium",
+  "contactName": "Metadium Foundation",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/METADIUM/meta-DID/blob/master/doc/DID-method-metadium.md"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "iscc",
+  "status": "registered",
+  "verifiableDataRegistry": "Public Blockchains",
+  "contactName": "ISCC Foundation",
+  "contactEmail": "tp@iscc.foundation",
+  "contactWebsite": "https://iscc.foundation",
+  "specification": "https://ieps.iscc.codes/iep-0015/"
+}

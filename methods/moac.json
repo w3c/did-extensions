@@ -1,0 +1,9 @@
+{
+  "name": "moac",
+  "status": "registered",
+  "verifiableDataRegistry": "MOAC",
+  "contactName": "MOAC Blockchain Tech, Inc.",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/DavidRicardoWilde/moac-did/blob/master/did-moac-method.md"
+}

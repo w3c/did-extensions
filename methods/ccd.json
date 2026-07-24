@@ -1,0 +1,9 @@
+{
+    "name": "ccd",
+    "status": "registered",
+    "specification": "https://proposals.concordium.software/ID/concordium-did.html",
+    "contactName": "Concordium development team",
+    "contactEmail": "developers@concordium.com",
+    "contactWebsite": "https://concordium.com",
+    "verifiableDataRegistry": "Concordium"
+}

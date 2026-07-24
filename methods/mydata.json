@@ -1,0 +1,9 @@
+{
+  "name": "mydata",
+  "status": "registered",
+  "verifiableDataRegistry": "iGrant.io",
+  "contactName": "iGrant.io",
+  "contactEmail": "",
+  "contactWebsite": "https://igrant.io/",
+  "specification": "https://github.com/decentralised-dataexchange/automated-data-agreements/blob/main/docs/did-spec.md"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "theseries",
+  "status": "registered",
+  "specification": "https://github.com/theseriesteam/tsid-method/blob/main/ts-did-method-specification.md",
+  "contactName": "Hang Hang",
+  "contactEmail": "hanghang.dev@gmail.com",
+  "contactWebsite": "",
+  "verifiableDataRegistry": "IPFS"
+}

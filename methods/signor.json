@@ -1,0 +1,9 @@
+{
+  "name": "signor",
+  "status": "registered",
+  "verifiableDataRegistry": "Ethereum, Hedera Hashgraph, Quorum, Hyperledger Besu",
+  "contactName": "Cryptonics",
+  "contactEmail": "",
+  "contactWebsite": "https://cryptonics.consulting/",
+  "specification": "https://github.com/cryptonicsconsulting/signor-did-contracts/blob/master/did-method-spec.md"
+}

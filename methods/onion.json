@@ -1,0 +1,9 @@
+{
+  "name": "onion",
+  "status": "registered",
+  "verifiableDataRegistry": "Ledger agnostic",
+  "contactName": "Blockchain Commons",
+  "contactEmail": "",
+  "contactWebsite": "https://github.com/BlockchainCommons/did-method-onion",
+  "specification": "https://blockchaincommons.github.io/did-method-onion/"
+}

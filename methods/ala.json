@@ -1,0 +1,9 @@
+{
+  "name": "ala",
+  "status": "registered",
+  "verifiableDataRegistry": "Alastria",
+  "contactName": "Alastria National Blockchain Ecosystem",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/alastria/alastria-identity/wiki/Alastria-DID-Method-Specification-(Quorum-version)"
+}

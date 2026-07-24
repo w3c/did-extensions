@@ -1,0 +1,9 @@
+{
+  "name": "ishare",
+  "status": "registered",
+  "specification": "https://did.ishare.eu/",
+  "contactName": "Rajiv Rajani",
+  "contactEmail": "support@ishare.eu",
+  "contactWebsite": "https://ishare.eu/",
+  "verifiableDataRegistry": "Refer to iSHARE Framework"
+}

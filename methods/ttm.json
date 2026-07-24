@@ -1,0 +1,9 @@
+{
+  "name": "ttm",
+  "status": "registered",
+  "verifiableDataRegistry": "TMChain",
+  "contactName": "Token.TM",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/TokenTM/TM-DID/blob/master/docs/en/DID_spec.md"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "scid",
+  "status": "registered",
+  "verifiableDataRegistry": "StraitsChain",
+  "contactName": "Lorna",
+  "contactEmail": "lornayang@straitschain.com",
+  "contactWebsite": "https://straitschain.com/",
+  "specification": "https://github.com/StraitsChain/SCID/blob/main/README.md"
+}

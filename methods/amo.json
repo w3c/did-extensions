@@ -1,0 +1,9 @@
+{
+  "name": "amo",
+  "status": "registered",
+  "verifiableDataRegistry": "AMO blockchain mainnet",
+  "contactName": "AMO Labs",
+  "contactEmail": "",
+  "contactWebsite": "https://amo.foundation",
+  "specification": "https://github.com/amolabs/docs/blob/master/amo-did.md"
+}

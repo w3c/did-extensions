@@ -1,0 +1,9 @@
+{
+  "name": "klayr",
+  "status": "registered",
+  "verifiableDataRegistry": "Klayr Sidechain",
+  "contactName": "Aldo Suhartono Putra",
+  "contactEmail": "aldhosutra@gmail.com",
+  "contactWebsite": "https://klayr-did.js.org/",
+  "specification": "https://github.com/aldhosutra/klayr-did/blob/main/packages/klayr-did-module/docs/did-method-spec.md"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "real",
+  "status": "registered",
+  "verifiableDataRegistry": "Ethereum",
+  "contactName": "Real Items",
+  "contactEmail": "rocky@realitems.io",
+  "contactWebsite": "https://realitems.io",
+  "specification": "https://github.com/realitems/did-real/blob/main/did-real-method-specification.md"
+}

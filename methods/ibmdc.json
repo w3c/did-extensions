@@ -1,0 +1,9 @@
+{
+	"name": "ibmdc",
+	"status": "registered",
+	"verifiableDataRegistry": "Hyperledger Fabric",
+	"contactName": "IBM Digital Credentials",
+	"contactEmail": "digitalcredentials@ibm.com",
+	"contactWebsite": "https://www.ibm.com/blockchain/identity",
+	"specification": "https://wiki.digitalcredentials.ibm.com/#/spec/v1/did-method"
+}
