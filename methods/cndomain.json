@@ -4,6 +4,6 @@
   "verifiableDataRegistry": ".cn agent",
   "specification": "https://cndomain-dev.github.io/did-method-cndomain/did-cndomain-method-specification-draft.html",
   "contactName": "BKL-AIS",
-  "contactEmail": "zhangzhiyong@cnnic.cn"，
+  "contactEmail": "zhangzhiyong@cnnic.cn",
   "contactWebsite": "https://github.com/cndomain-dev/did-method-cndomain"
 }
