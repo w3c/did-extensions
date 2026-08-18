@@ -4,5 +4,6 @@
   "verifiableDataRegistry": "cha2a Registry (registry-mediated identity for agents, skills, publishers and authorities; reference registry hosted at compliancehub.cn)",
   "contactName": "wwumit",
   "contactWebsite": "https://github.com/wwumit/did-method-cha2a",
-  "specification": "https://github.com/wwumit/did-method-cha2a/blob/main/did-method-cha2a.md"
+  "specification": "https://github.com/wwumit/did-method-cha2a/blob/main/did-method-cha2a.md",
+  "contactEmail": "wuwei1st@gmail.com"
 }
