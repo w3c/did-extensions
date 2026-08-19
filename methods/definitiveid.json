@@ -1,0 +1,9 @@
+{
+  "name": "definitiveid",
+  "status": "registered",
+  "specification": "https://github.com/davidgbvargroup/did-definitiveid-method-spec/blob/main/spec.md",
+  "contactName": "David Garcia Beatove",
+  "contactEmail": "david.garciab@vargroupiberia.com",
+  "contactWebsite": "https://www.vargroup.es/",
+  "verifiableDataRegistry": "DefinitiveID platform"
+}
