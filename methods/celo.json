@@ -1,0 +1,9 @@
+{
+  "name": "celo",
+  "status": "registered",
+  "verifiableDataRegistry": "Celo",
+  "contactName": "Ontology Foundation",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/ontology-tech/DID-method-specs/blob/master/did-celo/DID-Method-celo.md"
+}

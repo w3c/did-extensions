@@ -1,0 +1,9 @@
+{
+  "name": "future",
+  "status": "registered",
+  "verifiableDataRegistry": "Netease Chain",
+  "contactName": "Netease Blockchain Team",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/netease-chain/Future-DID-Method-Specification/blob/main/README.md"
+}

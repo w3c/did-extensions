@@ -1,0 +1,9 @@
+{
+  "name": "bnb",
+  "status": "registered",
+  "verifiableDataRegistry": "Binance Smart Chain",
+  "contactName": "Ontology Foundation",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/ontology-tech/DID-method-specs/blob/master/did-bnb/DID-Method-bnb.md"
+}

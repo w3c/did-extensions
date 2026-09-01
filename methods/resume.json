@@ -1,0 +1,9 @@
+{
+  "name": "resume",
+  "status": "registered",
+  "specification": "https://github.com/realmatterio/Resume-DID-Method/",
+  "contactName": "Ming-lam Ng with Real Matter Technology and Talent Connect",
+  "contactEmail": "mn@realmatter.io",
+  "contactWebsite": "https://realmatter.io",
+  "verifiableDataRegistry": "Resume DID Method and Protocol"
+}

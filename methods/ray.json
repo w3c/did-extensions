@@ -1,0 +1,9 @@
+{
+  "name": "ray",
+  "status": "registered",
+  "verifiableDataRegistry": "Ethereum",
+  "contactName": "Ray Peng",
+  "contactEmail": "275400726@qq.com",
+  "contactWebsite": "",
+  "specification": "https://github.com/pcrui/did-spec/blob/main/README.md"
+}

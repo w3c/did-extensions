@@ -1,0 +1,9 @@
+{
+  "name": "corda",
+  "status": "registered",
+  "verifiableDataRegistry": "Corda",
+  "contactName": "Nitesh Solanki,Moritz Platt,Pranav Kirtani",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://htmlpreview.github.io/?https://github.com/persistentsystems/corda-did-method/blob/master/corda_did_method.html"
+}

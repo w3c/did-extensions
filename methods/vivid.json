@@ -1,0 +1,9 @@
+{
+  "name": "vivid",
+  "status": "registered",
+  "verifiableDataRegistry": "NEO2, NEO3, Zilliqa",
+  "contactName": "Vivid",
+  "contactEmail": "",
+  "contactWebsite": "https://getviv.id/",
+  "specification": "https://github.com/Moonlight-io/specs/blob/master/did-method-spec.md"
+}

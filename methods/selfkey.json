@@ -1,0 +1,9 @@
+{
+  "name": "selfkey",
+  "status": "registered",
+  "verifiableDataRegistry": "Ethereum",
+  "contactName": "SelfKey",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/SelfKeyFoundation/selfkey-identity/blob/develop/DIDMethodSpecs.md"
+}

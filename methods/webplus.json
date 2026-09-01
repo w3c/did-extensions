@@ -1,0 +1,14 @@
+{
+  "name": "webplus",
+  "status": "registered",
+  "verifiableDataRegistry": "Web",
+  "contactName": [
+    "LedgerDomain",
+    "Victor Dods"
+  ],
+  "contactEmail": [
+    "didwebplus@ledgerdomain.com"
+  ],
+  "contactWebsite": "https://github.com/LedgerDomain/did-webplus",
+  "specification": "https://ledgerdomain.github.io/did-webplus-spec/"
+}

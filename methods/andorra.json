@@ -1,0 +1,9 @@
+{
+  "name": "andorra",
+  "status": "registered",
+  "specification": "https://github.com/davidgbvargroup/did-andorra-method-spec/blob/main/spec.md",
+  "contactName": "David García Beatove",
+  "contactEmail": "david.garciab@vargroupiberia.com",
+  "contactWebsite": "https://www.vargroup.es/",
+  "verifiableDataRegistry": "Andorra National Registry (NRTAD)"
+}

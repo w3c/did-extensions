@@ -1,0 +1,9 @@
+{
+  "name": "evan",
+  "status": "registered",
+  "verifiableDataRegistry": "evan.network",
+  "contactName": "evan GmbH",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/evannetwork/evan.network-DID-method-specification/blob/master/evan_did_method_spec.md"
+}

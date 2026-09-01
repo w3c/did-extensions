@@ -1,0 +1,9 @@
+{
+  "name": "indy",
+  "status": "registered",
+  "verifiableDataRegistry": "Any Hyperledger Indy Ledger",
+  "contactName": "Stephen Curran",
+  "contactEmail": "swcurran@cloudcompass.ca",
+  "contactWebsite": "",
+  "specification": "https://hyperledger.github.io/indy-did-method/"
+}

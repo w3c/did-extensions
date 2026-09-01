@@ -1,0 +1,9 @@
+{
+  "name": "health",
+  "status": "registered",
+  "verifiableDataRegistry": "DID Health",
+  "contactName": "support",
+  "contactEmail": "support@did.healthcare",
+  "contactWebsite": "https://www.did.healthcare/",
+  "specification": "https://github.com/didhealth/health-did-resolver/blob/main/doc/did-method-spec.md"
+}

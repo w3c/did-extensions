@@ -1,0 +1,9 @@
+{
+  "name": "ion",
+  "status": "registered",
+  "verifiableDataRegistry": "Bitcoin",
+  "contactName": "Various DIF contributors",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/decentralized-identity/ion-did-method"
+}

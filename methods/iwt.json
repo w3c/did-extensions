@@ -1,0 +1,9 @@
+{
+  "name": "iwt",
+  "status": "registered",
+  "verifiableDataRegistry": "InfoWallet",
+  "contactName": "Raonsecure",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/infowallet/did_method/blob/master/did_method.md"
+}

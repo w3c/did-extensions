@@ -1,0 +1,9 @@
+{
+  "name": "bba",
+  "status": "registered",
+  "verifiableDataRegistry": "Ardor",
+  "contactName": "Attila Aldemir",
+  "contactEmail": "attila.aldemir@atz3n.dev",
+  "contactWebsite": "",
+  "specification": "https://github.com/blobaa/bba-did-method-specification/blob/master/docs/markdown/spec.md"
+}

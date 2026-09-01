@@ -1,0 +1,9 @@
+{
+  "name": "xny",
+  "status": "registered",
+  "verifiableDataRegistry": "Blockchain",
+  "contactName": "Xny Protocol",
+  "contactEmail": "george@inductive.network",
+  "contactWebsite": "https://xny.ai/",
+  "specification": "https://github.com/humanbased-ai/xny-did/blob/v1.0.1/docs/xny-did-method.md"
+}

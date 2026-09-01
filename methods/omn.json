@@ -1,0 +1,9 @@
+{
+  "name": "omn",
+  "status": "registered",
+  "verifiableDataRegistry": "OmniOne",
+  "contactName": "OmniOne",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/OmniOneID/did_method/blob/master/did_method.md"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "ptn",
+  "status": "registered",
+  "verifiableDataRegistry": "PalletOne",
+  "contactName": "PalletOne",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/palletone/palletone-DID/blob/master/docs/did-method/README.md"
+}

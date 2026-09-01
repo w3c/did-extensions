@@ -1,0 +1,9 @@
+{
+  "name": "btcr",
+  "status": "registered",
+  "verifiableDataRegistry": "Bitcoin",
+  "contactName": "Christopher Allen, Ryan Grant, Kim Hamilton Duffy",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://w3c-ccg.github.io/didm-btcr"
+}

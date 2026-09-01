@@ -1,0 +1,9 @@
+{
+  "name": "sirius",
+  "status": "registered",
+  "verifiableDataRegistry": "ProximaX Sirius Chain",
+  "contactName": "ProximaX Singapore Pte. Ltd.",
+  "contactEmail": "",
+  "contactWebsite": "https://www.proximax.ltd",
+  "specification": "https://gitlab.com/proximax-enterprise/siriusid/sirius-id-specs/-/blob/master/docs/did-method-spec.md"
+}

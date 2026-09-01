@@ -1,0 +1,9 @@
+{
+  "name": "kaname",
+  "status": "registered",
+  "specification": "https://github.com/KanameProtocol/did-kaname-spec/blob/main/README.md",
+  "contactName": "",
+  "contactEmail": "",
+  "contactWebsite": "https://kaname.io/",
+  "verifiableDataRegistry": "Any EVM Compatible Blockchains"
+}

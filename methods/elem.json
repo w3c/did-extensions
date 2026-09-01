@@ -1,0 +1,9 @@
+{
+  "name": "elem",
+  "status": "registered",
+  "verifiableDataRegistry": "Element DID",
+  "contactName": "Transmute",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/decentralized-identity/element/blob/master/docs/did-method-spec/spec.md"
+}

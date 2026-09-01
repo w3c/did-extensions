@@ -1,0 +1,9 @@
+{
+  "name": "proof",
+  "status": "registered",
+  "verifiableDataRegistry": "Sui Mainnet",
+  "contactName": "PaperProof Labs",
+  "contactEmail": "paperproof.labs@gmail.com",
+  "contactWebsite": "paperproof.wal.app",
+  "specification": "https://github.com/PaperProofLabs/proof/blob/main/doc/en/Proof%20Protocol%20Specification.md"
+}
