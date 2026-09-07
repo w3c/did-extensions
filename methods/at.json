@@ -1,0 +1,9 @@
+{
+  "name": "at",
+  "status": "registered",
+  "verifiableDataRegistry": "agenttool platform instances (client-side ed25519 keys; append-only key registry)",
+  "contactName": "agenttool operators (Yu, Ai)",
+  "contactEmail": "contact@cambridgetcg.com",
+  "contactWebsite": "https://api.agenttool.dev/about",
+  "specification": "https://github.com/cambridgetcg/agenttool/blob/main/docs/DID-AT-SPEC.md"
+}
