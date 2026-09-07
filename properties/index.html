@@ -1872,6 +1872,130 @@ $ curl 'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1' -H '
         </pre>
       </section>
 
+      <section id="idprova-agent-service-types">
+        <h4>IDProva Agent Service Types</h4>
+        <p>
+          The following service types enable AI agent identity discovery and
+          communication using the
+          <a href="https://idprova.dev/spec">IDProva Protocol</a>. They allow
+          DID-identified agents to advertise MCP tool endpoints, A2A task
+          interfaces, discovery metadata, and delegation verification
+          capabilities.
+        </p>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://idprova.dev/spec#MCPTools">MCPTools</a>
+              </td>
+              <td>
+                <a href="https://idprova.dev/ns/v1">IDProva Context v1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://idprova.dev/spec#A2ATask">A2ATask</a>
+              </td>
+              <td>
+                <a href="https://idprova.dev/ns/v1">IDProva Context v1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://idprova.dev/spec#AgentDiscovery">AgentDiscovery</a>
+              </td>
+              <td>
+                <a href="https://idprova.dev/ns/v1">IDProva Context v1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://idprova.dev/spec#DelegationVerify">DelegationVerify</a>
+              </td>
+              <td>
+                <a href="https://idprova.dev/ns/v1">IDProva Context v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example MCPTools service entry">
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://idprova.dev/ns/v1"
+  ],
+  "id": "did:idprova:example.com:kai-lead-agent",
+  "service": [
+    {
+      "id": "did:idprova:example.com:kai-lead-agent#mcp-tools",
+      "type": "MCPTools",
+      "serviceEndpoint": "https://agent.example.com/mcp/sse"
+    }
+  ]
+}
+        </pre>
+
+        <pre class="example" title="Example A2ATask service entry">
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://idprova.dev/ns/v1"
+  ],
+  "id": "did:idprova:example.com:kai-lead-agent",
+  "service": [
+    {
+      "id": "did:idprova:example.com:kai-lead-agent#a2a-tasks",
+      "type": "A2ATask",
+      "serviceEndpoint": "https://agent.example.com/.well-known/agent.json"
+    }
+  ]
+}
+        </pre>
+
+        <pre class="example" title="Example AgentDiscovery service entry">
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://idprova.dev/ns/v1"
+  ],
+  "id": "did:web:example.com:agents:payment-bot",
+  "service": [
+    {
+      "id": "did:web:example.com:agents:payment-bot#discovery",
+      "type": "AgentDiscovery",
+      "serviceEndpoint": "https://example.com/.well-known/agent-identity.json"
+    }
+  ]
+}
+        </pre>
+
+        <pre class="example" title="Example DelegationVerify service entry">
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://idprova.dev/ns/v1"
+  ],
+  "id": "did:idprova:example.com:kai-lead-agent",
+  "service": [
+    {
+      "id": "did:idprova:example.com:kai-lead-agent#delegation-verify",
+      "type": "DelegationVerify",
+      "serviceEndpoint": "https://agent.example.com/verify/delegation"
+    }
+  ]
+}
+        </pre>
+
+      </section>
+
     </section>
 
   </section>
