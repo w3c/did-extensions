@@ -1,0 +1,42 @@
+{
+  "name": "",
+  "status": "registered",
+  "specification": "",
+  "contactName": "",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "verifiableDataRegistry": "",
+
+  "category": "",
+  "parentDomain": "",
+  "extends": [],
+  "calls": [],
+
+  "primaryUseCase": "",
+  "supportedUseCases": [],
+
+  "requirements": {
+    "Decentralization": { "tier": "core", "status": "", "detail": "" },
+    "Control": { "tier": "core", "status": "", "detail": "" },
+    "Privacy": { "tier": "core", "status": "", "detail": "" },
+    "Security": { "tier": "core", "status": "", "detail": "" },
+    "Proof_Based": { "tier": "core", "status": "", "detail": "" },
+    "Persistence": { "tier": "core", "status": "", "detail": "" },
+    "Crypto_Verifiability": { "tier": "core", "status": "", "detail": "" },
+    "Crypto_Extensibility": { "tier": "core", "status": "", "detail": "" },
+    "Discoverability": { "tier": "common", "status": "", "detail": "" },
+    "Interoperability": { "tier": "common", "status": "", "detail": "" },
+    "Portability": { "tier": "common", "status": "", "detail": "" },
+    "Inter_Jurisdictional": { "tier": "common", "status": "", "detail": "" },
+    "Key_Rotation": { "tier": "common", "status": "", "detail": "" },
+    "Uniqueness": { "tier": "common", "status": "", "detail": "" },
+    "Service_Endpoints": { "tier": "specialized", "status": "", "detail": "" },
+    "Composability": { "tier": "specialized", "status": "", "detail": "" },
+    "Equivalence": { "tier": "specialized", "status": "", "detail": "" },
+    "Legal_Compatibility": { "tier": "specialized", "status": "", "detail": "" },
+    "Metadata": { "tier": "specialized", "status": "", "detail": "" },
+    "DID_Resolution": { "tier": "specialized", "status": "", "detail": "" },
+    "CRUD_Operations": { "tier": "specialized", "status": "", "detail": "" },
+    "Deactivation": { "tier": "specialized", "status": "", "detail": "" }
+  }
+}

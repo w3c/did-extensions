@@ -1,0 +1,130 @@
+{
+  "name": "web",
+  "status": "registered",
+  "specification": "https://github.com/w3c-ccg/did-method-web",
+  "contactName": "Oliver Terbu, Mike Xu, Dmitri Zagidulin, Amy Guy",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "verifiableDataRegistry": "Web",
+
+  "category": "web-anchored",
+  "parentDomain": "web",
+  "extends": [],
+  "calls": [],
+
+  "primaryUseCase": "uc-credentials",
+  "supportedUseCases": ["uc-digital-identity", "uc-credentials", "uc-secure-communication", "uc-ecommerce", "uc-government-services", "uc-finance"],
+
+  "requirements": {
+    "Decentralization": {
+      "tier": "core",
+      "status": "partial",
+      "detail": "Relies on DNS and web hosting infrastructure. Domain registrars and hosting providers are centralized intermediaries. However, the method itself has no single central authority."
+    },
+    "Control": {
+      "tier": "core",
+      "status": "covered",
+      "detail": "Domain owner has full control over the DID Document hosted at their domain. They can update, rotate keys, or deactivate at will."
+    },
+    "Privacy": {
+      "tier": "core",
+      "status": "partial",
+      "detail": "DID Documents are publicly accessible via HTTPS. The domain name itself may reveal the entity's identity. No built-in selective disclosure."
+    },
+    "Security": {
+      "tier": "core",
+      "status": "covered",
+      "detail": "Relies on TLS/HTTPS for transport security. DID Document integrity depends on the web server's security posture."
+    },
+    "Proof_Based": {
+      "tier": "core",
+      "status": "covered",
+      "detail": "DID Documents contain verification methods (public keys) that enable cryptographic proof of controller identity."
+    },
+    "Persistence": {
+      "tier": "core",
+      "status": "partial",
+      "detail": "DIDs persist as long as the domain is maintained. Domain expiration or transfer breaks the identifier. Not as persistent as ledger-anchored methods."
+    },
+    "Crypto_Verifiability": {
+      "tier": "core",
+      "status": "covered",
+      "detail": "Supports Ed25519, P-256, P-384, and other verification methods in the DID Document."
+    },
+    "Crypto_Extensibility": {
+      "tier": "core",
+      "status": "covered",
+      "detail": "Any verification method type can be included in the DID Document. Not limited to a single algorithm."
+    },
+    "Discoverability": {
+      "tier": "common",
+      "status": "covered",
+      "detail": "DIDs are discoverable via well-known URI pattern: https://<domain>/.well-known/did.json"
+    },
+    "Interoperability": {
+      "tier": "common",
+      "status": "covered",
+      "detail": "Widely implemented. Supported by Veramo, SpruceID, Walt.id, and most DID toolkits. Universal Resolver driver available."
+    },
+    "Portability": {
+      "tier": "common",
+      "status": "uncovered",
+      "detail": "DIDs are tied to DNS domains. Changing domains means changing the DID. This is the primary limitation and the motivation for did:webvh."
+    },
+    "Inter_Jurisdictional": {
+      "tier": "common",
+      "status": "partial",
+      "detail": "DNS is global, but domain registration is subject to national regulations (ccTLDs, ICANN policies). The DID itself works across jurisdictions."
+    },
+    "Key_Rotation": {
+      "tier": "common",
+      "status": "covered",
+      "detail": "Update the DID Document on the web server to rotate keys. No on-chain transaction needed."
+    },
+    "Uniqueness": {
+      "tier": "common",
+      "status": "covered",
+      "detail": "DNS guarantees domain uniqueness globally. One domain = one did:web identifier."
+    },
+    "Service_Endpoints": {
+      "tier": "specialized",
+      "status": "covered",
+      "detail": "Full service endpoint support in the DID Document. Any service type can be declared."
+    },
+    "Composability": {
+      "tier": "specialized",
+      "status": "covered",
+      "detail": "Composes with Verifiable Credentials, DIDComm, Well-Known DID Configuration, and other standards."
+    },
+    "Equivalence": {
+      "tier": "specialized",
+      "status": "covered",
+      "detail": "Supports alsoKnownAs property to declare equivalence with other DIDs."
+    },
+    "Legal_Compatibility": {
+      "tier": "specialized",
+      "status": "covered",
+      "detail": "Domain ownership provides a clear legal entity mapping. Compatible with eIDAS and other regulatory frameworks."
+    },
+    "Metadata": {
+      "tier": "specialized",
+      "status": "partial",
+      "detail": "Basic resolution metadata supported. No built-in versioning metadata (addressed by did:webvh)."
+    },
+    "DID_Resolution": {
+      "tier": "specialized",
+      "status": "covered",
+      "detail": "Resolution via HTTPS GET to /.well-known/did.json or /<path>/did.json. Simple, cacheable, CDN-friendly."
+    },
+    "CRUD_Operations": {
+      "tier": "specialized",
+      "status": "covered",
+      "detail": "Create: host DID Document. Read: HTTPS GET. Update: replace file. Deactivate: remove file or return 410 Gone."
+    },
+    "Deactivation": {
+      "tier": "specialized",
+      "status": "covered",
+      "detail": "Remove the DID Document or return HTTP 410 Gone. No revocation list needed."
+    }
+  }
+}
