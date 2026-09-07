@@ -1,0 +1,9 @@
+{
+  "name": "aria",
+  "status": "registered",
+  "verifiableDataRegistry": "DNS TXT + HTTPS endpoint",
+  "contactName": "TrustLayer Foundation A.C.",
+  "contactEmail": "info@trustlayer.foundation",
+  "contactWebsite": "https://aria.bar",
+  "specification": "https://aria.bar/spec#did-method"
+}
