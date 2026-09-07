@@ -1,0 +1,9 @@
+{
+  "name": "infra",
+  "status": "registered",
+  "verifiableDataRegistry": "<a href=\"https://infrablockchain.com\">InfraBlockchain</a>",
+  "contactName": "Blockchain Labs",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/InfraBlockchain/infra-did-method-specs/blob/main/docs/Infra-DID-method-spec.md"
+}

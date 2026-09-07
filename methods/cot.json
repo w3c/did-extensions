@@ -1,0 +1,9 @@
+{
+  "name": "cot",
+  "status": "registered",
+  "verifiableDataRegistry": "CoTChain",
+  "contactName": "CoTNetwork, Inc.",
+  "contactEmail": "",
+  "contactWebsite": "https://www.cotnetwork.com",
+  "specification": "https://github.com/ComputingOfThings/dids#readme"
+}

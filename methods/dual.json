@@ -1,0 +1,9 @@
+{
+  "name": "dual",
+  "status": "registered",
+  "verifiableDataRegistry": "Ethereum",
+  "contactName": "Smart ID Card Alliance",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/Smart-ID-Card/Dual-DID/blob/main/docs/dual-did-method.md"
+}

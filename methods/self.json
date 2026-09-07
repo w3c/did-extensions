@@ -1,0 +1,9 @@
+{
+    "name": "self",
+    "status": "registered",
+    "specification": "https://github.com/excid-io/did-self",
+    "contactName": "Nikos Fotiou",
+    "contactEmail": "fotiou@excid.io",
+    "contactWebsite": "https://www.excid.io",
+    "verifiableDataRegistry": "Ledger agnostic"
+  }

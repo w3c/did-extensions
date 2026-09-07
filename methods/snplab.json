@@ -1,0 +1,9 @@
+{
+  "name": "snplab",
+  "status": "registered",
+  "specification": "https://github.com/snplab-io/snplab-did-method/blob/main/snplab-did-method-spec.md",
+  "contactName": "SNPLab Inc.",
+  "contactEmail": "hellodata@snplab.io",
+  "contactWebsite": "https://www.snplab.io",
+  "verifiableDataRegistry": "SNPLab MyD Network"
+}

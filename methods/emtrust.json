@@ -1,0 +1,9 @@
+{
+  "name": "emtrust",
+  "status": "registered",
+  "verifiableDataRegistry": "Hyperledger Fabric",
+  "contactName": "Halialabs Pte Ltd.",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/Halialabs/did-spec/blob/gh-pages/readme.md"
+}

@@ -1,0 +1,2360 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="generator" content="ReSpec 35.1.2">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+span.example-title{text-transform:none}
+:is(aside,div).example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}
+div.illegal-example{color:red}
+div.illegal-example p{color:#000}
+aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}
+</style>
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.issue.closed span.issue-number::after{content:" (Closed)";font-size:smaller}
+.warning{border-color:#f11;border-color:var(--warning-border,#f11);border-width:.2em;border-style:solid;background:#fbe9e9;background:var(--warning-bg,#fbe9e9);color:#000;color:var(--text,#000)}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+  
+<title>DID Document Property Extensions</title>
+  
+
+  
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+  
+  
+<style>
+
+    .label-legend dd{
+      margin-top: 8px;
+    }
+  .label-deprecated {
+    font-weight: bold;
+    background: #ef9a9a;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  .label-no-contact-info {
+    font-weight: bold;
+    background: #ffe082;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  pre .highlight {
+    font-weight: bold;
+    color: green;
+  }
+  pre .comment {
+    color: SteelBlue;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+</style>
+
+<meta name="color-scheme" content="light">
+<meta name="description" content="This document serves as a collection of known DID Document properties and
+property values.">
+<link rel="canonical" href="https://www.w3.org/TR/did-extensions-properties/">
+<style>
+.hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
+@media (prefers-color-scheme:dark){
+.hljs{--base:#282c34;--mono-1:#abb2bf;--mono-2:#818896;--mono-3:#5c6370;--hue-1:#56b6c2;--hue-2:#61aeee;--hue-3:#c678dd;--hue-4:#98c379;--hue-5:#e06c75;--hue-5-2:#be5046;--hue-6:#d19a66;--hue-6-2:#e6c07b}
+}
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;color:var(--mono-1,#383a42);background:#fafafa;background:var(--base,#fafafa)}
+.hljs-comment,.hljs-quote{color:#717277;color:var(--mono-3,#717277);font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4;color:var(--hue-3,#a626a4)}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;color:var(--hue-5,#ca4706);font-weight:700}
+.hljs-literal{color:#0b76c5;color:var(--hue-1,#0b76c5)}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c;color:var(--hue-4,#42803c)}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01;color:var(--hue-6-2,#9a6a01)}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801;color:var(--hue-6,#986801)}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3;color:var(--hue-2,#336ae3)}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
+var{position:relative;cursor:pointer}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#222}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "wgPublicList": "public-did-wg",
+  "group": "did",
+  "specStatus": "NOTE",
+  "shortName": "did-extensions-properties",
+  "edDraftURI": "https://w3c.github.io/did-extensions/properties/",
+  "subtitle": "Known Extensions for DID Document properties and values",
+  "publishDate": "2024-11-19",
+  "github": {
+    "repoURL": "https://github.com/w3c/did-extensions/",
+    "branch": "main"
+  },
+  "includePermalinks": false,
+  "editors": [
+    {
+      "name": "Manu Sporny",
+      "url": "https://www.linkedin.com/in/manusporny/",
+      "company": "Digital Bazaar",
+      "companyURL": "https://digitalbazaar.com/",
+      "w3cid": 41758,
+      "note": "2017-present"
+    },
+    {
+      "name": "Markus Sabadello",
+      "url": "https://www.linkedin.com/in/markus-sabadello-353a0821",
+      "company": "Danube Tech",
+      "companyURL": "https://danubetech.com/",
+      "w3cid": 46729,
+      "note": "2020-present"
+    }
+  ],
+  "formerEditors": [
+    {
+      "name": "Orie Steele",
+      "url": "https://www.linkedin.com/in/or13b/",
+      "company": "Transmute",
+      "companyURL": "https://www.transmute.industries/",
+      "w3cid": 109171,
+      "note": "2020-2022"
+    },
+    {
+      "name": "Amy Guy",
+      "url": "https://rhiaro.co.uk/",
+      "company": "Digital Bazaar",
+      "companyURL": "https://digitalbazaar.com/",
+      "w3cid": 69000,
+      "note": "2020-2022"
+    }
+  ],
+  "authors": [
+    {
+      "name": "The Decentralized Identifier Working Group",
+      "url": "https://www.w3.org/groups/wg/did/",
+      "company": "W3C",
+      "companyURL": "https://www.w3.org/"
+    }
+  ],
+  "otherLinks": [
+    {
+      "key": "Related Documents",
+      "data": [
+        {
+          "value": "DID Core",
+          "href": "https://www.w3.org/TR/did-core/"
+        },
+        {
+          "value": "DID Core Implementation Report",
+          "href": "https://w3c.github.io/did-test-suite/"
+        },
+        {
+          "value": "DID Use Cases and Requirements",
+          "href": "https://www.w3.org/TR/did-use-cases/"
+        }
+      ]
+    }
+  ],
+  "postProcess": [],
+  "localBiblio": {
+    "DID-EXTENSIONS": {
+      "title": "Decentralized Identifier Extensions",
+      "href": "https://www.w3.org/TR/did-extensions/",
+      "authors": [
+        "Manu Sporny"
+      ],
+      "status": "NOTE",
+      "publisher": "Decentralized Identifier Working Group",
+      "id": "did-extensions"
+    }
+  },
+  "publishISODate": "2024-11-19T00:00:00.000Z",
+  "generatedSubtitle": "W3C Group Note 19 November 2024"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-NOTE"></head>
+<body class="h-entry"><div class="head">
+    <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
+  </a></p>
+    <h1 id="title" class="title">DID Document Property Extensions</h1> <h2 id="subtitle" class="subtitle">Known Extensions for DID Document properties and values</h2>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#NOTE">W3C Group Note</a> <time class="dt-published" datetime="2024-11-19">19 November 2024</time></p>
+    <details open="">
+      <summary>More details about this document</summary>
+      <dl>
+        <dt>This version:</dt><dd>
+                <a class="u-url" href="https://www.w3.org/TR/2024/NOTE-did-extensions-properties-20241119/">https://www.w3.org/TR/2024/NOTE-did-extensions-properties-20241119/</a>
+              </dd>
+        <dt>Latest published version:</dt><dd>
+                <a href="https://www.w3.org/TR/did-extensions-properties/">https://www.w3.org/TR/did-extensions-properties/</a>
+              </dd>
+        <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/did-extensions/properties/">https://w3c.github.io/did-extensions/properties/</a></dd>
+        <dt>History:</dt><dd>
+                    <a href="https://www.w3.org/standards/history/did-extensions-properties/">https://www.w3.org/standards/history/did-extensions-properties/</a>
+                  </dd><dd>
+                    <a href="https://github.com/w3c/did-extensions/commits/main">Commit history</a>
+                  </dd>
+        
+        
+        
+        
+        
+        <dt>Editors:</dt><dd class="editor p-author h-card vcard" data-editor-id="41758">
+    <a class="u-url url p-name fn" href="https://www.linkedin.com/in/manusporny/">Manu Sporny</a> (<a class="p-org org h-org" href="https://digitalbazaar.com/">Digital Bazaar</a>) (2017-present)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="46729">
+    <a class="u-url url p-name fn" href="https://www.linkedin.com/in/markus-sabadello-353a0821">Markus Sabadello</a> (<a class="p-org org h-org" href="https://danubetech.com/">Danube Tech</a>) (2020-present)
+  </dd>
+        <dt>
+                Former editors:
+              </dt><dd class="editor p-author h-card vcard" data-editor-id="109171">
+    <a class="u-url url p-name fn" href="https://www.linkedin.com/in/or13b/">Orie Steele</a> (<a class="p-org org h-org" href="https://www.transmute.industries/">Transmute</a>) (2020-2022)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="69000">
+    <a class="u-url url p-name fn" href="https://rhiaro.co.uk/">Amy Guy</a> (<a class="p-org org h-org" href="https://digitalbazaar.com/">Digital Bazaar</a>) (2020-2022)
+  </dd>
+        <dt>Author:</dt><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://www.w3.org/groups/wg/did/">The Decentralized Identifier Working Group</a> (<a class="p-org org h-org" href="https://www.w3.org/">W3C</a>)
+  </dd>
+        <dt>Feedback:</dt><dd>
+        <a href="https://github.com/w3c/did-extensions/">GitHub w3c/did-extensions</a>
+        (<a href="https://github.com/w3c/did-extensions/pulls/">pull requests</a>,
+        <a href="https://github.com/w3c/did-extensions/issues/new/choose">new issue</a>,
+        <a href="https://github.com/w3c/did-extensions/issues/">open issues</a>)
+      </dd><dd><a href="mailto:public-did-wg@w3.org?subject=%5Bdid-extensions-properties%5D%20YOUR%20TOPIC%20HERE">public-did-wg@w3.org</a> with subject line <kbd>[did-extensions-properties] <em>… message topic …</em></kbd> (<a rel="discussion" href="https://lists.w3.org/Archives/Public/public-did-wg">archives</a>)</dd>
+        
+        <dt>Related Documents</dt><dd>
+    <a href="https://www.w3.org/TR/did-core/">DID Core</a>
+  </dd><dd>
+    <a href="https://w3c.github.io/did-test-suite/">DID Core Implementation Report</a>
+  </dd><dd>
+    <a href="https://www.w3.org/TR/did-use-cases/">DID Use Cases and Requirements</a>
+  </dd>
+      </dl>
+    </details>
+    
+    
+    <p class="copyright">
+    <a href="https://www.w3.org/policies/#copyright">Copyright</a>
+    ©
+    2024
+    
+    <a href="https://www.w3.org/">World Wide Web Consortium</a>.
+    <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup>
+    <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>,
+    <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and
+    <a rel="license" href="https://www.w3.org/copyright/software-license-2023/" title="W3C Software and Document Notice and License">permissive document license</a> rules apply.
+  </p>
+    <hr title="Separator for header">
+  </div>
+  <section id="abstract" class="introductory"><h2>Abstract</h2>
+    <p>
+This document serves as a collection of known DID Document properties and
+property values.
+    </p>
+  </section>
+
+  <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this
+      document at the time of its publication. A list of current <abbr title="World Wide Web Consortium">W3C</abbr>
+      publications and the latest revision of this technical report can be found
+      in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
+      https://www.w3.org/TR/.</em></p>
+
+    <p>
+Comments regarding this document are welcome. Please file issues
+directly on
+<a href="https://github.com/w3c/did-extensions/issues/">GitHub</a>,
+or send them
+to <a href="mailto:public-did-wg@w3.org">public-did-wg@w3.org</a> (
+<a href="mailto:public-did-wg-request@w3.org?subject=subscribe">subscribe</a>,
+<a href="https://lists.w3.org/Archives/Public/public-did-wg/">archives</a>).
+    </p>
+
+    <p>
+Portions of the work on this specification have been funded by the
+United States Department of Homeland Security's Science and Technology
+Directorate under contracts HSHQDC-16-R00012-H-SB2016-1-002, 70RSAT20T00000010,
+and HSHQDC-17-C-00019. The content of this specification does not
+necessarily reflect the position or the policy of the U.S. Government
+and no official endorsement should be inferred.
+    </p>
+
+    <p>
+Work on this registry has also been supported by the Rebooting the
+Web of Trust community facilitated by Christopher Allen, Shannon
+Appelcline, Kiara Robles, Brian Weller, Betty Dhamers, Kaliya Young,
+Kim Hamilton Duffy, Manu Sporny, Drummond Reed, Joe Andrieu, and
+Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
+    </p>
+  <p>
+    This document was published by the <a href="https://www.w3.org/groups/wg/did">Decentralized Identifier Working Group</a> as
+    a Group Note using the
+        <a href="https://www.w3.org/policies/process/20231103/#recs-and-notes">Note track</a>. 
+  </p><p>This Group Note is endorsed by
+        the <a href="https://www.w3.org/groups/wg/did">Decentralized Identifier Working Group</a>, but is not endorsed by
+        <abbr title="World Wide Web Consortium">W3C</abbr> itself nor its
+        Members. </p><p>
+    This is a draft document and may be updated, replaced or obsoleted by other
+    documents at any time. It is inappropriate to cite this document as other
+    than work in progress.
+    
+  </p><p data-deliverer="117488">
+    
+        The
+        <a href="https://www.w3.org/policies/patent-policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent
+          Policy</a>
+        does not carry any licensing requirements or commitments on this
+        document.
+      
+    
+  </p><p>
+                      This document is governed by the
+                      <a id="w3c_process_revision" href="https://www.w3.org/policies/process/20231103/">03 November 2023 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                    </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#the-registration-process"><bdi class="secno">1.1 </bdi>The Registration Process</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1.2 </bdi>Conformance</a></li></ol></li><li class="tocline"><a class="tocxref" href="#property-names"><bdi class="secno">2. </bdi>Property Names</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#did-document-properties"><bdi class="secno">2.1 </bdi>DID document properties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#id"><bdi class="secno">2.1.1 </bdi>id</a></li><li class="tocline"><a class="tocxref" href="#alsoknownas"><bdi class="secno">2.1.2 </bdi>alsoKnownAs</a></li><li class="tocline"><a class="tocxref" href="#controller"><bdi class="secno">2.1.3 </bdi>controller</a></li><li class="tocline"><a class="tocxref" href="#verificationmethod"><bdi class="secno">2.1.4 </bdi>verificationMethod</a></li><li class="tocline"><a class="tocxref" href="#publickey"><bdi class="secno">2.1.5 </bdi>publicKey</a></li><li class="tocline"><a class="tocxref" href="#service"><bdi class="secno">2.1.6 </bdi>service</a></li><li class="tocline"><a class="tocxref" href="#linkedresource"><bdi class="secno">2.1.7 </bdi>linkedResource</a></li><li class="tocline"><a class="tocxref" href="#dnsvalidationdomain"><bdi class="secno">2.1.8 </bdi>dnsValidationDomain</a></li></ol></li><li class="tocline"><a class="tocxref" href="#verification-relationships"><bdi class="secno">2.2 </bdi>Verification relationships</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#assertionmethod"><bdi class="secno">2.2.1 </bdi>assertionMethod</a></li><li class="tocline"><a class="tocxref" href="#authentication"><bdi class="secno">2.2.2 </bdi>authentication</a></li><li class="tocline"><a class="tocxref" href="#capabilitydelegation"><bdi class="secno">2.2.3 </bdi>capabilityDelegation</a></li><li class="tocline"><a class="tocxref" href="#capabilityinvocation"><bdi class="secno">2.2.4 </bdi>capabilityInvocation</a></li><li class="tocline"><a class="tocxref" href="#keyagreement"><bdi class="secno">2.2.5 </bdi>keyAgreement</a></li></ol></li><li class="tocline"><a class="tocxref" href="#verification-method-properties"><bdi class="secno">2.3 </bdi>Verification method properties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#publickeyjwk"><bdi class="secno">2.3.1 </bdi>publicKeyJwk</a></li><li class="tocline"><a class="tocxref" href="#publickeybase58"><bdi class="secno">2.3.2 </bdi>publicKeyBase58</a></li><li class="tocline"><a class="tocxref" href="#publickeyhex"><bdi class="secno">2.3.3 </bdi>publicKeyHex</a></li><li class="tocline"><a class="tocxref" href="#publickeymultibase"><bdi class="secno">2.3.4 </bdi>publicKeyMultibase</a></li><li class="tocline"><a class="tocxref" href="#blockchainaccountid"><bdi class="secno">2.3.5 </bdi>blockchainAccountId</a></li><li class="tocline"><a class="tocxref" href="#ethereumaddress"><bdi class="secno">2.3.6 </bdi>ethereumAddress</a></li></ol></li><li class="tocline"><a class="tocxref" href="#service-properties"><bdi class="secno">2.4 </bdi>Service properties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#serviceendpoint"><bdi class="secno">2.4.1 </bdi>serviceEndpoint</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#property-values"><bdi class="secno">3. </bdi>Property Values</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#verification-method-types"><bdi class="secno">3.1 </bdi>Verification method types</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#jsonwebkey2020"><bdi class="secno">3.1.1 </bdi>JsonWebKey2020</a></li><li class="tocline"><a class="tocxref" href="#ecdsasecp256k1verificationkey2019"><bdi class="secno">3.1.2 </bdi>EcdsaSecp256k1VerificationKey2019</a></li><li class="tocline"><a class="tocxref" href="#ed25519verificationkey2018"><bdi class="secno">3.1.3 </bdi>Ed25519VerificationKey2018</a></li><li class="tocline"><a class="tocxref" href="#bls12381g1key2020"><bdi class="secno">3.1.4 </bdi>Bls12381G1Key2020</a></li><li class="tocline"><a class="tocxref" href="#bls12381g2key2020"><bdi class="secno">3.1.5 </bdi>Bls12381G2Key2020</a></li><li class="tocline"><a class="tocxref" href="#pgpverificationkey2021"><bdi class="secno">3.1.6 </bdi>PgpVerificationKey2021</a></li><li class="tocline"><a class="tocxref" href="#rsaverificationkey2018"><bdi class="secno">3.1.7 </bdi>RsaVerificationKey2018</a></li><li class="tocline"><a class="tocxref" href="#x25519keyagreementkey2019"><bdi class="secno">3.1.8 </bdi>X25519KeyAgreementKey2019</a></li><li class="tocline"><a class="tocxref" href="#ecdsasecp256k1recoverymethod2020"><bdi class="secno">3.1.9 </bdi>EcdsaSecp256k1RecoveryMethod2020</a></li><li class="tocline"><a class="tocxref" href="#verifiablecondition2021"><bdi class="secno">3.1.10 </bdi>VerifiableCondition2021</a></li></ol></li><li class="tocline"><a class="tocxref" href="#service-types"><bdi class="secno">3.2 </bdi>Service types</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#linkeddomains"><bdi class="secno">3.2.1 </bdi>LinkedDomains</a></li><li class="tocline"><a class="tocxref" href="#linkedverifiablepresentation"><bdi class="secno">3.2.2 </bdi>LinkedVerifiablePresentation</a></li><li class="tocline"><a class="tocxref" href="#didcommmessaging"><bdi class="secno">3.2.3 </bdi>DIDCommMessaging</a></li><li class="tocline"><a class="tocxref" href="#wot-discovery-service-type"><bdi class="secno">3.2.4 </bdi>Web of Things (WoT) Discovery</a></li><li class="tocline"><a class="tocxref" href="#credentialregistry"><bdi class="secno">3.2.5 </bdi>CredentialRegistry</a></li><li class="tocline"><a class="tocxref" href="#openid4-verifiable-credential-issuance"><bdi class="secno">3.2.6 </bdi>OpenID4 Verifiable Credential Issuance</a></li><li class="tocline"><a class="tocxref" href="#openid4-verifiable-presentation"><bdi class="secno">3.2.7 </bdi>OpenID4 Verifiable Presentation</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
+
+  <section class="informative" id="introduction"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#introduction" aria-label="Permalink for Section 1."></a></div><p><em>This section is non-normative.</em></p>
+    
+
+    <p>
+This document serves as a collection of known DID Document properties and
+property values.
+    </p>
+
+    <section id="the-registration-process"><div class="header-wrapper"><h3 id="x1-1-the-registration-process"><bdi class="secno">1.1 </bdi>The Registration Process</h3><a class="self-link" href="#the-registration-process" aria-label="Permalink for Section 1.1"></a></div>
+      
+      <p>
+  The registration process is described in the <cite><a data-matched-text="[[[DID-EXTENSIONS]]]" href="https://www.w3.org/TR/did-extensions/">Decentralized Identifier Extensions</a></cite>.
+      </p>
+    </section>
+
+    <section id="conformance"><div class="header-wrapper"><h3 id="x1-2-conformance"><bdi class="secno">1.2 </bdi>Conformance</h3><a class="self-link" href="#conformance" aria-label="Permalink for Section 1.2"></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
+        The key word <em class="rfc2119">MUST</em> in this document
+        is to be interpreted as described in
+        <a href="https://datatracker.ietf.org/doc/html/bcp14">BCP 14</a>
+        [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
+        when, and only when, they appear in all capitals, as shown here.
+      </p></section>
+
+  </section>
+
+  <section id="property-names"><div class="header-wrapper"><h2 id="x2-property-names"><bdi class="secno">2. </bdi>Property Names</h2><a class="self-link" href="#property-names" aria-label="Permalink for Section 2."></a></div>
+    
+
+    <p>
+The following section defines the properties available for use in a DID
+document. Note that some of these properties are defined in the
+<a href="https://www.w3.org/TR/did-core">DID Core Specification</a>, and
+others are defined elsewhere and may be method- or domain-specific. Please read
+the associated specifications to ensure that the properties you use are
+appropriate for your implementation. The properties are arranged here according
+to the purpose they serve.
+    </p>
+
+    <div class="issue" id="issue-container-generatedID"><div role="heading" class="issue-title marker" id="h-issue" aria-level="3"><span>Issue</span></div><p class="">
+This registry is a work in progress and some properties are missing normative
+definitions. We are working on this! This does NOT mean that in future it will
+be possible to submit items to the registry without normative definitions (see <a href="#the-registration-process" class="sec-ref"><bdi class="secno">1.1 </bdi>The Registration Process</a>).
+    </p></div>
+
+    <section id="did-document-properties"><div class="header-wrapper"><h3 id="x2-1-did-document-properties"><bdi class="secno">2.1 </bdi>DID document properties</h3><a class="self-link" href="#did-document-properties" aria-label="Permalink for Section 2.1"></a></div>
+      
+      <p>
+These properties are foundational to DID documents, and are expected to be
+useful to all DID methods.
+
+      </p><section id="id"><div class="header-wrapper"><h4 id="x2-1-1-id"><bdi class="secno">2.1.1 </bdi>id</h4><a class="self-link" href="#id" aria-label="Permalink for Section 2.1.1"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-subject">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-id-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-id-property">Example<bdi> 1</bdi></a><span class="example-title">: Example of id property</span>
+  </div> <pre aria-busy="false"><code class="hljs css">{
+  "id": <span class="hljs-string">"did:example:123"</span>,
+  ...
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="alsoknownas"><div class="header-wrapper"><h4 id="x2-1-2-alsoknownas"><bdi class="secno">2.1.2 </bdi>alsoKnownAs</h4><a class="self-link" href="#alsoknownas" aria-label="Permalink for Section 2.1.2"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#also-known-as">DID Core</a>
+            </td>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-alsoknownas-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-alsoknownas-property">Example<bdi> 2</bdi></a><span class="example-title">: Example of alsoKnownAs property</span>
+  </div> <pre aria-busy="false"><code class="hljs css">{
+  "alsoKnownAs": <span class="hljs-string">"https://example.com/"</span>,
+  ...
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="controller"><div class="header-wrapper"><h4 id="x2-1-3-controller"><bdi class="secno">2.1.3 </bdi>controller</h4><a class="self-link" href="#controller" aria-label="Permalink for Section 2.1.3"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-controller">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-controller-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-controller-property">Example<bdi> 3</bdi></a><span class="example-title">: Example of controller property</span>
+  </div> <pre aria-busy="false"><code class="hljs css">{
+  "controller": <span class="hljs-string">"did:example:123"</span>,
+  ...
+}</code></pre>
+      </div>
+      </section>
+
+
+      <section id="verificationmethod"><div class="header-wrapper"><h4 id="x2-1-4-verificationmethod"><bdi class="secno">2.1.4 </bdi>verificationMethod</h4><a class="self-link" href="#verificationmethod" aria-label="Permalink for Section 2.1.4"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#dfn-verification-method">DID Core Terminology</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+<div class="example" id="example-example-of-verificationmethod-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-verificationmethod-property">Example<bdi> 4</bdi></a><span class="example-title">: Example of verificationMethod property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"verificationMethod"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#key-1"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Ed25519VerificationKey2018"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"publicKeyBase58"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#key-2"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"JsonWebKey2020"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"publicKeyJwk"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"kty"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"OKP"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"crv"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Ed25519"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"x"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"r7V8qmdFbwqSlj26eupPew1Lb22vVG5vnjhn3vwEA1Y"</span>
+      <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="publickey"><div class="header-wrapper"><h4 id="x2-1-5-publickey"><bdi class="secno">2.1.5 </bdi>publicKey</h4><a class="self-link" href="#publickey" aria-label="Permalink for Section 2.1.5"></a></div>
+        
+
+<span class="label-deprecated">Deprecated</span>
+
+<p class="advisement">
+This property has been deprecated, use <a href="#verificationmethod">verificationMethod</a> instead.
+</p>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/#publicKey">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v1">security-vocab context</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-publickey-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-publickey-property">Example<bdi> 5</bdi></a><span class="example-title">: Example of publicKey property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"publicKey"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Ed25519VerificationKey2018"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"publicKeyBase58"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EcdsaSecp256k1VerificationKey2019"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"publicKeyJwk"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"crv"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"secp256k1"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"x"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"y"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"kty"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EC"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"kid"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="service"><div class="header-wrapper"><h4 id="x2-1-6-service"><bdi class="secno">2.1.6 </bdi>service</h4><a class="self-link" href="#service" aria-label="Permalink for Section 2.1.6"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#services">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-service-and-serviceendpoint-properties">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-service-and-serviceendpoint-properties">Example<bdi> 6</bdi></a><span class="example-title">: Example of service and serviceEndpoint properties</span>
+  </div> <pre aria-busy="false"><code class="hljs css">{
+  ...
+  "service": [{
+    "id": <span class="hljs-string">"did:example:123#edv"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"EncryptedDataVault"</span>,
+    <span class="hljs-string">"serviceEndpoint"</span>: <span class="hljs-string">"https://edv.example.com/"</span>
+  }]
+}</code></pre>
+      </div>
+
+      </section>
+      <section id="linkedresource"><div class="header-wrapper"><h4 id="x2-1-7-linkedresource"><bdi class="secno">2.1.7 </bdi>linkedResource</h4><a class="self-link" href="#linkedresource" aria-label="Permalink for Section 2.1.7"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/earth/did-cosmos#linked-resources">DID
+                  Cosmos Linked Resources</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/earth/NS/iid/v1">Cosmos JSON-LD
+                  Context</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-linked-resource-properties">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-linked-resource-properties">Example<bdi> 7</bdi></a><span class="example-title">: Example of linked resource properties</span>
+  </div> <pre aria-busy="false"><code class="hljs css">{
+    ...
+    "linkedResource" : [{
+      "id": <span class="hljs-string">"did:cosmos:1:impacthub:nft:abc123#resourceHashgraph"</span>,
+      <span class="hljs-string">"path"</span>: <span class="hljs-string">"did:cosmos:1:impacthub:nft:abc123/resourceHashgraph"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"hashgraph"</span>,
+      <span class="hljs-string">"proof"</span>: <span class="hljs-string">"afybeiemxf5abjwjbikoz4mcb3a3dla6ual3jsgpdr4cjr3oz"</span>,
+      <span class="hljs-string">"endpoint"</span> : <span class="hljs-string">"did:cosmos:1:impacthub:nft:abc123?service=mediator"</span>
+  }]
+}</code></pre>
+      </div>
+
+      </section>
+
+        <section id="dnsvalidationdomain"><div class="header-wrapper"><h4 id="x2-1-8-dnsvalidationdomain"><bdi class="secno">2.1.8 </bdi>dnsValidationDomain</h4><a class="self-link" href="#dnsvalidationdomain" aria-label="Permalink for Section 2.1.8"></a></div>
+          
+          <table class="simple" style="width: 100%;">
+            <thead>
+              <tr>
+                <th>Normative Definition</th>
+                <th>JSON-LD</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://w3id.org/hadids#dnsValidationDomain">High Assurance DIDs with DNS</a>
+                </td>
+                <td>
+                  <a href="https://w3id.org/hadids/v0.5">dnsValidationDomain JSON-LD
+                    Context</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="example" id="example-example-of-dnsvalidationdomain-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-dnsvalidationdomain-property">Example<bdi> 8</bdi></a><span class="example-title">: Example of dnsValidationDomain property</span>
+  </div> <pre aria-busy="false"><code class="hljs css">{
+  "dnsValidationDomain": <span class="hljs-string">"mydomain.example"</span>
+  ...
+}</code></pre>
+      </div>
+    </section>
+
+    </section>
+    <section id="verification-relationships"><div class="header-wrapper"><h3 id="x2-2-verification-relationships"><bdi class="secno">2.2 </bdi>Verification relationships</h3><a class="self-link" href="#verification-relationships" aria-label="Permalink for Section 2.2"></a></div>
+      
+      <p>
+These are properties that express the relationship between the DID subject and a
+verification method using a
+<a href="https://w3c.github.io/did-core/#dfn-verification-relationship">
+verification relationship</a>.
+      </p>
+      <section id="assertionmethod"><div class="header-wrapper"><h4 id="x2-2-1-assertionmethod"><bdi class="secno">2.2.1 </bdi>assertionMethod</h4><a class="self-link" href="#assertionmethod" aria-label="Permalink for Section 2.2.1"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#assertion">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-assertionmethod-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-assertionmethod-property">Example<bdi> 9</bdi></a><span class="example-title">: Example of assertionMethod property</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  ...
+  <span class="hljs-string">"verificationMethod"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1VerificationKey2019"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyJwk"</span>: {
+      <span class="hljs-string">"crv"</span>: <span class="hljs-string">"secp256k1"</span>,
+      <span class="hljs-string">"x"</span>: <span class="hljs-string">"NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4"</span>,
+      <span class="hljs-string">"y"</span>: <span class="hljs-string">"qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo"</span>,
+      <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+      <span class="hljs-string">"kid"</span>: <span class="hljs-string">"WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+    }
+  }],
+  <span class="hljs-string">"assertionMethod"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Ed25519VerificationKey2018"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyBase58"</span>: <span class="hljs-string">"BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"</span>
+  },
+  <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+  ]
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="authentication"><div class="header-wrapper"><h4 id="x2-2-2-authentication"><bdi class="secno">2.2.2 </bdi>authentication</h4><a class="self-link" href="#authentication" aria-label="Permalink for Section 2.2.2"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#authentication">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-authentication-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-authentication-property">Example<bdi> 10</bdi></a><span class="example-title">: Example of authentication property</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  ...
+  <span class="hljs-string">"verificationMethod"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1VerificationKey2019"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyJwk"</span>: {
+      <span class="hljs-string">"crv"</span>: <span class="hljs-string">"secp256k1"</span>,
+      <span class="hljs-string">"x"</span>: <span class="hljs-string">"NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4"</span>,
+      <span class="hljs-string">"y"</span>: <span class="hljs-string">"qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo"</span>,
+      <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+      <span class="hljs-string">"kid"</span>: <span class="hljs-string">"WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+    }
+  }],
+  <span class="hljs-string">"authentication"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Ed25519VerificationKey2018"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyBase58"</span>: <span class="hljs-string">"BYEz8kVpPqSt5T7DeGoPVUrcTZcDeX5jGkGhUQBWmoBg"</span>
+  },
+  <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+  ]
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="capabilitydelegation"><div class="header-wrapper"><h4 id="x2-2-3-capabilitydelegation"><bdi class="secno">2.2.3 </bdi>capabilityDelegation</h4><a class="self-link" href="#capabilitydelegation" aria-label="Permalink for Section 2.2.3"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#capability-invocation">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-example-of-capabilitydelegation-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-capabilitydelegation-property">Example<bdi> 11</bdi></a><span class="example-title">: Example of capabilityDelegation property</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  ...
+  <span class="hljs-string">"verificationMethod"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1VerificationKey2019"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyJwk"</span>: {
+      <span class="hljs-string">"crv"</span>: <span class="hljs-string">"secp256k1"</span>,
+      <span class="hljs-string">"x"</span>: <span class="hljs-string">"NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4"</span>,
+      <span class="hljs-string">"y"</span>: <span class="hljs-string">"qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo"</span>,
+      <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+      <span class="hljs-string">"kid"</span>: <span class="hljs-string">"WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+    }
+  }],
+  <span class="hljs-string">"capabilityDelegation"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Ed25519VerificationKey2020"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyMultibase"</span>: <span class="hljs-string">"z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"</span>
+  },
+  <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+  ]
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="capabilityinvocation"><div class="header-wrapper"><h4 id="x2-2-4-capabilityinvocation"><bdi class="secno">2.2.4 </bdi>capabilityInvocation</h4><a class="self-link" href="#capabilityinvocation" aria-label="Permalink for Section 2.2.4"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#capability-invocation">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-capabilityinvocation-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-capabilityinvocation-property">Example<bdi> 12</bdi></a><span class="example-title">: Example of capabilityInvocation property</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  ...
+  <span class="hljs-string">"verificationMethod"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"EcdsaSecp256k1VerificationKey2019"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyJwk"</span>: {
+      <span class="hljs-string">"crv"</span>: <span class="hljs-string">"secp256k1"</span>,
+      <span class="hljs-string">"x"</span>: <span class="hljs-string">"NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4"</span>,
+      <span class="hljs-string">"y"</span>: <span class="hljs-string">"qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo"</span>,
+      <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+      <span class="hljs-string">"kid"</span>: <span class="hljs-string">"WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+    }
+  }],
+  <span class="hljs-string">"capabilityInvocation"</span>: [{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:123#z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Ed25519VerificationKey2020"</span>,
+    <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+    <span class="hljs-string">"publicKeyMultibase"</span>: <span class="hljs-string">"z6MkpzW2izkFjNwMBwwvKqmELaQcH8t54QL5xmBdJg9Xh1y4"</span>
+  },
+  <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+  ]
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="keyagreement"><div class="header-wrapper"><h4 id="x2-2-5-keyagreement"><bdi class="secno">2.2.5 </bdi>keyAgreement</h4><a class="self-link" href="#keyagreement" aria-label="Permalink for Section 2.2.5"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#key-agreement">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-keyagreement-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-keyagreement-property">Example<bdi> 13</bdi></a><span class="example-title">: Example of keyAgreement property</span>
+  </div> <pre aria-busy="false"><code class="hljs css">{
+  ...
+  "keyAgreement": [
+    {
+      "id": <span class="hljs-string">"did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"X25519KeyAgreementKey2019"</span>,
+      <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+      <span class="hljs-string">"publicKeyMultibase"</span>: <span class="hljs-string">"zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS"</span>
+    }
+  ]
+}</code></pre>
+      </div>
+      </section>
+    </section>
+
+    <section id="verification-method-properties"><div class="header-wrapper"><h3 id="x2-3-verification-method-properties"><bdi class="secno">2.3 </bdi>Verification method properties</h3><a class="self-link" href="#verification-method-properties" aria-label="Permalink for Section 2.3"></a></div>
+      
+        <div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Note</span></div><p class="">
+These properties are for use on a verification method object, in the value of
+<a href="#verificationmethod"><code>verificationMethod</code></a>. An
+implementer is expected to not be relying directly on the linked contexts
+registered below in nearly every case and instead should be including the
+context definitions registered by the
+<a href="#verificationmethod"><code>verificationMethod</code></a>.
+      </p></div>
+
+      <section id="publickeyjwk"><div class="header-wrapper"><h4 id="x2-3-1-publickeyjwk"><bdi class="secno">2.3.1 </bdi>publicKeyJwk</h4><a class="self-link" href="#publickeyjwk" aria-label="Permalink for Section 2.3.1"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security#publicKeyJwk">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/jws-2020/v1">https://w3id.org/security/suites/jws-2020/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-publickeyjwk-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-publickeyjwk-property">Example<bdi> 14</bdi></a><span class="example-title">: Example of publicKeyJwk property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"JsonWebKey2020"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"publicKeyJwk"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"crv"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Ed25519"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"x"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"kty"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"OKP"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"kid"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span></code></pre>
+      </div>
+      </section>
+
+      <section id="publickeybase58"><div class="header-wrapper"><h4 id="x2-3-2-publickeybase58"><bdi class="secno">2.3.2 </bdi>publicKeyBase58</h4><a class="self-link" href="#publickeybase58" aria-label="Permalink for Section 2.3.2"></a></div>
+        
+        <span class="label-deprecated">Deprecated</span>
+
+        <p class="advisement">
+This property is deprecated in favor of <code>publicKeyMultibase</code> or
+<code>publicKeyJwk</code>. It's generally expected that this term will still be
+used in older suites and therefore needs be supported for legacy compatibility,
+but is expected to not be used for newly defined suites.
+        </p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/#publicKeyBase58">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v2">https://w3id.org/security/v2</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="publickeyhex"><div class="header-wrapper"><h4 id="x2-3-3-publickeyhex"><bdi class="secno">2.3.3 </bdi>publicKeyHex</h4><a class="self-link" href="#publickeyhex" aria-label="Permalink for Section 2.3.3"></a></div>
+        
+        <span class="label-deprecated">Deprecated</span>
+
+        <p class="advisement">
+This property is deprecated in favor of <code>publicKeyMultibase</code> or
+<code>publicKeyJwk</code>. It's generally expected that this term will still be
+used in older suites and therefore needs be supported for legacy compatibility,
+but is expected to not be used for newly defined suites.
+        </p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security#publicKeyHex">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v3-unstable">https://w3id.org/security/v3-unstable</a>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-example-of-publickeyhex-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-publickeyhex-property">Example<bdi> 15</bdi></a><span class="example-title">: Example of publicKeyHex property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"@context"</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span>
+    <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-string">"https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span><span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"verificationMethod"</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#vm-2"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EcdsaSecp256k1RecoveryMethod2020"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"publicKeyHex"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"027560af3387d375e3342a6968179ef3c6d04f5d33b2b611cf326d4708badd7770"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="publickeymultibase"><div class="header-wrapper"><h4 id="x2-3-4-publickeymultibase"><bdi class="secno">2.3.4 </bdi>publicKeyMultibase</h4><a class="self-link" href="#publickeymultibase" aria-label="Permalink for Section 2.3.4"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security#publicKeyMultibase">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v3-unstable">https://w3id.org/security/v3-unstable</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="blockchainaccountid"><div class="header-wrapper"><h4 id="x2-3-5-blockchainaccountid"><bdi class="secno">2.3.5 </bdi>blockchainAccountId</h4><a class="self-link" href="#blockchainaccountid" aria-label="Permalink for Section 2.3.5"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security#blockchainAccountId">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v3-unstable">https://w3id.org/security/v3-unstable</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-example-of-blockchainaccountid-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-blockchainaccountid-property">Example<bdi> 16</bdi></a><span class="example-title">: Example of blockchainAccountId property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"@context"</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span>
+    <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-string">"https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span><span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"verificationMethod"</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#vm-3"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EcdsaSecp256k1RecoveryMethod2020"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"blockchainAccountId"</span><span class="hljs-punctuation">:</span><span class="hljs-string">"eip155:1:0xab16a96d359ec26a11e2c2b3d8f8b8942d5bfcdb"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="ethereumaddress"><div class="header-wrapper"><h4 id="x2-3-6-ethereumaddress"><bdi class="secno">2.3.6 </bdi>ethereumAddress</h4><a class="self-link" href="#ethereumaddress" aria-label="Permalink for Section 2.3.6"></a></div>
+        
+        <span class="label-deprecated">Deprecated</span>
+        <p class="advisement">
+This property is deprecated in favor of <code>blockchainAccountId</code>. It's
+generally expected that this term will still be used in older suites and
+therefore needs be supported for legacy compatibility, but is expected to not be
+used for newly defined suites.
+        </p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security#ethereumAddress">security-vocab</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/v3-unstable">https://w3id.org/security/v3-unstable</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-example-of-ethereumaddress-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-ethereumaddress-property">Example<bdi> 17</bdi></a><span class="example-title">: Example of ethereumAddress property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"@context"</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span>
+    <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-string">"https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span><span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"verificationMethod"</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#vm-3"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EcdsaSecp256k1RecoveryMethod2020"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"ethereumAddress"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"0xF3beAC30C498D9E26865F34fCAa57dBB935b0D74"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+    </section>
+
+    <section id="service-properties"><div class="header-wrapper"><h3 id="x2-4-service-properties"><bdi class="secno">2.4 </bdi>Service properties</h3><a class="self-link" href="#service-properties" aria-label="Permalink for Section 2.4"></a></div>
+      
+      <p>
+These properties are for use on a service object, in the value of
+<a href="#service"><code>service</code></a>.
+      </p>
+      <section id="serviceendpoint"><div class="header-wrapper"><h4 id="x2-4-1-serviceendpoint"><bdi class="secno">2.4.1 </bdi>serviceEndpoint</h4><a class="self-link" href="#serviceendpoint" aria-label="Permalink for Section 2.4.1"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#service-endpoints">DID Core</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-service-and-serviceendpoint-properties-0">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-service-and-serviceendpoint-properties-0">Example<bdi> 18</bdi></a><span class="example-title">: Example of service and serviceEndpoint properties</span>
+  </div> <pre aria-busy="false"><code class="hljs css">{
+  ...
+  "service": [{
+    "id": <span class="hljs-string">"did:example:123#edv"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"EncryptedDataVault"</span>,
+    <span class="hljs-string">"serviceEndpoint"</span>: <span class="hljs-string">"https://edv.example.com/"</span>
+  }]
+}</code></pre>
+      </div>
+
+      </section>
+
+    </section>
+
+  </section>
+
+  <section id="property-values"><div class="header-wrapper"><h2 id="x3-property-values"><bdi class="secno">3. </bdi>Property Values</h2><a class="self-link" href="#property-values" aria-label="Permalink for Section 3."></a></div>
+    
+
+    <section id="verification-method-types"><div class="header-wrapper"><h3 id="x3-1-verification-method-types"><bdi class="secno">3.1 </bdi>Verification method types</h3><a class="self-link" href="#verification-method-types" aria-label="Permalink for Section 3.1"></a></div>
+      
+      <p>
+These are values to be used for the <code>type</code> in a verification method object.
+      </p>
+
+      <section id="jsonwebkey2020"><div class="header-wrapper"><h4 id="x3-1-1-jsonwebkey2020"><bdi class="secno">3.1.1 </bdi>JsonWebKey2020</h4><a class="self-link" href="#jsonwebkey2020" aria-label="Permalink for Section 3.1.1"></a></div>
+        
+
+      <p class="advisement">
+Do not include private or extraneous information in verification methods. The
+class of private information related to JWKs is defined <a href="https://tools.ietf.org/html/rfc7517#section-8.1.1">here</a>. Please review
+the <a href="https://w3c.github.io/did-core/#verification-material"> DID Core
+specification</a> for additional details on this topic.
+        </p>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/lds-jws2020/">JSON Web Signature 2020</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suite/jws-2020/v1">https://w3id.org/security/suite/jws-2020/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-jsonwebkey2020-class">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-jsonwebkey2020-class">Example<bdi> 19</bdi></a><span class="example-title">: Example of JsonWebKey2020 class</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"JsonWebKey2020"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"publicKeyJwk"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"crv"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"P-256"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"x"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"38M1FDts7Oea7urmseiugGW7tWc3mLpJh6rKe7xINZ8"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"y"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"nDQW6XZ7b_u2Sy9slofYLlG03sOEoug3I0aAPQ0exs4"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"kty"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EC"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"kid"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+      <section id="ecdsasecp256k1verificationkey2019"><div class="header-wrapper"><h4 id="x3-1-2-ecdsasecp256k1verificationkey2019"><bdi class="secno">3.1.2 </bdi>EcdsaSecp256k1VerificationKey2019</h4><a class="self-link" href="#ecdsasecp256k1verificationkey2019" aria-label="Permalink for Section 3.1.2"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/">Ecdsa Secp256k1 Signature 2019</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/secp256k1-2019/v1">https://w3id.org/security/suites/secp256k1-2019/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-ecdsasecp256k1verificationkey2019-class">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-ecdsasecp256k1verificationkey2019-class">Example<bdi> 20</bdi></a><span class="example-title">: Example of EcdsaSecp256k1VerificationKey2019 class</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EcdsaSecp256k1VerificationKey2019"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"publicKeyJwk"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"crv"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"secp256k1"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"x"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"NtngWpJUr-rlNNbs0u-Aa8e16OwSJu6UiFf0Rdo1oJ4"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"y"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"qN1jKupJlFsPFc1UkWinqljv4YE0mq_Ickwnjgasvmo"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"kty"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EC"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"kid"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"WjKgJV7VRw3hmgU6--4v15c0Aewbcvat1BsRFTIqa5Q"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="ed25519verificationkey2018"><div class="header-wrapper"><h4 id="x3-1-3-ed25519verificationkey2018"><bdi class="secno">3.1.3 </bdi>Ed25519VerificationKey2018</h4><a class="self-link" href="#ed25519verificationkey2018" aria-label="Permalink for Section 3.1.3"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/lds-ed25519-2018/">Ed25519 Signature 2018</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/ed25519-2018/v1">https://w3id.org/security/suites/ed25519-2018/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-ed25519verificationkey2018-class">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-ed25519verificationkey2018-class">Example<bdi> 21</bdi></a><span class="example-title">: Example of Ed25519VerificationKey2018 class</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#ZC2jXTO6t4R501bfCXv3RxarZyUbdP2w_psLwMuY6ec"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Ed25519VerificationKey2018"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"publicKeyBase58"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="bls12381g1key2020"><div class="header-wrapper"><h4 id="x3-1-4-bls12381g1key2020"><bdi class="secno">3.1.4 </bdi>Bls12381G1Key2020</h4><a class="self-link" href="#bls12381g1key2020" aria-label="Permalink for Section 3.1.4"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/ldp-bbs2020/">BBS+ Signatures 2020</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/bls12381-2020/v1">https://w3id.org/security/suites/bls12381-2020/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-bls12381g1key2020-class">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-bls12381g1key2020-class">Example<bdi> 22</bdi></a><span class="example-title">: Example of Bls12381G1Key2020 class</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#z3tEGVtEKzdhJB2rT5hLVjwQPis8k7bTM16t7vDZrQaoddk6wZ7or6xPPs1P8H9U16Xe75"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Bls12381G1Key2020"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"publicKeyBase58"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"7bXhTVonHPizXP72AE92PPmRiaXipC519yU7F6NxUFExWpyQo57LuKKBoTyuZ3uWm9"</span><span class="hljs-punctuation">,</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="bls12381g2key2020"><div class="header-wrapper"><h4 id="x3-1-5-bls12381g2key2020"><bdi class="secno">3.1.5 </bdi>Bls12381G2Key2020</h4><a class="self-link" href="#bls12381g2key2020" aria-label="Permalink for Section 3.1.5"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/ldp-bbs2020/">BBS+ Signatures 2020</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/bls12381-2020/v1">https://w3id.org/security/suites/bls12381-2020/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-bls12382g2key2020-class">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-bls12382g2key2020-class">Example<bdi> 23</bdi></a><span class="example-title">: Example of Bls12382G2Key2020 class</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#zUC7K51WYEsj8y6KPVa1XfwdW5ZJrW5kSbMV619j128T6atCLLXJjjovMZsJ3Ay4STdngRkvM4ygT4qm1mk6HR8FvipSY435nLgYS1TTcaqJAzDWzM1iB9vh3hTL1DEKitwn56i"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Bls12381G2Key2020"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"publicKeyBase58"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"25ETdUZDVnME6yYuAMjFRCnCPcDmYQcoZDcZuXAfeMhXPvjZg35QmZ7uctBcovA69YDM3Jf7s5BHo4u1y89nY6mHiji8yphZ4AMm4iNCRh35edSg76Dkasu3MY2VS9LnuaVQ"</span><span class="hljs-punctuation">,</span>
+
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="pgpverificationkey2021"><div class="header-wrapper"><h4 id="x3-1-6-pgpverificationkey2021"><bdi class="secno">3.1.6 </bdi>PgpVerificationKey2021</h4><a class="self-link" href="#pgpverificationkey2021" aria-label="Permalink for Section 3.1.6"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+              <th>Additional Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3id.org/security/suites/pgp-2021#PgpVerificationKey2021">Linked Data Signatures for PGP</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/pgp-2021/v1">https://w3id.org/security/suites/pgp-2021/v1</a>
+              </td>
+              <td>
+                  Use of this verification key should be in line with the OpenPGP Message Format
+ as defined in <a href="https://datatracker.ietf.org/doc/html/rfc4880">RFC 4880</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-24">
+        <div class="marker">
+    <a class="self-link" href="#example-24">Example<bdi> 24</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"@context"</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span>
+    <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-string">"https://gpg.jsld.org/contexts/lds-gpg2020-v0.0.jsonld"</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span><span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"verificationMethod"</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#989ed1057a294c8a3665add842e784c4d08de1e2"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"PgpVerificationKey2021"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"publicKeyPgp"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.9.0\r\nComment: https://openpgpjs.org\r\n\r\nxjMEXkm5LRYJKwYBBAHaRw8BAQdASmfrjYr7vrjwHNiBsdcImK397Vc3t4BL\r\nE8rnN......v6\r\nDw==\r\n=wSoi\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="rsaverificationkey2018"><div class="header-wrapper"><h4 id="x3-1-7-rsaverificationkey2018"><bdi class="secno">3.1.7 </bdi>RsaVerificationKey2018</h4><a class="self-link" href="#rsaverificationkey2018" aria-label="Permalink for Section 3.1.7"></a></div>
+        
+        <div class="issue" id="issue-container-generatedID-1"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="5"><span>Issue</span></div><p class="">
+<a href="https://github.com/w3c/did-extensions/issues/370">DID
+Specification Registries Issue 370</a> This property should be moved into a
+separate suite and linked to here rather than relying on the Verifiable
+Credentials vocabulary. There are known issues with the first version of the
+Security vocabulary JSON-LD context and the first version of the Verifiable
+Credentials JSON-LD context which will prevent these contexts from being listed
+in the same document. For now it's suggested that implementers rely upon the
+first version of the Verifiable Credentials JSON-LD context and not rely on
+the Security vocabulary JSON-LD context in the same document.
+        </p></div>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/lds-rsa2018/">RSA Signature Suite 2018</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/2018/credentials/v1">https://www.w3.org/2018/credentials/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-25">
+        <div class="marker">
+    <a class="self-link" href="#example-25">Example<bdi> 25</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs">{
+  "id": "did:example:123#key-0",
+  "type": "RsaVerificationKey2018",
+  "controller": "did:example:123",
+  "publicKeyJwk": {
+    "kty":"RSA",
+    "e":"AQAB",
+    "use":"sig",
+    "kid":"tNksV42EUs3Xct9AkgZyFWglItRGMxVZ1A1XM68SNq0
+    "n":"kO2d_qQTEBjYFGcoY_da7ziFY4L2QX14K7snCee09n-cY2eP-oJXk8T2_lL20YnpYhf4i
+    jhkWHGU8kY8-FWPRrzSeu3JUMVSZoqTgoAiKWdnSLNvPVxvGuD2CiA3T6AkwUC03D2AkOLCcJV
+    8h_hxUEPeDawF7ArpuJW5DXzEJjE7gOjN4r6d7VB6sd5y-3la54H2ADz2amHLdBWs30fL4BRBH
+    lVdx0YmF37V4u5yvnnb5Iyr3kBXJes8t0MUMPkjqEEXRmukpKUzZYNpWDXY0tVcXeK5sRx0DAn
+    lNgNNf14-vsyjGkj2Rz0oGW73jjWa8dw-yVlDEHyIkQU9-UY4dFXbVjdIO8j_5ghh62o1T7Y4w
+    5CWMc-FxPE3LHe-_teW97X__NN-ToYgfi42IvV2mYOdQMCbvnvY2oMdK3b9wmeVi0marToauL5
+    LMg5xHDKopmIR7E3VyRtNYwDFAZ89kadcbSrZ8zTR5APaB7Tmp2L2ZfXKxqKQuxlFTTCcZtg4e
+    5AN8QuYdI18DEDQn2umUU_Twj7k4CXvuIKVL8p4yRHC4CHAGIm9cH_t11dF3wXygaENVOGRXQu
+    0g1iKq0mO2rWpOqkGJ5uXMFb5lx54i8uOjCdZ9y2el28xA55Ve95KCxeTHp997Bn3TIgbeQ-B_
+    -3PBVTuuAAH8y9fFNKtu5E"
+  }
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="x25519keyagreementkey2019"><div class="header-wrapper"><h4 id="x3-1-8-x25519keyagreementkey2019"><bdi class="secno">3.1.8 </bdi>X25519KeyAgreementKey2019</h4><a class="self-link" href="#x25519keyagreementkey2019" aria-label="Permalink for Section 3.1.8"></a></div>
+        
+        <div class="issue closed" id="issue-container-number-164"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="5"><a href="https://github.com/w3c/did-extensions/issues/164"><span class="issue-number">Issue 164</span></a><span class="issue-label">: X25519KeyAgreementKey2019 has no normative definition</span></div><p dir="auto">Normative definition in a suite is required for registration, this entry should be updated or removed.</p></div>
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="issue">Normative definition pending</span>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/x25519-2019/v1">https://w3id.org/security/suites/x25519-2019/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-example-of-x25519keyagreementkey2019">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-x25519keyagreementkey2019">Example<bdi> 26</bdi></a><span class="example-title">: Example of X25519KeyAgreementKey2019</span>
+  </div> <pre aria-busy="false"><code class="hljs css">{
+  ...
+  "keyAgreement": [
+    {
+      "id": <span class="hljs-string">"did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"X25519KeyAgreementKey2019"</span>,
+      <span class="hljs-string">"controller"</span>: <span class="hljs-string">"did:example:123"</span>,
+      <span class="hljs-string">"publicKeyBase58"</span>: <span class="hljs-string">"9hFgmPVfmBZwRvFEyniQDBkz9LmV7gDEqytWyGZLmDXE"</span>
+    }
+  ]
+}</code></pre>
+      </div>
+
+      </section>
+
+      <section id="ecdsasecp256k1recoverymethod2020"><div class="header-wrapper"><h4 id="x3-1-9-ecdsasecp256k1recoverymethod2020"><bdi class="secno">3.1.9 </bdi>EcdsaSecp256k1RecoveryMethod2020</h4><a class="self-link" href="#ecdsasecp256k1recoverymethod2020" aria-label="Permalink for Section 3.1.9"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://identity.foundation/EcdsaSecp256k1RecoverySignature2020/#ES256K-R">ECDSA Secp256k1 Recovery Signature 2020</a>
+              </td>
+              <td>
+                <a href="https://w3id.org/security/suites/secp256k1recovery-2020/v1">https://w3id.org/security/suites/secp256k1recovery-2020/v1</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-27">
+        <div class="marker">
+    <a class="self-link" href="#example-27">Example<bdi> 27</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"@context"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-string">"https://identity.foundation/EcdsaSecp256k1RecoverySignature2020#"</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span><span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"verificationMethod"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#vm-1"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EcdsaSecp256k1RecoveryMethod2020"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"publicKeyJwk"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"crv"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"secp256k1"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"kid"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"JUvpllMEYUZ2joO59UNui_XYDqxVqiFLLAJ8klWuPBw"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"kty"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EC"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"x"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"dWCvM4fTdeM0KmloF57zxtBPXTOythHPMm1HCLrdd3A"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"y"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"36uMVGM7hnw-N6GnjFcihWE3SkrhMLzzLCdPMXPEXlA"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#vm-2"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EcdsaSecp256k1RecoveryMethod2020"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"publicKeyHex"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"027560af3387d375e3342a6968179ef3c6d04f5d33b2b611cf326d4708badd7770"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#vm-3"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EcdsaSecp256k1RecoveryMethod2020"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"ethereumAddress"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"0xF3beAC30C498D9E26865F34fCAa57dBB935b0D74"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="verifiablecondition2021"><div class="header-wrapper"><h4 id="x3-1-10-verifiablecondition2021"><bdi class="secno">3.1.10 </bdi>VerifiableCondition2021</h4><a class="self-link" href="#verifiablecondition2021" aria-label="Permalink for Section 3.1.10"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://w3c-ccg.github.io/verifiable-conditions">Verifiable
+                Conditions Verification Method Suite 2021</a>
+              </td>
+              <td>
+                <a href="https://w3c-ccg.github.io/verifiable-conditions/contexts/verifiable-conditions-2021-v1.json">https://w3c-ccg.github.io/verifiable-conditions/contexts/verifiable-conditions-2021-v1.json</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-28">
+        <div class="marker">
+    <a class="self-link" href="#example-28">Example<bdi> 28</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#1"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"VerifiableCondition2021"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"conditionAnd"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#1-1"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"VerifiableCondition2021"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"conditionOr"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#1-1-1"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EcdsaSecp256k1VerificationKey2019"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"publicKeyBase58"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"5JBxKqYKzzoHrzeqwp6zXk8wZU3Ah94ChWAinSj1fYmyJvJS5rT"</span>
+        <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#1-1-2"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Ed25519VerificationKey2018"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"publicKeyBase58"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"PZ8Tyr4Nx8MHsRAGMpZmZ6TWY63dXWSCzamP7YTHkZc78MJgqWsAy"</span>
+        <span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#1-2"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Ed25519VerificationKey2018"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"publicKeyBase58"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+    </section>
+
+    <section id="service-types"><div class="header-wrapper"><h3 id="x3-2-service-types"><bdi class="secno">3.2 </bdi>Service types</h3><a class="self-link" href="#service-types" aria-label="Permalink for Section 3.2"></a></div>
+      
+      <p>
+These are values to be used for the <code>type</code> property
+in a service object.
+      </p>
+
+      <section id="linkeddomains"><div class="header-wrapper"><h4 id="x3-2-1-linkeddomains"><bdi class="secno">3.2.1 </bdi>LinkedDomains</h4><a class="self-link" href="#linkeddomains" aria-label="Permalink for Section 3.2.1"></a></div>
+        
+        <div class="issue closed" id="issue-container-number-167"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="5"><a href="https://github.com/w3c/did-extensions/issues/167"><span class="issue-number">Issue 167</span></a><span class="issue-label">: LinkedDomains IRI is not stable</span></div><p dir="auto"><a href="https://identity.foundation/.well-known/resources/did-configuration/#LinkedDomains" rel="nofollow">https://identity.foundation/.well-known/resources/did-configuration/#LinkedDomains</a></p>
+<p dir="auto">^ if this link changes the term defintion registered in did core will need to change, we should be sure we like this URL as is... forever.</p></div>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://identity.foundation/.well-known/resources/did-configuration/">Well Known DID Configuration</a>
+              </td>
+              <td>
+                <a href="https://identity.foundation/.well-known/did-configuration/v1">Well Known DID Configuration</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-service-and-serviceendpoint-properties-1">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-service-and-serviceendpoint-properties-1">Example<bdi> 29</bdi></a><span class="example-title">: Example of service and serviceEndpoint properties</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"@context"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"https://www.w3.org/ns/did/v1"</span><span class="hljs-punctuation">,</span><span class="hljs-string">"https://identity.foundation/.well-known/did-configuration/v1"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"verificationMethod"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#456"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"JsonWebKey2020"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"publicKeyJwk"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"kty"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"OKP"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"crv"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Ed25519"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"x"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"service"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span><span class="hljs-string">"did:example:123#foo"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"LinkedDomains"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"serviceEndpoint"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"origins"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"https://foo.example.com"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"https://identity.foundation"</span><span class="hljs-punctuation">]</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span><span class="hljs-string">"did:example:123#bar"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"LinkedDomains"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"serviceEndpoint"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://bar.example.com"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+
+      </section>
+
+      <section id="linkedverifiablepresentation"><div class="header-wrapper"><h4 id="x3-2-2-linkedverifiablepresentation"><bdi class="secno">3.2.2 </bdi>LinkedVerifiablePresentation</h4><a class="self-link" href="#linkedverifiablepresentation" aria-label="Permalink for Section 3.2.2"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://identity.foundation/linked-vp/">Linked Verifiable Presentation</a>
+              </td>
+              <td>
+                <a href="https://identity.foundation/linked-vp/contexts/v1">Linked Verifiable Presentation</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-service-and-serviceendpoint-properties-2">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-service-and-serviceendpoint-properties-2">Example<bdi> 30</bdi></a><span class="example-title">: Example of service and serviceEndpoint properties</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"@context"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-string">"https://identity.foundation/linked-vp/contexts/v1"</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"verificationMethod"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"JsonWebKey2020"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"controller"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"publicKeyJwk"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"kty"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"OKP"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"crv"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Ed25519"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"x"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"service"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#foo"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"LinkedVerifiablePresentation"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"serviceEndpoint"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"https://bar.example.com/verifiable-presentation.jsonld"</span><span class="hljs-punctuation">]</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:123#baz"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"LinkedVerifiablePresentation"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"serviceEndpoint"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"ipfs://bafybeihkoviema7g3gxyt6la7vd5ho32ictqbilu3wnlo3rs7ewhnp7lly/verifiable-presentation.jwt"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+
+      </section>
+
+      <section id="didcommmessaging"><div class="header-wrapper"><h4 id="x3-2-3-didcommmessaging"><bdi class="secno">3.2.3 </bdi>DIDCommMessaging</h4><a class="self-link" href="#didcommmessaging" aria-label="Permalink for Section 3.2.3"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://didcomm.org/messaging/v2/">DIDComm Messaging</a>
+              </td>
+              <td>
+                <span class="issue">A valid JSON-LD context needs to be published.</span>
+                <a href="https://didcomm.org/messaging/contexts/v2">DIDComm Messaging</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-service-and-serviceendpoint-properties-3">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-service-and-serviceendpoint-properties-3">Example<bdi> 31</bdi></a><span class="example-title">: Example of service and serviceEndpoint properties</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"@context"</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span>
+      <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-string">"https://didcomm.org/messaging/contexts/v2"</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span><span class="hljs-string">"DIDCommMessaging"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"serviceEndpoint"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"uri"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"http://example.com/path"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"accept"</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span> <span class="hljs-string">"didcomm/v2"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"didcomm/aip2;env=rfc587"</span> <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"routingKeys"</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span> <span class="hljs-string">"did:example:somemediator#somekey"</span> <span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+
+      </section>
+
+      <section id="wot-discovery-service-type"><div class="header-wrapper"><h4 id="x3-2-4-web-of-things-wot-discovery"><bdi class="secno">3.2.4 </bdi>Web of Things (WoT) Discovery</h4><a class="self-link" href="#wot-discovery-service-type" aria-label="Permalink for Section 3.2.4"></a></div>
+        
+        <p>The <code>WotThing</code> and <code>WotDirectory</code> endpoints allow publication of service endpoints in a DID document
+          that can be used to fetch Web of Things (WoT) Thing Descriptions (TDs).
+          The <code>WotThing</code> endpoint is a REST service that returns a TD
+          when the <code>GET</code> method is used.
+          This can be used for self-describing devices or services, or be a service
+          separate from the actual device or service described by the TD.
+          The <code>WotDirectory</code> is also a REST service that returns a TD, but this service is always
+          a Web of Things (WoT) Thing Description Directory (TDD),
+          and the TD returned by a <code>GET</code> always describes the TDD's interface.
+          Details (including normative statements covering the above) are in the
+          <a href="https://www.w3.org/TR/wot-discovery/">WoT Discovery</a> specification.
+        </p>
+
+          <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/wot-discovery/">WoT Discovery</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/2022/wot/discovery-did#WotThing">WotThing</a>
+              </td>
+            </tr><tr>
+              <td>
+                <a href="https://www.w3.org/TR/wot-discovery/">WoT Discovery</a>
+              </td>
+              <td>
+                <a href="https://www.w3.org/2022/wot/discovery-did#WotDirectory">WotDirectory</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+<div class="example" id="example-example-of-wotthing-serviceendpoint-properties">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-wotthing-serviceendpoint-properties">Example<bdi> 32</bdi></a><span class="example-title">: Example of WotThing serviceEndpoint properties</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  <span class="hljs-string">"@context"</span>:[
+      <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span>,
+      <span class="hljs-string">"https://www.w3.org/2022/wot/discovery-did"</span>
+  ],
+  ...
+  <span class="hljs-string">"service"</span>: [{
+      <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:wotdiscoveryexample#td"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"WotThing"</span>,
+      <span class="hljs-string">"serviceEndpoint"</span>:
+          <span class="hljs-string">"https://wot.example.com/.well-known/wot"</span>
+  }]
+  ...
+}</code></pre>
+      </div>
+
+<div class="example" id="example-example-of-wotdirectory-serviceendpoint-properties">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-wotdirectory-serviceendpoint-properties">Example<bdi> 33</bdi></a><span class="example-title">: Example of WotDirectory serviceEndpoint properties</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  <span class="hljs-string">"@context"</span>:[
+      <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span>,
+      <span class="hljs-string">"https://www.w3.org/2022/wot/discovery-did"</span>
+  ],
+  ...
+  <span class="hljs-string">"service"</span>: [{
+      <span class="hljs-string">"id"</span>: <span class="hljs-string">"did:example:wotdiscoveryexample#tdd"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"WotDirectory"</span>,
+      <span class="hljs-string">"serviceEndpoint"</span>:
+          <span class="hljs-string">"https://wot.example.com/tdd"</span>
+  }]
+  ...
+}</code></pre>
+      </div>
+
+    </section>
+
+      <section id="credentialregistry"><div class="header-wrapper"><h4 id="x3-2-5-credentialregistry"><bdi class="secno">3.2.5 </bdi>CredentialRegistry</h4><a class="self-link" href="#credentialregistry" aria-label="Permalink for Section 3.2.5"></a></div>
+        
+        <p>The <code>CredentialRegistry</code> endpoint allows publication of a dedicated service endpoint in a DID document, through which verifiable credentials can be queried. Each registry endpoint is a REST endpoint. When a <code>GET</code> request is sent to the URI formed by appending the <code>credentialSubject.id</code> as a URL-encoded string to the given endpoint URI, the registry <em class="rfc2119">MUST</em> return an array of verifiable credentials associated with the subject ID. A sample registry endpoint can be found <a href="https://ssi.eecc.de/api/registry/swagger/#/Credentials/get_api_registry_vcs__id_">here</a>.</p>
+        <div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-0" aria-level="5"><span>Note</span></div><p class="">
+          Verifiable credential registries are supposed to hold credentials that are publicly accessible by default, e.g., for product passports on a product type level. An additional authentication for limiting access to certain credentials is currently under development.
+        </p></div>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/swagger/#/Credentials/get_api_registry_vcs__id_">Verifiable Credential Registry</a>
+              </td>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/context/credentialregistry">Verifiable Credential Registry</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-service-and-serviceendpoint-properties-4">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-service-and-serviceendpoint-properties-4">Example<bdi> 34</bdi></a><span class="example-title">: Example of service and serviceEndpoint properties</span>
+  </div> <pre aria-busy="false"><code class="hljs css">{
+  ...
+  "service": [
+    {
+      "id": <span class="hljs-string">"did:example:123#vcregistry-1"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"CredentialRegistry"</span>,
+      <span class="hljs-string">"serviceEndpoint"</span>: {
+        "registries": [<span class="hljs-string">"https://registry.example.com/{credentialSubject.id}"</span>, <span class="hljs-string">"https://identity.foundation/vcs/{credentialSubject.id}"</span>]
+      }
+    },
+    {
+      "id": <span class="hljs-string">"did:example:123#vcregistry-2"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"CredentialRegistry"</span>,
+      <span class="hljs-string">"serviceEndpoint"</span>: <span class="hljs-string">"https://ssi.eecc.de/api/registry/vcs/{credentialSubject.id}"</span>
+    }
+  ]
+}</code></pre>
+      </div>
+        <div class="example" id="example-example-of-a-concrete-call-to-the-specified-serviceendpoint-and-example-answer">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-a-concrete-call-to-the-specified-serviceendpoint-and-example-answer">Example<bdi> 35</bdi></a><span class="example-title">: Example of a concrete call to the specified serviceEndpoint and example answer</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">$ curl <span class="hljs-string">'https://ssi.eecc.de/api/registry/vcs/https%3A%2F%2Ftest.de%2Ftest1'</span> -H <span class="hljs-string">'accept: application/ld+json, application/json'</span>
+
+[
+  {
+    <span class="hljs-string">"@context"</span>: [<span class="hljs-string">"https://www.w3.org/2018/credentials/v1"</span>,... ],
+    <span class="hljs-string">"type"</span>: [<span class="hljs-string">"VerifiableCredential"</span>,...],
+    <span class="hljs-string">"credentialSubject"</span>: {...},
+    <span class="hljs-string">"proof"</span>: {...},
+    ...
+  },
+  ...
+]</code></pre>
+      </div>
+      </section>
+
+      <section id="openid4-verifiable-credential-issuance"><div class="header-wrapper"><h4 id="x3-2-6-openid4-verifiable-credential-issuance"><bdi class="secno">3.2.6 </bdi>OpenID4 Verifiable Credential Issuance</h4><a class="self-link" href="#openid4-verifiable-credential-issuance" aria-label="Permalink for Section 3.2.6"></a></div>
+        
+        <p>The <code>OID4VCI</code> service allows publication of a credential issuer that conforms to the <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID for Verifiable Credential Issuance (OID4VCI)</a> specification.
+        </p><p>The service endpoint <code>id</code> <em class="rfc2119">MUST</em> be the Credential Issuer Identifier to get the Credential Issuer Metadata as described in Section <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#credential-issuer-metadata">Credential Issuer Metadata</a> of <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenIDVCI</a>.</p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>
+              </td>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/context/openid4vc">OpenID4VCI</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="example" id="example-example-of-service-and-serviceendpoint-properties-5">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-service-and-serviceendpoint-properties-5">Example<bdi> 36</bdi></a><span class="example-title">: Example of service and serviceEndpoint properties</span>
+  </div> <pre aria-busy="false"><code class="hljs css">{
+  ...
+  "service": [
+    {
+      "id": <span class="hljs-string">"did:example:123#oid4vci"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"OID4VCI"</span>,
+      <span class="hljs-string">"serviceEndpoint"</span>: <span class="hljs-string">"https://issuer.example.com/"</span>
+    }
+  ]
+}</code></pre>
+      </div>
+      </section>
+
+      <section id="openid4-verifiable-presentation"><div class="header-wrapper"><h4 id="x3-2-7-openid4-verifiable-presentation"><bdi class="secno">3.2.7 </bdi>OpenID4 Verifiable Presentation</h4><a class="self-link" href="#openid4-verifiable-presentation" aria-label="Permalink for Section 3.2.7"></a></div>
+        
+        <p>The <code>OID4VP</code> service allows publication of how to interact with a credential wallet that conforms with the <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID for Verifiable Presentation (OID4VP)</a> specification.</p>
+        <p>The service endpoint <code>id</code> <em class="rfc2119">MUST</em> be the Wallet (OAuth2) Issuer Identifier to obtain Wallet Metadata to invoke the wallet as described in section <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-wallet-invocation">Wallet Invocation</a>.</p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+              <th>JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-authorization-request">OpenID4VP</a>
+              </td>
+              <td>
+                <a href="https://ssi.eecc.de/api/registry/context/openid4vc">OpenID4VP</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-service-and-serviceendpoint-properties-6">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-service-and-serviceendpoint-properties-6">Example<bdi> 37</bdi></a><span class="example-title">: Example of service and serviceEndpoint properties</span>
+  </div> <pre aria-busy="false"><code class="hljs css">{
+  ...
+  "service": [
+    {
+      "id": <span class="hljs-string">"did:example:123#oid4vp"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"OID4VP"</span>,
+      <span class="hljs-string">"serviceEndpoint"</span>: <span class="hljs-string">"https://wallet.example.com"</span>
+    }
+  ]
+}</code></pre>
+      </div>
+      </section>
+
+    </section>
+
+  </section>
+
+
+
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-references"><bdi class="secno">A. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix A.1"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-rfc2119">[RFC2119]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
+    </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>
+    </dd></dl>
+  </section><section id="informative-references"><div class="header-wrapper"><h3 id="a-2-informative-references"><bdi class="secno">A.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix A.2"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-did-extensions">[DID-EXTENSIONS]</dt><dd>
+      <a href="https://www.w3.org/TR/did-extensions/"><cite>Decentralized Identifier Extensions</cite></a>. Manu Sporny.  Decentralized Identifier Working Group. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/did-extensions/">https://www.w3.org/TR/did-extensions/</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

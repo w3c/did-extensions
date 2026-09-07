@@ -1,0 +1,9 @@
+{
+  "name": "ens",
+  "status": "registered",
+  "verifiableDataRegistry": "Ethereum",
+  "contactName": "ConsenSys MESH",
+  "contactEmail": "oliver.terbu@mesh.xyz",
+  "contactWebsite": "https://mesh.xyz",
+  "specification": "https://github.com/veramolabs/did-ens-spec"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "dock",
+  "status": "registered",
+  "verifiableDataRegistry": "Dock",
+  "contactName": "Dock.io",
+  "contactEmail": "",
+  "contactWebsite": "https://www.dock.io",
+  "specification": "https://github.com/docknetwork/dock-did-driver/blob/master/Dock%20DID%20method%20specification.md"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "jwk",
+  "status": "registered",
+  "verifiableDataRegistry": "Ledger agnostic",
+  "contactName": "Jeremie Miller",
+  "contactEmail": "jeremie.miller@gmail.com",
+  "contactWebsite": "",
+  "specification": "https://github.com/quartzjer/did-jwk"
+}

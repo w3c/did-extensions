@@ -1,0 +1,9 @@
+{
+  "name": "uuaid",
+  "status": "registered",
+  "verifiableDataRegistry": "UUAID Registry — hash-chained ledger with Merkle roots anchored on Polygon mainnet (eip155:137)",
+  "contactName": "UUAID Foundation",
+  "contactEmail": "madanksamy@gmail.com",
+  "contactWebsite": "https://uuaid.org",
+  "specification": "https://github.com/uuaid/spec/blob/main/did-method-uuaid.md"
+}

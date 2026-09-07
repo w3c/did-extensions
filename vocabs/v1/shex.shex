@@ -1,0 +1,42 @@
+# This shape expression is hosted at  https://www.w3.org/ns/did/v1/shex
+#
+# You can run this (using https://www.npmjs.com/package/shex/v/0.5.5), for example, with:
+#  shex -x shex.shex -d test.ttl -n did:ex:12345 -s SubjectShape
+# 
+
+#
+PREFIX did:  <https://www.w3.org/ns/did#>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX as:   <https://www.w3.org/ns/activitystreams#>
+PREFIX sec:  <https://w3id.org/security#> 
+
+
+# A controller must have a DID as an identifier
+_:ControllerShape IRI /^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+/
+
+_:VerificationMethodShape IRI {
+    sec:controller @_:ControllerShape+ ;
+    rdf:type IRI+ ;
+    ( sec:publicKeyJwk rdf:JSON {0,1} | sec:publicKeyMultibase LITERAL {0,1} ) {0,1};
+}
+
+_:ServiceShape IRI {
+    rdf:type IRI+ ;
+    # At least one type must to be set, as well at least one service endpoint, whose value can be either a blank node or a URI
+    (did:serviceEndpoint IRI | did:serviceEndpoint BNode)+;
+}
+
+# A DID document must have a DID as an identifier
+# The id is not a blank node, because that is the node referred to from the outside world
+<SubjectShape> IRI /^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+/ {
+    as:alsoKnownAs IRI* ;
+    sec:controller @_:ControllerShape* ;
+    sec:verificationMethod @_:VerificationMethodShape* ;
+    sec:authenticationMethod @_:VerificationMethodShape* ;
+    sec:assertionMethod @_:VerificationMethodShape* ;
+    sec:keyAgreementMethod @_:VerificationMethodShape* ;
+    sec:capabilityDelegationMethod @_:VerificationMethodShape* ;
+    sec:capabilityInvocationMethod @_:VerificationMethodShape* ;
+    did:service @_:ServiceShape* ;
+}
+

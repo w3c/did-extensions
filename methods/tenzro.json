@@ -1,0 +1,9 @@
+{
+  "name": "tenzro",
+  "status": "registered",
+  "verifiableDataRegistry": "<a href=\"https://tenzro.com\">Tenzro Ledger</a>",
+  "contactName": "Tenzro Engineering",
+  "contactEmail": "eng@tenzro.com",
+  "contactWebsite": "https://tenzro.com",
+  "specification": "https://github.com/tenzro/tenzro-network/blob/main/docs/did-method-tenzro.md"
+}

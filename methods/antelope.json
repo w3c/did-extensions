@@ -1,0 +1,9 @@
+{
+  "name": "antelope",
+  "status": "registered",
+  "verifiableDataRegistry": "Antelope",
+  "contactName": "Tonomy Foundation",
+  "contactEmail": "",
+  "contactWebsite": "https://tonomy.foundation",
+  "specification": "https://github.com/Tonomy-Foundation/antelope-did-spec"
+}

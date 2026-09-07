@@ -1,0 +1,9 @@
+{
+  "name": "sideos",
+  "status": "registered",
+  "verifiableDataRegistry": "Ledger agnostic",
+  "contactName": "sideos GmbH",
+  "contactEmail": "",
+  "contactWebsite": "https://sideos.io",
+  "specification": "https://github.com/sideos/sideos-did-method"
+}

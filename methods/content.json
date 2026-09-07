@@ -1,0 +1,9 @@
+{
+    "name": "content",
+    "status": "registered",
+    "specification": "https://github.com/KataruInc/did-content-spec",
+    "contactName": "Mizuki Sonoko",
+    "contactEmail": "sonoko@mizuki.io",
+    "contactWebsite": "https://mizuki.io",
+    "verifiableDataRegistry": ""
+}

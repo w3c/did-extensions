@@ -1,0 +1,9 @@
+{
+  "name": "prism",
+  "status": "registered",
+  "specification": "https://github.com/input-output-hk/prism-did-method-spec/blob/main/w3c-spec/PRISM-method.md",
+  "contactName": "Input Output Global Inc (IOG)",
+  "contactEmail": "security-atala@iohk.io",
+  "contactWebsite": "https://iohk.io/",
+  "verifiableDataRegistry": "The Cardano blockchain"
+}

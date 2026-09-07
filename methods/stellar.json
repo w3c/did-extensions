@@ -1,0 +1,9 @@
+{
+  "name": "stellar",
+  "status": "registered",
+  "verifiableDataRegistry": "Stellar",
+  "contactName": "ACTA Team",
+  "contactEmail": "acta.xyz@gmail.com",
+  "contactWebsite": "https://acta.build",
+  "specification": "https://github.com/ACTA-Team/contracts-acta/blob/dev/docs/did-spec/did-stellar-v0.1.md"
+}

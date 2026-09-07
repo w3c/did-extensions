@@ -1,0 +1,9 @@
+{
+  "name": "trustbloc",
+  "status": "registered",
+  "verifiableDataRegistry": "Hyperledger Fabric",
+  "contactName": "SecureKey",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/trustbloc/trustbloc-did-method/blob/master/docs/spec/trustbloc-did-method.md"
+}

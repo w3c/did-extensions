@@ -1,0 +1,9 @@
+{
+  "name": "unisot",
+  "status": "registered",
+  "verifiableDataRegistry": "Bitcoin SV",
+  "contactName": "UNISOT AS",
+  "contactEmail": "",
+  "contactWebsite": "https://www.unisot.com",
+  "specification": "https://gitlab.com/unisot-did/unisot-did-method-specification"
+}

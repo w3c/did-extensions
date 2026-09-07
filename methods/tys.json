@@ -1,0 +1,9 @@
+{
+  "name": "tys",
+  "status": "registered",
+  "verifiableDataRegistry": "DID Specification",
+  "contactName": "Chainyard",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/chainyard-tys/tys/blob/master/README.md"
+}

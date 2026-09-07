@@ -1,0 +1,6 @@
+{
+  "name": "agent",
+  "status": "registered",
+  "specification": "https://github.com/m31527/AgentDID/blob/main/docs/did-spec.md",
+  "contactWebsite": "https://github.com/m31527/AgentDID/issues"
+}

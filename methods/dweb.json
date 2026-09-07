@@ -1,0 +1,9 @@
+{
+  "name": "dweb",
+  "status": "registered",
+  "verifiableDataRegistry": "SinoChain",
+  "contactName": "Aisino Corporation",
+  "contactEmail": "chengsijin@aisino.com",
+  "contactWebsite": "",
+  "specification": "https://github.com/Aisino-Blockchain/dweb-Method-Specification"
+}

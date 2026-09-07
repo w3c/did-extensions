@@ -1,0 +1,9 @@
+{
+  "name": "pml",
+  "status": "registered",
+  "verifiableDataRegistry": "PML Chain",
+  "contactName": "Purple Mountain Laboratories",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/PML-ID/pml-did-specs/blob/main/did-method.md"
+}

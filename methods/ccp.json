@@ -1,0 +1,9 @@
+{
+  "name": "ccp",
+  "status": "registered",
+  "verifiableDataRegistry": "Quorum",
+  "contactName": "Baidu, Inc.",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://did.baidu.com/did-spec/"
+}

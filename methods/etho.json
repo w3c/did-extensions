@@ -1,0 +1,9 @@
+{
+  "name": "etho",
+  "status": "registered",
+  "verifiableDataRegistry": "Ethereum",
+  "contactName": "Ontology Foundation",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/ontology-tech/DID-method-specs/blob/master/did-etho/DID-Method-etho.md"
+}

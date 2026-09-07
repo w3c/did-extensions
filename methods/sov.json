@@ -1,0 +1,9 @@
+{
+  "name": "sov",
+  "status": "registered",
+  "verifiableDataRegistry": "Sovrin",
+  "contactName": "Mike Lodder",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://sovrin-foundation.github.io/sovrin/spec/did-method-spec-template.html"
+}

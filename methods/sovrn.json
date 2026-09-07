@@ -1,0 +1,9 @@
+{
+  "name": "sovrn",
+  "status": "registered",
+  "verifiableDataRegistry": "Sovrn-operated registry endpoint",
+  "contactName": "Sovrn",
+  "contactEmail": "contactus@sovrnplace.com",
+  "contactWebsite": "https://sovrn.place",
+  "specification": "https://schema.sovrn.place/specs/did-sovrn/v0.1/"
+}

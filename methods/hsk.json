@@ -1,0 +1,8 @@
+{ 
+  "name": "hsk",
+  "status": "registered",
+  "verifiableDataRegistry": "PlatON",
+  "contactName": "HashKey DID",
+  "contactEmail": "info@hashkey.id",
+  "specification": "https://github.com/hashkeydid/hashkeydid-w3c-specification/blob/master/did-specfication/hsk-method.md"
+}

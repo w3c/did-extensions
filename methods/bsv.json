@@ -1,0 +1,9 @@
+{
+  "name": "bsv",
+  "status": "registered",
+  "verifiableDataRegistry": "BSV",
+  "contactName": "Maria Eugenia Lopez",
+  "contactEmail": "identitysoftware@teranode.group",
+  "contactWebsite": "https://teranode.group/",
+  "specification": "https://docs.teranode.group/tng-identity-documentation/did/bsv-did-method-specifications/method-specification.-a-utxo-friendly-method"
+}

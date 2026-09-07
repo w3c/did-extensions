@@ -1,0 +1,9 @@
+{
+  "name": "eosio",
+  "status": "registered",
+  "verifiableDataRegistry": "EOSIO",
+  "contactName": "Gimly Blockchain",
+  "contactEmail": "",
+  "contactWebsite": "https://gimly.io",
+  "specification": "https://github.com/Gimly-Blockchain/eosio-did-spec"
+}

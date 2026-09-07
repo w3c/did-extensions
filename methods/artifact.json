@@ -1,0 +1,9 @@
+{
+  "name": "artifact",
+  "status": "registered",
+  "specification": "https://oma3dao.github.io/omatrust-docs/specification/did-artifact-method-spec.html",
+  "contactName": "OMA3",
+  "contactEmail": "info@oma3.org",
+  "contactWebsite": "https://www.oma3.org/",
+  "verifiableDataRegistry": "None (generative; identifier derived from content hash)"
+}

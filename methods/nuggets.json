@@ -1,0 +1,9 @@
+{
+  "name": "nuggets",
+  "status": "registered",
+  "verifiableDataRegistry": "Nuggets Network",
+  "contactName": "Nuggets Ltd",
+  "contactEmail": "contact@nuggets.life",
+  "contactWebsite": "https://nuggets.life",
+  "specification": "https://github.com/NuggetsLtd/nuggets-did-resolver/blob/master/doc/did-methods/did:nuggets.md"
+}

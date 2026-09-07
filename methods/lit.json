@@ -1,0 +1,9 @@
+{
+  "name": "lit",
+  "status": "registered",
+  "verifiableDataRegistry": "LEDGIS",
+  "contactName": "IBCT",
+  "contactEmail": "",
+  "contactWebsite": "http://en.ibct.kr",
+  "specification": "https://github.com/ibct-dev/lit-DID/blob/main/docs/did:lit-method-spec_eng_v0.1.0.md"
+}

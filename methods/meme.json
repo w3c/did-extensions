@@ -1,0 +1,9 @@
+{
+  "name": "meme",
+  "status": "registered",
+  "verifiableDataRegistry": "IPFS & DNS & HTTP",
+  "contactName": "DID Meme Maintainers",
+  "contactEmail": "orie@or13.io",
+  "contactWebsite": "https://didme.me/",
+  "specification": "https://or13.github.io/didme.me/did-method-spec"
+}

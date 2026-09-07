@@ -1,0 +1,9 @@
+{
+  "name": "is",
+  "status": "registered",
+  "verifiableDataRegistry": "Blockcore",
+  "contactName": "Blockcore",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/block-core/blockcore-did-method"
+}
