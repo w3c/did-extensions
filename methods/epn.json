@@ -1,0 +1,9 @@
+{
+  "name": "epn",
+  "status": "registered",
+  "verifiableDataRegistry": "europeanpublic.network",
+  "contactName": "European Public Network e.V.",
+  "contactEmail": "epn@blockchain-helix.com",
+  "contactWebsite": "https://europeanpublic.network",
+  "specification": "https://gitlab.com/european-public-network/did-method-specification/-/raw/main/epn_did_method_spec.md"
+}
