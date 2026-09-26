@@ -3,7 +3,7 @@
   "status": "registered",
   "verifiableDataRegistry": "Metadium",
   "contactName": "Metadium Foundation",
-  "contactEmail": "",
-  "contactWebsite": "",
+  "contactEmail": "jsong@cplabs.io",
+  "contactWebsite": "https://metadium.com",
   "specification": "https://github.com/METADIUM/meta-DID/blob/master/doc/DID-method-metadium.md"
 }
