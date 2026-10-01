@@ -1,0 +1,9 @@
+{
+  "name": "myco",
+  "status": "registered",
+  "verifiableDataRegistry": "youling.cc root account registry (optional; DIDs are self-anchored)",
+  "contactName": "Jason Van",
+  "contactEmail": "jasonvan@163.com",
+  "contactWebsite": "https://youling.cc/",
+  "specification": "https://youling.cc/did/myco-method.md"
+}
