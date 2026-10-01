@@ -1,0 +1,9 @@
+{
+  "name": "rodit",
+  "status": "registered",
+  "specification": "https://api.identyclaw.com/.well-known/did-method-rodit",
+  "contactName": "Discernible Inc.",
+  "contactEmail": "support@identyclaw.com",
+  "contactWebsite": "https://identyclaw.com",
+  "verifiableDataRegistry": "NEAR Protocol (RODiT / IdentyClaw Passport contract)"
+}
