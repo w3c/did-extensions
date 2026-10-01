@@ -1,0 +1,9 @@
+{
+  "name": "next",
+  "status": "registered",
+  "verifiableDataRegistry": "Nextme DIDs Network",
+  "contactName": "Next Labs",
+  "contactEmail": "did@nextme.one",
+  "contactWebsite": "https://nextme.one",
+  "specification": "https://docs.nextme.one/#/DID/NextDID"
+}

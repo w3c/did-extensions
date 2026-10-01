@@ -1,0 +1,9 @@
+{
+  "name": "huuid",
+  "status": "registered",
+  "specification": "https://7evenbillion.github.io/huuid-did-method",
+  "contactName": "Joseph T.D. Narnor Jnr.",
+  "contactEmail": "josephtdnarnor@gmail.com",
+  "contactWebsite": "https://7evenbillion.github.io/huuid-did-method",
+  "verifiableDataRegistry": "HUUID Health Identity Resolver"
+}

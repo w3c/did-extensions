@@ -1,0 +1,9 @@
+{
+  "name": "nostr",
+  "status": "registered",
+  "specification": "https://nostrcg.github.io/did-nostr/",
+  "contactName": "W3C Nostr Community Group",
+  "contactEmail": "public-nostr@w3.org",
+  "contactWebsite": "https://www.w3.org/community/nostr/",
+  "verifiableDataRegistry": "Nostr Relay Network"
+}

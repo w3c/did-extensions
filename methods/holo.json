@@ -1,0 +1,9 @@
+{
+  "name": "holo",
+  "status": "registered",
+  "verifiableDataRegistry": "Holochain",
+  "contactName": "Holo.Host",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/WebOfTrustInfo/rwot9-prague/blob/master/draft-documents/did:hc-method.md"
+}

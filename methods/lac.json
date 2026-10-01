@@ -1,0 +1,9 @@
+{
+  "name": "lac",
+  "status": "registered",
+  "verifiableDataRegistry": "LACChain Network",
+  "contactName": "LACChain Alliance",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/lacchain/lacchain-did-registry/blob/master/DID_SPEC.md"
+}

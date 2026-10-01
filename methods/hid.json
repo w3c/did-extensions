@@ -1,0 +1,9 @@
+{
+    "name": "hid",
+    "status": "registered",
+    "specification": "https://github.com/hypersign-protocol/HIPs/blob/main/HIPs/hip-10.md",
+    "contactName": "Hypermine Limited",
+    "contactEmail": "connect@hypermine.in",
+    "contactWebsite": "https://hypersign.id/",
+    "verifiableDataRegistry": "Hypersign Blockchain Network"
+}

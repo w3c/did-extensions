@@ -1,0 +1,9 @@
+{
+  "name": "com",
+  "status": "registered",
+  "verifiableDataRegistry": "commercio.network",
+  "contactName": "Commercio Consortium",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/commercionetwork/Commercio.network-DID-Method-Specification/"
+}

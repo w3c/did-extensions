@@ -1,0 +1,9 @@
+{
+    "name": "pid",
+    "status": "registered",
+    "verifiableDataRegistry": "ProofID Blockchain",
+    "contactName": "Alvin Reyes",
+    "contactEmail": "tech@proofid.me",
+    "contactWebsite": "https://proofid.me",
+    "specification": "https://github.com/proof-id/pid-did-driver/blob/main/did-method-specification.md"
+  }

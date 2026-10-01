@@ -1,0 +1,9 @@
+{
+  "name": "sns",
+  "status": "registered",
+  "verifiableDataRegistry": "Solana",
+  "contactName": "Eduardo Chongkan",
+  "contactEmail": "standards@attestto.com",
+  "contactWebsite": "https://attestto.com",
+  "specification": "https://spec.attestto.com/did-sns/"
+}

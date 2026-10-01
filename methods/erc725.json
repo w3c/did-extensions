@@ -1,0 +1,9 @@
+{
+  "name": "erc725",
+  "status": "registered",
+  "verifiableDataRegistry": "Ethereum",
+  "contactName": "Markus Sabadello, Fabian Vogelsteller, Peter Kolarov",
+  "contactEmail": "markus@danubetech.com",
+  "contactWebsite": "",
+  "specification": "https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-spring2018/blob/master/topics-and-advance-readings/DID-Method-erc725.md"
+}

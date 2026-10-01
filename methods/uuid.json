@@ -1,0 +1,9 @@
+{
+  "name": "uuid",
+  "status": "registered",
+  "verifiableDataRegistry": "DNS",
+  "contactName": "Brian Mottershead",
+  "contactEmail": "bmotters@gmail.com",
+  "contactWebsite": "https://github.com/WorldResolvable/ruuid-draft",
+  "specification": "https://worldresolvable.github.io/ruuid-draft/did-uuid-method/"
+}

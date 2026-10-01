@@ -1,0 +1,9 @@
+{
+  "name": "vvo",
+  "status": "registered",
+  "verifiableDataRegistry": "Vivvo",
+  "contactName": "Vivvo Application Studios",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://vivvo.github.io/vivvo-did-scheme/spec/did-method-spec-template.html"
+}

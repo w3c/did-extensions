@@ -1,0 +1,146 @@
+{
+  "@context": {
+    "domain": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#domain",
+      "@type": "@id"
+    },
+    "range": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#range",
+      "@type": "@id"
+    },
+    "isDefinedBy": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "@type": "@id"
+    },
+    "label": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "comment": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#comment"
+    },
+    "sec": "https://w3id.org/security#",
+    "as": "https://www.w3.org/ns/activitystreams#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "did": "https://www.w3.org/ns/did#"
+  },
+  "@graph": [
+    {
+      "@id": "https://www.w3.org/ns/did#",
+      "@type": "owl:Ontology",
+      "comment": "For historical reasons, most of the terms are in the 'sec:' namespace rather than the 'did:' namespace. These terms do not describe/define any cryptographic primitives and are formally defined in the DID Core specification. Future Working Group may define a formal specification for the complete 'sec:' vocabulary."
+    },
+    {
+      "@id": "did:DIDSubject",
+      "@type": "rdfs:Class",
+      "comment": "Top level class for resources identified via a DID subject",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#core-properties",
+      "label": "DID Document"
+    },
+    {
+      "@id": "did:Service",
+      "@type": "rdfs:Class",
+      "comment": "Service endpoints are used in DID documents to express ways of communicating with the DID subject or associated entities",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#services",
+      "label": "Service Endpoint"
+    },
+    {
+      "@id": "did:VerificationMethod",
+      "@type": "rdfs:Class",
+      "comment": "Superclass for all specific verification Methods. It is an 'abstract' class, never used by itself.",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#verification-methods",
+      "label": "Verification Method"
+    },
+    {
+      "@id": "sec:assertionMethod",
+      "@type": "rdf:Property",
+      "comment": "The assertionMethod property is used to express a verification relationship which indicates that a verification method can be used to verify a proof that a statement was asserted on behalf of the DID subject.",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#assertion",
+      "range": "did:VerificationMethod"
+    },
+    {
+      "@id": "sec:authenticationMethod",
+      "@type": "rdf:Property",
+      "comment": "Authentication is a verification relationship which an entity can use to prove it is the DID subject or acting on behalf of the DID Subject as a DID Controller.",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#authentication",
+      "range": "did:VerificationMethod"
+    },
+    {
+      "@id": "sec:capabilityDelegationMethod",
+      "@type": "rdf:Property",
+      "comment": "The capabilityDelegation property is used to express a verification relationship which an entity can use to grant capabilities as the DID subject or on behalf of the DID subject to other capability invokers. ",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#capability-delegation",
+      "range": "did:VerificationMethod"
+    },
+    {
+      "@id": "sec:capabilityInvocationMethod",
+      "@type": "rdf:Property",
+      "comment": "The capabilityInvocation property is used to express a verification relationship which an entity can use to invoke capabilities as the DID subject or on behalf of the DID subject.",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#capability-invocation",
+      "range": "did:VerificationMethod"
+    },
+    {
+      "@id": "sec:controller",
+      "@type": "rdf:Property",
+      "comment": "An entity that is authorized to make changes to a DID Document",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#control"
+    },
+    {
+      "@id": "sec:keyAgreementMethod",
+      "@type": "rdf:Property",
+      "comment": "The keyAgreement property is used to express a verification relationship which an entity can use to engage in key agreement protocols on behalf of the DID subject.",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#key-agreement",
+      "range": "did:VerificationMethod"
+    },
+    {
+      "@id": "sec:publicKeyMultibase",
+      "@type": [
+        "rdf:Property",
+        "owl:DatatypeProperty"
+      ],
+      "domain": "did:VerificationMethod",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#verification-methods",
+      "label": "A string that conforms to a multibase encoded public key",
+      "range": "xsd:string"
+    },
+    {
+      "@id": "sec:publicKeyJwk",
+      "@type": [
+        "rdf:Property",
+        "owl:DatatypeProperty"
+      ],
+      "domain": "did:VerificationMethod",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#verification-methods",
+      "label": "Public Key in JWK",
+      "range": "rdf:JSON"
+    },
+    {
+      "@id": "sec:verificationMethod",
+      "@type": "rdf:Property",
+      "comment": "A generic method to refer to a Verification Method",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#verification-methods",
+      "range": "did:VerificationMethod"
+    },
+    {
+      "@id": "as:alsoKnownAs",
+      "@type": "rdf:Property",
+      "comment": "This relationship is a statement that the subject of this identifier is also identified by one or more other identifiers.",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#also-known-as"
+    },
+    {
+      "@id": "did:service",
+      "@type": "rdf:Property",
+      "domain": "did:DIDSubject",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#services",
+      "range": "did:Service"
+    },
+    {
+      "@id": "did:serviceEndpoint",
+      "@type": "rdf:Property",
+      "domain": "did:Service",
+      "isDefinedBy": "https://www.w3.org/TR/did-core/#services"
+    }
+  ]
+}

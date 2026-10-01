@@ -1,0 +1,9 @@
+{
+  "name": "kilt",
+  "status": "registered",
+  "specification": "https://github.com/KILTprotocol/specifications/blob/main/docs/did/did-spec.md",
+  "contactEmail": "devs@kilt.io",
+  "contactName": "BOTLabs GmbH",
+  "contactWebsite": "https://www.kilt.io/",
+  "verifiableDataRegistry": "KILT Blockchain"
+}

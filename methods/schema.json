@@ -1,0 +1,9 @@
+{
+  "name": "schema",
+  "status": "registered",
+  "verifiableDataRegistry": "Multiple storage networks, currently public IPFS and evan.network IPFS",
+  "contactName": "51nodes GmbH",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/51nodes/schema-registry-did-method/blob/master/README.md"
+}

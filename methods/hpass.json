@@ -1,0 +1,9 @@
+{
+  "name": "hpass",
+  "status": "registered",
+  "verifiableDataRegistry": "Hyperledger Fabric",
+  "contactName": "IBM",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/IBM/hpass/blob/main/doc/did-spec.md"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "vireo",
+  "status": "registered",
+  "specification": "https://github.com/serhohro/vireo-ai-communicator-api/blob/main/specification/DID_METHOD.md",
+  "contactName": "Serhii Hromyko",
+  "contactEmail": "sergo87231@gmail.com",
+  "contactWebsite": "https://github.com/serhohro",
+  "verifiableDataRegistry": "Vireo DID Registry"
+}

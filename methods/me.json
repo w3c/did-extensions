@@ -1,0 +1,9 @@
+{
+  "name": "me",
+  "status": "registered",
+  "specification": "https://did-me.org/spec/v1/",
+  "contactName": "did:me Specification Editors",
+  "contactEmail": "maintainers@did-me.org",
+  "contactWebsite": "https://did-me.org",
+  "verifiableDataRegistry": "Method-specific signed canonical core chain; optional public directory mirrors"
+}

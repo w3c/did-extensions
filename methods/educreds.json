@@ -1,0 +1,9 @@
+{
+  "name": "educreds",
+  "status": "registered",
+  "verifiableDataRegistry": "EduCreds Protocol (IPFS + EVM-compatible chain)",
+  "contactName": "EduCreds Labs Co. Ltd",
+  "contactEmail": "partnerships@educreds.xyz",
+  "contactWebsite": "https://educreds.xyz",
+  "specification": "https://did.educreds.xyz"
+}

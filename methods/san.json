@@ -1,0 +1,9 @@
+{
+  "name": "san",
+  "status": "registered",
+  "verifiableDataRegistry": "SAN Cloudchain",
+  "contactName": "YLZ Inc.",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/Baasze/DID-method-specification"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "grn",
+  "status": "registered",
+  "specification": "https://github.com/EG-easy/grano-did/blob/main/did-method-specification.md",
+  "contactName": "EG-easy",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "verifiableDataRegistry": "Any CosmWasm-compatible ledger"
+}

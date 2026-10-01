@@ -1,0 +1,9 @@
+{
+  "name": "trx",
+  "status": "registered",
+  "verifiableDataRegistry": "TRON",
+  "contactName": "Ontology Foundation",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/ontology-tech/DID-method-specs/blob/master/did-trx/DID-Method-trx.md"
+}

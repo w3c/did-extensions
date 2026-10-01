@@ -1,0 +1,9 @@
+{
+  "name": "polygon",
+  "status": "registered",
+  "verifiableDataRegistry": "Polygon (Previously MATIC)",
+  "contactName": "AyanWorks, MATIC",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/ayanworks/polygon-did-method-spec"
+}
