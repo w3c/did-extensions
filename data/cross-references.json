@@ -1,0 +1,359 @@
+{
+  "version": "1.0.0",
+  "description": "Structured cross-references between W3C DID ecosystem specifications, evaluation frameworks, and tooling. Links requirements to rubric criteria, test suites, and registry directories.",
+  "sources": {
+    "did-core": {
+      "repo": "https://github.com/w3c/did",
+      "spec": "https://www.w3.org/TR/did-core/",
+      "type": "Recommendation",
+      "version": "1.0"
+    },
+    "did-use-cases": {
+      "repo": "https://github.com/w3c/did-use-cases",
+      "spec": "https://www.w3.org/TR/did-use-cases/",
+      "type": "WG Note",
+      "version": "1.0"
+    },
+    "did-rubric": {
+      "repo": "https://github.com/w3c/did-rubric",
+      "spec": "https://www.w3.org/TR/did-rubric/",
+      "type": "WG Note",
+      "version": "1.0"
+    },
+    "did-resolution": {
+      "repo": "https://github.com/w3c/did-resolution",
+      "spec": "https://www.w3.org/TR/did-resolution/",
+      "type": "Working Draft",
+      "version": "0.2"
+    },
+    "did-test-suite": {
+      "repo": "https://github.com/w3c/did-test-suite",
+      "report": "https://w3c.github.io/did-test-suite/",
+      "type": "Test Suite"
+    },
+    "did-extensions": {
+      "repo": "https://github.com/w3c/did-extensions",
+      "spec": "https://w3c.github.io/did-extensions/",
+      "type": "Registry"
+    },
+    "did-traits": {
+      "repo": "https://github.com/decentralized-identity/did-traits",
+      "type": "DIF Work Item"
+    }
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "name": "Decentralization",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req1",
+      "tier": "core",
+      "rubricCriteria": ["C3", "C6", "C8"],
+      "rubricCategories": ["rulemaking", "design"],
+      "testSuiteSection": "did-core-properties",
+      "registryDirectory": null,
+      "description": "DIDs should eliminate the requirement for centralized authorities or single points of failure in identifier management."
+    },
+    {
+      "id": "R2",
+      "name": "Control",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req2",
+      "tier": "core",
+      "rubricCriteria": ["C1", "C2", "C3"],
+      "rubricCategories": ["rulemaking"],
+      "testSuiteSection": "did-core-properties",
+      "registryDirectory": null,
+      "description": "DID controllers must be able to control their identifiers without requiring permission from external authorities."
+    },
+    {
+      "id": "R3",
+      "name": "Privacy",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req3",
+      "tier": "core",
+      "rubricCriteria": ["C33", "C34", "C35", "C36"],
+      "rubricCategories": ["privacy"],
+      "testSuiteSection": null,
+      "registryDirectory": null,
+      "description": "Entity owners must be able to control the privacy of their information, including the amount and type of PII exposed."
+    },
+    {
+      "id": "R4",
+      "name": "Security",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req4",
+      "tier": "core",
+      "rubricCriteria": ["C24", "C25", "C26", "C27"],
+      "rubricCategories": ["security"],
+      "testSuiteSection": "did-core-properties",
+      "registryDirectory": null,
+      "description": "DIDs must provide sufficient security for requesting parties to depend on DID Documents for their required level of assurance."
+    },
+    {
+      "id": "R5",
+      "name": "Proof-based",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req5",
+      "tier": "core",
+      "rubricCriteria": ["C24", "C27"],
+      "rubricCategories": ["security"],
+      "testSuiteSection": "did-core-properties",
+      "registryDirectory": "properties",
+      "description": "DID Documents must provide cryptographic proof mechanisms (e.g., digital signatures) to authenticate DID controllers."
+    },
+    {
+      "id": "R6",
+      "name": "Discoverability",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req6",
+      "tier": "common",
+      "rubricCriteria": ["C8"],
+      "rubricCategories": ["design"],
+      "testSuiteSection": null,
+      "registryDirectory": "methods",
+      "description": "DIDs must be designed so authorized parties can discover them and learn more about the entities they represent."
+    },
+    {
+      "id": "R7",
+      "name": "Interoperability",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req7",
+      "tier": "common",
+      "rubricCriteria": ["C7"],
+      "rubricCategories": ["design"],
+      "testSuiteSection": "did-core-properties",
+      "registryDirectory": "properties",
+      "description": "DIDs should be broadly interoperable with existing tools and software systems."
+    },
+    {
+      "id": "R8",
+      "name": "Portability",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req8",
+      "tier": "common",
+      "rubricCriteria": ["C7", "C13"],
+      "rubricCategories": ["design", "alternatives"],
+      "testSuiteSection": null,
+      "registryDirectory": null,
+      "description": "DIDs should be system- and network-independent, enabling portability across platforms."
+    },
+    {
+      "id": "R9",
+      "name": "Persistence",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req9",
+      "tier": "core",
+      "rubricCriteria": ["C10", "C11"],
+      "rubricCategories": ["operation"],
+      "testSuiteSection": null,
+      "registryDirectory": null,
+      "description": "DIDs must be persistent enough to be long-lived so they can serve as long-term identifiers."
+    },
+    {
+      "id": "R10",
+      "name": "Inter-jurisdictional",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req310",
+      "tier": "common",
+      "rubricCriteria": ["C3", "C8"],
+      "rubricCategories": ["rulemaking", "design"],
+      "testSuiteSection": null,
+      "registryDirectory": null,
+      "description": "DIDs must not depend on the legal jurisdiction in which they are issued. Valid anywhere without loss of fidelity."
+    },
+    {
+      "id": "R11",
+      "name": "Cryptographic Verifiability",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req11",
+      "tier": "core",
+      "rubricCriteria": ["C24", "C25", "C27"],
+      "rubricCategories": ["security"],
+      "testSuiteSection": "did-core-properties",
+      "registryDirectory": "properties",
+      "description": "It must be possible to cryptographically verify the DID Controller, including verification of the claims in the DID Document."
+    },
+    {
+      "id": "R12",
+      "name": "Cryptographic Extensibility",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req12",
+      "tier": "core",
+      "rubricCriteria": ["C24", "C26"],
+      "rubricCategories": ["security"],
+      "testSuiteSection": null,
+      "registryDirectory": "properties",
+      "description": "The DID infrastructure must not be limited to a single cryptographic suite or algorithm."
+    },
+    {
+      "id": "R13",
+      "name": "Key Rotation without ID Change",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req13",
+      "tier": "common",
+      "rubricCriteria": ["C12"],
+      "rubricCategories": ["enforcement"],
+      "testSuiteSection": null,
+      "registryDirectory": null,
+      "description": "It must be possible to rotate cryptographic keys without changing the DID."
+    },
+    {
+      "id": "R14",
+      "name": "Service Endpoint Support",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req14",
+      "tier": "specialized",
+      "rubricCriteria": [],
+      "rubricCategories": [],
+      "testSuiteSection": "did-core-properties",
+      "registryDirectory": "properties",
+      "description": "The infrastructure must enable the discovery of service endpoints for a given entity."
+    },
+    {
+      "id": "R15",
+      "name": "Composability",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req15",
+      "tier": "specialized",
+      "rubricCriteria": [],
+      "rubricCategories": [],
+      "testSuiteSection": null,
+      "registryDirectory": null,
+      "description": "DIDs should be combinable with other technologies to form more complex applications."
+    },
+    {
+      "id": "R16",
+      "name": "Equivalence",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req16",
+      "tier": "specialized",
+      "rubricCriteria": [],
+      "rubricCategories": [],
+      "testSuiteSection": null,
+      "registryDirectory": null,
+      "description": "It must be possible to describe equivalence relationships between two DIDs."
+    },
+    {
+      "id": "R17",
+      "name": "Legal Compatibility",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req17",
+      "tier": "specialized",
+      "rubricCriteria": ["C4"],
+      "rubricCategories": ["rulemaking"],
+      "testSuiteSection": null,
+      "registryDirectory": null,
+      "description": "The system must support the legal rights and regulatory obligations of its users."
+    },
+    {
+      "id": "R18",
+      "name": "Uniqueness",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req18",
+      "tier": "common",
+      "rubricCriteria": [],
+      "rubricCategories": [],
+      "testSuiteSection": null,
+      "registryDirectory": null,
+      "description": "Every DID must be globally unique, with negligible probability of collision."
+    },
+    {
+      "id": "R19",
+      "name": "Metadata",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req19",
+      "tier": "specialized",
+      "rubricCriteria": [],
+      "rubricCategories": [],
+      "testSuiteSection": "did-resolution",
+      "registryDirectory": "resolution",
+      "description": "The infrastructure must support the association of metadata with an identifier."
+    },
+    {
+      "id": "R20",
+      "name": "DID Resolution",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req20",
+      "tier": "specialized",
+      "rubricCriteria": ["C10"],
+      "rubricCategories": ["operation"],
+      "testSuiteSection": "did-resolution",
+      "registryDirectory": "resolution",
+      "description": "The infrastructure must support the resolution of a DID to a DID Document."
+    },
+    {
+      "id": "R21",
+      "name": "CRUD Operations",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req21",
+      "tier": "specialized",
+      "rubricCriteria": ["C10", "C11"],
+      "rubricCategories": ["operation"],
+      "testSuiteSection": null,
+      "registryDirectory": null,
+      "description": "DID methods must define how CRUD operations are performed for their specific method."
+    },
+    {
+      "id": "R22",
+      "name": "Deactivation",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#req22",
+      "tier": "specialized",
+      "rubricCriteria": ["C12"],
+      "rubricCategories": ["enforcement"],
+      "testSuiteSection": null,
+      "registryDirectory": null,
+      "description": "It must be possible to deactivate a DID, after which no further updates or authentications should be possible."
+    }
+  ],
+  "rubricCategories": {
+    "rulemaking": {
+      "name": "Rulemaking",
+      "description": "Governance of rule-making authority",
+      "criteria": ["C1", "C2", "C3", "C4", "C5"],
+      "spec": "https://www.w3.org/TR/did-rubric/#rulemaking"
+    },
+    "design": {
+      "name": "Design",
+      "description": "Method specifications as designed",
+      "criteria": ["C6", "C7", "C8"],
+      "spec": "https://www.w3.org/TR/did-rubric/#design"
+    },
+    "operation": {
+      "name": "Operation",
+      "description": "Rule execution and visibility",
+      "criteria": ["C9", "C10", "C11"],
+      "spec": "https://www.w3.org/TR/did-rubric/#operation"
+    },
+    "enforcement": {
+      "name": "Enforcement",
+      "description": "Rule compliance and violation response",
+      "criteria": ["C12"],
+      "spec": "https://www.w3.org/TR/did-rubric/#enforcement"
+    },
+    "alternatives": {
+      "name": "Alternatives",
+      "description": "Implementation diversity",
+      "criteria": ["C13", "C14", "C15", "C16", "C17", "C18"],
+      "spec": "https://www.w3.org/TR/did-rubric/#alternatives"
+    },
+    "adoption": {
+      "name": "Adoption & Diversity",
+      "description": "Usage breadth",
+      "criteria": ["C19", "C20", "C21", "C22", "C23"],
+      "spec": "https://www.w3.org/TR/did-rubric/#adoption"
+    },
+    "security": {
+      "name": "Security",
+      "description": "Trust and cryptographic strength",
+      "criteria": ["C24", "C25", "C26", "C27", "C28", "C29", "C30", "C31", "C32"],
+      "spec": "https://www.w3.org/TR/did-rubric/#security"
+    },
+    "privacy": {
+      "name": "Privacy",
+      "description": "Privacy protection mechanisms",
+      "criteria": ["C33", "C34", "C35", "C36"],
+      "spec": "https://www.w3.org/TR/did-rubric/#privacy"
+    }
+  },
+  "registryDirectories": {
+    "methods": {
+      "path": "methods/",
+      "description": "One JSON file per registered DID method",
+      "schema": "json_schemas/core.schema.json"
+    },
+    "properties": {
+      "path": "properties/",
+      "description": "DID Document property extensions beyond DID Core",
+      "relatedSpec": "did-core"
+    },
+    "resolution": {
+      "path": "resolution/",
+      "description": "DID Resolution parameter and metadata extensions",
+      "relatedSpec": "did-resolution"
+    },
+    "vocabs": {
+      "path": "vocabs/",
+      "description": "JSON-LD vocabulary/context files for registered properties"
+    }
+  }
+}
