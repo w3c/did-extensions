@@ -1,0 +1,13 @@
+{
+  "name": "viewonwebsite",
+  "status": "proposed",
+  "specification": "https://viewonwebsite.com/spec/",
+  "architect": "Tamer Maher Eldebes",
+  "authority": "Hardcoded Logic",
+  "contactName": "ViewOnWebsite Authority",
+  "contactEmail": "authority@hardcodedlogic.com",
+  "contactWebsite": "https://viewonwebsite.com",
+  "jurisdiction": "Dubai, UAE",
+  "verifiableDataRegistry": "DID Specification",
+  "repository": "https://github.com/thevowtechs-lgtm/Did-viewonwebsite"
+}
