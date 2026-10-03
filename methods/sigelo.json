@@ -1,9 +1,9 @@
 {
   "name": "sigelo",
   "status": "registered",
-  "verifiableDataRegistry": "None - self-certifying: the DID is the SHA-256 of its genesis document; resolution is offline verification of a bundle the subject presents",
+  "specification": "https://sigelo.io/spec.html#12-did-method-didsigelo",
   "contactName": "csigelo",
   "contactEmail": "contact@sigelo.io",
-  "contactWebsite": "https://sigelo.io",
-  "specification": "https://sigelo.io/spec.html#12-did-method-didsigelo"
+  "contactWebsite": "https://sigelo.io/contact.html",
+  "verifiableDataRegistry": "none (self-certifying; bundles)"
 }
