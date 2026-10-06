@@ -1,7 +1,7 @@
 {
   "name": "avtr",
   "status": "registered",
-  "specification": "https://docs.avatar.me/specs/did-method-avtr/latest/",
+  "specification": "https://docs.avatar.me/specs/did-method-avtr/v1.1/",
   "contactName": "Avatar Inc",
   "contactEmail": "did@avatar.me",
   "contactWebsite": "https://avatar.me",
