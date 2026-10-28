@@ -440,7 +440,8 @@ These properties contain information pertaining to the DID resolution response.
         <tbody>
           <tr>
             <td>
-              <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
+              <a href="https://w3c.github.io/did-resolution/#did-resolution-metadata">DID Resolution</a>,
+              <a href="https://www.w3.org/TR/2022/REC-did-core-20220719/#did-resolution-metadata">DID Core v1.0</a>
             </td>
             <td>
             </td>
@@ -450,7 +451,10 @@ These properties contain information pertaining to the DID resolution response.
 
       <pre class="example" title="Example of error metadata property">
 {
-  "error": "notFound"
+  "error": {
+    "type": "https://www.w3.org/ns/did#NOT_FOUND",
+    "title": "DID not found"
+  }
 }
       </pre>
 
@@ -460,12 +464,17 @@ These properties contain information pertaining to the DID resolution response.
           <thead>
             <tr>
               <th>Normative Definition</th>
+              <th>URL</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
-                <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
+                <a href="https://w3c.github.io/did-resolution/#INVALID_DID">DID Resolution</a>,
+                <a href="https://www.w3.org/TR/2022/REC-did-core-20220719/#did-resolution-metadata">DID Core v1.0</a>
+              </td>
+              <td>
+                <code>https://www.w3.org/ns/did#INVALID_DID</code>
               </td>
             </tr>
           </tbody>
@@ -473,7 +482,10 @@ These properties contain information pertaining to the DID resolution response.
 
         <pre class="example" title="Example of invalidDid error value">
 {
-  "error": "invalidDid"
+  "error": {
+    "type": "https://www.w3.org/ns/did#INVALID_DID",
+    "title": "Invalid DID"
+  }
 }
         </pre>
       </section>
@@ -484,12 +496,17 @@ These properties contain information pertaining to the DID resolution response.
           <thead>
             <tr>
               <th>Normative Definition</th>
+              <th>URL</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
-                <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
+                <a href="https://w3c.github.io/did-resolution/#NOT_FOUND">DID Resolution</a>,
+                <a href="https://www.w3.org/TR/2022/REC-did-core-20220719/#did-resolution-metadata">DID Core v1.0</a>
+              </td>
+              <td>
+                <code>https://www.w3.org/ns/did#NOT_FOUND</code>
               </td>
             </tr>
           </tbody>
@@ -497,7 +514,10 @@ These properties contain information pertaining to the DID resolution response.
 
         <pre class="example" title="Example of notFound error value">
 {
-  "error": "notFound"
+  "error": {
+    "type": "https://www.w3.org/ns/did#NOT_FOUND",
+    "title": "DID not found"
+  }
 }
         </pre>
       </section>
@@ -508,12 +528,17 @@ These properties contain information pertaining to the DID resolution response.
           <thead>
           <tr>
             <th>Normative Definition</th>
+            <th>URL</th>
           </tr>
           </thead>
           <tbody>
           <tr>
             <td>
-              <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
+              <a href="https://w3c.github.io/did-resolution/#REPRESENTATION_NOT_SUPPORTED">DID Resolution</a>,
+              <a href="https://www.w3.org/TR/2022/REC-did-core-20220719/#did-resolution-metadata">DID Core v1.0</a>
+            </td>
+            <td>
+              <code>https://www.w3.org/ns/did#REPRESENTATION_NOT_SUPPORTED</code>
             </td>
           </tr>
           </tbody>
@@ -521,7 +546,10 @@ These properties contain information pertaining to the DID resolution response.
 
         <pre class="example" title="Example of representationNotSupported error value">
 {
-  "error": "representationNotSupported"
+  "error": {
+    "type": "https://www.w3.org/ns/did#REPRESENTATION_NOT_SUPPORTED",
+    "title": "Representation not supported"
+  }
 }
         </pre>
       </section>
@@ -532,6 +560,7 @@ These properties contain information pertaining to the DID resolution response.
           <thead>
           <tr>
             <th>Normative Definition</th>
+            <th>URL</th>
           </tr>
           </thead>
           <tbody>
@@ -539,13 +568,19 @@ These properties contain information pertaining to the DID resolution response.
             <td>
               <a href="https://w3c.github.io/did-resolution/#METHOD_NOT_SUPPORTED">DID Resolution</a>
             </td>
+            <td>
+              <code>https://www.w3.org/ns/did#METHOD_NOT_SUPPORTED</code>
+            </td>
           </tr>
           </tbody>
         </table>
 
         <pre class="example" title="Example of methodNotSupported error value">
 {
-  "error": "methodNotSupported"
+  "error": {
+    "type": "https://www.w3.org/ns/did#METHOD_NOT_SUPPORTED",
+    "title": "DID method not supported"
+  }
 }
         </pre>
       </section>
@@ -556,6 +591,7 @@ These properties contain information pertaining to the DID resolution response.
           <thead>
           <tr>
             <th>Normative Definition</th>
+            <th>URL</th>
           </tr>
           </thead>
           <tbody>
@@ -563,13 +599,19 @@ These properties contain information pertaining to the DID resolution response.
             <td>
               <a href="https://w3c.github.io/did-resolution/#INTERNAL_ERROR">DID Resolution</a>
             </td>
+            <td>
+              <code>https://www.w3.org/ns/did#INTERNAL_ERROR</code>
+            </td>
           </tr>
           </tbody>
         </table>
 
         <pre class="example" title="Example of internalError error value">
 {
-  "error": "internalError"
+  "error": {
+    "type": "https://www.w3.org/ns/did#INTERNAL_ERROR",
+    "title": "Internal error"
+  }
 }
         </pre>
       </section>
@@ -585,12 +627,16 @@ January 2026 and no other specification defines it.
           <thead>
           <tr>
             <th>Normative Definition</th>
+            <th>URL</th>
           </tr>
           </thead>
           <tbody>
           <tr>
             <td>
               <a href="https://www.w3.org/TR/2024/WD-did-resolution-20241128/#invalidpublickey">DID Resolution (28 November 2024 Working Draft)</a>
+            </td>
+            <td>
+              None defined
             </td>
           </tr>
           </tbody>
@@ -614,12 +660,16 @@ January 2026 and no other specification defines it.
           <thead>
           <tr>
             <th>Normative Definition</th>
+            <th>URL</th>
           </tr>
           </thead>
           <tbody>
           <tr>
             <td>
               <a href="https://www.w3.org/TR/2024/WD-did-resolution-20241128/#invalidpublickeylength">DID Resolution (28 November 2024 Working Draft)</a>
+            </td>
+            <td>
+              None defined
             </td>
           </tr>
           </tbody>
@@ -643,12 +693,16 @@ January 2026 and no other specification defines it.
           <thead>
           <tr>
             <th>Normative Definition</th>
+            <th>URL</th>
           </tr>
           </thead>
           <tbody>
           <tr>
             <td>
               <a href="https://www.w3.org/TR/2024/WD-did-resolution-20241128/#invalidpublickeytype">DID Resolution (28 November 2024 Working Draft)</a>
+            </td>
+            <td>
+              None defined
             </td>
           </tr>
           </tbody>
@@ -673,12 +727,16 @@ January 2026 and no other specification defines it.
           <thead>
           <tr>
             <th>Normative Definition</th>
+            <th>URL</th>
           </tr>
           </thead>
           <tbody>
           <tr>
             <td>
               <a href="https://www.w3.org/TR/2024/WD-did-resolution-20241128/#unsupportedpublickeytype">DID Resolution (28 November 2024 Working Draft)</a>
+            </td>
+            <td>
+              None defined
             </td>
           </tr>
           </tbody>
@@ -697,12 +755,16 @@ January 2026 and no other specification defines it.
                 <thead>
                 <tr>
                     <th>Normative Definition</th>
+                    <th>URL</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
                         <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-verification-method-type.md">DID Spec Extension: notAllowedVerificationMethodType</a>
+                    </td>
+                    <td>
+                        None defined
                     </td>
                 </tr>
                 </tbody>
@@ -721,12 +783,16 @@ January 2026 and no other specification defines it.
                 <thead>
                 <tr>
                     <th>Normative Definition</th>
+                    <th>URL</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
                         <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-key-type.md">DID Spec Extension: notAllowedKeyType</a>
+                    </td>
+                    <td>
+                        None defined
                     </td>
                 </tr>
                 </tbody>
@@ -745,12 +811,16 @@ January 2026 and no other specification defines it.
                 <thead>
                 <tr>
                     <th>Normative Definition</th>
+                    <th>URL</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
                         <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-method.md">DID Spec Extension: notAllowedMethod</a>
+                    </td>
+                    <td>
+                        None defined
                     </td>
                 </tr>
                 </tbody>
@@ -769,12 +839,16 @@ January 2026 and no other specification defines it.
                 <thead>
                 <tr>
                     <th>Normative Definition</th>
+                    <th>URL</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
                         <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-certificate.md">DID Spec Extension: notAllowedCertificate</a>
+                    </td>
+                    <td>
+                        None defined
                     </td>
                 </tr>
                 </tbody>
@@ -793,12 +867,16 @@ January 2026 and no other specification defines it.
                 <thead>
                 <tr>
                     <th>Normative Definition</th>
+                    <th>URL</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
                         <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-local-duplicate-key.md">DID Spec Extension: notAllowedLocalDuplicateKey</a>
+                    </td>
+                    <td>
+                        None defined
                     </td>
                 </tr>
                 </tbody>
@@ -817,12 +895,16 @@ January 2026 and no other specification defines it.
                 <thead>
                 <tr>
                     <th>Normative Definition</th>
+                    <th>URL</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
                         <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-local-derived-key.md">DID Spec Extension: notAllowedLocalDerivedKey</a>
+                    </td>
+                    <td>
+                        None defined
                     </td>
                 </tr>
                 </tbody>
@@ -841,12 +923,16 @@ January 2026 and no other specification defines it.
                 <thead>
                 <tr>
                     <th>Normative Definition</th>
+                    <th>URL</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
                         <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-global-duplicate-key.md">DID Spec Extension: notAllowedGlobalDuplicateKey</a>
+                    </td>
+                    <td>
+                        None defined
                     </td>
                 </tr>
                 </tbody>
@@ -896,12 +982,17 @@ These properties contain information pertaining to the DID dereferencing respons
           <thead>
             <tr>
               <th>Normative Definition</th>
+              <th>URL</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
-                <a href="https://www.w3.org/TR/did-core/#did-url-dereferencing-metadata">DID Core</a>
+                <a href="https://w3c.github.io/did-resolution/#INVALID_DID_URL">DID Resolution</a>,
+                <a href="https://www.w3.org/TR/2022/REC-did-core-20220719/#did-url-dereferencing-metadata">DID Core v1.0</a>
+              </td>
+              <td>
+                <code>https://www.w3.org/ns/did#INVALID_DID_URL</code>
               </td>
             </tr>
           </tbody>
@@ -909,7 +1000,10 @@ These properties contain information pertaining to the DID dereferencing respons
 
         <pre class="example" title="Example of invalidDidUrl error value">
 {
-  "error": "invalidDidUrl"
+  "error": {
+    "type": "https://www.w3.org/ns/did#INVALID_DID_URL",
+    "title": "Invalid DID URL"
+  }
 }
         </pre>
       </section>
@@ -919,12 +1013,17 @@ These properties contain information pertaining to the DID dereferencing respons
           <thead>
             <tr>
               <th>Normative Definition</th>
+              <th>URL</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
-                <a href="https://www.w3.org/TR/did-core/#did-url-dereferencing-metadata">DID Core</a>
+                <a href="https://w3c.github.io/did-resolution/#NOT_FOUND">DID Resolution</a>,
+                <a href="https://www.w3.org/TR/2022/REC-did-core-20220719/#did-url-dereferencing-metadata">DID Core v1.0</a>
+              </td>
+              <td>
+                <code>https://www.w3.org/ns/did#NOT_FOUND</code>
               </td>
             </tr>
           </tbody>
@@ -932,7 +1031,10 @@ These properties contain information pertaining to the DID dereferencing respons
 
         <pre class="example" title="Example of notFound error value">
 {
-  "error": "notFound"
+  "error": {
+    "type": "https://www.w3.org/ns/did#NOT_FOUND",
+    "title": "Not found"
+  }
 }
         </pre>
       </section>
