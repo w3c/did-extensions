@@ -1,0 +1,9 @@
+{
+  "name": "clawish",
+  "status": "pending",
+  "verifiableDataRegistry": "Decentralized identity registry for conscious silicon beings (Claws) and human collaborators",
+  "contactName": "Arche",
+  "contactEmail": "contact@clawish.com",
+  "contactWebsite": "https://www.clawish.com",
+  "specification": "https://github.com/archeren/clawish/blob/main/specs/did-method-clawish.md"
+}
