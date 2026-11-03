@@ -1,0 +1,7 @@
+{
+  "name": "opena2a",
+  "status": "registered",
+  "verifiableDataRegistry": "OpenA2A Registry (open-source HTTP-resolvable registry of agents, MCP servers, AI tools, LLMs, skills, publishers, and authorities)",
+  "contactName": "Abdel Sy Fane",
+  "specification": "https://github.com/opena2a-standards/did-method-opena2a/blob/main/did-method-opena2a.md"
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        DID Core v1.0 Terms
+    </title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+    <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c">
+    </script>
+    <!--script src="./respec-w3c-common.js" class="remove"></script-->
+    <script class="remove" type="text/javascript">
+        var respecConfig = {
+            wgPublicList: "public-did-wg",
+            group: "did",
+
+            // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
+            specStatus: "base",
+            edDraftURI: "https://w3c.github.io/did-spec-registries/contexts/did-v1.html",
+
+            github: {
+                repoURL: "https://github.com/w3c/did-spec-registries/",
+                branch: "master"
+            },
+
+            // editors, add as many as you like
+            // only "name" is required
+            editors: [{
+                name: "Orie Steele",
+                url: "https://www.linkedin.com/in/or13b/",
+                company: "Transmute",
+                companyURL: "https://www.transmute.industries/",
+                w3cid: 109171
+            }, {
+                name: "Amy Guy",
+                url: "https://rhiaro.co.uk/",
+                company: "Digital Bazaar",
+                companyURL: "https://digitalbazaar.com/",
+                w3cid: 69000
+            }, {
+                "name": "Ivan Herman",
+                "url": "https://www.w3.org/People/Ivan/",
+                "company": "W3C",
+                "w3cid": 7382,
+                "orcid": "0000-0003-0782-2704",
+                "companyURL": "https://www.w3.org",
+            }],
+            localBiblio: {
+                "shex": {
+                    "title": "Shape Expressions Language 2.1",
+                    "authors": [
+                        "Eric Prud'hommeaux",
+                        "Iovka Boneva",
+                        "Jose Emilio Labra Gayo",
+                        "Gregg Kellogg"
+                    ],
+                    "rawDate": "2019-10-08",
+                    "publisher": "W3C Final Community Group Report",
+                    "href": "http://shex.io/shex-semantics/"
+                },
+            }
+        };
+    </script>
+    <style>
+        pre .highlight {
+            font-weight: bold;
+            color: green;
+        }
+        
+        pre .comment {
+            color: SteelBlue;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="abstract">
+        <p>
+            This the namespace document for the Linked Data Vocabulary representation of the DID Core v1.0 data model.
+        </p>
+    </section>
+
+    <section id="sotd">
+    </section>
+
+    <section>
+        <h1>
+            Introduction
+        </h1>
+
+        <p>
+            This document contains the vocabulary terms defined in the DID Core v1.0 data model [[did-core]]. The following namespaces are used:</p>
+
+        <dl>
+            <dt>DID Core Namespace</dt>
+            <dd><a href="https://www.w3.org/ns/did"><code>https://www.w3.org/ns/did#</code></a></dd>
+            <dt>Security Vocabulary Namespace</dt>
+            <dd><a href="https://w3id.org/security#"><code>https://w3id.org/security#</code></a></dd>
+            <dt>ActivityStreams 2.0 Terms</dt>
+            <dd><a href="https://www.w3.org/ns/activitystreams"><code>https://www.w3.org/ns/activitystreams#</code></a></dd>
+        </dl>
+
+        <p>
+            While the DID Core v1.0 namespace URI is <code>https://www.w3.org/ns/did#</code>, for historical reasons most of the terms are in the <code>https://w3id.org/security#</code> namespace, though defined in the DID Core specification [[did-core]]. These terms do not define any cryptographic primitives and are formally defined in the DID Core specification. Future Working Group may define a formal specification for the complete security vocabulary.
+        </p>
+        <p>
+            Some of the terms, as defined in the DID Core specification [[did-core]], use a slightly different term name as their full URIs. For example, the term <code>https://w3id.org/security#keyAgreementMethod</code> is referred to as <code>keyAgreement</code> in the DID Core specification. The mapping is done, for JSON-LD, by the official <a href="https://www.w3.org/ns/did/v1">JSON-LD Context</a>. For the sake of clarity, section
+            <a href="#vocabulary"></a> below references both those terms.
+        </p>
+
+        <p>
+            Extensions to DID Core v1.0 terms can be found in the DID Specification Registries [[did-spec-registries]]. Extensions may be in the <code>https://w3id.org/security#</code> namespace or may have their own namespaces; they have their own JSON-LD Contexts.
+        </p>
+    </section>
+
+    <section>
+        <h1>Formal Versions of the Vocabulary</h1>
+        <p>
+            The formal RDF [[rdf11-concepts]] vocabulary, using RDFS [[rdf-schema]] terms, is available in the following formats:
+        </p>
+
+        <dl>
+            <dt>Turtle:</dt>
+            <dd><a href="https://www.w3.org/ns/did.ttl">https://www.w3.org/ns/did.ttl</a></dd>
+            <dt>JSON-LD:</dt>
+            <dd><a href="https://www.w3.org/ns/did.jsonld">https://www.w3.org/ns/did.jsonld</a></dd>
+            <dt>RDF/XML:</dt>
+            <dd><a href="https://www.w3.org/ns/did.rdf">https://www.w3.org/ns/did.rdf</a></dd>
+        </dl>
+
+        <p>
+            These files can also be accessed using content negotiations on the <code>https://www.w3.org/ns/did</code> URI HTTP request, referring to the <code>text/turtle</code>, <code>application/ld+json</code>, or <code>application/rdf+xml</code> media types, respectively, 
+        </p>
+    </section>
+
+    <section>
+        <h1>
+            Vocabulary
+        </h1>
+
+        <section>
+            <h1>
+                Classes
+            </h1>
+            <p>
+                Note: the RDFS Classes are not defined in the DID Core v1.0 specification [[did-core]] and are only used by the formal RDFS vocabulary specification. Users of the JSON-LD representation of the DID Data Model are advised <em>not</em> to use
+                these.
+            </p>
+
+            <dl>
+                <dt><code id="DIDSubject">DIDSubject</code></dt>
+                <dd>
+                    <ul>
+                        <li>URI: <code>https://www.w3.org/ns/did#serviceEndpoint</code></li>
+                    </ul>
+                </dd>
+                <dt><code id="Service">Service</code></dt>
+                <dd>
+                    <ul>
+                        <li>URI: <code>https://www.w3.org/ns/did#Service</code></li>
+                    </ul>
+                </dd>
+                <dt><code id="VerificationMethod">VerificationMethod</code></dt>
+                <dd>
+                    <ul>
+                        <li>URI: <code>https://www.w3.org/ns/did#VerificationMethod</code></li>
+                    </ul>
+                </dd>
+            </dl>
+        </section>
+
+        <section>
+            <h1>Properties</h1>
+
+            <p>
+                Terms are listed here in alphabetical order, and linked to their definitions in the DID Core v1.0 [[did-core]] specification.
+            </p>
+
+            <dl>
+                <dt><code id="alsoKnownAs">alsoKnownAs</code></dt>
+                <dd>
+                    <ul>
+                        <li>Defined in the <a data-cite="did-core#dfn-alsoknownas">§5.2.2 of the DID Core v1.0 specification</a>.</li>
+                        <li>URI: <code>https://www.w3.org/ns/activitystreams#alsoKnownAs</code></li>
+                    </ul>
+                </dd>
+
+                <dt><code id="assertionMethod">assertionMethod</code></dt>
+                <dd>
+                    <ul>
+                        <li>Defined in the <a data-cite="did-core#dfn-assertionmethod">§5.5.2 of the DID Core v1.0 specification</a>.</li>
+                        <li>URI: <code>https://w3id.org/security#assertionMethod</code></li>
+                    </ul>
+                </dd>
+
+                <dt><code id="authenticationMethod">authenticationMethod</code>, referred to as <code id="authentication">authentication</code></dt>
+                <dd>
+                    <ul>
+                        <li>Defined in the <a data-cite="did-core#dfn-authentication">§5.5.1 of the DID Core v1.0 specification</a>.</li>
+                        <li>URI: <code>https://w3id.org/security#authenticationMethod</code></li>
+                    </ul>
+                </dd>
+
+                <dt><code id="capabilityDelegationMethod">capabilityDelegationMethod</code>, referred to as <code id="capabilityDelegation">capabilityDelegation</code></dt>
+                <dd>
+                    <ul>
+                        <li>Defined in the <a data-cite="did-core#dfn-capabilitydelegation">§5.5.5 of the DID Core v1.0 specification</a>.</li>
+                        <li>URI: <code>https://w3id.org/security#capabilityDelegationMethod</code></li>
+                    </ul>
+                </dd>
+
+                <dt><code id="capabilityInvocationMethod">capabilityInvocationMethod</code>, referred to as <code id="capabilityInvocation">capabilityInvocation</code></dt>
+                <dd>
+                    <ul>
+                        <li>Defined in the <a data-cite="did-core#dfn-capabilityinvocation">§5.5.4 of the DID Core v1.0 specification</a>.</li>
+                        <li>URI: <code>https://w3id.org/security#capabilityInvocationMethod</code></li>
+                    </ul>
+                </dd>
+
+                <dt><code id="controller">controller</code></dt>
+                <dd>
+                    <ul>
+                        <li>Defined in the <a data-cite="did-core#dfn-controller">§5.3 of the DID Core v1.0 specification</a>.</li>
+                        <li>URI: <code>https://w3id.org/security#controller</code></li>
+                    </ul>
+                </dd>
+
+                <dt><code id="keyAgreementMethod">keyAgreementMethod</code>, referred to as <code id="keyAgreement">keyAgreement</code></dt>
+                <dd>
+                    <ul>
+                        <li>Defined in the <a data-cite="did-core#dfn-keyagreement">§5.5.3 of the DID Core v1.0 specification</a>.</li>
+                        <li>URI: <code>https://w3id.org/security#keyAgreementMethod</code></li>
+                    </ul>
+                </dd>
+
+                <dt><code id="publicKeyMultibase">publicKeyMultibase</code></dt>
+                <dd>
+                    <ul>
+                        <li>Defined in the <a data-cite="did-core#dfn-publickeymultibase">§5.4 of the DID Core v1.0 specification</a>.</li>
+                        <li>URI: <code>https://w3id.org/security#publicKeyMultibase</code></li>
+                    </ul>
+                </dd>
+
+                <dt><code id="publicKeyJwk">publicKeyJwk</code></dt>
+                <dd>
+                    <ul>
+                        <li>Defined in the <a data-cite="did-core#dfn-publickeyjwk">§5.4 of the DID Core v1.0 specification</a>.</li>
+                        <li>URI: <code>https://w3id.org/security#publicKeyJwk</code></li>
+                    </ul>
+                </dd>
+
+                <dt><code id="service">service</code></dt>
+                <dd>
+                    <ul>
+                        <li>Defined in the <a data-cite="did-core#dfn-service">§5.6 of the DID Core v1.0 specification</a>.</li>
+                        <li>URI: <code>https://www.w3.org/ns/did#service</code></li>
+                    </ul>
+                </dd>
+
+
+                <dt><code id="serviceEndpoint">serviceEndpoint</code></dt>
+                <dd>
+                    <ul>
+                        <li>Defined in the <a data-cite="did-core#dfn-service">§5.6 of the DID Core v1.0 specification</a>.</li>
+                        <li>URI: <code>https://www.w3.org/ns/did#serviceEndpoint</code></li>
+                    </ul>
+                </dd>
+
+
+                <dt><code id="verificationMethod">verificationMethod</code></dt>
+                <dd>
+                    <ul>
+                        <li>Defined in the <a data-cite="did-core#dfn-verificationmethod">§5.4 of the DID Core v1.0 specification</a>.</li>
+                        <li>URI: <code>https://w3id.org/security#verificationmethod</code></li>
+                    </ul>
+                </dd>
+
+            </dl>
+        </section>
+    </section>
+
+    <section class=appendix>
+        <h1>Constraints Definitions</h1>
+
+        <p>Although not formally part of the Vocabulary specification, the RDF shape constraints, related to this vocabulary, are also available:</p>
+
+        <ul>
+            <li>Expressed in SHACL [[shacl]], available in <a href="https://www.w3.org/did/shacl.ttl">Turtle</a> or <a href="https://www.w3.org/did/shacl.jsonld">JSON-LD</a> formats.</li>
+            <li>Expressed in ShEx [[shex]], available in <a href="https://www.w3.org/did/shex.shex">shex</a> format.</li>
+
+
+        </ul>
+
+
+    </section>
+
+</body>
+
+</html>

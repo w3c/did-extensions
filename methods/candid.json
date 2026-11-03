@@ -1,0 +1,9 @@
+{
+  "name": "candid",
+  "status": "registered",
+  "verifiableDataRegistry": "Quorum",
+  "contactName": "Eric Lin",
+  "contactEmail": "ericlin@cathayholdings.com.tw",
+  "contactWebsite": "https://www.linkedin.com/in/eric-lin-875b42b0/",
+  "specification": "https://github.com/ericlin716/did-spec/blob/main/candid-did-method-spec.md"
+}

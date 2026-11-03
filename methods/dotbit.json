@@ -1,0 +1,9 @@
+{
+  "name": "dotbit",
+  "status": "registered",
+  "verifiableDataRegistry": "d.id",
+  "contactName": "d.id",
+  "contactEmail": "support@did.id",
+  "contactWebsite": "https://d.id",
+  "specification": "https://github.com/dotbithq/dotbit-did-spec"
+}

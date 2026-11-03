@@ -1,0 +1,9 @@
+{
+  "name": "pistis",
+  "status": "registered",
+  "verifiableDataRegistry": "Ethereum",
+  "contactName": "Andrea Taglia, Matteo Sinico",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/uino95/ssi/blob/consensys/dashboard/server/pistis/pistis-did-resolver/README.md"
+}

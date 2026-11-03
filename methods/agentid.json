@@ -1,0 +1,9 @@
+{
+  "name": "agentid",
+  "status": "registered",
+  "specification": "https://getagentid.dev/specs/did-method-agentid-v1.0",
+  "contactName": "Michael Malik Ematuwo",
+  "contactEmail": "haroldmalikfrimpong@gmail.com",
+  "contactWebsite": "https://getagentid.dev",
+  "verifiableDataRegistry": "AgentID registry (getagentid.dev, HTTPS)"
+}

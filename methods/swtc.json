@@ -1,0 +1,9 @@
+{
+  "name": "swtc",
+  "status": "registered",
+  "verifiableDataRegistry": "IPFS",
+  "contactName": "JDID",
+  "contactEmail": "jccdex@jccdex.com",
+  "contactWebsite": "https://jdid.cn",
+  "specification": "https://github.com/JCCDex/SWTC-DID/blob/main/docs/did-method-spec-en.md"
+}

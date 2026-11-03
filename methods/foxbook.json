@@ -1,0 +1,9 @@
+{
+  "name": "foxbook",
+  "status": "registered",
+  "verifiableDataRegistry": "Public RFC 9162-shaped Merkle transparency log (single canonical reference deployment at transparency.foxbook.dev; protocol contract supports federation)",
+  "contactName": "Benjamin Bandali",
+  "contactEmail": "hello@foxbook.dev",
+  "contactWebsite": "https://foxbook.dev",
+  "specification": "https://github.com/cloakmaster/foxbook/blob/main/docs/specs/did-foxbook-method.md"
+}

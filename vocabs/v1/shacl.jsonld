@@ -1,0 +1,179 @@
+{
+    "@context": {
+        "path": {
+            "@id": "http://www.w3.org/ns/shacl#path",
+            "@type": "@id"
+        },
+        "pattern": {
+            "@id": "http://www.w3.org/ns/shacl#pattern"
+        },
+        "nodeKind": {
+            "@id": "http://www.w3.org/ns/shacl#nodeKind",
+            "@type": "@id"
+        },
+        "datatype": {
+            "@id": "http://www.w3.org/ns/shacl#datatype",
+            "@type": "@id"
+        },
+        "maxCount": {
+            "@id": "http://www.w3.org/ns/shacl#maxCount",
+            "@type": "http://www.w3.org/2001/XMLSchema#integer"
+        },
+        "minCount": {
+            "@id": "http://www.w3.org/ns/shacl#minCount",
+            "@type": "http://www.w3.org/2001/XMLSchema#integer"
+        },
+        "targetObjectsOf": {
+            "@id": "http://www.w3.org/ns/shacl#targetObjectsOf",
+            "@type": "@id"
+        },
+        "targetClass": {
+            "@id": "http://www.w3.org/ns/shacl#targetClass",
+            "@type": "@id"
+        },
+        "not": {
+            "@id": "http://www.w3.org/ns/shacl#not",
+            "@type": "@id"
+        },
+        "property": {
+            "@id": "http://www.w3.org/ns/shacl#property",
+            "@type": "@id"
+        },
+        "targetSubjectsOf": {
+            "@id": "http://www.w3.org/ns/shacl#targetSubjectsOf",
+            "@type": "@id"
+        },
+        "sec": "https://w3id.org/security#",
+        "as": "https://www.w3.org/ns/activitystreams#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "sh": "http://www.w3.org/ns/shacl#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "did": "https://www.w3.org/ns/did#"
+    },
+    "@graph": [
+        {
+            "@id": "_:ObjectShape",
+            "@type": "sh:NodeShape",
+            "property": [
+                {
+                    "nodeKind": "sh:IRI",
+                    "path": "sec:capabilityDelegationMethod"
+                },
+                {
+                    "nodeKind": "sh:IRI",
+                    "path": "sec:verificationMethod"
+                },
+                {
+                    "nodeKind": "sh:IRI",
+                    "path": "sec:authenticationMethod"
+                },
+                {
+                    "nodeKind": "sh:IRI",
+                    "path": "did:capabilityInvocationMethod"
+                },
+                {
+                    "nodeKind": "sh:IRI",
+                    "path": "as:alsoKnownAs"
+                },
+                {
+                    "path": "sec:controller",
+                    "pattern": "^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+"
+                },
+                {
+                    "nodeKind": "sh:IRI",
+                    "path": "sec:keyAgreementMethod"
+                },
+                {
+                    "nodeKind": "sh:IRI",
+                    "path": "sec:assertionMethod"
+                },
+                {
+                    "nodeKind": "sh:IRI",
+                    "path": "did:service"
+                }
+            ],
+            "targetClass": "did:DIDSubject",
+            "targetSubjectsOf": [
+                "as:alsoKnownAs",
+                "sec:authenticationMethod",
+                "did:service",
+                "sec:capabilityDelegationMethod",
+                "sec:keyAgreementMethod",
+                "sec:verificationMethod",
+                "sec:assertionMethod",
+                "sec:capabilityInvocationMethod"
+            ]
+        },
+        {
+            "@id": "_:VerificationMethodShape",
+            "@type": "sh:NodeShape",
+            "not": {
+                "@id": "_:b5",
+                "@type": "sh:NodeShape",
+                "property": [
+                    {
+                        "sh:minCount": 1,
+                        "path": "sec:publicKeyMultibase"
+                    },
+                    {
+                        "sh:minCount": 1,
+                        "path": "sec:publicKeyJwk"
+                    }
+                ]
+            },
+            "property": [
+                {
+                    "datatype": "rdf:JSON",
+                    "sh:maxCount": 1,
+                    "nodeKind": "sh:Literal",
+                    "path": "sec:publicKeyJwk"
+                },
+                {
+                    "sh:minCount": 1,
+                    "path": "sec:controller",
+                    "pattern": "^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+"
+                },
+                {
+                    "sh:minCount": 1,
+                    "nodeKind": "sh:IRI",
+                    "path": "rdf:type"
+                },
+                {
+                    "datatype": "xsd:string",
+                    "sh:maxCount": 1,
+                    "nodeKind": "sh:Literal",
+                    "path": "sec:publicKeyMultibase"
+                }
+            ],
+            "targetClass": "did:VerificationMethod",
+            "targetObjectsOf": [
+                "sec:capabilityInvocationMethod",
+                "sec:assertionMethod",
+                "sec:keyAgreementMethod",
+                "sec:verificationMethod",
+                "sec:capabilityDelegationMethod",
+                "sec:authenticationMethod"
+            ]
+        },
+        {
+            "@id": "_:ServiceShape",
+            "@type": "sh:NodeShape",
+            "property": [
+                {
+                    "@id": "_:b3",
+                    "sh:minCount": 1,
+                    "nodeKind": "sh:BlankNodeOrIRI",
+                    "path": "did:serviceEndpoint"
+                },
+                {
+                    "@id": "_:b19",
+                    "sh:minCount": 1,
+                    "nodeKind": "sh:IRI",
+                    "path": "rdf:type"
+                }
+            ],
+            "targetClass": "did:ServiceEndpoint",
+            "targetObjectsOf": "did:service"
+        }
+    ]
+}

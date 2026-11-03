@@ -1,0 +1,9 @@
+{
+  "name": "ockam",
+  "status": "registered",
+  "verifiableDataRegistry": "Ockam",
+  "contactName": "Ockam",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/ockam-network/did-method-spec/blob/master/README.md"
+}

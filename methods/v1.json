@@ -1,0 +1,9 @@
+{
+  "name": "v1",
+  "status": "registered",
+  "verifiableDataRegistry": "Veres One DLT",
+  "contactName": "Veres One Maintainer (Digital Bazaar)",
+  "contactEmail": "maintainer@veres.one",
+  "contactWebsite": "https://veres.one/",
+  "specification": "https://w3c-ccg.github.io/did-method-v1/"
+}

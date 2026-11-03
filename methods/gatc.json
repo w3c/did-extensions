@@ -1,0 +1,9 @@
+{
+  "name": "gatc",
+  "status": "registered",
+  "verifiableDataRegistry": "Ethereum, Hyperledger Fabric, Hyperledger Besu, Alastria",
+  "contactName": "Gataca",
+  "contactEmail": "",
+  "contactWebsite": "https://gataca.io/",
+  "specification": "https://github.com/gatacaid/gataca-did-method"
+}

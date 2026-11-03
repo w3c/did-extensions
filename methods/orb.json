@@ -1,0 +1,9 @@
+{
+  "name": "orb",
+  "status": "registered",
+  "verifiableDataRegistry": "Ledger agnostic",
+  "contactName": "Avast",
+  "contactEmail": "troy.ronda@avast.com",
+  "contactWebsite": "https://avast.com/",
+  "specification": "https://trustbloc.github.io/did-method-orb/"
+}

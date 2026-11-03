@@ -1,0 +1,9 @@
+{
+  "name": "phoenix",
+  "status": "registered",
+  "specification": "https://phoenixkey.me/did-method/v1",
+  "contactName": "GreenSun Tech",
+  "contactEmail": "contact@greensun.tech",
+  "contactWebsite": "https://greensun.tech",
+  "verifiableDataRegistry": "Cardano Blockchain"
+}

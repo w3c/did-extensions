@@ -1,0 +1,9 @@
+{
+  "name": "hive",
+  "status": "registered",
+  "verifiableDataRegistry": "Hive Civilization resolver (Base, EVM chain ID 8453)",
+  "contactName": "Steve Rotzin",
+  "contactEmail": "steve@thehiveryiq.com",
+  "contactWebsite": "https://thehiveryiq.com",
+  "specification": "https://thehiveryiq.com/specs/did-hive/v1/"
+}

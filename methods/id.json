@@ -1,0 +1,9 @@
+{
+    "name": "id",
+    "status": "registered",
+    "verifiableDataRegistry": "ID Service",
+    "contactName": "Mastercard",
+    "contactEmail": "",
+    "contactWebsite": "https://idservice.com/en/contactus.html",
+    "specification": "https://github.com/Mastercard/did-methods/blob/master/id.md"
+}
