@@ -1,0 +1,14 @@
+{
+  "name": "cuil",
+  "shortName": "cuil",
+  "specification": "https://firmared.com/did-spec/cuil/v1",
+  "verifiedBy": "FirmaRED Protocol",
+  "implementors": [
+    {
+      "name": "FirmaRED",
+      "url": "https://firmared.com"
+    }
+  ],
+  "universalResolver": "https://github.com/firmared/did-cuil-driver",
+  "contact": "protocol@firmared.com"
+}
