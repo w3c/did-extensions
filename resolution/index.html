@@ -491,6 +491,37 @@ These properties contain information pertaining to the DID resolution response.
       </section>
 
       <section>
+        <h4>INVALID_DID_DOCUMENT</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>URL</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#INVALID_DID_DOCUMENT">DID Resolution</a>
+            </td>
+            <td>
+              <code>https://www.w3.org/ns/did#INVALID_DID_DOCUMENT</code>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of INVALID_DID_DOCUMENT error value">
+{
+  "error": {
+    "type": "https://www.w3.org/ns/did#INVALID_DID_DOCUMENT",
+    "title": "Invalid DID document"
+  }
+}
+        </pre>
+      </section>
+
+      <section>
         <h4>notFound</h4>
         <table class="simple" style="width: 100%;">
           <thead>
@@ -586,6 +617,37 @@ These properties contain information pertaining to the DID resolution response.
       </section>
 
       <section>
+        <h4>INVALID_OPTIONS</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>URL</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#INVALID_OPTIONS">DID Resolution</a>
+            </td>
+            <td>
+              <code>https://www.w3.org/ns/did#INVALID_OPTIONS</code>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of INVALID_OPTIONS error value">
+{
+  "error": {
+    "type": "https://www.w3.org/ns/did#INVALID_OPTIONS",
+    "title": "Invalid options"
+  }
+}
+        </pre>
+      </section>
+
+      <section>
         <h4>internalError</h4>
         <table class="simple" style="width: 100%;">
           <thead>
@@ -615,6 +677,37 @@ These properties contain information pertaining to the DID resolution response.
 }
         </pre>
       </section>
+      <section>
+        <h4>FEATURE_NOT_SUPPORTED</h4>
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>URL</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#FEATURE_NOT_SUPPORTED">DID Resolution</a>
+            </td>
+            <td>
+              <code>https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED</code>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <pre class="example" title="Example of FEATURE_NOT_SUPPORTED error value">
+{
+  "error": {
+    "type": "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED",
+    "title": "Feature not supported"
+  }
+}
+        </pre>
+      </section>
+
       <section>
         <h4>invalidPublicKey</h4>
         <span class="label-deprecated">Deprecated</span>
@@ -963,7 +1056,8 @@ These properties contain information pertaining to the DID dereferencing respons
         <tbody>
           <tr>
             <td>
-              <a href="https://www.w3.org/TR/did-core/#did-url-dereferencing-metadata">DID Core</a>
+              <a href="https://w3c.github.io/did-resolution/#errors">DID Resolution</a>,
+              <a href="https://www.w3.org/TR/2022/REC-did-core-20220719/#did-url-dereferencing-metadata">DID Core v1.0</a>
             </td>
             <td>
             </td>
@@ -973,7 +1067,10 @@ These properties contain information pertaining to the DID dereferencing respons
 
       <pre class="example" title="Example of error metadata property">
 {
-  "error": "notFound"
+  "error": {
+    "type": "https://www.w3.org/ns/did#NOT_FOUND",
+    "title": "Not found"
+  }
 }
       </pre>
       <section>
