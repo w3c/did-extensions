@@ -1,0 +1,9 @@
+{
+  "name": "aroha",
+  "status": "registered",
+  "verifiableDataRegistry": "None required for the E-form and z-form (self-certifying identifiers; E-form keys rotate through a key event log). The named form resolves through an Aroha Registry instance (HTTPS; any party may operate one), with capability manifests content-addressed on IPFS.",
+  "contactName": "Rajagopal Ganesan",
+  "contactEmail": "contact@aroha-labs.com",
+  "contactWebsite": "https://www.aroha-labs.com",
+  "specification": "https://www.aroha-labs.com/spec/did-aroha-method-1.0.html"
+}
