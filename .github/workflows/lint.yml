@@ -1,7 +1,6 @@
 name: Lint DID Methods
 on:
   pull_request:
-    paths: ["methods/**"]
 
 jobs:
   lint-did-extensions:
