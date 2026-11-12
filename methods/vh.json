@@ -1,0 +1,18 @@
+{
+  "name": "vh",
+  "status": "registered",
+  "verifiableDataRegistry": "Storage location agnostic verifiable history log",
+  "contactName": [
+    "Stephen Curran",
+    "Brian Richter",
+    "Dmitri Zagidulin",
+    "Glenn Gore",
+    "Robert Learney"
+  ],
+  "contactEmail": [
+    "swcurran@cloudcompass.ca",
+    "brian@aviary.tech"
+  ],
+  "contactWebsite": "https://didwebvh.info",
+  "specification": "https://identity.foundation/didvh/"
+}
