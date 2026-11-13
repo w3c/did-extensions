@@ -1,0 +1,10 @@
+{
+  "name": "verifiedcar",
+  "status": "proposed",
+  "specification": "https://verifiedcar.com/spec/",
+  "contactName": "Verified Car Authority",
+  "contactEmail": "authority@hardcodedlogic.com",
+  "contactWebsite": "https://verifiedcar.com",
+  "verifiableDataRegistry": "DID Specification",
+  "repository": "https://github.com/thevowtechs-lgtm/Did-verifiedcar"
+}
