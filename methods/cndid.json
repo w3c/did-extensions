@@ -1,0 +1,9 @@
+{
+  "name": "cndid",
+  "status": "registered",
+  "verifiableDataRegistry": "TChain",
+  "contactName": "teleinfo caict",
+  "contactEmail": "blockchain@teleinfo.cn",
+  "contactWebsite": "",
+  "specification": "https://github.com/teleinfo-bif/cndid/blob/main/doc/en/CNDID%20Protocol%20Specification.md"
+}

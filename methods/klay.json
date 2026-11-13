@@ -1,0 +1,9 @@
+{
+  "name": "klay",
+  "status": "registered",
+  "verifiableDataRegistry": "Klaytn",
+  "contactName": "Ontology Foundation",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/ontology-tech/DID-method-specs/blob/master/did-klay/DID-Method-klay.md"
+}

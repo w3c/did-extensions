@@ -1,0 +1,9 @@
+{
+  "name": "btco",
+  "status": "registered",
+  "specification": "https://github.com/ordinalsreserve/did-btco/blob/main/spec.md",
+  "contactName": "Aviary Tech",
+  "contactEmail": "contact@aviary.tech",
+  "contactWebsite": "https://aviary.tech",
+  "verifiableDataRegistry": "BTC"
+}

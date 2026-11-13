@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+DID Core v1.0 Terms
+  </title>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"><!--
+    === NOTA BENE ===
+    For the three scripts below, if your spec resides on dev.w3 you can check them
+    out in the same tree and use relative links so that they"ll work offline.
+   -->
+
+  <script class="remove"
+    src="https://www.w3.org/Tools/respec/respec-w3c">
+  </script><!--script src="./respec-w3c-common.js" class="remove"></script-->
+  <script class="remove" type="text/javascript">
+var respecConfig = {
+  wgPublicList: "public-did-wg",
+  group: "did",
+
+  // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
+  specStatus: "base",
+  edDraftURI: "https://w3c.github.io/did-spec-registries/contexts/did-v1.html",
+
+  github: {
+          repoURL: "https://github.com/w3c/did-spec-registries/",
+          branch: "master"
+  },
+  includePermalinks: false,
+
+  // editors, add as many as you like
+  // only "name" is required
+  editors: [{
+    name: "Orie Steele",
+    url: "https://www.linkedin.com/in/or13b/",
+    company: "Transmute",
+    companyURL: "https://www.transmute.industries/",
+    w3cid: 109171
+  }, {
+    name: "Amy Guy",
+    url: "https://rhiaro.co.uk/",
+    company: "Digital Bazaar",
+    companyURL: "https://digitalbazaar.com/",
+    w3cid: 69000
+  }],
+
+};
+  </script>
+  <style>
+  pre .highlight {
+    font-weight: bold;
+    color: green;
+  }
+  pre .comment {
+    color: SteelBlue;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  </style>
+</head>
+<body>
+  <section id="abstract">
+    <p>
+This document lists the terms used in the DID Core v1.0 data model, and
+provides a namespace so each term has an URI.
+    </p>
+  </section>
+
+  <section id="sotd">
+  </section>
+
+  <section>
+    <h1>
+Introduction
+    </h1>
+    <p>
+The DID Core v1.0 namespace URI is: <code>https://www.w3.org/ns/did#</code>.
+    </p>
+    <p>
+This namespace contains the vocabulary terms used in the DID Core v1.0 data
+model [[DID-CORE]], as well as provides a
+<a href="https://www.w3.org/ns/did/v1.jsonld">JSON-LD Context</a>.
+    </p>
+    <p>
+Terms which are extensions to DID Core v1.0 can be found in the DID
+Specification Registries [[DID-SPEC-REGISTRIES]]. Extensions have their own
+namespaces and JSON-LD Contexts.
+    </p>
+  </section>
+
+  <section>
+    <h1>
+Vocabulary
+    </h1>
+
+    <p>
+Terms are listed here in alphabetical order, and link to their definitions in
+the DID Core v1.0 specification.
+    </p>
+
+    <ul>
+      <li id="alsoKnownAs">
+<a href="https://www.w3.org/TR/did-core/#dfn-alsoknownas">alsoKnownAs</a>
+      </li>
+      <li id="assertionMethod">
+<a href="https://www.w3.org/TR/did-core/#dfn-assertionmethod">assertionMethod</a>
+      </li>
+      <li id="authentication">
+<a href="https://www.w3.org/TR/did-core/#dfn-authentication">authentication</a>
+      </li>
+      <li id="capabilityDelegation">
+<a href="https://www.w3.org/TR/did-core/#dfn-capabilitydelegation">capabilityDelegation</a>
+      </li>
+      <li id="capabilityInvocation">
+<a href="https://www.w3.org/TR/did-core/#dfn-capabilityinvocation">capabilityInvocation</a>
+      </li>
+      <li id="controller">
+<a href="https://www.w3.org/TR/did-core/#dfn-controller">controller</a>
+      </li>
+      <li id="id">
+<a href="https://www.w3.org/TR/did-core/#dfn-id">id</a>
+      </li>
+      <li id="keyAgreement">
+<a href="https://www.w3.org/TR/did-core/#dfn-keyagreement">keyAgreement</a>
+      </li>
+      <li id="publicKeyBase58">
+<a href="https://www.w3.org/TR/did-core/#dfn-publickeybase58">publicKeyBase58</a>
+      </li>
+      <li id="publicKeyJwk">
+<a href="https://www.w3.org/TR/did-core/#dfn-publickeyjwk">publicKeyJwk</a>
+      </li>
+      <li id="service">
+<a href="https://www.w3.org/TR/did-core/#dfn-service">service</a>
+      </li>
+      <li id="serviceEndpoint">
+<a href="https://www.w3.org/TR/did-core/#dfn-service">serviceEndpoint</a>
+      </li>
+      <li id="verificationMethod">
+<a href="https://www.w3.org/TR/did-core/#dfn-verificationmethod">verificationMethod</a>
+      </li>
+    </ul>
+  </section>
+
+</body>
+</html>

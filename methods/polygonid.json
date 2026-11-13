@@ -1,0 +1,9 @@
+{
+  "name": "polygonid",
+  "status": "registered",
+  "verifiableDataRegistry": "EVM compatible chains",
+  "contactName": "ZK ID Labs AG, Privado ID (formerly Polygon ID)",
+  "contactEmail": "",
+  "contactWebsite": "https://www.privado.id/",
+  "specification": "https://github.com/iden3/did-iden3/"
+}

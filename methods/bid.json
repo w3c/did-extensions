@@ -1,0 +1,9 @@
+{
+  "name": "bid",
+  "status": "registered",
+  "verifiableDataRegistry": "bif",
+  "contactName": "teleinfo caict",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/teleinfo-bif/bid/tree/master/doc/en"
+}

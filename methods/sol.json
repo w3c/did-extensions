@@ -1,0 +1,9 @@
+{
+  "name": "sol",
+  "status": "registered",
+  "verifiableDataRegistry": "Solana",
+  "contactName": "Identity.com",
+  "contactEmail": "contact@identity.org",
+  "contactWebsite": "https://identity.com/contact-us",
+  "specification": "https://g.identity.com/sol-did/"
+}

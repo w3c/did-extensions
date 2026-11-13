@@ -1,0 +1,9 @@
+{
+  "name": "julia",
+  "status": "registered",
+  "verifiableDataRegistry": "Chia blockchain (singleton coins)",
+  "contactName": "Ken Griggs",
+  "contactEmail": "ken@julia.social",
+  "contactWebsite": "https://not.bot",
+  "specification": "https://github.com/julia-social/did-julia/blob/v1.0.0/spec/did-julia.md"
+}

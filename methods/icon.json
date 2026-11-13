@@ -1,0 +1,9 @@
+{
+  "name": "icon",
+  "status": "registered",
+  "verifiableDataRegistry": "ICON",
+  "contactName": "ICONLOOP",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/icon-project/icon-DID/blob/master/docs/ICON-DID-method.md"
+}

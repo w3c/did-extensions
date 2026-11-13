@@ -1,0 +1,9 @@
+{
+  "name": "keri",
+  "status": "registered",
+  "verifiableDataRegistry": "Ledger agnostic",
+  "contactName": "Dr. Sam Smith, Charles Cunningham, Phil Feairheller",
+  "contactEmail": "pfeairheller@gmail.com",
+  "contactWebsite": "",
+  "specification": "https://weboftrust.github.io/did-keri/"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "rm",
+  "status": "registered",
+  "specification": "https://github.com/realmatterio/RealMatter-DID-Method",
+  "contactName": "Ming-lam Ng (RealMatter)",
+  "contactEmail": "mn@realmatter.io",
+  "contactWebsite": "realmatter.io",
+  "verifiableDataRegistry": "Real-world Asset Tokenization DID Method"
+}

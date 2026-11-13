@@ -1,0 +1,9 @@
+{
+  "name": "peer",
+  "status": "registered",
+  "verifiableDataRegistry": "peer",
+  "contactName": "Daniel Hardman",
+  "contactEmail": "daniel.hardman@gmail.com",
+  "contactWebsite": "",
+  "specification": "https://identity.foundation/peer-did-method-spec/index.html"
+}

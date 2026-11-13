@@ -1,0 +1,9 @@
+{
+  "name": "jolo",
+  "status": "registered",
+  "verifiableDataRegistry": "Ethereum",
+  "contactName": "Jolocom",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/jolocom/jolo-did-method/blob/master/jolocom-did-method-specification.md"
+}

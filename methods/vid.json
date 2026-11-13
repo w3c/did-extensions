@@ -1,0 +1,9 @@
+{
+  "name": "vid",
+  "status": "registered",
+  "verifiableDataRegistry": "VP",
+  "contactName": "VP Inc.",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/vpayment/did-method-spec/blob/master/vid.md"
+}

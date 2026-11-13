@@ -1,0 +1,9 @@
+{
+  "name": "cn",
+  "status": "registered",
+  "verifiableDataRegistry": "Astron",
+  "contactName": "China Academy of Information and Communications Technology (CAICT)",
+  "contactEmail": "zhangbo3@caict.ac.cn",
+  "contactWebsite": "astron.bitfactory.cn",
+  "specification": "https://github.com/caict-4iot-dev/CN-DID-Method-Specification"
+}
