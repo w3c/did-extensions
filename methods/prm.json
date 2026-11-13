@@ -1,0 +1,9 @@
+{
+  "name": "prm",
+  "status": "registered",
+  "verifiableDataRegistry": "Web (HTTPS origin) - resolved from the OAuth 2.0 Protected Resource Metadata (RFC 9728) the resource server already publishes; no registry or ledger",
+  "contactName": "Su-hyeon Forten Lee",
+  "contactEmail": "shlee1223@raon.com",
+  "contactWebsite": "https://github.com/shlee1223/did-method-prm/issues",
+  "specification": "https://github.com/shlee1223/did-method-prm/blob/main/did-method-prm.md"
+}
