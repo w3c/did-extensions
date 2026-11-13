@@ -1,0 +1,6 @@
+{
+  "name": "zen",
+  "status": "registered",
+  "specification": "https://docs.zenicaid.com/standards/did-zen",
+  "verifiableDataRegistry": "EIP-155 blockchain; ZenicAID claim bridge and associated SBT contract"
+}
