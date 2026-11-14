@@ -1,0 +1,9 @@
+{
+  "name": "vector",
+  "status": "registered",
+  "specification": "https://github.com/Apex-Fusion/agents-marketplace/blob/main/docs/did-vector-method.md",
+  "verifiableDataRegistry": "Vector (Apex Fusion) eUTXO ledger",
+  "contactName": "Apex Fusion Foundation",
+  "contactEmail": "filip.blagojevic@foundation.apexfusion.org",
+  "contactWebsite": "https://apexfusion.org"
+}

@@ -1,9 +1,10 @@
 # .github/workflows/pr-push.yml
 name: Echidna Auto-publish did-extensions-resolution
 on:
+  workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ["resolutions/**"]
+    paths: ["resolution/**"]
 jobs:
   main:
     name: Echidna Auto-publish WD
@@ -12,7 +13,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: w3c/spec-prod@v2
         with:
-          SOURCE: resolutions/index.html
+          SOURCE: resolution/index.html
           TOOLCHAIN: respec
           W3C_ECHIDNA_TOKEN: ${{ secrets.ECHIDNA_TOKEN_RESOLUTION }}
           W3C_WG_DECISION_URL: https://www.w3.org/2024/09/24-did-minutes.html#r02
