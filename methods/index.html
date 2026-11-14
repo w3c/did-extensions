@@ -34,7 +34,7 @@ async function buildDidMethodTables(config) {
     const tableRow = document.createElement('tr');
     const {name, verifiableDataRegistry, contactEmail, contactName,
       contactWebsite, specification} = method;
-    let contactInfo = contactName;
+    let contactInfo = contactName ?? '';
 
     if(Array.isArray(contactName)) {
       contactInfo = contactName.join(', ');
@@ -59,7 +59,7 @@ async function buildDidMethodTables(config) {
     }
     tableRow.innerHTML =
       `<td><a href="${specification}">${name}</a></td>` +
-      `<td>${verifiableDataRegistry}</td>` +
+      `<td>${verifiableDataRegistry ?? ''}</td>` +
       `<td>${contactInfo}</td>`;
     tableBody.appendChild(tableRow);
   }
