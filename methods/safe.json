@@ -1,0 +1,9 @@
+{
+  "name": "safe",
+  "status": "registered",
+  "verifiableDataRegistry": "Safe",
+  "contactName": "Safe Ecosystem Foundation",
+  "contactEmail": "info@safe.global",
+  "contactWebsite": "https://safe.global",
+  "specification": "https://cips.ceramic.network/CIPs/cip-101"
+}

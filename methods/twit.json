@@ -1,0 +1,9 @@
+{
+  "name": "twit",
+  "status": "registered",
+  "verifiableDataRegistry": "Twit",
+  "contactName": "DID Twit GitHub",
+  "contactEmail": "",
+  "contactWebsite": "https://github.com/did-twit/did-twit/blob/master/spec/index.md",
+  "specification": "https://did-twit.github.io/did-twit/"
+}

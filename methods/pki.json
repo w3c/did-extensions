@@ -1,0 +1,9 @@
+{
+  "name": "pki",
+  "status": "registered",
+  "verifiableDataRegistry": "National PKI Trust Registries (X.509)",
+  "contactName": "Eduardo Chongkan",
+  "contactEmail": "open@attestto.com",
+  "contactWebsite": "https://attestto.org",
+  "specification": "https://github.com/Attestto-com/did-pki-spec"
+}

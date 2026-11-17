@@ -1,0 +1,9 @@
+  {
+      "name": "zk",
+      "status": "registered",
+      "verifiableDataRegistry": "Arweave",
+      "contactName": "zCloak Network Research",
+      "contactEmail": "info@zcloak.network",
+      "contactWebsite": "https://zcloak.network/#/",
+      "specification": "https://github.com/zCloak-Network/zk-did-method-specs"
+  }

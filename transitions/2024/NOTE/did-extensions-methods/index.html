@@ -1,0 +1,648 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="generator" content="ReSpec 35.1.2">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+  
+<title>DID Methods</title>
+  
+
+  
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+  
+     
+  
+<style>
+
+    .label-legend dd{
+      margin-top: 8px;
+    }
+  .label-deprecated {
+    font-weight: bold;
+    background: #ef9a9a;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  .label-no-contact-info {
+    font-weight: bold;
+    background: #ffe082;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  pre .highlight {
+    font-weight: bold;
+    color: green;
+  }
+  pre .comment {
+    color: SteelBlue;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+</style>
+
+<meta name="color-scheme" content="light">
+<meta name="description" content="This document serves as a collection of known DID Methods.">
+<link rel="canonical" href="https://www.w3.org/TR/did-extensions-methods/">
+<style>
+var{position:relative;cursor:pointer}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#222}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "wgPublicList": "public-did-wg",
+  "group": "did",
+  "specStatus": "NOTE",
+  "shortName": "did-extensions-methods",
+  "edDraftURI": "https://w3c.github.io/did-extensions/methods/",
+  "subtitle": "Known DID Methods in the Decentralized Identifier Ecosystem",
+  "publishDate": "2024-11-19",
+  "github": {
+    "repoURL": "https://github.com/w3c/did-extensions/",
+    "branch": "main"
+  },
+  "includePermalinks": false,
+  "editors": [
+    {
+      "name": "Manu Sporny",
+      "url": "https://www.linkedin.com/in/manusporny/",
+      "company": "Digital Bazaar",
+      "companyURL": "https://digitalbazaar.com/",
+      "w3cid": 41758,
+      "note": "2017-present"
+    },
+    {
+      "name": "Markus Sabadello",
+      "url": "https://www.linkedin.com/in/markus-sabadello-353a0821",
+      "company": "Danube Tech",
+      "companyURL": "https://danubetech.com/",
+      "w3cid": 46729,
+      "note": "2020-present"
+    }
+  ],
+  "formerEditors": [
+    {
+      "name": "Orie Steele",
+      "url": "https://www.linkedin.com/in/or13b/",
+      "company": "Transmute",
+      "companyURL": "https://www.transmute.industries/",
+      "w3cid": 109171,
+      "note": "2020-2022"
+    },
+    {
+      "name": "Amy Guy",
+      "url": "https://rhiaro.co.uk/",
+      "company": "Digital Bazaar",
+      "companyURL": "https://digitalbazaar.com/",
+      "w3cid": 69000,
+      "note": "2020-2022"
+    },
+    {
+      "name": "Ivan Herman",
+      "url": "https://www.w3.org/People/Ivan/",
+      "company": "W3C",
+      "companyURL": "https://www.w3.org",
+      "note": "2020-2022",
+      "w3cid": 7382,
+      "orcid": "https://orcid.org/0000-0003-0782-2704"
+    }
+  ],
+  "authors": [
+    {
+      "name": "The Decentralized Identifier Working Group",
+      "url": "https://www.w3.org/groups/wg/did/",
+      "company": "W3C",
+      "companyURL": "https://www.w3.org/"
+    }
+  ],
+  "otherLinks": [
+    {
+      "key": "Related Documents",
+      "data": [
+        {
+          "value": "DID Core",
+          "href": "https://www.w3.org/TR/did-core/"
+        },
+        {
+          "value": "DID Core Implementation Report",
+          "href": "https://w3c.github.io/did-test-suite/"
+        },
+        {
+          "value": "DID Use Cases and Requirements",
+          "href": "https://www.w3.org/TR/did-use-cases/"
+        }
+      ]
+    }
+  ],
+  "postProcess": [
+    null
+  ],
+  "localBiblio": {
+    "DID-EXTENSIONS": {
+      "title": "Decentralized Identifier Extensions",
+      "href": "https://www.w3.org/TR/did-extensions/",
+      "authors": [
+        "Manu Sporny"
+      ],
+      "status": "NOTE",
+      "publisher": "Decentralized Identifier Working Group",
+      "id": "did-extensions"
+    }
+  },
+  "publishISODate": "2024-11-19T00:00:00.000Z",
+  "generatedSubtitle": "W3C Group Note 19 November 2024"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-NOTE"></head>
+<body class="h-entry"><div class="head">
+    <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
+  </a></p>
+    <h1 id="title" class="title">DID Methods</h1> <h2 id="subtitle" class="subtitle">Known DID Methods in the Decentralized Identifier Ecosystem</h2>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#NOTE">W3C Group Note</a> <time class="dt-published" datetime="2024-11-19">19 November 2024</time></p>
+    <details open="">
+      <summary>More details about this document</summary>
+      <dl>
+        <dt>This version:</dt><dd>
+                <a class="u-url" href="https://www.w3.org/TR/2024/NOTE-did-extensions-methods-20241119/">https://www.w3.org/TR/2024/NOTE-did-extensions-methods-20241119/</a>
+              </dd>
+        <dt>Latest published version:</dt><dd>
+                <a href="https://www.w3.org/TR/did-extensions-methods/">https://www.w3.org/TR/did-extensions-methods/</a>
+              </dd>
+        <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/did-extensions/methods/">https://w3c.github.io/did-extensions/methods/</a></dd>
+        <dt>History:</dt><dd>
+                    <a href="https://www.w3.org/standards/history/did-extensions-methods/">https://www.w3.org/standards/history/did-extensions-methods/</a>
+                  </dd><dd>
+                    <a href="https://github.com/w3c/did-extensions/commits/main">Commit history</a>
+                  </dd>
+        
+        
+        
+        
+        
+        <dt>Editors:</dt><dd class="editor p-author h-card vcard" data-editor-id="41758">
+    <a class="u-url url p-name fn" href="https://www.linkedin.com/in/manusporny/">Manu Sporny</a> (<a class="p-org org h-org" href="https://digitalbazaar.com/">Digital Bazaar</a>) (2017-present)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="46729">
+    <a class="u-url url p-name fn" href="https://www.linkedin.com/in/markus-sabadello-353a0821">Markus Sabadello</a> (<a class="p-org org h-org" href="https://danubetech.com/">Danube Tech</a>) (2020-present)
+  </dd>
+        <dt>
+                Former editors:
+              </dt><dd class="editor p-author h-card vcard" data-editor-id="109171">
+    <a class="u-url url p-name fn" href="https://www.linkedin.com/in/or13b/">Orie Steele</a> (<a class="p-org org h-org" href="https://www.transmute.industries/">Transmute</a>) (2020-2022)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="69000">
+    <a class="u-url url p-name fn" href="https://rhiaro.co.uk/">Amy Guy</a> (<a class="p-org org h-org" href="https://digitalbazaar.com/">Digital Bazaar</a>) (2020-2022)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="7382">
+    <a class="u-url url p-name fn" href="https://www.w3.org/People/Ivan/">Ivan Herman</a><a class="p-name orcid" href="https://orcid.org/0000-0003-0782-2704"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <style>
+
+      .st1 {
+        fill: #fff;
+      }
+    
+</style>
+    <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z" fill="#a6ce39"></path>
+    <path class="st1" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"></path>
+  </svg></a> (<a class="p-org org h-org" href="https://www.w3.org">W3C</a>) (2020-2022)
+  </dd>
+        <dt>Author:</dt><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://www.w3.org/groups/wg/did/">The Decentralized Identifier Working Group</a> (<a class="p-org org h-org" href="https://www.w3.org/">W3C</a>)
+  </dd>
+        <dt>Feedback:</dt><dd>
+        <a href="https://github.com/w3c/did-extensions/">GitHub w3c/did-extensions</a>
+        (<a href="https://github.com/w3c/did-extensions/pulls/">pull requests</a>,
+        <a href="https://github.com/w3c/did-extensions/issues/new/choose">new issue</a>,
+        <a href="https://github.com/w3c/did-extensions/issues/">open issues</a>)
+      </dd><dd><a href="mailto:public-did-wg@w3.org?subject=%5Bdid-extensions-methods%5D%20YOUR%20TOPIC%20HERE">public-did-wg@w3.org</a> with subject line <kbd>[did-extensions-methods] <em>… message topic …</em></kbd> (<a rel="discussion" href="https://lists.w3.org/Archives/Public/public-did-wg">archives</a>)</dd>
+        
+        <dt>Related Documents</dt><dd>
+    <a href="https://www.w3.org/TR/did-core/">DID Core</a>
+  </dd><dd>
+    <a href="https://w3c.github.io/did-test-suite/">DID Core Implementation Report</a>
+  </dd><dd>
+    <a href="https://www.w3.org/TR/did-use-cases/">DID Use Cases and Requirements</a>
+  </dd>
+      </dl>
+    </details>
+    
+    
+    <p class="copyright">
+    <a href="https://www.w3.org/policies/#copyright">Copyright</a>
+    ©
+    2024
+    
+    <a href="https://www.w3.org/">World Wide Web Consortium</a>.
+    <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup>
+    <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>,
+    <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and
+    <a rel="license" href="https://www.w3.org/copyright/software-license-2023/" title="W3C Software and Document Notice and License">permissive document license</a> rules apply.
+  </p>
+    <hr title="Separator for header">
+  </div>
+  <section id="abstract" class="introductory"><h2>Abstract</h2>
+    <p>
+This document serves as a collection of known DID Methods.
+    </p>
+  </section>
+
+  <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this
+      document at the time of its publication. A list of current <abbr title="World Wide Web Consortium">W3C</abbr>
+      publications and the latest revision of this technical report can be found
+      in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
+      https://www.w3.org/TR/.</em></p>
+
+    <p>
+Comments regarding this document are welcome. Please file issues
+directly on
+<a href="https://github.com/w3c/did-extensions/issues/">GitHub</a>,
+or send them
+to <a href="mailto:public-did-wg@w3.org">public-did-wg@w3.org</a> (
+<a href="mailto:public-did-wg-request@w3.org?subject=subscribe">subscribe</a>,
+<a href="https://lists.w3.org/Archives/Public/public-did-wg/">archives</a>).
+    </p>
+
+    <p>
+Portions of the work on this specification have been funded by the
+United States Department of Homeland Security's Science and Technology
+Directorate under contracts HSHQDC-16-R00012-H-SB2016-1-002, 70RSAT20T00000010,
+and HSHQDC-17-C-00019. The content of this specification does not
+necessarily reflect the position or the policy of the U.S. Government
+and no official endorsement should be inferred.
+    </p>
+
+    <p>
+Work on this registry has also been supported by the Rebooting the
+Web of Trust community facilitated by Christopher Allen, Shannon
+Appelcline, Kiara Robles, Brian Weller, Betty Dhamers, Kaliya Young,
+Kim Hamilton Duffy, Manu Sporny, Drummond Reed, Joe Andrieu, and
+Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
+    </p>
+  <p>
+    This document was published by the <a href="https://www.w3.org/groups/wg/did">Decentralized Identifier Working Group</a> as
+    a Group Note using the
+        <a href="https://www.w3.org/policies/process/20231103/#recs-and-notes">Note track</a>. 
+  </p><p>This Group Note is endorsed by
+        the <a href="https://www.w3.org/groups/wg/did">Decentralized Identifier Working Group</a>, but is not endorsed by
+        <abbr title="World Wide Web Consortium">W3C</abbr> itself nor its
+        Members. </p><p>
+    This is a draft document and may be updated, replaced or obsoleted by other
+    documents at any time. It is inappropriate to cite this document as other
+    than work in progress.
+    
+  </p><p data-deliverer="117488">
+    
+        The
+        <a href="https://www.w3.org/policies/patent-policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent
+          Policy</a>
+        does not carry any licensing requirements or commitments on this
+        document.
+      
+    
+  </p><p>
+                      This document is governed by the
+                      <a id="w3c_process_revision" href="https://www.w3.org/policies/process/20231103/">03 November 2023 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                    </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#the-registration-process"><bdi class="secno">1.1 </bdi>The Registration Process</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1.2 </bdi>Conformance</a></li></ol></li><li class="tocline"><a class="tocxref" href="#did-methods"><bdi class="secno">2. </bdi>DID Methods</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
+
+  <section class="informative" id="introduction"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#introduction" aria-label="Permalink for Section 1."></a></div><p><em>This section is non-normative.</em></p>
+    
+
+    <p>
+This document serves as a collection of known DID Methods.
+    </p>
+
+    <section id="the-registration-process"><div class="header-wrapper"><h3 id="x1-1-the-registration-process"><bdi class="secno">1.1 </bdi>The Registration Process</h3><a class="self-link" href="#the-registration-process" aria-label="Permalink for Section 1.1"></a></div>
+      
+      <p>
+The registration process is described in the <cite><a data-matched-text="[[[DID-EXTENSIONS]]]" href="https://www.w3.org/TR/did-extensions/">Decentralized Identifier Extensions</a></cite>.
+      </p>
+    </section>
+
+    <section id="conformance"><div class="header-wrapper"><h3 id="x1-2-conformance"><bdi class="secno">1.2 </bdi>Conformance</h3><a class="self-link" href="#conformance" aria-label="Permalink for Section 1.2"></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p></section>
+
+  </section>
+
+  <section id="did-methods"><div class="header-wrapper"><h2 id="x2-did-methods"><bdi class="secno">2. </bdi>DID Methods</h2><a class="self-link" href="#did-methods" aria-label="Permalink for Section 2."></a></div>
+    
+
+    <p>
+This table summarizes the DID method specifications currently in development.
+The links will be updated as subsequent Implementer’s Drafts are produced.
+This registry does not act as an endorsement of any particular DID method or its
+underlying technologies by the <abbr title="World Wide Web Consortium">W3C</abbr>, the <abbr title="World Wide Web Consortium">W3C</abbr> Decentralized Identifier Working Group,
+or any affiliated members of the <abbr title="World Wide Web Consortium">W3C</abbr>. It exists as a mechanism for developers to
+discover various DID methods that they might wish to implement.
+    </p>
+    <p>
+The normative requirements for DID method specifications can be found in
+<a href="https://www.w3.org/TR/did-core/#methods">Decentralized Identifiers
+v1.0: Methods</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-did-core" title="Decentralized Identifiers (DIDs) v1.0">DID-CORE</a></cite>]. DID methods that do not meet these requirements
+will not be accepted. We encourage DID method authors to provide an email
+address in the Author Links column, as this helps with maintenance.
+If an email address is omitted, a label noting that there is no
+contact information for the author will be applied to the registry entry.
+    </p>
+
+    <table id="did-method-table" class="simple"><thead><tr><th>DID&nbsp;Method</th><th>Registry</th><th>Contact</th></tr></thead><tbody><tr><td><a href="https://cips.ceramic.network/CIPs/cip-79">3</a></td><td>Ceramic Network</td><td>3Box Labs (<a href="mailto:devs@3box.io">email</a>) (<a href="https://3boxlabs.com/">website</a>)</td></tr><tr><td><a href="https://arcblock.github.io/abt-did-spec/">abt</a></td><td>ABT Network</td><td>ArcBlock</td></tr><tr><td><a href="https://github.com/aergoio/aergo-identity/blob/master/doc/did-method-spec.md">aergo</a></td><td><a href="https://www.aergo.io/">Aergo</a></td><td>Blocko (<a href="https://www.blocko.io/">website</a>)</td></tr><tr><td><a href="https://github.com/alastria/alastria-identity/wiki/Alastria-DID-Method-Specification-(Quorum-version)">ala</a></td><td>Alastria</td><td>Alastria National Blockchain Ecosystem</td></tr><tr><td><a href="https://github.com/amolabs/docs/blob/master/amo-did.md">amo</a></td><td>AMO blockchain mainnet</td><td>AMO Labs (<a href="https://amo.foundation">website</a>)</td></tr><tr><td><a href="https://github.com/Tonomy-Foundation/antelope-did-spec">antelope</a></td><td>Antelope</td><td>Tonomy Foundation (<a href="https://tonomy.foundation">website</a>)</td></tr><tr><td><a href="https://github.com/ArtracID/ArtracID-DID-ART-Method">art</a></td><td>Artwork ID Method</td><td>Daniel Chun (<a href="mailto:did_inquiry@artgrouplimited.com">email</a>) (<a href="www.artracx.com">website</a>)</td></tr><tr><td><a href="https://github.com/KILTprotocol/specifications/blob/main/docs/did/asset-did-spec.md">asset</a></td><td>Ledger-independent generative DID method based on CAIP-19 identifiers</td><td>BOTLabs GmbH (<a href="mailto:devs@kilt.io">email</a>) (<a href="https://www.kilt.io/">website</a>)</td></tr><tr><td><a href="https://github.com/blobaa/bba-did-method-specification/blob/master/docs/markdown/spec.md">bba</a></td><td>Ardor</td><td>Attila Aldemir (<a href="mailto:attila.aldemir@atz3n.dev">email</a>)</td></tr><tr><td><a href="https://github.com/mesur-io/did-method-bee">bee</a></td><td>Ledger agnostic</td><td>mesur.io (<a href="mailto:mprorock@mesur.io">email</a>) (<a href="https://mesur.io.io/">website</a>)</td></tr><tr><td><a href="https://github.com/teleinfo-bif/bid/tree/master/doc/en">bid</a></td><td>bif</td><td>teleinfo caict</td></tr><tr><td><a href="https://github.com/dotbitHQ/did-bit-spec">bit</a></td><td>d.id</td><td>d.id (<a href="mailto:support@d.id">email</a>) (<a href="https://d.id">website</a>)</td></tr><tr><td><a href="https://github.com/mwherman2000/TrustedDigitalWeb/blob/master/specifications/did-methods/did-bluetoqueagent-1-0-0.md">bluetoqueagent</a></td><td>Trusted Digital Web</td><td>Hyperonomy Digital Identity Lab, Parallelspace Corporation (<a href="mailto:mwherman@parallelspace.net">email</a>) (<a href="http://hyperonomy.com">website</a>)</td></tr><tr><td><a href="https://github.com/mwherman2000/TrustedDigitalWeb/blob/master/specifications/did-methods/did-bluetoquedeed-1-0-0.md">bluetoquedeed</a></td><td>Trusted Digital Web</td><td>Hyperonomy Digital Identity Lab, Parallelspace Corporation (<a href="mailto:mwherman@parallelspace.net">email</a>) (<a href="http://hyperonomy.com">website</a>)</td></tr><tr><td><a href="https://github.com/mwherman2000/TrustedDigitalWeb/blob/master/specifications/did-methods/did-bluetoquenfe-1-0-0.md">bluetoquenfe</a></td><td>Trusted Digital Web</td><td>Hyperonomy Digital Identity Lab, Parallelspace Corporation (<a href="mailto:mwherman@parallelspace.net">email</a>) (<a href="http://hyperonomy.com">website</a>)</td></tr><tr><td><a href="https://github.com/mwherman2000/TrustedDigitalWeb/blob/master/specifications/did-methods/did-bluetoqueprocess-1-0-0.md">bluetoqueproc</a></td><td>Trusted Digital Web</td><td>Hyperonomy Digital Identity Lab, Parallelspace Corporation (<a href="mailto:mwherman@parallelspace.net">email</a>) (<a href="http://hyperonomy.com">website</a>)</td></tr><tr><td><a href="https://github.com/ontology-tech/DID-method-specs/blob/master/did-bnb/DID-Method-bnb.md">bnb</a></td><td>Binance Smart Chain</td><td>Ontology Foundation</td></tr><tr><td><a href="https://github.com/bryk-io/did-method/blob/master/README.md">bryk</a></td><td>bryk</td><td>Marcos Allende, Sandra Murcia, Flavia Munhoso, Ruben Cessa</td></tr><tr><td><a href="https://github.com/nchain-research/nChain-Identity-bsvdid-method">bsv</a></td><td>BSV</td><td>Thomas Moretti (<a href="mailto:t.moretti@nchain.com">email</a>) (<a href="https://www.nchain.com/">website</a>)</td></tr><tr><td><a href="https://github.com/ordinalsreserve/did-btco/blob/main/spec.md">btco</a></td><td>BTC</td><td>Aviary Tech (<a href="mailto:contact@aviary.tech">email</a>) (<a href="https://aviary.tech">website</a>)</td></tr><tr><td><a href="https://w3c-ccg.github.io/didm-btcr">btcr</a></td><td>Bitcoin</td><td>Christopher Allen, Ryan Grant, Kim Hamilton Duffy</td></tr><tr><td><a href="https://github.com/ericlin716/did-spec/blob/main/candid-did-method-spec.md">candid</a></td><td>Quorum</td><td>Eric Lin (<a href="mailto:ericlin@cathayholdings.com.tw">email</a>) (<a href="https://www.linkedin.com/in/eric-lin-875b42b0/">website</a>)</td></tr><tr><td><a href="https://proposals.concordium.software/ID/concordium-did.html">ccd</a></td><td>Concordium</td><td>Concordium development team (<a href="mailto:developers@concordium.com">email</a>) (<a href="https://concordium.com">website</a>)</td></tr><tr><td><a href="https://github.com/microsoft/did-ccf/blob/main/DID_CCF.md">ccf</a></td><td>Confidential Consortium Framework (CCF)</td><td>Microsoft (<a href="mailto:ccf-did@microsoft.com">email</a>) (<a href="https://ccf.dev">website</a>)</td></tr><tr><td><a href="https://did.baidu.com/did-spec/">ccp</a></td><td>Quorum</td><td>Baidu, Inc.</td></tr><tr><td><a href="https://github.com/ontology-tech/DID-method-specs/blob/master/did-celo/DID-Method-celo.md">celo</a></td><td>Celo</td><td>Ontology Foundation</td></tr><tr><td><a href="https://docs.cheqd.io/identity/architecture/adr-list/adr-001-cheqd-did-method">cheqd</a></td><td>cheqd</td><td>CHEQD FOUNDATION LIMITED (<a href="mailto:contact@cheqd.io">email</a>) (<a href="https://cheqd.io">website</a>)</td></tr><tr><td><a href="https://github.com/commercionetwork/Commercio.network-DID-Method-Specification/">com</a></td><td>commercio.network</td><td>Commercio Consortium</td></tr><tr><td><a href="https://github.com/KataruInc/did-content-spec">content</a></td><td></td><td>Mizuki Sonoko (<a href="mailto:sonoko@mizuki.io">email</a>) (<a href="https://mizuki.io">website</a>)</td></tr><tr><td><a href="https://htmlpreview.github.io/?https://github.com/persistentsystems/corda-did-method/blob/master/corda_did_method.html">corda</a></td><td>Corda</td><td>Nitesh Solanki,Moritz Platt,Pranav Kirtani</td></tr><tr><td><a href="https://github.com/EarthProgram/did-cosmos">cosmos</a></td><td>Cosmos application chains</td><td>Shaun Conway (<a href="mailto:earthprogram@ixo.world">email</a>) (<a href="https://www.ixo.world/">website</a>)</td></tr><tr><td><a href="https://github.com/ComputingOfThings/dids#readme">cot</a></td><td>CoTChain</td><td>CoTNetwork, Inc. (<a href="https://www.cotnetwork.com">website</a>)</td></tr><tr><td><a href="https://github.com/SelfSovereignDrm/core/blob/main/README.md">cr</a></td><td>Hyperledger Fabric</td><td> (<a href="mailto:ssdrm@digicaps.com">email</a>)</td></tr><tr><td><a href="https://github.com/blueroominnovation/did-ct-spec">ct</a></td><td>Circular Trust</td><td> (<a href="mailto:sysadmin@blueroominnovation.com">email</a>) (<a href="https://circulartrust.eu/">website</a>)</td></tr><tr><td><a href="https://github.com/617640999/ctid-did-register/blob/main/anicert-ctid-did-en.md">ctid</a></td><td></td><td>Beijing Zhongdun Anxin Science and Technology Development Co., Ltd (<a href="mailto:liwending@anicert.cn">email</a>) (<a href="https://www.anicert.cn/">website</a>)</td></tr><tr><td><a href="https://did-dht.com/">dht</a></td><td>Mainline DHT</td><td>TBD (<a href="https://www.tbd.website">website</a>)</td></tr><tr><td><a href="https://did-did.spruceid.com">did</a></td><td>Decentralized Identifiers</td><td>Spruce Systems, Inc. (<a href="https://spruceid.com">website</a>)</td></tr><tr><td><a href="https://danubetech.github.io/did-method-dns/">dns</a></td><td>Domain Name System (DNS)</td><td>Danube Tech (<a href="mailto:markus@danubetech.com">email</a>) (<a href="https://danubetech.com">website</a>)</td></tr><tr><td><a href="https://github.com/docknetwork/dock-did-driver/blob/master/Dock%20DID%20method%20specification.md">dock</a></td><td>Dock</td><td>Dock.io (<a href="https://www.dock.io">website</a>)</td></tr><tr><td><a href="">dom</a></td><td>Ethereum</td><td>Dominode</td></tr><tr><td><a href="https://github.com/dotbithq/dotbit-did-spec">dotbit</a></td><td>d.id</td><td>d.id (<a href="mailto:support@did.id">email</a>) (<a href="https://d.id">website</a>)</td></tr><tr><td><a href="https://github.com/dsrvlabs/did_method/blob/main/DID-Method-DSRV.md">dsrv</a></td><td></td><td>dsrv (<a href="mailto:did@dsrvlabs.com">email</a>) (<a href="https://welldonestake.io/">website</a>)</td></tr><tr><td><a href="https://github.com/Smart-ID-Card/Dual-DID/blob/main/docs/dual-did-method.md">dual</a></td><td>Ethereum</td><td>Smart ID Card Alliance</td></tr><tr><td><a href="https://github.com/Data-Alliance/did-dxd/blob/master/README.md">dxd</a></td><td>fabric.data-alliace.com</td><td>Data Alliance Co., Ltd. (<a href="mailto:blockchain@data-alliance.com">email</a>) (<a href="https://www.data-alliance.com/">website</a>)</td></tr><tr><td><a href="https://dyne.github.io/W3C-DID">dyne</a></td><td>Dyne.org Foundation</td><td>Andrea D'Intino (<a href="mailto:info@dyne.org">email</a>) (<a href="https://dyne.org">website</a>)</td></tr><tr><td><a href="https://github.com/echoprotocol/uni-resolver-driver-did-echo/blob/master/echo_did_specifications.md">echo</a></td><td>Echo</td><td>Echo Technological Solutions LLC</td></tr><tr><td><a href="https://github.com/elastos/Elastos.DID.Method/blob/master/DID/Elastos-DID-Method-Specification_en.md">elastos</a></td><td>Elastos ID Sidechain</td><td>Elastos Foundation</td></tr><tr><td><a href="https://github.com/decentralized-identity/element/blob/master/docs/did-method-spec/spec.md">elem</a></td><td>Element DID</td><td>Transmute</td></tr><tr><td><a href="https://github.com/Halialabs/did-spec/blob/gh-pages/readme.md">emtrust</a></td><td>Hyperledger Fabric</td><td>Halialabs Pte Ltd.</td></tr><tr><td><a href="https://github.com/veramolabs/did-ens-spec">ens</a></td><td>Ethereum</td><td>ConsenSys MESH (<a href="mailto:oliver.terbu@mesh.xyz">email</a>) (<a href="https://mesh.xyz">website</a>)</td></tr><tr><td><a href="https://github.com/Gimly-Blockchain/eosio-did-spec">eosio</a></td><td>EOSIO</td><td>Gimly Blockchain (<a href="https://gimly.io">website</a>)</td></tr><tr><td><a href="https://gitlab.com/eratosthenes-h2020/erat-did-spec">erat</a></td><td>DID Specification</td><td>ERATOSTHENES project (<a href="mailto:harris.niavis@inlecomsystems.com">email</a>) (<a href="https://eratosthenes-project.eu/">website</a>)</td></tr><tr><td><a href="https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-spring2018/blob/master/topics-and-advance-readings/DID-Method-erc725.md">erc725</a></td><td>Ethereum</td><td>Markus Sabadello, Fabian Vogelsteller, Peter Kolarov (<a href="mailto:markus@danubetech.com">email</a>)</td></tr><tr><td><a href="https://github.com/ontology-tech/DID-method-specs/blob/master/did-etho/DID-Method-etho.md">etho</a></td><td>Ethereum</td><td>Ontology Foundation</td></tr><tr><td><a href="https://github.com/decentralized-identity/ethr-did-resolver/blob/master/doc/did-method-spec.md">ethr</a></td><td>Ethereum</td><td>uPort</td></tr><tr><td><a href="https://github.com/KayTrust/did-method-ev">ev</a></td><td>Any Ethereum or EVM-compatible ledger</td><td>David Ammouial (NTT DATA) (<a href="mailto:david.ammouial@nttdata.com">email</a>) (<a href="https://kaytrust.id/">website</a>)</td></tr><tr><td><a href="https://github.com/evannetwork/evan.network-DID-method-specification/blob/master/evan_did_method_spec.md">evan</a></td><td>evan.network</td><td>evan GmbH</td></tr><tr><td><a href="https://git.defispace.com/ssi-4/everscale-did-registry/-/blob/master/docs/documentation.md">everscale</a></td><td>Everscale blockchain</td><td>Dmitry V. Samorodkin (<a href="mailto:ds@radianceteam.com">email</a>) (<a href="https://www.radianceteam.com/">website</a>)</td></tr><tr><td><a href="https://www.w3.org/TR/did-core/">example</a></td><td>DID Specification</td><td>W3C DID Working Group</td></tr><tr><td><a href="https://github.com/factom-protocol/FIS/blob/master/FIS/DID.md">factom</a></td><td>Factom</td><td>Sphereon, Factomatic, Factom Inc</td></tr><tr><td><a href="https://github.com/fairxio/protocol/tree/main/did">fairx</a></td><td>FairX Node</td><td>Michael Dowling (<a href="mailto:mdowling@gmail.com">email</a>) (<a href="https://github.com/fairxio/">website</a>)</td></tr><tr><td><a href="https://github.com/netease-chain/Future-DID-Method-Specification/blob/main/README.md">future</a></td><td>Netease Chain</td><td>Netease Blockchain Team</td></tr><tr><td><a href="https://github.com/gatacaid/gataca-did-method">gatc</a></td><td>Ethereum, Hyperledger Fabric, Hyperledger Besu, Alastria</td><td>Gataca (<a href="https://gataca.io/">website</a>)</td></tr><tr><td><a href="https://lsd.gnunet.org/lsd0005/">gns</a></td><td>GNU Name System</td><td>GNUnet (<a href="mailto:gnunet-developers@gnu.org">email</a>) (<a href="https://gnunet.org">website</a>)</td></tr><tr><td><a href="https://github.com/GrgChain/DID-method-specs/blob/master/README.md">grg</a></td><td>GrgChain</td><td>GRGBanking Blockchain Express Co. Ltd.</td></tr><tr><td><a href="https://github.com/EG-easy/grano-did/blob/main/did-method-specification.md">grn</a></td><td>Any CosmWasm-compatible ledger</td><td>EG-easy</td></tr><tr><td><a href="https://github.com/GreatWall-Blockchain/GWDID-Method-Specification/blob/main/README.md">gwm</a></td><td>Great Wall Chain</td><td>Great Wall Motor Company Limited</td></tr><tr><td><a href="https://github.com/didhealth/health-did-resolver/blob/main/doc/did-method-spec.md">health</a></td><td>DID Health</td><td>support (<a href="mailto:support@did.healthcare">email</a>) (<a href="https://www.did.healthcare/">website</a>)</td></tr><tr><td><a href="https://github.com/hashgraph/did-method/blob/master/did-method-specification.md">hedera</a></td><td>Hedera Hashgraph</td><td>Hedera Hashgraph, Swisscom Blockchain AG</td></tr><tr><td><a href="https://github.com/hypersign-protocol/HIPs/blob/main/HIPs/hip-10.md">hid</a></td><td>Hypersign Blockchain Network</td><td>Hypermine Limited (<a href="mailto:connect@hypermine.in">email</a>) (<a href="https://hypersign.id/">website</a>)</td></tr><tr><td><a href="https://github.com/WebOfTrustInfo/rwot9-prague/blob/master/draft-documents/did:hc-method.md">holo</a></td><td>Holochain</td><td>Holo.Host</td></tr><tr><td><a href="https://github.com/IBM/hpass/blob/main/doc/did-spec.md">hpass</a></td><td>Hyperledger Fabric</td><td>IBM</td></tr><tr><td><a href="https://github.com/hippocrat-protocol/hpo-did-method-spec/blob/main/HPO-DID-method-spec.md">hpo</a></td><td></td><td>Hippocrat DAO</td></tr><tr><td><a href="https://github.com/hashkeydid/hashkeydid-w3c-specification/blob/master/did-specfication/hsk-method.md">hsk</a></td><td>PlatON</td><td>HashKey DID (<a href="mailto:info@hashkey.id">email</a>)</td></tr><tr><td><a href="https://github.com/IAMXID/did-method-iamx/blob/main/IAMX_DID_method.md">iamx</a></td><td>undefined</td><td>IAMX AG, 6300 Zug, Switzerland (<a href="mailto:contact@iamx.id">email</a>) (<a href="https://iamx.id/">website</a>)</td></tr><tr><td><a href="https://wiki.digitalcredentials.ibm.com/#/spec/v1/did-method">ibmdc</a></td><td>Hyperledger Fabric</td><td>IBM Digital Credentials (<a href="mailto:digitalcredentials@ibm.com">email</a>) (<a href="https://www.ibm.com/blockchain/identity">website</a>)</td></tr><tr><td><a href="https://github.com/icon-project/icon-DID/blob/master/docs/ICON-DID-method.md">icon</a></td><td>ICON</td><td>ICONLOOP</td></tr><tr><td><a href="https://github.com/Mastercard/did-methods/blob/master/id.md">id</a></td><td>ID Service</td><td>Mastercard (<a href="https://idservice.com/en/contactus.html">website</a>)</td></tr><tr><td><a href="https://github.com/0xPolygonID/did-polygonid">iden3</a></td><td>EVM compatible chains</td><td>ZK ID Labs AG, Polygon ID (<a href="https://www.polygonid.com/">website</a>)</td></tr><tr><td><a href="https://github.com/InspurIndustrialInternet/iid/blob/main/doc/en/InspurChain_DID_protocol_Specification.md">iid</a></td><td>Inspur Chain</td><td>zoe Yian (<a href="mailto:ranyueranyue@outlook.com">email</a>)</td></tr><tr><td><a href="https://hyperledger.github.io/indy-did-method/">indy</a></td><td>Any Hyperledger Indy Ledger</td><td>Stephen Curran (<a href="mailto:swcurran@cloudcompass.ca">email</a>)</td></tr><tr><td><a href="https://github.com/InfraBlockchain/infra-did-method-specs/blob/main/docs/Infra-DID-method-spec.md">infra</a></td><td><a href="https://infrablockchain.com">InfraBlockchain</a></td><td>Blockchain Labs</td></tr><tr><td><a href="https://github.com/iotexproject/iotex-did/blob/master/README.md">io</a></td><td>IoTeX</td><td>IoTeX Foundation</td></tr><tr><td><a href="https://github.com/decentralized-identity/ion-did-method">ion</a></td><td>Bitcoin</td><td>Various DIF contributors</td></tr><tr><td><a href="https://wiki.iota.org/identity.rs/specs/did/iota_did_method_spec">iota</a></td><td>IOTA</td><td>IOTA Foundation (<a href="https://iota.org">website</a>)</td></tr><tr><td><a href="https://did-ipid.github.io/ipid-did-method/">ipid</a></td><td>IPFS</td><td>TranSendX</td></tr><tr><td><a href="https://github.com/block-core/blockcore-did-method">is</a></td><td>Blockcore</td><td>Blockcore</td></tr><tr><td><a href="https://ieps.iscc.codes/iep-0015/">iscc</a></td><td>Public Blockchains</td><td>ISCC Foundation (<a href="mailto:tp@iscc.foundation">email</a>) (<a href="https://iscc.foundation">website</a>)</td></tr><tr><td><a href="https://github.com/itn-trust/itn-did-spec">itn</a></td><td>Hyperledger Fabric (Private Network) and Arbitrum One</td><td>Umed Khudoiberdiev (<a href="mailto:umed@dlt.mobi">email</a>) (<a href="https://itn.global/">website</a>)</td></tr><tr><td><a href="https://github.com/infowallet/did_method/blob/master/did_method.md">iwt</a></td><td>InfoWallet</td><td>Raonsecure</td></tr><tr><td><a href="https://did-spec.jlinc.org/">jlinc</a></td><td>JLINC Protocol</td><td>Victor Grey</td></tr><tr><td><a href="https://didspec.jlinx.io">jlinx</a></td><td>JLINX Protocol</td><td>Victor Grey (<a href="mailto:victor@jlinc.com">email</a>)</td></tr><tr><td><a href="https://github.com/jnctn/did-method-spec/">jnctn</a></td><td>Jnctn Network</td><td>Jnctn Limited</td></tr><tr><td><a href="https://github.com/jolocom/jolo-did-method/blob/master/jolocom-did-method-specification.md">jolo</a></td><td>Ethereum</td><td>Jolocom</td></tr><tr><td><a href="https://github.com/quartzjer/did-jwk">jwk</a></td><td>Ledger agnostic</td><td>Jeremie Miller (<a href="mailto:jeremie.miller@gmail.com">email</a>)</td></tr><tr><td><a href="https://github.com/KanameProtocol/did-kaname-spec/blob/main/README.md">kaname</a></td><td>Any EVM Compatible Blockchains</td><td> (<a href="https://kaname.io/">website</a>)</td></tr><tr><td><a href="https://github.com/KingdomFintechBJ-BC/kdid/blob/main/doc/en/kdid.md">kdid</a></td><td>FISCO BCOS</td><td>KINGDOM FINTECH(BEIJING)CO,LTD. (<a href="mailto:quklsyb@szkingdom.com">email</a>)</td></tr><tr><td><a href="https://weboftrust.github.io/did-keri/">keri</a></td><td>Ledger agnostic</td><td>Dr. Sam Smith, Charles Cunningham, Phil Feairheller (<a href="mailto:pfeairheller@gmail.com">email</a>)</td></tr><tr><td><a href="https://w3c-ccg.github.io/did-method-key/">key</a></td><td>Ledger-independent DID method based on public/private key pairs</td><td>Rick Astley (thank you for your inspiration), Manu Sporny, Dmitri Zagidulin, Dave Longley, Orie Steele</td></tr><tr><td><a href="https://github.com/KILTprotocol/specifications/blob/main/docs/did/did-spec.md">kilt</a></td><td>KILT Blockchain</td><td>BOTLabs GmbH (<a href="mailto:devs@kilt.io">email</a>) (<a href="https://www.kilt.io/">website</a>)</td></tr><tr><td><a href="https://github.com/ontology-tech/DID-method-specs/blob/master/did-klay/DID-Method-klay.md">klay</a></td><td>Klaytn</td><td>Ontology Foundation</td></tr><tr><td><a href="https://github.com/aldhosutra/klayr-did/blob/main/packages/klayr-did-module/docs/did-method-spec.md">klayr</a></td><td>Klayr Sidechain</td><td>Aldo Suhartono Putra (<a href="mailto:aldhosutra@gmail.com">email</a>) (<a href="https://klayr-did.js.org/">website</a>)</td></tr><tr><td><a href="https://github.com/knox-networks/knox-did-specification">knox</a></td><td>Knox Networks</td><td>Francis Kim (<a href="mailto:developers@knox-networks.com">email</a>) (<a href="https://www.knox-networks.com/">website</a>)</td></tr><tr><td><a href="https://github.com/identify202020/did-method/blob/main/did_kr_method.md">kr</a></td><td>Korea Mobile Identity System</td><td>Ministry of the Interior and Safety, korea (<a href="https://github.com/identify202020/did-method/blob/main/did_author.md">website</a>)</td></tr><tr><td><a href="https://tangy-gallium-b9b.notion.site/DID-Method-Specification-KSChain-7a77664f1eae47769692f4ff2d029fe0">kscirc</a></td><td>KSChain Blockchain</td><td>K4-Security (<a href="http://www.k4-security.com/">website</a>)</td></tr><tr><td><a href="https://github.com/lacchain/lacchain-did-registry/blob/master/DID_SPEC.md">lac</a></td><td>LACChain Network</td><td>LACChain Alliance</td></tr><tr><td><a href="https://github.com/LONGEVITY-DIGITAL/LDID-Method-Specification/blob/main/README.md">ldid</a></td><td>ChainMaker</td><td>Shujin Public Service (Qingdao) Co., Ltd. (<a href="mailto:blockchain@dcps.top">email</a>)</td></tr><tr><td><a href="https://lifeid.github.io/did-method-spec/">life</a></td><td>RChain</td><td>lifeID Foundation</td></tr><tr><td><a href="https://www.notion.so/LING-DID-Method-Specification-7b9d25a62a1849a496890b9ef24e0890">ling</a></td><td>LING</td><td>K4-Security (<a href="mailto:contact@k4-security.com">email</a>) (<a href="http://www.k4-security.com/">website</a>)</td></tr><tr><td><a href="https://github.com/ibct-dev/lit-DID/blob/main/docs/did:lit-method-spec_eng_v0.1.0.md">lit</a></td><td>LEDGIS</td><td>IBCT (<a href="http://en.ibct.kr">website</a>)</td></tr><tr><td><a href="https://github.com/m2mblockchain/DID-Method-m2m/blob/main/README.md">m2m</a></td><td>Hyperledger Indy</td><td>SmartM2M. Co., Ltd (<a href="mailto:smartm2m@smartm2m.co.kr">email</a>) (<a href="https://www.smartm2m.co.kr/">website</a>)</td></tr><tr><td><a href="https://or13.github.io/didme.me/did-method-spec">meme</a></td><td>IPFS &amp; DNS &amp; HTTP</td><td>DID Meme Maintainers (<a href="mailto:orie@or13.io">email</a>) (<a href="https://didme.me/">website</a>)</td></tr><tr><td><a href="https://github.com/mwherman2000/TrustedDigitalWeb/blob/master/specifications/did-methods/did-mesh-1-0-1.md">mesh</a></td><td>Trusted Digital Web</td><td>Hyperonomy Digital Identity Lab, Parallelspace Corporation (<a href="mailto:mwherman@parallelspace.net">email</a>) (<a href="http://hyperonomy.com">website</a>)</td></tr><tr><td><a href="https://github.com/METADIUM/meta-DID/blob/master/doc/DID-method-metadium.md">meta</a></td><td>Metadium</td><td>Metadium Foundation</td></tr><tr><td><a href="https://github.com/DavidRicardoWilde/moac-did/blob/master/did-moac-method.md">moac</a></td><td>MOAC</td><td>MOAC Blockchain Tech, Inc.</td></tr><tr><td><a href="https://lianxi-tech.github.io/monid/">monid</a></td><td>Ethereum</td><td>Min Ju</td></tr><tr><td><a href="https://developer.iop.global/w3c">morpheus</a></td><td>Hydra</td><td>Internet of People (<a href="https://iop.global/">website</a>)</td></tr><tr><td><a href="https://github.com/MyDidCom/myDiD_Method">myDiD</a></td><td>DID Specification</td><td> (<a href="mailto:contact@mydid.com">email</a>) (<a href="https://mydid.com">website</a>)</td></tr><tr><td><a href="https://github.com/decentralised-dataexchange/automated-data-agreements/blob/main/docs/did-spec.md">mydata</a></td><td>iGrant.io</td><td>iGrant.io (<a href="https://igrant.io/">website</a>)</td></tr><tr><td><a href="https://github.com/ontology-tech/DID-spec-near/blob/master/NEAR/DID-Method-NEAR.md">near</a></td><td>NEAR</td><td>Ontology Foundation</td></tr><tr><td><a href="https://docs.nextme.one/#/DID/NextDID">next</a></td><td>Nextme DIDs Network</td><td>Next Labs (<a href="mailto:did@nextme.one">email</a>) (<a href="https://nextme.one">website</a>)</td></tr><tr><td><a href="https://cips.ceramic.network/CIPs/cip-94">nft</a></td><td>Ceramic Network</td><td>3Box Labs (<a href="mailto:devs@3box.io">email</a>) (<a href="https://3boxlabs.com/">website</a>)</td></tr><tr><td><a href="https://github.com/Web7Foundation/Specifications/blob/main/methods/did-ns-1-0-1.md">ns</a></td><td>Web 7.0 Foundation</td><td>Web 7.0 Foundation (<a href="mailto:mwherman@parallelspace.net">email</a>) (<a href="https://didns.directory">website</a>)</td></tr><tr><td><a href="https://github.com/NuggetsLtd/nuggets-did-resolver/blob/master/doc/did-methods/did:nuggets.md">nuggets</a></td><td>Nuggets Network</td><td>Nuggets Ltd (<a href="mailto:contact@nuggets.life">email</a>) (<a href="https://nuggets.life">website</a>)</td></tr><tr><td><a href="https://nuts-foundation.gitbook.io/drafts/rfc/rfc006-distributed-registry">nuts</a></td><td>Nuts network</td><td>Nuts community (<a href="mailto:w3c-did-core@nuts.nl">email</a>) (<a href="https://nuts.nl">website</a>)</td></tr><tr><td><a href="https://github.com/mwherman2000/TrustedDigitalWeb/blob/master/specifications/did-methods/did-object-1-5-0.md">object</a></td><td>Trusted Digital Web</td><td>Hyperonomy Digital Identity Lab, Parallelspace Corporation (<a href="mailto:mwherman@parallelspace.net">email</a>) (<a href="http://hyperonomy.com">website</a>)</td></tr><tr><td><a href="https://github.com/ockam-network/did-method-spec/blob/master/README.md">ockam</a></td><td>Ockam</td><td>Ockam</td></tr><tr><td><a href="https://github.com/OmniOneID/did_method/blob/master/did_method.md">omn</a></td><td>OmniOne</td><td>OmniOne</td></tr><tr><td><a href="https://blockchaincommons.github.io/did-method-onion/">onion</a></td><td>Ledger agnostic</td><td>Blockchain Commons (<a href="https://github.com/BlockchainCommons/did-method-onion">website</a>)</td></tr><tr><td><a href="https://github.com/ontio/ontology-DID/blob/master/docs/en/DID-ONT-method.md">ont</a></td><td>Ontology</td><td>Ontology Foundation</td></tr><tr><td><a href="https://github.com/oceanprotocol/OEPs/blob/master/7/v0.2/README.md">op</a></td><td>Ocean Protocol</td><td>Ocean Protocol</td></tr><tr><td><a href="https://trustbloc.github.io/did-method-orb/">orb</a></td><td>Ledger agnostic</td><td>Avast (<a href="mailto:troy.ronda@avast.com">email</a>) (<a href="https://avast.com/">website</a>)</td></tr><tr><td><a href="https://ownyourdata.github.io/oydid/">oyd</a></td><td>Ledger agnostic</td><td>OwnYourData.eu (<a href="mailto:christoph@ownyourdata.eu">email</a>) (<a href="https://ownyourdata.eu/">website</a>)</td></tr><tr><td><a href="https://github.com/medibloc/panacea-core/blob/master/docs/did.md">panacea</a></td><td>Panacea</td><td>MediBloc</td></tr><tr><td><a href="https://github.com/peaqnetwork/peaq-did-specifications">peaq</a></td><td>peaq Blockchain</td><td>Peaq Technology GmbH (<a href="mailto:info@peaq.network">email</a>) (<a href="https://www.peaq.network">website</a>)</td></tr><tr><td><a href="https://identity.foundation/peer-did-method-spec/index.html">peer</a></td><td>peer</td><td>Daniel Hardman (<a href="mailto:daniel.hardman@gmail.com">email</a>)</td></tr><tr><td><a href="https://github.com/proof-id/pid-did-driver/blob/main/did-method-specification.md">pid</a></td><td>ProofID Blockchain</td><td>Alvin Reyes (<a href="mailto:tech@proofid.me">email</a>) (<a href="https://proofid.me">website</a>)</td></tr><tr><td><a href="https://github.com/uino95/ssi/blob/consensys/dashboard/server/pistis/pistis-did-resolver/README.md">pistis</a></td><td>Ethereum</td><td>Andrea Taglia, Matteo Sinico</td></tr><tr><td><a href="https://github.com/w3c-ccg/did-pkh/blob/90b28ad3c18d63822a8aab3c752302aa64fc9382/did-pkh-method-draft.md">pkh</a></td><td>Ledger-independent generative DID method based on CAIP-10 keypair expressions</td><td>Wayne Chang, Charles Lehner, Juan Caballero, Joel Thorstensson</td></tr><tr><td><a href="https://github.com/bluesky-social/did-method-plc">plc</a></td><td>https://plc.directory</td><td>Bluesky PBLLC (<a href="mailto:protocol@blueskyweb.xyz">email</a>) (<a href="https://blueskyweb.xyz/">website</a>)</td></tr><tr><td><a href="https://github.com/PML-ID/pml-did-specs/blob/main/did-method.md">pml</a></td><td>PML Chain</td><td>Purple Mountain Laboratories</td></tr><tr><td><a href="https://github.com/ayanworks/polygon-did-method-spec">polygon</a></td><td>Polygon (Previously MATIC)</td><td>AyanWorks, MATIC</td></tr><tr><td><a href="https://github.com/0xPolygonID/did-polygonid">polygonid</a></td><td>EVM compatible chains</td><td>ZK ID Labs AG, Polygon ID (<a href="https://www.polygonid.com/">website</a>)</td></tr><tr><td><a href="https://github.com/input-output-hk/prism-did-method-spec/blob/main/w3c-spec/PRISM-method.md">prism</a></td><td>The Cardano blockchain</td><td>Input Output Global Inc (IOG) (<a href="mailto:security-atala@iohk.io">email</a>) (<a href="https://iohk.io/">website</a>)</td></tr><tr><td><a href="https://github.com/didpsi/psi-DID/blob/main/docs/did:psi-method-spec_eng.md">psi</a></td><td>LEDGIS</td><td>Police Science Institution (<a href="https://www.psi.go.kr/">website</a>)</td></tr><tr><td><a href="https://vpsqr.com/did-method-psqr/v1/">psqr</a></td><td>Public Square</td><td>Christian Gribneau (<a href="mailto:protocol@vpsqr.com">email</a>) (<a href="https://vpsqr.com">website</a>)</td></tr><tr><td><a href="https://github.com/palletone/palletone-DID/blob/master/docs/did-method/README.md">ptn</a></td><td>PalletOne</td><td>PalletOne</td></tr><tr><td><a href="https://github.com/idnow/de.idnow.qes.did.method.specification">qes</a></td><td>QES</td><td>IDnow GmbH (<a href="mailto:sebastian.elfors@idnow.de">email</a>) (<a href="https://www.idnow.io/">website</a>)</td></tr><tr><td><a href="https://github.com/mwherman2000/TrustedDigitalWeb/blob/master/specifications/did-methods/did-qui-1-0-0.md">qui</a></td><td>Qui</td><td>Hyperonomy Digital Identity Lab, Parallelspace Corporation (<a href="mailto:mwherman@parallelspace.net">email</a>) (<a href="http://hyperonomy.com">website</a>)</td></tr><tr><td><a href="https://github.com/pcrui/did-spec/blob/main/README.md">ray</a></td><td>Ethereum</td><td>Ray Peng (<a href="mailto:275400726@qq.com">email</a>)</td></tr><tr><td><a href="https://github.com/realitems/did-real/blob/main/did-real-method-specification.md">real</a></td><td>Ethereum</td><td>Real Items (<a href="mailto:rocky@realitems.io">email</a>) (<a href="https://realitems.io">website</a>)</td></tr><tr><td><a href="https://github.com/realmatterio/Resume-DID-Method/">resume</a></td><td>Resume DID Method and Protocol</td><td>Ming-lam Ng with Real Matter Technology and Talent Connect (<a href="mailto:mn@realmatter.io">email</a>) (<a href="https://realmatter.io">website</a>)</td></tr><tr><td><a href="https://github.com/realmatterio/RealMatter-DID-Method">rm</a></td><td>Real-world Asset Tokenization DID Method</td><td>Ming-lam Ng (RealMatter) (<a href="mailto:mn@realmatter.io">email</a>) (<a href="realmatter.io">website</a>)</td></tr><tr><td><a href="https://cips.ceramic.network/CIPs/cip-101">safe</a></td><td>Safe</td><td>Safe Ecosystem Foundation (<a href="mailto:info@safe.global">email</a>) (<a href="https://safe.global">website</a>)</td></tr><tr><td><a href="https://github.com/Baasze/DID-method-specification">san</a></td><td>SAN Cloudchain</td><td>YLZ Inc.</td></tr><tr><td><a href="https://github.com/51nodes/schema-registry-did-method/blob/master/README.md">schema</a></td><td>Multiple storage networks, currently public IPFS and evan.network IPFS</td><td>51nodes GmbH</td></tr><tr><td><a href="https://github.com/StraitsChain/SCID/blob/main/README.md">scid</a></td><td>StraitsChain</td><td>Lorna (<a href="mailto:lornayang@straitschain.com">email</a>) (<a href="https://straitschain.com/">website</a>)</td></tr><tr><td><a href="https://github.com/excid-io/did-self">self</a></td><td>Ledger agnostic</td><td>Nikos Fotiou (<a href="mailto:fotiou@excid.io">email</a>) (<a href="https://www.excid.io">website</a>)</td></tr><tr><td><a href="https://github.com/SelfKeyFoundation/selfkey-identity/blob/develop/DIDMethodSpecs.md">selfkey</a></td><td>Ethereum</td><td>SelfKey</td></tr><tr><td><a href="https://github.com/sideos/sideos-did-method">sideos</a></td><td>Ledger agnostic</td><td>sideos GmbH (<a href="https://sideos.io">website</a>)</td></tr><tr><td><a href="https://github.com/cryptonicsconsulting/signor-did-contracts/blob/master/did-method-spec.md">signor</a></td><td>Ethereum, Hedera Hashgraph, Quorum, Hyperledger Besu</td><td>Cryptonics (<a href="https://cryptonics.consulting/">website</a>)</td></tr><tr><td><a href="https://gitlab.com/proximax-enterprise/siriusid/sirius-id-specs/-/blob/master/docs/did-method-spec.md">sirius</a></td><td>ProximaX Sirius Chain</td><td>ProximaX Singapore Pte. Ltd. (<a href="https://www.proximax.ltd">website</a>)</td></tr><tr><td><a href="https://🐌.amy.gy/">snail</a></td><td>Penpal network</td><td>Amy Guy, Dmitri Zagidulin (<a href="mailto:amy@rhiaro.co.uk">email</a>)</td></tr><tr><td><a href="https://github.com/snplab-io/snplab-did-method/blob/main/snplab-did-method-spec.md">snplab</a></td><td>SNPLab MyD Network</td><td>SNPLab Inc. (<a href="mailto:hellodata@snplab.io">email</a>) (<a href="https://www.snplab.io">website</a>)</td></tr><tr><td><a href="https://g.identity.com/sol-did/">sol</a></td><td>Solana</td><td>Identity.com (<a href="mailto:contact@identity.org">email</a>) (<a href="https://identity.com/contact-us">website</a>)</td></tr><tr><td><a href="https://sovrin-foundation.github.io/sovrin/spec/did-method-spec-template.html">sov</a></td><td>Sovrin</td><td>Mike Lodder</td></tr><tr><td><a href="https://viewer.scuttlebot.io/&amp;5Bne/slGKH/i1361qemVlNBElWInSUfntlWvMXaD4M4=.sha256?hl=zQmdh4Ya6WasmjnS4UMn5ot6k5tbCypy1oyhhdJ6yB6MjfT">ssb</a></td><td>Secure Scuttlebutt</td><td>Charles E. Lehner</td></tr><tr><td><a href="https://sktston.github.io/ssw-did/did-method-spec.html">ssw</a></td><td>Initial Network</td><td>SK telecom (<a href="https://www.sktelecom.com/index_en.html">website</a>)</td></tr><tr><td><a href="https://github.com/blockstack/blockstack-core/blob/stacks-1.0/docs/blockstack-did-spec.md">stack</a></td><td>Bitcoin</td><td>Jude Nelson</td></tr><tr><td><a href="https://github.com/TangleID/TangleID/blob/develop/did-method-spec.md">tangle</a></td><td>IOTA Tangle</td><td>BiiLabs Co., Ltd.</td></tr><tr><td><a href="https://github.com/TencentCloud-Blockchain/TDID-Method-Specification/blob/main/README.md">tdid</a></td><td>FISCO BCOS</td><td>Tencent Technology (Shenzhen) Co.Ltd (<a href="mailto:shuangclhan@tencent.com">email</a>) (<a href="https://cloud.tencent.com/product/tdid">website</a>)</td></tr><tr><td><a href="https://github.com/theseriesteam/tsid-method/blob/main/ts-did-method-specification.md">theseries</a></td><td>IPFS</td><td>Hang Hang (<a href="mailto:hanghang.dev@gmail.com">email</a>)</td></tr><tr><td><a href="https://github.com/HTiBRI/TiDID-Method-Specification/blob/main/README.md">ti</a></td><td>TiChain</td><td>Hunan tianhe Guoyun Technology Co.Ltd (<a href="mailto:yangangao@tianhecloud.com">email</a>) (<a href="https://tianhecloud.com/">website</a>)</td></tr><tr><td><a href="">tls</a></td><td>Ethereum</td><td>Ulrich Gallersdörfer, Kilian Käslin</td></tr><tr><td><a href="https://github.com/trustcerts/did-trust-method/blob/main/README.md">trust</a></td><td>TrustChain</td><td>TrustCerts GmbH</td></tr><tr><td><a href="https://github.com/trustbloc/trustbloc-did-method/blob/master/docs/spec/trustbloc-did-method.md">trustbloc</a></td><td>Hyperledger Fabric</td><td>SecureKey</td></tr><tr><td><a href="https://github.com/ontology-tech/DID-method-specs/blob/master/did-trx/DID-Method-trx.md">trx</a></td><td>TRON</td><td>Ontology Foundation</td></tr><tr><td><a href="https://github.com/TokenTM/TM-DID/blob/master/docs/en/DID_spec.md">ttm</a></td><td>TMChain</td><td>Token.TM</td></tr><tr><td><a href="https://did-twit.github.io/did-twit/">twit</a></td><td>Twit</td><td>DID Twit GitHub (<a href="https://github.com/did-twit/did-twit/blob/master/spec/index.md">website</a>)</td></tr><tr><td><a href="https://www.tyronzil.com">tyron</a></td><td>Zilliqa</td><td>Julio Cabrapan Duarte</td></tr><tr><td><a href="https://github.com/chainyard-tys/tys/blob/master/README.md">tys</a></td><td>DID Specification</td><td>Chainyard</td></tr><tr><td><a href="https://did-tezos.spruceid.com">tz</a></td><td>Tezos</td><td>Spruce Systems, Inc. (<a href="https://spruceid.com">website</a>)</td></tr><tr><td><a href="https://github.com/unik-name/did-method-spec/blob/main/did-unik/UNIK-DID-Specification.md">unik</a></td><td><a href="https://docs.uns.network/">uns.network</a></td><td>Space Elephant SAS (<a href="https://www.spacelephant.org/">website</a>)</td></tr><tr><td><a href="https://gitlab.com/unisot-did/unisot-did-method-specification">unisot</a></td><td>Bitcoin SV</td><td>UNISOT AS (<a href="https://www.unisot.com">website</a>)</td></tr><tr><td><a href="https://github.com/unik-name/did-method-spec/blob/main/did-uns/UNS-DID-Specification.md">uns</a></td><td><a href="https://docs.uns.network/">uns.network</a></td><td>Space Elephant SAS (<a href="https://www.spacelephant.org/">website</a>)</td></tr><tr><td><a href="">uport</a></td><td>Ethereum</td><td>uPort</td></tr><tr><td><a href="https://w3c-ccg.github.io/did-method-v1/">v1</a></td><td>Veres One DLT</td><td>Veres One Maintainer (Digital Bazaar) (<a href="mailto:maintainer@veres.one">email</a>) (<a href="https://veres.one/">website</a>)</td></tr><tr><td><a href="https://github.com/caict-develop-zhangbo/vaa-method/blob/master/README.md">vaa</a></td><td>bif</td><td>China Academy of Information and Communications Technology (CAICT)</td></tr><tr><td><a href="https://github.com/valyu-network/valyu-did/blob/main/Valyu-DID-Method.md">valyu</a></td><td>undefined</td><td>Valyu Network LTD (<a href="mailto:contact@valyu.network">email</a>) (<a href="https://www.valyu.network">website</a>)</td></tr><tr><td><a href="https://github.com/vaultie/vaultie-did-method/blob/master/vaultie-did-method-specification.md">vaultie</a></td><td>Ethereum</td><td>Vaultie Inc.</td></tr><tr><td><a href="http://did.vertu.com/spec/">vertu</a></td><td>VERTU</td><td>V2 (<a href="mailto:bigui.yin@vertu.com">email</a>)</td></tr><tr><td><a href="https://github.com/vpayment/did-method-spec/blob/master/vid.md">vid</a></td><td>VP</td><td>VP Inc.</td></tr><tr><td><a href="https://github.com/Moonlight-io/specs/blob/master/did-method-spec.md">vivid</a></td><td>NEO2, NEO3, Zilliqa</td><td>Vivid (<a href="https://getviv.id/">website</a>)</td></tr><tr><td><a href="http://my-did.vertu.com/spec/">vtid</a></td><td></td><td>JianKong (<a href="mailto:806916678@qq.com">email</a>)</td></tr><tr><td><a href="https://vivvo.github.io/vivvo-did-scheme/spec/did-method-spec-template.html">vvo</a></td><td>Vivvo</td><td>Vivvo Application Studios</td></tr><tr><td><a href="https://github.com/w3c-ccg/did-method-web">web</a></td><td>Web</td><td>Oliver Terbu, Mike Xu, Dmitri Zagidulin, Amy Guy</td></tr><tr><td><a href="https://github.com/Web7Foundation/Specifications/blob/main/methods/did-web7-1-0-1.md">web7</a></td><td>Web 7.0 Foundation</td><td>Web 7.0 Foundation (<a href="mailto:mwherman@parallelspace.net">email</a>) (<a href="http://hyperonomy.com">website</a>)</td></tr><tr><td><a href="https://trustoverip.github.io/tswg-did-method-webs-specification/">webs</a></td><td>Web, and <a href="https://keri.one/">Key Event Receipt Infrastructure (KERI)</a></td><td>Trust over IP (ToIP) DID Method webs Task Force (<a href="mailto:technology-stack-wg@lists.trustoverip.org">email</a>) (<a href="https://wiki.trustoverip.org/display/HOME/DID+Method+webs+Task+Force">website</a>)</td></tr><tr><td><a href="https://weelink-team.github.io/weelink/DIDDesignEn">wlk</a></td><td>Weelink Network</td><td>Weelink</td></tr><tr><td><a href="https://workday.github.io/work-did-method-spec/">work</a></td><td>Hyperledger Fabric</td><td>Workday, Inc.</td></tr><tr><td><a href="https://github.com/DataSovereignty-YourD/YourD-did-sepcification">yourd</a></td><td>YourD compatible chains</td><td>YourD (<a href="https://www.yourd.xyz/">website</a>)</td></tr><tr><td><a href="https://github.com/zCloak-Network/zk-did-method-specs">zk</a></td><td>Arweave</td><td>zCloak Network Research (<a href="mailto:info@zcloak.network">email</a>) (<a href="https://zcloak.network/#/">website</a>)</td></tr><tr><td><a href="https://github.com/zkMeLabs/zkme-did-method-spec">zkme</a></td><td>EVM compatible chains. Primary on Polygon</td><td>zkMe</td></tr></tbody></table>
+
+  </section>
+
+
+
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-references"><bdi class="secno">A. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix A.1"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-did-core">[DID-CORE]</dt><dd>
+      <a href="https://www.w3.org/TR/did-core/"><cite>Decentralized Identifiers (DIDs) v1.0</cite></a>. Manu Sporny; Amy Guy; Markus Sabadello; Drummond Reed.  W3C. 19 July 2022. W3C Recommendation. URL: <a href="https://www.w3.org/TR/did-core/">https://www.w3.org/TR/did-core/</a>
+    </dd></dl>
+  </section><section id="informative-references"><div class="header-wrapper"><h3 id="a-2-informative-references"><bdi class="secno">A.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix A.2"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-did-extensions">[DID-EXTENSIONS]</dt><dd>
+      <a href="https://www.w3.org/TR/did-extensions/"><cite>Decentralized Identifier Extensions</cite></a>. Manu Sporny.  Decentralized Identifier Working Group. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/did-extensions/">https://www.w3.org/TR/did-extensions/</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

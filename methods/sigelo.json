@@ -1,0 +1,9 @@
+{
+  "name": "sigelo",
+  "status": "registered",
+  "specification": "https://sigelo.io/spec.html#12-did-method-didsigelo",
+  "contactName": "csigelo",
+  "contactEmail": "contact@sigelo.io",
+  "contactWebsite": "https://sigelo.io/contact.html",
+  "verifiableDataRegistry": "none (self-certifying; bundles)"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "dsrv",
+  "status": "registered",
+  "specification": "https://github.com/dsrvlabs/did_method/blob/main/DID-Method-DSRV.md",
+  "contactName": "dsrv",
+  "contactEmail": "did@dsrvlabs.com",
+  "contactWebsite": "https://welldonestake.io/",
+  "verifiableDataRegistry": ""
+}

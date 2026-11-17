@@ -1,0 +1,9 @@
+{
+  "name": "ont",
+  "status": "registered",
+  "verifiableDataRegistry": "Ontology",
+  "contactName": "Ontology Foundation",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/ontio/ontology-DID/blob/master/docs/en/DID-ONT-method.md"
+}

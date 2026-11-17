@@ -1,0 +1,9 @@
+{
+  "name": "ssw",
+  "status": "registered",
+  "verifiableDataRegistry": "Initial Network",
+  "contactName": "SK telecom",
+  "contactEmail": "",
+  "contactWebsite": "https://www.sktelecom.com/index_en.html",
+  "specification": "https://sktston.github.io/ssw-did/did-method-spec.html"
+}

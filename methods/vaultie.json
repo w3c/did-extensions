@@ -1,0 +1,9 @@
+{
+  "name": "vaultie",
+  "status": "registered",
+  "verifiableDataRegistry": "Ethereum",
+  "contactName": "Vaultie Inc.",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/vaultie/vaultie-did-method/blob/master/vaultie-did-method-specification.md"
+}

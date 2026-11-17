@@ -1,0 +1,9 @@
+{
+  "name": "cde",
+  "status": "registered",
+  "verifiableDataRegistry": "Web (HTTPS/DNS)",
+  "contactName": "Olivier Tirat",
+  "contactEmail": "olivier.tirat@clouddataengine.io",
+  "contactWebsite": "https://clouddataengine.io",
+  "specification": "https://resources.clouddataengine.io/docs/did-cde-spec-v1.0.1.html"
+}

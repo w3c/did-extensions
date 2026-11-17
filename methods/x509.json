@@ -1,0 +1,9 @@
+{
+  "name": "x509",
+  "status": "registered",
+  "specification": "https://github.com/microsoft/did-x509/blob/main/specification.md",
+  "contactName": "Max Tropets",
+  "contactEmail": "maxtropets@microsoft.com",
+  "contactWebsite": "https://www.microsoft.com",
+  "verifiableDataRegistry": "No persistent registry; resolution uses the DID string and x509chain resolution option"
+}

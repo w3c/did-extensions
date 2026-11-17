@@ -1,0 +1,9 @@
+{
+  "name": "cid",
+  "status": "registered",
+  "specification": "https://archon.technology/specs",
+  "contactName": "Christian Saucier",
+  "contactEmail": "flaxscrip@pm.me",
+  "contactWebsite": "https://github.com/flaxscrip",
+  "verifiableDataRegistry": "IPFS (DID creation); pluggable update registries: Bitcoin, Ethereum, Zcash, Solana, Filecoin, Hyperswarm"
+}

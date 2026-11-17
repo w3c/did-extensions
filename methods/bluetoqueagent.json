@@ -1,0 +1,9 @@
+{
+    "name": "bluetoqueagent",
+    "status": "registered",
+    "verifiableDataRegistry": "Trusted Digital Web",
+    "contactName": "Hyperonomy Digital Identity Lab, Parallelspace Corporation",
+    "contactEmail": "mwherman@parallelspace.net",
+    "contactWebsite": "http://hyperonomy.com",
+    "specification": "https://github.com/mwherman2000/TrustedDigitalWeb/blob/master/specifications/did-methods/did-bluetoqueagent-1-0-0.md"
+}

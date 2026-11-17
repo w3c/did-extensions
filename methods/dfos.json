@@ -1,0 +1,9 @@
+{
+  "name": "dfos",
+  "status": "registered",
+  "verifiableDataRegistry": "None (self-certifying; identifiers are derived deterministically from a cryptographically signed genesis operation)",
+  "contactName": "Brandon Valosek",
+  "contactEmail": "brandon@dfos.com",
+  "contactWebsite": "https://github.com/metalabel/dfos",
+  "specification": "https://protocol.dfos.com/did-method"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "qes",
+  "status": "registered",
+  "verifiableDataRegistry": "QES",
+  "contactName": "IDnow GmbH",
+  "contactEmail": "sebastian.elfors@idnow.de",
+  "contactWebsite": "https://www.idnow.io/",
+  "specification": "https://github.com/idnow/de.idnow.qes.did.method.specification"
+}

@@ -1,0 +1,126 @@
+# This shape file is hosted at  https://www.w3.org/ns/did/v1/shex
+#
+# You can run this (using https://pypi.org/project/pyshacl/), for example, with:
+#  pyshacl -s shacl.ttl -e vocab.ttl -f human test.ttl
+#
+
+@prefix did:  <https://www.w3.org/ns/did#> .
+@prefix as:   <https://www.w3.org/ns/activitystreams#> .
+@prefix sec:  <https://w3id.org/security#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+
+
+_:ObjectShape a sh:NodeShape ;
+    # Some properties are valid only on DID Subjects and they will set the right shape
+    # Note that this is not the case sec:controller (that can also be used on did:VerificationMethod)
+
+    sh:targetClass did:DIDSubject ;
+    sh:targetSubjectsOf
+        as:alsoKnownAs,
+        sec:verificationMethod,
+        sec:authenticationMethod,
+        sec:assertionMethod,
+        sec:keyAgreementMethod,
+        sec:capabilityDelegationMethod,
+        sec:capabilityInvocationMethod,
+        did:service ;
+    sh:property
+        [
+            sh:path as:alsoKnownAs ;
+            sh:nodeKind sh:IRI ;
+        ],[
+            sh:path sec:controller ;
+            sh:pattern "^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+" ;
+        ],[
+            sh:path sec:verificationMethod ;
+            sh:nodeKind sh:IRI ;
+        ],[
+            sh:path sec:authenticationMethod ;
+            sh:nodeKind sh:IRI ;
+        ],[
+            sh:path sec:assertionMethod ;
+            sh:nodeKind sh:IRI ;
+        ],[
+            sh:path sec:keyAgreementMethod ;
+            sh:nodeKind sh:IRI ;
+        ],[
+            sh:path sec:capabilityDelegationMethod ;
+            sh:nodeKind sh:IRI ;
+        ],[
+            sh:path did:capabilityInvocationMethod ;
+            sh:nodeKind sh:IRI ;
+        ],[
+            sh:path did:service ;
+            sh:nodeKind sh:IRI ;
+        ];
+.
+
+
+#######################################################################################
+#   Verification Methods
+#######################################################################################
+
+_:VerificationMethodShape a sh:NodeShape ;
+    # Generic shape for verification method, putting constraints on the allowed properties
+    sh:targetClass did:VerificationMethod ;
+    sh:targetObjectsOf
+        sec:verificationMethod,
+        sec:authenticationMethod,
+        sec:assertionMethod,
+        sec:keyAgreementMethod,
+        sec:capabilityDelegationMethod,
+        sec:capabilityInvocationMethod ;
+    sh:property
+        [
+            sh:path sec:publicKeyJwk ;
+            sh:nodeKind sh:Literal ;
+            sh:datatype rdf:JSON ;
+            sh:maxCount 1;
+        ],[
+            sh:path sec:publicKeyBase58 ;
+            sh:nodeKind sh:Literal ;
+            sh:datatype xsd:string ;
+            sh:maxCount 1;
+        ],[
+            sh:path sec:controller ;
+            # A controller must be identified with a DID...
+            sh:pattern "^did:[a-z0-9]+:[a-zA-Z0-9.-_:]+" ;
+            sh:minCount 1
+        ],[
+            # The type must be identified, ie, there must be at least one 'type'
+            sh:path rdf:type ;
+            sh:nodeKind sh:IRI ;
+            sh:minCount 1 ;
+        ];
+        sh:not [
+            a sh:NodeShape ;
+            sh:property
+                [
+                    sh:path sec:publicKeyMultibase ;
+                    sh:minCount 1 ;
+                ],[
+                    sh:path sec:publicKeyJwk ;
+                    sh:minCount 1 ;
+                ];
+        ] ;
+.
+
+#######################################################################################
+#   Constraint on services
+#######################################################################################
+
+_:ServiceShape a sh:NodeShape ;
+    sh:targetClass did:ServiceEndpoint ;
+    sh:targetObjectsOf did:service ;
+    sh:property [
+        sh:path did:serviceEndpoint ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:minCount 1 ;
+    ],[
+        sh:path rdf:type ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+    ] ;
+.

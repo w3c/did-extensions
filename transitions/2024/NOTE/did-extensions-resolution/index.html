@@ -1,0 +1,1867 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="generator" content="ReSpec 35.1.2">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+span.example-title{text-transform:none}
+:is(aside,div).example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}
+div.illegal-example{color:red}
+div.illegal-example p{color:#000}
+aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}
+</style>
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.issue.closed span.issue-number::after{content:" (Closed)";font-size:smaller}
+.warning{border-color:#f11;border-color:var(--warning-border,#f11);border-width:.2em;border-style:solid;background:#fbe9e9;background:var(--warning-bg,#fbe9e9);color:#000;color:var(--text,#000)}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+  
+<title>DID Resolution Extensions</title>
+  
+
+  
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+  
+  
+<style>
+
+    .label-legend dd{
+      margin-top: 8px;
+    }
+  .label-deprecated {
+    font-weight: bold;
+    background: #ef9a9a;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  .label-no-contact-info {
+    font-weight: bold;
+    background: #ffe082;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  pre .highlight {
+    font-weight: bold;
+    color: green;
+  }
+  pre .comment {
+    color: SteelBlue;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+</style>
+
+<meta name="color-scheme" content="light">
+<meta name="description" content="This document serves as a collection of known DID Resolution and Dereferencing
+extensions.">
+<link rel="canonical" href="https://www.w3.org/TR/did-extensions-resolution/">
+<style>
+.hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
+@media (prefers-color-scheme:dark){
+.hljs{--base:#282c34;--mono-1:#abb2bf;--mono-2:#818896;--mono-3:#5c6370;--hue-1:#56b6c2;--hue-2:#61aeee;--hue-3:#c678dd;--hue-4:#98c379;--hue-5:#e06c75;--hue-5-2:#be5046;--hue-6:#d19a66;--hue-6-2:#e6c07b}
+}
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;color:var(--mono-1,#383a42);background:#fafafa;background:var(--base,#fafafa)}
+.hljs-comment,.hljs-quote{color:#717277;color:var(--mono-3,#717277);font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4;color:var(--hue-3,#a626a4)}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;color:var(--hue-5,#ca4706);font-weight:700}
+.hljs-literal{color:#0b76c5;color:var(--hue-1,#0b76c5)}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c;color:var(--hue-4,#42803c)}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01;color:var(--hue-6-2,#9a6a01)}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801;color:var(--hue-6,#986801)}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3;color:var(--hue-2,#336ae3)}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
+var{position:relative;cursor:pointer}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#222}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "wgPublicList": "public-did-wg",
+  "group": "did",
+  "specStatus": "NOTE",
+  "shortName": "did-extensions-resolution",
+  "edDraftURI": "https://w3c.github.io/did-extensions/resolution/",
+  "subtitle": "Known Extensions for DID Resolution and Dereferencing",
+  "publishDate": "2024-11-19",
+  "github": {
+    "repoURL": "https://github.com/w3c/did-extensions/",
+    "branch": "main"
+  },
+  "includePermalinks": false,
+  "editors": [
+    {
+      "name": "Manu Sporny",
+      "url": "https://www.linkedin.com/in/manusporny/",
+      "company": "Digital Bazaar",
+      "companyURL": "https://digitalbazaar.com/",
+      "w3cid": 41758,
+      "note": "2017-present"
+    },
+    {
+      "name": "Markus Sabadello",
+      "url": "https://www.linkedin.com/in/markus-sabadello-353a0821",
+      "company": "Danube Tech",
+      "companyURL": "https://danubetech.com/",
+      "w3cid": 46729,
+      "note": "2020-present"
+    }
+  ],
+  "formerEditors": [
+    {
+      "name": "Orie Steele",
+      "url": "https://www.linkedin.com/in/or13b/",
+      "company": "Transmute",
+      "companyURL": "https://www.transmute.industries/",
+      "w3cid": 109171,
+      "note": "2020-2022"
+    },
+    {
+      "name": "Amy Guy",
+      "url": "https://rhiaro.co.uk/",
+      "company": "Digital Bazaar",
+      "companyURL": "https://digitalbazaar.com/",
+      "w3cid": 69000,
+      "note": "2020-2022"
+    },
+    {
+      "name": "Ivan Herman",
+      "url": "https://www.w3.org/People/Ivan/",
+      "company": "W3C",
+      "companyURL": "https://www.w3.org",
+      "note": "2020-2022",
+      "w3cid": 7382,
+      "orcid": "https://orcid.org/0000-0003-0782-2704"
+    }
+  ],
+  "authors": [
+    {
+      "name": "The Decentralized Identifier Working Group",
+      "url": "https://www.w3.org/groups/wg/did/",
+      "company": "W3C",
+      "companyURL": "https://www.w3.org/"
+    }
+  ],
+  "otherLinks": [
+    {
+      "key": "Related Documents",
+      "data": [
+        {
+          "value": "DID Core",
+          "href": "https://www.w3.org/TR/did-core/"
+        },
+        {
+          "value": "DID Core Implementation Report",
+          "href": "https://w3c.github.io/did-test-suite/"
+        },
+        {
+          "value": "DID Use Cases and Requirements",
+          "href": "https://www.w3.org/TR/did-use-cases/"
+        }
+      ]
+    }
+  ],
+  "postProcess": [],
+  "localBiblio": {
+    "DID-EXTENSIONS": {
+      "title": "Decentralized Identifier Extensions",
+      "href": "https://www.w3.org/TR/did-extensions/",
+      "authors": [
+        "Manu Sporny"
+      ],
+      "status": "NOTE",
+      "publisher": "Decentralized Identifier Working Group",
+      "id": "did-extensions"
+    }
+  },
+  "publishISODate": "2024-11-19T00:00:00.000Z",
+  "generatedSubtitle": "W3C Group Note 19 November 2024"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-NOTE"></head>
+<body class="h-entry"><div class="head">
+    <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
+  </a></p>
+    <h1 id="title" class="title">DID Resolution Extensions</h1> <h2 id="subtitle" class="subtitle">Known Extensions for DID Resolution and Dereferencing</h2>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#NOTE">W3C Group Note</a> <time class="dt-published" datetime="2024-11-19">19 November 2024</time></p>
+    <details open="">
+      <summary>More details about this document</summary>
+      <dl>
+        <dt>This version:</dt><dd>
+                <a class="u-url" href="https://www.w3.org/TR/2024/NOTE-did-extensions-resolution-20241119/">https://www.w3.org/TR/2024/NOTE-did-extensions-resolution-20241119/</a>
+              </dd>
+        <dt>Latest published version:</dt><dd>
+                <a href="https://www.w3.org/TR/did-extensions-resolution/">https://www.w3.org/TR/did-extensions-resolution/</a>
+              </dd>
+        <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/did-extensions/resolution/">https://w3c.github.io/did-extensions/resolution/</a></dd>
+        <dt>History:</dt><dd>
+                    <a href="https://www.w3.org/standards/history/did-extensions-resolution/">https://www.w3.org/standards/history/did-extensions-resolution/</a>
+                  </dd><dd>
+                    <a href="https://github.com/w3c/did-extensions/commits/main">Commit history</a>
+                  </dd>
+        
+        
+        
+        
+        
+        <dt>Editors:</dt><dd class="editor p-author h-card vcard" data-editor-id="41758">
+    <a class="u-url url p-name fn" href="https://www.linkedin.com/in/manusporny/">Manu Sporny</a> (<a class="p-org org h-org" href="https://digitalbazaar.com/">Digital Bazaar</a>) (2017-present)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="46729">
+    <a class="u-url url p-name fn" href="https://www.linkedin.com/in/markus-sabadello-353a0821">Markus Sabadello</a> (<a class="p-org org h-org" href="https://danubetech.com/">Danube Tech</a>) (2020-present)
+  </dd>
+        <dt>
+                Former editors:
+              </dt><dd class="editor p-author h-card vcard" data-editor-id="109171">
+    <a class="u-url url p-name fn" href="https://www.linkedin.com/in/or13b/">Orie Steele</a> (<a class="p-org org h-org" href="https://www.transmute.industries/">Transmute</a>) (2020-2022)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="69000">
+    <a class="u-url url p-name fn" href="https://rhiaro.co.uk/">Amy Guy</a> (<a class="p-org org h-org" href="https://digitalbazaar.com/">Digital Bazaar</a>) (2020-2022)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="7382">
+    <a class="u-url url p-name fn" href="https://www.w3.org/People/Ivan/">Ivan Herman</a><a class="p-name orcid" href="https://orcid.org/0000-0003-0782-2704"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <style>
+
+      .st1 {
+        fill: #fff;
+      }
+    
+</style>
+    <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z" fill="#a6ce39"></path>
+    <path class="st1" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"></path>
+  </svg></a> (<a class="p-org org h-org" href="https://www.w3.org">W3C</a>) (2020-2022)
+  </dd>
+        <dt>Author:</dt><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://www.w3.org/groups/wg/did/">The Decentralized Identifier Working Group</a> (<a class="p-org org h-org" href="https://www.w3.org/">W3C</a>)
+  </dd>
+        <dt>Feedback:</dt><dd>
+        <a href="https://github.com/w3c/did-extensions/">GitHub w3c/did-extensions</a>
+        (<a href="https://github.com/w3c/did-extensions/pulls/">pull requests</a>,
+        <a href="https://github.com/w3c/did-extensions/issues/new/choose">new issue</a>,
+        <a href="https://github.com/w3c/did-extensions/issues/">open issues</a>)
+      </dd><dd><a href="mailto:public-did-wg@w3.org?subject=%5Bdid-extensions-resolution%5D%20YOUR%20TOPIC%20HERE">public-did-wg@w3.org</a> with subject line <kbd>[did-extensions-resolution] <em>… message topic …</em></kbd> (<a rel="discussion" href="https://lists.w3.org/Archives/Public/public-did-wg">archives</a>)</dd>
+        
+        <dt>Related Documents</dt><dd>
+    <a href="https://www.w3.org/TR/did-core/">DID Core</a>
+  </dd><dd>
+    <a href="https://w3c.github.io/did-test-suite/">DID Core Implementation Report</a>
+  </dd><dd>
+    <a href="https://www.w3.org/TR/did-use-cases/">DID Use Cases and Requirements</a>
+  </dd>
+      </dl>
+    </details>
+    
+    
+    <p class="copyright">
+    <a href="https://www.w3.org/policies/#copyright">Copyright</a>
+    ©
+    2024
+    
+    <a href="https://www.w3.org/">World Wide Web Consortium</a>.
+    <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup>
+    <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>,
+    <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and
+    <a rel="license" href="https://www.w3.org/copyright/software-license-2023/" title="W3C Software and Document Notice and License">permissive document license</a> rules apply.
+  </p>
+    <hr title="Separator for header">
+  </div>
+  <section id="abstract" class="introductory"><h2>Abstract</h2>
+    <p>
+This document serves as a collection of known DID Resolution and Dereferencing
+extensions.
+    </p>
+  </section>
+
+  <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this
+      document at the time of its publication. A list of current <abbr title="World Wide Web Consortium">W3C</abbr>
+      publications and the latest revision of this technical report can be found
+      in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
+      https://www.w3.org/TR/.</em></p>
+
+    <p>
+Comments regarding this document are welcome. Please file issues
+directly on
+<a href="https://github.com/w3c/did-extensions/issues/">GitHub</a>,
+or send them
+to <a href="mailto:public-did-wg@w3.org">public-did-wg@w3.org</a> (
+<a href="mailto:public-did-wg-request@w3.org?subject=subscribe">subscribe</a>,
+<a href="https://lists.w3.org/Archives/Public/public-did-wg/">archives</a>).
+    </p>
+
+    <p>
+Portions of the work on this specification have been funded by the
+United States Department of Homeland Security's Science and Technology
+Directorate under contracts HSHQDC-16-R00012-H-SB2016-1-002, 70RSAT20T00000010,
+and HSHQDC-17-C-00019. The content of this specification does not
+necessarily reflect the position or the policy of the U.S. Government
+and no official endorsement should be inferred.
+    </p>
+
+    <p>
+Work on this registry has also been supported by the Rebooting the
+Web of Trust community facilitated by Christopher Allen, Shannon
+Appelcline, Kiara Robles, Brian Weller, Betty Dhamers, Kaliya Young,
+Kim Hamilton Duffy, Manu Sporny, Drummond Reed, Joe Andrieu, and
+Heather Vescent, Dmitri Zagidulin, and Dan Burnett.
+    </p>
+  <p>
+    This document was published by the <a href="https://www.w3.org/groups/wg/did">Decentralized Identifier Working Group</a> as
+    a Group Note using the
+        <a href="https://www.w3.org/policies/process/20231103/#recs-and-notes">Note track</a>. 
+  </p><p>This Group Note is endorsed by
+        the <a href="https://www.w3.org/groups/wg/did">Decentralized Identifier Working Group</a>, but is not endorsed by
+        <abbr title="World Wide Web Consortium">W3C</abbr> itself nor its
+        Members. </p><p>
+    This is a draft document and may be updated, replaced or obsoleted by other
+    documents at any time. It is inappropriate to cite this document as other
+    than work in progress.
+    
+  </p><p data-deliverer="117488">
+    
+        The
+        <a href="https://www.w3.org/policies/patent-policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent
+          Policy</a>
+        does not carry any licensing requirements or commitments on this
+        document.
+      
+    
+  </p><p>
+                      This document is governed by the
+                      <a id="w3c_process_revision" href="https://www.w3.org/policies/process/20231103/">03 November 2023 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                    </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#the-registration-process"><bdi class="secno">1.1 </bdi>The Registration Process</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1.2 </bdi>Conformance</a></li></ol></li><li class="tocline"><a class="tocxref" href="#representations"><bdi class="secno">2. </bdi>Representations</a></li><li class="tocline"><a class="tocxref" href="#representation-specific-entries"><bdi class="secno">3. </bdi>Representation-Specific Entries</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#json"><bdi class="secno">3.1 </bdi>JSON</a></li><li class="tocline"><a class="tocxref" href="#json-ld"><bdi class="secno">3.2 </bdi>JSON-LD</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#context"><bdi class="secno">3.2.1 </bdi>@context</a></li></ol></li><li class="tocline"><a class="tocxref" href="#cbor"><bdi class="secno">3.3 </bdi>CBOR</a></li></ol></li><li class="tocline"><a class="tocxref" href="#did-resolution-options"><bdi class="secno">4. </bdi>DID Resolution Options</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#accept"><bdi class="secno">4.1 </bdi>accept</a></li></ol></li><li class="tocline"><a class="tocxref" href="#did-resolution-metadata"><bdi class="secno">5. </bdi>DID Resolution Metadata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#contenttype"><bdi class="secno">5.1 </bdi>contentType</a></li><li class="tocline"><a class="tocxref" href="#error"><bdi class="secno">5.2 </bdi>error</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#invaliddid"><bdi class="secno">5.2.1 </bdi>invalidDid</a></li><li class="tocline"><a class="tocxref" href="#notfound"><bdi class="secno">5.2.2 </bdi>notFound</a></li><li class="tocline"><a class="tocxref" href="#representationnotsupported"><bdi class="secno">5.2.3 </bdi>representationNotSupported</a></li><li class="tocline"><a class="tocxref" href="#methodnotsupported"><bdi class="secno">5.2.4 </bdi>methodNotSupported</a></li><li class="tocline"><a class="tocxref" href="#internalerror"><bdi class="secno">5.2.5 </bdi>internalError</a></li><li class="tocline"><a class="tocxref" href="#invalidpublickey"><bdi class="secno">5.2.6 </bdi>invalidPublicKey</a></li><li class="tocline"><a class="tocxref" href="#invalidpublickeylength"><bdi class="secno">5.2.7 </bdi>invalidPublicKeyLength</a></li><li class="tocline"><a class="tocxref" href="#invalidpublickeytype"><bdi class="secno">5.2.8 </bdi>invalidPublicKeyType</a></li><li class="tocline"><a class="tocxref" href="#unsupportedpublickeytype"><bdi class="secno">5.2.9 </bdi>unsupportedPublicKeyType</a></li><li class="tocline"><a class="tocxref" href="#notallowedverificationmethodtype"><bdi class="secno">5.2.10 </bdi>notAllowedVerificationMethodType</a></li><li class="tocline"><a class="tocxref" href="#notallowedkeytype"><bdi class="secno">5.2.11 </bdi>notAllowedKeyType</a></li><li class="tocline"><a class="tocxref" href="#notallowedmethod"><bdi class="secno">5.2.12 </bdi>notAllowedMethod</a></li><li class="tocline"><a class="tocxref" href="#notallowedcertificate"><bdi class="secno">5.2.13 </bdi>notAllowedCertificate</a></li><li class="tocline"><a class="tocxref" href="#notallowedlocalduplicatekey"><bdi class="secno">5.2.14 </bdi>notAllowedLocalDuplicateKey</a></li><li class="tocline"><a class="tocxref" href="#notallowedlocalderivedkey"><bdi class="secno">5.2.15 </bdi>notAllowedLocalDerivedKey</a></li><li class="tocline"><a class="tocxref" href="#notallowedglobalduplicatekey"><bdi class="secno">5.2.16 </bdi>notAllowedGlobalDuplicateKey</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#did-dereferencing-metadata"><bdi class="secno">6. </bdi>DID Dereferencing Metadata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#error-0"><bdi class="secno">6.1 </bdi>error</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#invaliddidurl"><bdi class="secno">6.1.1 </bdi>invalidDidUrl</a></li><li class="tocline"><a class="tocxref" href="#notfound-0"><bdi class="secno">6.1.2 </bdi>notFound</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#did-document-metadata"><bdi class="secno">7. </bdi>DID Document Metadata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#created"><bdi class="secno">7.1 </bdi>created</a></li><li class="tocline"><a class="tocxref" href="#updated"><bdi class="secno">7.2 </bdi>updated</a></li><li class="tocline"><a class="tocxref" href="#deactivated"><bdi class="secno">7.3 </bdi>deactivated</a></li><li class="tocline"><a class="tocxref" href="#nextupdate"><bdi class="secno">7.4 </bdi>nextUpdate</a></li><li class="tocline"><a class="tocxref" href="#versionid"><bdi class="secno">7.5 </bdi>versionId</a></li><li class="tocline"><a class="tocxref" href="#nextversionid"><bdi class="secno">7.6 </bdi>nextVersionId</a></li><li class="tocline"><a class="tocxref" href="#equivalentid"><bdi class="secno">7.7 </bdi>equivalentId</a></li><li class="tocline"><a class="tocxref" href="#canonicalid"><bdi class="secno">7.8 </bdi>canonicalId</a></li></ol></li><li class="tocline"><a class="tocxref" href="#parameters"><bdi class="secno">8. </bdi>Parameters</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#hl-param"><bdi class="secno">8.1 </bdi>hl</a></li><li class="tocline"><a class="tocxref" href="#service-param"><bdi class="secno">8.2 </bdi>service</a></li><li class="tocline"><a class="tocxref" href="#versionId-param"><bdi class="secno">8.3 </bdi>versionId</a></li><li class="tocline"><a class="tocxref" href="#versionTime-param"><bdi class="secno">8.4 </bdi>versionTime</a></li><li class="tocline"><a class="tocxref" href="#relativeRef-param"><bdi class="secno">8.5 </bdi>relativeRef</a></li><li class="tocline"><a class="tocxref" href="#initialState-param"><bdi class="secno">8.6 </bdi>initialState</a></li><li class="tocline"><a class="tocxref" href="#transformKeys-param"><bdi class="secno">8.7 </bdi>transformKeys</a></li><li class="tocline"><a class="tocxref" href="#signedIetfJsonPatch-param"><bdi class="secno">8.8 </bdi>signedIetfJsonPatch</a></li><li class="tocline"><a class="tocxref" href="#resource"><bdi class="secno">8.9 </bdi>resource</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.1 </bdi>Informative references</a></li></ol></li></ol></nav>
+
+  <section class="informative" id="introduction"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#introduction" aria-label="Permalink for Section 1."></a></div><p><em>This section is non-normative.</em></p>
+    
+
+    <p>
+This document serves as a collection of known DID Resolution and Dereferencing
+extensions.
+    </p>
+
+    <section id="the-registration-process"><div class="header-wrapper"><h3 id="x1-1-the-registration-process"><bdi class="secno">1.1 </bdi>The Registration Process</h3><a class="self-link" href="#the-registration-process" aria-label="Permalink for Section 1.1"></a></div>
+      
+      <p>
+  The registration process is described in the <cite><a data-matched-text="[[[DID-EXTENSIONS]]]" href="https://www.w3.org/TR/did-extensions/">Decentralized Identifier Extensions</a></cite>.
+      </p>
+    </section>
+
+    <section id="conformance"><div class="header-wrapper"><h3 id="x1-2-conformance"><bdi class="secno">1.2 </bdi>Conformance</h3><a class="self-link" href="#conformance" aria-label="Permalink for Section 1.2"></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p></section>
+
+  </section>
+
+  <section id="representations"><div class="header-wrapper"><h2 id="x2-representations"><bdi class="secno">2. </bdi>Representations</h2><a class="self-link" href="#representations" aria-label="Permalink for Section 2."></a></div>
+    
+    <p>This table provides a reference for media types and the associated specifications for producing and consuming those representations.</p>
+    <table class="simple" style="width: 100%;">
+      <thead>
+        <tr>
+          <th>Media Type</th>
+          <th>Specification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="application-did-json">
+          <td>application/did+json</td>
+          <td>
+            <a href="https://www.w3.org/TR/did-core#json">DID Core</a>
+          </td>
+        </tr>
+        <tr id="application-did-ld-json">
+          <td>application/did+ld+json</td>
+          <td>
+            <a href="https://www.w3.org/TR/did-core#json-ld">DID Core</a>
+          </td>
+        </tr>
+        <tr id="application-did-cbor">
+          <td>application/did+cbor</td>
+          <td>
+            <a href="https://www.w3.org/TR/did-cbor-representation/#application-did-cbor">The Plain CBOR Representation</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </section>
+
+  <section id="representation-specific-entries"><div class="header-wrapper"><h2 id="x3-representation-specific-entries"><bdi class="secno">3. </bdi>Representation-Specific Entries</h2><a class="self-link" href="#representation-specific-entries" aria-label="Permalink for Section 3."></a></div>
+    
+
+    <section id="json"><div class="header-wrapper"><h3 id="x3-1-json"><bdi class="secno">3.1 </bdi>JSON</h3><a class="self-link" href="#json" aria-label="Permalink for Section 3.1"></a></div>
+      
+
+      <p>
+These are entries in DID documents that are specific to the
+<a href="https://w3c.github.io/did-core/#json">JSON representation</a>.
+      </p>
+      <p>
+(No entries yet)
+      </p>
+    </section>
+
+    <section id="json-ld"><div class="header-wrapper"><h3 id="x3-2-json-ld"><bdi class="secno">3.2 </bdi>JSON-LD</h3><a class="self-link" href="#json-ld" aria-label="Permalink for Section 3.2"></a></div>
+      
+
+      <p>
+These are entries in DID documents that are specific to the
+<a href="https://w3c.github.io/did-core/#json-ld">JSON-LD representation</a>.
+      </p>
+
+      <section id="context"><div class="header-wrapper"><h4 id="x3-2-1-context"><bdi class="secno">3.2.1 </bdi>@context</h4><a class="self-link" href="#context" aria-label="Permalink for Section 3.2.1"></a></div>
+        
+
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#production-0">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+The following values are acceptable values for the <code>@context</code> entry as
+a <a href="https://tools.ietf.org/html/rfc8259#section-7">JSON
+  String</a> or first item of a <a href="https://tools.ietf.org/html/rfc8259#section-5">JSON Array</a>,
+represented as a <a href="https://tools.ietf.org/html/rfc8259#section-7">JSON
+  String</a>.
+        </p>
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th><code>@context</code> Values</th>
+              <th>Specification Version</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/ns/did/v1">https://www.w3.org/ns/did/v1</a>
+              </td>
+              <td>
+                <a href="https://w3c.github.io/did-core/">DID Core 1.0 Working draft</a>
+              </td>
+          </tr></tbody>
+        </table>
+
+        <div class="example" id="example-example-of-context-in-the-json-ld-representation">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-context-in-the-json-ld-representation">Example<bdi> 1</bdi></a><span class="example-title">: Example of @context in the JSON-LD representation</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript">{
+  <span class="hljs-string">"@context"</span>: [
+    <span class="hljs-string">"https://www.w3.org/ns/did/v1"</span>,
+    <span class="hljs-string">"https://example.com/blockchain-identity/v1"</span>
+  ],
+  ...
+}</code></pre>
+      </div>
+
+      </section>
+    </section>
+
+    <section id="cbor"><div class="header-wrapper"><h3 id="x3-3-cbor"><bdi class="secno">3.3 </bdi>CBOR</h3><a class="self-link" href="#cbor" aria-label="Permalink for Section 3.3"></a></div>
+      
+
+      <p>
+These are entries in DID documents that are specific to the
+<a href="https://www.w3.org/TR/did-cbor-representation/">CBOR representation</a>.
+      </p>
+      <p>
+(No entries yet)
+      </p>
+    </section>
+  </section>
+
+  <section id="did-resolution-options"><div class="header-wrapper"><h2 id="x4-did-resolution-options"><bdi class="secno">4. </bdi>DID Resolution Options</h2><a class="self-link" href="#did-resolution-options" aria-label="Permalink for Section 4."></a></div>
+    
+    <p>
+These properties contain information pertaining to the DID resolution request.
+    </p>
+
+    <section id="accept"><div class="header-wrapper"><h3 id="x4-1-accept"><bdi class="secno">4.1 </bdi>accept</h3><a class="self-link" href="#accept" aria-label="Permalink for Section 4.1"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-resolution-options">DID Core</a>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-accept-metadata-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-accept-metadata-property">Example<bdi> 2</bdi></a><span class="example-title">: Example of accept metadata property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"accept"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"application/did+ld+json"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+    </section>
+  </section>
+
+  <section id="did-resolution-metadata"><div class="header-wrapper"><h2 id="x5-did-resolution-metadata"><bdi class="secno">5. </bdi>DID Resolution Metadata</h2><a class="self-link" href="#did-resolution-metadata" aria-label="Permalink for Section 5."></a></div>
+    
+    <p>
+These properties contain information pertaining to the DID resolution response.
+    </p>
+    <section id="contenttype"><div class="header-wrapper"><h3 id="x5-1-contenttype"><bdi class="secno">5.1 </bdi>contentType</h3><a class="self-link" href="#contenttype" aria-label="Permalink for Section 5.1"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-contenttype-metadata-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-contenttype-metadata-property">Example<bdi> 3</bdi></a><span class="example-title">: Example of contentType metadata property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"contentType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"application/did+ld+json"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+    </section>
+
+    <section id="error"><div class="header-wrapper"><h3 id="x5-2-error"><bdi class="secno">5.2 </bdi>error</h3><a class="self-link" href="#error" aria-label="Permalink for Section 5.2"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
+            </td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-error-metadata-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-error-metadata-property">Example<bdi> 4</bdi></a><span class="example-title">: Example of error metadata property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"notFound"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+
+      <section id="invaliddid"><div class="header-wrapper"><h4 id="x5-2-1-invaliddid"><bdi class="secno">5.2.1 </bdi>invalidDid</h4><a class="self-link" href="#invaliddid" aria-label="Permalink for Section 5.2.1"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-invaliddid-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-invaliddid-error-value">Example<bdi> 5</bdi></a><span class="example-title">: Example of invalidDid error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"invalidDid"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="notfound"><div class="header-wrapper"><h4 id="x5-2-2-notfound"><bdi class="secno">5.2.2 </bdi>notFound</h4><a class="self-link" href="#notfound" aria-label="Permalink for Section 5.2.2"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-notfound-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-notfound-error-value">Example<bdi> 6</bdi></a><span class="example-title">: Example of notFound error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"notFound"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="representationnotsupported"><div class="header-wrapper"><h4 id="x5-2-3-representationnotsupported"><bdi class="secno">5.2.3 </bdi>representationNotSupported</h4><a class="self-link" href="#representationnotsupported" aria-label="Permalink for Section 5.2.3"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-resolution-metadata">DID Core</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-representationnotsupported-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-representationnotsupported-error-value">Example<bdi> 7</bdi></a><span class="example-title">: Example of representationNotSupported error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"representationNotSupported"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="methodnotsupported"><div class="header-wrapper"><h4 id="x5-2-4-methodnotsupported"><bdi class="secno">5.2.4 </bdi>methodNotSupported</h4><a class="self-link" href="#methodnotsupported" aria-label="Permalink for Section 5.2.4"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#methodnotsupported">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-methodnotsupported-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-methodnotsupported-error-value">Example<bdi> 8</bdi></a><span class="example-title">: Example of methodNotSupported error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"methodNotSupported"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="internalerror"><div class="header-wrapper"><h4 id="x5-2-5-internalerror"><bdi class="secno">5.2.5 </bdi>internalError</h4><a class="self-link" href="#internalerror" aria-label="Permalink for Section 5.2.5"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#internalerror">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-internalerror-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-internalerror-error-value">Example<bdi> 9</bdi></a><span class="example-title">: Example of internalError error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"internalError"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+      <section id="invalidpublickey"><div class="header-wrapper"><h4 id="x5-2-6-invalidpublickey"><bdi class="secno">5.2.6 </bdi>invalidPublicKey</h4><a class="self-link" href="#invalidpublickey" aria-label="Permalink for Section 5.2.6"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#invalidPublicKey">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-invalidpublickey-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-invalidpublickey-error-value">Example<bdi> 10</bdi></a><span class="example-title">: Example of invalidPublicKey error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"invalidPublicKey"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+      <section id="invalidpublickeylength"><div class="header-wrapper"><h4 id="x5-2-7-invalidpublickeylength"><bdi class="secno">5.2.7 </bdi>invalidPublicKeyLength</h4><a class="self-link" href="#invalidpublickeylength" aria-label="Permalink for Section 5.2.7"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#invalidPublicKeyLengthr">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-invalidpublickeylength-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-invalidpublickeylength-error-value">Example<bdi> 11</bdi></a><span class="example-title">: Example of invalidPublicKeyLength error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"invalidPublicKeyLength"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+      <section id="invalidpublickeytype"><div class="header-wrapper"><h4 id="x5-2-8-invalidpublickeytype"><bdi class="secno">5.2.8 </bdi>invalidPublicKeyType</h4><a class="self-link" href="#invalidpublickeytype" aria-label="Permalink for Section 5.2.8"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#invalidPublicKeyType">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-invalidpublickeytype-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-invalidpublickeytype-error-value">Example<bdi> 12</bdi></a><span class="example-title">: Example of invalidPublicKeyType error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"invalidPublicKeyType"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+      <section id="unsupportedpublickeytype"><div class="header-wrapper"><h4 id="x5-2-9-unsupportedpublickeytype"><bdi class="secno">5.2.9 </bdi>unsupportedPublicKeyType</h4><a class="self-link" href="#unsupportedpublickeytype" aria-label="Permalink for Section 5.2.9"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="https://w3c.github.io/did-resolution/#unsupportedPublicKeyType">DID Resolution</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-unsupportedpublickeytype-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-unsupportedpublickeytype-error-value">Example<bdi> 13</bdi></a><span class="example-title">: Example of unsupportedPublicKeyType error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"unsupportedPublicKeyType"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+
+        <section id="notallowedverificationmethodtype"><div class="header-wrapper"><h4 id="x5-2-10-notallowedverificationmethodtype"><bdi class="secno">5.2.10 </bdi>notAllowedVerificationMethodType</h4><a class="self-link" href="#notallowedverificationmethodtype" aria-label="Permalink for Section 5.2.10"></a></div>
+            
+            <table class="simple" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>Normative Definition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-verification-method-type.md">DID Spec Extension: notAllowedVerificationMethodType</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="example" id="example-example-of-notallowedverificationmethodtype-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-notallowedverificationmethodtype-error-value">Example<bdi> 14</bdi></a><span class="example-title">: Example of notAllowedVerificationMethodType error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"notAllowedVerificationMethodType"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+        </section>
+
+        <section id="notallowedkeytype"><div class="header-wrapper"><h4 id="x5-2-11-notallowedkeytype"><bdi class="secno">5.2.11 </bdi>notAllowedKeyType</h4><a class="self-link" href="#notallowedkeytype" aria-label="Permalink for Section 5.2.11"></a></div>
+            
+            <table class="simple" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>Normative Definition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-key-type.md">DID Spec Extension: notAllowedKeyType</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="example" id="example-example-of-notallowedkeytype-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-notallowedkeytype-error-value">Example<bdi> 15</bdi></a><span class="example-title">: Example of notAllowedKeyType error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"notAllowedKeyType"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+        </section>
+
+        <section id="notallowedmethod"><div class="header-wrapper"><h4 id="x5-2-12-notallowedmethod"><bdi class="secno">5.2.12 </bdi>notAllowedMethod</h4><a class="self-link" href="#notallowedmethod" aria-label="Permalink for Section 5.2.12"></a></div>
+            
+            <table class="simple" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>Normative Definition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-method.md">DID Spec Extension: notAllowedMethod</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="example" id="example-example-of-notallowedmethod-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-notallowedmethod-error-value">Example<bdi> 16</bdi></a><span class="example-title">: Example of notAllowedMethod error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"notAllowedMethod"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+        </section>
+
+        <section id="notallowedcertificate"><div class="header-wrapper"><h4 id="x5-2-13-notallowedcertificate"><bdi class="secno">5.2.13 </bdi>notAllowedCertificate</h4><a class="self-link" href="#notallowedcertificate" aria-label="Permalink for Section 5.2.13"></a></div>
+            
+            <table class="simple" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>Normative Definition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-certificate.md">DID Spec Extension: notAllowedCertificate</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="example" id="example-example-of-notallowedcertificate-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-notallowedcertificate-error-value">Example<bdi> 17</bdi></a><span class="example-title">: Example of notAllowedCertificate error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"notAllowedCertificate"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+        </section>
+
+        <section id="notallowedlocalduplicatekey"><div class="header-wrapper"><h4 id="x5-2-14-notallowedlocalduplicatekey"><bdi class="secno">5.2.14 </bdi>notAllowedLocalDuplicateKey</h4><a class="self-link" href="#notallowedlocalduplicatekey" aria-label="Permalink for Section 5.2.14"></a></div>
+            
+            <table class="simple" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>Normative Definition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-local-duplicate-key.md">DID Spec Extension: notAllowedLocalDuplicateKey</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="example" id="example-example-of-notallowedlocalduplicatekey-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-notallowedlocalduplicatekey-error-value">Example<bdi> 18</bdi></a><span class="example-title">: Example of notAllowedLocalDuplicateKey error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"notAllowedLocalDuplicateKey"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+        </section>
+
+        <section id="notallowedlocalderivedkey"><div class="header-wrapper"><h4 id="x5-2-15-notallowedlocalderivedkey"><bdi class="secno">5.2.15 </bdi>notAllowedLocalDerivedKey</h4><a class="self-link" href="#notallowedlocalderivedkey" aria-label="Permalink for Section 5.2.15"></a></div>
+            
+            <table class="simple" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>Normative Definition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-local-derived-key.md">DID Spec Extension: notAllowedLocalDerivedKey</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="example" id="example-example-of-notallowedlocalderivedkey-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-notallowedlocalderivedkey-error-value">Example<bdi> 19</bdi></a><span class="example-title">: Example of notAllowedLocalDerivedKey error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"notAllowedLocalDerivedKey"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+        </section>
+
+        <section id="notallowedglobalduplicatekey"><div class="header-wrapper"><h4 id="x5-2-16-notallowedglobalduplicatekey"><bdi class="secno">5.2.16 </bdi>notAllowedGlobalDuplicateKey</h4><a class="self-link" href="#notallowedglobalduplicatekey" aria-label="Permalink for Section 5.2.16"></a></div>
+            
+            <table class="simple" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>Normative Definition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/main/error-codes/not-allowed-global-duplicate-key.md">DID Spec Extension: notAllowedGlobalDuplicateKey</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="example" id="example-example-of-notallowedglobalduplicatekey-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-notallowedglobalduplicatekey-error-value">Example<bdi> 20</bdi></a><span class="example-title">: Example of notAllowedGlobalDuplicateKey error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"notAllowedGlobalDuplicateKey"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+        </section>
+</section>
+  </section>
+  <section id="did-dereferencing-metadata"><div class="header-wrapper"><h2 id="x6-did-dereferencing-metadata"><bdi class="secno">6. </bdi>DID Dereferencing Metadata</h2><a class="self-link" href="#did-dereferencing-metadata" aria-label="Permalink for Section 6."></a></div>
+    
+    <p>
+These properties contain information pertaining to the DID dereferencing response.
+    </p>
+    <section id="error-0"><div class="header-wrapper"><h3 id="x6-1-error"><bdi class="secno">6.1 </bdi>error</h3><a class="self-link" href="#error-0" aria-label="Permalink for Section 6.1"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-url-dereferencing-metadata">DID Core</a>
+            </td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-error-metadata-property-0">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-error-metadata-property-0">Example<bdi> 21</bdi></a><span class="example-title">: Example of error metadata property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"notFound"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      <section id="invaliddidurl"><div class="header-wrapper"><h4 id="x6-1-1-invaliddidurl"><bdi class="secno">6.1.1 </bdi>invalidDidUrl</h4><a class="self-link" href="#invaliddidurl" aria-label="Permalink for Section 6.1.1"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-url-dereferencing-metadata">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-invaliddidurl-error-value">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-invaliddidurl-error-value">Example<bdi> 22</bdi></a><span class="example-title">: Example of invalidDidUrl error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"invalidDidUrl"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+      <section id="notfound-0"><div class="header-wrapper"><h4 id="x6-1-2-notfound"><bdi class="secno">6.1.2 </bdi>notFound</h4><a class="self-link" href="#notfound-0" aria-label="Permalink for Section 6.1.2"></a></div>
+        
+        <table class="simple" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Normative Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.w3.org/TR/did-core/#did-url-dereferencing-metadata">DID Core</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-of-notfound-error-value-0">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-notfound-error-value-0">Example<bdi> 23</bdi></a><span class="example-title">: Example of notFound error value</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"error"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"notFound"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+      </section>
+    </section>
+  </section>
+  <section id="did-document-metadata"><div class="header-wrapper"><h2 id="x7-did-document-metadata"><bdi class="secno">7. </bdi>DID Document Metadata</h2><a class="self-link" href="#did-document-metadata" aria-label="Permalink for Section 7."></a></div>
+    
+    <p>
+These properties contain information pertaining to the DID document itself,
+rather than the DID subject.
+    </p>
+    <section id="created"><div class="header-wrapper"><h3 id="x7-1-created"><bdi class="secno">7.1 </bdi>created</h3><a class="self-link" href="#created" aria-label="Permalink for Section 7.1"></a></div>
+      
+      <div class="issue" id="issue-container-number-1"><div role="heading" class="issue-title marker" id="h-issue" aria-level="4"><span>Issue 1</span></div><p class="">
+        See <a href="https://github.com/w3c/did-core/issues/203">DID Core #203</a>.
+      </p></div>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata">DID Core</a>
+            </td>
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-created-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-created-property">Example<bdi> 24</bdi></a><span class="example-title">: Example of created property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"created"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2019-03-23T06:35:22Z"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+    </section>
+
+    <section id="updated"><div class="header-wrapper"><h3 id="x7-2-updated"><bdi class="secno">7.2 </bdi>updated</h3><a class="self-link" href="#updated" aria-label="Permalink for Section 7.2"></a></div>
+      
+      <div class="issue" id="issue-container-number-2"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="4"><span>Issue 2</span></div><p class="">
+        See <a href="https://github.com/w3c/did-core/issues/203">DID Core #203</a>.
+      </p></div>
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata">DID Core</a>
+            </td>
+
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-updated-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-updated-property">Example<bdi> 25</bdi></a><span class="example-title">: Example of updated property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"updated"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2023-08-10T13:40:06Z"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+
+    </section>
+
+    <section id="deactivated"><div class="header-wrapper"><h3 id="x7-3-deactivated"><bdi class="secno">7.3 </bdi>deactivated</h3><a class="self-link" href="#deactivated" aria-label="Permalink for Section 7.3"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata">DID Core</a>
+            </td>
+
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-deactivated-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-deactivated-property">Example<bdi> 26</bdi></a><span class="example-title">: Example of deactivated property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"deactivated"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+
+    </section>
+
+    <section id="nextupdate"><div class="header-wrapper"><h3 id="x7-4-nextupdate"><bdi class="secno">7.4 </bdi>nextUpdate</h3><a class="self-link" href="#nextupdate" aria-label="Permalink for Section 7.4"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata">DID Core</a>
+            </td>
+
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-nextupdate-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-nextupdate-property">Example<bdi> 27</bdi></a><span class="example-title">: Example of nextUpdate property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"nextUpdate"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2023-08-10T13:40:06Z"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+
+    </section>
+
+    <section id="versionid"><div class="header-wrapper"><h3 id="x7-5-versionid"><bdi class="secno">7.5 </bdi>versionId</h3><a class="self-link" href="#versionid" aria-label="Permalink for Section 7.5"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata">DID Core</a>
+            </td>
+
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-versionid-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-versionid-property">Example<bdi> 28</bdi></a><span class="example-title">: Example of versionId property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"versionId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"bafyreifederejlobaec6kwpl2mc3tw7qk3j3ey4uytkbiw2qw7dzylud6i"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+
+    </section>
+
+    <section id="nextversionid"><div class="header-wrapper"><h3 id="x7-6-nextversionid"><bdi class="secno">7.6 </bdi>nextVersionId</h3><a class="self-link" href="#nextversionid" aria-label="Permalink for Section 7.6"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+            <th>JSON-LD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-document-metadata">DID Core</a>
+            </td>
+
+            <td>
+              <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-nextversionid-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-nextversionid-property">Example<bdi> 29</bdi></a><span class="example-title">: Example of nextVersionId property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"nextVersionId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"bafyreifederejlobaec6kwpl2mc3tw7qk3j3ey4uytkbiw2qw7dzylud6i"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+
+    </section>
+
+    <section id="equivalentid"><div class="header-wrapper"><h3 id="x7-7-equivalentid"><bdi class="secno">7.7 </bdi>equivalentId</h3><a class="self-link" href="#equivalentid" aria-label="Permalink for Section 7.7"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+        <tr>
+          <th>Normative Definition</th>
+          <th>JSON-LD</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <a href="https://www.w3.org/TR/did-core/#did-document-metadata">DID Core</a>
+          </td>
+
+          <td>
+            <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-equivalentid-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-equivalentid-property">Example<bdi> 30</bdi></a><span class="example-title">: Example of equivalentId property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"equivalentId"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"did:example:ABC"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"did:example:Abc"</span><span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+
+    </section>
+
+    <section id="canonicalid"><div class="header-wrapper"><h3 id="x7-8-canonicalid"><bdi class="secno">7.8 </bdi>canonicalId</h3><a class="self-link" href="#canonicalid" aria-label="Permalink for Section 7.8"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+        <tr>
+          <th>Normative Definition</th>
+          <th>JSON-LD</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <a href="https://www.w3.org/TR/did-core/#did-document-metadata-properties">DID Core</a>
+          </td>
+
+          <td>
+            <a href="https://www.w3.org/ns/did/v1">DID Core</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-canonicalid-property">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-canonicalid-property">Example<bdi> 31</bdi></a><span class="example-title">: Example of canonicalId property</span>
+  </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"canonicalId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"did:example:ABC"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+      </div>
+
+    </section>
+  </section>
+
+  <section id="parameters"><div class="header-wrapper"><h2 id="x8-parameters"><bdi class="secno">8. </bdi>Parameters</h2><a class="self-link" href="#parameters" aria-label="Permalink for Section 8."></a></div>
+
+    
+
+    <section id="hl"><div class="header-wrapper"><h3 id="hl-param"><bdi class="secno">8.1 </bdi>hl</h3><a class="self-link" href="#hl-param" aria-label="Permalink for Section 8.1"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-parameters">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-hl-parameter">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-hl-parameter">Example<bdi> 32</bdi></a><span class="example-title">: Example of hl parameter</span>
+  </div> <pre aria-busy="false"><code class="hljs">did:example:123?hl=zQmWvQxTqbG2Z9HPJgG57jjwR154cKhbtJenbyYTWkjgF3e</code></pre>
+      </div>
+    </section>
+
+    <section id="service"><div class="header-wrapper"><h3 id="service-param"><bdi class="secno">8.2 </bdi>service</h3><a class="self-link" href="#service-param" aria-label="Permalink for Section 8.2"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#generic-did-url-parameters">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-service-parameter">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-service-parameter">Example<bdi> 33</bdi></a><span class="example-title">: Example of service parameter</span>
+  </div> <pre aria-busy="false"><code class="hljs">did:example:123?service=agent</code></pre>
+      </div>
+    </section>
+
+    <section id="versionid-0"><div class="header-wrapper"><h3 id="versionId-param"><bdi class="secno">8.3 </bdi>versionId</h3><a class="self-link" href="#versionId-param" aria-label="Permalink for Section 8.3"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-parameters">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-versionid-parameter">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-versionid-parameter">Example<bdi> 34</bdi></a><span class="example-title">: Example of versionId parameter</span>
+  </div> <pre aria-busy="false"><code class="hljs">did:example:123?versionId=4</code></pre>
+      </div>
+    </section>
+
+    <section id="versiontime"><div class="header-wrapper"><h3 id="versionTime-param"><bdi class="secno">8.4 </bdi>versionTime</h3><a class="self-link" href="#versionTime-param" aria-label="Permalink for Section 8.4"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-parameters">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-versiontime-parameter">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-versiontime-parameter">Example<bdi> 35</bdi></a><span class="example-title">: Example of versionTime parameter</span>
+  </div> <pre aria-busy="false"><code class="hljs">did:example:123?versionTime=2016-10-17T02:41:00Z</code></pre>
+      </div>
+    </section>
+
+    <section id="relativeref"><div class="header-wrapper"><h3 id="relativeRef-param"><bdi class="secno">8.5 </bdi>relativeRef</h3><a class="self-link" href="#relativeRef-param" aria-label="Permalink for Section 8.5"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.w3.org/TR/did-core/#did-parameters">DID Core</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-relativeref-parameter">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-relativeref-parameter">Example<bdi> 36</bdi></a><span class="example-title">: Example of relativeRef parameter</span>
+  </div> <pre aria-busy="false"><code class="hljs">did:example:123?service=files&amp;relativeRef=%2Fmyresume%2Fdoc%3Fversion%3Dlatest%23intro</code></pre>
+      </div>
+    </section>
+
+    <section id="initialstate"><div class="header-wrapper"><h3 id="initialState-param"><bdi class="secno">8.6 </bdi>initialState</h3><a class="self-link" href="#initialState-param" aria-label="Permalink for Section 8.6"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/master/parameters/initial-state.md">DID Spec Extensions by DIF</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-initialstate-parameter">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-initialstate-parameter">Example<bdi> 37</bdi></a><span class="example-title">: Example of initialState parameter</span>
+  </div> <pre aria-busy="false"><code class="hljs">did:example:123?initialState=eyJkZWx0YV9oYXNoIjoiRWlDUlRKZ2Q0U0V2YUZDLW9fNUZjQnZJUkRtWF94Z3RLX3g...</code></pre>
+      </div>
+    </section>
+
+    <section id="transformkeys"><div class="header-wrapper"><h3 id="transformKeys-param"><bdi class="secno">8.7 </bdi>transformKeys</h3><a class="self-link" href="#transformKeys-param" aria-label="Permalink for Section 8.7"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/master/parameters/transform-keys.md">DID Spec Extensions by DIF</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-transformkeys-parameter">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-transformkeys-parameter">Example<bdi> 38</bdi></a><span class="example-title">: Example of transformKeys parameter</span>
+  </div> <pre aria-busy="false"><code class="hljs">did:example:123?transformKeys=jwk</code></pre>
+      </div>
+    </section>
+
+    <section id="signedietfjsonpatch"><div class="header-wrapper"><h3 id="signedIetfJsonPatch-param"><bdi class="secno">8.8 </bdi>signedIetfJsonPatch</h3><a class="self-link" href="#signedIetfJsonPatch-param" aria-label="Permalink for Section 8.8"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://github.com/decentralized-identity/did-spec-extensions/blob/master/parameters/signed-ietf-json-patch.md">DID Spec Extensions by DIF</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-example-of-signedietfjsonpatch-parameter">
+        <div class="marker">
+    <a class="self-link" href="#example-example-of-signedietfjsonpatch-parameter">Example<bdi> 39</bdi></a><span class="example-title">: Example of signedIetfJsonPatch parameter</span>
+  </div> <pre aria-busy="false"><code class="hljs">did:example:123?signedIetfJsonPatch=eyJraWQiOiJkaWQ6ZXhhbXBsZTo0NTYjX1FxMFVMMkZxNjUxUTBGamQ2VH...</code></pre>
+      </div>
+    </section>
+
+    <section id="resource-0"><div class="header-wrapper"><h3 id="resource"><bdi class="secno">8.9 </bdi>resource</h3><a class="self-link" href="#resource" aria-label="Permalink for Section 8.9"></a></div>
+      
+      <table class="simple" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Normative Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://wiki.trustoverip.org/display/HOME/DID+URL+Resource+Parameter+Specification">DID URL Resource Parameter Specification</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example" id="example-a-did-url-with-a-resource-did-parameter">
+        <div class="marker">
+    <a class="self-link" href="#example-a-did-url-with-a-resource-did-parameter">Example<bdi> 40</bdi></a><span class="example-title">: A DID URL with a 'resource' DID parameter</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript"><span class="hljs-attr">did</span>:<span class="hljs-attr">foo</span>:21tDAKCERh95uGgKbJNHYp?resource=<span class="hljs-literal">true</span></code></pre>
+      </div>
+    </section>
+
+  </section>
+
+
+
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-references"><bdi class="secno">A. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="informative-references"><div class="header-wrapper"><h3 id="a-1-informative-references"><bdi class="secno">A.1 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix A.1"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-did-extensions">[DID-EXTENSIONS]</dt><dd>
+      <a href="https://www.w3.org/TR/did-extensions/"><cite>Decentralized Identifier Extensions</cite></a>. Manu Sporny.  Decentralized Identifier Working Group. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/did-extensions/">https://www.w3.org/TR/did-extensions/</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

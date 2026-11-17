@@ -1,0 +1,9 @@
+{
+  "name": "bee",
+  "status": "registered",
+  "verifiableDataRegistry": "Ledger agnostic",
+  "contactName": "mesur.io",
+  "contactEmail": "mprorock@mesur.io",
+  "contactWebsite": "https://mesur.io.io/",
+  "specification": "https://github.com/mesur-io/did-method-bee"
+}

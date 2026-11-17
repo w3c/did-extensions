@@ -1,0 +1,9 @@
+{
+  "name": "gns",
+  "status": "registered",
+  "verifiableDataRegistry": "GNU Name System",
+  "contactName": "GNUnet",
+  "contactEmail": "gnunet-developers@gnu.org",
+  "contactWebsite": "https://gnunet.org",
+  "specification": "https://lsd.gnunet.org/lsd0005/"
+}

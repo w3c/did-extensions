@@ -1,0 +1,9 @@
+{
+  "name": "near",
+  "status": "registered",
+  "verifiableDataRegistry": "NEAR",
+  "contactName": "Ontology Foundation",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/ontology-tech/DID-spec-near/blob/master/NEAR/DID-Method-NEAR.md"
+}

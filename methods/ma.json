@@ -1,0 +1,9 @@
+{
+  "name": "ma",
+  "status": "registered",
+  "specification": "https://github.com/bahner/ma-spec/blob/v1.0.0.rc.1/did-ma-spec-v1.md",
+  "contactName": "Lars Bahner",
+  "contactEmail": "lars.bahner@gmail.com",
+  "contactWebsite": "https://lars.bahner.com/",
+  "verifiableDataRegistry": "IPFS/IPNS"
+}

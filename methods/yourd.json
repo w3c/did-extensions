@@ -1,0 +1,9 @@
+{
+  "name": "yourd",
+  "status": "registered",
+  "verifiableDataRegistry": "YourD compatible chains",
+  "contactName": "YourD",
+  "contactEmail": "",
+  "contactWebsite": "https://www.yourd.xyz/",
+  "specification": "https://github.com/DataSovereignty-YourD/YourD-did-sepcification"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "cosmos",
+  "status": "registered",
+  "verifiableDataRegistry": "Cosmos application chains",
+  "contactName": "Shaun Conway",
+  "contactEmail": "earthprogram@ixo.world",
+  "contactWebsite": "https://www.ixo.world/",
+  "specification": "https://github.com/EarthProgram/did-cosmos"
+}

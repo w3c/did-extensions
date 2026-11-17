@@ -1,0 +1,9 @@
+{
+  "name": "hpo",
+  "status": "registered",
+  "verifiableDataRegistry": "",
+  "contactName": "Hippocrat DAO",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/hippocrat-protocol/hpo-did-method-spec/blob/main/HPO-DID-method-spec.md"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "ixo",
+  "status": "registered",
+  "verifiableDataRegistry": "IXO Impact Hub",
+  "contactName": "IXO Foundation",
+  "contactEmail": "earthprogram@ixo.world",
+  "contactWebsite": "https://www.ixo.world/",
+  "specification": "https://github.com/ixofoundation/ixo-did-method/blob/main/README.md"
+}

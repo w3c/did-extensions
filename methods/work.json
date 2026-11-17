@@ -1,0 +1,9 @@
+{
+  "name": "work",
+  "status": "registered",
+  "verifiableDataRegistry": "Hyperledger Fabric",
+  "contactName": "Workday, Inc.",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://workday.github.io/work-did-method-spec/"
+}

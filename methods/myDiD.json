@@ -1,0 +1,10 @@
+{
+    "name": "myDiD",
+    "status": "registered",
+    "specification": "https://github.com/MyDidCom/myDiD_Method",
+    "contactName": "",
+    "contactEmail": "contact@mydid.com",
+    "contactWebsite": "https://mydid.com",
+    "verifiableDataRegistry": "DID Specification"
+}
+

@@ -1,0 +1,9 @@
+{
+  "name": "plc",
+  "status": "registered",
+  "specification": "https://github.com/bluesky-social/did-method-plc",
+  "contactName": "Bluesky PBLLC",
+  "contactEmail": "protocol@blueskyweb.xyz",
+  "contactWebsite": "https://blueskyweb.xyz/",
+  "verifiableDataRegistry": "https://plc.directory"
+}

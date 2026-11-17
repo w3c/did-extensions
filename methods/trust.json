@@ -1,0 +1,9 @@
+{
+  "name": "trust",
+  "status": "registered",
+  "verifiableDataRegistry": "TrustChain",
+  "contactName": "TrustCerts GmbH",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/trustcerts/did-trust-method/blob/main/README.md"
+}

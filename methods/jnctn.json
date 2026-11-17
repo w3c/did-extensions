@@ -1,0 +1,9 @@
+{
+  "name": "jnctn",
+  "status": "registered",
+  "verifiableDataRegistry": "Jnctn Network",
+  "contactName": "Jnctn Limited",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/jnctn/did-method-spec/"
+}

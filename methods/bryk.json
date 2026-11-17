@@ -1,0 +1,9 @@
+{
+  "name": "bryk",
+  "status": "registered",
+  "verifiableDataRegistry": "bryk",
+  "contactName": "Marcos Allende, Sandra Murcia, Flavia Munhoso, Ruben Cessa",
+  "contactEmail": "",
+  "contactWebsite": "",
+  "specification": "https://github.com/bryk-io/did-method/blob/master/README.md"
+}
