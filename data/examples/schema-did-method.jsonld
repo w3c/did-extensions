@@ -1,0 +1,401 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://schema.org/",
+    {
+      "didm": "https://w3c.github.io/did-extensions/vocab#",
+      "anchor": "didm:anchor",
+      "resolves": "didm:resolves",
+      "extends": "didm:extends",
+      "calls": "didm:calls",
+      "crud": "didm:crud",
+      "instrument": "schema:instrument",
+      "DIDMethod": "didm:DIDMethod",
+      "AnchorMechanism": "didm:AnchorMechanism",
+      "ResolutionStrategy": "didm:ResolutionStrategy"
+    }
+  ],
+
+  "@@comment": "═══════════════════════════════════════════════════════════",
+  "@@comment2": "EXAMPLE 1: did:web — Web-anchored, simple resolution",
+  "@@comment3": "═══════════════════════════════════════════════════════════",
+
+  "@graph": [
+
+    {
+      "@id": "did:method:web",
+      "@type": ["DIDMethod", "schema:SoftwareApplication"],
+      "name": "did:web",
+      "description": "DID method anchored to web domains via HTTPS resolution",
+      "url": "https://w3c-ccg.github.io/did-method-web/",
+      "additionalType": ["didm:WebAnchored", "didm:KeyDerived"],
+
+      "anchor": {
+        "@type": "AnchorMechanism",
+        "name": "HTTPS + DNS",
+        "instrument": {
+          "@type": "schema:WebAPI",
+          "name": "HTTPS well-known path",
+          "description": "Resolves via /.well-known/did.json or /did.json under the domain"
+        }
+      },
+
+      "resolves": {
+        "@type": "ResolutionStrategy",
+        "name": "HTTP GET",
+        "description": "GET https://<domain>/.well-known/did.json"
+      },
+
+      "crud": {
+        "create": {
+          "@type": "schema:CreateAction",
+          "agent": "DID Controller",
+          "instrument": "Web server + TLS certificate",
+          "object": "DID Document",
+          "result": "did:web:<domain> resolvable via HTTPS"
+        },
+        "resolve": {
+          "@type": "schema:FindAction",
+          "agent": "DID Resolver",
+          "instrument": "HTTPS client",
+          "object": "did:web:<domain>",
+          "result": "DID Document (JSON-LD)"
+        },
+        "update": {
+          "@type": "schema:UpdateAction",
+          "agent": "DID Controller",
+          "instrument": "Web server file system",
+          "object": "did.json on origin server"
+        },
+        "deactivate": {
+          "@type": "schema:DeleteAction",
+          "agent": "DID Controller",
+          "instrument": "Remove did.json or return 404/410"
+        }
+      },
+
+      "potentialAction": [
+        {
+          "@type": "schema:FindAction",
+          "name": "Resolve",
+          "target": "https://{domain}/.well-known/did.json"
+        }
+      ],
+
+      "identifier": {
+        "@type": "schema:PropertyValue",
+        "propertyID": "DID Method Name",
+        "value": "web"
+      },
+
+      "applicationCategory": "Identity",
+      "applicationSubCategory": "Web-Anchored DID Method",
+
+      "isBasedOn": null,
+      "softwareRequirements": ["HTTPS", "DNS", "TLS"]
+    },
+
+    {
+      "@@comment": "═══════════════════════════════════════════════════════════",
+      "@@comment2": "EXAMPLE 2: did:webvh — extends did:web with verifiable history",
+      "@@comment3": "═══════════════════════════════════════════════════════════",
+
+      "@id": "did:method:webvh",
+      "@type": ["DIDMethod", "schema:SoftwareApplication"],
+      "name": "did:webvh",
+      "description": "Web-anchored DID method with cryptographic verifiable history log",
+      "url": "https://identity.foundation/didwebvh/",
+      "additionalType": ["didm:WebAnchored", "didm:VerifiableHistory"],
+
+      "extends": {
+        "@id": "did:method:web",
+        "name": "did:web",
+        "description": "Inherits web resolution, adds cryptographic log for history verification"
+      },
+
+      "anchor": {
+        "@type": "AnchorMechanism",
+        "name": "HTTPS + Cryptographic Log",
+        "instrument": [
+          {
+            "@type": "schema:WebAPI",
+            "name": "HTTPS resolution (inherited from did:web)"
+          },
+          {
+            "@type": "schema:DigitalDocument",
+            "name": "did.jsonl",
+            "description": "Append-only cryptographic log of all DID Document versions"
+          }
+        ]
+      },
+
+      "crud": {
+        "create": {
+          "@type": "schema:CreateAction",
+          "agent": "DID Controller",
+          "instrument": ["Web server", "Cryptographic log initializer"],
+          "object": "DID Document + initial log entry",
+          "result": "did:webvh:<domain> with genesis log entry"
+        },
+        "resolve": {
+          "@type": "schema:FindAction",
+          "agent": "DID Resolver",
+          "instrument": "HTTPS client + log verifier",
+          "object": "did:webvh:<domain>",
+          "result": "DID Document with verified history chain"
+        },
+        "update": {
+          "@type": "schema:UpdateAction",
+          "agent": "DID Controller",
+          "instrument": "Append signed entry to did.jsonl",
+          "object": "DID Document + log entry"
+        },
+        "deactivate": {
+          "@type": "schema:DeleteAction",
+          "agent": "DID Controller",
+          "instrument": "Final log entry marking deactivation"
+        }
+      },
+
+      "isBasedOn": { "@id": "did:method:web" },
+      "softwareRequirements": ["HTTPS", "DNS", "TLS", "JSON Lines", "Ed25519"]
+    },
+
+    {
+      "@@comment": "═══════════════════════════════════════════════════════════",
+      "@@comment2": "EXAMPLE 3: did:key — Key-derived, no anchor",
+      "@@comment3": "═══════════════════════════════════════════════════════════",
+
+      "@id": "did:method:key",
+      "@type": ["DIDMethod", "schema:SoftwareApplication"],
+      "name": "did:key",
+      "description": "Self-certifying DID derived entirely from a public key — no external anchor needed",
+      "url": "https://w3c-ccg.github.io/did-method-key/",
+      "additionalType": ["didm:KeyDerived", "didm:SelfCertifying"],
+
+      "anchor": {
+        "@type": "AnchorMechanism",
+        "name": "None (self-certifying)",
+        "description": "The DID IS the public key — no external state or anchor required",
+        "instrument": {
+          "@type": "schema:PropertyValue",
+          "name": "Multicodec-encoded public key"
+        }
+      },
+
+      "crud": {
+        "create": {
+          "@type": "schema:CreateAction",
+          "agent": "Key Generator",
+          "instrument": "Cryptographic key pair generator",
+          "object": "Public key",
+          "result": "did:key:<multibase-multicodec-public-key>"
+        },
+        "resolve": {
+          "@type": "schema:FindAction",
+          "agent": "DID Resolver",
+          "instrument": "Multicodec decoder",
+          "object": "did:key:<value>",
+          "result": "Deterministic DID Document derived from key"
+        },
+        "update": null,
+        "deactivate": null
+      },
+
+      "potentialAction": [
+        {
+          "@type": "schema:FindAction",
+          "name": "Resolve",
+          "description": "Decode multibase-multicodec key → deterministic DID Document"
+        }
+      ],
+
+      "isBasedOn": null,
+      "softwareRequirements": ["Multibase", "Multicodec"]
+    },
+
+    {
+      "@@comment": "═══════════════════════════════════════════════════════════",
+      "@@comment2": "EXAMPLE 4: did:sns — Service-anchored, calls did:sol",
+      "@@comment3": "═══════════════════════════════════════════════════════════",
+
+      "@id": "did:method:sns",
+      "@type": ["DIDMethod", "schema:SoftwareApplication"],
+      "name": "did:sns",
+      "description": "DID method anchored to Solana Name Service — human-readable names resolve to identity documents on-chain",
+      "url": "https://github.com/Attestto-com/did-sns-spec",
+      "additionalType": ["didm:ServiceAnchored", "didm:LedgerAnchored", "didm:NameService"],
+
+      "calls": {
+        "@id": "did:method:sol",
+        "name": "did:sol",
+        "description": "SNS names resolve through Solana programs — delegates chain interaction to Solana runtime"
+      },
+
+      "anchor": {
+        "@type": "AnchorMechanism",
+        "name": "Solana Name Service (SNS)",
+        "instrument": [
+          {
+            "@type": "schema:WebAPI",
+            "name": "SNS Registry Program",
+            "description": "On-chain program that maps .sol names to Solana accounts"
+          },
+          {
+            "@type": "schema:BlockChain",
+            "name": "Solana",
+            "description": "L1 ledger providing finality and state storage"
+          }
+        ]
+      },
+
+      "crud": {
+        "create": {
+          "@type": "schema:CreateAction",
+          "agent": "DID Controller (domain owner)",
+          "instrument": ["SNS Registry Program", "Solana wallet"],
+          "object": "SNS domain name + DID Document",
+          "result": "did:sns:<name>.sol resolvable on-chain"
+        },
+        "resolve": {
+          "@type": "schema:FindAction",
+          "agent": "DID Resolver",
+          "instrument": ["Solana RPC client", "SNS reverse lookup"],
+          "object": "did:sns:<name>.sol",
+          "result": "DID Document from on-chain account data"
+        },
+        "update": {
+          "@type": "schema:UpdateAction",
+          "agent": "DID Controller",
+          "instrument": ["Solana transaction", "Domain authority signature"],
+          "object": "On-chain DID Document account"
+        },
+        "deactivate": {
+          "@type": "schema:DeleteAction",
+          "agent": "DID Controller",
+          "instrument": "Close on-chain account or set deactivated flag"
+        }
+      },
+
+      "potentialAction": [
+        {
+          "@type": "schema:FindAction",
+          "name": "Resolve by name",
+          "description": "Resolve human-readable .sol name to DID Document"
+        },
+        {
+          "@type": "schema:FindAction",
+          "name": "Reverse lookup",
+          "description": "Resolve Solana address back to .sol domain name"
+        }
+      ],
+
+      "isBasedOn": null,
+      "softwareRequirements": ["Solana RPC", "SNS SDK", "Borsh serialization"]
+    },
+
+    {
+      "@@comment": "═══════════════════════════════════════════════════════════",
+      "@@comment2": "EXAMPLE 5: did:ethr — Ledger-anchored, smart contract registry",
+      "@@comment3": "═══════════════════════════════════════════════════════════",
+
+      "@id": "did:method:ethr",
+      "@type": ["DIDMethod", "schema:SoftwareApplication"],
+      "name": "did:ethr",
+      "description": "DID method anchored to Ethereum — identity state managed via ERC-1056 smart contract registry",
+      "url": "https://github.com/decentralized-identity/ethr-did-resolver",
+      "additionalType": ["didm:LedgerAnchored", "didm:SmartContract"],
+
+      "anchor": {
+        "@type": "AnchorMechanism",
+        "name": "Ethereum ERC-1056 Registry",
+        "instrument": {
+          "@type": "schema:SoftwareSourceCode",
+          "name": "EthereumDIDRegistry.sol",
+          "description": "Smart contract storing delegate and attribute change events"
+        }
+      },
+
+      "crud": {
+        "create": {
+          "@type": "schema:CreateAction",
+          "agent": "Ethereum account holder",
+          "instrument": "Ethereum keypair (implicit creation — any address is a DID)",
+          "object": "Ethereum address",
+          "result": "did:ethr:<address> — exists by default for every Ethereum address"
+        },
+        "resolve": {
+          "@type": "schema:FindAction",
+          "agent": "DID Resolver",
+          "instrument": ["Ethereum RPC client", "Event log scanner"],
+          "object": "did:ethr:<address>",
+          "result": "DID Document constructed from contract events"
+        },
+        "update": {
+          "@type": "schema:UpdateAction",
+          "agent": "DID Controller or delegate",
+          "instrument": ["ERC-1056 setAttribute/changeDelegation", "Ethereum transaction"],
+          "object": "Contract state via emitted events"
+        },
+        "deactivate": {
+          "@type": "schema:UpdateAction",
+          "agent": "DID Controller",
+          "instrument": "changeOwner to 0x0 address"
+        }
+      },
+
+      "isBasedOn": null,
+      "softwareRequirements": ["Ethereum RPC", "ERC-1056", "ethers.js or web3.js"]
+    },
+
+    {
+      "@@comment": "═══════════════════════════════════════════════════════════",
+      "@@comment2": "EXAMPLE 6: did:peer — Peer/local, no ledger, no web",
+      "@@comment3": "═══════════════════════════════════════════════════════════",
+
+      "@id": "did:method:peer",
+      "@type": ["DIDMethod", "schema:SoftwareApplication"],
+      "name": "did:peer",
+      "description": "Off-ledger DID method for direct peer-to-peer relationships — no global resolution needed",
+      "url": "https://identity.foundation/peer-did-method-spec/",
+      "additionalType": ["didm:PeerLocal", "didm:KeyDerived", "didm:OffLedger"],
+
+      "anchor": {
+        "@type": "AnchorMechanism",
+        "name": "None (peer-exchanged)",
+        "description": "DID Document is exchanged directly between peers — no external anchor or registry"
+      },
+
+      "crud": {
+        "create": {
+          "@type": "schema:CreateAction",
+          "agent": "Either peer in a relationship",
+          "instrument": "Key generation + numalgo algorithm selection",
+          "object": "Key material + optional service endpoints",
+          "result": "did:peer:<numalgo><encoded-data>"
+        },
+        "resolve": {
+          "@type": "schema:FindAction",
+          "agent": "The other peer",
+          "instrument": "Local storage (received during exchange)",
+          "object": "did:peer:<value>",
+          "result": "DID Document from local peer store"
+        },
+        "update": {
+          "@type": "schema:UpdateAction",
+          "agent": "Originating peer",
+          "instrument": "DIDComm message to counterparty",
+          "object": "Rotated keys or updated endpoints"
+        },
+        "deactivate": {
+          "@type": "schema:DeleteAction",
+          "agent": "Either peer",
+          "instrument": "Abandon relationship — delete from local store"
+        }
+      },
+
+      "isBasedOn": null,
+      "softwareRequirements": ["DIDComm v2", "Ed25519 or X25519"]
+    }
+  ]
+}
