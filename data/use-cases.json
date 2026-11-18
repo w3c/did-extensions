@@ -1,0 +1,254 @@
+{
+  "version": "2.0.0",
+  "source": "https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/",
+  "categories": [
+    {
+      "id": "cat-finance",
+      "name": "Finance & Commerce",
+      "color": "#2563eb"
+    },
+    {
+      "id": "cat-government",
+      "name": "Government & Legal",
+      "color": "#7c3aed"
+    },
+    {
+      "id": "cat-education",
+      "name": "Education & Skills",
+      "color": "#059669"
+    },
+    {
+      "id": "cat-health",
+      "name": "Healthcare",
+      "color": "#dc2626"
+    },
+    {
+      "id": "cat-infrastructure",
+      "name": "Infrastructure & Supply Chain",
+      "color": "#d97706"
+    },
+    {
+      "id": "cat-privacy",
+      "name": "Privacy & Identity",
+      "color": "#0891b2"
+    }
+  ],
+  "useCases": [
+    {
+      "id": "uc-digital-identity",
+      "name": "Digital Identity",
+      "category": "cat-privacy",
+      "description": "Establishing and managing digital identities for individuals and organizations.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#aliceDID",
+      "detailLevel": "full",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability"],
+      "actors": ["individual", "organization"],
+      "audience": ["persons", "business"],
+      "tags": ["identity", "self-sovereign"]
+    },
+    {
+      "id": "uc-credentials",
+      "name": "Verifiable Credentials",
+      "category": "cat-privacy",
+      "description": "Issuing, holding, and verifying digital credentials (diplomas, licenses, certifications).",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#bobVC",
+      "detailLevel": "full",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-crypto-verifiability", "req-crypto-extensibility", "req-interoperability"],
+      "actors": ["issuer", "holder", "verifier"],
+      "audience": ["persons", "business", "enterprise"],
+      "tags": ["credentials", "verifiable", "attestation"]
+    },
+    {
+      "id": "uc-secure-communication",
+      "name": "Secure Communication",
+      "category": "cat-privacy",
+      "description": "Establishing secure, authenticated communication channels between parties.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#secureCom",
+      "detailLevel": "full",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-crypto-verifiability", "req-service-endpoints"],
+      "actors": ["individual", "organization"],
+      "audience": ["persons", "business"],
+      "tags": ["messaging", "encryption", "didcomm"]
+    },
+    {
+      "id": "uc-ecommerce",
+      "name": "Online Shopping",
+      "category": "cat-finance",
+      "description": "E-commerce identity verification, payment authorization, and purchase provenance.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#onlineShopper",
+      "detailLevel": "full",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-interoperability"],
+      "actors": ["consumer", "merchant", "payment-provider"],
+      "audience": ["persons", "business"],
+      "tags": ["commerce", "payments", "retail"]
+    },
+    {
+      "id": "uc-healthcare",
+      "name": "Healthcare Records",
+      "category": "cat-health",
+      "description": "Managing patient identity and health records across providers.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#healthCare",
+      "detailLevel": "brief",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-legal-compatibility"],
+      "actors": ["patient", "provider", "insurer"],
+      "audience": ["persons", "enterprise"],
+      "tags": ["health", "medical", "records"]
+    },
+    {
+      "id": "uc-travel",
+      "name": "International Travel",
+      "category": "cat-government",
+      "description": "Cross-border identity verification for travel and immigration.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#internationalTravel",
+      "detailLevel": "brief",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-inter-jurisdictional", "req-legal-compatibility"],
+      "actors": ["traveler", "border-authority", "airline"],
+      "audience": ["persons"],
+      "tags": ["travel", "border", "passport"]
+    },
+    {
+      "id": "uc-education",
+      "name": "Education Credentials",
+      "category": "cat-education",
+      "description": "Issuing and verifying academic credentials, transcripts, and certifications.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#education",
+      "detailLevel": "brief",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-interoperability"],
+      "actors": ["institution", "student", "employer"],
+      "audience": ["persons"],
+      "tags": ["education", "academic", "diploma"]
+    },
+    {
+      "id": "uc-government-services",
+      "name": "Government Services",
+      "category": "cat-government",
+      "description": "Citizen identity for government services, voting, and public records.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#govServices",
+      "detailLevel": "brief",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-inter-jurisdictional", "req-legal-compatibility", "req-uniqueness"],
+      "actors": ["citizen", "government-agency"],
+      "audience": ["persons"],
+      "tags": ["government", "civic", "public-services"]
+    },
+    {
+      "id": "uc-supply-chain",
+      "name": "Supply Chain Provenance",
+      "category": "cat-infrastructure",
+      "description": "Tracking product provenance and authenticity through supply chains.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#supplyChain",
+      "detailLevel": "brief",
+      "requiredRequirements": ["req-decentralization", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-service-endpoints", "req-composability"],
+      "actors": ["manufacturer", "shipper", "retailer", "consumer"],
+      "audience": ["business", "enterprise"],
+      "tags": ["supply-chain", "provenance", "tracking"]
+    },
+    {
+      "id": "uc-finance",
+      "name": "Financial Services",
+      "category": "cat-finance",
+      "description": "KYC/AML identity verification for banking and financial services.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#finance",
+      "detailLevel": "brief",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-legal-compatibility", "req-uniqueness", "req-key-rotation"],
+      "actors": ["customer", "bank", "regulator"],
+      "audience": ["persons", "business", "enterprise"],
+      "tags": ["finance", "banking", "kyc", "aml"]
+    },
+    {
+      "id": "uc-iot",
+      "name": "IoT Device Identity",
+      "category": "cat-infrastructure",
+      "description": "Establishing identity for IoT devices and machine-to-machine communication.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#iot",
+      "detailLevel": "brief",
+      "requiredRequirements": ["req-decentralization", "req-security", "req-proof-based", "req-crypto-verifiability", "req-service-endpoints", "req-did-resolution"],
+      "actors": ["device", "manufacturer", "operator"],
+      "audience": ["enterprise"],
+      "tags": ["iot", "devices", "machine-identity"]
+    },
+    {
+      "id": "uc-daos",
+      "name": "Decentralized Organizations",
+      "category": "cat-finance",
+      "description": "Identity and governance for DAOs, cooperatives, and decentralized entities.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#daos",
+      "detailLevel": "brief",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-security", "req-proof-based", "req-crypto-verifiability", "req-key-rotation", "req-deactivation"],
+      "actors": ["member", "dao", "governance-token-holder"],
+      "audience": ["business"],
+      "tags": ["dao", "governance", "web3"]
+    },
+    {
+      "id": "uc-privacy-preserving",
+      "name": "Privacy-Preserving Identity",
+      "category": "cat-privacy",
+      "description": "Minimal disclosure, pseudonymous, or anonymous identity scenarios.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#privacyPreserving",
+      "detailLevel": "full",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-crypto-verifiability", "req-equivalence"],
+      "actors": ["individual"],
+      "audience": ["persons"],
+      "tags": ["privacy", "pseudonymous", "selective-disclosure"]
+    },
+    {
+      "id": "uc-legal-identity",
+      "name": "Legal Identity",
+      "category": "cat-government",
+      "description": "Legally recognized digital identity for contracts, notarization, and court proceedings.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#legalIdentity",
+      "detailLevel": "brief",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-legal-compatibility", "req-uniqueness"],
+      "actors": ["individual", "legal-entity", "court"],
+      "audience": ["persons", "business"],
+      "tags": ["legal", "notarization", "contracts"]
+    },
+    {
+      "id": "uc-importing",
+      "name": "Importing & Trade",
+      "category": "cat-infrastructure",
+      "description": "Cross-border trade documentation, customs verification, and import/export compliance.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#importing",
+      "detailLevel": "full",
+      "requiredRequirements": ["req-decentralization", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-inter-jurisdictional", "req-service-endpoints"],
+      "actors": ["importer", "exporter", "customs-authority"],
+      "audience": ["business", "enterprise"],
+      "tags": ["trade", "customs", "import-export"]
+    },
+    {
+      "id": "uc-vehicle-identity",
+      "name": "Vehicle Identity",
+      "category": "cat-infrastructure",
+      "description": "Vehicle identity management across manufacturing, ownership, and regulatory lifecycle.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#vehicleIdentity",
+      "detailLevel": "full",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-inter-jurisdictional", "req-metadata"],
+      "actors": ["manufacturer", "owner", "regulator"],
+      "audience": ["persons", "business"],
+      "tags": ["vehicle", "automotive", "vin"]
+    },
+    {
+      "id": "uc-transferable-skills",
+      "name": "Transferable Skills",
+      "category": "cat-education",
+      "description": "Portable skill credentials that transfer across employers and institutions.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#transferableSkills",
+      "detailLevel": "full",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-portability", "req-interoperability"],
+      "actors": ["worker", "employer", "training-provider"],
+      "audience": ["persons"],
+      "tags": ["skills", "workforce", "portable-credentials"]
+    },
+    {
+      "id": "uc-humanitarian",
+      "name": "Humanitarian Aid",
+      "category": "cat-government",
+      "description": "Identity for refugees, displaced persons, and humanitarian aid distribution.",
+      "w3cSection": "https://www.w3.org/TR/did-use-cases/#humanitarian",
+      "detailLevel": "brief",
+      "requiredRequirements": ["req-decentralization", "req-control", "req-privacy", "req-security", "req-proof-based", "req-persistence", "req-crypto-verifiability", "req-inter-jurisdictional", "req-portability"],
+      "actors": ["displaced-person", "aid-organization", "government"],
+      "audience": ["persons"],
+      "tags": ["humanitarian", "refugees", "aid"]
+    }
+  ]
+}
