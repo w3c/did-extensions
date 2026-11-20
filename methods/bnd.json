@@ -1,0 +1,9 @@
+{
+    "name": "bnd",
+    "status": "registered",
+    "specification": "https://github.com/cashlet-labs/bnd/blob/main/spec/did-bnd.md",
+    "contactName": "Septem Labs",
+    "contactEmail": "hello@septemlabs.com",
+    "contactWebsite": "https://septemlabs.com",
+    "verifiableDataRegistry": "Nostr Relay Network"
+}
