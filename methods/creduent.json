@@ -1,0 +1,9 @@
+{
+  "name": "creduent",
+  "status": "registered",
+  "specification": "https://github.com/Idevsec/creduent/blob/main/standards/DID-CREDUENT-METHOD.md",
+  "contactName": "Kashish Kanojia",
+  "contactEmail": "kashish@idevsec.com",
+  "contactWebsite": "https://idevsec.com",
+  "verifiableDataRegistry": "DNS & HTTPS (.well-known/agent.json)"
+}
